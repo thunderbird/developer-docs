@@ -9,11 +9,11 @@ description: >-
 
 ## I Want to Start Hacking
 
-This page has some information on where to get information and get plugged into the Community. If  ou are ready to start hacking, head to the ["Getting Started"](the-basics/untitled.md) page.
+This page has some information on where to get information and get plugged into the Community. If you are ready to start hacking, head to the ["Getting Started"](the-basics/untitled.md) page.
 
 ## Getting Plugged into the Community
 
-We have a complete listing of the ways in which you get involved with Thunderbird [on our website](https://thunderbird.net/get-involved). Below are some quick references from that page that you can use if you are looking to contribute to Thunderbird core right away.
+We have a complete listing of the ways in which you can get involved with Thunderbird [on our website](https://thunderbird.net/get-involved). Below are some quick references from that page that you can use if you are looking to contribute to Thunderbird core right away.
 
 ### Mailing Lists
 
@@ -24,7 +24,7 @@ If you want to participate in discussions about Thunderbird development, there a
 
 ### IRC
 
-If you want to ask quetions about how to hack on Thunderbird, the IRC channel you want to join is [\#maildev on irc.mozilla.org](irc://irc.mozilla.org/maildev).
+If you want to ask questions about how to hack on Thunderbird, the IRC channel you want to join is [\#maildev on irc.mozilla.org](irc://irc.mozilla.org/maildev).
 
 
 

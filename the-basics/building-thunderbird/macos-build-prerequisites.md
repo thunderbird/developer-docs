@@ -58,4 +58,4 @@ export PATH=$HOME/.cargo/bin:$PATH
 
 ## You're all set
 
-Got back to the [Building Thunderbird](README.md) page and continue following the guide.
+Got back to the [Building Thunderbird](README.md#build-configuration) page and continue following the guide.

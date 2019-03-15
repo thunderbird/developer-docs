@@ -9,7 +9,9 @@ description: >-
 
 ## I Want to Start Hacking
 
-This page has some information on where to get information and get plugged into the Community. If you are ready to start hacking, head to the ["Getting Started"](the-basics/untitled.md) page.
+This page has some information on where to get information and get plugged into the Community. If you are ready to start hacking, head to this page:
+
+{% page-ref page="the-basics/untitled.md" %}
 
 ## Getting Plugged into the Community
 

@@ -26,5 +26,3 @@ If you want to participate in discussions about Thunderbird development, there a
 
 If you want to ask questions about how to hack on Thunderbird, the IRC channel you want to join is [\#maildev on irc.mozilla.org](irc://irc.mozilla.org/maildev).
 
-
-

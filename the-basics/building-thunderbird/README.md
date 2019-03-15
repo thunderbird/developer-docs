@@ -33,7 +33,7 @@ ac_add_options --enable-debug
 
 _Each of these ac\_add\_options entries needs to be on its own line._
 
-For more on configuration options, see the page ["Configuring build options"](https://developer.mozilla.org/en/Configuring_Build_Options). Note that if you use an MOZ\_OBJDIR it cannot be a sibling folder to your source directory. Use an absolute path to be sure!
+For more on configuration options, see the page [Configuring build options](https://developer.mozilla.org/en/Configuring_Build_Options). Note that if you use an MOZ\_OBJDIR it cannot be a sibling folder to your source directory. Use an absolute path to be sure!
 
 ### Build the Lightning Calendar when building Thunderbird <a id="build-the-lightning-calendar-when-building-thunderbird"></a>
 
@@ -45,7 +45,7 @@ ac_add_options --enable-calendar
 
 ## Building
 
-Before you start, make sure that the version you checked out is not busted. For hg tip, you should see green Bs on [https://treeherder.mozilla.org/\#/jobs?repo=comm-central](https://treeherder.mozilla.org/#/jobs?repo=comm-central)​
+Before you start, make sure that the version you checked out is not busted. For `hg` tip, you should see green Bs on [https://treeherder.mozilla.org/\#/jobs?repo=comm-central](https://treeherder.mozilla.org/#/jobs?repo=comm-central)​
 
 To start the build, cd into the `source` directory, and run:
 
@@ -53,13 +53,13 @@ To start the build, cd into the `source` directory, and run:
 ./mach build
 ```
 
-mach is our command-line tool to streamline common developer tasks. See the ["mach"](https://developer.mozilla.org/en-US/docs/Mozilla/Developer_guide/mach) article for more.
+mach is our command-line tool to streamline common developer tasks. See the [mach](https://developer.mozilla.org/en-US/docs/Mozilla/Developer_guide/mach) article for more.
 
 Building can take a significant amount of time, depending on your system, OS, and chosen build options. Linux builds on a fast box may take under _15 minutes_, but Windows builds on a slow box may take _several hours_.
 
 ### Make Your Build Faster
 
-Follow this guide to rely on cache and other ["Tips for making builds faster"](../untitled.md).
+Follow this guide to rely on `ccache` and other [Tips for making builds faster](../untitled.md).
 
 ## Running Thunderbird
 
@@ -96,7 +96,7 @@ or to do it via one command:
 hg pull -u; (cd comm; hg pull -u)
 ```
 
-The just run the `./mach build` command detailed in the [Building ](./#building)instructions above. This will only recompile files that changed, but it may still take a long time.
+The just run the `./mach build` command detailed in the [Building](./#building)instructions above. This will only recompile files that changed, but it may still take a long time.
 
 ## Rebuilding
 
@@ -129,8 +129,3 @@ This is the tricky bit since you need to specify the directory that installs the
 
 `./mach build comm/calendar/lightning`
 {% endhint %}
-
-
-
-
-

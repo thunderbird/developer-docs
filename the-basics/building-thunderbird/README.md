@@ -79,3 +79,58 @@ The Thunderbird executable in particular, and its dependencies are located under
 * Linux: `obj-.../dist/bin/thunderbird`
 * macOS: `obj-.../dist/Daily.app/Contents/MacOS/thunderbird`
 
+## Update and Build Again
+
+To pull down the latest changes, in the mozilla directory run the following commands:
+
+```text
+hg pull -u
+cd comm
+hg pull -u
+cd ..
+```
+
+or to do it via one command:
+
+```text
+hg pull -u; (cd comm; hg pull -u)
+```
+
+The just run the `./mach build` command detailed in the [Building ](./#building)instructions above. This will only recompile files that changed, but it may still take a long time.
+
+## Rebuilding
+
+To build after changes you can simply run:
+
+```text
+./mach build
+```
+
+### Rebuilding Specific Parts
+
+If you have made many changes, but only want to rebuild specific parts, you may run the following commands.
+
+#### C or C++ Files:
+
+```text
+./mach build binaries
+```
+
+#### JavaScript or XUL Files \(Windows Only\):
+
+```text
+./mach build path/to/dir
+```
+
+{% hint style="info" %}
+Replace `path/to/dir` with the directory with the files changed.
+
+This is the tricky bit since you need to specify the directory that installs the files, which may be a parent directory of the changed file's directory. For example, to just rebuild the Lightning calendar extension:
+
+`./mach build comm/calendar/lightning`
+{% endhint %}
+
+
+
+
+

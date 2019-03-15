@@ -55,3 +55,7 @@ If you get a `command not found` error while running `cargo`, but the command `w
 export PATH=$HOME/.cargo/bin:$PATH
 ```
 {% endhint %}
+
+## You're all set
+
+Got back to the [Building Thunderbird](README.md) page and continue following the guide.

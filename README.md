@@ -13,6 +13,16 @@ This page has some information on where to get information and get plugged into 
 
 {% page-ref page="the-basics/untitled.md" %}
 
+## Report Bugs and Request Features
+
+### [Bugzilla](https://bugzilla.mozilla.org)
+
+Thunderbird uses Mozilla's Bugzilla platform to report and track bugs. The site can also be used to generate enhancement bugs, which can be used for feature requests. If you want to become a contributor to Thunderbird, you will need an account on Bugzilla as you will submit patches through this platform.
+
+### [Thundernest on GitHub](https://github.com/thundernest)
+
+If you want to contribute to the Thunderbird website, this documentation, or addons.thunderbird.net - you can find those repositories and their issue trackers on the Thundernest GitHub page. You'll need a GitHub account ot contribute there.
+
 ## Getting Plugged into the Community
 
 We have a complete listing of the ways in which you can get involved with Thunderbird [on our website](https://thunderbird.net/get-involved). Below are some quick references from that page that you can use if you are looking to contribute to Thunderbird core right away.

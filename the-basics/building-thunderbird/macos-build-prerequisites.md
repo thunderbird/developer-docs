@@ -1,7 +1,7 @@
 ---
 description: >-
-  This page has all the information you need to get your macOS development environment
-  set up and ready to hack on Thunderbird.
+  This page has all the information you need to get your macOS development
+  environment set up and ready to hack on Thunderbird.
 ---
 
 # macOS Build Prerequisites
@@ -10,7 +10,7 @@ This guide assumes you already followed the [Getting Started](../untitled.md) do
 
 ## Install Xcode
 
-`Xcode` is a prerequisite to build Firefox an you will need administrator permissions on your machine to install it.  You can verify that you have these permission in `System Preferences -> Users & Groups`.)
+`Xcode` is a prerequisite to build Firefox an you will need administrator permissions on your machine to install it. You can verify that you have these permission in `System Preferences -> Users & Groups`.\)
 
 {% hint style="info" %}
 `Xcode` is pretty large and it could take up to 1 hour to complete the download and installation process
@@ -24,7 +24,7 @@ After installing `Xcode` you will find the SDK header at this location
 cd /Library/Developer/CommandLineTools/SDKs/
 ```
 
-Launch the `MacOSX{your-version}.sdk` (eg. `MacOSX10.14.sdk`) by double clicking on it and follow the installation instructions.
+Launch the `MacOSX{your-version}.sdk` \(eg. `MacOSX10.14.sdk`\) by double clicking on it and follow the installation instructions.
 
 ## Bootstrap your system
 
@@ -58,4 +58,5 @@ export PATH=$HOME/.cargo/bin:$PATH
 
 ## You're all set
 
-Got back to the [Building Thunderbird](README.md#build-configuration) page and continue following the guide.
+Got back to the [Building Thunderbird](./#build-configuration) page and continue following the guide.
+

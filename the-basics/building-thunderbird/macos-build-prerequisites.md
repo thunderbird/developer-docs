@@ -6,7 +6,7 @@ description: >-
 
 # macOS Build Prerequisites
 
-This guide assumes you already followed the [Getting Started](../untitled.md) documentation and you already downloaded `mozilla-central` and `comm-central` source code.
+This guide assumes you already followed the [Getting Started](../getting-started.md) documentation and you already downloaded `mozilla-central` and `comm-central` source code.
 
 ## Install Xcode
 

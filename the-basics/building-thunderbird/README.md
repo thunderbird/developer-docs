@@ -45,7 +45,9 @@ ac_add_options --enable-calendar
 
 ## Building
 
-Before you start, make sure that the version you checked out is not busted. For `hg` tip, you should see green Bs on [https://treeherder.mozilla.org/\#/jobs?repo=comm-central](https://treeherder.mozilla.org/#/jobs?repo=comm-central)​
+{% hint style="warning" %}
+Before you start, make sure that the version you checked out is not busted. For `hg` tip, you should see green Bs on [https://treeherder.mozilla.org/\#/jobs?repo=comm-central](https://treeherder.mozilla.org/#/jobs?repo=comm-central)
+{% endhint %}
 
 To start the build, cd into the `source` directory, and run:
 
@@ -59,7 +61,7 @@ Building can take a significant amount of time, depending on your system, OS, an
 
 ### Make Your Build Faster
 
-Follow this guide to rely on `ccache` and other [Tips for making builds faster](../untitled.md).
+Follow this guide to rely on `ccache` and other [Tips for making builds faster](../getting-started.md).
 
 ## Running Thunderbird
 

@@ -34,7 +34,7 @@ hg clone https://hg.mozilla.org/comm-central comm/
 
 ### mozilla-central vs. comm-central
 
-**TODO: Detail more in-depth why there are two repositories**
+Mozilla-central will build Firefox without the comm-central repo present and a few options set \(detailed on the [Building Thunderbird](building-thunderbird/) page\). Mozilla-central is the Firefox codebase and comm-central features the additions that turn Firefox into Thunderbird.
 
 ## What's Next
 

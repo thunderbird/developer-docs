@@ -6,7 +6,7 @@ description: >-
 
 # Linux Build Prerequisites
 
-This guide assumes you already followed the [Getting Started](../untitled.md) documentation and you already downloaded `mozilla-central` and `comm-central` source code.
+This guide assumes you already followed the [Getting Started](https://github.com/thundernest/developer-docs/tree/cf723ef593ec303339590f2096f17c8cfc64514d/the-basics/untitled.md) documentation and you already downloaded `mozilla-central` and `comm-central` source code.
 
 ## 64-bit version
 
@@ -20,7 +20,7 @@ if this command returns `x86_64` you can proceed.
 
 ## Python 2.7
 
-You’ll need `Python 2.7` installed, `Python 3.x` is currently not supported. 
+You’ll need `Python 2.7` installed, `Python 3.x` is currently not supported.
 
 You can check with `python --version` to see if you have it already. If not, you can install it with your distribution’s package manager. Make sure your system is up to date!
 
@@ -60,4 +60,7 @@ export PATH=$HOME/.cargo/bin:$PATH
 
 ## You're all set
 
-Got back to the [Building Thunderbird](README.md#build-configuration) page and continue following the guide.
+Got back to the [Building Thunderbird](./#build-configuration) page and continue following the guide.
+
+{% page-ref page="./" %}
+

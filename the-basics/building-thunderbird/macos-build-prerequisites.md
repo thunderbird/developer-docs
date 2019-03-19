@@ -43,7 +43,7 @@ It could happen that some libraries will not be installed by the `bootstrap` com
 * `which rustc`
 * `which cargo`
 
-If one or both commands return and empty output, you need to install them manually. We recommend using [HomeBrew](https://brew.sh/) to download and install these packages in your system. After that, follow these steps:
+If one or both commands return an empty output, you need to install them manually. We recommend using [HomeBrew](https://brew.sh/) to download and install these packages in your system. After that, follow these steps:
 
 * Install Rust: `brew install rustc`
 * Install C bindings: `cargo install cbindgen`

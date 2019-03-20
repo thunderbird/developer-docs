@@ -13,6 +13,10 @@ This page has some information on where to get information and get plugged into 
 
 {% page-ref page="the-basics/getting-started.md" %}
 
+### Extension Development
+
+The [Extension API](https://thunderbird-webextensions.readthedocs.io/) documentation covers available APIs and guides to move to the new set of APIs.
+
 ## Report Bugs and Request Features
 
 ### [Bugzilla](https://bugzilla.mozilla.org)

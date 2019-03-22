@@ -16,3 +16,7 @@
 
 * [Fixing a Bug](contributing/fixing-a-bug.md)
 
+## Testing
+
+* [Running Tests](testing/running-tests.md)
+

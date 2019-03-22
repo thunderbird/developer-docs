@@ -19,4 +19,5 @@
 ## Testing
 
 * [Running Tests](testing/running-tests.md)
+* [Adding Tests](testing/adding-tests.md)
 

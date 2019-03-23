@@ -23,5 +23,10 @@
 
 ## Add-ons
 
-* [WebExtensions APIs](https://thunderbird-webextensions.readthedocs.io)
+* [About Add-ons](add-ons/about-add-ons.md)
+* [Hello World Extension](add-ons/hello-world-add-on.md)
+* [MailExtensions APIs](https://thunderbird-webextensions.readthedocs.io)
+* [Thunderstorm Repo](https://github.com/cleidigh/ThunderStorm)
+* [addons.thunderbird.net](https://addons.thunderbird.net)
+* [Updating Extensions for 68](https://thunderbird-webextensions.readthedocs.io/en/latest/how-to/extensions68.html)
 

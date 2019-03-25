@@ -12,7 +12,7 @@ This guide assumes you already followed the [Getting Started](https://github.com
 
 You need a 64 bit version of Linux in order to build Thunderbird. You can check which version you're running by typing this command in your terminal:
 
-```text
+```shell
 uname -m
 ```
 
@@ -32,7 +32,7 @@ The Thunderbird build will take up to 30 GB of disk space in order to complete. 
 
 Access the location where you downloaded the `mozilla-central` source code, most likely `source/` and trigger this command:
 
-```text
+```shell
 ./mach bootstrap
 ```
 
@@ -53,7 +53,7 @@ If one or both commands return an empty output, you need to install them manuall
 {% hint style="info" %}
 If you get a `command not found` error while running `cargo`, but the command `which cargo` returns the location of the that package, it means you need to update your `PATH` inside your `.bashrc` file to include the `cargo` location:
 
-```text
+```shell
 export PATH=$HOME/.cargo/bin:$PATH
 ```
 {% endhint %}

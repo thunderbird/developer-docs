@@ -16,7 +16,7 @@ This tutorial is based off of code that can be found, along with other tutorials
 
 Create a directory for your extension and navigate to it.
 
-```text
+```shell
 mkdir hello-world
 cd hello-world
 ```
@@ -29,7 +29,7 @@ Your manifest.json file should look like this:
 
 {% code-tabs %}
 {% code-tabs-item title="manifest.json" %}
-```text
+```json
 {
 	"manifest_version": 2,
 	"name": "Hello World",
@@ -90,7 +90,7 @@ Our add-on is pretty simple, it just brings up an html page in a new tab in Thun
 
 {% code-tabs %}
 {% code-tabs-item title="popup.html" %}
-```text
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -115,7 +115,7 @@ Now we want to make the css file referenced in our html file. We'll call it `pop
 
 {% code-tabs %}
 {% code-tabs-item title="popup.css" %}
-```text
+```css
 .popup-page {
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	font-weight: bold;
@@ -135,8 +135,8 @@ In `popup.js` we will put the following code:
 
 {% code-tabs %}
 {% code-tabs-item title="popup.js" %}
-```text
-// Below is what we'll log to the console.
+```js
+// Below is what we'll log to the console.
 
 console.log('Hello, World! - from popup.js');
 ```

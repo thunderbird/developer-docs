@@ -18,7 +18,7 @@ We can put our function almost anywhere in this file, so long as we don't put it
 
 After you find that function place the following code below it:
 
-```text
+```js
 function helloWorld(){
   alert('Hello, World!');
 }
@@ -30,7 +30,7 @@ This is what it should look like in context:
 
 {% code-tabs %}
 {% code-tabs-item title="mailCore.js" %}
-```text
+```js
 function openAboutSupport() {
   let tabmail = document.getElementById("tabmail");
   tabmail.openTab("contentTab", {contentPage: "about:support",
@@ -56,7 +56,7 @@ In the same directory that we found `mailCore.js` - we are going to open the fil
 
 Once you found the `appmenu_emptyTrash` menuitem, insert the following code below it:
 
-```text
+```xul
 <menuitem id="helloWorld"
           label="Hello World"
           oncommand="helloWorld();"/>
@@ -66,7 +66,7 @@ In context:
 
 {% code-tabs %}
 {% code-tabs-item title="mainPopupSet.inc.xul" %}
-```text
+```xul
 <menuitem id="appmenu_emptyTrash"
           label="&emptyTrashCmd.label;"
           command="cmd_emptyTrash"/>
@@ -97,7 +97,7 @@ Spend some time playing around with the menu and even try experimenting with the
 
 If you get in trouble you can reset the repository via the commands below \(in the `/comm` directory\) - **these will remove all the changes you've made**:
 
-```text
+```shell
 hg update --clean
 ```
 

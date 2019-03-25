@@ -21,7 +21,7 @@ Depending on your Operating System you will need to carry out a different proces
 
 To build Thunderbird, you need to create a file named `mozconfig` to the root directory of the mozilla-central checkout that contains the option `comm\mail` enabled. You can create a file with this line by doing this in the `source/` directory:
 
-```text
+```shell
 echo 'ac_add_options --enable-application=comm/mail' > mozconfig
 ```
 
@@ -51,7 +51,7 @@ Before you start, make sure that the version you checked out is not busted. For 
 
 To start the build, cd into the `source` directory, and run:
 
-```text
+```shell
 ./mach build
 ```
 
@@ -67,7 +67,7 @@ Follow this guide to rely on `ccache` and other [Tips for making builds faster](
 
 To run your build, you can use:
 
-```text
+```shell
 ./mach run
 ```
 
@@ -85,7 +85,7 @@ The Thunderbird executable in particular, and its dependencies are located under
 
 To pull down the latest changes, in the mozilla directory run the following commands:
 
-```text
+```shell
 hg pull -u
 cd comm
 hg pull -u
@@ -94,7 +94,7 @@ cd ..
 
 or to do it via one command:
 
-```text
+```shell
 hg pull -u; (cd comm; hg pull -u)
 ```
 
@@ -104,7 +104,7 @@ The just run the `./mach build` command detailed in the [Building](./#building)i
 
 To build after changes you can simply run:
 
-```text
+```shell
 ./mach build
 ```
 
@@ -114,13 +114,13 @@ If you have made many changes, but only want to rebuild specific parts, you may 
 
 #### C or C++ Files:
 
-```text
+```shell
 ./mach build binaries
 ```
 
 #### JavaScript or XUL Files \(Windows Only\):
 
-```text
+```shell
 ./mach build path/to/dir
 ```
 
@@ -129,6 +129,8 @@ Replace `path/to/dir` with the directory with the files changed.
 
 This is the tricky bit since you need to specify the directory that installs the files, which may be a parent directory of the changed file's directory. For example, to just rebuild the Lightning calendar extension:
 
-`./mach build comm/calendar/lightning`
+```shell
+./mach build comm/calendar/lightning
+```
 {% endhint %}
 

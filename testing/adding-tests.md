@@ -23,8 +23,8 @@ A new directory needs some standard files: an ESLint configuration file if the d
 
 {% code-tabs %}
 {% code-tabs-item title="eslintrc.js" %}
-```text
-module.exports = {
+```js
+module.exports = {
   // For XPCShell:
   "extends": "plugin:mozilla/xpcshell-test",
   // Or for Mochitest:
@@ -48,7 +48,7 @@ The default section isn't even necessary here, but you probably want to add a `h
 
 {% code-tabs %}
 {% code-tabs-item title="browser.ini" %}
-```text
+```ini
 [default]
 prefs =
   ldap_2.servers.osx.description=
@@ -72,7 +72,7 @@ The next thing you need to do is tell mach about your new test manifest. In the 
 
 {% code-tabs %}
 {% code-tabs-item title="moz.build" %}
-```text
+```python
 BROWSER_CHROME_MANIFESTS += [
     'test/browser/browser.ini',
 ]

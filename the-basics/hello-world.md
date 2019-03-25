@@ -14,11 +14,11 @@ The first thing we want to do is create the function that will run and create ou
 
 Open up `mailCore.js` - this is the file that we'll be creating our function in. You can find this file in the content folder which is here: `comm -> mail -> base -> content`.
 
-We can put our function almost anywhere in this file, so long as we don't put it within another function. Take a little while to look at this file and see if you can figure out what the other functions in this file are doing. Once you've done that find the function `openAboutSupport()`. If you are new to programming you can find this function easily is most editors by doing a search with **ctrl+f** to open up a search field - you can put `openAboutSupport()` in there and it should highlight that function. 
+We can put our function almost anywhere in this file, so long as we don't put it within another function. Take a little while to look at this file and see if you can figure out what the other functions in this file are doing. Once you've done that find the function `openAboutSupport()`. If you are new to programming you can find this function easily is most editors by doing a search with **ctrl+f** to open up a search field - you can put `openAboutSupport()` in there and it should highlight that function.
 
 After you find that function place the following code below it:
 
-```js
+```javascript
 function helloWorld(){
   alert('Hello, World!');
 }
@@ -30,7 +30,7 @@ This is what it should look like in context:
 
 {% code-tabs %}
 {% code-tabs-item title="mailCore.js" %}
-```js
+```javascript
 function openAboutSupport() {
   let tabmail = document.getElementById("tabmail");
   tabmail.openTab("contentTab", {contentPage: "about:support",
@@ -56,7 +56,7 @@ In the same directory that we found `mailCore.js` - we are going to open the fil
 
 Once you found the `appmenu_emptyTrash` menuitem, insert the following code below it:
 
-```xul
+```text
 <menuitem id="helloWorld"
           label="Hello World"
           oncommand="helloWorld();"/>
@@ -66,7 +66,7 @@ In context:
 
 {% code-tabs %}
 {% code-tabs-item title="mainPopupSet.inc.xul" %}
-```xul
+```text
 <menuitem id="appmenu_emptyTrash"
           label="&emptyTrashCmd.label;"
           command="cmd_emptyTrash"/>
@@ -93,13 +93,11 @@ If that alert window appears when you click the menu item then it works!
 
 ### What's Next
 
-Spend some time playing around with the menu and even try experimenting with the helloWorld function. Most of all have fun and don't worry about messing things up. 
+Spend some time playing around with the menu and even try experimenting with the helloWorld function. Most of all have fun and don't worry about messing things up.
 
 If you get in trouble you can reset the repository via the commands below \(in the `/comm` directory\) - **these will remove all the changes you've made**:
 
-```shell
+```text
 hg update --clean
 ```
-
-
 

@@ -23,7 +23,7 @@ A new directory needs some standard files: an ESLint configuration file if the d
 
 {% code-tabs %}
 {% code-tabs-item title="eslintrc.js" %}
-```js
+```javascript
 module.exports = {
   // For XPCShell:
   "extends": "plugin:mozilla/xpcshell-test",
@@ -48,7 +48,7 @@ The default section isn't even necessary here, but you probably want to add a `h
 
 {% code-tabs %}
 {% code-tabs-item title="browser.ini" %}
-```ini
+```text
 [default]
 prefs =
   ldap_2.servers.osx.description=

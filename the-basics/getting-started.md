@@ -26,7 +26,7 @@ The source code requires 3.6GB of free space or more and additionally 5GB or mor
 
 Get the latest Mozilla source code from Mozilla's `mozilla-central` Mercurial code repository, and check it out into a local directory `source` \(or however you want to call it\). Then, get the latest Thunderbird source code from Mozilla's `comm-central` Mercurial code repository. It now needs to be placed **inside** the Mozilla source code, in a directory named `comm/` \(this is inverse from Thunderbird 59 and earlier\):
 
-```shell
+```text
 hg clone https://hg.mozilla.org/mozilla-central source/
 cd source/
 hg clone https://hg.mozilla.org/comm-central comm/

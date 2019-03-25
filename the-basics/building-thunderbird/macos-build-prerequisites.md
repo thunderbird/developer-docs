@@ -20,7 +20,7 @@ This guide assumes you already followed the [Getting Started](../getting-started
 
 After installing `Xcode` you will find the SDK header at this location
 
-```shell
+```text
 cd /Library/Developer/CommandLineTools/SDKs/
 ```
 
@@ -30,7 +30,7 @@ Launch the `MacOSX{your-version}.sdk` \(eg. `MacOSX10.14.sdk`\) by double clicki
 
 Access the location where you downloaded the `mozilla-central` source code, most likely `source/` and trigger this command:
 
-```shell
+```text
 ./mach bootstrap
 ```
 
@@ -51,7 +51,7 @@ If one or both commands return an empty output, you need to install them manuall
 {% hint style="info" %}
 If you get a `command not found` error while running `cargo`, but the command `which cargo` returns the location of the that package, it means you need to update your `PATH` inside your `.bashrc` file to include the `cargo` location:
 
-```shell
+```text
 export PATH=$HOME/.cargo/bin:$PATH
 ```
 {% endhint %}

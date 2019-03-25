@@ -16,7 +16,7 @@ This tutorial is based off of code that can be found, along with other tutorials
 
 Create a directory for your extension and navigate to it.
 
-```shell
+```text
 mkdir hello-world
 cd hello-world
 ```
@@ -29,31 +29,31 @@ Your manifest.json file should look like this:
 
 {% code-tabs %}
 {% code-tabs-item title="manifest.json" %}
-```json
+```javascript
 {
-	"manifest_version": 2,
-	"name": "Hello World",
-	"description": "Your basic Hello World extension!",
-	"version": "1.0",
-	"author": "[Your Name Here]",
-	"applications": {
-		"gecko": {
-			"id": "helloworld@yoursite.com",
-			"strict_min_version": "66.0"
-		}
-	},
-	"browser_action": {
-		"default_popup": "popup.html",
-		"default_title": "Hello World",
-		"default_icon": "images/internet-32px.png"
-	},
-	"permissions": [
-	],
-	"icons": {
-		"64": "images/internet.png",
-		"32": "images/internet-32px.png",
-		"16": "images/internet-16px.png"
-	},
+    "manifest_version": 2,
+    "name": "Hello World",
+    "description": "Your basic Hello World extension!",
+    "version": "1.0",
+    "author": "[Your Name Here]",
+    "applications": {
+        "gecko": {
+            "id": "helloworld@yoursite.com",
+            "strict_min_version": "66.0"
+        }
+    },
+    "browser_action": {
+        "default_popup": "popup.html",
+        "default_title": "Hello World",
+        "default_icon": "images/internet-32px.png"
+    },
+    "permissions": [
+    ],
+    "icons": {
+        "64": "images/internet.png",
+        "32": "images/internet-32px.png",
+        "16": "images/internet-16px.png"
+    },
 }
 ```
 {% endcode-tabs-item %}
@@ -90,19 +90,19 @@ Our add-on is pretty simple, it just brings up an html page in a new tab in Thun
 
 {% code-tabs %}
 {% code-tabs-item title="popup.html" %}
-```html
+```markup
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>Hello World</title>
-	<link rel="stylesheet" type="text/css" media="screen" href="popup.css">
-	<script src="scripts/popup.js"></script>
+    <meta charset="utf-8">
+    <title>Hello World</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="popup.css">
+    <script src="scripts/popup.js"></script>
 </head>
 <body>
-	<div class="popup-page">
-	Hello, World!
-	</div>
+    <div class="popup-page">
+    Hello, World!
+    </div>
 </body>
 </html>
 ```
@@ -117,11 +117,11 @@ Now we want to make the css file referenced in our html file. We'll call it `pop
 {% code-tabs-item title="popup.css" %}
 ```css
 .popup-page {
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	font-weight: bold;
-	width: 100%;
-	height: 60px;
-	padding: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    width: 100%;
+    height: 60px;
+    padding: 30px;
 }
 ```
 {% endcode-tabs-item %}
@@ -135,7 +135,7 @@ In `popup.js` we will put the following code:
 
 {% code-tabs %}
 {% code-tabs-item title="popup.js" %}
-```js
+```javascript
 // Below is what we'll log to the console.
 
 console.log('Hello, World! - from popup.js');
@@ -143,7 +143,7 @@ console.log('Hello, World! - from popup.js');
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-What our little script does is sends a message to the console each time we click on our add-on. We'll take a look at that in a moment when we try out our add-on. The first line is just a comment so we can remember what our code is doing. 
+What our little script does is sends a message to the console each time we click on our add-on. We'll take a look at that in a moment when we try out our add-on. The first line is just a comment so we can remember what our code is doing.
 
 ## Testing the Extension
 
@@ -151,11 +151,11 @@ First, let's double-check that we have all the files in the right places:
 
 ```text
 hello-world/
-	├── manifest.json
-	├── popup.html
-	├── popup.css
-	├── scripts/
-	   └── popup.js
+    ├── manifest.json
+    ├── popup.html
+    ├── popup.css
+    ├── scripts/
+       └── popup.js
     ├── images/
        ├── internet.png
        ├── internet-32px.png
@@ -182,7 +182,7 @@ This should install the Add-on for this session only:
 
 ### Trying it Out
 
-Now we can give our new add-on a whirl. Hit the "Debug" option under the add-on's listing \(pictured above\), this will bring up a console - we'll want that to see the results of the javascript console.log command we put in `popup.js`. 
+Now we can give our new add-on a whirl. Hit the "Debug" option under the add-on's listing \(pictured above\), this will bring up a console - we'll want that to see the results of the javascript console.log command we put in `popup.js`.
 
 {% hint style="warning" %}
 When you click on Debug, if you are prompted with a warning telling you there is a connection to your computer from 127.0.0.1 - that is your computer and it is fine. Hit OK and the Developer Tools window with the console will appear.

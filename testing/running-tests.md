@@ -12,7 +12,7 @@ XPCShell tests test Thunderbird's components, without opening the user interface
 
 To run an XPCShell test, or a directory of them, use mach:
 
-```shell
+```text
 mach xpcshell-test comm/mail/components/extensions/test/xpcshell
 ```
 
@@ -30,7 +30,7 @@ Like XPCShell tests, mochitests are a type of test used on Firefox. The main dif
 
 To run a mochitest, or a directory of them, use mach:
 
-```shell
+```text
 mach mochitest mail/components/extensions/test/browser
 ```
 
@@ -46,7 +46,7 @@ Mozmill is a test suite for the Thunderbird user interface. It simulates a user'
 
 Mozmill tests are located in `mail/test/mozmill`, except for calendar tests \(see below\). You can run one test or a whole directory.
 
-```shell
+```text
 # Runs a single test.
 make -C objdir/ SOLO_TEST=pref-window/test-attachments-pane.js mozmill-one
 
@@ -60,7 +60,7 @@ You can run these commands from anywhere, as long as the `-C` argument points to
 
 The mozmill tests for the Lightning extension are located in `calendar/test/mozmill`. Running them is the same as above, but the `-C` argument is different.
 
-```shell
+```text
 make -C objdir/comm/calendar/test/mozmill SOLO_TEST=testAlarmDefaultValue.js mozmill-one
 ```
 

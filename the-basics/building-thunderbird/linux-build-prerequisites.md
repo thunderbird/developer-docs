@@ -6,7 +6,7 @@ description: >-
 
 # Linux Build Prerequisites
 
-This guide assumes you already followed the [Getting Started](https://github.com/thundernest/developer-docs/tree/cf723ef593ec303339590f2096f17c8cfc64514d/the-basics/untitled.md) documentation and you already downloaded `mozilla-central` and `comm-central` source code.
+This guide assumes you already followed the [Getting Started](../getting-started.md) documentation and you already downloaded `mozilla-central` and `comm-central` source code.
 
 ## 64-bit version
 

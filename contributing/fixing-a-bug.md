@@ -20,32 +20,30 @@ Making sense of the **Thunderbird** source code, and knowing where to look, will
 
 ## Mercurial Workflow
 
-Mercurial is pretty flexible in terms of allowing writing your own code and keeping it separate from the main code base. The majority of the Thunderbird developers use patches as they're easy to import and export, and avoid merging issues while pulling updates from upstream.
+Mercurial is pretty flexible in terms of allowing writing your own code and keeping it separate from the main code base. The majority of the Thunderbird developers use queues as they're easy to import and export, and avoid merging issues while pulling updates from upstream.
 
 Based on your knowledge level and preference, you can choose between three different methods:
 
-* [Using Patches](using-mercurial-patches.md)
+* [Using Queues](using-mercurial-queues.md)
 * [Using Bookmarks](using-mercurial-bookmarks.md)
 * [Using Branches](using-mercurial-branches.md)
 
-## Export a Patch
-
 Once you finished taking care of your favorite bug and you're ready to submit your code for a review, it means it's time to export a patch.
 
-### Create a New Patch
+## Create a New Queue
 
 {% hint style="info" %}
-You can skip this step if you're already using Patches
+You can skip this step if you're already using Mercurial Queues
 {% endhint %}
 
-Create a new patch with the command `hg qnew -m "Bug ###### - fixing something amazing" patch-name`. Let's quickly analyze this command:
+Create a new queue with the command `hg qnew -m "Bug ###### - fixing something amazing" patch-name`. Let's quickly analyze this command:
 
-* `qnew` is the command to initial a new patch.
+* `qnew` is the command to initial a new queue.
 * `-m` is the command that allows you to write a commit message.
 * `"Bug ###### - fixing something amazing"` is the format we recommend using for the commit message, specifying the number of the Bug you're working on and a small description stating what you fixed.
-* `patch-name` is, obviously, the name of your patch, and that can be anything.
+* `patch-name` is, obviously, the name of your queue, and that can be anything.
 
-## Export your current working Patch
+## Export a Patch
 
 Be sure all your current changes are part of the patch you want to export by typing `hg qrefresh` and `hg qdiff` to visualize a recap of all your changes and diffs in your files.
 

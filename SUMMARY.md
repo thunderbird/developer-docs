@@ -15,6 +15,7 @@
 ## Contributing
 
 * [Fixing a Bug](contributing/fixing-a-bug.md)
+  * [Using Mercurial Queues](contributing/using-mercurial-queues.md)
 
 ## Testing
 

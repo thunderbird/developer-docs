@@ -36,6 +36,18 @@ Access the location where you downloaded the `mozilla-central` source code, most
 ./mach bootstrap
 ```
 
+You will be asked to choose from the following list of options
+
+```text
+Please choose the version of Firefox you want to build:
+  1. Firefox for Desktop Artifact Mode
+  2. Firefox for Desktop
+  3. GeckoView/Firefox for Android Artifact Mode
+  4. GeckoView/Firefox for Android
+```
+
+Please choose option 2 to proceed with a successful build.
+
 This action will install all the libraries and dependencies necessary to build Thunderbird locally.
 
 ### Missing libraries

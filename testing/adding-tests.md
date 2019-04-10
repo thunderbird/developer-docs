@@ -19,7 +19,7 @@ Tests should be added to a directory near the code they are located. For example
 
 A new directory needs some standard files: an ESLint configuration file if the directory is linted \(and it should be\), and a test manifest.
 
-### ESLint Configuration
+### ESLint Configuration \(eslintrc.js\)
 
 {% code-tabs %}
 {% code-tabs-item title="eslintrc.js" %}
@@ -42,9 +42,23 @@ module.exports = {
 {% endcode-tabs-item %}
 {% endcode-tabs %}
 
-### XPCShell test manifest
+### XPCShell test manifest \(xpcshell.ini\)
 
 The default section isn't even necessary here, but you probably want to add a `head.js` file if you're going to have more than one test.
+
+{% code-tabs %}
+{% code-tabs-item title="xpcshell.ini" %}
+```text
+[default]
+
+[test_firstTest.js]
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+### Mochitest manifest \(browser.ini\)
+
+Mochitest needs some prefs set, or automated testing will fail.
 
 {% code-tabs %}
 {% code-tabs-item title="browser.ini" %}

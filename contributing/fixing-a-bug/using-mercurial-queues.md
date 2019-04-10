@@ -61,9 +61,9 @@ It's always good practice to check if the current changes have been properly sav
 
 ## Pop and Push
 
-If you're working on a patch and you need to pull the updates from upstream, you need to *"disconnect"* your pathes in order to prevent merge conflicts. Here's a standard workflow you should follow:
+If you're working on a patch and you need to pull the updates from upstream, you need to _"disconnect"_ your pathes in order to prevent merge conflicts. Here's a standard workflow you should follow:
 
-* `hg qpop -a` to *"pop"* all your patches and revert the code base to its original status.
+* `hg qpop -a` to _"pop"_ all your patches and revert the code base to its original status.
 * `hg pull -u` to pull all the recent changes from upstream.
 * `hg qpush` to apply once again your patch. Trigger this command as many times as you need in order to apply all the patches in sequence.
 
@@ -79,7 +79,7 @@ Use the `hg qseries` command to visualize a list of currently applied patches an
 
 ### Reordering the Patches
 
-Sometimes the queue ends up not being in the order you want. For example, maybe you've been working on two patches, and the second one (the topmost one in your queue) is ready to be pushed before the first one is.
+Sometimes the queue ends up not being in the order you want. For example, maybe you've been working on two patches, and the second one \(the topmost one in your queue\) is ready to be pushed before the first one is.
 
 If you have Mercurial 1.6 or newer, the best way to reorder your queue is `hg qpush --move`. For example:
 
@@ -102,8 +102,7 @@ Reordering patches that touch the same file can cause conflicts when you push! I
 
 ## Import a Patch into your Queue
 
-With MQ you can import a patch into your queue, e.g. from Bugzilla.
-It is unapplied by default and the `filename` is used as the patch-name. You can directly import a Bugzilla patch by using the Bugzilla attachment URL as the argument. In that case you may also want to use `-n patch-name` to specify the patch name.
+With MQ you can import a patch into your queue, e.g. from Bugzilla. It is unapplied by default and the `filename` is used as the patch-name. You can directly import a Bugzilla patch by using the Bugzilla attachment URL as the argument. In that case you may also want to use `-n patch-name` to specify the patch name.
 
 ```bash
 hg qimport ~/Your/Chosen/Directory/filename.patch -n patch-name
@@ -121,3 +120,4 @@ hg qrefresh
 hg qrefresh -m "Bug 123456: A brief summary of the changes you have made."
 hg export qtip > ~/bug-123456-fix.patch
 ```
+

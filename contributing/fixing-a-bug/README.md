@@ -12,7 +12,7 @@ Creating an account is necessary in order to submit patches, leave comments, and
 
 ## Find a Bug
 
-Use the [Advanced Search](https://bugzilla.mozilla.org/query.cgi?format=advanced) section to find bugs you want to take care of, and be sure that the bug doesn't currently have any user listed as *Assignee* and the *Status* is set to `NEW`.
+Use the [Advanced Search](https://bugzilla.mozilla.org/query.cgi?format=advanced) section to find bugs you want to take care of, and be sure that the bug doesn't currently have any user listed as _Assignee_ and the _Status_ is set to `NEW`.
 
 ## Search for code references
 
@@ -25,8 +25,8 @@ Mercurial is pretty flexible in terms of allowing writing your own code and keep
 Based on your knowledge level and preference, you can choose between three different methods:
 
 * [Using Queues](using-mercurial-queues.md)
-* [Using Bookmarks](using-mercurial-bookmarks.md)
-* [Using Branches](using-mercurial-branches.md)
+* [Using Bookmarks](https://github.com/thundernest/developer-docs/tree/b3158c789ccd3b78731039077147d83e8c530fb8/contributing/using-mercurial-bookmarks.md)
+* [Using Branches](https://github.com/thundernest/developer-docs/tree/b3158c789ccd3b78731039077147d83e8c530fb8/contributing/using-mercurial-branches.md)
 
 Once you finished taking care of your favorite bug and you're ready to submit your code for a review, it means it's time to export a patch.
 
@@ -49,7 +49,7 @@ Be sure all your current changes are part of the patch you want to export by typ
 
 If you're happy with the result, you can export the patch with the command `hg export qtip > ~/Your/Chosen/Directory/patch-name.patch`. Let's quickly analyze this command:
 
-* `export qtip` will grab all your changes and code updates currently at the *tip* of your mercurial queues.
+* `export qtip` will grab all your changes and code updates currently at the _tip_ of your mercurial queues.
 * `> ~/Your/Chosen/Directory/patch-name.patch` will create a file in the directory you specified with the name of your choice.
 
 ## Upload a Patch
@@ -60,5 +60,5 @@ If everything looks good, you can access the selected bug in [BugZilla](https://
 
 ## Ask for a Review
 
-When uploading a patch to BugZilla, you can request a review from the user who opened the bug or another developer. Simply select the `?` in the dropdown selector in the *review* option of the **Flags** section.
-An input field will appear which will allow you to type the name or username of the user you want to review your patch.
+When uploading a patch to BugZilla, you can request a review from the user who opened the bug or another developer. Simply select the `?` in the dropdown selector in the _review_ option of the **Flags** section. An input field will appear which will allow you to type the name or username of the user you want to review your patch.
+

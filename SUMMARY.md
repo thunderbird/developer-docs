@@ -14,8 +14,8 @@
 
 ## Contributing
 
-* [Fixing a Bug](contributing/fixing-a-bug.md)
-  * [Using Mercurial Queues](contributing/using-mercurial-queues.md)
+* [Fixing a Bug](contributing/fixing-a-bug/README.md)
+  * [Using Mercurial Queues](contributing/fixing-a-bug/using-mercurial-queues.md)
 
 ## Testing
 

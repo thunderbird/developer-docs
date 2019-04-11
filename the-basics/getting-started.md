@@ -24,6 +24,12 @@ Information for how to install Mercurial is available [via the download page on 
 The source code requires 3.6GB of free space or more and additionally 5GB or more for default build.
 {% endhint %}
 
+{% hint style="danger" %}
+**For Windows Users:** If you are using Windows, you will want to follow instructions on the Windows Build Prerequisities page before getting the source and building Thunderbird.
+{% endhint %}
+
+{% page-ref page="building-thunderbird/windows-build-prerequisites.md" %}
+
 Get the latest Mozilla source code from Mozilla's `mozilla-central` Mercurial code repository, and check it out into a local directory `source` \(or however you want to call it\). Then, get the latest Thunderbird source code from Mozilla's `comm-central` Mercurial code repository. It now needs to be placed **inside** the Mozilla source code, in a directory named `comm/` \(this is inverse from Thunderbird 59 and earlier\):
 
 ```text

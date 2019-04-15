@@ -25,9 +25,11 @@
 ## Add-ons
 
 * [About Add-ons](add-ons/about-add-ons.md)
+* [Updating Legacy Extensions for Thunderbird 68](add-ons/upgrading-add-ons-for-tb68/README.md)
+  * [Engage the new overlay loader](add-ons/upgrading-add-ons-for-tb68/how-to-invoke-the-new-overlay-loader.md)
+  * [List of changes in core up to Thunderbird 68](add-ons/upgrading-add-ons-for-tb68/list-of-changes-in-thunderbird-core.md)
 * [Hello World Extension](add-ons/hello-world-add-on.md)
 * [MailExtensions APIs](https://thunderbird-webextensions.readthedocs.io)
 * [Thunderstorm Repo](https://github.com/cleidigh/ThunderStorm)
 * [addons.thunderbird.net](https://addons.thunderbird.net)
-* [Updating Extensions for 68](https://thunderbird-webextensions.readthedocs.io/en/latest/how-to/extensions68.html)
 

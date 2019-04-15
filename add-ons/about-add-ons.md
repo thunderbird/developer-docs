@@ -44,6 +44,8 @@ If you are currently maintaining a legacy extension please consider checking out
 
 ## Themes
 
+{% page-ref page="upgrading-add-ons-for-tb68/" %}
+
 Themes change the way that Thunderbird looks, for instance - here is a screenshot of the side panel using the built-in dark theme:
 
 ![It&apos;s Dark](../.gitbook/assets/screenshot-from-2019-03-23-13-47-57.png)

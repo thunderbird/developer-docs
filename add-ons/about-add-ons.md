@@ -42,9 +42,9 @@ Since Thunderbird 60 was released, there have been many major changes to Thunder
 
 If you are currently maintaining a legacy extension please consider checking out our guide on updating extensions for Thunderbird 68:
 
-## Themes
-
 {% page-ref page="upgrading-add-ons-for-tb68/" %}
+
+## Themes
 
 Themes change the way that Thunderbird looks, for instance - here is a screenshot of the side panel using the built-in dark theme:
 

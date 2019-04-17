@@ -58,3 +58,8 @@ Static themes, like the name implies - are static and do not change. They have a
 
 Dynamic themes use the theme API to do more interesting things with the look of Thunderbird. For instance, [one example](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/Themes/Theme_concepts#Dynamic_themes) used in Firefox documentation is a dynamic theme that changes the theme colors based on the time of day.
 
+# Tips and tricks for add-on development
+
+We've begun to assemble a collection of tips and tricks for making add-on development easier:
+
+{% page-ref page="tips-and-tricks.md" %}

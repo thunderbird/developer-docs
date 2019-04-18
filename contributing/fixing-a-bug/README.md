@@ -25,8 +25,8 @@ Mercurial is pretty flexible in terms of allowing writing your own code and keep
 Based on your knowledge level and preference, you can choose between three different methods:
 
 * [Using Queues](using-mercurial-queues.md)
-* [Using Bookmarks](https://github.com/thundernest/developer-docs/tree/b3158c789ccd3b78731039077147d83e8c530fb8/contributing/using-mercurial-bookmarks.md)
-* [Using Branches](https://github.com/thundernest/developer-docs/tree/b3158c789ccd3b78731039077147d83e8c530fb8/contributing/using-mercurial-branches.md)
+* [Using Bookmarks](using-mercurial-bookmarks.md)
+* [Using Branches](using-mercurial-branches.md)
 
 Once you finished taking care of your favorite bug and you're ready to submit your code for a review, it means it's time to export a patch.
 

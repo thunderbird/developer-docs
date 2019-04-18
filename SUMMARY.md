@@ -16,6 +16,7 @@
 
 * [Fixing a Bug](contributing/fixing-a-bug/README.md)
   * [Using Mercurial Queues](contributing/fixing-a-bug/using-mercurial-queues.md)
+  * [Using Mercurial Bookmarks](contributing/fixing-a-bug/using-mercurial-bookmarks.md)
 
 ## Testing
 

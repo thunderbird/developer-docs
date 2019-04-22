@@ -26,7 +26,7 @@ Based on your knowledge level and preference, you can choose between three diffe
 
 * [Using Queues](using-mercurial-queues.md)
 * [Using Bookmarks](using-mercurial-bookmarks.md)
-* [Using Branches](using-mercurial-branches.md)
+* [Using Branches](https://github.com/thundernest/developer-docs/tree/903751732408349216da2b6c0cb2dd45836959cd/contributing/fixing-a-bug/using-mercurial-branches.md)
 
 Once you finished taking care of your favorite bug and you're ready to submit your code for a review, it means it's time to export a patch.
 

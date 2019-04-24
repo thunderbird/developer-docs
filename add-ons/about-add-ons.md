@@ -64,3 +64,5 @@ Dynamic themes use the theme API to do more interesting things with the look of 
 
 We've begun to assemble a collection of tips and tricks for making add-on development easier:
 
+{% page-ref page="tips-and-tricks.md" %}
+

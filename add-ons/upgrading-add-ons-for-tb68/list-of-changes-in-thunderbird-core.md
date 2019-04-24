@@ -188,7 +188,6 @@ Furthermore, note the included JavaScript file [`preferencesBindings.js`](https:
 Preferences.addAll([
 	{ id: "extensions.nameOfAddon.pref1", type: "bool" },
 	{ id: "extensions.nameOfAddon.pref2", type: "unichar" },
-
 ]);
 ```
 {% endcode-tabs-item %}

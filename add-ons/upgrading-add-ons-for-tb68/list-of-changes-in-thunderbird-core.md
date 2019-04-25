@@ -268,6 +268,17 @@ menulist.setAttribute("is", "menulist-editable");
 menulist.setAttribute("editable", "true");
 ```
 
+### &lt;groupbox&gt; and &lt;caption&gt;
+
+It looks like these two do not display as before. Can be replaced as follows:
+
+```markup
+<html:fieldset>
+  <html:legend>Caption</html:legend>
+  ...
+</html:fieldset>
+```
+
 ## Changed event behavior
 
 ### &lt;dialog&gt; events

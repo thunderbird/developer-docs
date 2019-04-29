@@ -318,7 +318,10 @@ A number of Javascript modules have been renamed with the `.jsm` extension. Most
 
 ### Changed import of JavaScript modules
 
-In Thunderbird 67, a major backwards-incompatible change was made to importing JavaScript modules. Where once you used any of these:
+In Thunderbird 67, a major backwards-incompatible change was made to importing JavaScript modules. 
+This is now necessary in 60.6.1 as well.
+
+Where once you used any of these:
 
 ```javascript
 Components.utils.import("resource://foo/modules/Foo.jsm");

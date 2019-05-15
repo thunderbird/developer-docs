@@ -39,6 +39,7 @@ If you want to participate in discussions about Thunderbird development, there a
 
 1. [**TB-Planning**](https://wiki.mozilla.org/Thunderbird/tb-planning)**:** This mailing list is higher level topics like: the future of Thunderbird, potential features, and changes that you would like to see happen. It is also used to discuss a variety of broader issues around community and governance of the project.
 2. [**Maildev**](http://lists.thunderbird.net/mailman/listinfo/maildev_lists.thunderbird.net)**:** A moderated mailing list for discussing engineering plans for Thunderbird. It is a place where you can raise questions and ideas for core Thunderbird development.
+3. [**Add-on Developers**](https://thunderbird.topicbox.com/groups/addons): A list for Thunderbird add-on developers and aspiring add-on developers to ask questions and share knowledge.
 
 ### IRC
 

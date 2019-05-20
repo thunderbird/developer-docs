@@ -10,6 +10,7 @@ Overlay extensions are problematic because so much of what they depended on no l
 
 There are two types of changes which might be required to make your legacy extensions compatible with Thunderbird 68:
 
+* All extensions need to change to the new manifest format.
 * Overlay extensions need to engage the new overlay loader. The overlay loader is a Thunderbird component that takes XUL code as written in an overlay extension and applies it to the UI. In Thunderbird 60, this was a part of the core UI libary, but it was removed. We have built a new overlay loader to replace as much of the removed code as possible.
 
 {% page-ref page="how-to-invoke-the-new-overlay-loader.md" %}

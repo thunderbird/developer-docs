@@ -1,4 +1,4 @@
-# Engage the new overlay loader
+# New manifest format, new overlay loader
 
 ## Switch to JSON manifest
 

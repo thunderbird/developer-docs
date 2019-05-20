@@ -5,7 +5,9 @@
 To use the new overlay loader, overlay extensions _must_ switch from an RDF manifest \(`install.rdf`\) to a JSON manifest \(`manifest.json`\).
 
 {% hint style="warning" %}
- This should be done for overlay extensions only, _not_ for bootstrapped extensions.
+ ~~This should be done for overlay extensions only, _not_ for bootstrapped extensions.~~
+
+From Thunderbird 68, this _also_ applies to bootstrapped extensions.
 {% endhint %}
 
 Here’s a basic example. This RDF manifest:
@@ -59,7 +61,11 @@ Becomes this JSON manifest:
 
 Note the `legacy` key. It’s a special key to engage Thunderbird’s new overlay loader. The shown example also specifies an options page. The key `open_in_tab` is optional and defaults to a value of`false`. A value of`true` corresponds to optionsType 3 in the RDF manifest.
 
-If no options page is needed, the legacy key can just be set to true:
+{% hint style="warning" %}
+For bootstrapped extensions, also add `"type": "bootstrap"` at the same point as the `"options"` key.
+{% endhint %}
+
+If no options page is needed, and the extension is not a bootstrapped one, the legacy key can just be set to true:
 
 ```javascript
 "legacy": true

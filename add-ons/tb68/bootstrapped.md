@@ -43,7 +43,7 @@ Becomes this JSON manifest:
   "version": "2.0",
 
   "legacy": {
-    "type" : "bootstrap"
+    "type" : "bootstrap",
     "options": {
       "page": "chrome://myextension/content/options.xul",
       "open_in_tab": true

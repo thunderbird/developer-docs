@@ -312,7 +312,7 @@ The section about `<dialog>` events also applies to all `onwizard…` events on 
 
 A number of Javascript modules have been renamed with the `.jsm` extension. Most notably:
 
-* `mailServices.js` has been renamed to `MailServices.jsm`. This change was originally backwards-compatible with a deprecation warning, but the changes to module importing \(see [below](list-of-changes-in-thunderbird-core.md#changed-javascript-module-import)\) made that pointless and the old file has now been removed completely.
+* `mailServices.js` has been renamed to `MailServices.jsm`. This change was originally backwards-compatible with a deprecation warning, but the changes to module importing \(see [below](changes.md#changed-javascript-module-import)\) made that pointless and the old file has now been removed completely.
 * `MailUtils.js` is now `MailUtils.jsm`.
   * `MailUtils.getFolderForUri` was renamed to `MailUtils.getExistingFolder`.
 

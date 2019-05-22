@@ -8,18 +8,21 @@ Overlay extensions are problematic because so much of what they depended on no l
 
 ## Required Changes
 
-There are two types of changes which might be required to make your legacy extensions compatible with Thunderbird 68:
+There are two types of changes which are required to make your legacy extensions compatible with Thunderbird 68:
 
-* All extensions need to change to the new manifest format.
-* Overlay extensions need to engage the new overlay loader. The overlay loader is a Thunderbird component that takes XUL code as written in an overlay extension and applies it to the UI. In Thunderbird 60, this was a part of the core UI libary, but it was removed. We have built a new overlay loader to replace as much of the removed code as possible.
+* The legacy extension must be converted to a MailExtension by replacing the old `install.rdf` by a `manifest.json`.
 
-{% page-ref page="how-to-invoke-the-new-overlay-loader.md" %}
+{% page-ref page="overlays.md" %}
+
+{% page-ref page="bootstrapped.md" %}
+
+{% hint style="info" %}
+It is possible to have both `install.rdf` and `manifest.json` files in your extension, so you _could_ release a version compatible with Thunderbird 60 and 68.
+{% endhint %}
 
 * All extensions need to be updated to reflect changes in Thunderbird core, like renamed/replaced API calls, removed support for some XUL elements \(need to use HTML elements now\) and much more. 
 
-{% page-ref page="list-of-changes-in-thunderbird-core.md" %}
-
-**Remember**: Thunderbird is based on the Firefox code, and they have been changing things all over the place.
+{% page-ref page="changes.md" %}
 
 {% hint style="danger" %}
 Even though you _can_ write code compatible with both Thunderbird 60 and Thunderbird 68, it is _not_ suggested for the following reasons:
@@ -30,4 +33,6 @@ Even though you _can_ write code compatible with both Thunderbird 60 and Thunder
 
 If you do want to stay backward compatible, you will find useful information [here](https://github.com/cleidigh/ThunderStorm).
 {% endhint %}
+
+**Remember**: Thunderbird is based on the Firefox code, and they have been changing things all over the place.
 

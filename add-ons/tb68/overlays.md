@@ -1,16 +1,8 @@
-# New manifest format, new overlay loader
+# Convert Overlay Extension to MailExtension
 
 ## Switch to JSON manifest
 
-To use the new overlay loader, overlay extensions _must_ switch from an RDF manifest \(`install.rdf`\) to a JSON manifest \(`manifest.json`\).
-
-{% hint style="warning" %}
- ~~This should be done for overlay extensions only, _not_ for bootstrapped extensions.~~
-
-From Thunderbird 68, this _also_ applies to bootstrapped extensions.
-{% endhint %}
-
-Here’s a basic example. This RDF manifest:
+You _must_ switch from an RDF manifest \(`install.rdf`\) to a JSON manifest \(`manifest.json`\). Here is a basic example. This RDF manifest:
 
 ```markup
 <?xml version="1.0" encoding="utf-8"?>
@@ -51,6 +43,7 @@ Becomes this JSON manifest:
   "version": "2.0",
 
   "legacy": {
+    "type": "xul"
     "options": {
       "page": "chrome://myextension/content/options.xul",
       "open_in_tab": true
@@ -59,28 +52,18 @@ Becomes this JSON manifest:
 }
 ```
 
-Note the `legacy` key. It’s a special key to engage Thunderbird’s new overlay loader. The shown example also specifies an options page. The key `open_in_tab` is optional and defaults to a value of`false`. A value of`true` corresponds to optionsType 3 in the RDF manifest.
+The `legacy` key enables Thunderbird’s legacy support. Setting the `type` key to `xul` engages the new XUL overlay loader. The overlay loader is a Thunderbird component that takes XUL code as written in an overlay extension and applies it to the UI. In Thunderbird 60, this was a part of the core UI libary, but it was removed. We have built a new overlay loader to replace as much of the removed code as possible.
 
-{% hint style="warning" %}
-For bootstrapped extensions, also add `"type": "bootstrap"` at the same point as the `"options"` key.
-{% endhint %}
+The shown example also specifies an optional `options` key to define the options page. The key `open_in_tab` is optional and defaults to a value of`false`. A value of`true` corresponds to optionsType 3 in the RDF manifest.
 
-If no options page is needed, and the extension is not a bootstrapped one, the legacy key can just be set to true:
-
-```javascript
-"legacy": true
-```
-
+{% hint style="info" %}
 This example is only in English. You probably want to use translated strings in your manifest. Read [this MDN article about it](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Internationalization#Internationalizing_manifest.json). Unfortunately that means you now need two sets of translated strings, one \(that you already have\) for your extension and another for the manifest.
+{% endhint %}
 
 **Examples of overlay extension converted like this are:**
 
 * [Open With](https://github.com/darktrojan/openwith/blob/VERSION_6.9/manifest.json)
 * [Shrunked Image Resizer](https://github.com/darktrojan/shrunked/blob/VERSION_4.5/manifest.json)
-
-{% hint style="danger" %}
- It _is_ possible to have both `install.rdf` and `manifest.json` files in your extension, so you _could_ release a version compatible with Thunderbird 60 and 68. It is **not** **recommended**.
-{% endhint %}
 
 ## Notes about the new overlay loader
 

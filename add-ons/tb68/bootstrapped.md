@@ -62,7 +62,7 @@ This example is only in English. You probably want to use translated strings in 
 
 ## Possible timing issues with the Window Mediator Service
 
-The changes made in Thunderbird for bootstraped add-ons to use`manifest.json` _may_ have changed the timing of the window listener, so that the notification is now send before the window has actually been fully loaded. 
+The changes made in Thunderbird for bootstraped add-ons to use `manifest.json` _may_ have changed the timing of the window listener, so that the notification is now send before the window has actually been fully loaded. 
 
 This is not new in general, but may be more observable now. If your add-on does not wait for the onload event of newly opened windows, before accessing its DOM, you probably have to make the neccessary changes now.
 

@@ -60,3 +60,11 @@ The shown example also specifies an optional `options` key to define the options
 This example is only in English. You probably want to use translated strings in your manifest. Read [this MDN article about it](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Internationalization#Internationalizing_manifest.json). Unfortunately that means you now need two sets of translated strings, one \(that you already have\) for your extension and another for the manifest.
 {% endhint %}
 
+## Possible timing issues with the Window Mediator Service
+
+The changes made in Thunderbird for bootstraped add-ons to use`manifest.json` _may_ have changed the timing of the window listener, so that the notification is now send before the window has actually been fully loaded. 
+
+This is not new in general, but may be more observable now. If your add-on does not wait for the onload event of newly opened windows, before accessing its DOM, you probably have to make the neccessary changes now.
+
+More information on using the Window Mediator Service in bootstrapped add-ons can be found [here](https://www.oxymoronical.com/blog/2011/01/Playing-with-windows-in-restartless-bootstrapped-extensions).
+

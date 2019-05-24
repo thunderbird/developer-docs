@@ -40,5 +40,5 @@ If you do want to stay backward compatible, you will find useful information [he
 
 At the moment, there is no official Beta of TB68. The nightly builds however are already TB69. To test and prepare for TB68 you need to install the latest nightly for TB68 without updating.
 
-Get the latest Daily for TB68 [here](https://ftp.mozilla.org/pub/thunderbird/nightly/2019/05/2019-05-20-10-41-36-comm-central/).
+Get the latest nightly build for TB68 [here](https://ftp.mozilla.org/pub/thunderbird/nightly/2019/05/2019-05-20-10-41-36-comm-central/).
 

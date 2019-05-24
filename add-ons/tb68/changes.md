@@ -348,6 +348,30 @@ var scope = ChromeUtils.import("resource://foo/modules/Foo.jsm"); // scope.Fooâ€
 
 ## Changed API
 
+### LoginManager
+
+The function to retrieve passwords has lost its first parameter. Instead of
+
+```text
+var logins = Services.logins.findLogins({}, origin, formOrigin, realm);
+```
+
+call it as
+
+```text
+var logins = Services.logins.findLogins(origin, formOrigin, realm);
+```
+
+### document.persist\(id, attribute\)
+
+Removed, use:
+
+```text
+Services.xulStore.persist(node, attribute);
+```
+
+Note: document.persist\(\) used the ID attribute whereas xulStore.persist\(\) uses the actual DOM node. More details in bug [1476678](https://bugzilla.mozilla.org/show_bug.cgi?id=1476678).
+
 ### AddonManager
 
 All methods of the [AddonManager](https://developer.mozilla.org/en-US/docs/Mozilla/JavaScript_code_modules/Add-on_Manager/AddonManager#Method_Overview) API now return a Promise instead of executing a callback. Instead of calling it as

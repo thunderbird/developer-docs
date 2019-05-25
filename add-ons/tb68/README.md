@@ -16,16 +16,12 @@ There are two types of changes which are required to make your legacy extensions
 
 {% page-ref page="bootstrapped.md" %}
 
-{% hint style="info" %}
-It is possible to have both `install.rdf` and `manifest.json` files in your extension, so you _could_ release a version compatible with Thunderbird 60 and 68.
-{% endhint %}
-
 * All extensions need to be updated to reflect changes in Thunderbird core, like renamed/replaced API calls, removed support for some XUL elements \(need to use HTML elements now\) and much more. 
 
 {% page-ref page="changes.md" %}
 
 {% hint style="danger" %}
-Even though you _can_ write code compatible with both Thunderbird 60 and Thunderbird 68, it is _not_ suggested for the following reasons:
+Even though it is possible to have both `install.rdf` and `manifest.json` files in your extension, so you _could_ release a version compatible with Thunderbird 60 and 68, it is _not_ suggested for the following reasons:
 
 * The amount of changes is huge and some changes are incompatible with Thunderbird 60 so it will require extra steps to ensure the modified version still runs with Thunderbird 60. 
 * You may actually break your add-on for Thunderbird 60 users by releasing a backward compatible version for Thunderbird 68 \("Do not fix something, that is not broken"\).

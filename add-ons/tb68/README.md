@@ -36,6 +36,16 @@ If you do want to stay backward compatible, you will find useful information [he
 
 **Remember**: Thunderbird is based on the Firefox code, and they have been changing things all over the place.
 
+## Uploading your updated add-on to ATN
+
+After updating your add-on for Thunderbird 68, ATN will treat it as a WebExtension. While uploading it, you will see a warning, that you cannot upload a new legacy version of your add-on afterwards. However:
+
+{% hint style="success" %}
+It **is** possible to maintain a legacy version **and** a WebExtension version of your add-on in parallel on ATN! You just need to use a higher major version number for the WebExtension version of your add-on and keep the old major version number when releasing a new legacy version. Basically releasing them in two different branches.
+{% endhint %}
+
+Let's assume the last published legacy version of your add-on for Thunderbird 60 is `2.6`. Upload the new WebExtension version for Thunderbird 68 as `3.0` and increase the version number with each new release of the WebExtension as usual. Every time you update the legacy version for Thunderbird 60, pick a version number from the `2.x` branch. 
+
 ## Testing Thunderbird 68
 
 At the moment, there is no official Beta of TB68. The nightly builds however are already TB69. To test and prepare for TB68 you need to install the latest nightly for TB68 without updating.

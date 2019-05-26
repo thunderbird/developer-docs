@@ -32,9 +32,9 @@ If you do want to stay backward compatible, you will find useful information [he
 
 **Remember**: Thunderbird is based on the Firefox code, and they have been changing things all over the place.
 
-## Uploading your updated add-on to ATN
+## Uploading your updated add-on
 
-After updating your add-on for Thunderbird 68, ATN will treat it as a WebExtension. While uploading it, you will see a warning, that you cannot upload a new legacy version of your add-on afterwards. However:
+After updating your add-on for Thunderbird 68, it will be treated as a WebExtension. While uploading it to addons.thunderbird.net \(ATN\), you will see a warning, that you cannot upload a new legacy version of your add-on afterwards. However:
 
 {% hint style="success" %}
 It **is** possible to maintain a legacy version **and** a WebExtension version of your add-on in parallel on ATN! You just need to use a higher major version number for the WebExtension version of your add-on and keep the old major version number when releasing a new legacy version. Basically releasing them in two different branches.

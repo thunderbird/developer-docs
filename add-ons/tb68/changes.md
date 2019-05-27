@@ -348,6 +348,13 @@ var scope = ChromeUtils.import("resource://foo/modules/Foo.jsm"); // scope.Fooâ€
 
 ## Changed API
 
+### `document.createXULElement` for XUL documents
+
+You can no longer use `document.createElement` to create elements in
+XUL documents. Use `document.createXULElement` instead. Thunderbird
+builds after 2019-05-23 crash if `document.createElement` is called
+on an XUL document.
+
 ### LoginManager
 
 The function to retrieve passwords has lost its first parameter. Instead of

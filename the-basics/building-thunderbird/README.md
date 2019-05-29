@@ -28,7 +28,7 @@ echo 'ac_add_options --enable-application=comm/mail' > mozconfig
 **If you omit this line, the build system will build Firefox instead**. Other build configuration options can be added to this file, although it's **strongly recommended** that you only use options that you fully understand. For example, to create a debug build instead of a release build, that file would also contain the line:
 
 ```text
-ac_add_options --enable-debug
+echo 'ac_add_options --enable-debug' >> mozconfig
 ```
 
 _Each of these ac\_add\_options entries needs to be on its own line._
@@ -40,7 +40,7 @@ For more on configuration options, see the page [Configuring build options](http
 Add the following line to your `mozconfig` file:
 
 ```text
-ac_add_options --enable-calendar
+echo 'ac_add_options --enable-calendar' >> mozconfig
 ```
 
 ## Building

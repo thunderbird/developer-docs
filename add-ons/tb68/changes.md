@@ -440,3 +440,19 @@ newChannel2(URI, loadInfo) {
 }
 ```
 
+### nsIScriptableUnicodeConverter
+
+The method `convertFromByteArray` has been removed. The new preferred way to deal with unicode is through the `TextEncoder` and `TextDecoder` classes.
+
+To convert byte arrays to different charsets, use
+
+```javascript
+let charset = 'utf-8';
+let encodedByteArray = [ /* ... */ ];
+let decoder = new TextDecoder(charset); // charset can be omitted, default is utf-8
+let decodedString = decoder.decode(new Uint8Array(encodedByteArray));
+```
+
+### nsIDOMElement, nsIDOMNode and other basic DOM interfaces
+
+Removed. Use `Element`, `Node`, etc. instead, which are now available in all scopes.

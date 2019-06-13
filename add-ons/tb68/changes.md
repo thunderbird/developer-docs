@@ -6,7 +6,7 @@ The changes are grouped by category and are listed in the order we became aware 
 
 ## Removed global Variables
 
-A bunch of globals in the message composition window were removed: 
+A bunch of globals in the message composition window were removed:
 
 * `nsIMsgCompDeliverMode`
 * `nsIMsgCompSendFormat`
@@ -30,7 +30,7 @@ If you have your own XBL bindings, you should get rid of them. Mostly the Firefo
 
 ## Removed XUL elements
 
-Some XUL elements \(or some of their attributes\) no longer exist and must be replaced by an HTML element or some other XUL element. It does not matter, if you use these elements in a XUL file \(as in overlay extensions\) or create them via JavaScript \(as in bootstrapped extensions\). 
+Some XUL elements \(or some of their attributes\) no longer exist and must be replaced by an HTML element or some other XUL element. It does not matter, if you use these elements in a XUL file \(as in overlay extensions\) or create them via JavaScript \(as in bootstrapped extensions\).
 
 In order to use HTML elements in a XUL file, you must load the HTML namespace into your overlay or dialog:
 
@@ -48,10 +48,10 @@ The replacements listed here might work in subtly different ways. Check your fun
 
 ### &lt;colorpicker&gt;
 
-  Removed. Use 
+Removed. Use
 
 ```markup
-<html:input type="color"> 
+<html:input type="color">
 ```
 
 ### &lt;progressmeter&gt;
@@ -127,7 +127,7 @@ All preference related XUL elements have been removed. If you have something lik
          name="extensions.nameOfAddon.pref2" 
          type="string"/>
     </preferences>
-     
+
     <checkbox
        id="checkbox1" 
        preference="pref1"
@@ -152,7 +152,7 @@ it must be replaced by a `dialog` as follows:
 <?xml-stylesheet type="text/css" href="chrome://messenger/skin/preferences/preferences.css"?>
 <!DOCTYPE dialog SYSTEM "chrome://path/to/locale.dtd">
 
-<dialog	
+<dialog    
    id="appPreferences"
    buttons="accept"
    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
@@ -166,7 +166,7 @@ it must be replaced by a `dialog` as follows:
        id="textbox1" 
        preference="extensions.nameOfAddon.pref2"/>
   </vbox>          
-  
+
   <script 
      src="chrome://global/content/preferencesBindings.js" 
      type="application/javascript"/>
@@ -186,8 +186,8 @@ Furthermore, note the included JavaScript file [`preferencesBindings.js`](https:
 {% code-tabs-item title="preferences.js" %}
 ```javascript
 Preferences.addAll([
-	{ id: "extensions.nameOfAddon.pref1", type: "bool" },
-	{ id: "extensions.nameOfAddon.pref2", type: "unichar" },
+    { id: "extensions.nameOfAddon.pref1", type: "bool" },
+    { id: "extensions.nameOfAddon.pref2", type: "unichar" },
 ]);
 ```
 {% endcode-tabs-item %}
@@ -198,7 +198,7 @@ Per default, all preferences will be saved instantly after they have been change
 {% code-tabs %}
 {% code-tabs-item title="preferences.xul" %}
 ```markup
-<dialog	
+<dialog    
    id="appPreferences"
    type="child"
    buttons="accept, cancel"
@@ -300,7 +300,7 @@ document.addEventListener("dialogaccept", function(event) {
 });
 ```
 
-No return value is needed. 
+No return value is needed.
 
 ### &lt;wizard&gt; and &lt;wizardpage&gt; events
 
@@ -380,7 +380,7 @@ All methods of the [AddonManager](https://developer.mozilla.org/en-US/docs/Mozil
 AddonManager.getAddonByID(addon_id, callback_function)
 ```
 
-you need to call it as 
+you need to call it as
 
 ```javascript
 AddonManager.getAddonByID(addon_id).then(callback_function)
@@ -388,7 +388,7 @@ AddonManager.getAddonByID(addon_id).then(callback_function)
 
 ### nsIStringBundleService
 
-Removed. Use 
+Removed. Use
 
 ```javascript
 Services.strings.createBundle("chrome://...")
@@ -456,3 +456,4 @@ let decodedString = decoder.decode(new Uint8Array(encodedByteArray));
 ### nsIDOMElement, nsIDOMNode and other basic DOM interfaces
 
 Removed. Use `Element`, `Node`, etc. instead, which are now available in all scopes.
+

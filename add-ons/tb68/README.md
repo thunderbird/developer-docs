@@ -44,7 +44,7 @@ Let's assume the last published legacy version of your add-on for Thunderbird 60
 
 ## Testing Thunderbird 68
 
-At the moment, there is no official Beta of TB68. The nightly builds however are already TB69. To test and prepare for TB68 you need to install the latest nightly for TB68 without updating.
+At the moment, there is no official beta version for Thunderbird 68. However, there are beta candidates:
 
-Get the latest nightly build for TB68 [here](https://ftp.mozilla.org/pub/thunderbird/nightly/2019/05/2019-05-20-10-41-36-comm-central/).
+[http://ftp.mozilla.org/pub/thunderbird/candidates/68.0b1-candidates/](http://ftp.mozilla.org/pub/thunderbird/candidates/68.0b1-candidates/)
 

@@ -48,3 +48,7 @@ At the moment, there is no official beta version for Thunderbird 68. However, th
 
 [http://ftp.mozilla.org/pub/thunderbird/candidates/68.0b1-candidates/](http://ftp.mozilla.org/pub/thunderbird/candidates/68.0b1-candidates/)
 
+{% hint style="warning" %}
+Even though we think that the beta candidates will update themselves automatically to the real beta, once released, we ask you to check on regular basis, if the beta has been released and your system updated accordingly.
+{% endhint %}
+

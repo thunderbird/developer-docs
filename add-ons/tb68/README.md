@@ -44,11 +44,7 @@ Let's assume the last published legacy version of your add-on for Thunderbird 60
 
 ## Testing Thunderbird 68
 
-At the moment, there is no official beta version for Thunderbird 68. However, there are beta candidates:
+Download Thunderbird 68 Beta, to test your updated add-on:
 
-[http://ftp.mozilla.org/pub/thunderbird/candidates/68.0b1-candidates/](http://ftp.mozilla.org/pub/thunderbird/candidates/68.0b1-candidates/)
-
-{% hint style="warning" %}
-Even though we think that the beta candidates will update themselves automatically to the real beta, once released, we ask you to check on regular basis, if the beta has been released and your system updated accordingly.
-{% endhint %}
+[https://www.thunderbird.net/channel/](https://www.thunderbird.net/channel/)
 

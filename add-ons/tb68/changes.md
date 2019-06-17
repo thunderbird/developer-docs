@@ -72,13 +72,13 @@ Furthermore, dedicated `listbox`methods have been removed and can be replaced as
 
 ```javascript
 let newNode = document.createElement("richlistitem");
-...
-// Store the value in the item as before.
+
+// Store the value in the list item as before.
 newNode.value = value; 
 let newLabel = document.createElement("label");
-// The label is now stored in the value attribute of the label tag.
+// The label is now stored in the value attribute of the label element.
 newLabel.value = label;
-...
+
 newNode.appendChild(newLabel);
 listbox.appendChild(newNode);
 ```
@@ -87,9 +87,9 @@ listbox.appendChild(newNode);
 
 ```javascript
 let newNode = document.createElement("richlistitem");
-...
+
 // See above example.
-...
+
 let refNode = listbox.getItemAtIndex(index);
 refNode.parentNode.insertBefore(newNode, refNode);
 ```
@@ -97,7 +97,7 @@ refNode.parentNode.insertBefore(newNode, refNode);
 * `listbox.removeItemAt(index)`:
 
 ```javascript
-listbox.getItemAtIndex(index).remove()
+listbox.getItemAtIndex(index).remove();
 ```
 
 ### &lt;textbox type="number"&gt;

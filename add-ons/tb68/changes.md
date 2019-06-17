@@ -68,16 +68,33 @@ All `<listbox>` related elements have been removed. Use[`<richlistbox>`](https:/
 
 Furthermore, dedicated `listbox`methods have been removed and can be replaced as follows:
 
-* `.insertItemAt(index)`:
+* `listbox.appendItem(label, value)`:
 
 ```javascript
 let newNode = document.createElement("richlistitem");
+...
+// Store the value in the item as before.
+newNode.value = value; 
+let newLabel = document.createElement("label");
+// The label is now stored in the value attribute of the label tag.
+newLabel.value = label;
+...
+newNode.appendChild(newLabel);
+listbox.appendChild(newNode);
+```
+
+* `listbox.insertItemAt(index, label, value)`:
+
+```javascript
+let newNode = document.createElement("richlistitem");
+...
+// See above example.
 ...
 let refNode = listbox.getItemAtIndex(index);
 refNode.parentNode.insertBefore(newNode, refNode);
 ```
 
-* `.removeItemAt(index)`:
+* `listbox.removeItemAt(index)`:
 
 ```javascript
 listbox.getItemAtIndex(index).remove()
@@ -402,11 +419,11 @@ To be backward compatible you need to probe the parameters. In case the third pa
 
 ```javascript
 onDataAvailable(...args) {
-  // The old API passes the stream as third parameter
+  // The old API passes the stream as third parameter.
   if (args[2] instanceof Ci.nsIInputStream)
     return this.onOldDataAvailableCalled(args[2], args[3], args[4]);
 
-  // The new API uses the second parameter
+  // The new API uses the second parameter.
   if (args[1] instanceof Ci.nsIInputStream)
     return this.onNewDataAvailableCalled(args[1], args[2], args[3]);
 
@@ -426,7 +443,7 @@ As `newChannel` has been unused for a long time it should be safe to just replac
 
 ```javascript
 // Change the signature to the new one...
-// ... you'll need to add the loadInfo parameter
+// ... you'll need to add the loadInfo parameter.
 //
 // Note loadInfo may be null in Thunderbird 60.
 newChannel(URI, loadInfo) {
@@ -456,4 +473,45 @@ let decodedString = decoder.decode(new Uint8Array(encodedByteArray));
 ### nsIDOMElement, nsIDOMNode and other basic DOM interfaces
 
 Removed. Use `Element`, `Node`, etc. instead, which are now available in all scopes.
+
+### nsIDOMParser, nsIDOMSerializer, nsIXMLHttpRequest
+
+These no longer need to be created by `Cc[...].createInstance(Ci....)`, but simply via the `new` keyword:
+
+* `new DOMParser();`
+* `new XMLSerializer();`
+* `new XMLHttpRequest();`
+
+They _should_ be available in all scopes now. If not, the following is needed:
+
+* `Cu.importGlobalProperties(["DOMParser"]);`
+* `Cu.importGlobalProperties(["XMLSerializer"]);`
+* `Cu.importGlobalProperties(["XMLHttpRequest"]);`
+
+### nsITreeBoxObject, nsITreeColumn, nsITreeView
+
+Trees have changed a lot. The `tree` object is now a `XULTreeElement`. It has lost the`treeBoxObject` property and the `boxObject` property, because the `nsITreeBoxObject` has been removed. Most of its methods can now be accessed directly through the `tree` object. For example:
+
+```javascript
+// The treeBoxObject has been removed.
+// tree.treeBoxObject.getLastVisibleRow();
+tree.getLastVisibleRow();
+```
+
+Furthermore, `nsITreeColumn` has been replaced by the `TreeColumn` object. Even though their interfaces look the same, they could behave differently. Check your implementation, as this affects almost all methods of `nsITreeView`. 
+
+{% hint style="info" %}
+The `TreeColumn` object no longer has a `selectable` attribute and `nsITreeView` has lost its `isSelectable()` method. Trees no longer support to select individual cells.
+{% endhint %}
+
+Some noteworthy changes:
+
+* [`tree.getCellAt()`](https://dxr.mozilla.org/mozilla-central/source/dom/chrome-webidl/XULTreeElement.webidl#132) now returns a [`TreeCellInfo`](https://dxr.mozilla.org/mozilla-central/source/dom/chrome-webidl/XULTreeElement.webidl#10).
+* If a method requires a `TreeColumn` parameter,  a simple `{ id: columnName }` object, no longer works. Get a proper `TreeColumn` object via `tree.columns.getNamedColumn(columnName)`.
+
+In general, check [searchfox.com](https://searchfox.org/) to see the current definitions of tree related implementations:
+
+* [`XULTreeElement`](https://searchfox.org/mozilla-central/source/dom/chrome-webidl/XULTreeElement.webidl)\`\`
+* [`nsITreeView`](https://searchfox.org/mozilla-central/source/layout/xul/tree/nsITreeView.idl)\`\`
+* [`TreeColumn`](https://searchfox.org/mozilla-central/source/dom/webidl/TreeColumn.webidl)\`\`
 

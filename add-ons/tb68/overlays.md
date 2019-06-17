@@ -35,7 +35,7 @@ Becomes this JSON manifest:
   "applications": {
     "gecko": {
       "id": "myextension@sample.extensions.thunderbird.net",
-      "strict_min_version": "67.0a1"
+      "strict_min_version": "68.0"
     }
   },
   "name": "Extension",

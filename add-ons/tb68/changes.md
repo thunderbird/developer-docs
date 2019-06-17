@@ -500,14 +500,11 @@ tree.getLastVisibleRow();
 
 Furthermore, `nsITreeColumn` has been replaced by the `TreeColumn` object. Even though their interfaces look the same, they could behave differently. Check your implementation, as this affects almost all methods of `nsITreeView`. 
 
-{% hint style="info" %}
-The `TreeColumn` object no longer has a `selectable` attribute and `nsITreeView` has lost its `isSelectable()` method. Trees no longer support to select individual cells.
-{% endhint %}
-
 Some noteworthy changes:
 
 * [`tree.getCellAt()`](https://dxr.mozilla.org/mozilla-central/source/dom/chrome-webidl/XULTreeElement.webidl#132) now returns a [`TreeCellInfo`](https://dxr.mozilla.org/mozilla-central/source/dom/chrome-webidl/XULTreeElement.webidl#10).
 * If a method requires a `TreeColumn` parameter,  a simple `{ id: columnName }` object, no longer works. Get a proper `TreeColumn` object via `tree.columns.getNamedColumn(columnName)`.
+* Trees no longer support selecting individual cells. The `TreeColumn` object no longer has a `selectable` attribute and `nsITreeView` has lost its `isSelectable()` method.
 
 In general, check [searchfox.com](https://searchfox.org/) to see the current definitions of tree related implementations:
 

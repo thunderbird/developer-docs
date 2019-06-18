@@ -522,7 +522,7 @@ They _should_ be available in all scopes now. If not, the following is needed:
 
 ### nsITreeBoxObject, nsITreeColumn, nsITreeView
 
-Trees have changed a lot. The `tree` object is now a `XULTreeElement`. It has lost the`treeBoxObject` property and the `boxObject` property, because the `nsITreeBoxObject` has been removed. Most of its methods can now be accessed directly through the `tree` object. For example:
+Trees have changed a lot. The `tree` object is now a `XULTreeElement`. It has lost the`treeBoxObject` property, because the `nsITreeBoxObject` has been removed. Most of its methods can now be accessed directly through the `tree` object. For example:
 
 ```javascript
 // The treeBoxObject has been removed.
@@ -535,7 +535,7 @@ Furthermore, `nsITreeColumn` has been replaced by the `TreeColumn` object. Even 
 Some noteworthy changes:
 
 * [`tree.getCellAt()`](https://dxr.mozilla.org/mozilla-central/source/dom/chrome-webidl/XULTreeElement.webidl#132) now returns a [`TreeCellInfo`](https://dxr.mozilla.org/mozilla-central/source/dom/chrome-webidl/XULTreeElement.webidl#10).
-* If a method requires a `TreeColumn` parameter,  a simple `{ id: columnName }` object, no longer works. Get a proper `TreeColumn` object via `tree.columns.getNamedColumn(columnName)`.
+* If a method requires a `TreeColumn` parameter,  a simple `{ id: columnName }` object no longer works. Get a proper `TreeColumn` object via `tree.columns.getNamedColumn(columnName)`.
 * Trees no longer support selecting individual cells. The `TreeColumn` object no longer has a `selectable` attribute and `nsITreeView` has lost its `isSelectable()` method.
 
 In general, check [searchfox.com](https://searchfox.org/) to see the current definitions of tree related implementations:

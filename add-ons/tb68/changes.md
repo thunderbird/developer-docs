@@ -540,7 +540,7 @@ Some noteworthy changes:
 
 In general, check [searchfox.com](https://searchfox.org/) to see the current definitions of tree related implementations:
 
-* [`XULTreeElement`](https://searchfox.org/mozilla-central/source/dom/chrome-webidl/XULTreeElement.webidl)\`\`
-* [`nsITreeView`](https://searchfox.org/mozilla-central/source/layout/xul/tree/nsITreeView.idl)\`\`
-* [`TreeColumn`](https://searchfox.org/mozilla-central/source/dom/webidl/TreeColumn.webidl)\`\`
+* [XULTreeElement](https://searchfox.org/mozilla-beta/rev/b906de73ca1c11ffb73473731920f7867d364557/dom/chrome-webidl/XULTreeElement.webidl)
+* [nsITreeView](https://searchfox.org/mozilla-beta/rev/b906de73ca1c11ffb73473731920f7867d364557/layout/xul/tree/nsITreeView.idl)
+* [TreeColumn](https://searchfox.org/mozilla-beta/rev/b906de73ca1c11ffb73473731920f7867d364557/dom/webidl/TreeColumn.webidl)
 

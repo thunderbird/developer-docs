@@ -261,7 +261,6 @@ The XUL element `menulist` no longer supports the `editable` attribute. However,
 <?xml-stylesheet type="text/css" href="chrome://global/skin/global.css"?>
 <!-- New stylesheet needed: -->
 <?xml-stylesheet type="text/css" href="chrome://messenger/skin/menulist.css"?>
-<!-- Annoyingly, in Thunderbird 66, you want chrome://messenger/content/menulist.css. -->
 
 <page xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
   <!-- New script needed: -->
@@ -285,16 +284,42 @@ menulist.setAttribute("is", "menulist-editable");
 menulist.setAttribute("editable", "true");
 ```
 
+### &lt;menulist&gt; and &lt;menupopup&gt;
+
+Even though the `menupopup` element is defined as a direct child of the `menulist` element in the above example, it cannot be accessed by
+
+```javascript
+menuListElement.firstChild
+```
+
+anymore. You may assign its own ID to the `menupop` element, or get it by
+
+```text
+menuListElement.getElementsByTagName("menupopup")
+```
+
+You may use the inspector of the developer tools to see the full DOM structure of the `menulist` element.
+
 ### &lt;groupbox&gt; and &lt;caption&gt;
 
-It looks like these two do not display as before. Can be replaced as follows:
+These two do not display as before. You now need to include the following css file:
 
 ```markup
-<html:fieldset>
-  <html:legend>Caption</html:legend>
-  ...
-</html:fieldset>
+<?xml-stylesheet type="text/css" href="chrome://messenger/skin/messenger.css"?>
 ```
+
+Furthermore, the label of the `caption` tag must be moved from label attribute to the tag content and the `caption` tag must be surrounded by an `hbox` tag.
+
+```markup
+<groupbox>
+  <hbox><caption>Caption</caption></hbox>
+  ...
+</groupbox>
+```
+
+{% hint style="info" %}
+In the current Thunderbird 68 Beta 1, this still looks a bit wrong, but it is being worked on. More details can be found in [bug 1559964](https://bugzilla.mozilla.org/show_bug.cgi?id=1559964). 
+{% endhint %}
 
 ### &lt;datepicker&gt; and &lt;timepicker&gt;
 

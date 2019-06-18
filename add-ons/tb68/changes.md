@@ -308,7 +308,7 @@ These two do not display as before. You now need to include the following css fi
 <?xml-stylesheet type="text/css" href="chrome://messenger/skin/messenger.css"?>
 ```
 
-Furthermore, the label of the `caption` tag must be moved from label attribute to the tag content and the `caption` tag must be surrounded by an `hbox` tag.
+Furthermore, the label of the `caption` tag must be moved from the label attribute to the tag content and the `caption` tag must be surrounded by an `hbox` tag.
 
 ```markup
 <groupbox>

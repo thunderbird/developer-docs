@@ -296,6 +296,38 @@ It looks like these two do not display as before. Can be replaced as follows:
 </html:fieldset>
 ```
 
+### &lt;datepicker&gt; and &lt;timepicker&gt;
+
+Removed. Currently there is no working replacement part of Thunderbird itself, but Lightning has its own `datetimepicker`, which can be used. 
+
+```markup
+<datetimepicker id="myDateTimePicker" />
+```
+
+Its value is a JavaScript `Date` object:
+
+```javascript
+document.getElementById("myDateTimePicker").value = new Date('December 17, 1995 03:24:00');
+```
+
+To be able to use the `datetimepicker`, the following CSS files need to be included:
+
+```markup
+<?xml-stylesheet type="text/css" href="chrome://calendar-common/skin/widgets/minimonth.css"?>
+<?xml-stylesheet type="text/css" href="chrome://calendar/content/widgets/calendar-widget-bindings.css"?>
+<?xml-stylesheet type="text/css" href="chrome://lightning-common/skin/datetimepickers.css"?>
+```
+
+The following JavaScript files also need to be included:
+
+```text
+<script src="chrome://calendar/content/calendar-ui-utils.js"/>
+<script src="chrome://messenger/content/customElements.js"/>
+<script src="chrome://calendar/content/datetimepickers/datetimepickers.js"/>
+```
+
+If you do not want to be dependent on Lightning being installed, you need to include the above files with your add-on.
+
 ## Changed event behavior
 
 ### &lt;dialog&gt; events

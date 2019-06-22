@@ -353,6 +353,17 @@ The following JavaScript files also need to be included:
 
 If you do not want to be dependent on Lightning being installed, you need to include the above files with your add-on.
 
+## Renamed XUL elements
+
+### &lt;mail-multi-emailHeaderField&gt;
+
+The element `mail-multi-emailHeaderField` has been renamed into `mail-multi-emailheaderfield` (no camelCase anymore).
+
+See e.g. https://searchfox.org/comm-central/source/mail/base/content/msgHdrView.inc.xul#238
+```
+<mail-multi-emailheaderfield id="expandedfromBox" flex="1"/>
+```
+
 ## Changed event behavior
 
 ### &lt;dialog&gt; events

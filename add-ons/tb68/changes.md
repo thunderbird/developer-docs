@@ -320,7 +320,7 @@ While the `groupbox` tag continues to work, the `caption` tag has been removed. 
 ```
 
 {% hint style="info" %}
-In the current Thunderbird 68 Beta 1, this still looks a bit wrong, but will be fixed in Beta 2. More details can be found in [bug 1559964](https://bugzilla.mozilla.org/show_bug.cgi?id=1559964).
+In the current Thunderbird 68 Beta, this still looks a bit wrong, but will be fixed in Beta 3. More details can be found in [bug 1559964](https://bugzilla.mozilla.org/show_bug.cgi?id=1559964).
 {% endhint %}
 
 ### &lt;datepicker&gt; and &lt;timepicker&gt;

@@ -308,22 +308,24 @@ These two do not display as before. You now need to include the following css fi
 <?xml-stylesheet type="text/css" href="chrome://messenger/skin/messenger.css"?>
 ```
 
-Furthermore, the label of the `caption` tag must be moved from the label attribute to the tag content and the `caption` tag must be surrounded by an `hbox` tag.
+While the `groupbox` tag continues to work, the `caption` tag has been removed. Use the following now:
 
 ```markup
 <groupbox>
-  <hbox><caption>Caption</caption></hbox>
-  ...
+  <hbox class="groupbox-title">
+    <label class="header">Your caption label</label>
+  </hbox>
+  Your groupbox body content.
 </groupbox>
 ```
 
 {% hint style="info" %}
-In the current Thunderbird 68 Beta 1, this still looks a bit wrong, but it is being worked on. More details can be found in [bug 1559964](https://bugzilla.mozilla.org/show_bug.cgi?id=1559964). 
+In the current Thunderbird 68 Beta 1, this still looks a bit wrong, but will be fixed in Beta 2. More details can be found in [bug 1559964](https://bugzilla.mozilla.org/show_bug.cgi?id=1559964).
 {% endhint %}
 
 ### &lt;datepicker&gt; and &lt;timepicker&gt;
 
-Removed. Currently there is no working replacement part of Thunderbird itself, but Lightning has its own `datetimepicker`, which can be used. 
+Removed. Currently there is no working replacement part of Thunderbird itself, but Lightning has its own `datetimepicker`, which can be used.
 
 ```markup
 <datetimepicker id="myDateTimePicker" />
@@ -357,10 +359,11 @@ If you do not want to be dependent on Lightning being installed, you need to inc
 
 ### &lt;mail-multi-emailHeaderField&gt;
 
-The element `mail-multi-emailHeaderField` has been renamed into `mail-multi-emailheaderfield` (no camelCase anymore).
+The element `mail-multi-emailHeaderField` has been renamed into `mail-multi-emailheaderfield` \(no camelCase anymore\).
 
-See e.g. https://searchfox.org/comm-central/source/mail/base/content/msgHdrView.inc.xul#238
-```
+See e.g. [https://searchfox.org/comm-central/source/mail/base/content/msgHdrView.inc.xul\#238](https://searchfox.org/comm-central/source/mail/base/content/msgHdrView.inc.xul#238)
+
+```text
 <mail-multi-emailheaderfield id="expandedfromBox" flex="1"/>
 ```
 
@@ -566,7 +569,7 @@ Trees have changed a lot. The `tree` object is now a `XULTreeElement`. It has lo
 tree.getLastVisibleRow();
 ```
 
-Furthermore, `nsITreeColumn` has been replaced by the `TreeColumn` object. Even though their interfaces look the same, they could behave differently. Check your implementation, as this affects almost all methods of `nsITreeView`. 
+Furthermore, `nsITreeColumn` has been replaced by the `TreeColumn` object. Even though their interfaces look the same, they could behave differently. Check your implementation, as this affects almost all methods of `nsITreeView`.
 
 Some noteworthy changes:
 

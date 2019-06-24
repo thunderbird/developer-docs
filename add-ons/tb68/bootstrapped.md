@@ -68,3 +68,4 @@ This is not new in general, but may be more observable now. If your add-on does 
 
 More information on using the Window Mediator Service in bootstrapped add-ons can be found [here](https://www.oxymoronical.com/blog/2011/01/Playing-with-windows-in-restartless-bootstrapped-extensions).
 
+Please note the example does not cover an important corner case which could not happen previously. The example fails in case the window already exists but the document has not yet completed loading. In this case the example will call "setupBrowserUI" too early. So you endup with an incomplete document and bootstrapping will most likely fail. To avoid this always check the ``document.readyState`` before calling "setupBrowserUI". If the state is "complete" you have to call the "setupBrowserUI" directly as the document's load event already fired. In any other case you have to wait for the document's "load" event before calling "setupBrowserUI".

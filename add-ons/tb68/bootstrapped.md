@@ -66,7 +66,6 @@ The changes made in Thunderbird for bootstrapped add-ons to use `manifest.json` 
 
 This is not new in general, but may be more observable now. If your add-on does not wait for the onload event of newly opened windows, before accessing its DOM, you probably have to make changes.
 
-Check if the load event has already fired \(`document.readyState == "complete"`\), or otherwise, listen for the load event.
-
-More information on using the Window Mediator Service in bootstrapped add-ons can be found [here](https://www.oxymoronical.com/blog/2011/01/Playing-with-windows-in-restartless-bootstrapped-extensions).
+* Whereever you use a window, always check if the load event has already fired \(`document.readyState == "complete"`\), or otherwise, listen for the load event.
+* Use the window mediator or window watcher services to be notified about opening and closing windows, rather than listening for notifications. More information on using the Window Mediator Service in bootstrapped add-ons can be found [here](https://www.oxymoronical.com/blog/2011/01/Playing-with-windows-in-restartless-bootstrapped-extensions).
 

@@ -65,7 +65,7 @@ This example is only in English. You probably want to use translated strings in 
 The changes made in Thunderbird for bootstrapped add-ons to use `manifest.json` may have changed when your code runs relative to events or notifications you've been listening for.
 
 * Use the window mediator or window watcher services to be notified about opening and closing windows, rather than listening for notifications.
-* Wherever you access a window, always check if it has been completely loaded \(`document.readyState == "complete"`\), or otherwise, listen for the load event. It is indeed possible, that the window mediator service calls your `onOpenWindow(window)` before the window is fully loaded. 
+* Wherever you access a window, always check if it has been completely loaded \(`document.readyState == "complete"`\), or otherwise, wait for the load event.
 
 In the following example, `loadIntoWindow` is waiting for the window to be fully loaded and eventually calls `loadIntoWindowAfterWindowIsReady` to actually do something with it. There is no need to listen to any other load events outside of `loadIntoWindow`. This example also checks the state of already open windows during startup \(line 14\).
 

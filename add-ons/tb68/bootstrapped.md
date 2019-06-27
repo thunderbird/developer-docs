@@ -62,11 +62,106 @@ This example is only in English. You probably want to use translated strings in 
 
 ## Possible timing issues
 
-The changes made in Thunderbird for bootstrapped add-ons to use `manifest.json` may have changed when your code runs relative to events or notifications you've been listening for. 
+The changes made in Thunderbird for bootstrapped add-ons to use `manifest.json` may have changed when your code runs relative to events or notifications you've been listening for.
 
-This is not new in general, but may be more observable now. If your add-on does not wait for the onload event of newly opened windows, before accessing its DOM, you probably have to make changes.
+* Use the window mediator or window watcher services to be notified about opening and closing windows, rather than listening for notifications.
+* Whereever you access a window, always check if it has been completely loaded \(`document.readyState == "complete"`\), or otherwise, listen for the load event. It is indeed possible, that the window mediator service calls your `onOpenWindow(window)` before the window is fully loaded. 
 
-* Whereever you use a window, always check if the load event has already fired \(`document.readyState == "complete"`\), or otherwise, listen for the load event.
-* Use the window mediator or window watcher services to be notified about opening and closing windows, rather than listening for notifications. More information on using the Window Mediator Service in bootstrapped add-ons can be found [here](https://www.oxymoronical.com/blog/2011/01/Playing-with-windows-in-restartless-bootstrapped-extensions).
+In the following example, `loadIntoWindow` is waiting for the window to be fully loaded and eventually calls `loadIntoWindowAfterWindowIsReady` to actually do something with it. There is no need to listen to any other load events outside of `loadIntoWindow`. This example also checks the state of already open windows during startup \(line 14\).
 
-Please note the example does not cover an important corner case which could not happen previously. The example fails in case the window already exists but the document has not yet completed loading. In this case the example will call "setupBrowserUI" too early. So you endup with an incomplete document and bootstrapping will most likely fail. To avoid this always check the ``document.readyState`` before calling "setupBrowserUI". If the state is "complete" you have to call the "setupBrowserUI" directly as the document's load event already fired. In any other case you have to wait for the document's "load" event before calling "setupBrowserUI".
+{% code-tabs %}
+{% code-tabs-item title="bootstrap.js" %}
+```javascript
+var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+
+function install(data, reason) {
+}
+
+function uninstall(data, reason) {
+}
+
+function startup(data, reason) {
+  // Check if the window we want to modify is already open.
+  let windows = Services.wm.getEnumerator("mail:3pane");
+  while (windows.hasMoreElements()) {
+    let domWindow = windows.getNext().QueryInterface(Ci.nsIDOMWindow);
+    WindowListener.loadIntoWindow(domWindow);
+  }
+
+  // Wait for any new windows to open.
+  Services.wm.addListener(WindowListener);
+}
+
+function shutdown(data, reason) {
+  // When the application is shutting down we normally don't have to clean
+  // up any UI changes made.
+  if (reason == APP_SHUTDOWN) {
+    return;
+  }
+
+  let windows = Services.wm.getEnumerator("mail:3pane");
+  while (windows.hasMoreElements()) {
+    let domWindow = windows.getNext().QueryInterface(Ci.nsIDOMWindow);
+    WindowListener.unloadFromWindow(domWindow);
+  }
+
+  // Stop listening for any new windows to open.
+  Services.wm.removeListener(WindowListener);
+}
+
+var WindowListener = {
+
+  async loadIntoWindow(window) {
+    console.log("load (1/2): " + window.document.readyState);
+    if (window.document.readyState != "complete") {
+      // Make sure the window load has completed.
+      await new Promise(resolve => {
+        window.addEventListener("load", resolve, { once: true });
+      });
+    }
+
+    this.loadIntoWindowAfterWindowIsReady(window);
+  },
+
+  loadIntoWindowAfterWindowIsReady(window) {
+    console.log("load (2/2): " + window.document.readyState);
+    let document = window.document;
+
+    // Take any steps to add UI or anything to the window
+    // document.getElementById() etc. will work here.
+  },
+
+  unloadFromWindow(window) {
+    console.log("unload: " + window.document.readyState);
+    let document = window.document;
+
+    // Take any steps to remove UI or anything from the window
+    // document.getElementById() etc. will work here.
+  },
+
+  // nsIWindowMediatorListener functions
+  onOpenWindow(xulWindow) {
+    // A new window has opened.
+    let domWindow = xulWindow.QueryInterface(Ci.nsIInterfaceRequestor)
+                             .getInterface(Ci.nsIDOMWindow);
+
+    // Check if the opened window is the one we want to modify.
+    if (domWindow.document.documentElement
+                 .getAttribute("windowtype") === "mail:3pane") {
+      this.loadIntoWindow(domWindow);
+    }
+  },
+
+  onCloseWindow(xulWindow) {
+  },
+
+  onWindowTitleChange(xulWindow, newTitle) {
+  },
+};
+
+```
+{% endcode-tabs-item %}
+{% endcode-tabs %}
+
+So you basically have to rename your current `loadIntoWindow` to `loadIntoWindowAfterWindowIsReady` and add the new asynchronous `loadIntoWindow` , to make sure to access the window only after it has been fully loaded.
+

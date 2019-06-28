@@ -388,7 +388,9 @@ document.addEventListener("dialogaccept", function(event) {
 });
 ```
 
-No return value is needed.
+To prevent closing of the dialog, call `preventDefault()`. A return value is not needed.
+
+This is not only valid for `ondialogaccept`, but also for `ondialogextra1`, `ondialogextra2` and `ondialogcancel`.
 
 ### &lt;wizard&gt; and &lt;wizardpage&gt; events
 

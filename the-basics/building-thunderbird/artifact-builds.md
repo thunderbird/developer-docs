@@ -4,6 +4,10 @@ description: '… or, How To Build Without Building'
 
 # Artifact Builds
 
+{% hint style="warning" %}
+This pages assumes you already have some familiarity with the concepts of building Thunderbird. It probably is not suitable for absolute beginners.
+{% endhint %}
+
 Building everything can take a long time, and in many cases is completely unnecessary. If the changes you are making are limited to the UI, or tests, or even some back-end things, then compiling and linking the unchanged C++ and Rust code produces the same results every time. So let's get someone else to do it for us.
 
 This the idea behind _artifact builds._ Instead of spending our time doing the building, we instead download pre-built copies of those parts \(the "binary components"\) from the build infrastructure. Then we build everything else \(what we're interested in\) around them. This can reduce time spent from hours to a few minutes.

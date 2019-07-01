@@ -9,6 +9,7 @@
   * [Windows Build Prerequisites](the-basics/building-thunderbird/windows-build-prerequisites.md)
   * [Linux Build Prerequisites](the-basics/building-thunderbird/linux-build-prerequisites.md)
   * [macOS Build Prerequisites](the-basics/building-thunderbird/macos-build-prerequisites.md)
+  * [Artifact Builds](the-basics/building-thunderbird/artifact-builds.md)
 * [Codebase Overview](the-basics/codebase-overview.md)
 * [Hello World](the-basics/hello-world.md)
 

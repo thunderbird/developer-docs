@@ -355,6 +355,28 @@ The following JavaScript files also need to be included:
 
 If you do not want to be dependent on Lightning being installed, you need to include the above files with your add-on.
 
+### &lt;notificationbox&gt;
+
+Removed. Thunderbird now has fixed build in notification boxes, where notifications can be added. The following list shows how to access some of them:
+
+* Main window: `let notifyBox = specialTabs.msgNotificationBar;`
+* Message composer window: `let notifyBox = gNotification.notificationbox;`
+* Most calendar dialogs: `let notifyBox = gNotification.notificationbox;`
+
+{% hint style="warning" %}
+Since you no longer "own" notification boxes, you should not clear them by calling
+
+`notifyBox.removeAllNotifications();`
+
+as that would remove notifications added by others. You can get a specific notification by calling
+
+`let notification = notifyBox.getNotificationWithValue(value);` 
+
+and remove only that via
+
+`notificationbox.removeNotification(notification);`
+{% endhint %}
+
 ## Renamed XUL elements
 
 ### &lt;mail-multi-emailHeaderField&gt;

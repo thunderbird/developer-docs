@@ -6,7 +6,13 @@ The changes are grouped by category and are listed in the order we became aware 
 
 ## Removed global Variables
 
-A bunch of globals in the message composition window were removed:
+A bunch of global variables available in some window scopes were removed. If you have used any of these, there are still available as the same names underneath`Components.interfaces.`
+
+### main window
+
+* nsMsgFolderFlags
+
+### message composition window
 
 * `nsIMsgCompDeliverMode`
 * `nsIMsgCompSendFormat`
@@ -17,8 +23,6 @@ A bunch of globals in the message composition window were removed:
 * `nsIPlaintextEditorMail`
 * `nsISupportsString`
 * `mozISpellCheckingEngine`
-
-If you use any of these, there are available as the same names underneath`Components.interfaces.`
 
 ## Removed XBL bindings
 
@@ -416,7 +420,7 @@ This is valid for `ondialogaccept`, `ondialogextra1`, `ondialogextra2` and `ondi
 
 ### &lt;wizard&gt; and &lt;wizardpage&gt; events
 
-The section about `<dialog>` events also applies to all `onwizard…` events on `<wizard>`, and `page…` events on `<wizardpage>`.
+The section about `<dialog>` events also applies to all `onwizard…` events on `<wizard>`, and `onpage…` events on `<wizardpage>`.
 
 ## Changes for JavaScript modules
 

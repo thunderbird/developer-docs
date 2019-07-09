@@ -41,7 +41,7 @@ In order to use HTML elements in a XUL file, you must load the HTML namespace in
 ```markup
 <dialog
     xmlns:html="http://www.w3.org/1999/xhtml"
-    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"/>
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 ```
 
 The following list also includes deprecated elements, which could still be used but Thunderbird has already started to purge their usage. In that case you must update your overlay files which are overlaying such elements, otherwise your overlay will not be applied. Check [SearchFox](https://searchfox.org/comm-central/source) for the current state of the files you are overlaying.

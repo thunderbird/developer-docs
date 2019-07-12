@@ -65,9 +65,13 @@ This example is only in English. You probably want to use translated strings in 
 * [Open With](https://github.com/darktrojan/openwith/blob/VERSION_6.9/manifest.json)
 * [Shrunked Image Resizer](https://github.com/darktrojan/shrunked/blob/VERSION_4.5/manifest.json)
 
-## Notes about the new overlay loader
+## Notes about overlaying in general
 
 A lot of effort has been done to create the new overlay loader, but still things might not work as before. We are tracking this in bug [1476259](https://bugzilla.mozilla.org/show_bug.cgi?id=1476259).
+
+Overlays in Thunderbird itself \(except the calendar extensions\) have been removed, so extensions can not overlay the removed Thunderbird overlays any more. For example, if your add-on overlaid`mailWindowOverlay.xul`, that needs to be changed; in this example you most likely need to overlay `messenger.xul` now.
+
+Furthermore, the new overlay loader does not properly support dependencies between overlays in different add-ons. As a result, you should only reference elements from the original document you're overlaying, or other overlays in the same extension. Most notably, you need to switch to non-overlay methods when altering the calendar user interface in the main window, or your add-on will not load relieably.
 
 ## Notes about Chrome manifest
 
@@ -84,10 +88,6 @@ You might see the same line, but regarding `interfaces`.
 {% hint style="danger" %}
 **Registering your own interfaces using `.xpt`files is no longer possible.** However, they can be converted to JavaScript Modules \(the Quicktext add-on includes an [example migration](https://github.com/thundernest/quicktext/commit/e1ef58dce2816ac1e685f562d30882968e24a391)\).
 {% endhint %}
-
-## Notes about overlaying
-
-Overlays in Thunderbird itself \(except the calendar extensions\) have been removed, so extensions can not overlay the removed Thunderbird overlays any more. For example, if your add-on overlaid`mailWindowOverlay.xul`, that needs to be changed; in this example you most likely need to overlay `messenger.xul` now.
 
 ## Notes about `<script>` tags
 

@@ -31,6 +31,7 @@
   * [Convert Overlay Extension to MailExtension](add-ons/tb68/overlays.md)
   * [Convert Bootstrapped Extension to MailExtension](add-ons/tb68/bootstrapped.md)
   * [List of changes in core up to Thunderbird 68](add-ons/tb68/changes.md)
+* [Web Extension Themes](add-ons/web-extension-themes.md)
 * [Hello World Extension](add-ons/hello-world-add-on.md)
 * [Tips and Tricks for Add-on Development](add-ons/tips-and-tricks.md)
 * [MailExtensions APIs](https://thunderbird-webextensions.readthedocs.io)

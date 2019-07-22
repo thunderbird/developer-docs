@@ -36,6 +36,10 @@ You can't use an artifact build if the code you are changing includes:
 * Some types of build configuration changes
 * … and probably others
 
+### Limitations of artifact builds
+
+You cannot run mozmill tests with an artifact build, but you can run marionette, mochitest, and xpcshell tests. (See [MDN](https://developer.mozilla.org/en-US/docs/Mozilla/Developer_guide/Build_Instructions/Artifact_builds#Things_that_are_not_yet_supported).)
+
 ### Modifying your build setup
 
 How you set up to build depends on your scenario. Many people will still need to do a complete build sometimes. In this case, make a copy of your existing `mozconfig` file and add these lines:

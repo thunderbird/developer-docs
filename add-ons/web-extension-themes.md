@@ -54,6 +54,7 @@ For the `colors` object, there are many options. Those known to work are listed 
 
 * bookmark\_text
 * frame
+* frame\_inactive
 * popup
 * popup\_text
 * popup\_border
@@ -140,8 +141,7 @@ Here is a `manifest.json` from a Theme that uses all the above features, thanks 
       "popup_text": "#000",
       "popup_border": "#666",
       "popup_highlight": "#1f9afd",
-      "popup_highlight_text": "#fff",
-      "popup_border": "#666"
+      "popup_highlight_text": "#fff"
     },
     "images": {
       "theme_frame": "background.png"

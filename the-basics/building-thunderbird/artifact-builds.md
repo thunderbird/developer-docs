@@ -14,7 +14,7 @@ This the idea behind _artifact builds._ Instead of spending our time doing the b
 
 There is a number of important caveats, so make sure you understand them before going on.
 
-### When can I use an artifact build?
+## When can I use an artifact build?
 
 In the simplest terms, if the code you are changing appears as plain-text in the final built output, you can use an artifact build. This includes:
 
@@ -25,7 +25,7 @@ In the simplest terms, if the code you are changing appears as plain-text in the
 * Pre-processed versions of any of the above
 * Any support files such as images
 
-### When _can't_ I use an artifact build?
+## When _can't_ I use an artifact build?
 
 You can't use an artifact build if the code you are changing includes:
 
@@ -36,11 +36,11 @@ You can't use an artifact build if the code you are changing includes:
 * Some types of build configuration changes
 * … and probably others
 
-### Limitations of artifact builds
+## Limitations of artifact builds
 
-You cannot run mozmill tests with an artifact build, but you can run marionette, mochitest, and xpcshell tests. (See [MDN](https://developer.mozilla.org/en-US/docs/Mozilla/Developer_guide/Build_Instructions/Artifact_builds#Things_that_are_not_yet_supported).)
+You cannot run mozmill tests with an artifact build, but you can run marionette, mochitest, and xpcshell tests. \(See [MDN](https://developer.mozilla.org/en-US/docs/Mozilla/Developer_guide/Build_Instructions/Artifact_builds#Things_that_are_not_yet_supported).\)
 
-### Modifying your build setup
+## Modifying your build setup
 
 How you set up to build depends on your scenario. Many people will still need to do a complete build sometimes. In this case, make a copy of your existing `mozconfig` file and add these lines:
 
@@ -55,7 +55,7 @@ From here, remember to make sure you're using the right `mozconfig` \(`export MO
 
 If you don't need to do a complete build, you can just add line 2 to your existing `mozconfig`.
 
-### Building the right thing
+## Building the right thing
 
 As stated earlier, the build process downloads the binary components from the build infrastructure. Here's where things can get a little bit messy.
 
@@ -69,27 +69,27 @@ Example: if your platform is 64-bit Linux and your tree was up-to-date at this p
 This screenshot is from [https://treeherder.mozilla.org/\#/jobs?repo=comm-central](https://treeherder.mozilla.org/#/jobs?repo=comm-central). Check what's going on there before updating your build. Note that "Linux x64 opt" is not the same as "Linux x64 shippable opt" for our purposes.
 {% endhint %}
 
-In this example you have a choice: 
+In this example you have a choice:
 
 * wait for the running build to complete \(that is, the `B` to turn green, you don't need to wait for the tests\) before building locally
 * build now, from the last successful build and hope the changes that have landed since don't affect you
 * "update" your trees back to their state when the last successful build happened
 
-### Updating to the right revision
+## Updating to the right revision
 
 To find the revisions used for a successful build, click on the `B`, and go down to the bottom of the Job Details tab:
 
 ![](../../.gitbook/assets/build-details.svg.png)
 
-Update both comm-central _and_  mozilla-central trees using `hg update -r abcdef1234` before building. In general, when a new build begins on the build infrastructure, it uses the latest mozilla-central as well as the latest comm-central, but that may no longer be the case by the time you build.
+Update both comm-central _and_ mozilla-central trees using `hg update -r abcdef1234` before building. In general, when a new build begins on the build infrastructure, it uses the latest mozilla-central as well as the latest comm-central, but that may no longer be the case by the time you build.
 
-### Other tips
+## Other tips
 
 * The build process logs a lot about what it's doing. This can help you understand exactly what's going on so read it the first few times you build.
 * You can in many cases do an even quicker rebuild \(for example to remake pre-processed files\) by running `./mach build faster` \(or `../mach build -C . faster` if your current directory is comm-central\). This skips a bunch of steps at the beginning and end of the build process that you might not need. When in doubt, don't build faster.
 * Calendar is built differently in an artifact build but this shouldn't affect most people.
 
-### Artifact builds on the Try server
+## Artifact builds on the Try server
 
 Using an artifact build on the Try server can save you _a lot_ of time, and it also reduces our infrastructure costs. The same conditions about when you can and can't do an artifact build apply, plus only 64-bit builds are working.
 

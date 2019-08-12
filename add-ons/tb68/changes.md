@@ -393,6 +393,12 @@ See e.g. [https://searchfox.org/comm-central/source/mail/base/content/msgHdrView
 <mail-multi-emailheaderfield id="expandedfromBox" flex="1"/>
 ```
 
+## Changed XUL elements
+
+### &lt;treecol&gt;
+
+Each `treecol` can be either shown or hidden via the column picker. Up to TB68 the column picker closed after a column had been selected/toggled. By adding `closemenu="none"` to a `treecol`, the column picker stays open after the display state of associated `treecol` has been toggled.
+
 ## Changed event behavior
 
 ### &lt;dialog&gt; events

@@ -44,7 +44,7 @@ Let's assume the last published legacy version of your add-on for Thunderbird 60
 
 ## Testing Thunderbird 68
 
-Download Thunderbird 68 Beta, to test your updated add-on:
+Download the release candidate of TB68, to test your updated add-on:
 
-[https://www.thunderbird.net/channel/](https://www.thunderbird.net/channel/)
+[https://ftp.mozilla.org/pub/thunderbird/candidates/68.0-candidates/](https://ftp.mozilla.org/pub/thunderbird/candidates/68.0-candidates/)
 

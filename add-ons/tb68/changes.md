@@ -381,6 +381,8 @@ and remove only that via
 `notificationbox.removeNotification(notification);`
 {% endhint %}
 
+You can still add notification boxes wherever you want, if you do not want to use the build in notification boxes \(or if there is none\). More details can be found [here](https://github.com/thundernest/developer-docs/issues/31#issuecomment-508872843).
+
 ## Renamed XUL elements
 
 ### &lt;mail-multi-emailHeaderField&gt;

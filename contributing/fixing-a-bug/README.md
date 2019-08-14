@@ -47,9 +47,10 @@ Create a new patch with the command `hg qnew -m "Bug ###### - fixing something a
 
 Be sure all your current changes are part of the patch you want to export by typing `hg qrefresh` and `hg qdiff` to visualize a recap of all your changes and diffs in your files.
 
-If you're happy with the result, you can export the patch with the command `hg export qtip > ~/Your/Chosen/Directory/patch-name.patch`. Let's quickly analyze this command:
+If you're happy with the result, you can export the patch with the command `hg export qtip --git > ~/Your/Chosen/Directory/patch-name.patch`. Let's quickly analyze this command:
 
 * `export qtip` will grab all your changes and code updates currently at the _tip_ of your mercurial queues.
+* The `--git` flag ensures the patch is in git format, which Bugzilla's review tools require. You can instead set this option in [your Mercurial configuration file](https://www.selenic.com/mercurial/hgrc.5.html).
 * `> ~/Your/Chosen/Directory/patch-name.patch` will create a file in the directory you specified with the name of your choice.
 
 ## Upload a Patch

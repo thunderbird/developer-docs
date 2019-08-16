@@ -27,10 +27,11 @@
 ## Add-ons
 
 * [About Add-ons](add-ons/about-add-ons.md)
-* [Updating Legacy Extensions for Thunderbird 68](add-ons/tb68/README.md)
-  * [Convert Overlay Extension to MailExtension](add-ons/tb68/overlays.md)
-  * [Convert Bootstrapped Extension to MailExtension](add-ons/tb68/bootstrapped.md)
-  * [List of changes in core up to Thunderbird 68](add-ons/tb68/changes.md)
+* [Updating Legacy Extensions for Thunderbird 68 and beyond](add-ons/updates/README.md)
+  * [Convert Overlay Extension to MailExtension](add-ons/updates/overlays.md)
+  * [Convert Bootstrapped Extension to MailExtension](add-ons/updates/bootstrapped.md)
+  * [Changes up to Thunderbird 68](add-ons/updates/tb68.md)
+  * [Changes in Thunderbird 69](add-ons/updates/tb69.md)
 * [Web Extension Themes](add-ons/web-extension-themes.md)
 * [Hello World Extension](add-ons/hello-world-add-on.md)
 * [Tips and Tricks for Add-on Development](add-ons/tips-and-tricks.md)

@@ -44,7 +44,7 @@ Since Thunderbird 60 was released, there have been many major changes to Thunder
 
 If you are currently maintaining a legacy extension please consider checking out our guide on updating extensions for Thunderbird 68:
 
-{% page-ref page="tb68/" %}
+{% page-ref page="updates/" %}
 
 ### Themes
 

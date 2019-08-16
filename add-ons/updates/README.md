@@ -4,6 +4,8 @@
 
 It’s difficult to say for sure what the future will hold for Thunderbird extensions. A _lot_ of work has been done to ensure that [legacy extension](../about-add-ons.md#legacy-extensions) \(overlay extension and bootstrap extensions\) will work in Thunderbird 68. Beyond that, we just don’t know.
 
+Thunderbird is based on the Firefox code, and as they are changing things all over the place, legacy add-ons will require constant adjustments and certain functionality will probably be removed at some point.
+
 Overlay extensions are problematic because so much of what they depended on no longer exists. Bootstrapped extensions are less of a problem but are still considered at-risk. 
 
 ## Required Changes
@@ -16,11 +18,11 @@ There are two types of changes which are required to make your legacy extensions
 
 {% page-ref page="bootstrapped.md" %}
 
-* All extensions need to be updated to reflect changes in Thunderbird core, like renamed/replaced API calls, removed support for some XUL elements \(need to use HTML elements now\) and much more. 
+* All legacy extensions need to be updated to reflect changes in Thunderbird core, like renamed/replaced API calls, removed support for some XUL elements \(need to use HTML elements now\) and much more. 
 
 {% page-ref page="tb68.md" %}
 
-{% page-ref page="tb69.md" %}
+{% page-ref page="tb76.md" %}
 
 {% hint style="danger" %}
 Even though it is possible to have both `install.rdf` and `manifest.json` files in your extension, so you _could_ release a version compatible with Thunderbird 60 and 68+, it is _not_ suggested for the following reasons:
@@ -31,8 +33,6 @@ Even though it is possible to have both `install.rdf` and `manifest.json` files 
 
 If you do want to stay backward compatible, you will find useful information [here](https://github.com/cleidigh/ThunderStorm).
 {% endhint %}
-
-**Remember**: Thunderbird is based on the Firefox code, and they have been changing things all over the place.
 
 ## Uploading your updated add-on
 

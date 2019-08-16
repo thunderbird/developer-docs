@@ -8,7 +8,7 @@ description: What you need to know about making add-ons for Thunderbird.
 
 ### What are Add-ons?
 
-Add-ons are themes that change the way Thunderbird looks, or extensions that add functionality or change the way Thunderbird works. You can check out many of the add-ons available for Thunderbird at addons.thunderbird.net:
+Add-ons are _themes_ that change the way Thunderbird looks, or _extensions_ that add functionality or change the way Thunderbird works. You can check out many of the add-ons available for Thunderbird at [addons.thunderbird.net](https://addons.thunderbird.net).
 
 ### Types of Extensions
 
@@ -17,12 +17,12 @@ Add-ons are themes that change the way Thunderbird looks, or extensions that add
 "MailExtensions" are WebExtensions with some added features specific to Thunderbird. WebExtensions is the current type of Extension used for Firefox and Chrome. Unlike how extensions once were, MailExtensions don't have complete access to Thunderbird's internal components and UI, but instead are able to access functionality through the use of APIs.
 
 {% hint style="success" %}
-**From Thunderbird 68 onward, new extensions should be built as MailExtensions to ensure future compatibility.**
+**From Thunderbird 68 onward, new extensions should be built as MailExtensions to ensure future compatibility. To get you started, we have put together a few tutorials.**
 {% endhint %}
 
 You can learn to make a Hello World MailExtension via this tutorial:
 
-{% page-ref page="hello-world-add-on.md" %}
+{% page-ref page="tutorials/hello-world-add-on.md" %}
 
 You can check out the MailExtensions APIs via its documentation here:
 

@@ -2,10 +2,10 @@
 description: This is a tutorial for making a Hello World Add-on as a MailExtension.
 ---
 
-# Hello World Extension
+# Hello World MailExtension
 
-{% hint style="danger" %}
-This tutorial is for building an extension for **Thunderbird 66+** which is currently only available as a [beta release](https://www.thunderbird.net/en-US/channel/).
+{% hint style="info" %}
+This tutorial is for building a MailExtension for **Thunderbird 68** or later.
 {% endhint %}
 
 ## Thunderstorm
@@ -166,19 +166,19 @@ hello-world/
 
 To install the add-on we created we are going to load it temporarily. Let's start by opening the Add-ons Manager:
 
-![Find &quot;Add-ons&quot; in the App Menu](../.gitbook/assets/add-on-in-menu.png)
+![Find &quot;Add-ons&quot; in the App Menu](../../.gitbook/assets/add-on-in-menu.png)
 
 This will open up the Add-ons Manager, make sure "Extensions" is selected on the left hand side and click the gear to select "Debug Add-ons".
 
-![Select Debug Add-ons from the Menu.](../.gitbook/assets/dubug-addons.png)
+![Select Debug Add-ons from the Menu.](../../.gitbook/assets/dubug-addons.png)
 
 Select "Load Temporary Add-on" and then you can choose any file from within our `hello-world` project folder.
 
-![Click &quot;Load Temporary Add-on&quot;](../.gitbook/assets/load-temp-addon.png)
+![Click &quot;Load Temporary Add-on&quot;](../../.gitbook/assets/load-temp-addon.png)
 
 This should install the Add-on for this session only:
 
-![The &quot;Hello World&quot; add-on should show up in Temporary Extensions.](../.gitbook/assets/hello-world-addon-loaded.png)
+![The &quot;Hello World&quot; add-on should show up in Temporary Extensions.](../../.gitbook/assets/hello-world-addon-loaded.png)
 
 ### Trying it Out
 
@@ -194,11 +194,11 @@ Make sure the "Console" tab is selected in the Developer Tools window. Click the
 
 Head to the home tab and click on the add-on's icon in the top right-hand corner to see a pop up with your message "Hello, World!"
 
-![Click the Hello World Add-on and see the popup!](../.gitbook/assets/hello-world-addon.png)
+![Click the Hello World Add-on and see the popup!](../../.gitbook/assets/hello-world-addon.png)
 
 Now if you look at the Developer Tools window, you should see something like the following in the console:
 
-![&quot;Hello World - from popup.js&quot;](../.gitbook/assets/screenshot-from-2019-03-23-13-04-51.png)
+![&quot;Hello World - from popup.js&quot;](../../.gitbook/assets/screenshot-from-2019-03-23-13-04-51.png)
 
 ## What's Next
 

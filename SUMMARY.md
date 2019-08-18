@@ -27,7 +27,7 @@
 ## Add-ons
 
 * [About Add-ons](add-ons/about-add-ons.md)
-* [Updating Legacy Extensions for Thunderbird 68 and beyond](add-ons/updates/README.md)
+* [Updating Legacy Extensions for Thunderbird 68 and Beyond](add-ons/updates/README.md)
   * [Convert Overlay Extension to MailExtension](add-ons/updates/overlays.md)
   * [Convert Bootstrapped Extension to MailExtension](add-ons/updates/bootstrapped.md)
   * [Changes in Thunderbird 61-68](add-ons/updates/tb68.md)

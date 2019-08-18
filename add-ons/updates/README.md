@@ -1,4 +1,4 @@
-# Updating Legacy Extensions for Thunderbird 68 and beyond
+# Updating Legacy Extensions for Thunderbird 68 and Beyond
 
 ## The Future
 
@@ -34,7 +34,7 @@ Even though it is possible to have both `install.rdf` and `manifest.json` files 
 If you do want to stay backward compatible, you will find useful information [here](https://github.com/cleidigh/ThunderStorm).
 {% endhint %}
 
-## Uploading your updated add-on
+## Uploading your Updated Add-on
 
 After updating your add-on for Thunderbird 68 and beyond, it will be treated as a WebExtension. While uploading it to addons.thunderbird.net \(ATN\), you will see a warning, that you cannot upload a new legacy version of your add-on afterwards. However:
 
@@ -44,7 +44,7 @@ It **is** possible to maintain a legacy version **and** a WebExtension version o
 
 Let's assume the last published legacy version of your add-on for Thunderbird 60 is `2.6`. Upload the new WebExtension version for Thunderbird 68+ as `3.0` and increase the version number with each new release of the WebExtension as usual. Every time you update the legacy version for Thunderbird 60, pick a version number from the `2.x` branch. 
 
-## Testing your add-on with future versions of Thunderbird
+## Testing your Add-on with Future Versions of Thunderbird
 
 Get the [release candidate of TB68](https://ftp.mozilla.org/pub/thunderbird/candidates/68.0-candidates/), to test your updated add-on with the next ESR release of Thunderbird.
 

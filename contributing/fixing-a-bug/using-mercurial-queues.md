@@ -55,9 +55,11 @@ The commit message is optional and you can add it at a later time with a `qrefre
 
 ## Refresh the Code
 
-Whenever you change something in your code, you need to trigger the `hg qrefresh` command in order to update your current patch with the latest changes.
+Whenever you change something in your code, you need to trigger the `hg qrefresh` command in order to update your current patch with the latest changes. Do a `hg diff` before you issue `hg qefresh` to see which changes will be added to your patch. If you use multiple patches \(see section below\), it may be a good idea to do a `hg qseries` to make sure the right patch is on top. Otherwise the changes will be added to the wrong patch.
 
 It's always good practice to check if the current changes have been properly saved in your patch by using the command `hg qdiff`. All the diffs will be listed in your terminal.
+
+Note that both `hg diff` and `hg qdiff` take a `-w` argument to ignore white-space in case you reindented blocks and it's hard to see the net changes.
 
 ## Pop and Push
 
@@ -105,7 +107,15 @@ Reordering patches that touch the same file can cause conflicts when you push! I
 With MQ you can import a patch into your queue, e.g. from Bugzilla. It is unapplied by default and the `filename` is used as the patch-name. You can directly import a Bugzilla patch by using the Bugzilla attachment URL as the argument. In that case you may also want to use `-n patch-name` to specify the patch name.
 
 ```bash
+hg qimport https://bugzilla.mozilla.org/attachment.cgi?id=9086264 -n patch-name
 hg qimport ~/Your/Chosen/Directory/filename.patch -n patch-name
+hg qimport https://hg.mozilla.org/comm-central/rev/0e7bfdf1b900
+```
+
+If you have the `qimportbz` extension installed, you can also import by specifying a bug number:
+
+```bash
+hg qimport bz:1574724
 ```
 
 ### Workflow Overview
@@ -118,6 +128,26 @@ hg qnew bug-123456-fix
 hg qrefresh
 ... change some more files ...
 hg qrefresh -m "Bug 123456: A brief summary of the changes you have made."
-hg export qtip > ~/bug-123456-fix.patch
 ```
+
+Note that `hg export qtip > ~/bug-123456-fix.patch` is not necessary since all the patches reside in the `.hg/patches` directory in your repository.
+
+### Advanced usage
+
+Commands mentioned so far can be abbreviated, so `hg qser`, `hg qref`, etc.
+
+Of course you can delete patches from your queue using `hg qdelete` or rename them with `hg qrename`. If you decide to combine patches, there is `hg qfold`, that will merge the first unapplied patch into the patch at the tip of your apply queue. Use with care since the merged patch will be removed and the applied patch will be irreversibly changed.
+
+Even if you're not the sheriff, it's sometimes handy to be able to backout one or more changesets. Use:
+
+```bash
+hg qbackout -r 0e7bfdf1b900
+hg qbackout -r 0e7bfdf1b900:0e7bfdf1b901 (multiple consequtive changesets)
+hg qbackout -r 0e7bfdf1b900 -r 0e7bfdf1b955 (non-consequtive)
+hg qbackout -s -r 0e7bfdf1b900:0e7bfdf1b901 (merge into a single backout changeset)
+```
+
+There is also limited integration with Phabricator with `hg phabread`. That needs a special setup. Ask the resident Thunderbird sheriff for details or read [here](https://www.mercurial-scm.org/wiki/Phabricator#Setting_up_hg) \(but there's more to it\).
+
+
 

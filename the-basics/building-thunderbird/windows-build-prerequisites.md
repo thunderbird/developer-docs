@@ -22,15 +22,29 @@ Messaging Application Programming Interface \(**MAPI**\) is an API for Microsoft
 You can get the MAPI header files from: [https://www.microsoft.com/en-us/download/details.aspx?id=12905](https://www.microsoft.com/en-us/download/details.aspx?id=12905) 
 {% endhint %}
 
-Copy the header files to a Windows SDK include directory so that the build process will find the files.
+Copy 17 of the 18 header files to a Windows SDK include directory so that the build process will find the files, that is `C:\Program Files (x86)\Windows Kits\10\Include\10.0.nnnnn.0\shared`, where `nnnnn` is the highest number present on the system. Note that the downloaded Outlook 2010 MAPI Header Files contain 18 fies, of which only 17 are needed. Do **not** copy MAPI.h, it is already in C:\Program Files \(x86\)\Windows Kits\10\Include\10.0.17134.0\um\MAPI.h.
 
-For Windows 8, that directory will be:
+As of April 2019, 10.0.17134.0 is needed to compile Thunderbird. Assuming standard installation locations, copy these 17 files to `C:\Program Files (x86)\Windows Kits\10\Include\10.0.17134.0\shared`.
 
-`C:\Program Files (x86)\Windows Kits\8.1\Include\shared` 
-
-For Windows 10, the directory will be:
-
- `C:\Program Files (x86)\Windows Kits\10\Include\10.0.nnnnn.0\shared` where `nnnnn` is the highest number present on the system.
+```text
+18/10/2010  16:11             7,334 MAPIAux.h
+02/06/2009  17:02             7,938 MAPICode.h
+02/06/2009  17:02            22,960 MAPIDbg.h
+02/06/2009  17:02            84,644 MAPIDefS.h
+02/06/2009  17:02            27,840 MAPIForm.h
+02/06/2009  17:02            11,880 MAPIGuid.h
+02/06/2009  17:02             2,648 MAPIHook.h
+02/06/2009  17:02             5,359 MAPINls.h
+02/06/2009  17:02             2,743 MAPIOID.h
+02/06/2009  17:02            32,978 MAPISPI.h
+02/06/2009  17:02            54,395 MAPITags.h
+02/06/2009  17:02            26,467 MAPIUtil.h
+02/06/2009  17:02            97,301 MAPIVal.h
+02/06/2009  17:02             9,334 MAPIWin.h
+02/06/2009  17:02             1,906 MAPIWz.h
+02/06/2009  17:02            18,277 MAPIX.h
+02/06/2009  17:02             5,012 MSPST.h
+```
 
 ### **Visual Studio**
 

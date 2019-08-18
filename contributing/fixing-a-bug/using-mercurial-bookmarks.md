@@ -14,7 +14,7 @@ Bookmarks are basically labels that point to a given changeset \(or a given "com
 
 For any of the commands below, you can learn more about them by running `hg commandname --help`.
 
-## Working on a particular bug or feature
+## Working on a particular Bug or Feature
 
 A common use case for bookmarks is for working on a given feature or bug. A bookmark is a label you use to manage your work on one bug or feature, alongside other work on other bugs or features. Here's an example.
 
@@ -29,13 +29,13 @@ A common use case for bookmarks is for working on a given feature or bug. A book
 9. Run `hg log` and note how the bookmark has moved to the changeset that you just committed.  The active bookmark will automatically move to the most recent changeset as you commit your changes.  That way you can make a series of commits and the bookmark will always point to the most recent one.
 10. You can use `hg commit --amend` to change your previous commit rather than making a new commit.
 
-## Creating a patch to upload to bugzilla
+## Creating a Patch to upload to Bugzilla
 
 Let's say you now have a single changeset that fixes a bug \(the simplest case\), and you are ready to create a patch file to upload to the bug on bugzilla. You have used a bookmark named "feature-A" and it points to this changeset.
 
 Run `hg export --rev feature-A > my-feature-a-file.patch` to create a patch file. The `--rev feature-A` part indicates which revision \(changeset\) you want, in this case the changeset that the bookmark `feature-A` points to.
 
-## Working on more than one bug or feature
+## Working on more than one Bug or Feature
 
 Being able to work on more than one bug or feature, and easily switch between working on one or the other, is a typical use case for bookmarks.
 

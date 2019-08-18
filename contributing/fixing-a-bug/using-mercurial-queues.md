@@ -10,7 +10,7 @@ Mercurial Queues is the primary method used by many Thunderbird developers to cr
 If you're already familiar with Mercurial Queues but you need a quick overview of all the available commands, take a look at the [Mercurial Queues reference](http://hgbook.red-bean.com/read/mercurial-queues-reference.html)
 {% endhint %}
 
-## Before you start!
+## Before you Start!
 
 You can accidentally destroy work with MQ. MQ puts you in a position where you're doing fairly complicated stuff to your uncommitted work. Certain operations make it easy to lose work. Watch your step.
 
@@ -132,13 +132,13 @@ hg qrefresh -m "Bug 123456: A brief summary of the changes you have made."
 
 Note that `hg export qtip > ~/bug-123456-fix.patch` is not necessary since all the patches reside in the `.hg/patches` directory in your repository.
 
-## If you got yourself into trouble
+## If you got yourself into Trouble
 
-This you think that something has gone wrong, do this:
+If you think that something has gone wrong, do this:
 
-First check your patch queue: `hg qseries`. If that looks right, do a `hg diff` to see the latest changes which aren't in your patch yet. You can either add them to the patch using `hg qrefresh` or remove them with `hg revert --all`. Your best friend is the `hg out` command, it shows all the changesets you have locally which aren't in the pushed to the repository yet. If for some reason you committed a patch to push it \(using `hg qfinish`\), an action that only the sheriff does, or accidentally used `hg import` instead of `hg qimport`, `hg out` will show changes that are not controlled by patches in a MQ. In this case you can strip all changeset `hg out` shows using `hg strip -r` with the lowest revision shown. After that, do `hg update -C default`.
+First check your patch queue: `hg qseries`. If that looks right, do a `hg diff` to see the latest changes which aren't in your patch yet. You can either add them to the patch using `hg qrefresh` or remove them with `hg revert --all`. Your best friend is the `hg out` command, it shows all the changesets you have locally which aren't pushed to the repository yet. If for some reason you committed a patch to push it \(using `hg qfinish`\), an action that only the sheriff does, or accidentally used `hg import` instead of `hg qimport`, `hg out` will show changes that are not controlled by patches in a MQ. In this case you can strip all changeset `hg out` shows using `hg strip -r` with the lowest revision shown. After that, do `hg update -C default`.
 
-## Advanced usage
+## Advanced Usage
 
 Commands mentioned so far can be abbreviated, so `hg qser`, `hg qref`, etc.
 

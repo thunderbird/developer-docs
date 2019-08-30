@@ -46,12 +46,12 @@ This is the Try syntax try-comm-central understands:
   * `win32` 32-bit Windows
   * `win64` 64-bit Windows
   * `all` for all platforms
-* `-u` Unit test suites. The `-1proc` suffix tells the testing system you want single-process testing, which is the only sort Thunderbird currently has.
-  * `marionette` and `marionette-headless` Marionette
-  * `mochitest-thunderbird-1proc` Mochitest
-  * `mozmill-1proc` Mozmill
-  * `xpcshell-1proc` XPCShell
-  * `all` for all test suites
+* `-u` Unit test suites.
+  * `marionette` and `marionette-headless`
+  * `mochitest-thunderbird`
+  * `mozmill`
+  * `xpcshell`
+  * `all`
 * `--artifact` Artifact builds. See the [Artifact Builds page](../../the-basics/building-thunderbird/artifact-builds.md) for more information.
 
 ### Testing mozilla-central patches

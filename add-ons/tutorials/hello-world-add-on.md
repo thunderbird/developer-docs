@@ -205,4 +205,4 @@ Now if you look at the Developer Tools window, you should see something like the
 Try playing around with the popup.js script, changing the message or, if you are familiar with JavaScript - doing more interesting things. You can also change the content of the pop up window via `popup.html` and `popup.css`.
 
 If you want to do something more complicated, check out the MailExtension APIs via its documentation:
-
+[MailExtension APIs](https://thunderbird-webextensions.readthedocs.io/)

@@ -16,6 +16,8 @@ You _must_ switch from an RDF manifest \(`install.rdf`\) to a JSON manifest \(`m
     <em:description>Does a thing!</em:description>
     <em:version>1.0</em:version>
     <em:optionsURL>chrome://myextension/content/options.xul</em:optionsURL>
+    <em:optionsType>3</em:optionsType>
+    <em:iconURL>chrome://myextension/content/icon32x32.png</em:iconURL>
     <em:targetApplication>
       <Description>
         <em:id>{3550f703-e582-4d05-9a08-453d09bdfdc6}</em:id>
@@ -41,7 +43,9 @@ Becomes this JSON manifest:
   "name": "Extension",
   "description": "Does a thing",
   "version": "2.0",
-
+  "icons": {
+    "32": "content/icon32x32.png"
+  },
   "legacy": {
     "type" : "bootstrap",
     "options": {
@@ -52,9 +56,15 @@ Becomes this JSON manifest:
 }
 ```
 
+Detailed information about the possible config options for `manifest.json` can be found in the [MDN documentation](https://developer.mozilla.org/de/docs/Mozilla/Add-ons/WebExtensions/manifest.json).
+
 The `legacy` key enables Thunderbird’s legacy support, for bootstrap extension you have to set the `type` key to `bootstrap`.
 
-The shown example also specifies an optional `options` key to define the options page. The key `open_in_tab` is optional and defaults to a value of`false`. A value of`true` corresponds to optionsType 3 in the RDF manifest.
+{% hint style="warning" %}
+The URL for icons must no longer be full chrome URLs as before, but relative URLs and the entry point \(in the example above it is`content`\) must be defined in `chrome.manifest`.
+{% endhint %}
+
+The shown example also specifies an optional `options` key to define the options page. The key `open_in_tab`  is optional and defaults to a value of`false`. If your old RDF manifest included an `em:optionsType` of 3, you can set `open_in_tab` to `true`, to have your options opened again in a new tab instead of a new window.
 
 {% hint style="info" %}
 This example is only in English. You probably want to use translated strings in your manifest. Read [this MDN article about it](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Internationalization#Internationalizing_manifest.json). Unfortunately that means you now need two sets of translated strings, one \(that you already have\) for your extension and another for the manifest.

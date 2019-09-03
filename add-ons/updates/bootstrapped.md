@@ -16,7 +16,7 @@ You _must_ switch from an RDF manifest \(`install.rdf`\) to a JSON manifest \(`m
     <em:description>Does a thing!</em:description>
     <em:version>1.0</em:version>
     <em:optionsURL>chrome://myextension/content/options.xul</em:optionsURL>
-    <em:optionsType>3</em:optionsType>
+    <em:optionsType>3</em:optionsType><!-- Options in a tab -->
     <em:iconURL>chrome://myextension/content/icon32x32.png</em:iconURL>
     <em:targetApplication>
       <Description>

@@ -52,15 +52,15 @@ This action will install all the libraries and dependencies necessary to build T
 
 ### Missing libraries
 
-It could happen that some libraries will not be installed by the `bootstrap` command, specifically `Rust` and `Go`. Check if these packages are available in your system by running these commands in your terminal:
+It could happen that some libraries will not be installed by the `bootstrap` command, specifically those related to the `Rust` programming language. Check whether these packages are available in your system by running these commands in your terminal:
 
 * `which rustc`
 * `which cargo`
 
 If one or both commands return an empty output, you need to install them manually:
 
-* Install Rust: `curl https://sh.rustup.rs -sSf | sh`
-* Install C bindings: `cargo install cbindgen`
+* Install Rust and cargo (the Rust package manager): `curl https://sh.rustup.rs -sSf | sh`
+* Install cbindgen (tool that generates C bindings from Rust code): `cargo install cbindgen`
 
 {% hint style="info" %}
 If you get a `command not found` error while running `cargo`, but the command `which cargo` returns the location of the that package, it means you need to update your `PATH` inside your `.bashrc` file to include the `cargo` location:

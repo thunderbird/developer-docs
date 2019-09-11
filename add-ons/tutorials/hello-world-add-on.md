@@ -53,7 +53,7 @@ Your manifest.json file should look like this:
         "64": "images/internet.png",
         "32": "images/internet-32px.png",
         "16": "images/internet-16px.png"
-    },
+    }
 }
 ```
 {% endcode-tabs-item %}

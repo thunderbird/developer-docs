@@ -7,7 +7,7 @@ description: Tutorial on how to use Mercurial bookmarks and submit a patch to Bu
 This is a brief "quick start" guide to using Mercurial Bookmarks for Thunderbird development. For more in-depth documentation see the [Using Bookmarks](https://mozilla-version-control-tools.readthedocs.io/en/latest/hgmozilla/bookmarks.html) section of Mercurial for Mozillians and the [Bookmarks](https://www.mercurial-scm.org/wiki/Bookmarks) page on the Mercurial Wiki.
 
 {% hint style="info" %}
-If you have used git, it will help to know that bookmarks in Mercurial are very similar to _branches_ in git and involve similar workflows. \(Note that Mercurial's _branches_ are very different from git branches.\) You may find it helpful to search for a "Mercurial for Git Users" tutorial.
+If you have used git, it will help to know that bookmarks in Mercurial are very similar to _branches_ in git and involve similar workflows. \(Note that Mercurial's _branches_ are very different from git branches.\) You may find it helpful to learn more about the similarities and differences between Mercurial and Git. For example, see the in-depth discussion in [Mercurial for Git Users (and vice versa)](https://www.rath.org/mercurial-for-git-users-and-vice-versa.html).
 {% endhint %}
 
 Bookmarks are basically labels that point to a given changeset \(or a given "commit" in git terminology\). They can point to different changesets at different times \(more on this below\).

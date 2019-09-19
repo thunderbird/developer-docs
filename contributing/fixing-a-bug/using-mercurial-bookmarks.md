@@ -55,7 +55,7 @@ Use `hg log` to see examples of commit messages.
 9. Run `hg log` and note how the bookmark has moved to the changeset that you just committed.
 The active bookmark will automatically move to the most recent changeset as you commit your changes.
 That way you can make a series of commits and the bookmark will always point to the most recent one.
-10. You can use `hg commit --amend` to change your previous commit rather than making a new commit.
+10. You can use `hg commit --amend` to modify the current changeset rather than making a new one.
 
 ## Creating a Patch to upload to Bugzilla
 
@@ -93,4 +93,110 @@ you may want to go back to working on feature B.
 To do that you would run `hg update feature-B`.
 That updates your working directory to the `feature-B` changeset
 and makes `feature-B` the active bookmark.
+
+## Rebasing Before Uploading to Bugzilla
+
+Say you are ready to export one or more patches to upload to Bugzilla.
+Often other changes will have landed in the Thunderbird code base
+since you started your work.
+In that case it is best to make sure that your changes will still apply
+to the current state of comm-central.
+We can do that using `hg rebase`.
+
+1. Pull down any new changesets with `hg pull`.
+2. Use `hg log` to see if there are new changesets and
+get the number (or the hash) of the first changeset
+from the newly pulled changesets.
+Let's say its number is 54321.
+3. Rebase your branch on to the newest changeset
+with the command `hg rebase -b my-bookmark-name -d 54321`.
+The `-b` is for bookmark and the `-d` is for destination.
+We are rebasing the changesets from the bookmark `my-bookmark-name`
+onto the destination changeset `54321`.
+
+For example, you have a series of changesets like so:
+
+```
+  A -> B -> C -> D -> E
+```
+
+Where C, D, and E are new changesets you have created,
+and your bookmark "my-bookmark-name" points to changeset E.
+
+Then, after you do `hg pull` you have this:
+
+```
+  A -> B -> F -> G -> H
+        \
+         C -> D -> E
+```
+
+Where F, G, and H are changesets that have been added to comm-central
+since you started working on your changes in C, D, and E.
+
+Then, after you do `hg rebase -b my-bookmark-name -d tip` you have:
+
+```
+  A -> B -> F -> G -> H -> C2 -> D2 -> E2
+```
+
+Where Mercurial has re-applied C on top of H,
+then D on top of C2,
+then E on top of D2.
+
+Now you know your changesets will apply to the current state of
+comm-central and you can export them by doing
+`hg export --rev NNN > my-patch-file.patch`
+for each of C2, D2, and E2,
+where NNN is the number (or hash) for the changeset.
+
+Rebasing can be useful in other situations too.
+Another variation is `hg rebase -s 44444 -d 54321`.
+Where `-s` indicates a source changset.
+That will apply the source changeset
+on top of the destination changeset.
+
+So, in the example above, if changeset C had the number 44444,
+then `hg rebase -s 44444 -d 54321`
+would do the same thing as `hg rebase -b my-bookmark-name -d 54321`.
+
+### Merge Conflicts When Rebasing
+
+What if there are "merge conflicts"?
+Say, in the example above,
+what if the same lines of a given file
+were changed in different ways by both changesets H and D,
+and Mercurial couldn't figure out what to do?
+
+In that case, Mercurial will pause the rebase operation and
+guide you through the process of resolving the conflicts.
+
+First Mercurial will tell you which files have conflicts.
+Open those files in your editor to fix the conflicts manually.
+There you will find something like the following,
+where you can see the two versions of the code that conflict:
+
+```
+<<<<<<< local
+        // These are lines that were changed by changeset H!
+        anAwesomeFunction(foo);
+=======
+        // But in changeset D they were changed in a different way!
+        anEndearingFunction(bar);
+>>>>>>> other
+```
+
+Edit those lines to resolve the conflict,
+so that the code is what it should be after changeset D.
+Once all such conflicts are fixed, save the file(s).
+
+Then back in the terminal run the command `hg resolve --mark`
+to mark the conflicts as resolved.
+
+And then do `hg rebase --continue` and Mercurial will continue
+the rebase operation.
+
+To get back to the state of things
+before the rebase operation started,
+do `hg rebase --abort`.
 

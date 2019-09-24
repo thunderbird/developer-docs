@@ -46,7 +46,7 @@ Let's assume the last published legacy version of your add-on for Thunderbird 60
 
 ## Testing your Add-on with Future Versions of Thunderbird
 
-Get the [release candidate of TB68](https://ftp.mozilla.org/pub/thunderbird/candidates/68.0-candidates/), to test your updated add-on with the next ESR release of Thunderbird.
+Get the [release version of TB 68](https://ftp.mozilla.org/pub/thunderbird/releases/68.1.0/) (the latest at the time of writing), to test your updated add-on with this ESR release of Thunderbird.
 
-You may also try Thunderbird 69, which is the current [Beta](https://www.thunderbird.net/de/channel/) or Thunderbird 70, which is the current [Nightly](https://archive.mozilla.org/pub/thunderbird/nightly/latest-comm-central-l10n/).
+You may also try [Thunderbird 70b2](https://ftp.mozilla.org/pub/thunderbird/releases/70.0b2/), which is the current [Beta](https://www.thunderbird.net/de/channel/), or later [nightlies](https://ftp.mozilla.org/pub/thunderbird/nightly/).
 

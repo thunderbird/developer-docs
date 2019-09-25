@@ -6,7 +6,7 @@ It’s difficult to say for sure what the future will hold for Thunderbird exten
 
 Thunderbird is based on the Firefox code, and as they are changing things all over the place, legacy add-ons will require constant adjustments and certain functionality will probably be removed at some point.
 
-Overlay extensions are problematic because so much of what they depended on no longer exists. Bootstrapped extensions are less of a problem but are still considered at-risk. 
+Overlay extensions are problematic because so much of what they depended on no longer exists. Bootstrapped extensions are less of a problem but are still considered at-risk.
 
 ## Required Changes
 
@@ -42,11 +42,11 @@ After updating your add-on for Thunderbird 68 and beyond, it will be treated as 
 It **is** possible to maintain a legacy version **and** a WebExtension version of your add-on in parallel on ATN! You just need to use a higher major version number for the WebExtension version of your add-on and keep the old major version number when releasing a new legacy version. Basically releasing them in two different branches.
 {% endhint %}
 
-Let's assume the last published legacy version of your add-on for Thunderbird 60 is `2.6`. Upload the new WebExtension version for Thunderbird 68+ as `3.0` and increase the version number with each new release of the WebExtension as usual. Every time you update the legacy version for Thunderbird 60, pick a version number from the `2.x` branch. 
+Let's assume the last published legacy version of your add-on for Thunderbird 60 is `2.6`. Upload the new WebExtension version for Thunderbird 68+ as `3.0` and increase the version number with each new release of the WebExtension as usual. Every time you update the legacy version for Thunderbird 60, pick a version number from the `2.x` branch.
 
 ## Testing your Add-on with Future Versions of Thunderbird
 
-Get the [release version of TB 68](https://ftp.mozilla.org/pub/thunderbird/releases/68.1.0/) (the latest at the time of writing), to test your updated add-on with this ESR release of Thunderbird.
+Get the [release version of TB 68](https://ftp.mozilla.org/pub/thunderbird/releases/68.1.0/) \(the latest at the time of writing\), to test your updated add-on with this ESR release of Thunderbird.
 
 You may also try [Thunderbird 70b2](https://ftp.mozilla.org/pub/thunderbird/releases/70.0b2/), which is the current [Beta](https://www.thunderbird.net/de/channel/), or later [nightlies](https://ftp.mozilla.org/pub/thunderbird/nightly/).
 

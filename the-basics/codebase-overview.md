@@ -64,9 +64,6 @@ Source code specific to the Mail and Newsgroups part of Thunderbird and SeaMonke
 **other-licenses**  
 Code that is not under the Mozilla license. See [http://www.mozilla.org/MPL/](http://www.mozilla.org/MPL/) for more info.
 
-**rdf**  
-The RDF file format.
-
 **suite**  
 SeaMonkey specific source code.
 

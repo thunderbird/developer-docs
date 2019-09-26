@@ -40,7 +40,7 @@ that points to the current changeset.
 Usually the name of the bookmark is related to the bug or feature you are working on.
 4. Run `hg bookmarks` to list all of your bookmarks and see which one is currently active.
 The one you just created should now be active.
-5. You can run `hg log` to see which bookmarks point to which changesets.
+5. You can run `hg log --graph` or `hg wip` to see which bookmarks point to which changesets.
 Or you may prefer using a GUI tool like
 [TortoiseHG](https://tortoisehg.bitbucket.io/)
 that provides a more graphical overview.
@@ -51,8 +51,9 @@ If you need to add a new file use `hg add some-filename` before committing.
 The `-m` is short for `--message` and lets you provide a commit message for your changeset.
 "Bug \#\#\#\#\# - fixing something amazing" is the format we recommend for the commit message,
 specifying the number of the Bug you're working on and a small description stating what you fixed.
-Use `hg log` to see examples of commit messages.
-9. Run `hg log` and note how the bookmark has moved to the changeset that you just committed.
+Use `hg log --graph` to see examples of commit messages.
+9. Run `hg log --graph` or `hg wip` and note how the bookmark has moved to the changeset that you
+just committed.
 The active bookmark will automatically move to the most recent changeset as you commit your changes.
 That way you can make a series of commits and the bookmark will always point to the most recent one.
 10. You can use `hg commit --amend` to modify the current changeset rather than making a new one.
@@ -76,7 +77,7 @@ is a typical use case for bookmarks.
 Say you have been working on feature A using the bookmark `feature-A` as described above,
 but now you want to switch to working on feature B. Here is how that can work.
 
-1. Run `hg log` and copy the identifying number of the first changeset
+1. Run `hg log --graph` or `hg wip` and copy the identifying number of the first changeset
 that comes _before_ your changesets for feature A.
 For example if you see "changeset:   26858:4a2e39cfc820",
 you can copy either the "26858" or the "4a2e39cfc820" to identify this changeset.
@@ -104,7 +105,7 @@ to the current state of comm-central.
 We can do that using `hg rebase`.
 
 1. Pull down any new changesets with `hg pull`.
-2. Use `hg log` to see if there are new changesets and
+2. Use `hg log --graph` or `hg wip` to see if there are new changesets and
 get the number (or the hash) of the first changeset
 from the newly pulled changesets.
 Let's say its number is 54321.

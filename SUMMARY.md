@@ -33,7 +33,7 @@
   * [Convert Bootstrapped Extension to MailExtension with legacy support](add-ons/tb68/bootstrapped.md)
   * [Changes in Thunderbird 61-68](add-ons/tb68/changes.md)
 * [Updating Legacy Extensions for Thunderbird 78](add-ons/tb78/README.md)
-  * [Changes in Thunderbird 69-70](add-ons/tb78/tb76.md)
+  * [Changes in Thunderbird 69-70](add-ons/tb78/changes.md)
 * [Tips and Tricks for Add-on Development](add-ons/tips-and-tricks.md)
 * [Tutorials and Examples](add-ons/tutorials/README.md)
   * [Hello World MailExtension](add-ons/tutorials/hello-world-add-on.md)

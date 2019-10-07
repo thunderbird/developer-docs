@@ -36,10 +36,6 @@ You can't use an artifact build if the code you are changing includes:
 * Some types of build configuration changes
 * … and probably others
 
-## Limitations of artifact builds
-
-You cannot run mozmill tests with an artifact build, but you can run marionette, mochitest, and xpcshell tests. \(See [MDN](https://developer.mozilla.org/en-US/docs/Mozilla/Developer_guide/Build_Instructions/Artifact_builds#Things_that_are_not_yet_supported).\)
-
 ## Modifying your build setup
 
 How you set up to build depends on your scenario. Many people will still need to do a complete build sometimes. In this case, make a copy of your existing `mozconfig` file and add these lines:
@@ -59,7 +55,7 @@ If you don't need to do a complete build, you can just add line 2 to your existi
 
 As stated earlier, the build process downloads the binary components from the build infrastructure. Here's where things can get a little bit messy.
 
-First, things can only be downloaded if they exist. So you need to make sure what you want is available. Mach will download from the _latest successful build_ that matches your current `comm-central` tree. This might not be the one you expect.
+First, things can only be downloaded if they exist. So you need to make sure what you want is available. Mach will download from the _latest successful non-nightly build_ that matches your current `comm-central` tree. This might not be the one you expect.
 
 Example: if your platform is 64-bit Linux and your tree was up-to-date at this point, which build will you get?
 

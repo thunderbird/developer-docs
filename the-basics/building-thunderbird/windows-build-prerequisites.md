@@ -14,6 +14,15 @@ You will need to be running a 64-bit version of Windows in order to build Thunde
 
 ![How System type appears in the About Settings page.](../../.gitbook/assets/windows-version-screen.png)
 
+### **Visual Studio**
+
+In order to get the necessary libraries in order to build Thunderbird, you will need to install Visual Studio - an IDE from Microsoft. [Download the free community edition here](https://visualstudio.microsoft.com/downloads/).
+
+During installation make sure the following workloads are checked:
+
+* "Desktop development with C++"
+* "Game development with C++"
+
 ### MAPI Headers
 
 Messaging Application Programming Interface \(**MAPI**\) is an API for Microsoft Windows ****which allows programs to become email-aware and the libraries that enable this are required to build Thunderbird on Windows. 
@@ -45,15 +54,6 @@ As of April 2019, 10.0.17134.0 is needed to compile Thunderbird. Assuming standa
 02/06/2009  17:02            18,277 MAPIX.h
 02/06/2009  17:02             5,012 MSPST.h
 ```
-
-### **Visual Studio**
-
-In order to get the necessary libraries in order to build Thunderbird, you will need to install Visual Studio - an IDE from Microsoft. [Download the free community edition here](https://visualstudio.microsoft.com/downloads/).
-
-During installation make sure the following workloads are checked:
-
-* "Desktop development with C++"
-* "Game development with C++"
 
 ### MozillaBuild Package
 

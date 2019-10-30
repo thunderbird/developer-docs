@@ -206,3 +206,7 @@ Try playing around with the popup.js script, changing the message or, if you are
 
 If you want to do something more complicated, check out the MailExtension APIs via its documentation: [MailExtension APIs](https://thunderbird-webextensions.readthedocs.io/)
 
+## Creating the add-on file
+
+Once your add-on is ready for release or if you want to share it with others, you need to create a single add-on file. Simply zip the content of your add-on directory and use the `xpi` file extension. That file can be installed from the gear menu in the Thunderbird Add-On manager.
+

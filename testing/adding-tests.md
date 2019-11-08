@@ -21,8 +21,8 @@ A new directory needs some standard files: an ESLint configuration file if the d
 
 ### ESLint Configuration \(eslintrc.js\)
 
-{% code-tabs %}
-{% code-tabs-item title="eslintrc.js" %}
+{% tabs %}
+{% tab title="eslintrc.js" %}
 ```javascript
 module.exports = {
   // For XPCShell:
@@ -39,29 +39,29 @@ module.exports = {
   },
 };
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ### XPCShell test manifest \(xpcshell.ini\)
 
 The default section isn't even necessary here, but you probably want to add a `head.js` file if you're going to have more than one test.
 
-{% code-tabs %}
-{% code-tabs-item title="xpcshell.ini" %}
+{% tabs %}
+{% tab title="xpcshell.ini" %}
 ```text
 [default]
 
 [test_firstTest.js]
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ### Mochitest manifest \(browser.ini\)
 
 Mochitest needs some prefs set, or automated testing will fail.
 
-{% code-tabs %}
-{% code-tabs-item title="browser.ini" %}
+{% tabs %}
+{% tab title="browser.ini" %}
 ```text
 [default]
 prefs =
@@ -77,15 +77,15 @@ subsuite = thunderbird
 
 [browser_firstTest.js]
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ### Linking to manifests
 
 The next thing you need to do is tell mach about your new test manifest. In the nearest `moz.build` file, add these lines as appropriate:
 
-{% code-tabs %}
-{% code-tabs-item title="moz.build" %}
+{% tabs %}
+{% tab title="moz.build" %}
 ```python
 BROWSER_CHROME_MANIFESTS += [
     'test/browser/browser.ini',
@@ -94,8 +94,8 @@ XPCSHELL_TESTS_MANIFESTS += [
     'test/xpcshell/xpcshell.ini',
 ]
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ## Mozmill
 

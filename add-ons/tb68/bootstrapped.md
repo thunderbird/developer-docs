@@ -79,8 +79,8 @@ The changes made in Thunderbird for bootstrapped add-ons to use `manifest.json` 
 
 In the following example, `loadIntoWindow` is waiting for the window to be fully loaded and eventually calls `loadIntoWindowAfterWindowIsReady` to actually do something with it. There is no need to listen to any other load events outside of `loadIntoWindow`. This example also checks the state of already open windows during startup \(line 14\).
 
-{% code-tabs %}
-{% code-tabs-item title="bootstrap.js" %}
+{% tabs %}
+{% tab title="bootstrap.js" %}
 ```javascript
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
@@ -170,8 +170,8 @@ var WindowListener = {
 };
 
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 So you basically have to rename your current `loadIntoWindow` to `loadIntoWindowAfterWindowIsReady` and add the new asynchronous `loadIntoWindow` , to make sure to access the window only after it has been fully loaded.
 

@@ -27,8 +27,8 @@ Extensions require a manifest.json file that tells Thunderbird basic information
 
 Your manifest.json file should look like this:
 
-{% code-tabs %}
-{% code-tabs-item title="manifest.json" %}
+{% tabs %}
+{% tab title="manifest.json" %}
 ```javascript
 {
     "manifest_version": 2,
@@ -56,8 +56,8 @@ Your manifest.json file should look like this:
     }
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 #### Understanding the structure of manifest.json
 
@@ -88,8 +88,8 @@ Alternatively, you could supply an SVG file here, and it will be scaled correctl
 
 Our add-on is pretty simple, it just brings up an html page in a new tab in Thunderbird. Here we are going to create the page that is pulled up. Let's create popup.html in the `hello-world` directory alongside `manifest.json`.
 
-{% code-tabs %}
-{% code-tabs-item title="popup.html" %}
+{% tabs %}
+{% tab title="popup.html" %}
 ```markup
 <!DOCTYPE html>
 <html>
@@ -106,15 +106,15 @@ Our add-on is pretty simple, it just brings up an html page in a new tab in Thun
 </body>
 </html>
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ### popup.css
 
 Now we want to make the css file referenced in our html file. We'll call it `popup.css`. This is just for decoration of the page, we'll put it in the same folder.
 
-{% code-tabs %}
-{% code-tabs-item title="popup.css" %}
+{% tabs %}
+{% tab title="popup.css" %}
 ```css
 .popup-page {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -124,8 +124,8 @@ Now we want to make the css file referenced in our html file. We'll call it `pop
     padding: 30px;
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ### popup.js
 
@@ -133,15 +133,15 @@ At this point if you were to install the add-on it would perform its function - 
 
 In `popup.js` we will put the following code:
 
-{% code-tabs %}
-{% code-tabs-item title="popup.js" %}
+{% tabs %}
+{% tab title="popup.js" %}
 ```javascript
 // Below is what we'll log to the console.
 
 console.log('Hello, World! - from popup.js');
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 What our little script does is sends a message to the console each time we click on our add-on. We'll take a look at that in a moment when we try out our add-on. The first line is just a comment so we can remember what our code is doing.
 

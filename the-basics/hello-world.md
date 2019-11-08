@@ -28,8 +28,8 @@ As noted above, this is a JavaScript function that will create an alert that wil
 
 This is what it should look like in context:
 
-{% code-tabs %}
-{% code-tabs-item title="mailCore.js" %}
+{% tabs %}
+{% tab title="mailCore.js" %}
 ```javascript
 function openAboutSupport() {
   let tabmail = document.getElementById("tabmail");
@@ -41,8 +41,8 @@ function helloWorld(){
   alert('Hello, World!');
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ### Triggering Hello World
 
@@ -64,8 +64,8 @@ Once you found the `appmenu_emptyTrash` menuitem, insert the following code belo
 
 In context:
 
-{% code-tabs %}
-{% code-tabs-item title="mainPopupSet.inc.xul" %}
+{% tabs %}
+{% tab title="mainPopupSet.inc.xul" %}
 ```text
 <menuitem id="appmenu_emptyTrash"
           label="&emptyTrashCmd.label;"
@@ -74,8 +74,8 @@ In context:
           label="Hello World"
           oncommand="helloWorld();"/>
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ### Trying it Out
 

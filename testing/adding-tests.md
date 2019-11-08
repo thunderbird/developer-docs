@@ -17,30 +17,7 @@ This document doesn't cover actually writing tests, for that see these MDN pages
 
 Tests should be added to a directory near the code they are located. For example, code in `mail/components/extensions` is tested by tests in `mail/components/extensions/test`. Inside the `test` directory is a subdirectory named after the type of test: `browser` for Mozmill tests \(as in Firefox terms they are "browser-chrome" Mozmill tests\), and `xpcshell` or `unit` for XPCShell tests.
 
-A new directory needs some standard files: an ESLint configuration file if the directory is linted \(and it should be\), and a test manifest.
-
-### ESLint Configuration \(eslintrc.js\)
-
-{% tabs %}
-{% tab title="eslintrc.js" %}
-```javascript
-module.exports = {
-  // For XPCShell:
-  "extends": "plugin:mozilla/xpcshell-test",
-  // Or for Mochitest:
-  "extends": "plugin:mozilla/browser-test",
-
-  "rules": {
-    // If you want to name your test functions, which can be useful.
-    "func-names": "off",
-    // Automatically import globals from any head file,
-    // just ignore that this is set to "error". ;-)
-    "mozilla/import-headjs-globals": "error",
-  },
-};
-```
-{% endtab %}
-{% endtabs %}
+A new directory needs a test manifest:
 
 ### XPCShell test manifest \(xpcshell.ini\)
 
@@ -79,6 +56,18 @@ subsuite = thunderbird
 ```
 {% endtab %}
 {% endtabs %}
+
+For tests that need to load messages in the UI, add this pref:
+
+```text
+  browser.tabs.remote.autostart=false
+```
+
+For calendar mochitests, also add this pref so the tests don't fail on beta or ESR where they're packaged differently:
+
+```text
+  extensions.installDistroAddons=true
+```
 
 ### Linking to manifests
 

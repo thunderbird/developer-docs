@@ -20,7 +20,7 @@ Add-ons are **themes** that change the way Thunderbird looks or **extensions** t
 
 {% page-ref page="tutorials/hello-world-add-on.md" %}
 
-You can check out the MailExtensions APIs via its documentation here:
+You can find detailed information about the available APIs in the [MailExtensions API documentation](https://thunderbird-webextensions.readthedocs.io/).
 
 ### Legacy Extensions
 

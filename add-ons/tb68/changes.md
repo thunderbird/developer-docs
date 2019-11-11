@@ -116,8 +116,8 @@ Removed. Use
 
 All preference related XUL elements have been removed. If you have something like this in your add-on:
 
-{% code-tabs %}
-{% code-tabs-item title="preferences.xul" %}
+{% tabs %}
+{% tab title="preferences.xul" %}
 ```markup
 <?xml version="1.0"?>
 <?xml-stylesheet type="text/css" href="chrome://global/skin/"?>
@@ -152,13 +152,13 @@ All preference related XUL elements have been removed. If you have something lik
   </prefpane>
 </prefwindow>
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 it must be replaced by a `dialog` as follows:
 
-{% code-tabs %}
-{% code-tabs-item title="preferences.xul" %}
+{% tabs %}
+{% tab title="preferences.xul" %}
 ```markup
 <?xml version="1.0"?>
 <?xml-stylesheet type="text/css" href="chrome://global/skin/"?>
@@ -188,15 +188,15 @@ it must be replaced by a `dialog` as follows:
      type="application/javascript"/>          
 </dialog>
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 Note that the `DOCTYPE` changed and the `preference` attribute now contains the full ID of the preference. If you used more than one `prefpane` you need to rework the UI into [tabs](https://developer.mozilla.org/de/docs/Mozilla/Tech/XUL/tabbox).
 
 Furthermore, note the included JavaScript file [`preferencesBindings.js`](https://searchfox.org/mozilla-central/source/toolkit/content/preferencesBindings.js) at the bottom, which is mandatory to recreate the functionality of the `preference` attribute. It is also mandatory, that you include a custom JavaScript file \(as`preferences.js` in the above example\) afterwards, which defines the types of the used preferences \(which was formerly done inside the `preferences` tag\). The file can be as short as this:
 
-{% code-tabs %}
-{% code-tabs-item title="preferences.js" %}
+{% tabs %}
+{% tab title="preferences.js" %}
 ```javascript
 Preferences.addAll([
     { id: "extensions.nameOfAddon.pref1", type: "bool" },
@@ -204,13 +204,13 @@ Preferences.addAll([
     { id: "extensions.nameOfAddon.pref3", type: "int" },
 ]);
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 Per default, all preferences will be saved instantly after they have been changed. If you want to postpone saving until the user clicks the OK button, add a `type` attribute and a cancel button to the dialog:
 
-{% code-tabs %}
-{% code-tabs-item title="preferences.xul" %}
+{% tabs %}
+{% tab title="preferences.xul" %}
 ```markup
 <dialog    
    id="appPreferences"
@@ -218,8 +218,8 @@ Per default, all preferences will be saved instantly after they have been change
    buttons="accept, cancel"
    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 {% hint style="info" %}
 If you are doing or plan to do any advanced stuff with the preferences in JavaScript, like validating user entered values and such, it is recommended to abandon the usage of the `preference` attribute \(and `preferencesBindings.js`\) and directly use the [preferences service](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Reference/Interface/nsIPrefService) instead. Check out [options.xul](https://github.com/darktrojan/shrunked/blob/master/content/options.xul) and [options.js](https://github.com/darktrojan/shrunked/blob/master/content/options.js) of the Shrunked Image Resizer.

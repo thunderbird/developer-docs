@@ -28,8 +28,8 @@ As noted above, this is a JavaScript function that will create an alert that wil
 
 This is what it should look like in context:
 
-{% code-tabs %}
-{% code-tabs-item title="mailCore.js" %}
+{% tabs %}
+{% tab title="mailCore.js" %}
 ```javascript
 function openAboutSupport() {
   let tabmail = document.getElementById("tabmail");
@@ -41,8 +41,8 @@ function helloWorld(){
   alert('Hello, World!');
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ### Triggering Hello World
 
@@ -78,8 +78,8 @@ In context:
                label="Hello World!"
                oncommand="helloWorld();" />
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ### Trying it Out
 

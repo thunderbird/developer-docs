@@ -17,51 +17,28 @@ This document doesn't cover actually writing tests, for that see these MDN pages
 
 Tests should be added to a directory near the code they are located. For example, code in `mail/components/extensions` is tested by tests in `mail/components/extensions/test`. Inside the `test` directory is a subdirectory named after the type of test: `browser` for Mozmill tests \(as in Firefox terms they are "browser-chrome" Mozmill tests\), and `xpcshell` or `unit` for XPCShell tests.
 
-A new directory needs some standard files: an ESLint configuration file if the directory is linted \(and it should be\), and a test manifest.
-
-### ESLint Configuration \(eslintrc.js\)
-
-{% code-tabs %}
-{% code-tabs-item title="eslintrc.js" %}
-```javascript
-module.exports = {
-  // For XPCShell:
-  "extends": "plugin:mozilla/xpcshell-test",
-  // Or for Mochitest:
-  "extends": "plugin:mozilla/browser-test",
-
-  "rules": {
-    // If you want to name your test functions, which can be useful.
-    "func-names": "off",
-    // Automatically import globals from any head file,
-    // just ignore that this is set to "error". ;-)
-    "mozilla/import-headjs-globals": "error",
-  },
-};
-```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+A new directory needs a test manifest:
 
 ### XPCShell test manifest \(xpcshell.ini\)
 
 The default section isn't even necessary here, but you probably want to add a `head.js` file if you're going to have more than one test.
 
-{% code-tabs %}
-{% code-tabs-item title="xpcshell.ini" %}
+{% tabs %}
+{% tab title="xpcshell.ini" %}
 ```text
 [default]
 
 [test_firstTest.js]
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ### Mochitest manifest \(browser.ini\)
 
 Mochitest needs some prefs set, or automated testing will fail.
 
-{% code-tabs %}
-{% code-tabs-item title="browser.ini" %}
+{% tabs %}
+{% tab title="browser.ini" %}
 ```text
 [default]
 prefs =
@@ -77,15 +54,27 @@ subsuite = thunderbird
 
 [browser_firstTest.js]
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
+
+For tests that need to load messages in the UI, add this pref:
+
+```text
+  browser.tabs.remote.autostart=false
+```
+
+For calendar mochitests, also add this pref so the tests don't fail on beta or ESR where they're packaged differently:
+
+```text
+  extensions.installDistroAddons=true
+```
 
 ### Linking to manifests
 
 The next thing you need to do is tell mach about your new test manifest. In the nearest `moz.build` file, add these lines as appropriate:
 
-{% code-tabs %}
-{% code-tabs-item title="moz.build" %}
+{% tabs %}
+{% tab title="moz.build" %}
 ```python
 BROWSER_CHROME_MANIFESTS += [
     'test/browser/browser.ini',
@@ -94,8 +83,8 @@ XPCSHELL_TESTS_MANIFESTS += [
     'test/xpcshell/xpcshell.ini',
 ]
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ## Mozmill
 

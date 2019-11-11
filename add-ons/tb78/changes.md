@@ -14,6 +14,14 @@ Removed in TB70. Use
 <html:input type="number">
 ```
 
+### &lt;textbox&gt;
+
+Removed completely in TB71. Use
+
+```markup
+<html:input>
+```
+
 ## Changed API
 
 ### document.createElement\(\)

@@ -70,6 +70,10 @@ export PATH=$HOME/.cargo/bin:$PATH
 ```
 {% endhint %}
 
+{% hint style="warning" %}
+If you still are unable to find rustc and cargo via the ˋwhichˋ command after installing them, you may need to restart your session \(log out and back into your user account, or restart your computer\) to be able to see them.
+{% endhint %}
+
 ## You're all set
 
 Got back to the [Building Thunderbird](./#build-configuration) page and continue following the guide.

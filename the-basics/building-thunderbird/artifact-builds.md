@@ -97,5 +97,5 @@ try: -b o -p linux64,macosx64-shippable,win64 -u all --artifact
 
 \(Debug builds also work but you'd specify just `macosx64` in that case.\)
 
-You can \(and should in a lot of cases\) specify a mozilla-central revision to build from, by editing the file `.gecko_rev.yml`, replacing `default` with the revision you need.
+You can \(and should in a lot of cases\) specify a mozilla-central revision to build from, by editing the file `.gecko_rev.yml`, replacing `default` with the revision you need. If you don't, the Try server will use the latest mozilla-central revision, which may or may not be the same one used for the latest comm-central build.
 

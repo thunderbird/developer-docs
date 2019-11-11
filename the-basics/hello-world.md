@@ -46,33 +46,37 @@ function helloWorld(){
 
 ### Triggering Hello World
 
-For this tutorial we are going to create a new menu item in the app menu \(often called the hamburger menu\) to call our `helloWorld()` function in `mailCore.js`.
+For this tutorial we are going to create a new menu item in the App Menu \(often called the hamburger menu\) to call our `helloWorld()` function in `mailCore.js`.
 
 {% hint style="info" %}
 For this part of the tutorial we are going to interact with a XUL file. **XUL** \(XML User Interface Language\) is Mozilla's XML-based language for building user interfaces of applications.
 {% endhint %}
 
-In the same directory that we found `mailCore.js` - we are going to open the file `mainPopupSet.inc.xul` and find the `"appmenu_emptyTrash"` menuitem \(you'll likely want to use **Ctrl+F** again to find it\).
+In the directory: `comm -> mail -> components -> customizableui -> content` - we are going to open the file `panelUI.inc.xul` and find the `"appmenu_help"` toolbarbutton \(you'll likely want to use **Ctrl+F** again to find it\).
 
-Once you found the `appmenu_emptyTrash` menuitem, insert the following code below it:
+Once you found the `appmenu_help` toolbarbutton, insert the following code below it:
 
 ```text
-<menuitem id="helloWorld"
-          label="Hello World"
-          oncommand="helloWorld();"/>
+<toolbarbutton id="hello_world"
+               class="subviewbutton"
+               label="Hello World!"
+               oncommand="helloWorld();" />
 ```
 
 In context:
 
 {% code-tabs %}
-{% code-tabs-item title="mainPopupSet.inc.xul" %}
+{% code-tabs-item title="panelUI.inc.xul" %}
 ```text
-<menuitem id="appmenu_emptyTrash"
-          label="&emptyTrashCmd.label;"
-          command="cmd_emptyTrash"/>
-<menuitem id="helloWorld"
-          label="Hello World"
-          oncommand="helloWorld();"/>
+<toolbarbutton id="appmenu_help"
+               class="subviewbutton subviewbutton-iconic subviewbutton-nav"
+               label="&helpMenuWin.label;"
+               closemenu="none"
+               oncommand="PanelUI.showSubView('appMenu-helpView', this)"/>
+<toolbarbutton id="hello_world"
+               class="subviewbutton"
+               label="Hello World!"
+               oncommand="helloWorld();" />
 ```
 {% endcode-tabs-item %}
 {% endcode-tabs %}
@@ -83,11 +87,11 @@ Make sure all your work is saved and then you can build Thunderbird using the `.
 
 Click to open the App Menu on the right hand side and you should see "Hello World" \(pictured below\):
 
-![Hello World in the App Menu](../.gitbook/assets/hello_world_element.png)
+![Hello World in the App Menu](../assets/hello_world_menu_item.png)
 
 When you click on the "Hello World" menu item, you should get an alert prompt \(pictured below\):
 
-![](../.gitbook/assets/hello-world-javascript-alert%20%281%29.png)
+![](../assets/hello_world_pop_up.png)
 
 If that alert window appears when you click the menu item then it works!
 

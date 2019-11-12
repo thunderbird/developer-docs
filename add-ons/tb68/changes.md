@@ -28,9 +28,11 @@ A bunch of global variables available in some window scopes were removed. If you
 
 XBL is on death row. Many XBL bindings have been replaced or simply no longer exist. The remainder are being removed. This may result in slight behaviour changes for some UI components.
 
-With [this](https://bugzilla.mozilla.org/buglist.cgi?o1=equals&v1=1484976&f1=blocked) query, you can see all the bugs related to de-xbl-ing Thunderbird, and see how the removal of each binding is handled.
+With [this query](https://bugzilla.mozilla.org/buglist.cgi?o1=equals&v1=1484976&f1=blocked) \([↗](https://bugzilla.mozilla.org/buglist.cgi?o1=equals&v1=1484976&f1=blocked)\), you can see all the bugs related to de-xbl-ing Thunderbird, and see how the removal of each binding is handled.
 
-If you have your own XBL bindings, you should get rid of them. Mostly the Firefox and Thunderbird teams are using [custom elements](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Custom_Elements) instead.
+{% hint style="info" %}
+If you have your own XBL bindings, you can convert them to [custom elements](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Custom_Elements) \([↗](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Custom_Elements)\). Here are some notes on the process of[ converting an XBL binding into a custom element](https://wiki.mozilla.org/Thunderbird/de-xbl) \([↗](https://wiki.mozilla.org/Thunderbird/de-xbl)\).
+{% endhint %}
 
 ## Removed XUL elements
 
@@ -70,7 +72,7 @@ Removed. Use
 
 All `<listbox>` related elements have been removed. Use[`<richlistbox>`](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XUL/richlistbox) instead. A `<richlistbox>` does not support cells or columns, just one `<richlistitem>` per row \(which can contain multiple other elements like `hbox`, `vbox`, `label`or `image` elements\)
 
-Furthermore, dedicated `listbox`methods have been removed and can be replaced as follows:
+Furthermore, a few dedicated `listbox/richtlistbox`methods have been removed and can be replaced as follows:
 
 * `listbox.appendItem(label, value)`:
 

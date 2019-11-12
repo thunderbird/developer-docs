@@ -56,7 +56,7 @@ In the directory: `comm -> mail -> components -> customizableui -> content` - we
 
 Once you found the `appmenu_help` toolbarbutton, insert the following code below it:
 
-```text
+```markup
 <toolbarbutton id="hello_world"
                class="subviewbutton"
                label="Hello World!"
@@ -65,9 +65,9 @@ Once you found the `appmenu_help` toolbarbutton, insert the following code below
 
 In context:
 
-{% code-tabs %}
-{% code-tabs-item title="panelUI.inc.xul" %}
-```text
+{% tabs %}
+{% tab title="panelUI.inc.xul" %}
+```markup
 <toolbarbutton id="appmenu_help"
                class="subviewbutton subviewbutton-iconic subviewbutton-nav"
                label="&helpMenuWin.label;"
@@ -87,11 +87,11 @@ Make sure all your work is saved and then you can build Thunderbird using the `.
 
 Click to open the App Menu on the right hand side and you should see "Hello World" \(pictured below\):
 
-![Hello World in the App Menu](../assets/hello_world_menu_item.png)
+![Hello World in the App Menu](../.gitbook/assets/hello_world_menu_item.png)
 
 When you click on the "Hello World" menu item, you should get an alert prompt \(pictured below\):
 
-![](../assets/hello_world_pop_up.png)
+![](../.gitbook/assets/hello_world_pop_up.png)
 
 If that alert window appears when you click the menu item then it works!
 

@@ -20,7 +20,7 @@ Add-ons are **themes** that change the way Thunderbird looks or **extensions** t
 
 {% page-ref page="../add-on-examples/hello-world-add-on.md" %}
 
-You can find detailed information about the available APIs in the [MailExtensions API documentation](https://thunderbird-webextensions.readthedocs.io/).
+You can find detailed information about the available APIs in the [MailExtensions API documentation](https://thunderbird-webextensions.readthedocs.io/) \([↗](https://thunderbird-webextensions.readthedocs.io/)\).
 
 ### Legacy Extensions
 
@@ -35,12 +35,14 @@ The original type of extension for Thunderbird and Firefox. This type uses docum
 Uses a bootstrap file \(`bootstrap.js`\) as an entry point to the extension. The file defines four methods \(`install`, `uninstall`, `startup`, and `shutdown`\) from which all extension behaviour is controlled. This type of extension can be installed or shut down without restarting Thunderbird, so it’s sometimes called a “restartless” extension. Also uses an RDF manifest \(`install.rdf`\).
 
 {% hint style="danger" %}
-Since Thunderbird 60 was released, there have been many major changes to Thunderbird’s core. **Almost every extension will require modifications for compatibility with the next Thunderbird, 68**. Some changes are trivial, others not.
+Since Thunderbird 60 was released, there have been many major changes to Thunderbird’s core. **Almost every extension will require modifications for compatibility with newer versions of Thunderbird**. Some changes are trivial, others not.
 {% endhint %}
 
-If you are currently maintaining a legacy extension please consider checking out our guide on updating extensions for Thunderbird 68:
+If you are currently maintaining a legacy extension please consider checking out our guides on updating extensions for Thunderbird 68 and Thunderbird 78:
 
 {% page-ref page="tb68/" %}
+
+{% page-ref page="tb78/" %}
 
 ## Themes
 

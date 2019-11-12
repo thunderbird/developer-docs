@@ -18,7 +18,7 @@ Add-ons are **themes** that change the way Thunderbird looks or **extensions** t
 **From Thunderbird 68 onward, new extensions should be built as MailExtensions to ensure future compatibility. To get you started, we have put together a tutorial:**
 {% endhint %}
 
-{% page-ref page="tutorials/hello-world-add-on.md" %}
+{% page-ref page="../add-on-examples/hello-world-add-on.md" %}
 
 You can find detailed information about the available APIs in the [MailExtensions API documentation](https://thunderbird-webextensions.readthedocs.io/).
 

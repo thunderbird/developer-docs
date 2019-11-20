@@ -23,22 +23,19 @@ A new directory needs a test manifest:
 
 The default section isn't even necessary here, but you probably want to add a `head.js` file if you're going to have more than one test.
 
-{% tabs %}
-{% tab title="xpcshell.ini" %}
+{% code title="xpcshell.ini" %}
 ```text
 [default]
 
 [test_firstTest.js]
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 ### Mochitest manifest \(browser.ini\)
 
 Mochitest needs some prefs set, or automated testing will fail.
 
-{% tabs %}
-{% tab title="browser.ini" %}
+{% code title="browser.ini" %}
 ```text
 [default]
 prefs =
@@ -54,8 +51,7 @@ subsuite = thunderbird
 
 [browser_firstTest.js]
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 For tests that need to load messages in the UI, add this pref:
 
@@ -73,8 +69,7 @@ For calendar mochitests, also add this pref so the tests don't fail on beta or E
 
 The next thing you need to do is tell mach about your new test manifest. In the nearest `moz.build` file, add these lines as appropriate:
 
-{% tabs %}
-{% tab title="moz.build" %}
+{% code title="moz.build" %}
 ```python
 BROWSER_CHROME_MANIFESTS += [
     'test/browser/browser.ini',
@@ -83,8 +78,7 @@ XPCSHELL_TESTS_MANIFESTS += [
     'test/xpcshell/xpcshell.ini',
 ]
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 ## Mozmill
 

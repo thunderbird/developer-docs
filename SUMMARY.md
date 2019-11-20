@@ -44,6 +44,7 @@
 
 * [Hello World MailExtension](add-on-examples/hello-world-add-on.md)
 * [WebExtension Themes](add-on-examples/web-extension-themes.md)
+* [More Examples](https://github.com/thundernest/sample-extensions)
 
 ## Add-on Resources
 

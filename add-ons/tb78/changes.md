@@ -6,14 +6,6 @@ The changes are grouped by category and are listed in the order we became aware 
 
 ## Removed XUL elements
 
-### &lt;textbox type="number"&gt;
-
-Removed in TB70. Use
-
-```markup
-<html:input type="number">
-```
-
 ### &lt;textbox&gt;
 
 Removed completely in TB71. Use
@@ -21,6 +13,23 @@ Removed completely in TB71. Use
 ```markup
 <html:input>
 ```
+
+All former values of the `type` parameter of the `textbox` element are supported by `html:input` as well. For proper styling include the following css file: `chrome://messenger/skin/input-fields.css` 
+
+The `flex` parameter is no longer supported and should be removed.  Attach the `input-container` class to a surrounding `hbox` to force the input field to behave like a former `flex="1"` `textbox`.
+
+If the input fields context menu is not working, you need to include two JavaScript files by adding:
+
+```markup
+<script src="chrome://global/content/globalOverlay.js"/>
+<script src="chrome://global/content/editMenuOverlay.js.js"/>
+```
+
+{% hint style="info" %}
+JavaScript methods that are using `element.localName == "textbox"` , `getElementsByTagName("textbox")`or similar need to be updated as well.
+
+Visually compare the fields before and after the conversion to be sure the UI, sizing, and spacing doesn't change.
+{% endhint %}
 
 ## Changed API
 
@@ -40,7 +49,7 @@ The first parameter used to be an array and the second one its length. This leng
 
 To stay backward compatible, check the argument count of "createTransport". In case it is 4 is is the new interface, in case it is 5 you got the old interface. Alternatively, you may also check if the version of Thunderbird is 69 or later.
 
-```text
+```javascript
    if (transportService.createTransport.length === 4)
       return transportService.createTransport(((secure) ? ["starttls"] : []), host, port, proxyInfo);
 

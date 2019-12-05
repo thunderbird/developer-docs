@@ -56,17 +56,3 @@ make -C objdir/ SOLO_TEST=pref-window mozmill-one
 
 You can run these commands from anywhere, as long as the `-C` argument points to your objdir.
 
-### Calendar Mozmill Tests
-
-The mozmill tests for the Lightning extension are located in `calendar/test/mozmill`. Running them is the same as above, but the `-C` argument is different.
-
-```text
-make -C objdir/comm/calendar/test/mozmill SOLO_TEST=testAlarmDefaultValue.js mozmill-one
-```
-
-{% hint style="info" %}
-You may prefer to run tests using a profile stored in memory, rather than on the disk. Tests do a lot of file I/O, so running them with an in-memory profile can be faster.
-
-On Linux you can do this by setting the TEMP environment variable to `/dev/shm`, a filesystem stored in memory: run `export TEMP=/dev/shm` before running tests. All three test suites support this, except XPCShell when running more than one test for some reason.
-{% endhint %}
-

@@ -134,10 +134,15 @@ var WindowListener = {
 
   loadIntoWindowAfterWindowIsReady(window) {
     console.log("load (2/2): " + window.document.readyState);
-    let document = window.document;
-
-    // Take any steps to add UI or anything to the window
-    // document.getElementById() etc. will work here.
+    
+    // Check if the opened window is the one we want to modify.
+    if (window.document.documentElement
+                 .getAttribute("windowtype") === "mail:3pane") {
+      let document = window.document;
+  
+      // Take any steps to add UI or anything to the window
+      // document.getElementById() etc. will work here.        
+    }    
   },
 
   unloadFromWindow(window) {
@@ -154,11 +159,7 @@ var WindowListener = {
     let domWindow = xulWindow.QueryInterface(Ci.nsIInterfaceRequestor)
                              .getInterface(Ci.nsIDOMWindow);
 
-    // Check if the opened window is the one we want to modify.
-    if (domWindow.document.documentElement
-                 .getAttribute("windowtype") === "mail:3pane") {
-      this.loadIntoWindow(domWindow);
-    }
+    this.loadIntoWindow(domWindow);
   },
 
   onCloseWindow(xulWindow) {

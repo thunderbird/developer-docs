@@ -6,12 +6,18 @@ description: How to add your own tests for Thunderbird.
 
 Generally, tests live near the code they are testing, however Mozmill tests live in two particular directories.
 
-This document doesn't cover actually writing tests, for that see these MDN pages:
+This document doesn't cover actually writing tests, for that see this page for
+Mochitests:
+
+* [Writing Mochitest Tests](https://developer.thunderbird.net/testing/writing-mochitest-tests)
+
+And also these pages on MDN:
 
 * [Writing xpcshell-based unit tests](https://developer.mozilla.org/en-US/docs/Mozilla/QA/Writing_xpcshell-based_unit_tests)
 * [Mochitest](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/Mochitest)
 
-\(Just note that they're Firefox-centric and include some ancient ideas and practices.\)
+\(Just note that the MDN pages are Firefox-centric and include some ancient
+ideas and practices.\)
 
 ## XPCShell & Mochitest
 

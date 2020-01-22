@@ -28,6 +28,7 @@
 
 * [Running Tests](testing/running-tests.md)
 * [Adding Tests](testing/adding-tests.md)
+* [Writing Mochitest Tests](testing/writing-mochitest-tests.md)
 
 ## Add-ons
 

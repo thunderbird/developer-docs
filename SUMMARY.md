@@ -23,6 +23,7 @@
   * [Using Mercurial Bookmarks](contributing/fixing-a-bug/using-mercurial-bookmarks.md)
   * [Lint and Format Code](contributing/fixing-a-bug/lint-and-format-code.md)
   * [Try Server](contributing/fixing-a-bug/try-server.md)
+  * [Live Server](contributing/fixing-a-bug/live-server.md)
 
 ## Testing
 

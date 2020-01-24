@@ -358,8 +358,9 @@ If you do not want to be dependent on Lightning being installed, you need to inc
 
 Removed. Thunderbird now has fixed build in notification boxes, where notifications can be added. The following list shows how to access some of them:
 
-* Main window: `let notifyBox = specialTabs.msgNotificationBar;`
-* Message composer window: `let notifyBox = gNotification.notificationbox;`
+* Main window:  `let notifyBox = specialTabs.msgNotificationBar;`
+* Message composer window:  `let notifyBox = gNotification.notificationbox;`
+* Below the receipient list in the message composer window:  `let notifyBox = gMessageNotificationBar.msgNotificationBar;`
 * Most calendar dialogs: `let notifyBox = gNotification.notificationbox;`
 
 {% hint style="warning" %}
@@ -549,9 +550,9 @@ AddonManager.getAddonByID(addon_id).then(callback_function)
 
 ### nsIMsgAccountManager
 
-The `defaultAccount` member can (since TB 65) have a `null` value - if for some reason it doesn't have, or can't work out, the default account.
- 
-Hence you need to null-check it, and possibly handle not having an account at all (if in no other way than by an error message).
+The `defaultAccount` member can \(since TB 65\) have a `null` value - if for some reason it doesn't have, or can't work out, the default account.
+
+Hence you need to null-check it, and possibly handle not having an account at all \(if in no other way than by an error message\).
 
 ### nsIStringBundleService
 

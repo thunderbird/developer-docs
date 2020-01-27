@@ -31,6 +31,10 @@
 * [Adding Tests](testing/adding-tests.md)
 * [Writing Mochitest Tests](testing/writing-mochitest-tests.md)
 
+## Planning
+
+* [78+ Roadmap](planning/roadmap.md)
+
 ## Add-ons
 
 * [About Add-ons](add-ons/about-add-ons.md)

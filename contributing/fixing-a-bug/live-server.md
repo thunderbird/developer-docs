@@ -72,7 +72,7 @@ Be sure your commit message is clear and has been approved during review. The st
 * Run `hg pull` to download and apply the most recent changes.
 * Run `hg rebase -b my-bookmark-name -d XXX` to rebase your patches. Replace the XXX with the latest public revision.
 * Run `hg out -r my-bookmark-name` to see a list of patches that will be pushed to the Live server. **Check only the patches you intend to send are listed. Check your commit message\(s\) again.**
-* Run `hg push live-cc -r my-bookmark-name`to push your applied patches to comm-central. Always specify a bookmark or revision to sending more than one branch.
+* Run `hg push live-cc -r my-bookmark-name`to push your applied patches to comm-central. Always specify a bookmark or revision to avoid sending more than one branch.
 
 Take a look at the [TreeHerder](https://treeherder.mozilla.org/#/jobs?repo=comm-central) to see your push show up at the top of the list.
 

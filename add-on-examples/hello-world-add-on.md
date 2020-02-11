@@ -10,7 +10,7 @@ This tutorial is for building a MailExtension for **Thunderbird 68** or later.
 
 ## Thunderstorm
 
-This tutorial is based off of code that can be found, along with other tutorials and resources, in the Thunderstorm repository maintained by Thunderbird contributor Christopher Leidigh.
+This tutorial is based off of code that can be found, along with other tutorials and resources, in the [Thunderstorm repository](https://github.com/cleidigh/ThunderStorm) maintained by Thunderbird contributor Christopher Leidigh.
 
 ## Writing the Extension
 

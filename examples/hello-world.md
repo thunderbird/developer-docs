@@ -49,10 +49,10 @@ function helloWorld(){
 For this tutorial we are going to create a new menu item in the App Menu \(often called the hamburger menu\) to call our `helloWorld()` function in `mailCore.js`.
 
 {% hint style="info" %}
-For this part of the tutorial we are going to interact with a XUL file. **XUL** \(XML User Interface Language\) is Mozilla's XML-based language for building user interfaces of applications.
+For this part of the tutorial we are going to interact with a XHTML file.
 {% endhint %}
 
-In the directory: `comm -> mail -> components -> customizableui -> content` - we are going to open the file `panelUI.inc.xul` and find the `"appmenu_help"` toolbarbutton \(you'll likely want to use **Ctrl+F** again to find it\).
+In the directory: `comm -> mail -> components -> customizableui -> content` - we are going to open the file `panelUI.inc.xhtml` and find the `"appmenu_help"` toolbarbutton \(you'll likely want to use **Ctrl+F** again to find it\).
 
 Once you found the `appmenu_help` toolbarbutton, insert the following code below it:
 
@@ -66,7 +66,7 @@ Once you found the `appmenu_help` toolbarbutton, insert the following code below
 In context:
 
 {% tabs %}
-{% tab title="panelUI.inc.xul" %}
+{% tab title="panelUI.inc.xhtml" %}
 ```markup
 <toolbarbutton id="appmenu_help"
                class="subviewbutton subviewbutton-iconic subviewbutton-nav"

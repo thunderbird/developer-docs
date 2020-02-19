@@ -12,8 +12,7 @@ This provides a listing of maintenance and feature work wanted for Thunderbird 7
 
 The address book needs to a big time refresh. We will design the address book such that it could work as a general utility, not only inside Thunderbird although Thunderbird is the primary consumer of it.
 
-The new address book would live inside a tab, like calendar, tasks, and chat currently do. It will provide a sane internal API for accessing contacts, and add flexibility to what kind of data can be stored for a contact \(more than two email, oh yes!\), and contact tagging.  
-
+The new address book would live inside a tab, like calendar, tasks, and chat currently do. It will provide a sane internal API for accessing contacts, and add flexibility to what kind of data can be stored for a contact \(more than two email, oh yes!\), and contact tagging.
 
 After address book rewriting is done, it should be easier to add support for some long requested features, such as the below. 
 

@@ -10,8 +10,7 @@ This provides a listing of maintenance and feature work wanted for Thunderbird 7
 
 ### Address book rewrite \[TB78\]
 
-The address book needs to a big time refresh. We will design the address book such that it could work as a general utility, not only inside Thunderbird although Thunderbird is the primary consumer of it.  
-
+The address book needs to a big time refresh. We will design the address book such that it could work as a general utility, not only inside Thunderbird although Thunderbird is the primary consumer of it.
 
 The new address book would live inside a tab, like calendar, tasks, and chat currently do. It will provide a sane internal API for accessing contacts, and add flexibility to what kind of data can be stored for a contact \(more than two email, oh yes!\), and contact tagging.  
 
@@ -25,35 +24,29 @@ Tracked in [bug 841598](https://bugzilla.mozilla.org/show_bug.cgi?id=841598).
 
 ### Fluent migration \[TB78/TB2021\]
 
-For localization Firefox is moving \([https://arewefluentyet.com/](https://arewefluentyet.com/)\) to Fluent, and Thunderbird will follow. For the Thunderbird 78 timeframe, target migrating 30% of the localization.  
+For localization Firefox is moving \([https://arewefluentyet.com/](https://arewefluentyet.com/)\) to Fluent, and Thunderbird will follow. For the Thunderbird 78 timeframe, target migrating 30% of the localization.
 
-
-Firefox has officially deprecated the old style localization system since October 2019.  
-
+Firefox has officially deprecated the old style localization system since October 2019.
 
 This is tracked in [bug 1492751](https://bugzilla.mozilla.org/show_bug.cgi?id=1492751).
 
 ### Migration from XUL to HTML \[TB78\]
 
-Following Firefox, Thunderbird will also move away from XUL documents and towards top-level \(X\)HTML windows. Thunderbird has over 200 top level documents, so this is a significant effort. The Firefox team is planning to have the migration partly scripted, which will help in pulling it through.   
+Following Firefox, Thunderbird will also move away from XUL documents and towards top-level \(X\)HTML windows. Thunderbird has over 200 top level documents, so this is a significant effort. The Firefox team is planning to have the migration partly scripted, which will help in pulling it through. 
 
-
-In parallel, the conversion from individual XUL elements to corresponding HTML ones will continue.   
-
+In parallel, the conversion from individual XUL elements to corresponding HTML ones will continue. 
 
 Top level XUL-&gt;XHTML conversion is tracked in [bug 1572398](https://bugzilla.mozilla.org/show_bug.cgi?id=1572398).
 
 ### Protocol rewrites in JavaScript \[TB2021/TB2022\]
 
-Implement one or two protocols in JavaScript, and make it an option to use that implementation. Prime candidates are IMAP and SMTP.  
-
+Implement one or two protocols in JavaScript, and make it an option to use that implementation. Prime candidates are IMAP and SMTP.
 
 We should consider dropping support for Movemail.
 
 ### JMAP support \[TB2021/TB2022\]
 
-Implementing JMAP \(RFC 8620\) support at an early stage could be useful for getting experience in \(re-\)implementing protocols, without worrying to much about existing limitations, and at the same time obtain support for JMAP.   
-
+Implementing JMAP \(RFC 8620\) support at an early stage could be useful for getting experience in \(re-\)implementing protocols, without worrying to much about existing limitations, and at the same time obtain support for JMAP. 
 
 Tracked in [bug 1322991](https://bugzilla.mozilla.org/show_bug.cgi?id=1322991).
 
@@ -61,8 +54,7 @@ Tracked in [bug 1322991](https://bugzilla.mozilla.org/show_bug.cgi?id=1322991).
 
 #### Kill RDF \[TB68/TB78\]
 
-RDF removal has been in the works during the previous cycle, and it’s finally time to drop it. This makes folder-related code, and feeds related code easier to work with.   
-
+RDF removal has been in the works during the previous cycle, and it’s finally time to drop it. This makes folder-related code, and feeds related code easier to work with. 
 
 Tracked in [bug 420506](https://bugzilla.mozilla.org/show_bug.cgi?id=420506). DONE!
 
@@ -73,39 +65,33 @@ The odd Mork file/”database” format is very unapproachable, and hard to unde
 * Address book data: tracked in [bug 382878](https://bugzilla.mozilla.org/show_bug.cgi?id=382876)
 * Folder message indexing data \(cache\): tracked in [bug 1572000](https://bugzilla.mozilla.org/show_bug.cgi?id=1572000)
 
-To enable data migration, Mork removal would happen once a major Mork-free release is done.
-
+To enable data migration, Mork removal would happen once a major Mork-free release is done.  
   
  Tracked in [bug 453975](https://bugzilla.mozilla.org/show_bug.cgi?id=453975).
 
 #### Global Index for Messages \[TB2021\]
 
-Currently the index of messages is per folder \(and based on Mork\). This causes severe limitations to implementing a proper conversation view of messages. Especially for Gmail, there is also message duplication on the file system since their All Mail folder has all mails, but the other folders do not know about this… For our special message views \(Unified Inbox etc.\) and search folders, lack of cross folder database makes the implementations far more complicated than they should be.  
-
+Currently the index of messages is per folder \(and based on Mork\). This causes severe limitations to implementing a proper conversation view of messages. Especially for Gmail, there is also message duplication on the file system since their All Mail folder has all mails, but the other folders do not know about this… For our special message views \(Unified Inbox etc.\) and search folders, lack of cross folder database makes the implementations far more complicated than they should be.
 
 This work is tracked in [bug 1572000](https://bugzilla.mozilla.org/show_bug.cgi?id=1572000).
 
 #### Progress with libmime removal  \[TB78/TB2021/TB2022\]
 
-Libmime is the cruftiest piece of code we have: it is hard to understand and its maintenance is error prone. The library is used all over the place, so to the extent it’s possible we should start converting code over one part at a time.  A number of years back the MIME header parsing was converted over to using the JSMime JavaScript library.  
+Libmime is the cruftiest piece of code we have: it is hard to understand and its maintenance is error prone. The library is used all over the place, so to the extent it’s possible we should start converting code over one part at a time.  A number of years back the MIME header parsing was converted over to using the JSMime JavaScript library.
 
-
-Message sending is very entangled with libmime. For Thunderbird 78 we will finish the rewrite of sending in JavaScript. This work is tracked in [bug 1211292](https://bugzilla.mozilla.org/show_bug.cgi?id=1211292).   
-
+Message sending is very entangled with libmime. For Thunderbird 78 we will finish the rewrite of sending in JavaScript. This work is tracked in [bug 1211292](https://bugzilla.mozilla.org/show_bug.cgi?id=1211292). 
 
 For Thunderbird 78, we should also get started with using JavaScript for the body parsing of MIME. Add an option to use it so dogfooding can find problems. Once successful, turn the new parsing on as default for the next major release. After default for a release, drop libmime.
 
 #### Investigate Microsoft TNEF support  \[TB78/TB2021\]
 
-Investigate if integrating TNEF support can be integrated cleanly enough. If it can, we could integrate it. If not, we should take the needed steps to make it possible.  
-
+Investigate if integrating TNEF support can be integrated cleanly enough. If it can, we could integrate it. If not, we should take the needed steps to make it possible.
 
 Tracked in [bug 77811](https://bugzilla.mozilla.org/show_bug.cgi?id=77811).
 
 #### Maildir \[TB78\]
 
-Our maildir support is pretty good by now. Finish up the last things needed to have maildir \(our one file per message storage\) on by default for new accounts.  
-
+Our maildir support is pretty good by now. Finish up the last things needed to have maildir \(our one file per message storage\) on by default for new accounts.
 
 Tracked in bug [bug 845952](https://bugzilla.mozilla.org/show_bug.cgi?id=845952)
 
@@ -133,8 +119,7 @@ Tracked in [bug 1574129](https://bugzilla.mozilla.org/show_bug.cgi?id=1574129)
 
 #### Moving chrome UI to content UI \[TB78/TB2021\]
 
-Thunderbird top level UI is currently part of the chrome UI. With the target of becoming a super fat privileged web application eventually, this needs to be rethought: web applications live in content. It’s also become clear that the platform support for many features one can use in a web page using web technologies is implemented in a way essentially requiring the “page” to be located in a browser element \(I’m looking at you, form controls and validation\), and accessed through http \(localStorage etc.\). We should investigate to what degree we can move our chrome UI basically into a tabbrowser. Making sure we’re treated as an http accessed web page will enable many features without hacks: localStorage, IndexedDB, CSP etc. - even simple functionality such as opening new windows have caused breakage recently.   
-
+Thunderbird top level UI is currently part of the chrome UI. With the target of becoming a super fat privileged web application eventually, this needs to be rethought: web applications live in content. It’s also become clear that the platform support for many features one can use in a web page using web technologies is implemented in a way essentially requiring the “page” to be located in a browser element \(I’m looking at you, form controls and validation\), and accessed through http \(localStorage etc.\). We should investigate to what degree we can move our chrome UI basically into a tabbrowser. Making sure we’re treated as an http accessed web page will enable many features without hacks: localStorage, IndexedDB, CSP etc. - even simple functionality such as opening new windows have caused breakage recently. 
 
 For add-ons wanting good access to modifying the UI, this would be a significant win, since WebExtensions are primarily designed for modifying content. 
 
@@ -148,8 +133,7 @@ Requires investigation of feasibility. But can fairly easily be done is small pi
 
 ### PGP support \[TB78\]
 
-Encryption is an increasingly important part of email communication. Thunderbird will include native support for reading and sending PGP encrypted email. We want to enable doing many of the things Enigmail does, but old baggage like writing inline PGP and support for arcane encryption mechanisms will not be carried over.  
-
+Encryption is an increasingly important part of email communication. Thunderbird will include native support for reading and sending PGP encrypted email. We want to enable doing many of the things Enigmail does, but old baggage like writing inline PGP and support for arcane encryption mechanisms will not be carried over.
 
 Tracked in [bug 22687](https://bugzilla.mozilla.org/show_bug.cgi?id=22687).
 
@@ -157,8 +141,7 @@ Tracked in [bug 22687](https://bugzilla.mozilla.org/show_bug.cgi?id=22687).
 
 #### Libical removal \[TB78\]
 
-Putting some effort into making ical.js performant enough will let us drop our very old fork of the C++ libical and focus on making the JavaScript implementation great. For 78 ical.js would be on by default, but the old libical could be enabled if necessary. After Thunderbird 78, libical will be removed completely.  
-
+Putting some effort into making ical.js performant enough will let us drop our very old fork of the C++ libical and focus on making the JavaScript implementation great. For 78 ical.js would be on by default, but the old libical could be enabled if necessary. After Thunderbird 78, libical will be removed completely.
 
 Tracked in [bug 978570](https://bugzilla.mozilla.org/show_bug.cgi?id=978570).
 
@@ -170,22 +153,19 @@ Requires investigation of feasibility.
 
 #### Integrate Lightning to core \[TB78\]
 
-Calendar is de facto an integrated part of the Thunderbird functionality. Lightning would be fully merged into the code base and no longer treated as an add-on.  
-
+Calendar is de facto an integrated part of the Thunderbird functionality. Lightning would be fully merged into the code base and no longer treated as an add-on.
 
 Tracked in [bug 1493008](https://bugzilla.mozilla.org/show_bug.cgi?id=1493008).
 
 #### XPCOM removals \[TB78/TB2021\]
 
-Remove use of all calendar XPCOM components and replace them with simple JavaScript classes if possible. Reduce or eliminate XPCOM dependencies.  
-
+Remove use of all calendar XPCOM components and replace them with simple JavaScript classes if possible. Reduce or eliminate XPCOM dependencies.
 
 Ongoing effort.
 
 #### Self contained Calendar and Task tabs \[TB2021\]
 
-Make the calendar and tasks tabs self contained.   
-
+Make the calendar and tasks tabs self contained. 
 
 ### Compose window redesign and improvements \[TB78\]
 
@@ -206,8 +186,7 @@ The chat UI needs to be modernized and less IRC-centric. IRC and similar are com
 
 #### Matrix support
 
-[The Matrix network](https://matrix.org/) should be properly supported , allowing a Thunderbird teams type setup.   
-
+[The Matrix network](https://matrix.org/) should be properly supported , allowing a Thunderbird teams type setup. 
 
 Tracked in [bug 1572636](https://bugzilla.mozilla.org/show_bug.cgi?id=1572636).
 
@@ -232,8 +211,7 @@ For things like simple votes, be smart and let a \[vote\]\(maybe as Emoji\) in t
 
 ### Data fetcher \[TB???\]
 
-Support the use case where a mail arrives only to give you a notification and a link. Allow Thunderbird to go grab the relevant data from that link and put it back into a message for convenient reading and archiving.  
-
+Support the use case where a mail arrives only to give you a notification and a link. Allow Thunderbird to go grab the relevant data from that link and put it back into a message for convenient reading and archiving.
 
 This is enabling the global data stream to be inside Thunderbird without much knowledge about the external forums etc. The feature will require some technical knowledge at least at first, but recipes on how to get data for various sources could later be created and shared by power users.
 
@@ -243,11 +221,9 @@ Add real support to import/export profiles, or single accounts. Look at the impo
 
 ### IMAP notes \[TB2021\]
 
-Storing text notes on the IMAP server would be useful, and the feature is low hanging fruit not necessarily very hard to implement.   
+Storing text notes on the IMAP server would be useful, and the feature is low hanging fruit not necessarily very hard to implement. 
 
-
-Tracked in [bug 713843](https://bugzilla.mozilla.org/show_bug.cgi?id=713843).  
-
+Tracked in [bug 713843](https://bugzilla.mozilla.org/show_bug.cgi?id=713843).
 
 ### Improved mailing list handling \[TB78\]
 
@@ -259,8 +235,7 @@ Better support for mailing list handling:
 
 ### Filtering rewrite in JavaScript \[TB78\]
 
-Rewrite into JavaScript. Move to async operations once that’s done.  
-
+Rewrite into JavaScript. Move to async operations once that’s done.
 
 Tracked in [bug 1574136](https://bugzilla.mozilla.org/show_bug.cgi?id=1574136).
 

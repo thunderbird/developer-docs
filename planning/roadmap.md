@@ -187,7 +187,7 @@ Ongoing effort.
 Make the calendar and tasks tabs self contained.   
 
 
-Compose window redesign and improvements \[TB78\]
+### Compose window redesign and improvements \[TB78\]
 
 * Implement a more moderning addressing experience: [bug 440377](https://bugzilla.mozilla.org/show_bug.cgi?id=440377).
 * oEmbed/Twitter Card/Open Graph support: [bug 1572648](https://bugzilla.mozilla.org/show_bug.cgi?id=1572648)
@@ -218,10 +218,8 @@ Mozilla is going to stop using IRC for developer communication. The decision on 
 ### Smart workflow widgets \[TB78/TB2021\]
 
 Thunderbird should support smart widgets for voting, time scheduling. These could be built around micro-formats and for teams using Thunderbird only everything would work without problems \(all over email\). If someone uses another client, some manual actions would still be required. Fallback would still be pure text, so adding more structural data could only be a winning situation.  
-
-
-One way this would work for events, is that we mark up the emails we send out with some structural data, say an hCalendar. When replying to a message, we check if the original mail had included an hCalendar, and can offer quick options to reply and including that for that hCalendar event you are an attendee. It can also link to the UUID of an existing event in your calendar and offer response options related to that, e.g. check if you’d have conflicts in your schedule.  
-
+  
+One way this would work for events, is that we mark up the emails we send out with some structural data, say an hCalendar. When replying to a message, we check if the original mail had included an hCalendar, and can offer quick options to reply and including that for that hCalendar event you are an attendee. It can also link to the UUID of an existing event in your calendar and offer response options related to that, e.g. check if you’d have conflicts in your schedule.
 
 For things like simple votes, be smart and let a \[vote\]\(maybe as Emoji\) in the subject mean there’s a vote going on. Upon request by the user, create a voting summary and clean it up into a nicely formatted output. Automate the things that take some time to copy-paste from many mails, but could easily be automated. Make the Thunderbird users look good.
 

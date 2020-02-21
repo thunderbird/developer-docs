@@ -27,7 +27,7 @@ Thunderbird uses Mozilla's Bugzilla platform to report and track bugs. The site 
 
 ### [Thundernest on GitHub](https://github.com/thundernest)
 
-If you want to contribute to the Thunderbird website, this documentation, or addons.thunderbird.net - you can find those repositories and their issue trackers on the Thundernest GitHub page. You'll need a GitHub account ot contribute there.
+If you want to contribute to the Thunderbird website, this documentation, or addons.thunderbird.net - you can find those repositories and their issue trackers on the Thundernest GitHub page. You'll need a GitHub account to contribute there.
 
 ## Getting Plugged into the Community
 
@@ -41,7 +41,7 @@ If you want to participate in discussions about Thunderbird development, there a
 2. [**Maildev**](http://lists.thunderbird.net/mailman/listinfo/maildev_lists.thunderbird.net)**:** A moderated mailing list for discussing engineering plans for Thunderbird. It is a place where you can raise questions and ideas for core Thunderbird development.
 3. [**Add-on Developers**](https://thunderbird.topicbox.com/groups/addons): A list for Thunderbird add-on developers and aspiring add-on developers to ask questions and share knowledge.
 
-### IRC
+### Chat
 
-If you want to ask questions about how to hack on Thunderbird, the IRC channel you want to join is [\#maildev on irc.mozilla.org](irc://irc.mozilla.org/maildev).
+If you want to ask questions in real-time about how to hack on Thunderbird, you can join our development chat channel at [https://chat.mozilla.org/\#/room/\#maildev:mozilla.org](https://chat.mozilla.org/#/room/#maildev:mozilla.org)
 

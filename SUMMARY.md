@@ -24,6 +24,7 @@
   * [Lint and Format Code](contributing/fixing-a-bug/lint-and-format-code.md)
   * [Try Server](contributing/fixing-a-bug/try-server.md)
   * [Landing a Patch](contributing/fixing-a-bug/live-server.md)
+  * [Care and Feeding of TreeHerder](contributing/fixing-a-bug/care-and-feeding-of-treeherder.md)
 
 ## Testing
 

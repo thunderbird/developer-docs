@@ -6,8 +6,7 @@ description: How to add your own tests for Thunderbird.
 
 Generally, tests live near the code they are testing, however Mozmill tests live in two particular directories.
 
-This document doesn't cover actually writing tests, for that see this page for
-Mochitests:
+This document doesn't cover actually writing tests, for that see this page for Mochitests:
 
 * [Writing Mochitest Tests](https://developer.thunderbird.net/testing/writing-mochitest-tests)
 
@@ -16,8 +15,7 @@ And also these pages on MDN:
 * [Writing xpcshell-based unit tests](https://developer.mozilla.org/en-US/docs/Mozilla/QA/Writing_xpcshell-based_unit_tests)
 * [Mochitest](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/Mochitest)
 
-\(Just note that the MDN pages are Firefox-centric and include some ancient
-ideas and practices.\)
+\(Just note that the MDN pages are Firefox-centric and include some ancient ideas and practices.\)
 
 ## XPCShell & Mochitest
 
@@ -85,14 +83,4 @@ XPCSHELL_TESTS_MANIFESTS += [
 ]
 ```
 {% endcode %}
-
-## Mozmill
-
-It's not really ideal to be adding new Mozmill tests. The platform is obsolete and now that Mochitest runs on Thunderbird it's preferred over Mozmill. But sometimes, you've gotta do what you've gotta do.
-
-All Mozmill tests live in `mail/test/mozmill`, except for calendar tests, which live in `calendar/test/mozmill`. The test files themselves general live one directory deeper than that and are named `test-something.js` \(or `testSomething.js`\). To add a new test, put it in one of the existing directories, or if you must, create a new directory and add its name to the file `mozmilltests.list`.
-
-{% hint style="info" %}
-If you add a calendar Mozmill test, you'll need to build again before you can use it.
-{% endhint %}
 

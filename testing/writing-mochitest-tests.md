@@ -4,16 +4,11 @@ description: Tips on writing Mochitest tests for Thunderbird.
 
 # Writing Mochitest Tests
 
-This document offers some basic tips for writing Mochitest tests. (See also this
-[Mochitest](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/Mochitest)
-page on MDN, which is Firefox-centric but may still be useful.)
+This document offers some basic tips for writing Mochitest tests. \(See also this [Mochitest](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/Mochitest) page on MDN, which is Firefox-centric but may still be useful.\)
 
 ## Adding a New Test
 
-You may be writing a new test in an existing test file, or you may have set up a
-new test file as described in
-[Adding Tests](https://developer.thunderbird.net/testing/adding-tests).
-Either way, add a new test with the `add_task` function:
+You may be writing a new test in an existing test file, or you may have set up a new test file as described in [Adding Tests](https://developer.thunderbird.net/testing/adding-tests). Either way, add a new test with the `add_task` function:
 
 ```javascript
 add_task(async () => {
@@ -25,12 +20,11 @@ add_task(async () => {
 
 Many essential functions live in these files.
 
-- [EventUtils](https://searchfox.org/mozilla-central/source/testing/mochitest/tests/SimpleTest/EventUtils.js)
-- [BrowserTestUtils](https://searchfox.org/mozilla-central/source/testing/mochitest/BrowserTestUtils/BrowserTestUtils.jsm)
-- [mailTestUtils](https://searchfox.org/comm-central/source/mailnews/test/resources/mailTestUtils.js)
+* [EventUtils](https://searchfox.org/mozilla-central/source/testing/mochitest/tests/SimpleTest/EventUtils.js)
+* [BrowserTestUtils](https://searchfox.org/mozilla-central/source/testing/mochitest/BrowserTestUtils/BrowserTestUtils.jsm)
+* [mailTestUtils](https://searchfox.org/comm-central/source/mailnews/test/resources/mailTestUtils.js)
 
-`EventUtils` and `BrowserTestUtils` do not need to be imported as they are
-already available in Mochitest files. `mailTestUtils` requires importing:
+`EventUtils` and `BrowserTestUtils` do not need to be imported as they are already available in Mochitest files. `mailTestUtils` requires importing:
 
 ```javascript
 const { mailTestUtils } = ChromeUtils.import(
@@ -38,19 +32,13 @@ const { mailTestUtils } = ChromeUtils.import(
 );
 ```
 
-This document is a basic introduction. To go further, explore these files
-(particularly the docstrings of the various functions in them) and look at
-existing tests.
+This document is a basic introduction. To go further, explore these files \(particularly the docstrings of the various functions in them\) and look at existing tests.
 
 ## Assertion Functions
 
-Use the `is` and `ok` functions to make test assertions. `is` compares
-two values (using JavaScript's `===` equality comparison). `ok` asserts
-that a single value is truthy (in JavaScript's sense of truthy).
+Use the `is` and `ok` functions to make test assertions. `is` compares two values \(using JavaScript's `===` equality comparison\). `ok` asserts that a single value is truthy \(in JavaScript's sense of truthy\).
 
-The last argument to each is a message printed to the console to identify
-the assertion. It is optional but is a good practice for more understandable
-test logs.
+The last argument to each is a message printed to the console to identify the assertion. It is optional but is a good practice for more understandable test logs.
 
 ```javascript
 let sum = 3 * 4;
@@ -70,15 +58,13 @@ let element = document.getElementById("some-element-id");
 EventUtils.synthesizeMouseAtCenter(element, { clickCount: 1 });
 ```
 
-To double-click change the `clickCount` from 1 to 2.
-There is a shorthand for a single click:
+To double-click change the `clickCount` from 1 to 2. There is a shorthand for a single click:
 
 ```javascript
 EventUtils.synthesizeMouseAtCenter(element, {});
 ```
 
-If the test is interacting with a window that is not the main one, pass the
-relevant window as the (optional) third argument:
+If the test is interacting with a window that is not the main one, pass the relevant window as the \(optional\) third argument:
 
 ```javascript
 EventUtils.synthesizeMouseAtCenter(element, {}, anotherWindow);
@@ -86,8 +72,7 @@ EventUtils.synthesizeMouseAtCenter(element, {}, anotherWindow);
 
 ## Keyboard Keys
 
-Type some text with the keyboard, or type a single key, even a non-character
-one like the tab key:
+Type some text with the keyboard, or type a single key, even a non-character one like the tab key:
 
 ```javascript
 EventUtils.sendString("some text");
@@ -95,12 +80,9 @@ EventUtils.sendString("some text");
 EventUtils.sendKey("TAB");
 ```
 
-Some other valid keys for `sendKey` include: RETURN, BACK_SPACE, DELETE, HOME,
-END, UP, DOWN, LEFT, RIGHT, PAGE_UP, PAGE_DOWN, SHIFT, CONTROL, ALT, ESCAPE,
-F1, F2, etc. (Not an exhaustive list.)
+Some other valid keys for `sendKey` include: RETURN, BACK\_SPACE, DELETE, HOME, END, UP, DOWN, LEFT, RIGHT, PAGE\_UP, PAGE\_DOWN, SHIFT, CONTROL, ALT, ESCAPE, F1, F2, etc. \(Not an exhaustive list.\)
 
-If the test is interacting with a window that is not the main one, pass the
-relevant window as the (optional) third argument:
+If the test is interacting with a window that is not the main one, pass the relevant window as the \(optional\) third argument:
 
 ```javascript
 EventUtils.sendString("some text", anotherWindow);
@@ -108,7 +90,7 @@ EventUtils.sendString("some text", anotherWindow);
 EventUtils.sendKey("TAB", anotherWindow);
 ```
 
-## Modifier Keys (Ctrl, Alt, Shift)
+## Modifier Keys \(Ctrl, Alt, Shift\)
 
 To press a key along with one or more modifier keys:
 
@@ -124,16 +106,13 @@ EventUtils.synthesizeKey("b", {
 });
 ```
 
-Some other options are `altKey`, `shiftKey`, and `ctrlKey` (a non-exhaustive
-list).
+Some other options are `altKey`, `shiftKey`, and `ctrlKey` \(a non-exhaustive list\).
 
-Similar to `sendString` and `sendKey`, there is an optional third `window`
-argument to use when interacting with a specific window.
+Similar to `sendString` and `sendKey`, there is an optional third `window` argument to use when interacting with a specific window.
 
 ## Waiting for Events
 
-Tests move faster than users. Sometimes too fast. The test may need to wait
-for an event to occur before doing the next thing.
+Tests move faster than users. Sometimes too fast. The test may need to wait for an event to occur before doing the next thing.
 
 ```javascript
 let element = document.getElementById("some-element-id");
@@ -145,9 +124,7 @@ is(event.type, "focus", "element is focused");
 
 ## Letting Thunderbird Respond Before Proceeding
 
-Sometimes the test needs to let the application respond to something the test
-did before moving on to the next step, and there is not an event to listen for.
-Here is a simple way to do this:
+Sometimes the test needs to let the application respond to something the test did before moving on to the next step, and there is not an event to listen for. Here is a simple way to do this:
 
 ```javascript
 // Do something here involving the UI.
@@ -160,14 +137,9 @@ await new Promise(resolve => setTimeout(resolve));
 
 ## Interacting with Regular Windows
 
-Some tests will need to interact with windows that are not the main window.
-For exaple, below is a function that opens the address book window. It returns
-the `window` (`nsIDOMWindow`) object for the address book window, which can
-then be used when calling functions like `EventUtils.sendKey`.
+Some tests will need to interact with windows that are not the main window. For exaple, below is a function that opens the address book window. It returns the `window` \(`nsIDOMWindow`\) object for the address book window, which can then be used when calling functions like `EventUtils.sendKey`.
 
-The key point is the use of `BrowserTestUtils.domWindowOpened`, but this
-example also demonstrates some of the other tips found in this document.
-(See below for dialog windows which are handled differently.)
+The key point is the use of `BrowserTestUtils.domWindowOpened`, but this example also demonstrates some of the other tips found in this document. \(See below for dialog windows which are handled differently.\)
 
 ```javascript
 async function openAddressBookWindow() {
@@ -257,3 +229,4 @@ mailTestUtils.treeClick(EventUtils, window, tree, rowNumber, columnNumber, {
   clickCount: 1
 });
 ```
+

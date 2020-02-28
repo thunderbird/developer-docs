@@ -1,19 +1,12 @@
 # Updating Legacy Extensions for Thunderbird 78
 
-## Removing support for legacy extensions (overlay and bootstrapped extensions)
+## Removing support for legacy extensions \(overlay and bootstrapped extensions\)
 
-Support for legacy extensions was removed from the Thunderbird Beta version 74,
-released in February 2020.
+Support for legacy extensions was removed from the Thunderbird Beta version 74, released in February 2020.
 
-The next major release version of Thunderbird, version 78, will be out around
-June 2020. Until then, code wise many things are going to change.
-For instance, what is left of XUL will be gradually going away.
-Thunderbird's XUL documents have already been converted to XHTML,
-and will have less and less of a XUL flavor
-until the conversion from XUL to HTML is complete.
+The next major release version of Thunderbird, version 78, will be out around June 2020. Until then, code wise many things are going to change. For instance, what is left of XUL will be gradually going away. Thunderbird's XUL documents have already been converted to XHTML, and will have less and less of a XUL flavor until the conversion from XUL to HTML is complete.
 
-Authors and maintainers of legacy add-ons \(including MailExtensions with legacy support\),
-have two routes forward:
+Authors and maintainers of legacy add-ons \(including MailExtensions with legacy support\), have two routes forward:
 
 1. **Convert your add-on to a MailExtension. If the API you need doesn't exist yet,** [**tell us about it**](https://bugzilla.mozilla.org/enter_bug.cgi?product=Thunderbird&component=General)**.**
 2. **Convert your add-on to a** [**Web Extension Experiment**](https://thunderbird-webextensions.readthedocs.io/en/68/how-to/experiments.html)**. Most add-ons should be able to be converted to an experiment with a reasonable effort.**

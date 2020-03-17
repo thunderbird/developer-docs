@@ -50,7 +50,7 @@ Having gained level 3 access and configured Mercurial, you can push to comm-cent
 You should not push without having complete a successful push and build to the [Try Server](try-server.md).
 {% endhint %}
 
-### Steps before pushing to Live
+### Steps before pushing
 
 These are a series of recommended steps to always go through before pushing to Live to ensure you're pushing only what you need.
 
@@ -75,6 +75,14 @@ Be sure your commit message is clear and has been approved during review. The st
 * Run `hg push live-cc -r my-bookmark-name`to push your applied patches to comm-central. Always specify a bookmark or revision to avoid sending more than one branch.
 
 Take a look at the [TreeHerder](https://treeherder.mozilla.org/#/jobs?repo=comm-central) to see your push show up at the top of the list.
+
+### Commit message magic words
+
+Adding some magic words to the commit message of the tip-most revision will cause the build system to do different things. Getting it wrong or making a typo will not get the desired result.
+
+* `DONTBUILD` tells the build system not to build on this push. Only the decision and linting tasks will happen, unless another process comes along and starts a build, such as the Daily automatic build.
+* `CLOSED TREE` allows you to push to a closed tree. I hope you have permission!
+* `a=approver` You must specify who approved the changes on some trees \(not comm-central\).
 
 ## After landing
 

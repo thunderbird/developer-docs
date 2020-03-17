@@ -23,8 +23,8 @@
   * [Using Mercurial Bookmarks](contributing/fixing-a-bug/using-mercurial-bookmarks.md)
   * [Lint and Format Code](contributing/fixing-a-bug/lint-and-format-code.md)
   * [Try Server](contributing/fixing-a-bug/try-server.md)
-  * [Landing a Patch](contributing/fixing-a-bug/live-server.md)
-  * [Care and Feeding of the Tree](contributing/fixing-a-bug/care-and-feeding-of-treeherder.md)
+  * [Landing a Patch](contributing/fixing-a-bug/landing-a-patch.md)
+  * [Care and Feeding of the Tree](contributing/fixing-a-bug/care-and-feeding-of-the-tree.md)
 
 ## Testing
 

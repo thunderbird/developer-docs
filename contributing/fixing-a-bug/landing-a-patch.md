@@ -84,9 +84,18 @@ Adding some magic words to the commit message of the tip-most revision will caus
 * `CLOSED TREE` allows you to push to a closed tree. I hope you have permission!
 * `a=approver` You must specify who approved the changes on some trees \(not comm-central\).
 
+### Landing somebody else's patch
+
+To land a patch you didn't write, e.g. from Bugzilla, you'll need to import it into Mercurial: `hg import -e https://bugzilla.mozilla.org/attachment.cgi?id=0000000`
+
+Use the `-e` flag as above, or `hg commit --amend` to edit the commit message as necessary.
+
 ## After landing
 
 If you worded your commit message correctly, a bot will post a message in your bug with a link to the changes you made, and close the bug. At this point you should set the Target Milestone field in the bug to the current version, which is generally, but not always, the last option for that field.
+
+* To prevent the bot from closing a bug, add the `leave-open` keyword to the bug before landing.
+* The bot will automatically remove the `checkin-needed-tb` flag if it is set.
 
 ## Landing a patch on beta or ESR
 

@@ -92,10 +92,9 @@ Use the `-e` flag as above, or `hg commit --amend` to edit the commit message as
 
 ## After landing
 
-If you worded your commit message correctly, a bot will post a message in your bug with a link to the changes you made, and close the bug. At this point you should set the Target Milestone field in the bug to the current version, which is generally, but not always, the last option for that field.
+If you worded your commit message correctly, a bot will post a message in your bug with a link to the changes you made, and close the bug. To prevent the bot from closing a bug, add the `leave-open` keyword to the bug before landing. The bot will automatically remove the `checkin-needed-tb` flag if it is set.
 
-* To prevent the bot from closing a bug, add the `leave-open` keyword to the bug before landing.
-* The bot will automatically remove the `checkin-needed-tb` flag if it is set.
+At this point you should set the Target Milestone field in the bug to the current version, which is generally, but not always, the last option for that field.
 
 ## Landing a patch on beta or ESR
 

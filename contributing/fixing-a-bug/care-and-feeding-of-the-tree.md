@@ -69,6 +69,10 @@ From there it's a matter of finding the most likely candidates and figuring out 
 
 ### Remedies
 
+#### Retrigger a task
+
+Is that failed task really a failure? In some cases simply starting it again can help, such as if there's network problems. Click the retrigger button \(looks just like the Firefox reload button\) to restart a failed task.
+
 #### Fixing a test
 
 Great, you've figured out what's wrong and how to fix it. Get that fix reviewed and landed! If the failure is sufficiently serious, you can land the fix and then get it reviewed later. If you do this, use `rs=bustage-fix` in your commit message to say why you landed it without review.

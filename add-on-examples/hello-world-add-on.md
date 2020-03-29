@@ -105,6 +105,10 @@ Our add-on is pretty simple, it just brings up an html page in a new tab in Thun
 ```
 {% endcode %}
 
+{% hint style="info" %}
+The default [**content security policy**](%20https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content_Security_Policy#Inline_JavaScript) ****disallows JavaScript placed directly in `<script>` tags and inline event handlers like `onclick`. Place all your Javascript code into a separate file \(like popup.js\) and use [addEventListener\(\)](https://developer.mozilla.org/de/docs/Web/API/EventTarget/addEventListener) instead of inline event handlers.
+{% endhint %}
+
 ### popup.css
 
 Now we want to make the css file referenced in our html file. We'll call it `popup.css`. This is just for decoration of the page, we'll put it in the same folder.

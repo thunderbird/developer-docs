@@ -106,7 +106,7 @@ Our add-on is pretty simple, it just brings up an html page in a new tab in Thun
 {% endcode %}
 
 {% hint style="info" %}
-The default [**content security policy**](%20https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content_Security_Policy#Inline_JavaScript) ****disallows JavaScript placed directly in `<script>` tags and inline event handlers like `onclick`. Place all your Javascript code into a separate file \(like popup.js in this example\) and use [addEventListener\(\)](https://developer.mozilla.org/de/docs/Web/API/EventTarget/addEventListener) instead of inline event handlers.
+The default [**content security policy**](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content_Security_Policy#Inline_JavaScript) disallows JavaScript placed directly in `<script>` tags and inline event handlers like `onclick`. Place all your Javascript code into a separate file \(like popup.js in this example\) and use [addEventListener\(\)](https://developer.mozilla.org/de/docs/Web/API/EventTarget/addEventListener) instead of inline event handlers.
 {% endhint %}
 
 ### popup.css

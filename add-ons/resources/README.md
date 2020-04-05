@@ -1,5 +1,7 @@
 # Resources and Documentation
 
+This is a collection of the most important developer resources outside of developer.thunderbird.net:
+
 <table>
   <thead>
     <tr>
@@ -31,7 +33,7 @@
       </td>
       <td style="text-align:left">
         <p>As Thunderbird shares the code base with Mozilla Firefox, most of the
-          Mozilla Documentation applies to Thunderbird as well. Some useful MDN pages
+          Mozilla documentation applies to Thunderbird as well. Some useful MDN pages
           are:</p>
         <ul>
           <li>i<a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">ntroduction to WebExtensions</a>
@@ -48,20 +50,20 @@
       </td>
       <td style="text-align:left">Search through the Firefox code base (mozilla-central) and the Thunderbird
         code base (comm-central). Useful if you still work with legacy add-ons
-        or WebExtension Experiements and need to check how Thunderbird Core is
-        working. If you are working on a modern WebExtension, you probably never
-        need this.</td>
+        or WebExtension Experiments and need to check how Thunderbird core is implemented.
+        If you are working on a modern WebExtension, you probably never need this.</td>
     </tr>
     <tr>
       <td style="text-align:left"><a href="https://cleidigh.github.io/ThunderKdB/index.html">ThunderKdB</a>
       </td>
-      <td style="text-align:left">Add-on statistics and a very powerful search through the code of all add-ons
-        listed on addons.thunderbird.net (ATN) and a few other public repositories.</td>
+      <td style="text-align:left">Overall add-on statistics and a very powerful search through the code
+        of all add-ons listed on addons.thunderbird.net (ATN) and a few other public
+        repositories.</td>
     </tr>
     <tr>
       <td style="text-align:left"><a href="https://github.com/cleidigh/ThunderStorm">Thunderstorm Repository</a>
       </td>
-      <td style="text-align:left">Tips, Tricks &amp; Examples for Thunderbird E-mail New Add-On Development</td>
+      <td style="text-align:left">More tips, tricks &amp; examples for Thunderbird add-on development.</td>
     </tr>
   </tbody>
 </table>

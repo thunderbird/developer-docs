@@ -44,5 +44,5 @@
     * [Changes in Thunderbird 69-70](add-ons/updating/tb78/changes.md)
   * [Tips and Tricks](add-ons/updating/tips-and-tricks.md)
 * [Add-on Developer Community](add-ons/community.md)
-* [Resources and additional Documentation](add-ons/resources.md)
+* [Resources and Additional Documentation](add-ons/resources.md)
 

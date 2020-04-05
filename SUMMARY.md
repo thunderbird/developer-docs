@@ -36,7 +36,7 @@
 
 * [78+ Roadmap](planning/roadmap.md)
 
-## Add-ons
+## Add-on Development
 
 * [Overview](add-ons/about-add-ons.md)
 * [Examples](add-ons/examples/README.md)
@@ -51,11 +51,6 @@
   * [Updating Legacy Extensions for Thunderbird 78](add-ons/updating/tb78/README.md)
     * [Changes in Thunderbird 69-70](add-ons/updating/tb78/changes.md)
 * [Tips and Tricks](add-ons/tips-and-tricks/README.md)
-  * [Debugging Guide](https://extensionworkshop.com/documentation/develop/debugging/#Debugging_popups)
+  * [Debugging Guide](https://extensionworkshop.com/documentation/develop/debugging/)
 * [Resources and Documentation](add-ons/resources/README.md)
-  * [addons.thunderbird.net](https://addons.thunderbird.net)
-  * [Debugging Guide](https://extensionworkshop.com/documentation/develop/debugging/#Debugging_popups)
-  * [MailExtensions APIs](https://thunderbird-webextensions.readthedocs.io)
-  * [ThunderKdB: Extension Developer Resources](https://cleidigh.github.io/ThunderKdB/index.html)
-  * [Thunderstorm Repository](https://github.com/cleidigh/ThunderStorm)
 

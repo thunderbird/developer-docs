@@ -18,7 +18,7 @@ You can check out many of the add-ons available for Thunderbird at [addons.thund
 {% hint style="danger" %}
 **The current Thunderbird Beta and the next major release \(Thunderbird 78, scheduled for around June 2020\) no longer support legacy extensions.** 
 
-If you are currently maintaining a legacy extension, please identify the type of your extension in the table below and check the provided guides on updating your extensions to remain compatible with the latest versions of Thunderbird.
+If you are currently maintaining a legacy extension, please identify the type of your extension in the table below and check the provided guides on updating your extension to remain compatible with the latest versions of Thunderbird.
 {% endhint %}
 
 The architecture of Thunderbird extensions has changed over the last years. The following table describes the different extension types.

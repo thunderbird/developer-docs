@@ -89,6 +89,16 @@ They use a JSON manifest \(`manifest.json`\) with the `legacy` key \(which has b
 _WIP_
 {% endtab %}
 
+{% tab title="Legacy Bootstrap Extension" %}
+Status: **Deprecated in TB68.**
+
+Use a bootstrap file \(`bootstrap.js`\) as an entry point to the extension. The file defines four methods \(`install`, `uninstall`, `startup`, and `shutdown`\) from which all extension behaviour is controlled. This type of extension can be installed or shut down without restarting Thunderbird, so it’s sometimes called a “restartless” extension. Also uses an RDF manifest \(`install.rdf`\).
+
+#### Update Strategy
+
+_WIP_
+{% endtab %}
+
 {% tab title="Legacy Overlay Extension" %}
 Status: **Deprecated in TB68.**
 
@@ -97,18 +107,6 @@ The original type of extension for Thunderbird and Firefox. This type uses docum
 #### Update Strategy
 
 _WIP_
-{% endtab %}
-
-{% tab title="Legacy Bootstrap Extension" %}
-Status: **Deprecated in TB68.**
-
-Use a bootstrap file \(`bootstrap.js`\) as an entry point to the extension. The file defines four methods \(`install`, `uninstall`, `startup`, and `shutdown`\) from which all extension behaviour is controlled. This type of extension can be installed or shut down without restarting Thunderbird, so it’s sometimes called a “restartless” extension. Also uses an RDF manifest \(`install.rdf`\).
-
-#### Update Strategy
-
-It is recommended to update in two steps:
-
-{% page-ref page="updating/tb68/bootstrapped.md" %}
 {% endtab %}
 {% endtabs %}
 

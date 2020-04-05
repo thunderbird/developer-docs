@@ -1,6 +1,6 @@
 ---
 description: >-
-  This is a collection of the most important developer resources outside of
+  A collection of the most important developer resources outside of
   developer.thunderbird.net.
 ---
 

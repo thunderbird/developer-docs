@@ -16,7 +16,7 @@ You can check out many of the add-ons available for Thunderbird at [addons.thund
 ### Extensions
 
 {% hint style="danger" %}
-**The current Thunderbird Beta and the next major release \(Thunderbird 78, scheduled for around June 2020\) no longer support legacy extensions.** 
+**The current Thunderbird Beta and the next major release \(Thunderbird 78, scheduled for around June 2020\) no longer support legacy extensions.**
 
 If you are currently maintaining a legacy extension, please identify the type of your extension in the table below and check the provided guides on updating your extension to remain compatible with the latest versions of Thunderbird.
 {% endhint %}
@@ -25,9 +25,9 @@ The architecture of Thunderbird extensions has changed over the last years. The 
 
 {% tabs %}
 {% tab title="MailExtension" %}
-Status: **The only valid extension type in TB74 and later.** 
+Status: **The only valid extension type in TB74 and later.**
 
-MailExtensions are based on the WebExtension technology, which is also used by many web browsers. Thunderbird can use some of the WebExtension APIs provided by Firefox ****\(as they are both based on the Mozilla platform\), but of course requires additional interfaces to messenger specific functions. These additional APIs are called MailExtension APIs.
+MailExtensions are based on the WebExtension technology, which is also used by many web browsers. Thunderbird can use some of the WebExtension APIs provided by Firefox _\*\*_\(as they are both based on the Mozilla platform\), but of course requires additional interfaces to messenger specific functions. These additional APIs are called MailExtension APIs.
 
 MailExtensions use a JSON manifest \(`manifest.json`\) but do not use the `legacy` key \(which was deprecated in TB74\).
 

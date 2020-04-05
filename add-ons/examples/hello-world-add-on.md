@@ -1,5 +1,5 @@
 ---
-description: This is a tutorial for making a Hello World Add-on as a MailExtension.
+description: This is a tutorial for making a Hello World MailExtension.
 ---
 
 # Hello World MailExtension

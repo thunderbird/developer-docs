@@ -53,7 +53,7 @@
 * [Tips and Tricks](add-ons/tips-and-tricks.md)
   * [Debugging Guide](https://extensionworkshop.com/documentation/develop/debugging/#Debugging_popups)
 * [Resources](add-ons/resources/README.md)
-  * [Debugging Guied](https://extensionworkshop.com/documentation/develop/debugging/#Debugging_popups)
+  * [Debugging Guide](https://extensionworkshop.com/documentation/develop/debugging/#Debugging_popups)
   * [MailExtensions APIs](https://thunderbird-webextensions.readthedocs.io)
   * [ThunderKdB: Extension Developer Resources](https://cleidigh.github.io/ThunderKdB/index.html)
   * [Thunderstorm Repo](https://github.com/cleidigh/ThunderStorm)

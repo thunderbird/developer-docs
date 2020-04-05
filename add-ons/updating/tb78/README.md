@@ -1,4 +1,4 @@
-# Updating Legacy Extensions for Thunderbird 78
+# Updating for Thunderbird 78
 
 ## Removing support for legacy extensions \(overlay and bootstrapped extensions\)
 

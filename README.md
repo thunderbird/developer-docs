@@ -17,7 +17,7 @@ This page has some information on where to get information and get plugged into 
 
 If you'd like to learn to develop add-ons for Thunderbird, check out our add-on documentation:
 
-{% page-ref page="add-on-development/about-add-ons.md" %}
+{% page-ref page="add-ons/about-add-ons.md" %}
 
 ## Report Bugs and Request Features
 

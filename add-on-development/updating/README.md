@@ -1,2 +1,0 @@
-# Updating Legacy Add-ons
-

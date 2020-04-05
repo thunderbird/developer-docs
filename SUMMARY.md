@@ -38,20 +38,19 @@
 
 ## Add-ons
 
-* [About Add-ons](add-ons/about-add-ons.md)
-* [Updating Legacy Extensions for Thunderbird 68](add-ons/tb68/README.md)
-  * [Convert Overlay Extension to MailExtension with legacy support](add-ons/tb68/overlays.md)
-  * [Convert Bootstrapped Extension to MailExtension with legacy support](add-ons/tb68/bootstrapped.md)
-  * [Changes in Thunderbird 61-68](add-ons/tb68/changes.md)
-* [Updating Legacy Extensions for Thunderbird 78](add-ons/tb78/README.md)
-  * [Changes in Thunderbird 69-70](add-ons/tb78/changes.md)
-* [Tips and Tricks for Add-on Development](add-ons/tips-and-tricks.md)
-
-## Add-on Examples
-
-* [Hello World MailExtension](add-on-examples/hello-world-add-on.md)
-* [WebExtension Themes](add-on-examples/web-extension-themes.md)
-* [More Examples](https://github.com/thundernest/sample-extensions)
+* [Overview](add-ons/about-add-ons.md)
+* [Examples](add-ons/examples/README.md)
+  * [Hello World MailExtension](add-ons/examples/hello-world-add-on.md)
+  * [WebExtension Themes](add-ons/examples/web-extension-themes.md)
+  * [More Examples](https://github.com/thundernest/sample-extensions)
+* [Updating Legacy Add-ons](add-ons/updating/README.md)
+  * [Updating Legacy Extensions for Thunderbird 68](add-ons/updating/tb68/README.md)
+    * [Convert Overlay Extension to MailExtension with legacy support](add-ons/updating/tb68/overlays.md)
+    * [Convert Bootstrapped Extension to MailExtension with legacy support](add-ons/updating/tb68/bootstrapped.md)
+    * [Changes in Thunderbird 61-68](add-ons/updating/tb68/changes.md)
+  * [Updating Legacy Extensions for Thunderbird 78](add-ons/updating/tb78/README.md)
+    * [Changes in Thunderbird 69-70](add-ons/updating/tb78/changes.md)
+* [Tips and Tricks](add-ons/tips-and-tricks.md)
 
 ## Add-on Resources
 

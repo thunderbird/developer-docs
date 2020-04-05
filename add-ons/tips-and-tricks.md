@@ -2,7 +2,7 @@
 description: Tips and tricks for successful Thunderbird add-on development.
 ---
 
-# Tips and Tricks for Add-on Development
+# Tips and Tricks
 
 ## Parallel hosting of legacy add-ons and MailExtensions on addons.thunderbird.net \(ATN\)
 

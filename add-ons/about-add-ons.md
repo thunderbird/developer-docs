@@ -2,7 +2,7 @@
 description: What you need to know about making add-ons for Thunderbird.
 ---
 
-# About Add-ons
+# Overview
 
 ## What are Add-ons?
 
@@ -23,7 +23,7 @@ You can check out many of the add-ons available for Thunderbird at [addons.thund
 **From Thunderbird 68 onward, new extensions should be built as MailExtensions to ensure future compatibility. To get you started, we have put together a tutorial:**
 {% endhint %}
 
-{% page-ref page="../add-on-examples/hello-world-add-on.md" %}
+{% page-ref page="examples/hello-world-add-on.md" %}
 
 You can find detailed information about the currently available APIs in the [MailExtensions API documentation](https://thunderbird-webextensions.readthedocs.io/) \([↗](https://thunderbird-webextensions.readthedocs.io/)\).
 
@@ -47,9 +47,9 @@ Since Thunderbird 60 was released, there have been many major changes to Thunder
 
 If you are currently maintaining a legacy extension please check out our guides on updating extensions for Thunderbird 78 and 68:
 
-{% page-ref page="tb78/" %}
+{% page-ref page="updating/tb78/" %}
 
-{% page-ref page="tb68/" %}
+{% page-ref page="updating/tb68/" %}
 
 Legacy extensions fall into two sub-categories:
 

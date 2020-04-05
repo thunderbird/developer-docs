@@ -1,6 +1,12 @@
+---
+description: >-
+  This is a collection of the most important developer resources outside of
+  developer.thunderbird.net.
+---
+
 # Resources and Documentation
 
-This is a collection of the most important developer resources outside of developer.thunderbird.net:
+
 
 <table>
   <thead>

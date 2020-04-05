@@ -11,7 +11,7 @@ description: >-
 
 This page has some information on where to get information and get plugged into the Community. If you are ready to start hacking, head to this page:
 
-{% page-ref page="the-basics/getting-started.md" %}
+{% page-ref page="thunderbird-development/getting-started.md" %}
 
 ### Add-on Development
 

@@ -2,35 +2,27 @@
 
 * [About Thunderbird](README.md)
 
-## The Basics
+## Contributing to Thunderbird Core <a id="thunderbird-development"></a>
 
-* [Getting Started](the-basics/getting-started.md)
-* [Building Thunderbird](the-basics/building-thunderbird/README.md)
-  * [Windows Build Prerequisites](the-basics/building-thunderbird/windows-build-prerequisites.md)
-  * [Linux Build Prerequisites](the-basics/building-thunderbird/linux-build-prerequisites.md)
-  * [macOS Build Prerequisites](the-basics/building-thunderbird/macos-build-prerequisites.md)
-  * [Artifact Builds](the-basics/building-thunderbird/artifact-builds.md)
-* [Codebase Overview](the-basics/codebase-overview.md)
-
-## Examples
-
-* [Hello World](examples/hello-world.md)
-
-## Contributing
-
-* [Fixing a Bug](contributing/fixing-a-bug/README.md)
-  * [Using Mercurial Queues](contributing/fixing-a-bug/using-mercurial-queues.md)
-  * [Using Mercurial Bookmarks](contributing/fixing-a-bug/using-mercurial-bookmarks.md)
-  * [Lint and Format Code](contributing/fixing-a-bug/lint-and-format-code.md)
-  * [Try Server](contributing/fixing-a-bug/try-server.md)
-  * [Landing a Patch](contributing/fixing-a-bug/landing-a-patch.md)
-  * [Care and Feeding of the Tree](contributing/fixing-a-bug/care-and-feeding-of-the-tree.md)
-
-## Testing
-
-* [Running Tests](testing/running-tests.md)
-* [Adding Tests](testing/adding-tests.md)
-* [Writing Mochitest Tests](testing/writing-mochitest-tests.md)
+* [Getting Started](thunderbird-development/getting-started.md)
+* [Building Thunderbird](thunderbird-development/building-thunderbird/README.md)
+  * [Windows Build Prerequisites](thunderbird-development/building-thunderbird/windows-build-prerequisites.md)
+  * [Linux Build Prerequisites](thunderbird-development/building-thunderbird/linux-build-prerequisites.md)
+  * [macOS Build Prerequisites](thunderbird-development/building-thunderbird/macos-build-prerequisites.md)
+  * [Artifact Builds](thunderbird-development/building-thunderbird/artifact-builds.md)
+* [Codebase Overview](thunderbird-development/codebase-overview.md)
+* [Hello World Example](thunderbird-development/hello-world.md)
+* [Fixing a Bug](thunderbird-development/fixing-a-bug/README.md)
+  * [Using Mercurial Queues](thunderbird-development/fixing-a-bug/using-mercurial-queues.md)
+  * [Using Mercurial Bookmarks](thunderbird-development/fixing-a-bug/using-mercurial-bookmarks.md)
+  * [Lint and Format Code](thunderbird-development/fixing-a-bug/lint-and-format-code.md)
+  * [Try Server](thunderbird-development/fixing-a-bug/try-server.md)
+  * [Landing a Patch](thunderbird-development/fixing-a-bug/landing-a-patch.md)
+  * [Care and Feeding of the Tree](thunderbird-development/fixing-a-bug/care-and-feeding-of-the-tree.md)
+* [Testing](thunderbird-development/testing/README.md)
+  * [Running Tests](thunderbird-development/testing/running-tests.md)
+  * [Adding Tests](thunderbird-development/testing/adding-tests.md)
+  * [Writing Mochitest Tests](thunderbird-development/testing/writing-mochitest-tests.md)
 
 ## Planning
 

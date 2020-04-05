@@ -2,7 +2,7 @@
 
 * [About Thunderbird](README.md)
 
-## Contributing to Thunderbird Core <a id="thunderbird-development"></a>
+## Contributing to Thunderbird <a id="thunderbird-development"></a>
 
 * [Getting Started](thunderbird-development/getting-started.md)
 * [Building Thunderbird](thunderbird-development/building-thunderbird/README.md)

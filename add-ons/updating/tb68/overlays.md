@@ -1,4 +1,4 @@
-# Convert Overlay Extension to MailExtension with legacy support
+# Convert Overlay Extension to Legacy WebExtension
 
 ## Switch to JSON manifest
 

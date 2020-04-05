@@ -1,4 +1,4 @@
-# Convert Bootstrapped Extension to MailExtension with legacy support
+# Convert Bootstrapped Extension to Legacy WebExtension
 
 ## Switch to JSON manifest
 

@@ -35,6 +35,7 @@
   * [Hello World MailExtension](add-ons/examples/hello-world-add-on.md)
   * [WebExtension Themes](add-ons/examples/web-extension-themes.md)
   * [More Examples](https://github.com/thundernest/sample-extensions)
+* [Tips and Tricks](add-ons/tips-and-tricks.md)
 * [Updating Add-ons](add-ons/updating/README.md)
   * [Updating for Thunderbird 68](add-ons/updating/tb68/README.md)
     * [Convert Overlay Extension to Legacy WebExtension](add-ons/updating/tb68/overlays.md)
@@ -42,7 +43,6 @@
     * [Changes in Thunderbird 61-68](add-ons/updating/tb68/changes.md)
   * [Updating for Thunderbird 78](add-ons/updating/tb78/README.md)
     * [Changes in Thunderbird 69-70](add-ons/updating/tb78/changes.md)
-  * [Tips and Tricks](add-ons/updating/tips-and-tricks.md)
 * [Add-on Developer Community](add-ons/community.md)
 * [Resources and Additional Documentation](add-ons/resources.md)
 

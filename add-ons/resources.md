@@ -27,7 +27,7 @@ description: >-
         as well.</td>
     </tr>
     <tr>
-      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/68/">MailExtension APIs</a>
+      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/68/">MailExtension APIs Documentation</a>
       </td>
       <td style="text-align:left">Documentation of all WebExtension APIs created specifically for Thunderbird,
         which are therefore called MailExtension APIs.</td>
@@ -38,8 +38,8 @@ description: >-
       <td style="text-align:left">
         <p>Thunderbird is built on the Mozilla platform, the same base that Firefox
           is built from. As such the two projects share a lot of code and much of
-          the Mozilla documentation will apply to Thunderbird as well. Some useful
-          MDN pages are:</p>
+          the Mozilla documentation will apply to Thunderbird as well. Some very
+          useful MDN pages are:</p>
         <ul>
           <li>I<a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">ntroduction to WebExtensions</a>
           </li>
@@ -49,6 +49,12 @@ description: >-
           </li>
         </ul>
       </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://github.com/thundernest/sample-extensions">Sample Extensions Repository</a>
+      </td>
+      <td style="text-align:left">The example extension repository from Thundernest with many MailExtensions
+        showcasing different MailExtension APIs.</td>
     </tr>
     <tr>
       <td style="text-align:left"><a href="https://searchfox.org/">Searchfox</a>

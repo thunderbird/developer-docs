@@ -4,6 +4,12 @@ description: Tips and tricks for successful Thunderbird add-on development.
 
 # Tips and Tricks
 
+## Debugging
+
+A guide from the extension workshop with the most recent information on debugging add-ons. It is written for Mozilla Firefox but applies for Thunderbird as well.
+
+[https://extensionworkshop.com/documentation/develop/debugging/](https://extensionworkshop.com/documentation/develop/debugging/)
+
 ## Parallel hosting of legacy add-ons and MailExtensions on addons.thunderbird.net \(ATN\)
 
 After updating your add-on for Thunderbird 68 and beyond, it will be treated as a WebExtension. While uploading it to addons.thunderbird.net \(ATN\), you will see a warning, that you cannot upload a new legacy version of your add-on afterwards. However:

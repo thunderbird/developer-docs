@@ -31,7 +31,7 @@ MailExtensions are based on the WebExtension technology, which is also used by m
 
 MailExtensions use a JSON manifest \(`manifest.json`\) but do not use the `legacy` key \(which was deprecated in TB74\).
 
-Unlike older legacy extensions, which had direct access to Thunderbird's internal components and UI elements, MailExtensions access functionality through stable MailExtension APIs. They are less likely to break and do not need so frequent and complex updating when Thunderbird changes.
+Unlike older legacy extensions, which had direct access to Thunderbird's internal components and UI elements, MailExtensions access functionality through stable MailExtension APIs. They are less likely to break and do not need frequent and complex updating when Thunderbird changes.
 
 You can find detailed information about MailExtensions here:
 

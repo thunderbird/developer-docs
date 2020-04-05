@@ -4,13 +4,13 @@ description: This is a tutorial for making a Hello World Add-on as a MailExtensi
 
 # Hello World MailExtension
 
-{% hint style="info" %}
-This tutorial is for building a MailExtension for **Thunderbird 68** or later.
-{% endhint %}
-
 ## Thunderstorm
 
 This tutorial is based off of code that can be found, along with other tutorials and resources, in the [Thunderstorm repository](https://github.com/cleidigh/ThunderStorm) maintained by Thunderbird contributor Christopher Leidigh.
+
+{% hint style="info" %}
+This tutorial is for building a MailExtension for **Thunderbird 68** or later.
+{% endhint %}
 
 ## Writing the Extension
 

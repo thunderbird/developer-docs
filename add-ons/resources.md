@@ -36,9 +36,10 @@ description: >-
       <td style="text-align:left"><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">Mozilla Developer Documentation (MDN)</a>
       </td>
       <td style="text-align:left">
-        <p>As Thunderbird shares the code base with Mozilla Firefox, most of the
-          Mozilla documentation applies to Thunderbird as well. Some useful MDN pages
-          are:</p>
+        <p>Thunderbird is built on the Mozilla platform, the same base that Firefox
+          is built from. As such the two projects share a lot of code and much of
+          the Mozilla documentation will apply to Thunderbird as well. Some useful
+          MDN pages are:</p>
         <ul>
           <li>I<a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">ntroduction to WebExtensions</a>
           </li>
@@ -52,10 +53,11 @@ description: >-
     <tr>
       <td style="text-align:left"><a href="https://searchfox.org/">Searchfox</a>
       </td>
-      <td style="text-align:left">Search through the Firefox code base (mozilla-central) and the Thunderbird
-        code base (comm-central). Useful if you still work with legacy add-ons
-        or WebExtension Experiments and need to check how Thunderbird core is implemented.
-        If you are working on a modern WebExtension, you probably never need this.</td>
+      <td style="text-align:left">Search through the Firefox code base (<em>mozilla-central</em>) and the
+        Thunderbird code base (<em>comm-central</em>). Useful if you still work
+        with legacy add-ons or WebExtension Experiments and need to check how something
+        is implemented in Thunderbird Core. If you are working on a modern MailExtension,
+        you probably never need this.</td>
     </tr>
     <tr>
       <td style="text-align:left"><a href="https://cleidigh.github.io/ThunderKdB/index.html">ThunderKdB</a>

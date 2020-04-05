@@ -51,6 +51,7 @@
   * [Updating Legacy Extensions for Thunderbird 78](add-ons/updating/tb78/README.md)
     * [Changes in Thunderbird 69-70](add-ons/updating/tb78/changes.md)
 * [Tips and Tricks](add-ons/tips-and-tricks.md)
+* [Debugging](add-ons/debugging.md)
 * [Resources](add-ons/resources/README.md)
   * [MailExtensions APIs](https://thunderbird-webextensions.readthedocs.io)
   * [ThunderKdB: Extension Developer Resources](https://cleidigh.github.io/ThunderKdB/index.html)

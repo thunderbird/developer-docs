@@ -34,7 +34,7 @@
 * [Examples](add-ons/examples/README.md)
   * [Hello World MailExtension](add-ons/examples/hello-world-add-on.md)
   * [WebExtension Themes](add-ons/examples/web-extension-themes.md)
-  * [More Examples](https://github.com/thundernest/sample-extensions)
+  * [Examples in our Sample Extensions Repository](https://github.com/thundernest/sample-extensions)
 * [Tips and Tricks](add-ons/tips-and-tricks.md)
 * [Updating Add-ons](add-ons/updating/README.md)
   * [Updating for Thunderbird 68](add-ons/updating/tb68/README.md)

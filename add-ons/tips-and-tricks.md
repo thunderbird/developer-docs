@@ -10,7 +10,7 @@ A guide from the extension workshop with the most recent information on debuggin
 
 {% embed data="{"url":"https://extensionworkshop.com/documentation/develop/debugging/\",\"type\":\"link\",\"title\":\"Extension Workshop Debugging Guide"}" %}
 
-https://extensionworkshop.com/documentation/develop/debugging/
+https://extensionworkshop.com/documentation/develop/debugging
 
 ## Parallel hosting of legacy add-ons and MailExtensions on addons.thunderbird.net \(ATN\)
 

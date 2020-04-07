@@ -29,17 +29,18 @@ description: >-
     <tr>
       <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/68/">MailExtension APIs Documentation</a>
       </td>
-      <td style="text-align:left">Documentation of all WebExtension APIs created specifically for Thunderbird,
-        which are called MailExtension APIs.</td>
+      <td style="text-align:left">Documentation of all Extension APIs created specifically for Thunderbird.
+        They are called MailExtension APIs to distinguish them from the standard
+        WebExtension APIs inherited from Firefox.</td>
     </tr>
     <tr>
       <td style="text-align:left"><a href="https://bugzilla.mozilla.org">Bugzilla</a>
       </td>
       <td style="text-align:left">
-        <p>Central bug tracking for Mozilla projects. Some useful areas related to
-          Thundebird:</p>
+        <p>Central bug tracking for Mozilla projects. Some useful pages related to
+          Thunderbird:</p>
         <ul>
-          <li><a href="https://bugzilla.mozilla.org/buglist.cgi?product=Thunderbird&amp;component=Add-Ons%3A%20Extensions%20API&amp;resolution=---&amp;list_id=15187727">List of bugs related to Extensions APIs</a>
+          <li><a href="https://bugzilla.mozilla.org/buglist.cgi?product=Thunderbird&amp;component=Add-Ons%3A%20Extensions%20API&amp;resolution=---&amp;list_id=15187727">List of bugs related to Extension APIs</a>
           </li>
           <li><a href="https://bugzilla.mozilla.org/describecomponents.cgi?product=Thunderbird">List of all Thunderbird Components</a>
           </li>
@@ -50,10 +51,9 @@ description: >-
       <td style="text-align:left"><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">Mozilla Developer Documentation (MDN)</a>
       </td>
       <td style="text-align:left">
-        <p>The main documentation for Mozilla developers. As Thunderbird is built
-          on the Mozilla platform, some of the Mozilla documentation not only applies
-          to Firefox but to Thunderbird as well. Some useful MDN pages on WebExtension
-          are:</p>
+        <p>The main documentation for Mozilla developers. As Thunderbird is based
+          on the Mozilla platform, some of the Mozilla documentation is valid for
+          Thunderbird as well. Useful MDN pages on WebExtension are:</p>
         <ul>
           <li>I<a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">ntroduction to WebExtensions</a>
           </li>

@@ -1,8 +1,8 @@
 ---
 description: >-
-  Thunderbird an powerful and customizable open source Email client with lots of
-  users. It is based on the Mozilla platform that Firefox is also built on.
-  These docs teach you how to contribute!
+  Thunderbird is a powerful and customizable open source Email client with
+  millions of users. It is based on the Mozilla platform that Firefox is also
+  built on. These docs teach you how to contribute!
 ---
 
 # About Thunderbird

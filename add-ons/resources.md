@@ -34,6 +34,19 @@ description: >-
         WebExtension APIs inherited from Firefox.</td>
     </tr>
     <tr>
+      <td style="text-align:left"><a href="https://github.com/thundernest/sample-extensions">Sample Extensions Repository</a>
+      </td>
+      <td style="text-align:left">The example extension repository from Thundernest with MailExtensions
+        showcasing different WebExtension/MailExtension APIs.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://cleidigh.github.io/ThunderKdB/index.html">ThunderKdB</a>
+      </td>
+      <td style="text-align:left">Overall add-on statistics and a very powerful search through the code
+        of all add-ons listed on addons.thunderbird.net (ATN) and a few other public
+        repositories.</td>
+    </tr>
+    <tr>
       <td style="text-align:left"><a href="https://bugzilla.mozilla.org">Bugzilla</a>
       </td>
       <td style="text-align:left">
@@ -72,12 +85,6 @@ description: >-
       </td>
     </tr>
     <tr>
-      <td style="text-align:left"><a href="https://github.com/thundernest/sample-extensions">Sample Extensions Repository</a>
-      </td>
-      <td style="text-align:left">The example extension repository from Thundernest with MailExtensions
-        showcasing different WebExtension/MailExtension APIs.</td>
-    </tr>
-    <tr>
       <td style="text-align:left"><a href="https://searchfox.org/">Searchfox</a>
       </td>
       <td style="text-align:left">An online viewer to search the Firefox code base (<em>mozilla-central</em>)
@@ -85,13 +92,6 @@ description: >-
         work with legacy add-ons or WebExtension Experiments and need to check
         how something is implemented in Thunderbird Core. If you are working on
         a modern MailExtension, you probably never need this.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><a href="https://cleidigh.github.io/ThunderKdB/index.html">ThunderKdB</a>
-      </td>
-      <td style="text-align:left">Overall add-on statistics and a very powerful search through the code
-        of all add-ons listed on addons.thunderbird.net (ATN) and a few other public
-        repositories.</td>
     </tr>
   </tbody>
 </table>

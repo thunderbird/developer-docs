@@ -7,7 +7,7 @@ description: >-
 
 # About Thunderbird
 
-I Want to Start Hacking
+## I Want to Start Hacking
 
 This page has some information on where to get information and how to get plugged into the Community. If you are ready to start hacking, head over to one of these sections:
 

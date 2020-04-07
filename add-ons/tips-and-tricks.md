@@ -8,9 +8,7 @@ description: Tips and tricks for successful Thunderbird add-on development.
 
 A guide from the extension workshop with the most recent information on debugging add-ons. It is written for Mozilla Firefox but applies for Thunderbird as well.
 
-{% embed data="{"url":"https://extensionworkshop.com/documentation/develop/debugging/\",\"type\":\"link\",\"title\":\"Extension Workshop Debugging Guide"}" %}
-
-https://extensionworkshop.com/documentation/develop/debugging
+* https://extensionworkshop.com/documentation/develop/debugging/
 
 ## Parallel hosting of legacy add-ons and MailExtensions on addons.thunderbird.net \(ATN\)
 

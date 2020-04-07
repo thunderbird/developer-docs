@@ -7,17 +7,21 @@ description: >-
 
 # About Thunderbird
 
-## I Want to Start Hacking
+I Want to Start Hacking
 
 This page has some information on where to get information and how to get plugged into the Community. If you are ready to start hacking, head over to one of these sections:
 
-### [Contributing to Thunderbird](https://developer.thunderbird.net/thunderbird-development/getting-started)
+### Contributing to Thunderbird
 
 Get all the information you need to set up your development environment and get ready to hack on Thunderbird.
 
-### [Add-on Development](https://developer.thunderbird.net/add-ons/about-add-ons)
+{% page-ref page="thunderbird-development/getting-started.md" %}
+
+### Add-on Development
 
 If you'd like to learn to develop add-ons for Thunderbird, check out our add-on documentation with examples, tips and links to relevant resources.
+
+{% page-ref page="add-ons/about-add-ons.md" %}
 
 ## Report Bugs and Request Features
 

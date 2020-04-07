@@ -4,8 +4,6 @@ description: This is a tutorial for making a Hello World MailExtension.
 
 # Hello World MailExtension
 
-## Thunderstorm
-
 This tutorial is based off of code that can be found, along with other tutorials and resources, in the [Thunderstorm repository](https://github.com/cleidigh/ThunderStorm) maintained by Thunderbird contributor Christopher Leidigh.
 
 {% hint style="info" %}

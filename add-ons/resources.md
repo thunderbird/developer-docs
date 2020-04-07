@@ -42,9 +42,8 @@ description: >-
     <tr>
       <td style="text-align:left"><a href="https://cleidigh.github.io/ThunderKdB/index.html">ThunderKdB</a>
       </td>
-      <td style="text-align:left">Overall add-on statistics and a very powerful search in the code
-        of all add-ons listed on addons.thunderbird.net (ATN) and a few other public
-        repositories.</td>
+      <td style="text-align:left">Overall add-on statistics and a very powerful search in the code of all
+        add-ons listed on addons.thunderbird.net (ATN) and a few other public repositories.</td>
     </tr>
     <tr>
       <td style="text-align:left"><a href="https://bugzilla.mozilla.org">Bugzilla</a>

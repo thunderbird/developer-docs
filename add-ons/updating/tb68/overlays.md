@@ -60,7 +60,7 @@ Detailed information about the possible config options for `manifest.json` can b
 The `legacy` key enables Thunderbird’s legacy support. Setting the `type` key to `xul` engages the new XUL overlay loader. The overlay loader is a Thunderbird component that takes XUL code as written in an overlay extension and applies it to the UI. In Thunderbird 60, this was a part of the core UI libary, but it was removed. We have built a new overlay loader to replace as much of the removed code as possible.
 
 {% hint style="warning" %}
-The URL for icons must no longer be full chrome URLs as before, but relative URLs and the entry point \(in the example above it is`content`\) must be defined in `chrome.manifest`.
+The URL for icons must no longer be full chrome URL as before, but a simple path relative to the root directory of the add-on.
 {% endhint %}
 
 The shown example also specifies an optional `options` key to define the options page. The key `open_in_tab` is optional and defaults to a value of`false`. If your old RDF manifest included an `em:optionsType` of 3, you can set `open_in_tab` to `true`, to have your options opened again in a new tab instead of a new window.

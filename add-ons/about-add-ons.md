@@ -102,7 +102,7 @@ _WIP_
 {% tab title="Legacy Overlay Extension" %}
 Status: **Deprecated in TB68.**
 
-The original type of extension for Thunderbird and Firefox. This type uses documents that overlay the Thunderbird UI, adding to and modifying it. Legacy Overlay Extensions use an RDF manifest \(`install.rdf`\) and require a restart of Thunderbird for installation/uninstallation, upgrading/downgrading and enabling/disabling.
+The original type of extension for Thunderbird and Firefox. It uses documents that overlay the Thunderbird UI, adding to and modifying it. Legacy Overlay Extensions use an RDF manifest \(`install.rdf`\) and require a restart of Thunderbird for installation/uninstallation, upgrading/downgrading and enabling/disabling.
 
 #### Update Strategy
 

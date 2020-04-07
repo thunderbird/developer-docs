@@ -30,16 +30,30 @@ description: >-
       <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/68/">MailExtension APIs Documentation</a>
       </td>
       <td style="text-align:left">Documentation of all WebExtension APIs created specifically for Thunderbird,
-        which are therefore called MailExtension APIs.</td>
+        which are called MailExtension APIs.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://bugzilla.mozilla.org">Bugzilla</a>
+      </td>
+      <td style="text-align:left">
+        <p>Central bug tracking for Mozilla projects. Some useful areas related to
+          Thundebird:</p>
+        <ul>
+          <li><a href="https://bugzilla.mozilla.org/buglist.cgi?product=Thunderbird&amp;component=Add-Ons%3A%20Extensions%20API&amp;resolution=---&amp;list_id=15187727">List of bugs related to Extensions APIs</a>
+          </li>
+          <li><a href="https://bugzilla.mozilla.org/describecomponents.cgi?product=Thunderbird">List of all Thunderbird Components</a>
+          </li>
+        </ul>
+      </td>
     </tr>
     <tr>
       <td style="text-align:left"><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">Mozilla Developer Documentation (MDN)</a>
       </td>
       <td style="text-align:left">
-        <p>Thunderbird is built on the Mozilla platform, the same base that Firefox
-          is built from. As such the two projects share a lot of code and much of
-          the Mozilla documentation will apply to Thunderbird as well. Some very
-          useful MDN pages are:</p>
+        <p>The main documentation for Mozilla developers. As Thunderbird is built
+          on the Mozilla platform, some of the Mozilla documentation not only applies
+          to Firefox but to Thunderbird as well. Some useful MDN pages on WebExtension
+          are:</p>
         <ul>
           <li>I<a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">ntroduction to WebExtensions</a>
           </li>
@@ -48,22 +62,29 @@ description: >-
           <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/permissions">permissions</a>
           </li>
         </ul>
+        <p>The Mozilla documentation also includes information about internal components
+          and functions used by legacy extensions. Please be aware, that some of
+          those pages are not maintained and potentially outdated.</p>
+        <ul>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/JavaScript_code_modules">Overview: Mozilla Javascript Code Modules</a>
+          </li>
+        </ul>
       </td>
     </tr>
     <tr>
       <td style="text-align:left"><a href="https://github.com/thundernest/sample-extensions">Sample Extensions Repository</a>
       </td>
-      <td style="text-align:left">The example extension repository from Thundernest with many MailExtensions
-        showcasing different MailExtension APIs.</td>
+      <td style="text-align:left">The example extension repository from Thundernest with MailExtensions
+        showcasing different WebExtension/MailExtension APIs.</td>
     </tr>
     <tr>
       <td style="text-align:left"><a href="https://searchfox.org/">Searchfox</a>
       </td>
-      <td style="text-align:left">Search through the Firefox code base (<em>mozilla-central</em>) and the
-        Thunderbird code base (<em>comm-central</em>). Useful if you still work
-        with legacy add-ons or WebExtension Experiments and need to check how something
-        is implemented in Thunderbird Core. If you are working on a modern MailExtension,
-        you probably never need this.</td>
+      <td style="text-align:left">An online viewer to search the Firefox code base (<em>mozilla-central</em>)
+        and the Thunderbird code base (<em>comm-central</em>). Useful if you still
+        work with legacy add-ons or WebExtension Experiments and need to check
+        how something is implemented in Thunderbird Core. If you are working on
+        a modern MailExtension, you probably never need this.</td>
     </tr>
     <tr>
       <td style="text-align:left"><a href="https://cleidigh.github.io/ThunderKdB/index.html">ThunderKdB</a>
@@ -71,11 +92,6 @@ description: >-
       <td style="text-align:left">Overall add-on statistics and a very powerful search through the code
         of all add-ons listed on addons.thunderbird.net (ATN) and a few other public
         repositories.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><a href="https://github.com/cleidigh/ThunderStorm">Thunderstorm Repository</a>
-      </td>
-      <td style="text-align:left">More tips, tricks &amp; examples for Thunderbird add-on development.</td>
     </tr>
   </tbody>
 </table>

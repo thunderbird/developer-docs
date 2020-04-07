@@ -1,12 +1,12 @@
 # Update for Thunderbird 68
 
-A _lot_ of work has been done to ensure that [legacy extension](../../about-add-ons.md#legacy-extensions) \(overlay extension and bootstrap extensions\) will work in Thunderbird 68. Technically, they have to be converted to MailExtensions, but by activating the legacy mode, the general structure of the legacy extension does not need to be changed.
+A _lot_ of work has been done to ensure that [legacy extension](https://developer.thunderbird.net/add-ons/about-add-ons#extensions) \(overlay extension and bootstrap extensions\) will work in Thunderbird 68. Technically, they have to be converted to WebExtensions, but by activating the legacy mode, the general structure of the legacy extension does not need to be changed.
 
 ## Required Changes
 
 There are two types of changes which are required to make your legacy extensions compatible with Thunderbird 68:
 
-* The legacy extension must be converted to a MailExtension by replacing the old `install.rdf` by a `manifest.json`.
+* The legacy extension must be converted to a WebExtension by replacing the old `install.rdf` by a `manifest.json`.
 
 {% page-ref page="overlays.md" %}
 

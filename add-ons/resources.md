@@ -77,7 +77,7 @@ description: >-
         </ul>
         <p>The Mozilla documentation also includes information about internal components
           and functions used by legacy extensions. Please be aware, that some of
-          those pages are not maintained and potentially outdated.</p>
+          those pages are not maintained and are potentially outdated.</p>
         <ul>
           <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/JavaScript_code_modules">Overview: Mozilla Javascript Code Modules</a>
           </li>

@@ -92,7 +92,7 @@ _WIP_
 {% tab title="Legacy Bootstrap Extension" %}
 Status: **Deprecated in TB68.**
 
-This type of extension uses a bootstrap file \(`bootstrap.js`\) as an entry point to the extension. The file defines four methods \(`install`, `uninstall`, `startup`, and `shutdown`\) from which all extension behaviour is controlled. Legacy Bootstrap Extensions can be installed/uninstalled and enabled/disabled without restarting Thunderbird, so they are sometimes called “restartless” extensions. They use an RDF manifest \(`install.rdf`\).
+This type of extension uses a bootstrap file \(`bootstrap.js`\) as an entry point to the extension. The file defines four methods \(`install`, `uninstall`, `startup`, and `shutdown`\) from which all extension behaviour is controlled. These extensions can be installed/uninstalled and enabled/disabled without restarting Thunderbird, so they are sometimes called “restartless” extensions. They use an RDF manifest \(`install.rdf`\).
 
 #### Update Strategy
 
@@ -102,7 +102,7 @@ _WIP_
 {% tab title="Legacy Overlay Extension" %}
 Status: **Deprecated in TB68.**
 
-The original type of extension for Thunderbird and Firefox. It uses documents that overlay the Thunderbird UI, adding to and modifying it. Legacy Overlay Extensions use an RDF manifest \(`install.rdf`\) and require a restart of Thunderbird for installation/uninstallation, upgrading/downgrading and enabling/disabling.
+The original type of extension for Thunderbird and Firefox, using documents that overlay the Thunderbird UI, adding to and modifying it. These extensions use an RDF manifest \(`install.rdf`\) and require a restart of Thunderbird for installation/uninstallation, upgrading/downgrading and enabling/disabling.
 
 #### Update Strategy
 

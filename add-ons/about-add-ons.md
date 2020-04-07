@@ -40,7 +40,7 @@ You can find detailed information about MailExtensions here:
 * [Our sample-extensions repository](https://github.com/thundernest/sample-extensions/tree/master/experiment)
 * [MailExtensions API documentation](https://thunderbird-webextensions.readthedocs.io/)
 
-If you need an API that does not exist yet, please [tell us about it](https://bugzilla.mozilla.org/enter_bug.cgi?product=Thunderbird&component=Add-Ons%3A+Extensions+API&blocked=1396172).
+If you need an API that does not exist yet, please [tell us about it](https://bugzilla.mozilla.org/enter_bug.cgi?product=Thunderbird&component=Add-Ons%3A+Extensions+API).
 
 #### Experimental APIs \(a.k.a. WebExtension Experiments\)
 

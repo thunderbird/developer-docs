@@ -27,11 +27,11 @@ The architecture of Thunderbird extensions has changed over the last years. The 
 {% tab title="MailExtension" %}
 Status: **The only valid extension type in TB74 and later.**
 
-MailExtensions are based on the WebExtension technology, which is also used by many web browsers. Thunderbird can use some of the WebExtension APIs provided by Firefox _\*\*_\(as they are both based on the Mozilla platform\), but of course requires additional interfaces to messenger specific functions. These additional APIs are called MailExtension APIs.
+MailExtensions are based on the WebExtension technology, which is also used by many web browsers. Thunderbird can use some of the WebExtension APIs provided by Firefox (as they are both based on the Mozilla platform\), but Thunderbird of course requires additional interfaces to messenger specific functions. These additional APIs are called MailExtension APIs.
 
 MailExtensions use a JSON manifest \(`manifest.json`\) but do not use the `legacy` key \(which was deprecated in TB74\).
 
-Unlike older legacy extensions, which had direct access to Thunderbird's internal components and UI elements, MailExtensions access functionality through stable MailExtension APIs. They are less likely to break and do not need frequent and complex updating when Thunderbird changes.
+Unlike older legacy extensions, which had direct access to Thunderbird's internal components and UI elements, MailExtensions access functionality through the stable WebExtension/MailExtension APIs. They are less likely to break and do not need frequent and complex updating when Thunderbird changes.
 
 You can find detailed information about MailExtensions here:
 

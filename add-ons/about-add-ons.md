@@ -86,7 +86,9 @@ They use a JSON manifest \(`manifest.json`\) with the `legacy` key \(which has b
 
 #### Update Strategy
 
-_WIP_
+_The update guide is being worked on._
+
+{% page-ref page="updating/tb78/changes.md" %}
 {% endtab %}
 
 {% tab title="Legacy Bootstrap Extension" %}
@@ -96,7 +98,11 @@ This type of extension uses a bootstrap file \(`bootstrap.js`\) as an entry poin
 
 #### Update Strategy
 
-_WIP_
+It is recommended to update legacy Bootstrap Extensions to legacy WebExtensions first, before converting them to MailExtension. The update guide assumes, the extension is currently compatible with Thunderbird 60. If that is not the case, you can find further update instructions [here](https://wiki.mozilla.org/Thunderbird/Add-ons_Guide_57).
+
+{% page-ref page="updating/tb68/bootstrapped.md" %}
+
+{% page-ref page="updating/tb68/changes.md" %}
 {% endtab %}
 
 {% tab title="Legacy Overlay Extension" %}
@@ -106,7 +112,11 @@ The original type of extension for Thunderbird and Firefox, using documents that
 
 #### Update Strategy
 
-_WIP_
+It is recommended to update legacy Overlay Extensions to legacy WebExtensions first, before converting them to MailExtensions. The update guide assumes, the extension is currently compatible with Thunderbird 60. If that is not the case, you can find further update instructions [here](https://wiki.mozilla.org/Thunderbird/Add-ons_Guide_57).
+
+{% page-ref page="updating/tb68/overlays.md" %}
+
+{% page-ref page="updating/tb68/changes.md" %}
 {% endtab %}
 {% endtabs %}
 

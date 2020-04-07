@@ -36,7 +36,7 @@
   * [WebExtension Themes](add-ons/examples/web-extension-themes.md)
   * [Examples in the Sample Extensions Repository](https://github.com/thundernest/sample-extensions)
 * [Tips and Tricks](add-ons/tips-and-tricks.md)
-* [Updating Add-ons](add-ons/updating/README.md)
+* [Add-on Update Guides](add-ons/updating/README.md)
   * [Update for Thunderbird 68](add-ons/updating/tb68/README.md)
     * [Convert Overlay Extension to Legacy WebExtension](add-ons/updating/tb68/overlays.md)
     * [Convert Bootstrapped Extension to Legacy WebExtension](add-ons/updating/tb68/bootstrapped.md)

@@ -1,2 +1,2 @@
-# Updating Add-ons
+# Add-on Update Guides
 

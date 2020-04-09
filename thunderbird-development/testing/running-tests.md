@@ -39,20 +39,3 @@ mach mochitest mail/components/extensions/test/browser
 {% hint style="info" %}
 You may notice a long pause when running tests for the first time after building. Mach is reindexing the tests.
 {% endhint %}
-
-## Mozmill
-
-Mozmill is a test suite for the Thunderbird user interface. It simulates a user's actions, in a "click this button", or "enter this text" kind of way, rather than interacting directly with the program's code.
-
-Mozmill tests are located in `mail/test/mozmill`, except for calendar tests \(see below\). You can run one test or a whole directory.
-
-```text
-# Runs a single test.
-make -C objdir/ SOLO_TEST=pref-window/test-attachments-pane.js mozmill-one
-
-# Runs a directory of tests.
-make -C objdir/ SOLO_TEST=pref-window mozmill-one
-```
-
-You can run these commands from anywhere, as long as the `-C` argument points to your objdir.
-

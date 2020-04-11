@@ -1,7 +1,6 @@
 ---
 description: >-
-  Thunderbird has two test suites, that each test different aspects of the
-  program.
+  How to run Thunderbird's automated tests.
 ---
 
 # Running Tests

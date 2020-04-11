@@ -1,6 +1,6 @@
 ---
 description: >-
-  Thunderbird has three test suites, that each test different aspects of the
+  Thunderbird has two test suites, that each test different aspects of the
   program.
 ---
 

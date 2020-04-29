@@ -1,6 +1,5 @@
 ---
-description: >-
-  How to run Thunderbird's automated tests.
+description: How to run Thunderbird's automated tests.
 ---
 
 # Running Tests
@@ -38,3 +37,4 @@ mach mochitest mail/components/extensions/test/browser
 {% hint style="info" %}
 You may notice a long pause when running tests for the first time after building. Mach is reindexing the tests.
 {% endhint %}
+

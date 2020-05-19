@@ -98,7 +98,7 @@ or to do it via one command:
 hg pull -u; (cd comm; hg pull -u)
 ```
 
-The just run the `./mach build` command detailed in the [Building](./#building)instructions above. This will only recompile files that changed, but it may still take a long time.
+Then just run the `./mach build` command detailed in the [Building](./#building) instructions above. This will only recompile files that changed, but it may still take a long time.
 
 ## Rebuilding
 

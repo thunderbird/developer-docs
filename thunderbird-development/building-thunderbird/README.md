@@ -35,14 +35,6 @@ _Each of these ac\_add\_options entries needs to be on its own line._
 
 For more on configuration options, see the page [Configuring build options](https://developer.mozilla.org/en/Configuring_Build_Options). Note that if you use an MOZ\_OBJDIR it cannot be a sibling folder to your source directory. Use an absolute path to be sure!
 
-### Build the Lightning Calendar when building Thunderbird    <a id="build-the-lightning-calendar-when-building-thunderbird"></a>
-
-Add the following line to your `mozconfig` file:
-
-```text
-echo 'ac_add_options --enable-calendar' >> mozconfig
-```
-
 ## Building
 
 {% hint style="warning" %}

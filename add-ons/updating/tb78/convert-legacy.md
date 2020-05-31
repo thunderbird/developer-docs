@@ -29,13 +29,25 @@ While the Thunderbird team plans to add more APIs with upcoming releases, the cu
 Experiments consist of three parts:
 1. a [*schema*](https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/schema.html) describes the API that can be accessed by the WebExtension part of the add-on. The schema may define functions that can be called by the add-in, events the add-in can register listeners for.
 2. a *parent* implementation implements the API in Thunderbird's main process. All features that were available to a bootstrapped legacy extension can be used here.
-3. a *child* implementation implements the API in the content process(es). In most cases, it will get generated automatically to call the parent implementation – but manual adjustments may be necessary if function parameters cannot be transferred to a different process (for example, if an API function accepts a function as argument).
+3. a *child* implementation implements the API in the content process(es). In most cases, it will get generated automatically to call the parent implementation – but manual adjustments may be necessary if function parameters cannot be transferred to a different process (for example, if an API function accepts a function as argument). If the API does not need to interact with anything running in the main thread, it is also possible to implement an API completely within the child implementation.
+You may need to use [`Components.utils.cloneInto()`](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Language_Bindings/Components.utils.cloneInto) or a related function to clone return values into `context.cloneScope` if the [structured clone algorithm](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm) does not support them and the objects were not created using constructors within `context.cloneScope`, as unprivileged code is, by default, not permitted to access objects created from privileged code.
 
 Full examples for [a simple function with parent and child implementations](https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/functions.html) and [events add-ons can listen for](https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/events.html) are available in the Firefox source documentation.
 
 As experiments run in the main process and have unrestricted access to any aspect of Thunderbird, they are expected to require updates for each new version of Thunderbird. To reduce the maintainance burden in the future, it is in your own interest to use experiments only to the extent necessary for the add-on.
 
 Best practice: try to write APIs that would be useful for a wide range of add-ons, not just the one you're porting. That way, you can later on propose the API you designed for inclusion in Thunderbird, with your add-on serving as reference implementation. If your APIs become a part of Thunderbird, you no longer need to maintain them as part of the add-on.
+
+
+## Replacing options
+
+Option windows are replaced by [settings pages](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Implement_a_settings_page) defined in `manifest.json`:
+```
+"options_ui": {
+  "page": "options.html"
+},
+```
+Instead of an XUL dialog, use the specified HTML document will be accessible to the user through the Add-on manager. From that document, all WebExtension and MailExtension APIs can be accessed in the same way as form a background script. The settings themselves should be stored using one of the new APIs to store data, such as [`storage`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage), so it may be necessary to add an experiment to migrate existing settings from nsIPrefBranch or other mechanisms not accessible through modern APIs.
 
 
 ## Replacing chrome.manifest
@@ -64,7 +76,7 @@ If a part of an overlay cannot be replaced with one of the suggestions above, it
 
 ## Replacing XUL windows and dialogs
 
-While it would be possible to attempt to re-use existing XUL code in an experiment, it is probably a better idea to use the more future-proof `windows` MailExtension API to create a window displaying an HTML dialog. From these dialogs, all WebExtension and MailExtension APIs can be accessed in the same way as from a background script.
+While it would be possible to attempt to re-use existing XUL code in an experiment, it is probably a better idea to use the more future-proof [`windows` MailExtension API](https://thunderbird-webextensions.readthedocs.io/en/latest/windows.html) to create a window displaying an HTML dialog. From these dialogs, all WebExtension and MailExtension APIs can be accessed in the same way as from a background script.
 
 Note that current builds of Thunderbird will, by default, display an ugly URL bar on top of all windows created through the `windows` API. Specifying the type `panel` or `detached_panel` may hide the URL bar in some future configurations. Either way, the HTML of the dialog will most likely be re-useable with any future mechanism to open windows.
 

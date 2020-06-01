@@ -262,7 +262,7 @@ Set up performance measuring. Investigate performance bottlenecks and improve UI
 * cert deployment?
 * XMPP/Jingle support. [Bug 1018060](https://bugzilla.mozilla.org/show_bug.cgi?id=1018060) \[If we can get sponsorship?\]
 
-### TOR uplift for Thunderbird \[TB???\]
+### Tor uplift for Thunderbird \[TB???\]
 
 Consider an option to connect through Tor. Some mail providers support connecting through their onion services.  
 

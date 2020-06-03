@@ -31,6 +31,7 @@
 ## Add-on Development <a id="add-ons"></a>
 
 * [Introduction](add-ons/about-add-ons.md)
+* [MailExtension API](https://thunderbird-webextensions.readthedocs.io/)
 * [Examples](add-ons/examples/README.md)
   * [Hello World MailExtension](add-ons/examples/hello-world-add-on.md)
   * [WebExtension Themes](add-ons/examples/web-extension-themes.md)

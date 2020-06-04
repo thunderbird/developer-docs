@@ -34,7 +34,17 @@ You may need to use [`Components.utils.cloneInto()`](https://developer.mozilla.o
 
 Full examples for [a simple function with parent and child implementations](https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/functions.html) and [events add-ons can listen for](https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/events.html) are available in the Firefox source documentation.
 
-As experiments run in the main process and have unrestricted access to any aspect of Thunderbird, they are expected to require updates for each new version of Thunderbird. To reduce the maintainance burden in the future, it is in your own interest to use experiments only to the extent necessary for the add-on.
+If your experiment is so complex that it does not reasonably fit into a single source file, you can use JavaScript modules just like in legacy extensions with some additional boilerplate:
+```
+const { ExtensionParent } = ChromeUtils.import(
+    "resource://gre/modules/ExtensionParent.jsm");
+const extension = ExtensionParent.GlobalManager.getExtension(
+    "insert-your-extension-id-here@example.com");
+const { /* ... exported symbols ... */ } =
+    ChromeUtils.import(extension.baseURL + "path/to/module.jsm");
+```
+
+As experiments usually run in the main process and have unrestricted access to any aspect of Thunderbird, they are expected to require updates for each new version of Thunderbird. To reduce the maintainance burden in the future, it is in your own interest to use experiments only to the extent necessary for the add-on.
 
 Best practice: try to write APIs that would be useful for a wide range of add-ons, not just the one you're porting. That way, you can later on propose the API you designed for inclusion in Thunderbird, with your add-on serving as reference implementation. If your APIs become a part of Thunderbird, you no longer need to maintain them as part of the add-on.
 
@@ -56,7 +66,7 @@ The `chrome.manifest` file is no longer supported. Many mechanisms have a more o
 * **interfaces** it should no longer be necessary to use binary interfaces, as binary components are deprecated for a long time. To access custom methods on JS-implemented classes from an experiment, use `.wrappedJSObject` to get access to the raw JS implementation.
 * **component**, **contract** [see section 'Replacing XPCOM registration' below](#replacing-xpcom-registration).
 * **category** use [`nsICategoryManager`](https://developer.mozilla.org/en/XPCOM_Interface_Reference/nsICategoryManager) through an experiment
-* **content**, **skin**, **resource** it is no longer easily possible to assign chrome://- and resource://-URLs from add-ons. However, all files of an add-on are now available through moz-extension:// URLs by default. To generate such URLs, use [`browser.runtime.getURL`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/getURL). Some WebExtension APIs also accept relative paths and generate suitable URLs automatically.
+* **content**, **skin**, **resource** it is no longer easily possible to assign chrome://- and resource://-URLs from add-ons. However, all files of an add-on are now available through moz-extension:// URLs by default. To generate such URLs, use [`browser.runtime.getURL`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/getURL) or `extension.baseURL` from an experiment. Some WebExtension APIs also accept relative paths and generate suitable URLs automatically.
 * **locale** localization for WebExtensions is handled using the [`i18n` API](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/i18n), which uses a single `messages.json` file to store translations.
 * **style** use an experiment to monitor open windows, and inject the style through that experiment
 * **overlay** [see section 'Replacing Overlays' below](#replacing-overlays).
@@ -114,8 +124,19 @@ var NSGetFactory = XPCOMUtils.generateNSGetFactory([exampleComponent]);
   }});
 /* ... */ } /* ... */
 ```
+For complex cases, it might be reasonable to put the implementation and optionally its registration in a separate JavaScript module.
+
 
 ## Replacing various discontinued features within experiment code
 
 Many parts of XUL are discontinued, and there are some other changes that prevent legacy code to run unchanged in an experiment. [A separate article deals with these changes.](changes.md)
+
+
+## Additional Tips
+
+Some general tips to speed up your porting workflow:
+* To debug code running in the backgroud page or to interactively use Web-/MailExtension APIs, you can access debugging tools using the gear icon in the add-on tab.
+* To debug code running in the browser context (usually: your experiments) you can still use the browser console (Ctrl+Shift+J) or developer toolbox (Ctrl+Shift+I) – just like with legacy extensions.
+* The add-on debugging tools accessible through the add-on page's gear icon permit to directly install add-ons without packaging them, similar to linking a legacy extension in the profile folder. Using that option permits to reload the add-on without restarting Thunderbird.
+* When testing a change in an experiment, always restart Thudnerbird *and delete Thunderbird's cache folder*. Experiment code may get cached, and these caches are not always cleared when uninstalling or replacing an add-on.
 

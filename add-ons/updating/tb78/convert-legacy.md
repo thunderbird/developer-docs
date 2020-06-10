@@ -30,7 +30,8 @@ Experiments consist of three parts:
 1. a [*schema*](https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/schema.html) describes the API that can be accessed by the WebExtension part of the add-on. The schema may define functions that can be called by the add-in, events the add-in can register listeners for.
 2. a *parent* implementation implements the API in Thunderbird's main process. All features that were available to a bootstrapped legacy extension can be used here.
 3. a *child* implementation implements the API in the content process(es). In most cases, it will get generated automatically to call the parent implementation – but manual adjustments may be necessary if function parameters cannot be transferred to a different process (for example, if an API function accepts a function as argument). If the API does not need to interact with anything running in the main thread, it is also possible to implement an API completely within the child implementation.
-You may need to use [`Components.utils.cloneInto()`](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Language_Bindings/Components.utils.cloneInto) or a related function to clone return values into `context.cloneScope` if the [structured clone algorithm](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm) does not support them and the objects were not created using constructors within `context.cloneScope`, as unprivileged code is, by default, not permitted to access objects created from privileged code.
+
+   To return values not supported by the [structured clone algorithm](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm), you may need to clone them into the unprivileged scope of the WebExtension. Usually, that boils down to invoking [`Components.utils.cloneInto()`](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Language_Bindings/Components.utils.cloneInto) or a related function with `context.cloneScope` as target scope. Alternatively, you can directly return unprivileged objects created using constructors within `context.cloneScope`.
 
 Full examples for [a simple function with parent and child implementations](https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/functions.html) and [events add-ons can listen for](https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/events.html) are available in the Firefox source documentation.
 
@@ -41,7 +42,10 @@ const { ExtensionParent } = ChromeUtils.import(
 const extension = ExtensionParent.GlobalManager.getExtension(
     "insert-your-extension-id-here@example.com");
 const { /* ... exported symbols ... */ } =
-    ChromeUtils.import(extension.baseURL + "path/to/module.jsm");
+    ChromeUtils.import(extension.getURL("path/to/module.jsm"));
+
+// when unloading: (safe to call even if the import is conditional / elsewhere!)
+Components.utils.unload(extension.getURL("path/to/module.jsm"));
 ```
 
 As experiments usually run in the main process and have unrestricted access to any aspect of Thunderbird, they are expected to require updates for each new version of Thunderbird. To reduce the maintainance burden in the future, it is in your own interest to use experiments only to the extent necessary for the add-on.
@@ -136,7 +140,7 @@ Many parts of XUL are discontinued, and there are some other changes that preven
 
 Some general tips to speed up your porting workflow:
 * To debug code running in the backgroud page or to interactively use Web-/MailExtension APIs, you can access debugging tools using the gear icon in the add-on tab.
-* To debug code running in the browser context (usually: your experiments) you can still use the browser console (Ctrl+Shift+J) or developer toolbox (Ctrl+Shift+I) – just like with legacy extensions.
-* The add-on debugging tools accessible through the add-on page's gear icon permit to directly install add-ons without packaging them, similar to linking a legacy extension in the profile folder. Using that option permits to reload the add-on without restarting Thunderbird.
+* To debug code running in the browser context (usually: your experiments) you can still use the browser console (Ctrl+Shift+J) or developer toolbox (Ctrl+Shift+I) – just like with legacy add-ons.
+* The add-on debugging tools accessible through the add-on page's gear icon permit to directly install add-ons without packaging them, similar to linking a legacy add-on in the profile folder. Using that option permits to reload the add-on without restarting Thunderbird.
 * When testing a change in an experiment, always restart Thudnerbird *and delete Thunderbird's cache folder*. Experiment code may get cached, and these caches are not always cleared when uninstalling or replacing an add-on.
 

@@ -4,7 +4,7 @@ description: >-
   developer.thunderbird.net.
 ---
 
-# Developer Documentation
+# Documentation & Resources
 
 <table>
   <thead>

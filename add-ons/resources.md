@@ -27,11 +27,19 @@ description: >-
         as well.</td>
     </tr>
     <tr>
-      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/68/">MailExtension APIs Documentation</a>
+      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/">MailExtension APIs Documentation</a>
       </td>
-      <td style="text-align:left">Documentation of all Extension APIs created specifically for Thunderbird.
-        They are called MailExtension APIs to distinguish them from the standard
-        WebExtension APIs inherited from Firefox.</td>
+      <td style="text-align:left">
+        <p>Documentation of all Extension APIs created specifically for Thunderbird.
+          They are called MailExtension APIs to distinguish them from the standard
+          WebExtension APIs inherited from Firefox.</p>
+        <ul>
+          <li><a href="https://thunderbird-webextensions.readthedocs.io/en/68/">API documentation for Thunderbird 68</a>
+          </li>
+          <li><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/">API documentation for Thunderbird 68+</a>
+          </li>
+        </ul>
+      </td>
     </tr>
     <tr>
       <td style="text-align:left"><a href="https://github.com/thundernest/sample-extensions">Sample Extensions Repository</a>

@@ -14,7 +14,7 @@ The address book needs to a big time refresh. We will design the address book su
 
 The new address book would live inside a tab, like calendar, tasks, and chat currently do. It will provide a sane internal API for accessing contacts, and add flexibility to what kind of data can be stored for a contact \(more than two email, oh yes!\), and contact tagging.
 
-After address book rewriting is done, it should be easier to add support for some long requested features, such as the below. 
+After address book rewriting is done, it should be easier to add support for some long requested features, such as the below.
 
 * CardDAV support: [bug 546932](https://bugzilla.mozilla.org/show_bug.cgi?id=546932)
 * vCard v4: [bug 29106](https://bugzilla.mozilla.org/show_bug.cgi?id=29106)
@@ -31,9 +31,9 @@ This is tracked in [bug 1492751](https://bugzilla.mozilla.org/show_bug.cgi?id=14
 
 ### Migration from XUL to HTML \[TB78\]
 
-Following Firefox, Thunderbird will also move away from XUL documents and towards top-level \(X\)HTML windows. Thunderbird has over 200 top level documents, so this is a significant effort. The Firefox team is planning to have the migration partly scripted, which will help in pulling it through. 
+Following Firefox, Thunderbird will also move away from XUL documents and towards top-level \(X\)HTML windows. Thunderbird has over 200 top level documents, so this is a significant effort. The Firefox team is planning to have the migration partly scripted, which will help in pulling it through.
 
-In parallel, the conversion from individual XUL elements to corresponding HTML ones will continue. 
+In parallel, the conversion from individual XUL elements to corresponding HTML ones will continue.
 
 Top level XUL-&gt;XHTML conversion is tracked in [bug 1572398](https://bugzilla.mozilla.org/show_bug.cgi?id=1572398).
 
@@ -45,7 +45,7 @@ We should consider dropping support for Movemail.
 
 ### JMAP support \[TB2021/TB2022\]
 
-Implementing JMAP \(RFC 8620\) support at an early stage could be useful for getting experience in \(re-\)implementing protocols, without worrying to much about existing limitations, and at the same time obtain support for JMAP. 
+Implementing JMAP \(RFC 8620\) support at an early stage could be useful for getting experience in \(re-\)implementing protocols, without worrying to much about existing limitations, and at the same time obtain support for JMAP.
 
 Tracked in [bug 1322991](https://bugzilla.mozilla.org/show_bug.cgi?id=1322991).
 
@@ -53,7 +53,7 @@ Tracked in [bug 1322991](https://bugzilla.mozilla.org/show_bug.cgi?id=1322991).
 
 #### Kill RDF \[TB68/TB78\]
 
-RDF removal has been in the works during the previous cycle, and it’s finally time to drop it. This makes folder-related code, and feeds related code easier to work with. 
+RDF removal has been in the works during the previous cycle, and it’s finally time to drop it. This makes folder-related code, and feeds related code easier to work with.
 
 Tracked in [bug 420506](https://bugzilla.mozilla.org/show_bug.cgi?id=420506). DONE!
 
@@ -64,9 +64,9 @@ The odd Mork file/”database” format is very unapproachable, and hard to unde
 * Address book data: tracked in [bug 382878](https://bugzilla.mozilla.org/show_bug.cgi?id=382876)
 * Folder message indexing data \(cache\): tracked in [bug 1572000](https://bugzilla.mozilla.org/show_bug.cgi?id=1572000)
 
-To enable data migration, Mork removal would happen once a major Mork-free release is done.  
-  
- Tracked in [bug 453975](https://bugzilla.mozilla.org/show_bug.cgi?id=453975).
+To enable data migration, Mork removal would happen once a major Mork-free release is done.
+
+Tracked in [bug 453975](https://bugzilla.mozilla.org/show_bug.cgi?id=453975).
 
 #### Global Index for Messages \[TB2021\]
 
@@ -76,9 +76,9 @@ This work is tracked in [bug 1572000](https://bugzilla.mozilla.org/show_bug.cgi?
 
 #### Progress with libmime removal  \[TB78/TB2021/TB2022\]
 
-Libmime is the cruftiest piece of code we have: it is hard to understand and its maintenance is error prone. The library is used all over the place, so to the extent it’s possible we should start converting code over one part at a time.  A number of years back the MIME header parsing was converted over to using the JSMime JavaScript library.
+Libmime is the cruftiest piece of code we have: it is hard to understand and its maintenance is error prone. The library is used all over the place, so to the extent it’s possible we should start converting code over one part at a time. A number of years back the MIME header parsing was converted over to using the JSMime JavaScript library.
 
-Message sending is very entangled with libmime. For Thunderbird 78 we will finish the rewrite of sending in JavaScript. This work is tracked in [bug 1211292](https://bugzilla.mozilla.org/show_bug.cgi?id=1211292). 
+Message sending is very entangled with libmime. For Thunderbird 78 we will finish the rewrite of sending in JavaScript. This work is tracked in [bug 1211292](https://bugzilla.mozilla.org/show_bug.cgi?id=1211292).
 
 For Thunderbird 78, we should also get started with using JavaScript for the body parsing of MIME. Add an option to use it so dogfooding can find problems. Once successful, turn the new parsing on as default for the next major release. After default for a release, drop libmime.
 
@@ -106,21 +106,21 @@ Responsive design: make the UI use proper layout depending on the screen size. P
 
 #### Better offline and slow network support \[TB2021\]
 
-We should provide better offline and slow-network support \(use local data first; performance boost\). Leverage existing browser level caching  and offline support mechanisms to achieve this. To be able to use those, this means data access through HTTP or pre-fetched into an IndexedDB database.
+We should provide better offline and slow-network support \(use local data first; performance boost\). Leverage existing browser level caching and offline support mechanisms to achieve this. To be able to use those, this means data access through HTTP or pre-fetched into an IndexedDB database.
 
 Requires investigation of feasibility.
 
 #### Folder pane usefulness improvements \[TB78\]
 
-The folder pane should allow mixing multiple folder modes like Outlook. Thunderbird  already support different folder modes, but it’s currently one at a time. It would be much more useful to be able to show a section with \(e.g.\) Favorites on top, and All Folders beneath it. Allow the user to choose which modes to put where.
+The folder pane should allow mixing multiple folder modes like Outlook. Thunderbird already support different folder modes, but it’s currently one at a time. It would be much more useful to be able to show a section with \(e.g.\) Favorites on top, and All Folders beneath it. Allow the user to choose which modes to put where.
 
 Tracked in [bug 1574129](https://bugzilla.mozilla.org/show_bug.cgi?id=1574129)
 
 #### Moving chrome UI to content UI \[TB78/TB2021\]
 
-Thunderbird top level UI is currently part of the chrome UI. With the target of becoming a super fat privileged web application eventually, this needs to be rethought: web applications live in content. It’s also become clear that the platform support for many features one can use in a web page using web technologies is implemented in a way essentially requiring the “page” to be located in a browser element \(I’m looking at you, form controls and validation\), and accessed through http \(localStorage etc.\). We should investigate to what degree we can move our chrome UI basically into a tabbrowser. Making sure we’re treated as an http accessed web page will enable many features without hacks: localStorage, IndexedDB, CSP etc. - even simple functionality such as opening new windows have caused breakage recently. 
+Thunderbird top level UI is currently part of the chrome UI. With the target of becoming a super fat privileged web application eventually, this needs to be rethought: web applications live in content. It’s also become clear that the platform support for many features one can use in a web page using web technologies is implemented in a way essentially requiring the “page” to be located in a browser element \(I’m looking at you, form controls and validation\), and accessed through http \(localStorage etc.\). We should investigate to what degree we can move our chrome UI basically into a tabbrowser. Making sure we’re treated as an http accessed web page will enable many features without hacks: localStorage, IndexedDB, CSP etc. - even simple functionality such as opening new windows have caused breakage recently.
 
-For add-ons wanting good access to modifying the UI, this would be a significant win, since WebExtensions are primarily designed for modifying content. 
+For add-ons wanting good access to modifying the UI, this would be a significant win, since WebExtensions are primarily designed for modifying content.
 
 Requires investigation of feasibility.
 
@@ -164,7 +164,7 @@ Ongoing effort.
 
 #### Self contained Calendar and Task tabs \[TB2021\]
 
-Make the calendar and tasks tabs self contained. 
+Make the calendar and tasks tabs self contained.
 
 ### Compose window redesign and improvements \[TB78\]
 
@@ -177,7 +177,7 @@ Make the calendar and tasks tabs self contained.
 #### OTR support \[TB68/TB78\] <a id="docs-internal-guid-975950cb-7fff-766f-4560-d15ad25b281b"></a>
 
 To facilitate distributed strong end-to-end encrypted instant messaging, Thunderbird is adding support for the OTR protocol.  
- Tracked in [bug 954310.](https://bugzilla.mozilla.org/show_bug.cgi?id=954310)
+Tracked in [bug 954310.](https://bugzilla.mozilla.org/show_bug.cgi?id=954310)
 
 #### Chat UI facelift
 
@@ -185,7 +185,7 @@ The chat UI needs to be modernized and less IRC-centric. IRC and similar are com
 
 #### Matrix support
 
-[The Matrix network](https://matrix.org/) should be properly supported , allowing a Thunderbird teams type setup. 
+[The Matrix network](https://matrix.org/) should be properly supported , allowing a Thunderbird teams type setup.
 
 Tracked in [bug 1572636](https://bugzilla.mozilla.org/show_bug.cgi?id=1572636).
 
@@ -195,8 +195,8 @@ Mozilla is going to stop using IRC for developer communication. The decision on 
 
 ### Smart workflow widgets \[TB78/TB2021\]
 
-Thunderbird should support smart widgets for voting, time scheduling. These could be built around micro-formats and for teams using Thunderbird only everything would work without problems \(all over email\). If someone uses another client, some manual actions would still be required. Fallback would still be pure text, so adding more structural data could only be a winning situation.  
-  
+Thunderbird should support smart widgets for voting, time scheduling. These could be built around micro-formats and for teams using Thunderbird only everything would work without problems \(all over email\). If someone uses another client, some manual actions would still be required. Fallback would still be pure text, so adding more structural data could only be a winning situation.
+
 One way this would work for events, is that we mark up the emails we send out with some structural data, say an hCalendar. When replying to a message, we check if the original mail had included an hCalendar, and can offer quick options to reply and including that for that hCalendar event you are an attendee. It can also link to the UUID of an existing event in your calendar and offer response options related to that, e.g. check if you’d have conflicts in your schedule.
 
 For things like simple votes, be smart and let a \[vote\]\(maybe as Emoji\) in the subject mean there’s a vote going on. Upon request by the user, create a voting summary and clean it up into a nicely formatted output. Automate the things that take some time to copy-paste from many mails, but could easily be automated. Make the Thunderbird users look good.
@@ -220,13 +220,13 @@ Add real support to import/export profiles, or single accounts. Look at the impo
 
 ### IMAP notes \[TB2021\]
 
-Storing text notes on the IMAP server would be useful, and the feature is low hanging fruit not necessarily very hard to implement. 
+Storing text notes on the IMAP server would be useful, and the feature is low hanging fruit not necessarily very hard to implement.
 
 Tracked in [bug 713843](https://bugzilla.mozilla.org/show_bug.cgi?id=713843).
 
 ### Improved mailing list handling \[TB78\]
 
-Better support for mailing list handling: 
+Better support for mailing list handling:
 
 * Mailing list management UI
 * filtering to folders, autodetect lists and offer to set up
@@ -264,20 +264,19 @@ Set up performance measuring. Investigate performance bottlenecks and improve UI
 
 ### Tor uplift for Thunderbird \[TB???\]
 
-Consider an option to connect through Tor. Some mail providers support connecting through their onion services.  
+Consider an option to connect through Tor. Some mail providers support connecting through their onion services.
 
-
-For the general Tor uplift effort at Mozilla, see [https://wiki.mozilla.org/Security/Tor\_Uplift/Tracking](https://wiki.mozilla.org/Security/Tor_Uplift/Tracking) 
+For the general Tor uplift effort at Mozilla, see [https://wiki.mozilla.org/Security/Tor\_Uplift/Tracking](https://wiki.mozilla.org/Security/Tor_Uplift/Tracking)
 
 ### Releng
 
 #### Single hg repo for Thunderbird \[TB78\]
 
-Thunderbird will move to use a single repository for all the code to stop all the problems that have to do with the mozilla-central comm-central split. Instead Thunderbird code will live in a separate repository that is based on mozilla-central but has a comm branch and a comm/ subfolder. 
+Thunderbird will move to use a single repository for all the code to stop all the problems that have to do with the mozilla-central comm-central split. Instead Thunderbird code will live in a separate repository that is based on mozilla-central but has a comm branch and a comm/ subfolder.
 
 #### Own l10n repository \[TB78\]
 
-Thunderbird localization will start using its own localization repository. This will allow us to do string changes in point releases when needed. This is currently not possible due to technical constraints in how the localization system is set up. 
+Thunderbird localization will start using its own localization repository. This will allow us to do string changes in point releases when needed. This is currently not possible due to technical constraints in how the localization system is set up.
 
 #### Minimize releng related differences compared to Firefox \[TB78\]
 

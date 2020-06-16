@@ -2,7 +2,7 @@
 description: Learn how to get in contact with other Thunderbird add-on developers.
 ---
 
-# Add-on Developer Community
+# Developer Community
 
 |                                                   | Description |
 | :--- | :--- |

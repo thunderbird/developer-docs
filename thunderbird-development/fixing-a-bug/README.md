@@ -8,7 +8,7 @@ All the issues, bugs, work in progress patches, or updates related to Thunderbir
 
 ## Create a BugZilla Account
 
-Creating an account is necessary in order to submit patches, leave comments, and interact with any other aspect of BugZilla. If you're currently using an `IRC` username in the `#maildev` channel, we recommend saving your profile name with the current format `Firstname Lastname (:username)` in order to be easily searchable and allow the Thunderbird team to offer better support.
+Creating an account is necessary in order to submit patches, leave comments, and interact with any other aspect of BugZilla. If you're currently using a username in one of our Matrix chat rooms \(e.g. [\#maildev](https://chat.mozilla.org/#/room/#maildev:mozilla.org)\), we recommend saving your profile name with the current format `Firstname Lastname (:username)` in order to be easily searchable and allow the Thunderbird team to offer better support.
 
 ## Find a Bug
 

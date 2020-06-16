@@ -27,8 +27,8 @@ You can of course [access the repository via HTTP](https://hg.mozilla.org/try-co
 Having gained level 1 access and configured Mercurial, you can push to Try. In general, it's just a matter of applying your patch\(es\) and running `hg push -f try`.
 
 {% hint style="warning" %}
-Pushing to try-comm-central will create builds using the **most recent** mozilla-central code, which may or may not be a good idea at the time. Generally it's okay, but there may be unresolved problems between the two repositories. If you strike a problem, ask on the \#maildev IRC channel.
-
+Pushing to try-comm-central will create builds using the **most recent** mozilla-central code, which may or may not be a good idea at the time. Generally it's okay, but there may be unresolved problems between the two repositories. If you strike a problem, ask in the [\#maildev Matrix chat room](https://chat.mozilla.org/#/room/#maildev:mozilla.org).  
+  
 You can also work with a **specific** mozilla-central revision, see "Testing mozilla-central patches" below.
 {% endhint %}
 

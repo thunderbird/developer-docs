@@ -31,7 +31,7 @@ You can of course [access the repository via HTTP](https://hg.mozilla.org/try-co
 Mozilla usually updates the Firefox Live Server around **0400**, **1000**, **1600**, and **2200** **UTC** on weekdays and **1000 and 2200 UTC** on weekends \(give or take an hour\). If one of these times is approaching, it's probably not a good time to push. You can check [mozilla-central on TreeHerder](https://treeherder.mozilla.org/#/jobs?repo=mozilla-central) to see when they last pushed.
 
 {% hint style="warning" %}
-Coordinate with others on IRC \(\#maildev\) as they may already be planning to push. A Firefox push is usually followed by an assigned person landing something to check the build is not broken.
+Coordinate with others on Matrix chat \([\#maildev:mozilla.org](https://chat.mozilla.org/#/room/#maildev:mozilla.org)\) as they may already be planning to push. A Firefox push is usually followed by an assigned person landing something to check the build is not broken.
 {% endhint %}
 
 **Is there a build in progress already?** If there is, please wait until you're reasonably sure the first build is not broken. In most cases this means that the Linux and OS X builds \(B\) are complete and tests \(bct, X\) are starting to turn green \(free from major failures\).
@@ -39,8 +39,10 @@ Coordinate with others on IRC \(\#maildev\) as they may already be planning to p
 **Is the tree green?** If it isn't, do not push. Pushing something on top of an already broken build wastes resources \(both computing and human\).
 
 {% hint style="warning" %}
-Pushing to comm-central will create builds using the **most recent** mozilla-central code, which may or may not be a good idea at the time. Generally it's okay, but there may be unresolved problems between the two repositories. If you strike a problem, ask on the \#maildev IRC channel.
+Pushing to comm-central will create builds using the **most recent** mozilla-central code, which may or may not be a good idea at the time. Generally it's okay, but there may be unresolved problems between the two repositories. If you strike a problem, ask for help on Matrix chat \([\#maildev:mozilla.org](https://chat.mozilla.org/#/room/#maildev:mozilla.org)\).
 {% endhint %}
+
+
 
 ## Pushing to comm-central <a id="pushing-to-try"></a>
 

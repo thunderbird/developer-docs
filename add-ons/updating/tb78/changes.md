@@ -89,6 +89,13 @@ Services.scriptSecurityManager.createContentPrincipal()
 
 The 3rd parameter has been droped, which was the length of the array passed in as the 2nd parameter. See the [patch applied to Thunderbird itself](https://bug1557829.bmoattachments.org/attachment.cgi?id=9071511).
 
+### IOUtils
+
+Module file extension changed from js to jsm, now available via
+```javascript
+const { IOUtils } = ChromeUtils.import("resource:///modules/IOUtils.jsm");
+```
+
 ## Changes to the Preference System
 
 ### Removal of onsyncfrompreference and onsynctopreference Attributes

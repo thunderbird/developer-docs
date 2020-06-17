@@ -14,9 +14,9 @@ Removed completely in TB71. Use
 <html:input>
 ```
 
-All former values of the `type` parameter of the `textbox` element are supported by `html:input` as well. For proper styling include the following css file: `chrome://messenger/skin/input-fields.css` 
+All former values of the `type` parameter of the `textbox` element are supported by `html:input` as well. For proper styling include the following css file: `chrome://messenger/skin/input-fields.css`
 
-The `flex` parameter is no longer supported and should be removed.  Attach the `input-container` class to a surrounding `hbox` to force the input field to behave like a former `flex="1"` `textbox`.
+The `flex` parameter is no longer supported and should be removed. Attach the `input-container` class to a surrounding `hbox` to force the input field to behave like a former `flex="1"` `textbox`.
 
 If the input fields context menu is not working, you need to include two JavaScript files by adding:
 
@@ -63,7 +63,7 @@ To stay backward compatible, check the argument count of "createTransport". In c
    throw new Error("Unknown Create Transport signature");
 ```
 
-### nsICookie2 
+### nsICookie2
 
 Merged into nsICookie.
 
@@ -89,9 +89,10 @@ Services.scriptSecurityManager.createContentPrincipal()
 
 The 3rd parameter has been droped, which was the length of the array passed in as the 2nd parameter. See the [patch applied to Thunderbird itself](https://bug1557829.bmoattachments.org/attachment.cgi?id=9071511).
 
-### IOUtils
+### IOUtils.js
 
-Module file extension changed from js to jsm, now available via
+Module file extension changed in TB78 from js to jsm, now available via
+
 ```javascript
 const { IOUtils } = ChromeUtils.import("resource:///modules/IOUtils.jsm");
 ```
@@ -110,7 +111,7 @@ With TB70, these two attributes have been removed from XUL elements like `textbo
     onsyncfrompreference="return onFromPref();"/>
 ```
 
-Most of the XUL based preferences system has been long removed and had to be replaced by either using the [`preferencesBindings.js`](https://developer.thunderbird.net/add-ons/updates/tb68#less-than-prefwindow-greater-than-less-than-prefpane-greater-than-less-than-preferences-greater-than-and-less-than-preference-greater-than) [wrapper](https://developer.thunderbird.net/add-ons/updates/tb68#less-than-prefwindow-greater-than-less-than-prefpane-greater-than-less-than-preferences-greater-than-and-less-than-preference-greater-than) or by manually reimplementing that functionality using the`nsIPrefService`. 
+Most of the XUL based preferences system has been long removed and had to be replaced by either using the [`preferencesBindings.js`](https://developer.thunderbird.net/add-ons/updates/tb68#less-than-prefwindow-greater-than-less-than-prefpane-greater-than-less-than-preferences-greater-than-and-less-than-preference-greater-than) [wrapper](https://developer.thunderbird.net/add-ons/updates/tb68#less-than-prefwindow-greater-than-less-than-prefpane-greater-than-less-than-preferences-greater-than-and-less-than-preference-greater-than) or by manually reimplementing that functionality using the`nsIPrefService`.
 
 The second approach is not affected by this change, as it has full control over the load and save process for all its preferences. The[`preferencesBindings.js`](https://developer.thunderbird.net/add-ons/updates/tb68#less-than-prefwindow-greater-than-less-than-prefpane-greater-than-less-than-preferences-greater-than-and-less-than-preference-greater-than) [wrapper](https://developer.thunderbird.net/add-ons/updates/tb68#less-than-prefwindow-greater-than-less-than-prefpane-greater-than-less-than-preferences-greater-than-and-less-than-preference-greater-than) has been updated and now supports:
 
@@ -121,6 +122,6 @@ Preferences.addSyncFromPrefListener(
 
 Preferences.addSyncToPrefListener(
      document.getElementById("my-textbox"),
-     function() { return onToPref() });     
+     function() { return onToPref() });
 ```
 

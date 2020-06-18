@@ -49,7 +49,7 @@ Option windows are replaced by [settings pages](https://developer.mozilla.org/en
 ```json
 "options_ui": {
   "page": "options.html"
-},
+}
 ```
 
 Instead of a XUL dialog, the specified HTML document is used, which will be accessible to the user through the add-on manager. From that document, all WebExtension and MailExtension APIs can be accessed in the same way as from the background script. The settings themselves should be stored using one of the new APIs to store data, such as [`storage`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage), so it may be necessary to add an experiment to migrate existing settings from nsIPrefBranch or other mechanisms not accessible through modern APIs. The [legacyPrefMigration example add-on](https://github.com/thundernest/sample-extensions/tree/master/legacyPrefMigration) includes such a migration API.

@@ -25,7 +25,7 @@ Adding this secton to `manifest.json` will cause the file `background-script.js`
 
 Contrary to the bootstrap script in legacy add-ons, the background scripts will *not* get evaluated in a privileged browser context. Instead it is added to an HTML document (a.k.a the "background page") living in a content process, which only has access to [MailExtension APIs](https://thunderbird-webextensions.readthedocs.io/en/latest/index.html) and some WebExtension APIs inherited from the underlying Firefox code base (they are listed further down on [this page](https://thunderbird-webextensions.readthedocs.io/en/latest/)). Any interaction with Thunderbird must occur through these APIs. Whenever code needs to be added to the background script, you need to make sure to migrate calls to XPCOM or other native Thunderbird features to these APIs.
 
-{% hint style="info" %} Since the WebExtension technology originates in Browsers like Google Chrome and Firefox, the namespace for this new kind of API is `chrome.*` or `browser.*` which work in Thunderbird as well. For Thunderbird however the additional namespace `messenger.*` has been added. We think that is a better fit and should be used with MailExtensions, as they do not run in Browsers anyhow, if they use any of the MailExtension APIs, which only exist in Thunderbird. {% endhint %}
+{% hint style="info" %} Since the WebExtension technology originates in Browsers like Google Chrome and Firefox, the namespace for this new kind of API is `chrome.*` or `browser.*` which work in Thunderbird as well. Thunderbird also supports `messenger.*`, which is a better fit for MailExtensions. As most MailExtensions are not supported by Browsers anyhow, it is safe to always use `messenger.*` when accessing Mail- or WebExtension APIs. {% endhint %}
 
 
 
@@ -140,4 +140,3 @@ Some general tips to speed up your porting workflow:
 * To debug code running in the browser context (usually: your experiments) you can still use the browser console (Ctrl+Shift+J) or developer toolbox (Ctrl+Shift+I) – just like with legacy add-ons.
 * The add-on debugging tools accessible through the add-on page's gear icon permit to directly install add-ons without packaging them, similar to linking a legacy add-on in the profile folder. Using that option permits to reload the add-on without restarting Thunderbird.
 * When testing a change in an experiment, always restart Thudnerbird *and delete Thunderbird's cache folder*. Experiment code may get cached, and these caches are not always cleared when uninstalling or replacing an add-on.
-

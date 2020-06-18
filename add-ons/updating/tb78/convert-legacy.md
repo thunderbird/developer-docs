@@ -10,8 +10,8 @@ The technical conversion of a Legacy WebExtension is ridiculously easy: just dro
 
 Now your add-on should install in current versions of Thunderbird without issues, but do nothing. After all, Thunderbird no longer calls anything within your add-on. To fix that, you need one or more entry points.
 
-There are multiple ways to get an add-on to load \(documented [in the WebExtensions course on MDN](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Anatomy_of_a_WebExtension)\), but for a MailExtension the most common option will be adding a *background script*:
-``` // manifest.json
+There are multiple ways to get an add-on to load \(documented [in the WebExtensions course on MDN](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Anatomy_of_a_WebExtension)\), but for a MailExtension the most common option will be adding a *background script* to `manifest.json`:
+```json
 "background": {
   "scripts": ["background-script.js"]
 }
@@ -23,7 +23,6 @@ Contrary to the bootstrap script in legacy add-ons, the background scripts will 
 {% hint style="info" %} Since the WebExtension technology originates in Browser like Google Chrome and Firefox, the namespace for this new kind of API is `chrome.*` or `browser.*`which work in Thunderbird as well. For Thunderbird however the additional namespace `messenger.*` has been added. We think that is a better fit and should be used with MailExtensions, as they do not run in Browsers anyhow, if they use any of the MailExtension APIs, which only exist in Thunderbird. {% endhint %}
 
 [//remove? //Some APIs may require specific permissions or settings to be specified within `manifest.json`, and some WebExtension APIs may be disabled or missing if they are not relevant to Thunderbird.]
-
 
 
 ## Experiment-ing with new APIs
@@ -40,16 +39,16 @@ Experiments consist of three parts:
 Full examples for [a simple function with parent and child implementations](https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/functions.html) and [events add-ons can listen for](https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/events.html) are available in the Firefox source documentation.
 
 If your experiment is so complex that it does not reasonably fit into a single source file, you can use JavaScript modules just like in legacy extensions with some additional boilerplate:
-```
+```javascript
 const { ExtensionParent } = ChromeUtils.import(
     "resource://gre/modules/ExtensionParent.jsm");
 const extension = ExtensionParent.GlobalManager.getExtension(
     "insert-your-extension-id-here@example.com");
 const { /* ... exported symbols ... */ } =
-    ChromeUtils.import(extension.getURL("path/to/module.jsm"));
+    ChromeUtils.import(extension.rootURI.resolve("path/to/module.jsm"));
 
 // when unloading: (safe to call even if the import is conditional / elsewhere!)
-Components.utils.unload(extension.getURL("path/to/module.jsm"));
+Components.utils.unload(extension.rootURI.resolve("path/to/module.jsm"));
 ```
 
 As experiments usually run in the main process and have unrestricted access to any aspect of Thunderbird, they are expected to require updates for each new version of Thunderbird. To reduce the maintainance burden in the future, it is in your own interest to use experiments only to the extent necessary for the add-on.
@@ -60,10 +59,10 @@ Best practice: try to write APIs that would be useful for a wide range of add-on
 ## Replacing options
 
 Option windows are replaced by [settings pages](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Implement_a_settings_page) defined in `manifest.json`:
-```
+```json
 "options_ui": {
   "page": "options.html"
-},
+}
 ```
 Instead of an XUL dialog, use the specified HTML document will be accessible to the user through the Add-on manager. From that document, all WebExtension and MailExtension APIs can be accessed in the same way as form a background script. The settings themselves should be stored using one of the new APIs to store data, such as [`storage`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage), so it may be necessary to add an experiment to migrate existing settings from nsIPrefBranch or other mechanisms not accessible through modern APIs.
 
@@ -74,7 +73,7 @@ The `chrome.manifest` file is no longer supported. Many mechanisms have a more o
 * **interfaces** it should no longer be necessary to use binary interfaces, as binary components are deprecated for a long time. To access custom methods on JS-implemented classes from an experiment, use `.wrappedJSObject` to get access to the raw JS implementation.
 * **component**, **contract** [see section 'Replacing XPCOM registration' below](#replacing-xpcom-registration).
 * **category** use [`nsICategoryManager`](https://developer.mozilla.org/en/XPCOM_Interface_Reference/nsICategoryManager) through an experiment
-* **content**, **skin**, **resource** it is no longer easily possible to assign chrome://- and resource://-URLs from add-ons. However, all files of an add-on are now available through moz-extension:// URLs by default. To generate such URLs, use [`browser.runtime.getURL`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/getURL) or `extension.baseURL` from an experiment. Some WebExtension APIs also accept relative paths and generate suitable URLs automatically.
+* **content**, **skin**, **resource** it is no longer easily possible to assign chrome://- and resource://-URLs from add-ons. However, all files of an add-on are now available through moz-extension://-URLs by default. To generate such URLs, use [`browser.runtime.getURL`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/getURL) or `extension.getURL` from an experiment. Some WebExtension APIs also accept relative paths and generate suitable URLs automatically. Not all native components support moz-extension://-URLs, though – experiments can use `extension.rootURI.resolve` to get a raw file://-URL instead.
 * **locale** localization for WebExtensions is handled using the [`i18n` API](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/i18n), which uses a single `messages.json` file to store translations.
 * **style** use an experiment to monitor open windows, and inject the style through that experiment
 * **overlay** [see section 'Replacing Overlays' below](#replacing-overlays).
@@ -94,9 +93,11 @@ If a part of an overlay cannot be replaced with one of the suggestions above, it
 
 ## Replacing XUL windows and dialogs
 
-While it would be possible to attempt to re-use existing XUL code in an experiment, it is probably a better idea to use the more future-proof [`windows` MailExtension API](https://thunderbird-webextensions.readthedocs.io/en/latest/windows.html) to create a window displaying an HTML dialog. From these dialogs, all WebExtension and MailExtension APIs can be accessed in the same way as from a background script.
-
-Note that current builds of Thunderbird will, by default, display an ugly URL bar on top of all windows created through the `windows` API. Specifying the type `panel` or `detached_panel` may hide the URL bar in some future configurations. Either way, the HTML of the dialog will most likely be re-useable with any future mechanism to open windows.
+While it would be possible to attempt to re-use existing XUL code in an experiment, it is probably a better idea to use the more future-proof [`windows` MailExtension API](https://thunderbird-webextensions.readthedocs.io/en/latest/windows.html) to create a window displaying an HTML dialog:
+```javascript
+messenger.windows.create({url: 'relative/path/to/window.html', type: 'popup'});
+```
+From these dialogs, all WebExtension and MailExtension APIs can be accessed in the same way as from a background script.
 
 
 ## Replacing XPCOM registration
@@ -104,7 +105,7 @@ Note that current builds of Thunderbird will, by default, display an ugly URL ba
 Components and contract IDs can get registered by calling [`Components.manager.registerFactory()`](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Reference/Interface/nsIComponentRegistrar#registerFactory()) from an experiment. Remember to also call [`Components.manager.unregisterFactory()`](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Reference/Interface/nsIComponentRegistrar#unregisterFactory()) when the experiment shuts down.
 
 To get a factory implementation, copy the component's existing implementation into an experiment's parent script and use its NSGetFactory method to build a factory to register:
-```
+```javascript
 // original chrome.manifest:
 component {00000000-0000-0000-0000-000000000000} implementation.js
 contract  @example.com/contract;1 {00000000-0000-0000-0000-000000000000}

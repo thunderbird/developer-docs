@@ -1,3 +1,5 @@
+# A more thorough guide to experimental APIs
+
 Experiments consist of three parts:
 1. a [*schema*](https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/schema.html) describes the API that can be accessed by the WebExtension part of the add-on. The schema may define functions that can be called by the add-on and events the add-on can register listeners for.
 2. a *parent* implementation implements the API in Thunderbird's main process. All features that were available to a bootstrapped legacy extension can be used here.

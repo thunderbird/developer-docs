@@ -1,8 +1,6 @@
 # Update for Thunderbird 78
 
-Support for legacy extensions was removed from the Thunderbird Beta version 74, released in February 2020. Therefore, only the modern MailExtensions are compatible with Thunderbird 78. 
-
-This guide is intended to help developers to port their Legacy WebExtensions to MailExtensions. While the intention of the guide is to simplify the porting process, porting Legacy WebExtensions is not a straightforward process and requires a lot of time and some degree of development experience.
+Support for legacy extensions was removed from Thunderbird Beta version 74, released in February 2020. Therefore, only modern MailExtensions are compatible with Thunderbird 78. This guide is intended to help developers to port their Legacy WebExtensions to MailExtensions. 
 
 {% hint style="info" %} We do not suggest to convert older Legacy Bootstrapped Extensions or Legacy Overlay Extensions (as used in Thunderbird 60) directly to MailExtensions. They should first be converted to Legacy WebExtensions as described in the [update guide for Thunderbird 68](https://developer.thunderbird.net/add-ons/updating/tb68). {% endhint %}
 
@@ -13,9 +11,7 @@ If you need help, get in touch with the [add-on developer community](https://dev
 
 The technical conversion from a Legacy WebExtension to a MailExtension is ridiculously easy: just drop the `legacy` key from the `manifest.json` file.
 
-Now your add-on should install in current versions of Thunderbird without issues, but it will do nothing. After all, Thunderbird no longer calls anything within your add-on. To fix that, you need one or more entry points.
-
-There are multiple ways to get an add-on to load \(documented [in the WebExtensions course on MDN](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Anatomy_of_a_WebExtension)\), but for a MailExtension the most common option will be adding a *background script* to `manifest.json`:
+Now your add-on should install in current versions of Thunderbird without issues, but it will do nothing. You need to define one or more entry points as documented in the [WebExtensions course on MDN](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Anatomy_of_a_WebExtension), but for a MailExtension the most common option will be adding a *background script* to `manifest.json`:
 
 ```json
 "background": {
@@ -23,11 +19,11 @@ There are multiple ways to get an add-on to load \(documented [in the WebExtensi
 }
 ```
 
-Adding this secton to `manifest.json` will cause the file `background-script.js` to be loaded and evaluated by Thunderbird. For bootstrap typed Legacy WebExtensions, the existing `bootstrap.js` script itself is a good starting point for a background script – for overlay typed Legacy WebExtensions it may be reasonable to start with an empty script and convert overlays using the guidelines below, gradually building up the background script.
+Adding this secton to your `manifest.json` will cause the file `background-script.js` to be loaded and evaluated by Thunderbird. For bootstrap typed Legacy WebExtensions, the existing `bootstrap.js` script itself is a good starting point for a background script – for overlay typed Legacy WebExtensions it may be reasonable to start with an empty script and convert overlays using the guidelines below, gradually building up the background script.
 
 Contrary to the bootstrap script in legacy add-ons, the background scripts will *not* get evaluated in a privileged browser context. Instead it is added to an HTML document (a.k.a the "background page") living in a content process, which only has access to [MailExtension APIs](https://thunderbird-webextensions.readthedocs.io/en/latest/index.html) and some WebExtension APIs inherited from the underlying Firefox code base (they are listed further down on [this page](https://thunderbird-webextensions.readthedocs.io/en/latest/)). Any interaction with Thunderbird must occur through these APIs. Whenever code needs to be added to the background script, you need to make sure to migrate calls to XPCOM or other native Thunderbird features to these APIs.
 
-{% hint style="info" %} Since the WebExtension technology originates in Browsers like Google Chrome and Firefox, the namespace for this new kind of API is `chrome.*` or `browser.*` which work in Thunderbird as well. Thunderbird also supports `messenger.*`, which is a better fit for MailExtensions. As most MailExtensions are not supported by Browsers anyhow, it is safe to always use `messenger.*` when accessing Mail- or WebExtension APIs. {% endhint %}
+{% hint style="info" %} Since the WebExtension technology originates in Browsers like Google Chrome and Firefox, the namespace for this new kind of API is `chrome.*` or `browser.*` which work in Thunderbird as well. Thunderbird also supports `messenger.*`, which is a better fit for MailExtensions. {% endhint %}
 
 
 
@@ -69,10 +65,14 @@ The `chrome.manifest` file is no longer supported. Many mechanisms have a more o
 
 There are no direct equivalents to manifest flags, so add-ons now need to provide their own mechanisms to switch code or resources depending on the runtime environment. Relevant information is accessible through the [`runtime` API](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/).
 
+## Converting locale files
+
+*todo*
+
 
 ## Replacing Overlays
 
-If you used XUL overlays, they are now finally gone for good and you must find an alternative. While it is technically possible to write an XUL overlay loader experiment, it is a better idea to re-evaluate the purpose of the overlay:
+XUL overlays are no longer supported and you need to find an alternative:
 * For overlays loading a script without user interface relationship: Move the script's content to a background script (Example: startup script in a main window overlay)
 * For overlays extending the user interface in a way that can be replaced using calls to built-in APIs: Do those calls in a background script (Example: adding context menu items)
 * For overlays extending the user interface beyond the built-in APIs: Add an experimental API with a window listener and manually add the needed UI elements (Example: [experimental restart API](https://github.com/thundernest/sample-extensions/blob/master/restart/implementation.js)). Try to make your API as generic as possible, so it could become an official MailExtension API.
@@ -96,7 +96,7 @@ From these dialogs, all WebExtension and MailExtension APIs can be accessed in t
 
 Components and contract IDs can get registered by calling [`Components.manager.registerFactory()`](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Reference/Interface/nsIComponentRegistrar#registerFactory()) from an experiment. Remember to also call [`Components.manager.unregisterFactory()`](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Reference/Interface/nsIComponentRegistrar#unregisterFactory()) when the experiment shuts down.
 
-To get a factory implementation, copy the component's existing implementation into an experiment's parent script and use its NSGetFactory method to build a factory to register:
+To get a factory implementation, copy the component's existing implementation into an experiment's implementation script and use its NSGetFactory method to build a factory to register:
 
 ```javascript
 // original chrome.manifest:

@@ -1,6 +1,6 @@
 # Update for Thunderbird 78
 
-Support for legacy extensions was removed from Thunderbird Beta version 74, released in February 2020. Therefore, only modern MailExtensions are compatible with Thunderbird 78. This guide is intended to help developers to port their Legacy WebExtensions to MailExtensions. 
+Support for legacy extensions was removed from Thunderbird Beta version 74, released in February 2020. Therefore, only modern MailExtensions are compatible with Thunderbird 78. This guide is intended to help developers to port their Legacy WebExtensions to MailExtensions.
 
 {% hint style="info" %} We do not suggest to convert older Legacy Bootstrapped Extensions or Legacy Overlay Extensions (as used in Thunderbird 60) directly to MailExtensions. They should first be converted to Legacy WebExtensions as described in the [update guide for Thunderbird 68](https://developer.thunderbird.net/add-ons/updating/tb68). {% endhint %}
 
@@ -19,7 +19,7 @@ Now your add-on should install in current versions of Thunderbird without issues
 }
 ```
 
-Adding this secton to your `manifest.json` will cause the file `background-script.js` to be loaded and evaluated by Thunderbird. For bootstrap typed Legacy WebExtensions, the existing `bootstrap.js` script itself is a good starting point for a background script – for overlay typed Legacy WebExtensions it may be reasonable to start with an empty script and convert overlays using the guidelines below, gradually building up the background script.
+Adding this section to your `manifest.json` will cause the file `background-script.js` to be loaded and evaluated by Thunderbird. For bootstrap typed Legacy WebExtensions, the existing `bootstrap.js` script itself is a good starting point for a background script – for overlay typed Legacy WebExtensions it may be reasonable to start with an empty script and convert overlays using the guidelines below, gradually building up the background script.
 
 Contrary to the bootstrap script in legacy add-ons, the background scripts will *not* get evaluated in a privileged browser context. Instead it is added to an HTML document (a.k.a the "background page") living in a content process, which only has access to [MailExtension APIs](https://thunderbird-webextensions.readthedocs.io/en/latest/index.html) and some WebExtension APIs inherited from the underlying Firefox code base (they are listed further down on [this page](https://thunderbird-webextensions.readthedocs.io/en/latest/)). Any interaction with Thunderbird must occur through these APIs. Whenever code needs to be added to the background script, you need to make sure to migrate calls to XPCOM or other native Thunderbird features to these APIs.
 
@@ -29,11 +29,11 @@ Contrary to the bootstrap script in legacy add-ons, the background scripts will 
 
 ## Experiment-ing with new APIs
 
-While the Thunderbird team plans to add more APIs with upcoming releases, the current set of APIs will not be sufficient to port most add-ons. To work around this limitation, add-ons can introduce their own, additional APIs as so-called [*experiments*](https://thunderbird-webextensions.readthedocs.io/en/latest/how-to/experiments.html). 
+While the Thunderbird team plans to add more APIs with upcoming releases, the current set of APIs will not be sufficient to port most add-ons. To work around this limitation, add-ons can introduce their own, additional APIs as so-called [*experiments*](https://thunderbird-webextensions.readthedocs.io/en/latest/how-to/experiments.html).
 
 {% hint style="info" %} Any feature that was available in previous versions of Thunderbird remains available in Thunderbird 78 inside of experimental APIs. {% endhint %}
 
-As experiments usually run in the main process and have unrestricted access to any aspect of Thunderbird, they are expected to require updates for each new version of Thunderbird. To reduce the maintainance burden in the future, it is in your own interest to use experimental APIs only to the extent necessary for the add-on.
+As experiments usually run in the main process and have unrestricted access to any aspect of Thunderbird, they are expected to require updates for each new version of Thunderbird. To reduce the maintenance burden in the future, it is in your own interest to use experimental APIs only to the extent necessary for the add-on.
 
 Best practice: Try to write APIs that would be useful for a wide range of add-ons, not just the one you're porting. That way, you can later on propose the API you designed for inclusion in Thunderbird, with your add-on serving as reference implementation. If your APIs become a part of Thunderbird, you no longer need to maintain them as part of the add-on.
 
@@ -138,7 +138,7 @@ Many parts of XUL are discontinued, and there are some other changes that preven
 ## Additional Tips
 
 Some general tips to speed up your porting workflow:
-* To debug code running in the backgroud page or to interactively use Web-/MailExtension APIs, you can access debugging tools using the gear icon in the add-on tab.
+* To debug code running in the background page or to interactively use Web-/MailExtension APIs, you can access debugging tools using the gear icon in the add-on tab.
 * To debug code running in the browser context (usually: your experiments) you can still use the browser console (Ctrl+Shift+J) or developer toolbox (Ctrl+Shift+I) – just like with legacy add-ons.
 * The add-on debugging tools accessible through the add-on page's gear icon permit to directly install add-ons without packaging them, similar to linking a legacy add-on in the profile folder. Using that option permits to reload the add-on without restarting Thunderbird.
-* When testing a change in an experiment, always restart Thudnerbird *and delete Thunderbird's cache folder*. Experiment code may get cached, and these caches are not always cleared when uninstalling or replacing an add-on.
+* When testing a change in an experiment, always restart Thunderbird *and delete Thunderbird's cache folder*. Experiment code may get cached, and these caches are not always cleared when uninstalling or replacing an add-on.

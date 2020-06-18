@@ -1,25 +1,29 @@
-# Converting legacy add-ons
+# Converting Legacy WebExtensions
 
-This guide is intended to help developers to port their add-ons to Thunderbird 78. While the intention of the guide is to simplify the porting process, porting legacy add-ons is not a straightforward process and requires a lot of time and some degree of development experience.
+This guide is intended to help developers to port their Legacy WebExtensions to MailExtensions to be compatible with Thunderbird 78. While the intention of the guide is to simplify the porting process, porting Legacy WebExtensions is not a straightforward process and requires a lot of time and some degree of development experience.
 
+{% hint style="info" %} We do not suggest to convert older Legacy Bootstrapped Extensions or Legacy Overlay Extensions (as used in Thunderbird 60) directly to MailExtensions. They should first be converted to Legacy WebExtensions as described in the [update guide for Thunderbird 68](https://developer.thunderbird.net/add-ons/updating/tb68). {% endhint %}
 
 ## Dropping the legacy key and adding new entry points
 
-The technical conversion of a legacy add-on is ridiculously easy: just drop the `legacy` key from the `manifest.json` file.
+The technical conversion of a Legacy WebExtension is ridiculously easy: just drop the `legacy` key from the `manifest.json` file.
 
 Now your add-on should install in current versions of Thunderbird without issues, but do nothing. After all, Thunderbird no longer calls anything within your add-on. To fix that, you need one or more entry points.
 
-There are multiple ways to get an add-on to load \(documented [in the WebExtensions course on MDN](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Anatomy_of_a_WebExtension)\), but for a Thunderbird add-on the most common option will be adding a *background script*:
+There are multiple ways to get an add-on to load \(documented [in the WebExtensions course on MDN](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Anatomy_of_a_WebExtension)\), but for a MailExtension the most common option will be adding a *background script*:
 ``` // manifest.json
 "background": {
   "scripts": ["background-script.js"]
 }
 ```
-Adding this secton to `manifest.json` will cause the file `background-script.js` to be loaded and evaluated by Thunderbird. For bootstrapped add-ons, the existing bootstrap script itself is a good starting point for a background script – for overlayed add-ons it may be reasonable to start with an empty script and convert overlays using the guidelines below, gradually building up the background script.
+Adding this secton to `manifest.json` will cause the file `background-script.js` to be loaded and evaluated by Thunderbird. For bootstrap typed Legacy WebExtensions, the existing `bootstrap.js` script itself is a good starting point for a background script – for overlay typed Legacy WebExtensions it may be reasonable to start with an empty script and convert overlays using the guidelines below, gradually building up the background script.
 
-Contrary to a bootstrap script in a bootstrapped add-on, background scripts will *not* get evaluated in a browser context. Instead they are added to a HTML document ("background page") living in a content process, which has access to [WebExtension APIs](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API) and [MailExtension APIs](https://thunderbird-webextensions.readthedocs.io/en/latest/index.html) throgh the `browser` and `messenger` globals. Some APIs may require specific permissions or settings to be specified within `manifest.json`, and some WebExtension APIs may be disabled or missing if they are not relevant to Thunderbird.
+Contrary to the bootstrap script in legacy add-ons, the background scripts will *not* get evaluated in a browser context. Instead it is added to an HTML document (a.k.a the "background page") living in a content process, which only has access to [MailExtension APIs](https://thunderbird-webextensions.readthedocs.io/en/latest/index.html) and [some WebExtension APIs](new linkable header in API doc being added by geoff soon) inherited from the underlying Firefox code base. Any interaction with Thunderbird must occur through these APIs. Whenever code needs to be added to the background script, you need to make sure to migrate calls to XPCOM or other native Thunderbird features to these APIs.
 
-Any interaction with Thunderbird must occur through these APIs. Whenever code needs to be added to the background script, you need to make sure to migrate calls to XPCOM or other native Thunderbird features to these APIs.
+{% hint style="info" %} Since the WebExtension technology originates in Browser like Google Chrome and Firefox, the namespace for this new kind of API is `chrome.*` or `browser.*`which work in Thunderbird as well. For Thunderbird however the additional namespace `messenger.*` has been added. We think that is a better fit and should be used with MailExtensions, as they do not run in Browsers anyhow, if they use any of the MailExtension APIs, which only exist in Thunderbird. {% endhint %}
+
+[//remove? //Some APIs may require specific permissions or settings to be specified within `manifest.json`, and some WebExtension APIs may be disabled or missing if they are not relevant to Thunderbird.]
+
 
 
 ## Experiment-ing with new APIs

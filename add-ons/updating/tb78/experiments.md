@@ -1,5 +1,9 @@
 # Guide for Experiments
 
+{% hint style="info" %}
+This document is _work-in-progress_.
+{% endhint %}
+
 Experiments consist of three parts: 
 
 * 1. A [_schema_](https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/schema.html) describes the API that can be accessed by the WebExtension part of the add-on. The schema may define functions that can be called by the add-on and events the add-on can register listeners for. 

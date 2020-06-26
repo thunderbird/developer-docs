@@ -85,7 +85,7 @@ They use a JSON manifest \(`manifest.json`\) with the `legacy` key \(which has b
 
 #### Update Strategy
 
-_The update guide is being worked on._
+{% page-ref page="updating/tb78/README.md" %}
 
 {% page-ref page="updating/tb78/changes.md" %}
 {% endtab %}

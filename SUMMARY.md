@@ -45,5 +45,5 @@
     * [Adapt to Changes in Thunderbird 69-78](add-ons/updating/tb78/changes.md)
     * [Guide for Experiments](add-ons/updating/tb78/experiments.md)
 * [Documentation & Resources](add-ons/resources.md)
-* [Community](add-ons/community.md)
+* [Developer Community](add-ons/community.md)
 

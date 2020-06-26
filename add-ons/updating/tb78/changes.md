@@ -1,6 +1,6 @@
-# Adapt to Changes in Thunderbird 69-75
+# Adapt to Changes in Thunderbird 69-78
 
-This document tries to cover all the internal changes that may by needed to make add-ons compatible with Thunderbird 75. If you find stuff that is no longer working but is not yet on this list, ask for help and advice in of our [communication channels](https://developer.thunderbird.net/#getting-plugged-into-the-community).
+This document tries to cover all the internal changes that may by needed to make add-ons compatible with Thunderbird 78. If you find stuff that is no longer working but is not yet on this list, ask for help and advice in of our [communication channels](https://developer.thunderbird.net/#getting-plugged-into-the-community).
 
 The changes are grouped by category and are listed in the order we became aware of them.
 

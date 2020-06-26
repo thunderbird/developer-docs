@@ -40,7 +40,7 @@ As experiments usually run in the main process and have unrestricted access to a
 
 Best practice: Try to write APIs that would be useful for a wide range of add-ons, not just the one you're porting. That way, you can later on propose the API you designed for inclusion in Thunderbird, with your add-on serving as reference implementation. If your APIs become a part of Thunderbird, you no longer need to maintain them as part of the add-on.
 
-A more thorough description of experimental APIs can be found in a [separate article](https://github.com/thundernest/developer-docs/tree/945ced22109abed5049c4f6375b3c6133e095432/add-ons/updating/tb78/experiments.md).
+A more thorough description of experimental APIs can be found in a [separate article](https://developer.thunderbird.net/add-ons/updating/tb78/experiments).
 
 ## Replacing options
 

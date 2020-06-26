@@ -76,9 +76,12 @@ _todo_
 
 XUL overlays are no longer supported and you need to find an alternative:
 
-* For overlays loading a script without user interface relationship: Move the script's content to a background script \(Example: startup script in a main window overlay\)
-* For overlays extending the user interface in a way that can be replaced using calls to built-in APIs: Do those calls in a background script \(Example: adding context menu items\)
-* For overlays extending the user interface beyond the built-in APIs: Add an experimental API with a window listener and manually add the needed UI elements \(Example: [experimental restart API](https://github.com/thundernest/sample-extensions/blob/master/restart/implementation.js)\). Try to make your API as generic as possible, so it could become an official MailExtension API.
+* For overlays just loading a script without a user interface relationship: 
+  * Move the script's content to a background script. 
+* For overlays extending the user interface in a way that can be replaced using calls in a background script to built-in APIs:
+  * [Example](https://github.com/cleidigh/EditEmailSubject-MX/blob/30c8dd9bf6a7326873a1ad37541384ec8c4bfb36/src/background.js#L11-L16) for adding context menu items using the [`menus` API](https://thunderbird-webextensions.readthedocs.io/en/latest/menus.html)  
+* For overlays extending the user interface beyond the built-in APIs:
+  * [Example](https://github.com/thundernest/sample-extensions/blob/master/restart/implementation.js) for an experimental API with a window listener to manually add the needed UI elements.
 
 ## Replacing XUL windows and dialogs
 

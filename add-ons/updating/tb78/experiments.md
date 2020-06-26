@@ -1,18 +1,66 @@
 # Guide for Experiments
 
-{% hint style="info" %}
-This document is _work-in-progress_.
-{% endhint %}
+This document aggregates information on topics that commonly arise when developing a new experiment for Thunderbird 78. For a complete documentation on each individual topic, refer to the linked articles.
 
-Experiments consist of three parts: 
 
-* 1. A [_schema_](https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/schema.html) describes the API that can be accessed by the WebExtension part of the add-on. The schema may define functions that can be called by the add-on and events the add-on can register listeners for. 
+## Designing the API
+
+When porting an add-on, it is easy to think about everything in the context of your existing add-on. But that view is likely limiting your options: when you encounter a feature that cannot get implemented with existing WebExtension APIs, it may be helpful to first think about alternative ways to present similar functionality – maybe it is possible to implement the same high-level feature in a different way?
+
+If not, you should first read through the documentation of some buit-in APIs, this document and some linked documentation to get a feel about how existing APIs encapsulate common problems (i.e. listener registration through events, excessive use of `Promise`s, ...) and what limitations your API will have to live with (i.e. potential complexity when passing functions or raw DOM elements).
+
+Afterwards, think about (hypothetical or real) add-ons that would have similar needs and try to write APIs that would be useful for a wide range of add-ons:
+
+* A good API provides a single feature with as little complexity as possible (smaller is usually better).
+
+  Example: an API adding both a menu item and a toolbar item for a single callback function might be useful, but it would be better to split it in two separate operations and combine them in the WebExtension.
+
+* A good API can be used in a generic way and is not tied to your add-on's logic or functionality.
+
+  Example: an API to add a menu item that will perform a fixed action might solve the specific issue you're working on, but it would be better to permit WebExtension code to dynamically specify the action to perform.
+
+* A good API adheres to the conventions of WebExtension APIs.
+
+  Example: a `registerListener` function might be a good idea in isolation, but it would be better to use events (that also simplifies the implementation!).
+
+Depending on your time constraints, experience, and the concrete feature you're trying to write an API for it is not necessarily reasonable to satisfy all three criteria, they are just a guideline to aim for.
+
+
+## Building the Structure
+
+Once you have a draft for your API, you can start to build the experiment. Experiments consist of three parts, [which are registered through `manifest.json`](https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/basics.html#webextensions-experiments):
+
+* 1. A [_schema_](https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/schema.html) describes the API that can be accessed by the WebExtension part of the add-on.
 * 2. A _parent_ implementation implements the API in Thunderbird's main process. All features that were available to a bootstrapped legacy extension can be used here. 
-* 3. A _child_ implementation implements the API in the content process\(es\). In most cases, it will get generated automatically to call the parent implementation – but manual adjustments may be necessary if function parameters cannot be transferred to a different process \(for example, if an API function accepts a function as argument\). If the API does not need to interact with anything running in the main thread, it is also possible to implement an API completely within the child implementation.
+* 3. A _child_ implementation implements the API in the content process\(es\). This permits more complex interactions with WebExtension code and potentially improves performance, at the cost of not being able to access the main process.
 
-To return values not supported by the [structured clone algorithm](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm), you may need to clone them into the unprivileged scope of the WebExtension. Usually, that boils down to invoking [`Components.utils.cloneInto()`](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Language_Bindings/Components.utils.cloneInto) or a related function with `context.cloneScope` as target scope. Alternatively, you can directly return unprivileged objects created using constructors within `context.cloneScope`.
+Either _parent_ or _child_ implementation may be omitted. Full examples for [a simple function with parent and child implementations](https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/functions.html) and [events add-ons can listen for](https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/events.html) are available in the Firefox source documentation.
 
-Full examples for [a simple function with parent and child implementations](https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/functions.html) and [events add-ons can listen for](https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/events.html) are available in the Firefox source documentation.
+{% hint style="info" %} Technically speaking, Thunderbird 78 is not actually using multiple processes (yet). However, the APIs were designed with multiple processes in mind and enforce at least some constraints as if the parts were in different processes. {% endhint %}
+
+In most cases, you can start by formalizing your API draft into a schema and adding a _parent_ implementation using one of the linked articles as base. Add or switch to a _child_ implementation if you have performance considerations or need to pass more complex data (see below).
+
+
+## Passing data to / from an WebExtension
+
+In general, you can always pass simple data structures as function parameters and return values of an API. Thunderbird will automatically adapt them using the [structured clone algorithm](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm), so you do not need to worry about them.
+
+If you want to pass more complex data structures, especially functions or instances of custom classes, you can do so form a _child_ implementation. There is a big caveat, though: the experiment's scripts are privileged relative to WebExtension scripts, which causes their scopes to be disjunct:
+
+* **Accessing data that belongs to the WebExtension from an Experiment:** the code in the experiment gains [xray vision](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/Xray_vision), permitting it to directly access the chrome implementation of the given object. Usually, you don't need to worry about that and things work out just fine – but if they don't, you can opt-out via `Components.utils.waiveXrays()`.
+
+* **Accessing data that belongs to an Experiment from a WebExtension:** it is not possible to directly access chrome-scoped objects from a WebExtension (but it can hold references on it). It is also not possible to use chrome-scoped objects directly as API function results or parameters.
+
+  There are two options to work around that: either the experiment clones the object into the unprivileged scope of the WebExtension or it directly constructs an unprivileged object.
+
+  The first option usually boils down to invoking [`Components.utils.cloneInto()`](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Language_Bindings/Components.utils.cloneInto) or a related function with `context.cloneScope` as target scope.
+
+  The second option is using the constructors in `context.cloneScope` directly from the experiment. Their results can be used from the WebExtension without further cloning.
+
+{% hint style="info" %} Common pitfall: `async` functions return a `Promise` in the scope of the function, so you need to wrap such functions before cloning them into a WebExtension scope. {% endhint %}
+
+
+## Structuring experiment code
 
 If your experiment is so complex that it does not reasonably fit into a single source file, you can use JavaScript modules just like in legacy extensions with some additional boilerplate:
 
@@ -30,3 +78,19 @@ Components.utils.unload(extension.rootURI.resolve("path/to/module.jsm"));
 
 Experiments do not seem to support moz-extension://-URLs obtained by `extension.getURL()` when loading JSM, instead `extension.rootURI.resolve()` should be used to get the raw file://-URL.
 
+
+## Accessing WebExtensions directly from an experiment
+
+Experiments should be standalone and have no dependencies to any WebExtension components. If possible, design your experiments as if they were a feature of Thunderbird that does not know about your add-on, and keep the scope as narrow as possible. If you design your APIs correctly, you will not need to access the WebExtension part of your add-on.
+
+In some rare cases, it may be possible that that is not feasible to follow this recommended practice for the current update cycle. In that case, it is possible to tear down the separation between the experiment and the WebExtension. That can permit you to treat an experiment as if it were a part of the WebExtension, except for the restrictions regarding passing data outlined above.
+
+In a _child_ implementation, you can directly access the real WebExtension scope via `Components.utils.waiveXrays(context.cloneScope)`.
+
+Outside of a _child_ implementation, or if you need the scope of the background page in particular, you can extract the background page's scope from an `extension` object:
+```javascript
+const webextScope = Array.from(extension.views).find(
+    view => view.viewType === "background").xulBrowser.contentWindow
+    .wrappedJSObject;
+```
+This hack only works because Thunderbird is internally not (yet) using multiple processes. Again, it is highly recommended to design your APIs in a way that these interactions are not necessary as it is likely that this technique will stop working in future versions of Thunderbird.

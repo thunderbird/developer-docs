@@ -81,7 +81,7 @@ The `chrome.manifest` file is no longer supported. Many mechanisms have a more o
 
 
 
-  If `file://*` and `moz-extension://*` URLs do not seem to work for your experiment, you can manually register a `chrome://*` URL, as described in [this TopicBox thread](https://thunderbird.topicbox.com/groups/addons/T9ec97ac794c127a2-M3358fc3e5647c0f0c8243d02/using-ctypes-chromeworker-in-webextension-experiment).  
+  If `file://*` and `moz-extension://*` URLs do not seem to work for your use case in your experiment, you can manually register a `chrome://*` URL, as described in [this TopicBox thread](https://thunderbird.topicbox.com/groups/addons/T9ec97ac794c127a2-M3358fc3e5647c0f0c8243d02/using-ctypes-chromeworker-in-webextension-experiment).  
 
 * **locale**  Localization for WebExtensions is handled using the [`i18n` API](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/i18n), which uses a single `messages.json` file to store translations. We have created a tool to convert the legacy DTD and property files. See section '[Converting locale files](https://developer.thunderbird.net/add-ons/updating/tb78#converting-locale-files)' below. 
 * **style**   
@@ -95,7 +95,7 @@ There are no direct equivalents to manifest flags, so add-ons now need to provid
 
 You may use our python script [`migrateLocale.py`](https://github.com/cleidigh/EditEmailSubject-MX/tree/master/scripts/dev-tools/localization/dtd-converter-py) to convert the legacy DTD and property files into the new JSON format. That script will merge the new entries into a potentially existing `messages.json` file. 
 
-There is no automatic replacement of locale placeholder entities like `&myLocaleIdentifier;` in HTML or XHTML files anymore. Instead use `__MSG_myLocaleIdentifier__` and include the following script:
+There is no automatic replacement of locale placeholder entities like `&myLocaleIdentifier;` in HTML or XHTML files anymore. Instead use placeholders like `__MSG_myLocaleIdentifier__` and include the following script:
 
 ```javascript
 (function (keyPrefix){

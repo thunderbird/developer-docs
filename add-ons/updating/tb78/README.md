@@ -6,13 +6,15 @@ Support for legacy extensions was removed from Thunderbird Beta version 74, rele
 We do not suggest to convert older Legacy Bootstrapped Extensions or Legacy Overlay Extensions \(as used in Thunderbird 60\) directly to MailExtensions. They should first be converted to Legacy WebExtensions as described in the [update guide for Thunderbird 68](https://developer.thunderbird.net/add-ons/updating/tb68).
 {% endhint %}
 
-If you need any help, get in touch with the [add-on developer community](https://developer.thunderbird.net/add-ons/community).
+If you need any help, get in touch with the add-on developer community:
+
+{% page-ref page="../../community.md" %}
 
 ## Dropping the legacy key and adding new entry points
 
 The technical conversion from a Legacy WebExtension to a MailExtension is simple: drop the `legacy` key from the `manifest.json` file.
 
-Now your add-on should install in current versions of Thunderbird without issues, but it will do nothing. You need to define one or more entry points as documented in the [WebExtensions course on MDN](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Anatomy_of_a_WebExtension), but for a MailExtension the most common option will be adding a _background script_ to `manifest.json`:
+Now your add-on should install in current versions of Thunderbird without issues, but it will do nothing. You need to define one or more entry points as documented in the [WebExtensions course on MDN](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Anatomy_of_a_WebExtension), but for a MailExtension the most common option will be adding a background script to `manifest.json`:
 
 ```javascript
 "background": {

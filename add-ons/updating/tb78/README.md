@@ -94,7 +94,7 @@ From these dialogs, all WebExtension and MailExtension APIs can be accessed in t
 
 ## Replacing XPCOM registration
 
-Components and contract IDs can get registered by calling [`Components.manager.registerFactory()`](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Reference/Interface/nsIComponentRegistrar#registerFactory()) from an experiment. Remember to also call [`Components.manager.unregisterFactory()`](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Reference/Interface/nsIComponentRegistrar#unregisterFactory()) when the experiment shuts down.
+Components and contract IDs can get registered by calling `[Components.manager.registerFactory()](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Reference/Interface/nsIComponentRegistrar#registerFactory())` from an experiment. Remember to also call `[Components.manager.unregisterFactory()](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Reference/Interface/nsIComponentRegistrar#unregisterFactory())` when the experiment shuts down.
 
 To get a factory implementation, copy the component's existing implementation into an experiment's implementation script and use its NSGetFactory method to build a factory to register:
 

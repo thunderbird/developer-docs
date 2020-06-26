@@ -4,12 +4,12 @@ Support for legacy extensions was removed from Thunderbird Beta version 74, rele
 
 {% hint style="info" %} We do not suggest to convert older Legacy Bootstrapped Extensions or Legacy Overlay Extensions (as used in Thunderbird 60) directly to MailExtensions. They should first be converted to Legacy WebExtensions as described in the [update guide for Thunderbird 68](https://developer.thunderbird.net/add-ons/updating/tb68). {% endhint %}
 
-If you need help, get in touch with the [add-on developer community](https://developer.thunderbird.net/add-ons/community).
+If you need any help, get in touch with the [add-on developer community](https://developer.thunderbird.net/add-ons/community).
 
 
 ## Dropping the legacy key and adding new entry points
 
-The technical conversion from a Legacy WebExtension to a MailExtension is ridiculously easy: just drop the `legacy` key from the `manifest.json` file.
+The technical conversion from a Legacy WebExtension to a MailExtension is simple: drop the `legacy` key from the `manifest.json` file.
 
 Now your add-on should install in current versions of Thunderbird without issues, but it will do nothing. You need to define one or more entry points as documented in the [WebExtensions course on MDN](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Anatomy_of_a_WebExtension), but for a MailExtension the most common option will be adding a *background script* to `manifest.json`:
 
@@ -90,7 +90,7 @@ messenger.windows.create({
 });
 ```
 
-From these dialogs, all WebExtension and MailExtension APIs can be accessed in the same way as from a background script.
+From these dialogs, all WebExtension and MailExtension APIs can be accessed in the same way as from a background script. To send data to and from the opened window, you can use the message passing concept. An example can be found in [this TopicBox thread](https://thunderbird.topicbox.com/groups/addons/Ta8337b5f8c8012d5/webextension-how-to-send-data-to-created-window-and-back-as-with-legacy-window-open).
 
 ## Replacing XPCOM registration
 
@@ -119,8 +119,7 @@ var NSGetFactory = XPCOMUtils.generateNSGetFactory([exampleComponent]);
   function exampleComponent() { /* ... implementation ... */ }
   exampleComponent.prototype = { /* ... implementation ... */ };
   let factory = XPCOMUtils.generateNSGetFactory([exampleComponent])(classId);
-  Components.manager.registerFactory(classID, "exampleComponent", contractID,
-    factory);
+  Components.manager.registerFactory(classID, "exampleComponent", contractID, factory);
   context.callOnClose({close(){
     Components.manager.unregisterFactory(classID, factory);
   }});

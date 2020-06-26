@@ -85,25 +85,16 @@ They use a JSON manifest \(`manifest.json`\) with the `legacy` key \(which has b
 
 #### Update Strategy
 
-{% page-ref page="updating/tb78/" %}
-
-{% page-ref page="updating/tb78/changes.md" %}
-
 {% endtab %}
 
 {% tab title="Legacy Bootstrap Extension" %}
 Status: **Deprecated in Thunderbird 68.**
 
-This type of extension uses a bootstrap file \(`bootstrap.js`\) as an entry point to the extension. The file defines four methods \(`install`, `uninstall`, `startup`, and `shutdown`\) from which all extension behaviour is controlled. These extensions can be installed/uninstalled and enabled/disabled without restarting Thunderbird, so they are sometimes called “restartless” extensions. They use an RDF manifest \(`install.rdf`\).
+This type of extension uses a bootstrap file \(`bootstrap.js`\) as an entry point to the extension. The file defines four methods \(`install`, `uninstall`, `startup`, and `shutdown`\) from which all extension behaviour is controlled. These extensions can be installed/uninstalled and enabled/disabled without restarting Thunderbird, so they are sometimes called "restartless" extensions. They use an RDF manifest \(`install.rdf`\).
 
 #### Update Strategy
 
 It is recommended to update legacy bootstrap extensions to legacy WebExtensions first, before converting them to MailExtension. The update guide assumes, the extension is currently compatible with Thunderbird 60. If that is not the case, you can find further update instructions [here](https://wiki.mozilla.org/Thunderbird/Add-ons_Guide_57).
-
-{% page-ref page="updating/tb68/bootstrapped.md" %}
-
-{% page-ref page="updating/tb68/changes.md" %}
-
 {% endtab %}
 
 {% tab title="Legacy Overlay Extension" %}
@@ -114,11 +105,6 @@ The original type of extension for Thunderbird and Firefox, using documents that
 #### Update Strategy
 
 It is recommended to update legacy overlay extensions to legacy WebExtensions first, before converting them to MailExtensions. The update guide assumes, the extension is currently compatible with Thunderbird 60. If that is not the case, you can find further update instructions [here](https://wiki.mozilla.org/Thunderbird/Add-ons_Guide_57).
-
-{% page-ref page="updating/tb68/overlays.md" %}
-
-{% page-ref page="updating/tb68/changes.md" %}
-
 {% endtab %}
 {% endtabs %}
 

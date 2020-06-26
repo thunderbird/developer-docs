@@ -76,11 +76,11 @@ _todo_
 
 XUL overlays are no longer supported and you need to find an alternative:
 
-* For overlays just loading a script without a user interface relationship: 
+* Overlays just loading a script without a user interface relationship: 
   * Move the script's content to a background script. 
-* For overlays extending the user interface in a way that can be replaced using calls in a background script to built-in APIs:
+* Overlays extending the user interface in a way that can be replaced using calls in a background script to built-in APIs:
   * [Example](https://github.com/cleidigh/EditEmailSubject-MX/blob/30c8dd9bf6a7326873a1ad37541384ec8c4bfb36/src/background.js#L11-L16) for adding context menu items using the [`menus` API](https://thunderbird-webextensions.readthedocs.io/en/latest/menus.html)  
-* For overlays extending the user interface beyond the built-in APIs:
+* Overlays extending the user interface beyond the built-in APIs:
   * [Example](https://github.com/thundernest/sample-extensions/blob/master/restart/implementation.js) for an experimental API with a window listener to manually add the needed UI elements.
 
 ## Replacing XUL windows and dialogs
@@ -155,8 +155,17 @@ Many parts of XUL are discontinued, and there are some other changes that preven
 
 Some general tips to speed up your porting workflow:
 
-* To debug code running in the background page or to interactively use Web-/MailExtension APIs, you can access debugging tools using the gear icon in the add-on tab.
-* To debug code running in the browser context \(usually: your experiments\) you can still use the browser console \(Ctrl+Shift+J\) or developer toolbox \(Ctrl+Shift+I\) – just like with legacy add-ons.
-* The add-on debugging tools accessible through the add-on page's gear icon permit to directly install add-ons without packaging them, similar to linking a legacy add-on in the profile folder. Using that option permits to reload the add-on without restarting Thunderbird.
-* When testing a change in an experiment, always restart Thunderbird _and delete Thunderbird's cache folder_. Experiment code may get cached, and these caches are not always cleared when uninstalling or replacing an add-on.
+* To debug code running in a content page of your extension \(e.g.: your background script\) or to interactively use Web-/MailExtension APIs, you need to select "debug add-ons" from the gear icon in the add-on tab and then analyze your add-on. 
+* To debug code running in the browser context \(e.g.: your experiments\) you must use the global browser console \(Ctrl+Shift+J\) or developer toolbox \(Ctrl+Shift+I\). 
+* The add-on debugging tools accessible through the add-on page's gear icon permit to directly install add-ons without packaging them, similar to linking a legacy add-on in the profile folder. Using that option permits to reload the add-on without restarting Thunderbird. 
+* Experiment code may get cached, and these caches are not always cleared when uninstalling or replacing an add-on. You can either always restart Thunderbird and delete Thunderbird's cache folder or register a `close()` function for your experiment \(see our [experiment example](https://github.com/thundernest/sample-extensions/blob/master/experiment/implementation.js#L29-L31)\) which includes the following lines:
+
+```javascript
+    // after unloading also flush all caches
+    Services.obs.notifyObservers(null, "startupcache-invalidate", null);
+    Services.obs.notifyObservers(null, "chrome-flush-caches", null);            
+
+```
+
+
 

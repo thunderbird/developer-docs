@@ -24,6 +24,22 @@ If you are currently maintaining a legacy extension, please identify the type of
 The architecture of Thunderbird extensions has changed over the last years. The following table describes the different extension types.
 
 {% tabs %}
+{% tab title="First Tab" %}
+1
+{% endtab %}
+
+{% tab title="Second Tab" %}
+2
+{% endtab %}
+
+{% tab title="Third Tab" %}
+3
+{% endtab %}
+
+{% tab title="4th" %}
+4
+{% endtab %}
+{% endtabs %}
 
 Status: **The only valid extension type in Thunderbird 74 and later.**
 

@@ -40,7 +40,11 @@ As experiments usually run in the main process and have unrestricted access to a
 
 Best practice: Try to write APIs that would be useful for a wide range of add-ons, not just the one you're porting. That way, you can later on propose the API you designed for inclusion in Thunderbird, with your add-on serving as reference implementation. If your APIs become a part of Thunderbird, you no longer need to maintain them as part of the add-on.
 
-A more thorough description of experimental APIs can be found in a [separate article](https://developer.thunderbird.net/add-ons/updating/tb78/experiments).
+A more thorough description of experimental APIs can be found in a separate article:
+
+{% page-ref page="experiments.md" %}
+
+
 
 ## Replacing options
 
@@ -149,7 +153,9 @@ For complex cases, it might be reasonable to put the implementation and optional
 
 ## Replacing various discontinued features within experiment code
 
-Many parts of XUL are discontinued, and there are some other changes that prevent legacy code to run unchanged in an experiment. [A separate article deals with these changes.](changes.md)
+Many parts of XUL are discontinued, and there are some other changes that prevent legacy code to run unchanged in an experiment. A separate article deals with these changes:
+
+{% page-ref page="changes.md" %}
 
 ## Additional Tips
 

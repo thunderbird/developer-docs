@@ -24,7 +24,7 @@ If you are currently maintaining a legacy extension, please identify the type of
 The architecture of Thunderbird extensions has changed over the last years. The following table describes the different extension types.
 
 {% tabs %}
-{% tab title="MailExtension" %}
+
 Status: **The only valid extension type in Thunderbird 74 and later.**
 
 MailExtensions are based on the WebExtension technology, which is also used by many web browsers. Thunderbird can use some of the WebExtension APIs provided by Firefox \(as they are both based on the Mozilla platform\), but Thunderbird of course requires additional interfaces to messenger specific functions. These additional APIs are called MailExtension APIs.
@@ -49,9 +49,9 @@ Alternatively, if you need an API that does not exist yet, you can write your ow
 * [Example in our sample-extensions repository](https://github.com/thundernest/sample-extensions/tree/master/experiment)
 
 Currently and for the foreseeable future \(years\) WebExtension Experiments can be used in extensions released to the general public. This is to help with the transition to MailExtensions and the development of additional APIs. However, as this transition progresses, the use of WebExtension Experiments in publicly released extensions will eventually be deprecated and then unsupported, as they currently are for Firefox.
-{% endtab %}
 
-{% tab title="Legacy WebExtension" %}
+
+
 Status: **Deprecated in Thunderbird 74.**
 
 Legacy WebExtensions are legacy overlay extensions or legacy bootstrap extensions wrapped inside a WebExtension.
@@ -85,11 +85,12 @@ They use a JSON manifest \(`manifest.json`\) with the `legacy` key \(which has b
 
 #### Update Strategy
 
-{% page-ref page="updating/tb78/README.md" %}
-{% page-ref page="updating/tb78/changes.md" %}
-{% endtab %}
+{% page-ref page="updating/tb78/" %}
 
-{% tab title="Legacy Bootstrap Extension" %}
+{% page-ref page="updating/tb78/changes.md" %}
+
+
+
 Status: **Deprecated in Thunderbird 68.**
 
 This type of extension uses a bootstrap file \(`bootstrap.js`\) as an entry point to the extension. The file defines four methods \(`install`, `uninstall`, `startup`, and `shutdown`\) from which all extension behaviour is controlled. These extensions can be installed/uninstalled and enabled/disabled without restarting Thunderbird, so they are sometimes called “restartless” extensions. They use an RDF manifest \(`install.rdf`\).
@@ -101,9 +102,7 @@ It is recommended to update legacy bootstrap extensions to legacy WebExtensions 
 {% page-ref page="updating/tb68/bootstrapped.md" %}
 
 {% page-ref page="updating/tb68/changes.md" %}
-{% endtab %}
 
-{% tab title="Legacy Overlay Extension" %}
 Status: **Deprecated in Thunderbird 68.**
 
 The original type of extension for Thunderbird and Firefox, using documents that overlay the Thunderbird UI, adding to and modifying it. These extensions use an RDF manifest \(`install.rdf`\) and require a restart of Thunderbird for installation/uninstallation, upgrading/downgrading and enabling/disabling.
@@ -115,8 +114,6 @@ It is recommended to update legacy overlay extensions to legacy WebExtensions fi
 {% page-ref page="updating/tb68/overlays.md" %}
 
 {% page-ref page="updating/tb68/changes.md" %}
-{% endtab %}
-{% endtabs %}
 
 ### Themes
 

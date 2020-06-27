@@ -212,6 +212,9 @@ getAPI(context) {
     /* ... implementation ... */ 
   };
   let factory = XPCOMUtils.generateNSGetFactory([exampleComponent])(classId);
+  // WARNING: this assumes that Thunderbird is already running, as
+  // Components.manager.registerFactory will be unavailable for a few
+  // milliseconds after startup.
   Components.manager.registerFactory(classID, "exampleComponent", contractID, 
     factory);
   context.callOnClose({close(){

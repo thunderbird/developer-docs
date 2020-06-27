@@ -177,7 +177,7 @@ From these dialogs, all WebExtension and MailExtension APIs can be accessed in t
 3. You need a global path to specify the location of your XUL file, either use a `moz-extension://*`, `file://*` or `chrome://*` path as described in the section ["Replacing chrome.manifest"](https://developer.thunderbird.net/add-ons/updating/tb78#replacing-chrome-manifest) above.
 4. In TB78 you need to rename your `*.xul` file to `*.xhtml` .
 
-Any JavaScript file/module loaded by your XUL dialog also runs in privileged chrome context and does not have direct access to MailExtension, WebExtension APIs.
+Any JavaScript file/module loaded by your XUL dialog also runs in privileged chrome context and does not have direct access to MailExtension or WebExtension APIs.
 
 ## Replacing XPCOM registration
 

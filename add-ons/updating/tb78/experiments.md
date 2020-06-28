@@ -84,8 +84,8 @@ Experiments do not seem to support `moz-extension://*`URLs obtained by `extensio
 An alternative to using `file://*` URLs is to register a custom `chrome://*` URL \(see this [TopicBox thread](https://thunderbird.topicbox.com/groups/addons/T9ec97ac794c127a2-M3358fc3e5647c0f0c8243d02/using-ctypes-chromeworker-in-webextension-experiment) for more details\).
 
 {% hint style="danger" %}
-Please be aware, that a JSM loaded via a `file://*` URL and also via `chrome://*` URL in different parts of the extension will **NOT** share the same scope and are somehow treated separately. So do not mix the different URL types.
-
+Please be aware, that a JSM loaded via a `file://*` URL and also via `chrome://*` URL in different parts of the extension will somehow be treated as two separate JSMs and they will **NOT** share the same scope. So do not mix the different URL types.  
+  
 You also need to load and unload a JSM using the same URL type.
 {% endhint %}
 

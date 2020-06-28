@@ -2,6 +2,10 @@
 
 This document aggregates information on topics that commonly arise when developing a new experiment for Thunderbird 78. For a complete documentation on each individual topic, refer to the linked articles.
 
+{% hint style="info" %}
+Thunderbird does contain a few useful features related to experiments [whose documentation is no longer generated](https://bugzilla.mozilla.org/show_bug.cgi?id=1556460#c23). Especially if you're writing an experiment with complex interactions between the WebExtension and your experiment, it may be helpful to read the documentation blocks within [`resource://gre/modules/ExtensionCommon.jsm`](https://hg.mozilla.org/mozilla-central/file/tip/toolkit/components/extensions/ExtensionCommon.jsm) and possibly other modules in the same source code folder.
+{% endhint %}
+
 ## Designing the API
 
 When porting an add-on, it is easy to think about everything in the context of your existing add-on. But that view is likely limiting your options: when you encounter a feature that cannot get implemented with existing WebExtension APIs, it may be helpful to first think about alternative ways to present similar functionality – maybe it is possible to implement the same high-level feature in a different way?
@@ -29,7 +33,7 @@ Depending on your time constraints, experience, and the concrete feature you're 
 Once you have a draft for your API, you can start to build the experiment. Experiments consist of three parts, [which are registered through `manifest.json`](https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/basics.html#webextensions-experiments):
 
 1. A [_schema_](https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/schema.html) describes the API that can be accessed by the WebExtension part of the add-on.
-2. A _parent_ implementation implements the API in Thunderbird's main process. All features that were available to a bootstrapped legacy extension can be used here. 
+2. A _parent_ implementation implements the API in Thunderbird's main process. All features that were available to a bootstrapped legacy extension can be used here.
 3. A _child_ implementation implements the API in the content process\(es\). This permits more complex interactions with WebExtension code and potentially improves performance, at the cost of not being able to access the main process.
 
 Either _parent_ or _child_ implementation may be omitted. Full examples for [a simple function with parent and child implementations](https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/functions.html) and [events add-ons can listen for](https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/events.html) are available in the Firefox source documentation.
@@ -51,11 +55,11 @@ In general, you can always pass simple data structures as function parameters an
 If you want to pass more complex data structures, especially functions or instances of custom classes, you can do so form a _child_ implementation. There is a big caveat, though: the experiment's scripts are privileged relative to WebExtension scripts, which causes their scopes to be disjunct:
 
 * **Accessing data that belongs to the WebExtension from an Experiment:** the code in the experiment gains [xray vision](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/Xray_vision), permitting it to directly access the chrome implementation of the given object. Usually, you don't need to worry about that and things work out just fine – but if they don't, you can opt-out via `Components.utils.waiveXrays()`.
-* **Accessing data that belongs to an Experiment from a WebExtension:** it is not possible to directly access chrome-scoped objects from a WebExtension \(but it can hold references on it\). It is also not possible to use chrome-scoped objects directly as API function results or parameters.
+* **Accessing data that belongs to an Experiment from a WebExtension:** it is not possible to directly access chrome-scoped objects from a WebExtension \(but it can hold references on it\).
 
   There are two options to work around that: either the experiment clones the object into the unprivileged scope of the WebExtension or it directly constructs an unprivileged object.
 
-  The first option usually boils down to invoking [`Components.utils.cloneInto()`](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Language_Bindings/Components.utils.cloneInto) or a related function with `context.cloneScope` as target scope.
+  The first option usually boils down to invoking [`Components.utils.cloneInto()`](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Language_Bindings/Components.utils.cloneInto) or a related function with `context.cloneScope` as target scope. A notable exception is returning data from async API functions or wrapping Promises via [`context.wrapPromise()`](https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/reference.html#BaseContext.wrapPromise), which causes automatic cloning of the result \(unless the result is wrapped into a `ExtensionCommon.NoCloneSpreadArgs`\).
 
   The second option is using the constructors in `context.cloneScope` directly from the experiment. Their results can be used from the WebExtension without further cloning.
 

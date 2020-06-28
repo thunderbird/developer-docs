@@ -2,10 +2,6 @@
 
 This document aggregates information on topics that commonly arise when developing a new experiment for Thunderbird 78. For a complete documentation on each individual topic, refer to the linked articles.
 
-{% hint style="info" %}
-Many thanks to github user [rsjtdrjgfuzkfg](https://github.com/rsjtdrjgfuzkfg) for his large contributions to this document.
-{% endhint %}
-
 ## Designing the API
 
 When porting an add-on, it is easy to think about everything in the context of your existing add-on. But that view is likely limiting your options: when you encounter a feature that cannot get implemented with existing WebExtension APIs, it may be helpful to first think about alternative ways to present similar functionality – maybe it is possible to implement the same high-level feature in a different way?
@@ -98,4 +94,8 @@ const webextScope = Array.from(extension.views).find(
 ```
 
 This hack only works because Thunderbird is internally not \(yet\) using multiple processes. Again, it is highly recommended to design your APIs in a way that these interactions are not necessary as it is likely that this technique will stop working in future versions of Thunderbird.
+
+{% hint style="warning" %}
+Many thanks to github user [rsjtdrjgfuzkfg](https://github.com/rsjtdrjgfuzkfg) for his large contributions to this document.
+{% endhint %}
 

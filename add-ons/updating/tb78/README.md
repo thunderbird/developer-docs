@@ -1,7 +1,5 @@
 ---
-description: >-
-  Collection of required steps to convert Legacy WebExtensions to
-  MailExtensions, the only supported extension type in Thunderbird 78.
+description: Required steps to convert deprecated Legacy WebExtensions to MailExtensions.
 ---
 
 # Update for Thunderbird 78

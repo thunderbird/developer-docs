@@ -1,8 +1,7 @@
 ---
 description: >-
-  Collection of required steps to convert Legacy Bootstrap Extension and Legacy
-  Overlay Extensions to WebExtensions, so they will be compatible with
-  Thunderbird 68.
+  Required steps to convert deprecated Legacy Bootstrap Extension and Legacy
+  Overlay Extensions to WebExtensions.
 ---
 
 # Update for Thunderbird 68

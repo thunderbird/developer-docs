@@ -251,3 +251,7 @@ Some general tips to speed up your porting workflow:
     Services.obs.notifyObservers(null, "startupcache-invalidate", null);
 ```
 
+{% hint style="info" %}
+Many thanks to github user [rsjtdrjgfuzkfg](https://github.com/rsjtdrjgfuzkfg) for his large contributions to this document.
+{% endhint %}
+

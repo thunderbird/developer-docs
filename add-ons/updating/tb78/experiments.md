@@ -75,7 +75,15 @@ const { /* ... exported symbols ... */ } =
 Components.utils.unload(extension.rootURI.resolve("path/to/module.jsm"));
 ```
 
-Experiments do not seem to support moz-extension://-URLs obtained by `extension.getURL()` when loading JSM, instead `extension.rootURI.resolve()` should be used to get the raw file://-URL.
+Experiments do not seem to support `moz-extension://*`URLs obtained by `extension.getURL()` when loading a JSM, instead `extension.rootURI.resolve()` should be used to get the raw `file://*`URL.
+
+An alternative to using `file://*` URLs is to register a custom `chrome://*` URL \(see this [TopicBox thread](https://thunderbird.topicbox.com/groups/addons/T9ec97ac794c127a2-M3358fc3e5647c0f0c8243d02/using-ctypes-chromeworker-in-webextension-experiment) for more details\).
+
+{% hint style="danger" %}
+Please be aware, that a JSM loaded via a `file://*` URL and also via `chrome://*` URL in different parts of the extension will **NOT** share the same scope and are somehow treated separately. So do not mix the different URL types.
+
+You also need to load and unload a JSM using the same URL type.
+{% endhint %}
 
 ## Accessing WebExtensions directly from an experiment
 

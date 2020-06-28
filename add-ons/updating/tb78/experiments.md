@@ -90,7 +90,7 @@ You also need to load and unload a JSM using the same URL type.
 {% endhint %}
 
 {% hint style="warning" %}
-Avoid declaring global variables in the implementation of your experiment, as that can cause collisions with other experiments loaded. Instead declare them as members of API \([example](https://github.com/jobisoft/quicktext/blob/pro/content/api/ConversionHelper/implementation.js)\).
+Avoid declaring global variables in the implementation of your experiment, as that can cause collisions with other experiments loaded. Instead declare them as members of your API \([example](https://github.com/jobisoft/quicktext/blob/pro/content/api/ConversionHelper/implementation.js)\).
 {% endhint %}
 
 ## Accessing WebExtensions directly from an experiment

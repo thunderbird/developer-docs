@@ -2,6 +2,10 @@
 
 This document aggregates information on topics that commonly arise when developing a new experiment for Thunderbird 78. For a complete documentation on each individual topic, refer to the linked articles.
 
+{% hint style="info" %}
+Many thanks to github user [rsjtdrjgfuzkfg](https://github.com/rsjtdrjgfuzkfg) for his large contributions to this document.
+{% endhint %}
+
 ## Designing the API
 
 When porting an add-on, it is easy to think about everything in the context of your existing add-on. But that view is likely limiting your options: when you encounter a feature that cannot get implemented with existing WebExtension APIs, it may be helpful to first think about alternative ways to present similar functionality – maybe it is possible to implement the same high-level feature in a different way?
@@ -28,9 +32,9 @@ Depending on your time constraints, experience, and the concrete feature you're 
 
 Once you have a draft for your API, you can start to build the experiment. Experiments consist of three parts, [which are registered through `manifest.json`](https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/basics.html#webextensions-experiments):
 
-* 1. A [_schema_](https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/schema.html) describes the API that can be accessed by the WebExtension part of the add-on.
-* 1. A _parent_ implementation implements the API in Thunderbird's main process. All features that were available to a bootstrapped legacy extension can be used here. 
-* 1. A _child_ implementation implements the API in the content process\(es\). This permits more complex interactions with WebExtension code and potentially improves performance, at the cost of not being able to access the main process.
+1. A [_schema_](https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/schema.html) describes the API that can be accessed by the WebExtension part of the add-on.
+2. A _parent_ implementation implements the API in Thunderbird's main process. All features that were available to a bootstrapped legacy extension can be used here. 
+3. A _child_ implementation implements the API in the content process\(es\). This permits more complex interactions with WebExtension code and potentially improves performance, at the cost of not being able to access the main process.
 
 Either _parent_ or _child_ implementation may be omitted. Full examples for [a simple function with parent and child implementations](https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/functions.html) and [events add-ons can listen for](https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/events.html) are available in the Firefox source documentation.
 

@@ -1,6 +1,13 @@
+---
+description: >-
+  Collection of required steps to convert Legacy Bootstrap Extension and Legacy
+  Overlay Extensions to WebExtensions, so they will be compatible with
+  Thunderbird 68.
+---
+
 # Update for Thunderbird 68
 
-A _lot_ of work has been done to ensure that [legacy extension](https://developer.thunderbird.net/add-ons/about-add-ons#extensions) \(overlay extension and bootstrap extensions\) will work in Thunderbird 68. Technically, they have to be converted to WebExtensions, but by activating the legacy mode, the general structure of the legacy extension does not need to be changed.
+Technically, Legacy Bootstrap Extensions and Legacy Overlay Extensions need to be converted to WebExtensions, but by activating the legacy mode, their general structure does not need to be changed.
 
 ## Required Changes
 

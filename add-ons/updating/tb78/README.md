@@ -1,3 +1,9 @@
+---
+description: >-
+  Collection of required steps to convert Legacy WebExtensions to
+  MailExtensions, the only supported extension type in Thunderbird 78.
+---
+
 # Update for Thunderbird 78
 
 Support for legacy extensions was removed from Thunderbird Beta version 74, released in February 2020. Therefore, only modern MailExtensions are compatible with Thunderbird 78. This guide is intended to help developers to port their Legacy WebExtensions to MailExtensions.

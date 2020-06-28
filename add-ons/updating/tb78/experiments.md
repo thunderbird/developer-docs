@@ -6,7 +6,7 @@ This document aggregates information on topics that commonly arise when developi
 
 When porting an add-on, it is easy to think about everything in the context of your existing add-on. But that view is likely limiting your options: when you encounter a feature that cannot get implemented with existing WebExtension APIs, it may be helpful to first think about alternative ways to present similar functionality – maybe it is possible to implement the same high-level feature in a different way?
 
-If not, you should first read through the documentation of some buit-in APIs, this document and some linked documentation to get a feel about how existing APIs encapsulate common problems \(i.e. listener registration through events, excessive use of `Promise`s, ...\) and what limitations your API will have to live with \(i.e. potential complexity when passing functions or raw DOM elements\).
+If not, you should first read through the documentation of some buit-in APIs, this document and some linked documentation to get a feel about how existing APIs encapsulate common problems \(i.e. listener registration through events, excessive use of `Promise`, ...\) and what limitations your API will have to live with \(i.e. potential complexity when passing functions or raw DOM elements\).
 
 Afterwards, think about \(hypothetical or real\) add-ons that would have similar needs and try to write APIs that would be useful for a wide range of add-ons:
 
@@ -39,6 +39,10 @@ Technically speaking, Thunderbird 78 is not actually using multiple processes \(
 {% endhint %}
 
 In most cases, you can start by formalizing your API draft into a schema and adding a _parent_ implementation using one of the linked articles as base. Add or switch to a _child_ implementation if you have performance considerations or need to pass more complex data \(see below\).
+
+{% hint style="success" %}
+Check out the [experiment generator](https://darktrojan.github.io/generator/generator.html), which creates all the needed files.
+{% endhint %}
 
 ## Passing data to / from an WebExtension
 
@@ -83,6 +87,10 @@ An alternative to using `file://*` URLs is to register a custom `chrome://*` URL
 Please be aware, that a JSM loaded via a `file://*` URL and also via `chrome://*` URL in different parts of the extension will **NOT** share the same scope and are somehow treated separately. So do not mix the different URL types.
 
 You also need to load and unload a JSM using the same URL type.
+{% endhint %}
+
+{% hint style="warning" %}
+Avoid declaring global variables in the implementation of your experiment, as that can cause collisions with other experiments loaded. Instead declare them as members of API \([example](https://github.com/jobisoft/quicktext/blob/pro/content/api/ConversionHelper/implementation.js)\).
 {% endhint %}
 
 ## Accessing WebExtensions directly from an experiment

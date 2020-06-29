@@ -44,7 +44,7 @@ Technically speaking, Thunderbird 78 is not actually using multiple processes \(
 
 In most cases, you can start by formalizing your API draft into a schema and adding a _parent_ implementation using one of the linked articles as base. Add or switch to a _child_ implementation if you have performance considerations or need to pass more complex data \(see below\).
 
-{% hint style="success" %}
+{% hint style="info" %}
 Check out the [experiment generator](https://darktrojan.github.io/generator/generator.html), which creates all the needed files.
 {% endhint %}
 

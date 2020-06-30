@@ -66,6 +66,10 @@ Option windows are replaced by [settings pages](https://developer.mozilla.org/en
 
 Instead of a XUL dialog, the specified HTML document is used, which will be accessible to the user through the add-on manager. From that document, all WebExtension and MailExtension APIs can be accessed in the same way as from the background script.
 
+{% hint style="warning" %}
+[Under unidentified circumstances, WebExtension APIs invoked from an options page may throw the error "Error: Unknown sender or wrong actor for recvAPICall".](https://bugzilla.mozilla.org/show_bug.cgi?id=1607859) Until this issue is fixed, you can call any API through the background page: `(await messenger.runtime.getBackgroundPage()).messenger./* ... */`
+{% endhint %}
+
 The settings themselves should be stored using one of the new APIs to store data, such as [`storage`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage), so it may be necessary to add an experiment to migrate existing settings from nsIPrefBranch or other mechanisms not accessible through modern APIs.
 
 The [legacyPrefMigration example add-on](https://github.com/thundernest/sample-extensions/tree/master/legacyPrefMigration) includes such a migration API.

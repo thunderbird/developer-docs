@@ -83,9 +83,9 @@ const { /* ... exported symbols ... */ } =
 Components.utils.unload(extension.rootURI.resolve("path/to/module.jsm"));
 ```
 
-Experiments do not seem to support `moz-extension://*`URLs obtained by `extension.getURL()` when loading a JSM, instead `extension.rootURI.resolve()` should be used to get the raw `file://*`URL.
+Do not use `moz-extension://*`URLs obtained by `extension.getURL()` in experiments, but instead use  `extension.rootURI.resolve()` to get the raw `file://*`URL.
 
-An alternative to using `file://*` URLs is to register a custom `chrome://*` URL \(see this [example API](https://github.com/cleidigh/ThunderStorm/tree/master/examples/MailExtensions/LoadModule) for more details\).
+Some calls may have issues with `file://*` URLs as well \(e.g. `new ChromeWorker()`\), in that case you need to manually register a `chrome://*` URL, as shown in our [LoadModule example extension.](https://github.com/cleidigh/ThunderStorm/tree/master/examples/MailExtensions/LoadModule)
 
 {% hint style="danger" %}
 Please be aware, that a JSM loaded via a `file://*` URL and also via `chrome://*` URL in different parts of the extension will somehow be treated as two separate JSMs and they will **NOT** share the same scope. So do not mix the different URL types.

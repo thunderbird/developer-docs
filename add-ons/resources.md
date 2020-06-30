@@ -52,7 +52,7 @@ description: >-
       </td>
       <td style="text-align:left">The example extension repository managed by the Thunderbird Add-On Community,
         hosting additional MailExtension examples showing how to get certain things
-        done .</td>
+        done.</td>
     </tr>
     <tr>
       <td style="text-align:left"><a href="https://cleidigh.github.io/ThunderKdB/index.html">ThunderKdB</a>

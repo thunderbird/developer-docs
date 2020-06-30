@@ -85,7 +85,7 @@ Components.utils.unload(extension.rootURI.resolve("path/to/module.jsm"));
 
 Experiments do not seem to support `moz-extension://*`URLs obtained by `extension.getURL()` when loading a JSM, instead `extension.rootURI.resolve()` should be used to get the raw `file://*`URL.
 
-An alternative to using `file://*` URLs is to register a custom `chrome://*` URL \(see this [example API](https://github.com/cleidigh/ThunderStorm/tree/master/examples/Experiments/loadModule) for more details\).
+An alternative to using `file://*` URLs is to register a custom `chrome://*` URL \(see this [example API](https://github.com/cleidigh/ThunderStorm/tree/master/examples/MailExtensions/LoadModule) for more details\).
 
 {% hint style="danger" %}
 Please be aware, that a JSM loaded via a `file://*` URL and also via `chrome://*` URL in different parts of the extension will somehow be treated as two separate JSMs and they will **NOT** share the same scope. So do not mix the different URL types.
@@ -94,7 +94,7 @@ You also need to load and unload a JSM using the same URL type.
 {% endhint %}
 
 {% hint style="warning" %}
-Avoid declaring global variables in the implementation of your experiment, as that can cause collisions with other experiments loaded. Instead declare them as members of your API \([example](https://github.com/cleidigh/ThunderStorm/blob/master/examples/Experiments/loadModule/content/api/ExampleAPI/implementation.js)\).
+Avoid declaring global variables in the implementation of your experiment, as that can cause collisions with other experiments loaded. Instead declare them as members of your API \([example](https://github.com/cleidigh/ThunderStorm/blob/master/examples/MailExtensions/LoadModule/content/api/ExampleAPI/implementation.js)\).
 {% endhint %}
 
 ## Accessing WebExtensions directly from an experiment

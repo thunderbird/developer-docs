@@ -42,10 +42,17 @@ description: >-
       </td>
     </tr>
     <tr>
-      <td style="text-align:left"><a href="https://github.com/thundernest/sample-extensions">Sample Extensions Repository</a>
+      <td style="text-align:left"><a href="https://github.com/thundernest/sample-extensions">Thundernest Sample Extension Repository</a>
       </td>
-      <td style="text-align:left">The example extension repository from Thundernest with MailExtensions
+      <td style="text-align:left">The example extension repository managed by Thunderbirds API developers,
         showcasing different WebExtension/MailExtension APIs.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://github.com/cleidigh/ThunderStorm">ThunderStorm Example Extension Repository</a>
+      </td>
+      <td style="text-align:left">The example extension repository managed by the Thunderbird Add-On Community,
+        hosting additional MailExtension examples showing how to get certain things
+        done .</td>
     </tr>
     <tr>
       <td style="text-align:left"><a href="https://cleidigh.github.io/ThunderKdB/index.html">ThunderKdB</a>

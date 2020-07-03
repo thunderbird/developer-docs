@@ -97,6 +97,10 @@ Module file extension changed in TB78 from js to jsm, now available via
 const { IOUtils } = ChromeUtils.import("resource:///modules/IOUtils.jsm");
 ```
 
+### AddRecipient\(\)
+
+In TB78 the function `AddRecipient()` in the contact sidebar has been renamed to `awAddRecipientsArray(`\).
+
 ## Changes to the Preference System
 
 ### Removal of onsyncfrompreference and onsynctopreference Attributes

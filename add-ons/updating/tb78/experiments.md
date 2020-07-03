@@ -93,6 +93,10 @@ Please be aware, that a JSM loaded via a `file://*` URL and also via `chrome://*
 You also need to load and unload a JSM using the same URL type.
 {% endhint %}
 
+{% hint style="danger" %}
+Experimental APIs are loaded and unloaded for each scope they are used in. If you unload your JSMs whenever an experiment context closes, this can lead to multiple instances for the same JSM and malfunctions in JSMs that store anything in their global scopes, [as the global scope of the JSM is cleared on unload](https://bugzilla.mozilla.org/show_bug.cgi?id=769253). If you really need shared state, you can implement your own reference counting algorithm to only unload the module once the last context closes.
+{% endhint %}
+
 {% hint style="warning" %}
 Avoid declaring global variables in the implementation of your experiment, as that can cause collisions with other experiments loaded. Instead declare them as members of your API \([example](https://github.com/cleidigh/ThunderStorm/blob/master/examples/MailExtensions/LoadModule/content/api/ExampleAPI/implementation.js)\).
 {% endhint %}

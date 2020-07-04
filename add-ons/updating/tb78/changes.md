@@ -166,3 +166,7 @@ Preferences.addSyncToPrefListener(
      function() { return onToPref() });
 ```
 
+{% hint style="danger" %}
+The `nsIPrefService`is not available via WebExtension APIs. It is therefore adviced to move away from storing addon preferences in a preference brach and instead use the local storage via the [`storage`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage) API.
+{% endhint %}
+

@@ -253,7 +253,7 @@ Some general tips to speed up your porting workflow:
 * To debug code running in a content page of your extension \(e.g.: your background script\) or to interactively use Web-/MailExtension APIs, you need to select "debug add-ons" from the gear icon in the add-on tab and then analyze your add-on.   
 * To debug code running in the browser context \(e.g.: your experiments\) you must use the global browser console \(Ctrl+Shift+J\) or developer toolbox \(Ctrl+Shift+I\).   
 * The add-on debugging tools accessible through the add-on page's gear icon permit to directly install add-ons without packaging them, similar to linking a legacy add-on in the profile folder. Using that option permits to reload the add-on without restarting Thunderbird.   
-* Experiment code may get cached, and these caches are not always cleared when uninstalling or replacing an add-on. You can either always restart Thunderbird and delete Thunderbird's cache folder or register a `close()` function for your experiment \(see our [experiment example](https://github.com/thundernest/sample-extensions/blob/master/experiment/implementation.js#L29-L31)\) which includes the following line:
+* Experiment code may get cached, and these caches are not always cleared when uninstalling or replacing an add-on. You can either always restart Thunderbird with the `-purgecaches` command line parameter or register a `close()` function for your experiment \(see our [experiment example](https://github.com/thundernest/sample-extensions/blob/master/experiment/implementation.js#L29-L31)\) which includes the following line:
 
 ```javascript
     // after JSM unloading also flush all caches

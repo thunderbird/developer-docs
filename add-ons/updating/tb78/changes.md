@@ -6,6 +6,26 @@ The changes are grouped by category and are listed in the order we became aware 
 
 ## Removed XUL elements
 
+{% hint style="warning" %}
+As of Thunderbird 74, the built-in overlay loader has been removed, which means XUL overlay files are no longer supported. The preferrred way to interact with Thunderbird is through WebExtension and MailExtension APIs, which only support HTML/CSS. 
+
+However, Thunderbird itself is still using XUL for its UI, and it is still possible to interact with that XUL based UI through experimental APIs. If for example you need a UI feature not yet available via MailExtension API, you can write an experimental API using a window listener and manipulate the UI as needed via JavaScript \(check out the [restart example](https://github.com/thundernest/sample-extensions/tree/master/restart)\). There are two ways to add XUL elements, either via [pure JavaScript](https://github.com/thundernest/sample-extensions/blob/master/restart/implementation.js#L23-L30) or via [parseXULToFragment\(\)](https://github.com/cleidigh/ThunderStorm/blob/master/examples/MailExtensions/WindowListener/content/messenger.js#L22-L31).
+
+Since XUL is still usable, this document includes information about deprecated and removed XUL elements.
+{% endhint %}
+
+{% hint style="warning" %}
+Some XUL elements have been converted to [custom elements](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements), which have an additional `is="something"` attribute. If such a custom element is to be created with `createXULElement()`, the `is` parameter needs to be passend in via the second argument:
+
+```javascript
+let toolbar = document.createXULElement(
+    "toolbar", 
+    { is : "customizable-toolbar" }
+);
+toolbar.setAttribute("is", "customizable-toolbar");
+```
+{% endhint %}
+
 ### &lt;textbox&gt;
 
 Removed completely in TB71. Use
@@ -30,6 +50,23 @@ JavaScript methods that are using `element.localName == "textbox"` , `getElement
 
 Visually compare the fields before and after the conversion to be sure the UI, sizing, and spacing doesn't change.
 {% endhint %}
+
+### &lt;toolbar customizable="true"&gt;
+
+In TB78 the XUL element `toolbar` with attribute `customizable` has been re-implemented as a [custom element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Custom_Elements). It needs an additional `is` attribute. The following example is taken from the [source of the Thunderbird calender](https://searchfox.org/comm-central/rev/444b626fc442cb92b1b29ee47912600bc61bab1f/calendar/base/content/dialogs/calendar-event-dialog.xhtml#574):
+
+```markup
+<!-- Note the additional "is" attribute: -->
+<toolbar is="customizable-toolbar"
+   id="event-toolbar"
+	 customizable="true"   
+	 toolboxid="event-toolbox"
+	 class="chromeclass-toolbar"
+	 labelalign="end"
+	 defaultlabelalign="end"
+	 context="event-dialog-toolbar-context-menu"
+	 defaultset="button-url,button-delete"/>
+```
 
 ## Changed API
 

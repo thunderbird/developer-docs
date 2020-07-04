@@ -77,11 +77,11 @@ Furthermore, a few dedicated `listbox/richtlistbox`methods have been removed and
 * `listbox.appendItem(label, value)`:
 
 ```javascript
-let newNode = document.createElement("richlistitem");
+let newNode = document.createXULElement("richlistitem");
 
 // Store the value in the list item as before.
 newNode.value = value; 
-let newLabel = document.createElement("label");
+let newLabel = document.createXULElement("label");
 // The label is now stored in the value attribute of the label element.
 newLabel.value = label;
 
@@ -92,7 +92,7 @@ listbox.appendChild(newNode);
 * `listbox.insertItemAt(index, label, value)`:
 
 ```javascript
-let newNode = document.createElement("richlistitem");
+let newNode = document.createXULElement("richlistitem");
 
 // See above example.
 
@@ -278,7 +278,7 @@ The XUL element `menulist` no longer supports the `editable` attribute. However,
 An editable menulist can also be created via JavaScript:
 
 ```javascript
-let menulist = document.createElement("menulist", { is : "menulist-editable" });
+let menulist = document.createXULElement("menulist", { is : "menulist-editable" });
 menulist.setAttribute("is", "menulist-editable");
 menulist.setAttribute("editable", "true");
 ```

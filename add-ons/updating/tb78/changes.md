@@ -138,6 +138,19 @@ const { IOUtils } = ChromeUtils.import("resource:///modules/IOUtils.jsm");
 
 In TB78 the function `AddRecipient()` in the contact sidebar has been renamed to `awAddRecipientsArray(`\).
 
+### MailServices.headerParser.parseHeadersWithArray\(\)
+
+In TB71 `MailServices.headerParser.parseHeadersWithArray()` has been removed. Instead use:
+
+```javascript
+let addresses = MailServices.headerParser.parseEncodedHeader(address);
+for (let addr of addresses) {
+  let email = addr.email
+  let name = addr.name
+  let fullname = addr.toString();
+}
+```
+
 ## Changes to the Preference System
 
 ### Removal of onsyncfrompreference and onsynctopreference Attributes

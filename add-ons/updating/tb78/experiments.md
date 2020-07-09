@@ -48,6 +48,47 @@ In most cases, you can start by formalizing your API draft into a schema and add
 Check out the [experiment generator](https://darktrojan.github.io/generator/generator.html), which creates all the needed files.
 {% endhint %}
 
+{% hint style="warning" %}
+Avoid declaring global variables in either implementation of your experiment, as that can cause collisions with other experiments loaded. Instead declare them as members of your API \([example](https://github.com/cleidigh/ThunderStorm/blob/master/examples/MailExtensions/LoadModule/content/api/ExampleAPI/implementation.js)\).
+{% endhint %}
+
+## Managing your Experiment's lifecycle
+
+Experiments do not have a dedicated lifecycle. Whenever some part of your WebExtension attempts to use the Experiment's API, the experiment is loaded into that context. As there can be multiple contexts at the same time, an Experiment may be loaded multiple times in parallel. This means that you cannot directly observe when the add-on is loaded, nor when it is unloaded. This is especially problematic if you [load JSMs](experiments.md#structuring-experiment-code) or manage native resources, but also affects all other experiments due to Thunderbird's caching behavior:
+
+All experiments **must** invalidate all caches after finishing all other unloading tasks:
+
+```javascript
+const { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");​
+Services.obs.notifyObservers(null, "startupcache-invalidate", null);​
+```
+
+Failure to invalidate caches may cause parts of the experiment to be cached across updates of the Add-on, even if they are changed in the update.
+
+There are multiple approaches on how to manage your experiment's lifecycle effectively:
+
+### Restricting \(parts of\) your Experiment to the background page
+
+The simplest option is to only use your experiment in the background page, and use `context.callOnClose()` to perform unloading tasks in your _parent_ implementation.
+
+A slightly more elaborate strategy is to do all loading in an dedicated API function that is called once from the background page only \(usually called `init()`\) and to register the close handler _in that particular method_.
+
+As long as you don't load resources from a _client_ implementation or after the background page unloaded, both options are reasonably safe.
+
+### Using a helper to observe the background page's context
+
+Instead of using some protocol the background page must follow, you can also directly register a close handler for the background page's context \(independent of whether you're loaded there or not\) using
+
+```javascript
+const backgroundContext = Array.from(context.extension.views).find(​
+        view => view.viewType === "background");​
+backgroundContext.callOnClose(/* ... */);​
+```
+
+### Count references
+
+Of course you can also count in how many contexts the experiment is loaded and unload once that number reaches zero. This option is probably the most stable one, but properly implementing reference counting in a future-proof way is not as simple as it sounds. It is thus recommended to go with one of the other options for now.
+
 ## Passing data to / from an WebExtension
 
 In general, you can always pass simple data structures as function parameters and return values of an API. Thunderbird will automatically adapt them using the [structured clone algorithm](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm), so you do not need to worry about them.
@@ -83,22 +124,14 @@ const { /* ... exported symbols ... */ } =
 Components.utils.unload(extension.rootURI.resolve("path/to/module.jsm"));
 ```
 
-Do not use `moz-extension://*`URLs obtained by `extension.getURL()` in experiments, but instead use  `extension.rootURI.resolve()` to get the raw `file://*`URL.
-
-Some calls may have issues with `file://*` URLs as well \(e.g. `new ChromeWorker()`\), in that case you need to manually register a `chrome://*` URL, as shown in our [LoadModule example extension.](https://github.com/cleidigh/ThunderStorm/tree/master/examples/MailExtensions/LoadModule)
-
-{% hint style="danger" %}
-Please be aware, that a JSM loaded via a `file://*` URL and also via `chrome://*` URL in different parts of the extension will somehow be treated as two separate JSMs and they will **NOT** share the same scope. So do not mix the different URL types.
-
-You also need to load and unload a JSM using the same URL type.
-{% endhint %}
-
-{% hint style="danger" %}
-Experimental APIs are loaded and unloaded for each scope they are used in. If you unload your JSMs whenever an experiment context closes, this can lead to multiple instances for the same JSM and malfunctions in JSMs that store anything in their global scopes, [as the global scope of the JSM is cleared on unload](https://bugzilla.mozilla.org/show_bug.cgi?id=769253). If you really need shared state, you can implement your own reference counting algorithm to only unload the module once the last context closes.
-{% endhint %}
+Do not use `moz-extension://*`URLs obtained by `extension.getURL()` in experiments, but instead use  `extension.rootURI.resolve()` to get the raw `file://*` or `jar://*` URL. Some calls may have issues with these raw URLs as well \(e.g. `new ChromeWorker()`\). In that case you need to manually register a `chrome://*` URL, as shown in our [LoadModule example extension](https://github.com/cleidigh/ThunderStorm/tree/master/examples/MailExtensions/LoadModule), and always use that URL when referring to the JSM.
 
 {% hint style="warning" %}
-Avoid declaring global variables in the implementation of your experiment, as that can cause collisions with other experiments loaded. Instead declare them as members of your API \([example](https://github.com/cleidigh/ThunderStorm/blob/master/examples/MailExtensions/LoadModule/content/api/ExampleAPI/implementation.js)\).
+Using different URLs for the same JSM will cause multiple instances of the same JSM to be loaded. These instances will **NOT** share the same scope and need to get unloaded separately.
+{% endhint %}
+
+{% hint style="danger" %}
+[The global scope of a JSM is cleared on unload](https://bugzilla.mozilla.org/show_bug.cgi?id=769253). Unloading JSMs that are still used is only safe if they don't use the global scope and don't store any state information.
 {% endhint %}
 
 ## Accessing WebExtensions directly from an experiment

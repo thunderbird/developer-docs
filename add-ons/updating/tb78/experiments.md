@@ -126,7 +126,7 @@ const { /* ... exported symbols ... */ } =
 Components.utils.unload(extension.rootURI.resolve("path/to/module.jsm"));
 ```
 
-Do not use `moz-extension://*`URLs obtained by `extension.getURL()` in experiments, but instead use  `extension.rootURI.resolve()` to get the raw `file://*` or `jar://*` URL. Some calls may have issues with these raw URLs as well \(e.g. `new ChromeWorker()`\). In that case you need to manually register a `chrome://*` URL, as shown in our [LoadModule example extension](https://github.com/cleidigh/ThunderStorm/tree/master/examples/MailExtensions/LoadModule), and always use that URL when referring to the JSM.
+Do not use `moz-extension://*`URLs obtained by `extension.getURL()` in experiments, but instead use  `extension.rootURI.resolve()` to get the raw `file://*` or `jar://*` URL. Some calls may have issues with these raw URLs as well \(e.g. `new ChromeWorker()`\). In that case you need to manually register a `chrome://*` URL, as shown in our [WindowListener API example extension](https://github.com/cleidigh/ThunderStorm/blob/6a13d6a6e04e64e601a81fbea0986db9658bdc54/examples/MailExtensions/WindowListener/api/WindowListener/implementation.js#L28-L38), and always use that URL when referring to the JSM.
 
 {% hint style="warning" %}
 Using different URLs for the same JSM will cause multiple instances of the same JSM to be loaded. These instances will **NOT** share the same scope and need to get unloaded separately.

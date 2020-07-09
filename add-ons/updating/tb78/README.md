@@ -28,7 +28,7 @@ Now your add-on should install in current versions of Thunderbird without issues
 
 Adding this section to your `manifest.json` will cause the file `background-script.js` to be loaded and evaluated by Thunderbird. For bootstrap typed Legacy WebExtensions, the existing `bootstrap.js` script itself is a good starting point for a background script – for overlay typed Legacy WebExtensions it may be reasonable to start with an empty script and convert overlays using the guidelines below, gradually building up the background script.
 
-Contrary to the bootstrap script in legacy add-ons, the background scripts will _not_ get evaluated in a privileged browser context. Instead it is added to an HTML document \(a.k.a the "background page"\) living in a content process, which only has access to [MailExtension APIs](https://thunderbird-webextensions.readthedocs.io/en/latest/index.html) and some WebExtension APIs inherited from the underlying Firefox code base \(they are listed further down on [this page](https://thunderbird-webextensions.readthedocs.io/en/latest/)\). Any interaction with Thunderbird must occur through these APIs. Whenever code needs to be added to the background script, you need to make sure to migrate calls to XPCOM or other native Thunderbird features to these APIs.
+Contrary to the bootstrap script in legacy add-ons, the background scripts will _not_ get evaluated in a privileged browser context. Instead it is added to an HTML document \(a.k.a the "background page"\) living in a content process, which only has access to [MailExtension APIs](https://thunderbird-webextensions.readthedocs.io/en/78/index.html) and some WebExtension APIs inherited from the underlying Firefox code base \(they are listed further down on [this page](https://thunderbird-webextensions.readthedocs.io/en/78/)\). Any interaction with Thunderbird must occur through these APIs. Whenever code needs to be added to the background script, you need to make sure to migrate calls to XPCOM or other native Thunderbird features to these APIs.
 
 {% hint style="info" %}
 The document "[Comparison with XUL/XPCOM extensions](https://extensionworkshop.com/documentation/develop/comparison-with-xul-xpcom-extensions/)" from the Extensions Workshop provides a comprehensive overview about which legacy API can be replaced by which WebExtension API.
@@ -40,7 +40,7 @@ Since the WebExtension technology originates in Browsers like Google Chrome and 
 
 ## Experiment-ing with new APIs
 
-While the Thunderbird team plans to add more APIs with upcoming releases, the current set of APIs will not be sufficient to port most add-ons. To work around this limitation, add-ons can introduce their own, additional APIs as so-called [_experiments_](https://thunderbird-webextensions.readthedocs.io/en/latest/how-to/experiments.html).
+While the Thunderbird team plans to add more APIs with upcoming releases, the current set of APIs will not be sufficient to port most add-ons. To work around this limitation, add-ons can introduce their own, additional APIs as so-called [_experiments_](https://thunderbird-webextensions.readthedocs.io/en/78/how-to/experiments.html).
 
 {% hint style="info" %}
 Any feature that was available in previous versions of Thunderbird remains available in Thunderbird 78 inside of experimental APIs.
@@ -160,13 +160,13 @@ XUL overlays are no longer supported and you need to find an alternative:
 * Overlays just loading a script without a user interface relationship: 
   * Move the script's content to a background script.   
 * Overlays extending the user interface in a way that can be replaced by calls in the background script to built-in APIs:
-  * [Example](https://github.com/cleidigh/EditEmailSubject-MX/blob/30c8dd9bf6a7326873a1ad37541384ec8c4bfb36/src/background.js#L11-L16) for adding context menu items using the [`menus` API](https://thunderbird-webextensions.readthedocs.io/en/latest/menus.html)    
+  * [Example](https://github.com/cleidigh/EditEmailSubject-MX/blob/30c8dd9bf6a7326873a1ad37541384ec8c4bfb36/src/background.js#L11-L16) for adding context menu items using the [`menus` API](https://thunderbird-webextensions.readthedocs.io/en/78/menus.html)    
 * Overlays extending the user interface beyond the built-in APIs:
   * Use an [experimental API with a window listener](https://github.com/cleidigh/ThunderStorm/tree/master/examples/MailExtensions/WindowListener) to manually add UI elements.
 
 ## Replacing XUL windows and dialogs
 
-While it would be possible to attempt to re-use existing XUL code in an experiment, it is probably a better idea to use the more future-proof [`windows` API](https://thunderbird-webextensions.readthedocs.io/en/latest/windows.html) to create a window displaying an HTML dialog:
+While it would be possible to attempt to re-use existing XUL code in an experiment, it is probably a better idea to use the more future-proof [`windows` API](https://thunderbird-webextensions.readthedocs.io/en/78/windows.html) to create a window displaying an HTML dialog:
 
 ```javascript
 messenger.windows.create({

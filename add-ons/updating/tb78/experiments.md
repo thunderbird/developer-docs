@@ -75,7 +75,7 @@ A slightly more elaborate strategy is to do all loading in an dedicated API func
 
 As long as you don't load resources from a _client_ implementation or after the background page unloaded, both options are reasonably safe.
 
-### Using a helper to observe the background page's context
+### Observing the background page's context
 
 Instead of using some protocol the background page must follow, you can also directly register a close handler for the background page's context \(independent of whether you're loaded there or not\) using
 
@@ -85,9 +85,11 @@ const backgroundContext = Array.from(context.extension.views).find(​
 backgroundContext.callOnClose(/* ... */);​
 ```
 
-### Count references
+This method will, of course, also only work if your add-on has a background page.
 
-Of course you can also count in how many contexts the experiment is loaded and unload once that number reaches zero. This option is probably the most stable one, but properly implementing reference counting in a future-proof way is not as simple as it sounds. It is thus recommended to go with one of the other options for now.
+### Counting contexts
+
+Of course you can also count in how many contexts the experiment is loaded and unload once that number reaches zero. This option is probably the most stable one, but properly implementing reference counting in a future-proof way is not as simple as it sounds. It is thus recommended to go with one of the other options for now \(adding a background page if necessary\).
 
 ## Passing data to / from an WebExtension
 

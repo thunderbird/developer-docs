@@ -255,7 +255,3 @@ Some general tips to speed up your porting workflow:
 * To debug code running in the browser context \(e.g.: your experiments\) you must use the global browser console \(Ctrl+Shift+J\) or developer toolbox \(Ctrl+Shift+I\).   
 * The add-on debugging tools accessible through the add-on page's gear icon permit to directly install add-ons without packaging them, similar to linking a legacy add-on in the profile folder. Using that option permits to reload the add-on without restarting Thunderbird.
 
-{% hint style="warning" %}
-Many thanks to github user [rsjtdrjgfuzkfg](https://github.com/rsjtdrjgfuzkfg) for his large contributions to this document.
-{% endhint %}
-

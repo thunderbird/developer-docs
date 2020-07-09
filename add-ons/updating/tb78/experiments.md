@@ -154,7 +154,3 @@ const webextScope = Array.from(extension.views).find(
 
 This hack only works because Thunderbird is internally not \(yet\) using multiple processes. Again, it is highly recommended to design your APIs in a way that these interactions are not necessary as it is likely that this technique will stop working in future versions of Thunderbird.
 
-{% hint style="warning" %}
-Many thanks to github user [rsjtdrjgfuzkfg](https://github.com/rsjtdrjgfuzkfg) for his large contributions to this document.
-{% endhint %}
-

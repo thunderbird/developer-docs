@@ -151,6 +151,44 @@ for (let addr of addresses) {
 }
 ```
 
+## Changes to the Address Book
+
+### Searching a nsIAbDirectory
+
+In TB68 a `nsIAbDirectory` could be searched by simply attaching a search query to the URI of the directory when calling `getDirectory()`:
+
+```javascript
+let cards = MailServices.ab.getDirectory(URI + "?" + searchQuery).childCards;
+while (cards.hasMoreElements()) {
+  let card = cards.getNext().QueryInterface(Components.interfaces.nsIAbCard);
+  ...
+}
+```
+
+In TB78 one `getDirectory()` no longer accepts search queries and throws an error. Instead, use the `search()` method, which uses an nsIAbDirSearchListener. A simple promisified implementation could look like so:
+
+```javascript
+searchDirectory: function (uri, search) {
+  return new Promise((resolve, reject) => {
+    let listener = {
+      cards : [],
+      onSearchFinished(aResult, aErrorMsg) {
+        resolve(this.cards);
+      },
+      onSearchFoundCard(aCard) {
+        this.cards.push(aCard.QueryInterface(Components.interfaces.nsIAbCard));
+      }
+    }
+    MailServices.ab.getDirectory(uri).search(search, listener);
+  });
+}
+
+let cards = await searchDirectory(URI, searchQuery);
+for (let card of cards) {
+  ...
+}
+```
+
 ## Changes to the Preference System
 
 ### Removal of onsyncfrompreference and onsynctopreference Attributes

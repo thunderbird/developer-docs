@@ -165,7 +165,7 @@ while (cards.hasMoreElements()) {
 }
 ```
 
-In TB78 one `getDirectory()` no longer accepts search queries and throws an error. Instead, use the `search()` method, which uses an nsIAbDirSearchListener. A simple promisified implementation could look like so:
+In TB78 `getDirectory()` no longer accepts search queries and throws an error. Instead, use the `search()` method, which uses an nsIAbDirSearchListener. A simple promisified implementation could look like so:
 
 ```javascript
 searchDirectory: function (uri, search) {

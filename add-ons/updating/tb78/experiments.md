@@ -54,42 +54,22 @@ Avoid declaring global variables in either implementation of your experiment, as
 
 ## Managing your Experiment's lifecycle
 
-Experiments do not have a dedicated lifecycle. Whenever some part of your WebExtension attempts to use the Experiment's API, the experiment is loaded into that context. As there can be multiple contexts at the same time, an Experiment may be loaded multiple times in parallel. This means that you cannot directly observe when the add-on is loaded, nor when it is unloaded. This is especially problematic if you [load JSMs](experiments.md#structuring-experiment-code) or manage native resources, but also affects all other experiments due to Thunderbird's caching behavior:
+Experiments are loaded on demand. In order for an experiment to get loaded, you thus need to either use the API from the WebExtension or register an implementation for the `startup` event \(which calls the `onStartup()` method of that implementation's `ExtensionAPI` object once your add-on is loaded\).
 
-All experiments **must** invalidate all caches after finishing all other unloading tasks:
+If your add-on is unloaded, Thunderbird will call the `onShutdown()` method of each _loaded_ implementation's `ExtensionAPI` object. You should perform any cleanup tasks in that method, for example unloading [loaded JSMs](experiments.md#structuring-experiment-code) or native resources. You furthermore **must** invalidate Thunderbird's startup cache whenever your add-on is unloaded for a non-shutdown reason:
 
 ```javascript
 const { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");​
 Services.obs.notifyObservers(null, "startupcache-invalidate", null);​
 ```
 
-Failure to invalidate caches may cause parts of the experiment to be cached across updates of the Add-on, even if they are changed in the update.
+Failure to invalidate caches may cause parts of the add-on's experiments to be cached across updates of the Add-on, even if they are changed in the update. It is thus usually a good idea to execute the code above in the `onShutdown()` method of an experiment that is always loaded.
 
-There are multiple approaches on how to manage your experiment's lifecycle effectively:
+{% hint style="info" %}
+The MIT-licensed [cachingfix](https://git.generalsync.com/oss/thunderbird-experiments.git/blob/HEAD:/experiments/cachingfix/parent.js) experiment handles startup cache invalidation and automatically unloads JSMs registered from file://- or jar://-URIs, using the techniques described above.
+{% endhint %}
 
-### Restricting \(parts of\) your Experiment to the background page
-
-The simplest option is to only use your experiment in the background page, and use `context.callOnClose()` to perform unloading tasks in your _parent_ implementation.
-
-A slightly more elaborate strategy is to do all loading in an dedicated API function that is called once from the background page only \(usually called `init()`\) and to register the close handler _in that particular method_.
-
-As long as you don't load resources from a _client_ implementation or after the background page unloaded, both options are reasonably safe.
-
-### Observing the background page's context
-
-Instead of using some protocol the background page must follow, you can also directly register a close handler for the background page's context \(independent of whether you're loaded there or not\) using
-
-```javascript
-const backgroundContext = Array.from(context.extension.views).find(​
-        view => view.viewType === "background");​
-backgroundContext.callOnClose(/* ... */);​
-```
-
-This method will, of course, also only work if your add-on has a background page.
-
-### Counting contexts
-
-Of course you can also count in how many contexts the experiment is loaded and unload once that number reaches zero. This option is probably the most stable one, but properly implementing reference counting in a future-proof way is not as simple as it sounds. It is thus recommended to go with one of the other options for now \(adding a background page if necessary\).
+In addition to your experiment being loaded and unloaded as a whole, that experiment's API will get loaded into each WebExtension context independently. As there can be multiple contexts at the same time, an experiment may have multiple loaded APIs in parallel. You can perform context-specific loading tasks directly in `getAPI()`, and register context-specific unloading code through `context.callOnClose()`.
 
 ## Passing data to / from an WebExtension
 

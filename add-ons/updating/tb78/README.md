@@ -95,9 +95,9 @@ There are no direct equivalents to manifest flags, so add-ons now need to provid
 
 ## Converting locale files
 
-You may use our python script [`migrateLocale.py`](https://github.com/cleidigh/EditEmailSubject-MX/tree/master/scripts/dev-tools/localization/dtd-converter-py) to convert the legacy DTD and property files into the new JSON format. That script will merge the new entries into a potentially existing `messages.json` file.
+You may use our python script [`localeConverter.py`](https://github.com/thundernest/addon-developer-support/tree/master/tools/locale-converter) to convert the legacy DTD and property files into the new JSON format. That script will merge the new entries into a potentially existing `messages.json` file.
 
-To access the new locales use [`messenger.i18n.getMessage()`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/i18n/getMessage), from within an experimental API use `extension.localeData.localizeMessage()`.
+To access the new locales use [`messenger.i18n.getMessage()`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/i18n/getMessage), from within an experimental API use `context.extension.localeData.localizeMessage()`.
 
 There is no automatic replacement of locale placeholder entities like `&myLocaleIdentifier;` in HTML or XHTML files anymore. Instead use placeholders like `__MSG_myLocaleIdentifier__` and include the following script:
 

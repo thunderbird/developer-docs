@@ -162,7 +162,7 @@ XUL overlays are no longer supported and you need to find an alternative:
 * Overlays extending the user interface in a way that can be replaced by calls in the background script to built-in APIs:
   * [Example](https://github.com/cleidigh/EditEmailSubject-MX/blob/30c8dd9bf6a7326873a1ad37541384ec8c4bfb36/src/background.js#L11-L16) for adding context menu items using the [`menus` API](https://thunderbird-webextensions.readthedocs.io/en/78/menus.html)    
 * Overlays extending the user interface beyond the built-in APIs:
-  * Use an [experimental API with a window listener](https://github.com/cleidigh/ThunderStorm/tree/master/examples/MailExtensions/WindowListener) to manually add UI elements.
+  * Use an [experimental API with a window listener](https://github.com/thundernest/addon-developer-support/wiki/Using-the-WindowListener-API-to-convert-a-Legacy-Overlay-WebExtension-into-a-MailExtension-for-Thunderbird-78) to manually add UI elements.
 
 ## Replacing XUL windows and dialogs
 
@@ -253,5 +253,8 @@ Some general tips to speed up your porting workflow:
 
 * To debug code running in a content page of your extension \(e.g.: your background script\) or to interactively use Web-/MailExtension APIs, you need to select "debug add-ons" from the gear icon in the add-on tab and then analyze your add-on.   
 * To debug code running in the browser context \(e.g.: your experiments\) you must use the global browser console \(Ctrl+Shift+J\) or developer toolbox \(Ctrl+Shift+I\).   
-* The add-on debugging tools accessible through the add-on page's gear icon permit to directly install add-ons without packaging them, similar to linking a legacy add-on in the profile folder. Using that option permits to reload the add-on without restarting Thunderbird.
+* The add-on debugging tools accessible through the add-on page's gear icon permit to directly install add-ons without packaging them, similar to linking a legacy add-on in the profile folder. Using that option permits to reload the add-on without restarting Thunderbird. 
+* The console output of popus \(e.g. from browser\_action\) are difficult to see, as these popups run in their own context which gets removed after the popup closes, including its console output. This can be prevented by enabling persistent log:
+
+![](../../../.gitbook/assets/index.png)
 

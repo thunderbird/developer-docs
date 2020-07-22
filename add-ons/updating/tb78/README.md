@@ -251,10 +251,10 @@ Many parts of XUL are discontinued, and there are some other changes that preven
 
 Some general tips to speed up your porting workflow:
 
-* To debug code running in a content page of your extension \(e.g.: your background script\) or to interactively use Web-/MailExtension APIs, you need to select "debug add-ons" from the gear icon in the add-on tab and then analyze your add-on.   
-* To debug code running in the browser context \(e.g.: your experiments\) you must use the global browser console \(Ctrl+Shift+J\) or developer toolbox \(Ctrl+Shift+I\).   
-* The add-on debugging tools accessible through the add-on page's gear icon permit to directly install add-ons without packaging them, similar to linking a legacy add-on in the profile folder. Using that option permits to reload the add-on without restarting Thunderbird. 
-* The console output of popus \(e.g. from browser\_action\) are difficult to see, as these popups run in their own context which gets removed after the popup closes, including its console output. This can be prevented by enabling persistent log:
+* To debug code running in the browser context \(e.g.: your experiments\) you must use the global browser console \(Ctrl+Shift+J\) or developer toolbox \(Ctrl+Shift+I\).  
+* To debug code running in a content page of your extension \(e.g.: your background script\) or to interactively use Web-/MailExtension APIs, you need to select "debug add-ons" from the gear icon in the add-on tab and then inspect your add-on.   Alternatively you can enable content messages in the global browser console or in the developer toolbox as well. This will also show console output from popus \(e.g. from browser\_action\):
 
-![](../../../.gitbook/assets/index.png)
+![](../../../.gitbook/assets/ind2ex.png)
+
+* The add-on debugging tools accessible through the add-on page's gear icon permit to directly install add-ons without packaging them, similar to linking a legacy add-on in the profile folder. Using that option permits to reload the add-on without restarting Thunderbird.
 

@@ -48,11 +48,11 @@ description: >-
         showcasing different WebExtension/MailExtension APIs.</td>
     </tr>
     <tr>
-      <td style="text-align:left"><a href="https://github.com/cleidigh/ThunderStorm/tree/master/examples/MailExtensions">ThunderStorm Example Extension Repository</a>
+      <td style="text-align:left"><a href="https://github.com/thundernest/addon-developer-support">Thundernest Add-On Developer Support Repository</a>
       </td>
-      <td style="text-align:left">The example extension repository managed by the Thunderbird Add-On Community,
-        hosting additional MailExtension examples showing how to get certain things
-        done.</td>
+      <td style="text-align:left">The add-on developer support repository provides useful code snippets,
+        examples and tools in order to better &quot;weather&quot; the transition
+        to the new extension structure of Thunderbird 78.</td>
     </tr>
     <tr>
       <td style="text-align:left"><a href="https://cleidigh.github.io/ThunderKdB/index.html">ThunderKdB</a>

@@ -4,7 +4,7 @@ description: Required steps to convert deprecated Legacy WebExtensions to MailEx
 
 # Update for Thunderbird 78
 
-Support for legacy extensions was removed from Thunderbird Beta version 74, released in February 2020. Only modern MailExtensions are now compatible with Thunderbird 78. This guide is intended to help developers to port their Legacy WebExtensions to MailExtensions.
+Support for legacy extensions was removed from Thunderbird Beta version 74, released in February 2020. Only modern [MailExtensions](https://app.gitbook.com/@thunderbird/s/thunderbird/add-ons/about-add-ons) are now compatible with Thunderbird 78. This guide is intended to help developers to port their Legacy WebExtensions to MailExtensions.
 
 {% hint style="warning" %}
 We do not suggest to convert older Legacy Bootstrapped Extensions or Legacy Overlay Extensions \(as used in Thunderbird 60\) directly to MailExtensions. They should first be converted to Legacy WebExtensions as described in the [update guide for Thunderbird 68](https://developer.thunderbird.net/add-ons/updating/tb68).
@@ -13,16 +13,6 @@ We do not suggest to convert older Legacy Bootstrapped Extensions or Legacy Over
 If you need any help, get in touch with the add-on developer community:
 
 {% page-ref page="../../community.md" %}
-
-## Introduction to MailExtensions
-
-Unlike older legacy extensions, which had direct access to Thunderbird's internal components and UI elements, MailExtensions access functionality through the stable WebExtension/MailExtension APIs. They are less likely to break and do not need frequent and complex updating when Thunderbird changes. 
-
-You can find detailed information about MailExtensions here: 
-
-* [Hello World MailExtension example](https://developer.thunderbird.net/add-ons/examples/hello-world-add-on)
-* [Our sample-extensions repository](https://github.com/thundernest/sample-extensions/tree/master/experiment)
-* [MailExtensions API documentation](https://thunderbird-webextensions.readthedocs.io/)
 
 ## **Update Strategies**
 

@@ -16,7 +16,7 @@ You can check out many of the add-ons available for Thunderbird at [addons.thund
 ### Extensions
 
 {% hint style="danger" %}
-**The current Thunderbird Beta and the next major release \(Thunderbird 78, scheduled for around June 2020\) no longer support legacy extensions.**
+**The current Thunderbird ESR \(Thunderbird 78\) no longer support legacy extensions.**
 
 If you are currently maintaining a legacy extension, please identify the type of your extension in the table below and check the provided guides on updating your extension to remain compatible with the latest versions of Thunderbird.
 {% endhint %}
@@ -25,11 +25,11 @@ The architecture of Thunderbird extensions has changed over the last years. The 
 
 {% tabs %}
 {% tab title="MailExtension" %}
-Status: **The only valid extension type in Thunderbird 74 and later.**
+Status: **The only valid extension type in Thunderbird 78 and later.**
 
 MailExtensions are based on the WebExtension technology, which is also used by many web browsers. Thunderbird can use some of the WebExtension APIs provided by Firefox \(as they are both based on the Mozilla platform\), but Thunderbird of course requires additional interfaces to messenger specific functions. These additional APIs are called MailExtension APIs.
 
-MailExtensions use a JSON manifest \(`manifest.json`\) but do not use the `legacy` key \(which was deprecated in Thunderbird 74\).
+MailExtensions use a JSON manifest \(`manifest.json`\) but do not use the `legacy` key \(which was deprecated in Thunderbird 78\).
 
 Unlike older legacy extensions, which had direct access to Thunderbird's internal components and UI elements, MailExtensions access functionality through the stable WebExtension/MailExtension APIs. They are less likely to break and do not need frequent and complex updating when Thunderbird changes.
 
@@ -52,11 +52,11 @@ Currently and for the foreseeable future \(years\) WebExtension Experiments can 
 {% endtab %}
 
 {% tab title="Legacy WebExtension" %}
-Status: **Deprecated in Thunderbird 74.**
+Status: **Deprecated in Thunderbird 78.**
 
 Legacy WebExtensions are legacy overlay extensions or legacy bootstrap extensions wrapped inside a WebExtension.
 
-They use a JSON manifest \(`manifest.json`\) with the `legacy` key \(which has been deprecated in Thunderbird 74\):
+They use a JSON manifest \(`manifest.json`\) with the `legacy` key \(which has been deprecated in Thunderbird 78\):
 
 ```javascript
 {

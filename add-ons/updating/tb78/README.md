@@ -4,7 +4,7 @@ description: Required steps to convert deprecated Legacy WebExtensions to MailEx
 
 # Update for Thunderbird 78
 
-Support for legacy extensions was removed from Thunderbird Beta version 74, released in February 2020. Only modern [MailExtensions](https://app.gitbook.com/@thunderbird/s/thunderbird/add-ons/about-add-ons) are now compatible with Thunderbird 78. This guide is intended to help developers to port their Legacy WebExtensions to MailExtensions.
+Support for legacy extensions was removed from Thunderbird Beta version 74, released in February 2020. Only modern [MailExtensions](https://developer.thunderbird.net/add-ons/about-add-ons) are now compatible with Thunderbird 78. This guide is intended to help developers to port their Legacy WebExtensions to MailExtensions.
 
 {% hint style="warning" %}
 We do not suggest to convert older Legacy Bootstrapped Extensions or Legacy Overlay Extensions \(as used in Thunderbird 60\) directly to MailExtensions. They should first be converted to Legacy WebExtensions as described in the [update guide for Thunderbird 68](https://developer.thunderbird.net/add-ons/updating/tb68).

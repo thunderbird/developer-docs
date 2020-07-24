@@ -49,7 +49,7 @@ Check out the [experiment generator](https://darktrojan.github.io/generator/gene
 {% endhint %}
 
 {% hint style="warning" %}
-Avoid declaring global variables in either implementation of your experiment, as that can cause collisions with other experiments loaded. Instead declare them as members of your API.
+Avoid declaring global variables in the implementation of your experiment, as that can cause collisions with other experiments loaded. Instead declare them as members of your API.
 {% endhint %}
 
 ## Managing your Experiment's lifecycle

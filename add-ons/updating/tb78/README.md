@@ -16,16 +16,9 @@ If you need any help, get in touch with the add-on developer community:
 
 ## **Update Strategies**
 
-Converting a legacy add-on into a MailExtension is a complex task, it requires significant changes to the locale and preference system and conversion of all XUL documents to HTML. 
+Converting a legacy add-on into a MailExtension is a complex task, it requires significant changes to the locale and preference system and conversion of all XUL documents to HTML. Furthermore, the new WebExtension technology does not yet provide all the functions which were available to add-ons by using legacy Thunderbird APIs. However, for any missing functionality, add-on developers can write a WebExtension API of their own and bundle it with their add-on. These custom APIs are called Experiments and have access to all legacy Thunderbird APIs. 
 
-Furthermore, the new WebExtension technology does not yet provide all the functions which were available to add-ons by using legacy Thunderbird APIs. However, for any missing functionality, add-on developers can write a WebExtension API of their own and bundle it with their add-on. These custom APIs are called Experiments and have access to all legacy Thunderbird APIs. You can learn more about them here:
-
-* [WebExtension Experiments documentation](https://thunderbird-webextensions.readthedocs.io/en/68/how-to/experiments.html)
-* [Example in our sample-extensions repository](https://github.com/thundernest/sample-extensions/tree/master/experiment)
-
-Those Experiments are intended to identify and develop APIs dedicated to a certain functionality, which can later be added to Thunderbird itself.
-
-So the proper update strategy is to update the locale and preference system, remove all usage of XUL, use only WebExtension APIs to interact with Thunderbird and write dedicated experimental APIs for any missing functionality. In this document we gathered all the information necessary to complete this update.
+The proper update strategy is to update the locale and preference system, remove all usage of XUL, use only WebExtension APIs to interact with Thunderbird and write dedicated experimental APIs for any missing functionality. In this document we gathered all the information necessary to complete this update.
 
 Knowing that this is not as easy task, we created two wrapper APIs which do not require all of these changes, just to get the add-on running in Thunderbird 78 again. The idea behind this is to make add-ons compatible with the current ESR as quickly and easily as possible, so users can continue to work with their beloved add-ons. The actual conversion to pure MailExtensions then takes place in smaller steps, for which we will develop tutorials, whereby the legacy parts will be removed step by step. These wrapper APIs are explained in detail in our new [addon-developer-support repository](https://github.com/thundernest/addon-developer-support/wiki).
 

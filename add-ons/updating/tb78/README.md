@@ -16,11 +16,13 @@ If you need any help, get in touch with the add-on developer community:
 
 ## **Update Strategies**
 
-Converting a legacy add-on into a MailExtension is a complex task, it requires significant changes to the locale and preference system and conversion of all XUL documents to HTML. Furthermore, the new WebExtension technology does not yet provide all the functions which were available to add-ons by using legacy Thunderbird APIs. However, for any missing functionality, add-on developers can write a WebExtension API of their own and bundle it with their add-on. These custom APIs are called Experiments and have access to all legacy Thunderbird APIs. 
+This guide covers the 'proper' migration strategy to convert a legacy add-on into a MailExtension. If you follow this strategy, you will end up with a future-proof MailExtension that will require substantially less maintenance work for future versions of Thunderbird.
 
-The proper update strategy is to update the locale and preference system, remove all usage of XUL, use only WebExtension APIs to interact with Thunderbird and write dedicated experimental APIs for any missing functionality. In this document we gathered all the information necessary to complete this update.
+This will be a complex task: almost all interactions with Thunderbird will need to be re-written to use the new APIs. If these APIs are not yet sufficient for your add-on, you may even need to implement additional APIs yourself. Don't worry though: you can find information on all aspects of the migration process below, including links to many advanced topics you may be interested in.
 
-Knowing that this is not as easy task, we also created two wrapper APIs which do not require all of these changes, just to get the add-on running in Thunderbird 78 again. The idea behind this is to make add-ons compatible with the current ESR as quickly and easily as possible, so users can continue to work with their beloved add-ons. The actual conversion to pure MailExtensions then takes place in smaller steps, for which we will develop tutorials, whereby the legacy parts will be removed step by step. These wrapper APIs are explained in detail in our [addon-developer-support repository](https://github.com/thundernest/addon-developer-support/wiki).
+{% hint style="info" %}
+Knowing that following the proper migration strategy is not easy, we created [two wrapper APIs which do not require all of these changes](https://github.com/thundernest/addon-developer-support/wiki). Using these APIs, you can quickly get your add-on running in Thunderbird 78 again, but you will not get the benefits of a MailExtension. The idea behind this is to make add-ons compatible with the current ESR as quickly and easily as possible, so users can continue to work with their beloved add-ons. The actual conversion to a pure MailExtension can then take place in smaller steps. To assist you, we will release small tutorials to remove the legacy parts one after another.
+{% endhint %}
 
 ## Dropping the legacy key and adding new entry points
 

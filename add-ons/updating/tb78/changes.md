@@ -153,7 +153,7 @@ for (let addr of addresses) {
 
 ###  nsIPromptService.select\(\)
 
-Since TB69 `nsIPromptService.select()` has dropped the parameter which specifies the length of the array of the item list which the user can chose from. See the [patch applied to Thunderbird itself](https://phabricator.services.mozilla.com/differential/changeset/?ref=1068287).
+Since TB69 `nsIPromptService.select()` / `Services.prompt.select()` has dropped the parameter which specifies the length of the array of the item list which the user can chose from. See the [patch applied to Thunderbird itself](https://phabricator.services.mozilla.com/differential/changeset/?ref=1068287).
 
 ## Changes to the Address Book
 

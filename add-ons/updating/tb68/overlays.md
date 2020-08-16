@@ -55,7 +55,7 @@ Becomes this JSON manifest:
 }
 ```
 
-Detailed information about the possible config options for `manifest.json` can be found in the [MDN documentation](https://developer.mozilla.org/de/docs/Mozilla/Add-ons/WebExtensions/manifest.json).
+Detailed information about the possible config options for `manifest.json` can be found in the [MDN documentation](https://developer.mozilla.org/en/docs/Mozilla/Add-ons/WebExtensions/manifest.json).
 
 The `legacy` key enables Thunderbird’s legacy support. Setting the `type` key to `xul` engages the new XUL overlay loader. The overlay loader is a Thunderbird component that takes XUL code as written in an overlay extension and applies it to the UI. In Thunderbird 60, this was a part of the core UI libary, but it was removed. We have built a new overlay loader to replace as much of the removed code as possible.
 

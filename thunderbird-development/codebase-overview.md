@@ -19,6 +19,15 @@ Source code of the Lightning extension and Google Calendar Provider extension.
 **chat**  
 Files for the chat component of Thunderbird. There is also related code in `mail/components/im`.
 
+The subdirectories are:
+
+* **components** Various chat features, includes the interfaces that each protocol must implement.
+* **content** User interface files which become `chrome://chat/content/…`.
+* **locales** The user-visible strings, in US English. Files from this directory become `chrome://chat/locale/…`.
+* **modules** JavaScript modules that are specific to chat.
+* **protocols** Various protocol implementations. Each of subdirectory implements a protocol to the interfaces found under **components**.
+* **themes** Common and platform-specific styling specific to chat. Files from this directory become `chrome://chat/skin/…`.
+
 **common**  
 An assortment of code we've uplifted from mozilla-central as it was removed from there.
 

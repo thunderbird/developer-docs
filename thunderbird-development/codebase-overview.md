@@ -22,11 +22,8 @@ Files for the chat component of Thunderbird. There is also related code in `mail
 **common**  
 An assortment of code we've uplifted from mozilla-central as it was removed from there.
 
-**db**  
-The mork database.
-
 **editor**  
-UI for the Compose window \(Thunderbird/SeaMonkey\) and the Composer part of SeaMonkey.
+UI for the Compose window and the Composer part of SeaMonkey. Not used in Thunderbird.
 
 **ldap**  
 The LDAP C SDK. Used for communicating with LDAP servers.
@@ -61,18 +58,21 @@ The subdirectories are:
 **mailnews**  
 Source code specific to the Mail and Newsgroups part of Thunderbird and SeaMonkey.
 
+**mozharness**  
+Files needed for Thunderbird's test infrastructure.
+
 **other-licenses**  
 Code that is not under the Mozilla license. See [http://www.mozilla.org/MPL/](http://www.mozilla.org/MPL/) for more info.
 
 **suite**  
-SeaMonkey specific source code.
+SeaMonkey-specific source code. Not used in Thunderbird.
 
 **taskcluster**  
 Files needed for Thunderbird's build infrastructure.
 
 **testing**  
-Files needed for Thunderbird's test infrastructure.  
-****
+Files needed for Thunderbird's test infrastructure.
 
-
+**third\_party**  
+Libraries developed elsewhere that are included in Thunderbird
 

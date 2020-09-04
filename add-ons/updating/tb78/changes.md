@@ -155,6 +155,14 @@ for (let addr of addresses) {
 
 Since TB69 `nsIPromptService.select()` / `Services.prompt.select()` has dropped the parameter which specifies the length of the array of the item list which the user can chose from. See the [patch applied to Thunderbird itself](https://phabricator.services.mozilla.com/differential/changeset/?ref=1068287).
 
+###  nsIEditorStyleSheets has been removed
+
+The [removal of `nsIEditorStyleSheets`](https://bugzilla.mozilla.org/show_bug.cgi?id=1449522) in TB77 necessitates the following changes:
+
+* `nsIEditorStyleSheets.addOverrideStyleSheet(uri)`  -&gt; `windowUtils.loadSheetUsingURIString(uri, windowUtils.AGENT_SHEET)`
+* `nsIEditorStyleSheets.removeOverrideStyleSheet(uri)` -&gt; `windowUtils.removeSheet(uri, windowUtils.AGENT_SHEET)`
+* `nsIEditorStyleSheets.enableStyleSheet(uri, enable)` Either manually load or remove the stylesheet:  -&gt; `windowUtils.loadStyleSheetUsingURIString(uri, windowUtils.AGENT_SHEET)`  -&gt; `windowUtils.removeSheet(uri, windowUtils.AGENT_SHEET)`
+
 ## Changes to the Address Book
 
 ### Searching a nsIAbDirectory

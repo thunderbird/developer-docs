@@ -159,8 +159,8 @@ Since TB69 `nsIPromptService.select()` / `Services.prompt.select()` has dropped 
 
 The [removal of `nsIEditorStyleSheets`](https://bugzilla.mozilla.org/show_bug.cgi?id=1449522) in TB77 necessitates the following changes:
 
-* `nsIEditorStyleSheets.addOverrideStyleSheet(uri)`  -&gt; `windowUtils.loadSheetUsingURIString(uri, windowUtils.AGENT_SHEET)`
-* `nsIEditorStyleSheets.removeOverrideStyleSheet(uri)` -&gt; `windowUtils.removeSheet(uri, windowUtils.AGENT_SHEET)`
+* `nsIEditorStyleSheets.addOverrideStyleSheet(uri)`  -&gt; `windowUtils.loadSheetUsingURIString(uri, windowUtils.AGENT_SHEET)` 
+* `nsIEditorStyleSheets.removeOverrideStyleSheet(uri)` -&gt; `windowUtils.removeSheet(uri, windowUtils.AGENT_SHEET)` 
 * `nsIEditorStyleSheets.enableStyleSheet(uri, enable)` Either manually load or remove the stylesheet:  -&gt; `windowUtils.loadStyleSheetUsingURIString(uri, windowUtils.AGENT_SHEET)`  -&gt; `windowUtils.removeSheet(uri, windowUtils.AGENT_SHEET)`
 
 ## Changes to the Address Book

@@ -4,11 +4,11 @@ description: Tutorial on how to fix a bug from beginning to end.
 
 # Fixing a Bug
 
-All the issues, bugs, work in progress patches, or updates related to Thunderbird, are listed on [BugZilla](https://bugzilla.mozilla.org), and are properly organized per **Product**, **Component**, and **Status**.
+All the issues, bugs, work in progress patches, or updates related to Thunderbird, are listed on [Bugzilla](https://bugzilla.mozilla.org), and are properly organized per **Product**, **Component**, and **Status**.
 
-## Create a BugZilla Account
+## Create a Bugzilla Account
 
-Creating an account is necessary in order to submit patches, leave comments, and interact with any other aspect of BugZilla. If you're currently using a username in one of our Matrix chat rooms \(e.g. [\#maildev](https://chat.mozilla.org/#/room/#maildev:mozilla.org)\), we recommend saving your profile name with the current format `Firstname Lastname (:username)` in order to be easily searchable and allow the Thunderbird team to offer better support.
+Creating an account is necessary in order to submit patches, leave comments, and interact with any other aspect of Bugzilla. If you're currently using a username in one of our Matrix chat rooms \(e.g. [\#maildev](https://chat.mozilla.org/#/room/#maildev:mozilla.org)\), we recommend saving your profile name with the current format `Firstname Lastname (:username)` in order to be easily searchable and allow the Thunderbird team to offer better support.
 
 ## Find a Bug
 
@@ -31,9 +31,9 @@ The majority of the Thunderbird developers use queues as they're easy to import 
 
 Once you finished taking care of your favorite bug and have your patch at hand, it is time to upload your patch. Open the patch file in your code editor and make sure it includes all your code changes, and your name and commit message at the top.
 
-If everything looks good, you can access the selected bug in [BugZilla](https://bugzilla.mozilla.org) and click on the **Attach File** link located above the first comment.
+If everything looks good, you can access the selected bug in [Bugzilla](https://bugzilla.mozilla.org) and click on the **Attach File** link located above the first comment.
 
 ## Ask for a Review
 
-When uploading a patch to BugZilla, you can request a review from the user who opened the bug or another developer. Simply select the `?` in the dropdown selector in the _review_ option of the **Flags** section. An input field will appear which will allow you to type the name or username of the user you want to review your patch.
+When uploading a patch to Bugzilla, you can request a review from the user who opened the bug or another developer. Simply select the `?` in the dropdown selector in the _review_ option of the **Flags** section. An input field will appear which will allow you to type the name or username of the user you want to review your patch.
 

@@ -87,7 +87,7 @@ Update both comm-central _and_ mozilla-central trees using `hg update -r abcdef1
 
 ## Artifact builds on the Try server
 
-Using an artifact build on the Try server can save you _a lot_ of time, and it also reduces our infrastructure costs. The same conditions about when you can and can't do an artifact build apply, plus only 64-bit builds are working.
+Using an artifact build on the [Try server](https://developer.thunderbird.net/thunderbird-development/fixing-a-bug/try-server) can save you _a lot_ of time, and it also reduces our infrastructure costs. The same conditions about when you can and can't do an artifact build apply, plus only 64-bit builds are working.
 
 To do an artifact Try run, add `--artifact` to your try syntax. For example:
 

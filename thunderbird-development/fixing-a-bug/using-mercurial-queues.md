@@ -63,7 +63,7 @@ Note that both `hg diff` and `hg qdiff` take a `-w` argument to ignore white-spa
 
 ## Pop and Push
 
-If you're working on a patch and you need to pull the updates from upstream, you need to _"disconnect"_ your pathes in order to prevent merge conflicts. Here's a standard workflow you should follow:
+If you're working on a patch and you need to pull the updates from upstream, you need to _"disconnect"_ your patches in order to prevent merge conflicts. Here's a standard workflow you should follow:
 
 * `hg qpop -a` to _"pop"_ all your patches and revert the code base to its original status.
 * `hg pull -u` to pull all the recent changes from upstream.

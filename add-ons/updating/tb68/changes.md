@@ -28,10 +28,10 @@ A bunch of global variables available in some window scopes were removed. If you
 
 XBL is on death row. Many XBL bindings have been replaced or simply no longer exist. The remainder are being removed. This may result in slight behaviour changes for some UI components.
 
-With [this query](https://bugzilla.mozilla.org/buglist.cgi?o1=equals&v1=1484976&f1=blocked) \([↗](https://bugzilla.mozilla.org/buglist.cgi?o1=equals&v1=1484976&f1=blocked)\), you can see all the bugs related to de-xbl-ing Thunderbird, and see how the removal of each binding is handled.
+With [this query](https://bugzilla.mozilla.org/buglist.cgi?o1=equals&v1=1484976&f1=blocked), you can see all the bugs related to de-xbl-ing Thunderbird, and see how the removal of each binding is handled.
 
 {% hint style="info" %}
-If you have your own XBL bindings, you can convert them to [custom elements](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Custom_Elements) \([↗](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Custom_Elements)\). Here are some notes on the process of[ converting an XBL binding into a custom element](https://wiki.mozilla.org/Thunderbird/de-xbl) \([↗](https://wiki.mozilla.org/Thunderbird/de-xbl)\).
+If you have your own XBL bindings, you can convert them to [custom elements](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Custom_Elements). Here are some notes on the process of[ converting an XBL binding into a custom element](https://wiki.mozilla.org/Thunderbird/de-xbl).
 {% endhint %}
 
 ## Removed XUL elements

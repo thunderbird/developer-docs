@@ -155,5 +155,3 @@ hg qbackout -s -r 0e7bfdf1b900:0e7bfdf1b901 (merge into a single backout changes
 
 There is also limited integration with Phabricator with `hg phabread`. That needs a special setup. Ask the resident Thunderbird sheriff for details or read [here](https://www.mercurial-scm.org/wiki/Phabricator#Setting_up_hg) \(but there's more to it\).
 
-
-

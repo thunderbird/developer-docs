@@ -59,10 +59,12 @@ First, things can only be downloaded if they exist. So you need to make sure wha
 
 Example: if your platform is 64-bit Linux and your tree was up-to-date at this point, which build will you get?
 
-![](../../.gitbook/assets/which-artifact-build.svg.png)
+![](../../.gitbook/assets/which-artifact-build.svg%20%281%29.png)
 
 {% hint style="info" %}
-This screenshot is from [https://treeherder.mozilla.org/\#/jobs?repo=comm-central](https://treeherder.mozilla.org/#/jobs?repo=comm-central). Check what's going on there before updating your build. Note that "Linux x64 opt" is not the same as "Linux x64 shippable opt" for our purposes.
+This screenshot is from [https://treeherder.mozilla.org/\#/jobs?repo=comm-central](https://treeherder.mozilla.org/#/jobs?repo=comm-central). Check what's going on there before updating your build.
+
+**Note that an "opt" artifact build will use "shippable opt" artifacts.** \(This has changed since the image above was first created. It's been modified but some of the arrows are now slightly inaccurate. You get the idea.\)
 {% endhint %}
 
 In this example you have a choice:

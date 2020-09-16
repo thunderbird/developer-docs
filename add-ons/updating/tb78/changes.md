@@ -165,7 +165,7 @@ The [removal of `nsIEditorStyleSheets`](https://bugzilla.mozilla.org/show_bug.cg
 
 ### getAnonymousElementByAttribute\(\) and getAnonymousNodes\(\) have been removed
 
-These two methods are leftovers from de-XBL effort and have not been working since TB68. In TB72 they have been completely removed and using them will now throw an error. They have to be replaced by [`document.getElementById()`](https://developer.mozilla.org/de/docs/Web/API/Document/getElementById), [`document.querySelectorAll()`](https://developer.mozilla.org/de/docs/Web/API/Element/querySelectorAll) or similar methods.
+These two methods are leftovers from de-XBL effort and have not been working since TB68. In TB72 they have been removed completely and using them will now throw an error. They have to be replaced by [`document.getElementById()`](https://developer.mozilla.org/de/docs/Web/API/Document/getElementById), [`document.querySelectorAll()`](https://developer.mozilla.org/de/docs/Web/API/Element/querySelectorAll) or similar methods.
 
 The documents these methods have been used with have probably changed dramatically. Check out [searchfox.org](https://searchfox.org/) to learn about the current layouts.
 

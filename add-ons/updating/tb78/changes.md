@@ -163,6 +163,12 @@ The [removal of `nsIEditorStyleSheets`](https://bugzilla.mozilla.org/show_bug.cg
 * `nsIEditorStyleSheets.removeOverrideStyleSheet(uri)` -&gt; `windowUtils.removeSheet(uri, windowUtils.AGENT_SHEET)` 
 * `nsIEditorStyleSheets.enableStyleSheet(uri, enable)` Either manually load or remove the stylesheet:  -&gt; `windowUtils.loadStyleSheetUsingURIString(uri, windowUtils.AGENT_SHEET)`  -&gt; `windowUtils.removeSheet(uri, windowUtils.AGENT_SHEET)`
 
+## getAnonymousElementByAttribute\(\) and getAnonymousNodes\(\) have been removed
+
+These two methods are leftovers from de-XBL effort and have not been working since TB68. In TB72 they have been completely removed and using them will now throw an error. They have to be replaced by [`document.getElementById()`](https://developer.mozilla.org/de/docs/Web/API/Document/getElementById), [`document.querySelectorAll()`](https://developer.mozilla.org/de/docs/Web/API/Element/querySelectorAll) or similar methods.
+
+The documents these methods have been used with have probably changed dramatically. Check out [searchfox.org](https://searchfox.org/) to learn about the current layouts.
+
 ## Changes to the Address Book
 
 ### Searching a nsIAbDirectory

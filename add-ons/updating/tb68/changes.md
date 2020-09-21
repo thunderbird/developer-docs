@@ -28,10 +28,19 @@ A bunch of global variables available in some window scopes were removed. If you
 
 XBL is on death row. Many XBL bindings have been replaced or simply no longer exist. The remainder are being removed. This may result in slight behaviour changes for some UI components.
 
-With [this query](https://bugzilla.mozilla.org/buglist.cgi?o1=equals&v1=1484976&f1=blocked), you can see all the bugs related to de-xbl-ing Thunderbird, and see how the removal of each binding is handled.
+With [this query](https://bugzilla.mozilla.org/buglist.cgi?o1=equals&v1=1484976&f1=blocked), you can see all the bugs related to de-XBL-ing Thunderbird, and see how the removal of each binding is handled.
 
 {% hint style="info" %}
 If you have your own XBL bindings, you can convert them to [custom elements](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Custom_Elements). Here are some notes on the process of[ converting an XBL binding into a custom element](https://wiki.mozilla.org/Thunderbird/de-xbl).
+{% endhint %}
+
+{% hint style="info" %}
+As part of the de-XBL effort, the usage of the [nsIDOMDocumentXBL](https://developer.mozilla.org/en-US/docs/Archive/Mozilla/XBL/XBL_1.0_Reference/DOM_Interfaces) Interface has also been deprecated. This includes:
+
+* getAnonymousElementByAttribute\(\)
+* getAnonymousNodes\(\)
+
+They have to be replaced by [`document.getElementById()`](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById), [`document.querySelectorAll()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelectorAll) or similar methods. The documents these methods have been used with have probably changed dramatically. Check out [searchfox.org](https://searchfox.org/) to learn about the current layouts.
 {% endhint %}
 
 ## Removed XUL elements

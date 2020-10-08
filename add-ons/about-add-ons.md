@@ -104,13 +104,5 @@ Themes change the way that Thunderbird looks, for instance - here is a screensho
 
 ![It&apos;s Dark](../.gitbook/assets/screenshot-from-2019-03-23-13-47-57.png)
 
-### Static Themes
-
-Static themes, like the name implies - are static and do not change. They have a set color or images that make up the theme and this does not change.
-
 {% page-ref page="web-extension-themes.md" %}
-
-### Dynamic Themes
-
-Dynamic themes are MailExtensions, that use the [`theme`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/theme) API to do more interesting things with the look of Thunderbird. For instance, [one example](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/Themes/Theme_concepts#Dynamic_themes) used in Firefox documentation is a dynamic theme that changes the theme colors based on the time of day.
 

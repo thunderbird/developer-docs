@@ -4,7 +4,17 @@ description: How to create Themes for Thunderbird.
 
 # A Guide to Themes
 
-A Theme is a Thunderbird add-on that allows you to change the appearance of Thunderbird. It typically consists of two files, zipped up with an .xpi extension just as any other add-on:
+A Theme is a Thunderbird add-on that allows to change the appearance of Thunderbird.
+
+## Dynamic Themes
+
+Dynamic themes are actually MailExtensions, that use the [`theme`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/theme) API to do more interesting things with the look of Thunderbird. For instance, [one example](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/Themes/Theme_concepts#Dynamic_themes) used in Firefox documentation is a dynamic theme that changes the theme colors based on the time of day.
+
+{% page-ref page="mailextensions/" %}
+
+## Static Themes
+
+Static themes, like the name implies - are static and do not change. They have a set of colors or images that make up the theme and this does not change. It typically consists of two files, zipped up with an .xpi extension just as any other add-on:
 
 * manifest.json
 * image.png or .jpg

@@ -31,9 +31,9 @@
 ## Add-on Development <a id="add-ons"></a>
 
 * [Introduction](add-ons/about-add-ons.md)
-* [Examples](add-ons/examples/README.md)
-  * [Hello World MailExtension](add-ons/examples/hello-world-add-on.md)
-  * [WebExtension Themes](add-ons/examples/web-extension-themes.md)
+* [A Guide to MailExtensions](add-ons/mailextensions/README.md)
+  * [MailExtension Example](add-ons/mailextensions/hello-world-add-on.md)
+  * [Static Theme Example](add-ons/mailextensions/web-extension-themes.md)
   * [Examples in the Sample Extensions Repository](https://github.com/thundernest/sample-extensions)
 * [Tips and Tricks](add-ons/tips-and-tricks.md)
 * [Add-on Update Guides](add-ons/updating/README.md)

@@ -2,13 +2,9 @@
 description: This is a tutorial for making a Hello World MailExtension.
 ---
 
-# Hello World MailExtension
+# MailExtension Example
 
 This tutorial is based off of code that can be found, along with other tutorials and resources, in the [Thunderstorm repository](https://github.com/cleidigh/ThunderStorm) maintained by Thunderbird contributor Christopher Leidigh.
-
-{% hint style="info" %}
-This tutorial is for building a MailExtension for **Thunderbird 68** or later.
-{% endhint %}
 
 ## Writing the Extension
 
@@ -36,7 +32,7 @@ Your manifest.json file should look like this:
     "applications": {
         "gecko": {
             "id": "helloworld@yoursite.com",
-            "strict_min_version": "66.0"
+            "strict_min_version": "78.0"
         }
     },
     "browser_action": {

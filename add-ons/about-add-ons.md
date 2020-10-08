@@ -15,42 +15,23 @@ You can check out many of the add-ons available for Thunderbird at [addons.thund
 
 ### Extensions
 
+#### MailExtensions
+
+MailExtensions are based on the WebExtension technology, which is also used by many web browsers. Such a MailExtension is a simple collection of files that modify Thunderbirds appearance and behavior. It can add user interface elements, alter content, or perform background tasks. MailExtensions are created using standard JavaScript, CSS and HTML. Interaction with Thunderbird itself, like adding UI elements or accessing the users messages or contacts is done through special WebExtension APIs.
+
+{% page-ref page="mailextensions/" %}
+
+#### Legacy Extension Types
+
+The architecture of Thunderbird extensions has changed over the last years. The following table describes the different legacy extension types.
+
 {% hint style="danger" %}
-**The current Thunderbird ESR \(Thunderbird 78\) no longer support legacy extensions.**
+**The current Thunderbird ESR no longer supports legacy extensions.**
 
 If you are currently maintaining a legacy extension, please identify the type of your extension in the table below and check the provided guides on updating your extension to remain compatible with the latest versions of Thunderbird.
 {% endhint %}
 
-The architecture of Thunderbird extensions has changed over the last years. The following table describes the different extension types.
-
 {% tabs %}
-{% tab title="MailExtension" %}
-Status: **The only valid extension type in Thunderbird 78 and later.**
-
-MailExtensions are based on the WebExtension technology, which is also used by many web browsers. Thunderbird can use some of the WebExtension APIs provided by Firefox \(as they are both based on the Mozilla platform\), but Thunderbird of course requires additional interfaces to messenger specific functions. These additional APIs are called MailExtension APIs.
-
-MailExtensions use a JSON manifest \(`manifest.json`\) but do not use the `legacy` key \(which was deprecated in Thunderbird 78\).
-
-Unlike older legacy extensions, which had direct access to Thunderbird's internal components and UI elements, MailExtensions access functionality through the stable WebExtension/MailExtension APIs. They are less likely to break and do not need frequent and complex updating when Thunderbird changes.
-
-You can find detailed information about MailExtensions here:
-
-* [Hello World MailExtension example](https://developer.thunderbird.net/add-ons/examples/hello-world-add-on)
-* [Our sample-extensions repository](https://github.com/thundernest/sample-extensions/tree/master/experiment)
-* [MailExtensions API documentation](https://thunderbird-webextensions.readthedocs.io/)
-
-If you need an API that does not exist yet, please [tell us about it](https://bugzilla.mozilla.org/enter_bug.cgi?product=Thunderbird&component=Add-Ons%3A+Extensions+API).
-
-#### Experimental APIs \(a.k.a. WebExtension Experiments\)
-
-Alternatively, if you need an API that does not exist yet, you can write your own and bundle it with your add-on. These so called experimental APIs have access to the same functions, components and UI elements as Thunderbird itself \(like the deprecated legacy extensions\). They allow to experiment with new MailExtension APIs, as a step towards adding those APIs to Thunderbird. Learn more about them here:
-
-* [WebExtension Experiments documentation](https://thunderbird-webextensions.readthedocs.io/en/68/how-to/experiments.html)
-* [Example in our sample-extensions repository](https://github.com/thundernest/sample-extensions/tree/master/experiment)
-
-Currently and for the foreseeable future \(years\) WebExtension Experiments can be used in extensions released to the general public. This is to help with the transition to MailExtensions and the development of additional APIs. However, as this transition progresses, the use of WebExtension Experiments in publicly released extensions will eventually be deprecated and then unsupported, as they currently are for Firefox.
-{% endtab %}
-
 {% tab title="Legacy WebExtension" %}
 Status: **Deprecated in Thunderbird 78.**
 
@@ -128,6 +109,8 @@ Themes change the way that Thunderbird looks, for instance - here is a screensho
 #### Static Themes
 
 Static themes, like the name implies - are static and do not change. They have a set color or images that make up the theme and this does not change.
+
+{% page-ref page="mailextensions/web-extension-themes.md" %}
 
 #### Dynamic Themes
 

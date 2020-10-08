@@ -50,19 +50,19 @@ Since the WebExtension technology originates in Browsers like Google Chrome and 
 
 ## Experiment-ing with new APIs
 
-While the Thunderbird team plans to add more APIs with upcoming releases, the current set of APIs will not be sufficient to port most add-ons. To work around this limitation, add-ons can introduce their own, additional APIs as so-called [_experiments_](https://thunderbird-webextensions.readthedocs.io/en/78/how-to/experiments.html).
+While the Thunderbird team plans to add more APIs with upcoming releases, the current set of APIs will not be sufficient to port most add-ons. To work around this limitation, add-ons can introduce their own, additional APIs as so-called [_Experiments_](https://thunderbird-webextensions.readthedocs.io/en/78/how-to/experiments.html).
 
 {% hint style="info" %}
-Any feature that was available in previous versions of Thunderbird remains available in Thunderbird 78 inside of experimental APIs.
+Any feature that was available in previous versions of Thunderbird remains available in Thunderbird 78 inside of Experiment APIs.
 {% endhint %}
 
-As experiments usually run in the main process and have unrestricted access to any aspect of Thunderbird, they are expected to require updates for each new version of Thunderbird. To reduce the maintenance burden in the future, it is in your own interest to use experimental APIs only to the extent necessary for the add-on.
+As Experiments usually run in the main process and have unrestricted access to any aspect of Thunderbird, they are expected to require updates for each new version of Thunderbird. To reduce the maintenance burden in the future, it is in your own interest to use Experiment APIs only to the extent necessary for the add-on.
 
 Best practice: Try to write APIs that would be useful for a wide range of add-ons, not just the one you're porting. That way, you can later on propose the API you designed for inclusion in Thunderbird, with your add-on serving as reference implementation. If your APIs become a part of Thunderbird, you no longer need to maintain them as part of the add-on.
 
-A more thorough description of experimental APIs can be found in a separate article:
+A more thorough description of Experiment APIs can be found in a separate article:
 
-{% page-ref page="experiments.md" %}
+{% page-ref page="../../mailextensions/experiments.md" %}
 
 ## Replacing options
 
@@ -80,7 +80,7 @@ Instead of a XUL dialog, the specified HTML document is used, which will be acce
 [Under unidentified circumstances, WebExtension APIs invoked from an options page may throw the error "Error: Unknown sender or wrong actor for recvAPICall".](https://bugzilla.mozilla.org/show_bug.cgi?id=1607859) Until this issue is fixed, you can call any API through the background page: `(await messenger.runtime.getBackgroundPage()).messenger./* ... */`
 {% endhint %}
 
-The settings themselves should be stored using one of the new APIs to store data, such as [`storage`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage), so it may be necessary to add an experiment to migrate existing settings from nsIPrefBranch or other mechanisms not accessible through modern APIs.
+The settings themselves should be stored using one of the new APIs to store data, such as [`storage`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage), so it may be necessary to add an Experiment to migrate existing settings from nsIPrefBranch or other mechanisms not accessible through modern APIs.
 
 The [legacyPrefMigration example add-on](https://github.com/thundernest/sample-extensions/tree/master/legacyPrefMigration) includes such a migration API.
 
@@ -88,17 +88,17 @@ The [legacyPrefMigration example add-on](https://github.com/thundernest/sample-e
 
 The `chrome.manifest` file is no longer supported. Many mechanisms have a more or less direct equivalent in the WebExtension world:
 
-* **interfaces**   It should no longer be necessary to use binary interfaces, as binary components are deprecated for a long time. To access custom methods on JS-implemented classes from an experiment, use `.wrappedJSObject` to get access to the raw JS implementation.   
+* **interfaces**   It should no longer be necessary to use binary interfaces, as binary components are deprecated for a long time. To access custom methods on JS-implemented classes from an Experiment, use `.wrappedJSObject` to get access to the raw JS implementation.   
 * **component**, **contract**   See section '[Replacing XPCOM registration](https://developer.thunderbird.net/add-ons/updating/tb78#replacing-xpcom-registration)' below.  
-* **category**   Use [`Services.catMan.addCategory()`](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Reference/Interface/nsICategoryManager) \(`nsICategoryManager`\) through an experiment.  
+* **category**   Use [`Services.catMan.addCategory()`](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Reference/Interface/nsICategoryManager) \(`nsICategoryManager`\) through an Experiment.  
 * **content**, **skin**, **resource**  
   WebExtensions mostly access files by specifying a relative path inside the extensions directory structure and not by global `chrome://*`, `resource://*` or `skin://*` URLs. The WebExtension technology itself does not provide a way to register such URLs anymore. If you need global URLs in a WebExtension, use `file://*` URLs generated by `extension.rootURI.resolve()`.  
 
 
-  Inside experimental APIs some calls do not work with `file://*` URLs \(e.g. `new ChromeWorker()`\) , here one needs to manually register a `chrome://*` URL, as done in the [enigmail add-on](https://github.com/cleidigh/ThunderKdB/blob/fa91a81ba77f71358b34533095381f03b0a3b3ed/xall/x68/71-enigmail/src/webextension.js#L15-L54).  
+  Inside Experiment APIs some calls do not work with `file://*` URLs \(e.g. `new ChromeWorker()`\) , here one needs to manually register a `chrome://*` URL, as done in the [enigmail add-on](https://github.com/cleidigh/ThunderKdB/blob/fa91a81ba77f71358b34533095381f03b0a3b3ed/xall/x68/71-enigmail/src/webextension.js#L15-L54).  
 
 * **locale**   Localization for WebExtensions is handled using the [`i18n` API](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/i18n), which uses a single `messages.json` file to store translations. We have created a tool to convert the legacy DTD and property files. See section '[Converting locale files](https://developer.thunderbird.net/add-ons/updating/tb78#converting-locale-files)' below.  
-* **style** Use an [experiment to monitor open windows](https://github.com/thundernest/sample-extensions/blob/f44d61ad796fa86c04da6add0dda162084aaea44/restart/implementation.js#L19), and inject the style through that experiment. 
+* **style** Use an [Experiment to monitor open windows](https://github.com/thundernest/sample-extensions/blob/f44d61ad796fa86c04da6add0dda162084aaea44/restart/implementation.js#L19), and inject the style through that Experiment. 
 * **overlay**  See section ['Replacing Overlays' ](./#replacing-overlays)below.
 
 There are no direct equivalents to manifest flags, so add-ons now need to provide their own mechanisms to switch code or resources depending on the runtime environment. Relevant information is accessible through the [`runtime` API](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/).
@@ -107,7 +107,7 @@ There are no direct equivalents to manifest flags, so add-ons now need to provid
 
 You may use our python script [`localeConverter.py`](https://github.com/thundernest/addon-developer-support/tree/master/tools/locale-converter) to convert the legacy DTD and property files into the new JSON format. That script will merge the new entries into a potentially existing `messages.json` file.
 
-To access the new locales use [`messenger.i18n.getMessage()`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/i18n/getMessage), from within an experimental API use `context.extension.localeData.localizeMessage()`.
+To access the new locales use [`messenger.i18n.getMessage()`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/i18n/getMessage), from within an Experiment API use `context.extension.localeData.localizeMessage()`.
 
 There is no automatic replacement of locale placeholder entities like `&myLocaleIdentifier;` in HTML or XHTML files anymore. Instead you can use placeholders like `__MSG_myLocaleIdentifier__` and include the `i18n.js` script provided by the [addon-developer-support repository](https://github.com/thundernest/addon-developer-support/tree/master/scripts/i18n).
 
@@ -120,11 +120,11 @@ XUL overlays are no longer supported and you need to find an alternative:
 * Overlays extending the user interface in a way that can be replaced by calls in the background script to built-in APIs:
   * [Example](https://github.com/cleidigh/EditEmailSubject-MX/blob/30c8dd9bf6a7326873a1ad37541384ec8c4bfb36/src/background.js#L11-L16) for adding context menu items using the [`menus` API](https://thunderbird-webextensions.readthedocs.io/en/78/menus.html)    
 * Overlays extending the user interface beyond the built-in APIs:
-  * Use an [experimental API with a window listener](https://github.com/thundernest/sample-extensions/blob/master/restart/implementation.js) to manually add UI elements.
+  * Use an [Experiment API with a window listener](https://github.com/thundernest/sample-extensions/blob/master/restart/implementation.js) to manually add UI elements.
 
 ## Replacing XUL windows and dialogs
 
-While it would be possible to attempt to re-use existing XUL code in an experiment, it is probably a better idea to use the more future-proof [`windows` API](https://thunderbird-webextensions.readthedocs.io/en/78/windows.html) to create a window displaying an HTML dialog:
+While it would be possible to attempt to re-use existing XUL code in an Experiment, it is probably a better idea to use the more future-proof [`windows` API](https://thunderbird-webextensions.readthedocs.io/en/78/windows.html) to create a window displaying an HTML dialog:
 
 ```javascript
 messenger.windows.create({
@@ -139,7 +139,7 @@ From these dialogs, all WebExtension and MailExtension APIs can be accessed in t
   
 **We do not suggest to keep working with XUL dialogs, because we want to protect authors from spending conversion time on a dead technology, which is being removed step by step and requires constant updates to the add-on.** However, there might be cases where it is currently reasonable to keep loading a XUL document, which could be done like so:
 
-1. Manually inject the button, menuitem or whatever is opening the dialog via a window listener experiment \(see the [restart example extension](https://github.com/thundernest/sample-extensions/blob/f44d61ad796fa86c04da6add0dda162084aaea44/restart/implementation.js#L19)\).
+1. Manually inject the button, menuitem or whatever is opening the dialog via a window listener Experiment \(see the [restart example extension](https://github.com/thundernest/sample-extensions/blob/f44d61ad796fa86c04da6add0dda162084aaea44/restart/implementation.js#L19)\).
 2.  An event handler attached to the injected element runs in privileged chrome context and can call functions like `window.open()` or `window.openDialog()`. 
 3. You need a global path to specify the location of your XUL file, either use a`file://*` or `chrome://*` path as described in the section ["Replacing chrome.manifest"](https://developer.thunderbird.net/add-ons/updating/tb78#replacing-chrome-manifest) above.
 4. In TB78 you need to rename your `*.xul` file to `*.xhtml` .
@@ -148,9 +148,9 @@ Any JavaScript file/module loaded by your XUL dialog also runs in privileged chr
 
 ## Replacing XPCOM registration
 
-Components and contract IDs can get registered by calling [`Components.manager.registerFactory()`](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Reference/Interface/nsIComponentRegistrar#registerFactory%28%29) from an experiment. Remember to also call [`Components.manager.unregisterFactory()`](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Reference/Interface/nsIComponentRegistrar#unregisterFactory%28%29) when the experiment shuts down.
+Components and contract IDs can get registered by calling [`Components.manager.registerFactory()`](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Reference/Interface/nsIComponentRegistrar#registerFactory%28%29) from an Experiment. Remember to also call [`Components.manager.unregisterFactory()`](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Reference/Interface/nsIComponentRegistrar#unregisterFactory%28%29) when the Experiment shuts down.
 
-To get a factory implementation, copy the component's existing implementation into an experiment's implementation script and use its NSGetFactory method to build a factory to register:
+To get a factory implementation, copy the component's existing implementation into an Experiment's implementation script and use its NSGetFactory method to build a factory to register:
 
 ```javascript
 // original chrome.manifest:
@@ -199,20 +199,13 @@ getAPI(context) {
 
 For complex cases, it might be reasonable to put the implementation and optionally its registration in a separate JavaScript module.
 
-## Replacing various discontinued features within experiment code
+## Replacing various discontinued features within Experiment code
 
-Many parts of XUL are discontinued, and there are some other changes that prevent legacy code to run unchanged in an experiment. A separate article deals with these changes:
+Many parts of XUL are discontinued, and there are some other changes that prevent legacy code to run unchanged in an Experiment API. A separate article deals with these changes:
 
 {% page-ref page="changes.md" %}
 
 ## Additional Tips
 
-Some general tips to speed up your porting workflow:
-
-* To debug code running in the browser context \(e.g.: your experiments\) you must use the global browser console \(Ctrl+Shift+J\) or developer toolbox \(Ctrl+Shift+I\).  
-* To debug code running in a content page of your extension \(e.g.: your background script\) or to interactively use Web-/MailExtension APIs, you need to select "debug add-ons" from the gear icon in the add-on tab and then inspect your add-on.   Alternatively you can enable content messages in the global browser console or in the developer toolbox as well. This will also show console output from popus \(e.g. from browser\_action\):
-
-![](../../../.gitbook/assets/ind2ex.png)
-
-* The add-on debugging tools accessible through the add-on page's gear icon permit to directly install add-ons without packaging them, similar to linking a legacy add-on in the profile folder. Using that option permits to reload the add-on without restarting Thunderbird.
+{% page-ref page="../../tips-and-tricks.md" %}
 

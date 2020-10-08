@@ -15,7 +15,7 @@ You can check out many of the add-ons available for Thunderbird at [addons.thund
 
 ### MailExtensions
 
-MailExtensions are based on the WebExtension technology, which is also used by many web browsers. Such a MailExtension is a simple collection of files that modifies Thunderbirds appearance and behavior. It can add user interface elements, alter content, or perform background tasks. MailExtensions are created using standard JavaScript, CSS and HTML. Interaction with Thunderbird itself, like adding UI elements or accessing the users messages or contacts is done through special WebExtension APIs.
+MailExtensions are based on the WebExtension technology, which is also used by many web browsers. Such a MailExtension is a simple collection of files which modify Thunderbirds appearance and behavior. It can add user interface elements, alter content, or perform background tasks. MailExtensions are created using standard JavaScript, CSS and HTML. Interaction with Thunderbird itself, like adding UI elements or accessing the users messages or contacts is done through special WebExtension APIs.
 
 {% page-ref page="mailextensions/" %}
 
@@ -108,9 +108,9 @@ Themes change the way that Thunderbird looks, for instance - here is a screensho
 
 Static themes, like the name implies - are static and do not change. They have a set color or images that make up the theme and this does not change.
 
-{% page-ref page="mailextensions/web-extension-themes.md" %}
+{% page-ref page="web-extension-themes.md" %}
 
 ### Dynamic Themes
 
-Dynamic themes use the theme API to do more interesting things with the look of Thunderbird. For instance, [one example](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/Themes/Theme_concepts#Dynamic_themes) used in Firefox documentation is a dynamic theme that changes the theme colors based on the time of day.
+Dynamic themes are MailExtensions, that use the [`theme`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/theme) API to do more interesting things with the look of Thunderbird. For instance, [one example](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/Themes/Theme_concepts#Dynamic_themes) used in Firefox documentation is a dynamic theme that changes the theme colors based on the time of day.
 

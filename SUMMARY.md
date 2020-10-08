@@ -32,9 +32,10 @@
 
 * [Introduction](add-ons/about-add-ons.md)
 * [A Guide to MailExtensions](add-ons/mailextensions/README.md)
-  * [MailExtension Example](add-ons/mailextensions/hello-world-add-on.md)
-  * [Static Theme Example](add-ons/mailextensions/web-extension-themes.md)
+  * [Introduction to Experiment APIs](add-ons/mailextensions/experiments.md)
+  * [MailExtension Hello World Example](add-ons/mailextensions/hello-world-add-on.md)
   * [Examples in the Sample Extensions Repository](https://github.com/thundernest/sample-extensions)
+* [A Guide to Themes](add-ons/web-extension-themes.md)
 * [Tips and Tricks](add-ons/tips-and-tricks.md)
 * [Add-on Update Guides](add-ons/updating/README.md)
   * [Update for Thunderbird 68](add-ons/updating/tb68/README.md)
@@ -43,7 +44,6 @@
     * [Adapt to Changes in Thunderbird 61-68](add-ons/updating/tb68/changes.md)
   * [Update for Thunderbird 78](add-ons/updating/tb78/README.md)
     * [Adapt to Changes in Thunderbird 69-78](add-ons/updating/tb78/changes.md)
-    * [Guide for Experiments](add-ons/updating/tb78/experiments.md)
 * [Documentation & Resources](add-ons/resources.md)
 * [Developer Community](add-ons/community.md)
 

@@ -1,12 +1,10 @@
 ---
-description: How to create themes using WebExtensions.
+description: How to create Themes for Thunderbird.
 ---
 
-# Static Theme Example
+# A Guide to Themes
 
-A WebExtension Theme is a Thunderbird add-on that allows you to change cosmetic elements much like the old lightweight themes, but with more functionality.
-
-It typically consists of two files, zipped up with a .xpi extension just as any other add-on:
+A Theme is a Thunderbird add-on that allows you to change the appearance of Thunderbird. It typically consists of two files, zipped up with an .xpi extension just as any other add-on:
 
 * manifest.json
 * image.png or .jpg

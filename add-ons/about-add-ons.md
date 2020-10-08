@@ -4,8 +4,6 @@ description: What you need to know about making add-ons for Thunderbird.
 
 # Introduction
 
-## What are Add-ons?
-
 Add-ons include:
 
 * **extensions** that add functionality or change the way Thunderbird works
@@ -13,15 +11,15 @@ Add-ons include:
 
 You can check out many of the add-ons available for Thunderbird at [addons.thunderbird.net](https://addons.thunderbird.net).
 
-### Extensions
+## Extensions
 
-#### MailExtensions
+### MailExtensions
 
 MailExtensions are based on the WebExtension technology, which is also used by many web browsers. Such a MailExtension is a simple collection of files that modifies Thunderbirds appearance and behavior. It can add user interface elements, alter content, or perform background tasks. MailExtensions are created using standard JavaScript, CSS and HTML. Interaction with Thunderbird itself, like adding UI elements or accessing the users messages or contacts is done through special WebExtension APIs.
 
 {% page-ref page="mailextensions/" %}
 
-#### Legacy Extension Types
+### Legacy Extension Types
 
 The architecture of Thunderbird extensions has changed over the last years. The following table describes the different legacy extension types.
 
@@ -100,19 +98,19 @@ It is recommended to update legacy overlay extensions to legacy WebExtensions fi
 {% endtab %}
 {% endtabs %}
 
-### Themes
+## Themes
 
 Themes change the way that Thunderbird looks, for instance - here is a screenshot of the side panel using the built-in dark theme:
 
 ![It&apos;s Dark](../.gitbook/assets/screenshot-from-2019-03-23-13-47-57.png)
 
-#### Static Themes
+### Static Themes
 
 Static themes, like the name implies - are static and do not change. They have a set color or images that make up the theme and this does not change.
 
 {% page-ref page="mailextensions/web-extension-themes.md" %}
 
-#### Dynamic Themes
+### Dynamic Themes
 
 Dynamic themes use the theme API to do more interesting things with the look of Thunderbird. For instance, [one example](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/Themes/Theme_concepts#Dynamic_themes) used in Firefox documentation is a dynamic theme that changes the theme colors based on the time of day.
 

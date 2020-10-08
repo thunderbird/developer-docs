@@ -1,6 +1,6 @@
 # A Guide to MailExtensions
 
-### Overview
+## Overview
 
 MailExtensions are based on the WebExtension technology, which is also used by many web browsers. Such an extension is a simple collection of files that modifies Thunderbirds appearance and behavior. It can add user interface elements, alter content, or perform background tasks. MailExtensions are created using standard JavaScript, CSS and HTML. Interaction with Thunderbird itself, like adding UI elements or accessing the users messages or contacts is done through special WebExtension APIs.
 
@@ -20,7 +20,7 @@ Unlike older legacy extensions, MailExtensions access functionality through stab
 All turquoise elements in the above diagram are limited to WebExtension APIs.
 {% endhint %}
 
-#### Experiment APIs
+## Experiment APIs
 
 The current set of WebExtension APIs is not yet sufficient, many areas of Thunderbird are not accessible through these APIs. While we are working on improving the situation, you can create your own API, register it in your `manifest.json` file and use it in your extension like any other WebExtension API.
 
@@ -35,7 +35,7 @@ The community is currently discussing, if support for Experiment APIs should be 
 
 If you need an API that does not exist yet, please [tell us about it](https://bugzilla.mozilla.org/enter_bug.cgi?product=Thunderbird&component=Add-Ons%3A+Extensions+API). 
 
-### Creating a MailExtension
+## Creating a MailExtension
 
 {% page-ref page="hello-world-add-on.md" %}
 

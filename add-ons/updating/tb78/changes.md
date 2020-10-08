@@ -1,10 +1,10 @@
 # Adapt to Changes in Thunderbird 69-78
 
-This document tries to cover all the internal changes that may by needed to make add-ons compatible with Thunderbird 78. If you find stuff that is no longer working but is not yet on this list, ask for help and advice in of our [communication channels](https://developer.thunderbird.net/#getting-plugged-into-the-community).
+This document tries to cover all the internal changes that may be needed to make add-ons compatible with Thunderbird 78. If you find stuff that is no longer working but is not yet on this list, ask for help and advice in of our [communication channels](https://developer.thunderbird.net/#getting-plugged-into-the-community).
 
 The changes are grouped by category and are listed in the order we became aware of them.
 
-## Removed XUL elements
+## Changed XUL elements
 
 {% hint style="warning" %}
 As of Thunderbird 74, the built-in overlay loader has been removed, which means XUL overlay files are no longer supported. The preferred way to interact with Thunderbird is through WebExtension and MailExtension APIs, which only support HTML/CSS. 
@@ -34,7 +34,7 @@ Removed completely in TB71. Use
 <html:input>
 ```
 
-All former values of the `type` parameter of the `textbox` element are supported by `html:input` as well. For proper styling include the following css file: `chrome://messenger/skin/input-fields.css`
+All former values of the `type` parameter of the `textbox` element are supported by `html:input` as well. For proper styling include the following CSS file: `chrome://messenger/skin/input-fields.css`
 
 The `flex` parameter is no longer supported and should be removed. Attach the `input-container` class to a surrounding `hbox` to force the input field to behave like a former `flex="1"` `textbox`.
 
@@ -53,7 +53,7 @@ Visually compare the fields before and after the conversion to be sure the UI, s
 
 ### &lt;toolbar customizable="true"&gt;
 
-In TB78 the XUL element `toolbar` with attribute `customizable` has been re-implemented as a [custom element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Custom_Elements). It needs an additional `is` attribute. The following example is taken from the [source of the Thunderbird calender](https://searchfox.org/comm-central/rev/444b626fc442cb92b1b29ee47912600bc61bab1f/calendar/base/content/dialogs/calendar-event-dialog.xhtml#574):
+In TB78, the XUL element `toolbar` with attribute `customizable` has been re-implemented as a [custom element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Custom_Elements). It needs an additional `is` attribute. The following example is taken from the [source of the Thunderbird calendar](https://searchfox.org/comm-central/rev/444b626fc442cb92b1b29ee47912600bc61bab1f/calendar/base/content/dialogs/calendar-event-dialog.xhtml#574):
 
 ```markup
 <!-- Note the additional "is" attribute: -->
@@ -68,11 +68,51 @@ In TB78 the XUL element `toolbar` with attribute `customizable` has been re-impl
 	 defaultset="button-url,button-delete"/>
 ```
 
+### &lt;wizard&gt;
+
+In TB78, the XUL element `wizard` may no longer be a top level element, but must be encapsulated by a `window` element which includes some fluent locales:
+
+```markup
+<window 
+      width="600"
+      height="600"
+      title="Wizard Title"
+      xmlns:html="http://www.w3.org/1999/xhtml"
+      xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <linkset>
+    <html:link rel="localization" href="toolkit/global/wizard.ftl"/>
+  </linkset>
+
+  <wizard>
+  ...
+  </wizard>
+</window>
+```
+
+If you have referred to the `wizard` element by `document.documentElement.*`, this is now referring to the `window` element. Use `getElementById()` instead. 
+
+### &lt;wizardpage&gt;
+
+If you set the label of a `wizardpage` element via JavaScript during wizard load, it will be ignored. You have to manually call `_adjustWizardHeader` after the label has been set. :
+
+```javascript
+document.getElementById(wizardID)._adjustWizardHeader();
+```
+
+### &lt;richlistbox&gt;
+
+With TB78, the method `scrollToIndex(idx)` has been removed, replace it with:
+
+```javascript
+richlistbox.ensureElementIsVisible(listbox.getItemAtIndex(idx),true);
+```
+
 ## Changed API
 
 ### document.createElement\(\)
 
-With TB69, the default namespace for createElement has switched from XUL to XHTML. So you can no longer create XUL elements with `document.createElement()` \(but XHTML elements\). To create XUL elements, use:
+With TB69, the default namespace for createElement has switched from XUL to HTML. So you can no longer create XUL elements with `document.createElement()` \(but HTML elements\). To create XUL elements, use:
 
 ```javascript
 document.createXULElement();
@@ -82,9 +122,9 @@ document.createXULElement();
 
 Bug [1558726](https://bugzilla.mozilla.org/show_bug.cgi?id=1558726) introduced a breaking change to the `nsISocketTransportService` interface:
 
-The first parameter used to be an array and the second one its length. This length parameter has been dropped, causing all subsequent arguments to shift by one. Furthermore, to create a default socket, you now have to pass an empty array as first parameter, instead of null.
+The first parameter used to be an array and the second one its length. This length parameter has been dropped, causing all subsequent arguments to shift by one. Furthermore, to create a default socket, you now have to pass an empty array as the first parameter, instead of null.
 
-To stay backward compatible, check the argument count of "createTransport". In case it is 4 is is the new interface, in case it is 5 you got the old interface. Alternatively, you may also check if the version of Thunderbird is 69 or later.
+To stay backward compatible, check the argument count of "createTransport". In case it is 4 it is the new interface, in case it is 5 you got the old interface. Alternatively, you may also check if the version of Thunderbird is 69 or later.
 
 ```javascript
    if (transportService.createTransport.length === 4)
@@ -124,11 +164,11 @@ Services.scriptSecurityManager.createContentPrincipal()
 
 ### nsIStringBundle.formatStringFromName\(\)
 
-The 3rd parameter has been droped, which was the length of the array passed in as the 2nd parameter. See the [patch applied to Thunderbird itself](https://bug1557829.bmoattachments.org/attachment.cgi?id=9071511).
+The 3rd parameter has been dropped, which was the length of the array passed in as the 2nd parameter. See the [patch applied to Thunderbird itself](https://bug1557829.bmoattachments.org/attachment.cgi?id=9071511).
 
 ### IOUtils.js
 
-Module file extension changed in TB78 from js to jsm, now available via
+Module file extension changed in TB78 from `js` to `jsm`, now available via
 
 ```javascript
 const { IOUtils } = ChromeUtils.import("resource:///modules/IOUtils.jsm");
@@ -136,11 +176,11 @@ const { IOUtils } = ChromeUtils.import("resource:///modules/IOUtils.jsm");
 
 ### AddRecipient\(\)
 
-In TB78 the function `AddRecipient()` in the contact sidebar has been renamed to `awAddRecipientsArray(`\).
+In TB78 the function `AddRecipient()` in the contact sidebar has been renamed to `awAddRecipientsArray()`.
 
 ### MailServices.headerParser.parseHeadersWithArray\(\)
 
-In TB71 `MailServices.headerParser.parseHeadersWithArray()` has been removed. Instead use:
+In TB71 `MailServices.headerParser.parseHeadersWithArray()` has been removed. Instead, use:
 
 ```javascript
 let addresses = MailServices.headerParser.parseEncodedHeader(address);
@@ -153,7 +193,7 @@ for (let addr of addresses) {
 
 ###  nsIPromptService.select\(\)
 
-Since TB69 `nsIPromptService.select()` / `Services.prompt.select()` has dropped the parameter which specifies the length of the array of the item list which the user can chose from. See the [patch applied to Thunderbird itself](https://phabricator.services.mozilla.com/differential/changeset/?ref=1068287).
+Since TB69 `nsIPromptService.select()` / `Services.prompt.select()` has dropped the parameter which specifies the length of the array of the item list which the user can choose from. See the [patch applied to Thunderbird itself](https://phabricator.services.mozilla.com/differential/changeset/?ref=1068287).
 
 ###  nsIEditorStyleSheets has been removed
 
@@ -206,6 +246,10 @@ for (let card of cards) {
   ...
 }
 ```
+
+{% hint style="warning" %}
+`MailServices.ab.getDirectory(uri).search(search, listener)` will not return anything, if `search` is empty.
+{% endhint %}
 
 ## Changes to the Preference System
 

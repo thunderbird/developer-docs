@@ -8,7 +8,7 @@ A Theme is a Thunderbird add-on that allows to change the appearance of Thunderb
 
 ## Dynamic Themes
 
-Dynamic themes are actually MailExtensions, that use the [`theme`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/theme) API to do more interesting things with the look of Thunderbird. For instance, [one example](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/Themes/Theme_concepts#Dynamic_themes) used in Firefox documentation is a dynamic theme that changes the theme colors based on the time of day.
+Dynamic themes are actually MailExtensions, that use the [`theme`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/theme) API to do more interesting things with the look of Thunderbird. For instance, [one example](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/Themes/Theme_concepts#Dynamic_themes) used in the Firefox documentation is a dynamic theme that changes the theme colors based on the time of day.
 
 {% page-ref page="mailextensions/" %}
 
@@ -19,9 +19,9 @@ Static themes, like the name implies - are static and do not change. They have a
 * manifest.json
 * image.png or .jpg
 
-### Use a manifest.json file
+### The `manifest.json` file
 
-You must prepare a JSON manifest, named "manifest.json" just as with other Web Extensions. Below is a basic example:
+You must prepare a JSON manifest, named `manifest.json` just as with other WebExtensions. Below is a basic example:
 
 ```javascript
 {

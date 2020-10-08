@@ -61,7 +61,7 @@ The main configuration file of your MailExtension is a file called `manifest.jso
 
 The following keys correspond directly to the elements outlined in the diagram at the beginning of this page:
 
-* `background`: Defines one or more scripts that are loaded into your background page. These scripts are executed in order when the add-on starting \(either while Thunderbird is starting, or when the add-on is being enabled\). 
+* `background`: Defines one or more scripts that are loaded into your background page. These scripts are executed in order, either while Thunderbird is starting, or when the add-on is being enabled. 
 * `browser_action`: This adds a button to Thunderbirds main toolbar. If a `default_popup` is defined, that popup will be opened, when the button is clicked. Alternatively, you can use the `browserAction` API in your background script to react on button clicks.
 
 ![](../../.gitbook/assets/browseraction.png)

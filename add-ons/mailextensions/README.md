@@ -100,7 +100,7 @@ Thunderbird of course requires additional interfaces to messenger specific funct
 
 * [Thunderbird WebExtensions API documentation ](https://thunderbird-webextensions.readthedocs.io/)
 
-## Creating MailExtension: Examples
+## Creating a MailExtension: Examples
 
 Our [sample-extensions repository](https://github.com/thundernest/sample-extensions/tree/master/experiment) includes a few simple MailExtensions, which showcase different APIs and which will get you started to create your own.
 

@@ -32,9 +32,9 @@
 
 * [Introduction](add-ons/about-add-ons.md)
 * [A Guide to MailExtensions](add-ons/mailextensions/README.md)
-  * [Introduction to Experiment APIs](add-ons/mailextensions/experiments.md)
-  * [MailExtension Hello World Example](add-ons/mailextensions/hello-world-add-on.md)
+  * [Hello World Example](add-ons/mailextensions/hello-world-add-on.md)
   * [Examples in the Sample Extensions Repository](https://github.com/thundernest/sample-extensions)
+  * [Introducing Experiments](add-ons/mailextensions/experiments.md)
 * [A Guide to Themes](add-ons/web-extension-themes.md)
 * [Tips and Tricks](add-ons/tips-and-tricks.md)
 * [Add-on Update Guides](add-ons/updating/README.md)

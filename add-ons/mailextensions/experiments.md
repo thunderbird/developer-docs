@@ -1,4 +1,4 @@
-# Introduction to Experiment APIs
+# Introducing Experiments
 
 This document aggregates information on topics that commonly arise when developing a new Experiment for Thunderbird 78. For a complete documentation on each individual topic, refer to the linked articles.
 

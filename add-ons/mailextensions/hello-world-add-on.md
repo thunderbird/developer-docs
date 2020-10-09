@@ -4,8 +4,6 @@ description: This is a tutorial for making a Hello World MailExtension.
 
 # Hello World Example
 
-This tutorial is based off of code that can be found, along with other tutorials and resources, in the [Thunderstorm repository](https://github.com/cleidigh/ThunderStorm) maintained by Thunderbird contributor Christopher Leidigh.
-
 ## Writing the Extension
 
 Create a directory for your extension and navigate to it.
@@ -17,9 +15,7 @@ cd hello-world
 
 ### manifest.json
 
-Extensions require a manifest.json file that tells Thunderbird basic information about the add-on.
-
-Your manifest.json file should look like this:
+As described in our [MailExtension guide](https://developer.thunderbird.net/add-ons/mailextensions), extensions require a `manifest.json` file that tells Thunderbird basic information about the add-on. The `manifest.json` file of this hello world example looks like this:
 
 {% code title="manifest.json" %}
 ```javascript
@@ -51,30 +47,7 @@ Your manifest.json file should look like this:
 ```
 {% endcode %}
 
-#### Understanding the structure of manifest.json
-
-At a glance there may appear to be a lot going on in this file, but it's actually pretty straightforward.
-
-You can ignore `manifest_version` as it is mandatory and is simply meant to signal compatibility to Thunderbird.
-
-`name` should be the name of your add-on, `description` should be a brief description of what your add-on does, `version` is a number that denotes which version of your add-on you are working on, and `author` should be your name or company.
-
-What you need to know about the `applications` portion of the manifest.json:
-
-* `id` serves as a unique indentifier for your add-on, it is common practice to put the add-on name @ your website. 
-* `strict_min_version`should be the lowest version of Thunderbird you are targeting. Make sure to test your add-on with the version you put there to ensure it works properly.
-
-`browser_action` specifies the toolbar button. We're supplying three pieces of information here:
-
-* `default_icon` is mandatory, and points to the icon for the button.
-* `default_title` is optional, and will be shown in a tooltip.
-* `default_popup` is used if you want a popup to be shown when the user clicks the button. We do, so we've included this key and made it point to an HTML file included with the extension.
-
-`icons` tells Thunderbird where the icons we are using for our add-on are. You can grab the icons we use for this example from the [Thunderstorm repo](https://github.com/cleidigh/ThunderStorm/tree/master/examples/HelloWorlds/HelloWorld-MailExt-Popup/images). Make sure to create an `images` directory in the `hello-world` project folder for them.
-
-{% hint style="info" %}
-Alternatively, you could supply an SVG file here, and it will be scaled correctly.
-{% endhint %}
+You can grab the icons we use for this example from the [Thunderstorm repo](https://github.com/cleidigh/ThunderStorm/tree/master/examples/MailExtensions/HelloWorld-Popup/images). Make sure to create an `images` directory in the `hello-world` project folder for them.
 
 ### popup.html
 
@@ -133,7 +106,7 @@ console.log('Hello, World! - from popup.js');
 ```
 {% endcode %}
 
-What our little script does is sends a message to the console each time we click on our add-on. We'll take a look at that in a moment when we try out our add-on. The first line is just a comment so we can remember what our code is doing.
+What our little script does is sending a message to the console each time we click on our add-on. We'll take a look at that in a moment when we try out our add-on. The first line is just a comment, so we can remember what our code is doing.
 
 ## Testing the Extension
 
@@ -156,43 +129,45 @@ hello-world/
 
 To install the add-on we created we are going to load it temporarily. Let's start by opening the Add-ons Manager:
 
-![Find &quot;Add-ons&quot; in the App Menu](../../.gitbook/assets/add-on-in-menu.png)
+![](../../.gitbook/assets/screen1.png)
 
-This will open up the Add-ons Manager, make sure "Extensions" is selected on the left hand side and click the gear to select "Debug Add-ons".
+This will open up the Add-ons Manager, make sure "Extensions" is selected on the left-hand side and click the gear to select "Debug Add-ons".
 
-![Select Debug Add-ons from the Menu.](../../.gitbook/assets/dubug-addons.png)
+![](../../.gitbook/assets/screen2.png)
 
-Select "Load Temporary Add-on" and then you can choose any file from within our `hello-world` project folder.
+Click on the "Load Temporary Add-on..." button:
 
-![Click &quot;Load Temporary Add-on&quot;](../../.gitbook/assets/load-temp-addon.png)
+![](../../.gitbook/assets/screen3.png)
+
+Select the `manifest.json` file from within our `hello-world` project folder:
+
+![](../../.gitbook/assets/screen4.png)
 
 This should install the Add-on for this session only:
 
-![The &quot;Hello World&quot; add-on should show up in Temporary Extensions.](../../.gitbook/assets/hello-world-addon-loaded.png)
+![](../../.gitbook/assets/screen5.png)
 
 ### Trying it Out
 
-Now we can give our new add-on a whirl. Hit the "Debug" option under the add-on's listing \(pictured above\), this will bring up a console - we'll want that to see the results of the javascript console.log command we put in `popup.js`.
-
-{% hint style="warning" %}
-When you click on Debug, if you are prompted with a warning telling you there is a connection to your computer from 127.0.0.1 - that is your computer and it is fine. Hit OK and the Developer Tools window with the console will appear.
-{% endhint %}
+Now we can give our new add-on a whirl. Hit the "Inspect" button under the add-on's listing \(pictured above\), this will bring up a console - we'll want that to see the results of the JavaScript `console.log()` command we put in `popup.js`.
 
 Make sure the "Console" tab is selected in the Developer Tools window. Click the "Persist Logs" checkbox in the top right-hand corner of the Developer Tools so that we can see the output from the add-on after we've interacted with it \(otherwise it only shows output as it is happening\).
 
+![](../../.gitbook/assets/screen6.png)
+
 #### Hello, World!
 
-Head to the home tab and click on the add-on's icon in the top right-hand corner to see a pop up with your message "Hello, World!"
+Head to the home tab and click on the add-on's icon in the top right-hand corner to see a popup with your message "Hello, World!"
 
-![Click the Hello World Add-on and see the popup!](../../.gitbook/assets/hello-world-addon.png)
+![](../../.gitbook/assets/screen7.png)
 
 Now if you look at the Developer Tools window, you should see something like the following in the console:
 
-![&quot;Hello World - from popup.js&quot;](../../.gitbook/assets/screenshot-from-2019-03-23-13-04-51.png)
+![](../../.gitbook/assets/screen8.png)
 
 ## What's Next
 
-Try playing around with the popup.js script, changing the message or, if you are familiar with JavaScript - doing more interesting things. You can also change the content of the pop up window via `popup.html` and `popup.css`.
+Try playing around with the popup.js script, changing the message or, if you are familiar with JavaScript - doing more interesting things. You can also change the content of the popup window via `popup.html` and `popup.css`.
 
 If you want to do something more complicated, check out the MailExtension APIs via its documentation: [MailExtension APIs](https://thunderbird-webextensions.readthedocs.io/)
 

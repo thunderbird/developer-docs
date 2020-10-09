@@ -59,11 +59,29 @@ The main configuration file of your MailExtension is a file called `manifest.jso
 ```
 {% endcode %}
 
+#### Understanding the structure of manifest.json
+
+At a glance there may appear to be a lot going on in this file, but it's actually pretty straightforward. You can ignore the `manifest_version` key, as it is mandatory and is simply meant to signal compatibility to Thunderbird. 
+
+The following keys define basic properties:
+
+* `name` : the name of your add-on
+* `description` : a brief description of what your add-on does
+* `version` : a number that denotes which version of your add-on you are working on
+*  `author` : should be your name or company
+
 {% hint style="info" %}
 The `name` and the `description` of this example are only in English. If you want to use translated strings in your manifest, you can read [this MDN article about it](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Internationalization#Internationalizing_manifest.json).
 {% endhint %}
 
-The following keys correspond directly to the elements outlined in the diagram at the beginning of this page:
+What you need to know about the `applications` portion of the `manifest.json`:
+
+* `id` : serves as a unique identifier for your add-on, common practice is to use `add-on-name@your-website`
+* `strict_min_version:`should be the lowest version of Thunderbird you are targeting. Make sure to test your add-on with the version you put there to ensure it works properly. 
+
+The `icons` key tells Thunderbird the location of your add-ons icons. Thunderbird supports basic image types like PNG files, but also SVG files.
+
+The following keys correspond directly to the entry points outlined in the diagram at the beginning of this page:
 
 * `background`: Defines one or more scripts that are loaded into your background page. These scripts are executed in order, either while Thunderbird is starting, or when the add-on is being enabled. 
 * `browser_action`: This adds a button to Thunderbirds main toolbar. If a `default_popup` is defined, that popup will be opened, when the button is clicked. Alternatively, you can use the `browserAction` API in your background script to react on button clicks.

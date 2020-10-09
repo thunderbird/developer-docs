@@ -59,7 +59,7 @@ The main configuration file of your MailExtension is a file called `manifest.jso
 ```
 {% endcode %}
 
-At a glance there may appear to be a lot going on in this file, but it's actually pretty straightforward. You can ignore the `manifest_version` key, as it is mandatory and is simply meant to signal compatibility to Thunderbird. 
+At a glance there may appear to be a lot going on in this file, but it's actually pretty straightforward. The `manifest_version` key is mandatory and it signals compatibility to Thunderbird. 
 
 The following keys define basic properties:
 
@@ -139,7 +139,8 @@ The currently available WebExtension APIs are not yet sufficient, as some areas 
 			"parent": {
 				"scopes": ["addon_parent"],
 				"paths": [["LegacyPrefs"]],
-				"script": "api/LegacyPrefs/implementation.js"
+				"script": "api/LegacyPrefs/implementation.js",
+				"events": ["startup"]
 			}
 		}
 	}, 
@@ -151,7 +152,7 @@ An Experiment API, specifically its implementation script has access to Thunderb
 
 {% page-ref page="experiments.md" %}
 
-Currently and for the foreseeable future \(years\) Experiments can be used in extensions released to the general public. In the meantime, we will be dedicated to API development and to improve the situation for add-on developers. If you need an API that does not exist yet, please [tell us about it](https://bugzilla.mozilla.org/enter_bug.cgi?product=Thunderbird&component=Add-Ons%3A+Extensions+API). 
+Currently and for the foreseeable future Experiments can be used in extensions released to the general public. In the meantime, we will be dedicated to API development and to improve the situation for add-on developers. If you need an API that does not exist yet, please [tell us about it](https://bugzilla.mozilla.org/enter_bug.cgi?product=Thunderbird&component=Add-Ons%3A+Extensions+API). 
 
 If you have created an Experiment API which you think is a good fit for general use in Thunderbird, please [tell us about it](https://developer.thunderbird.net/add-ons/community).
 

@@ -60,7 +60,7 @@ The main configuration file of your MailExtension is a file called `manifest.jso
 {% endcode %}
 
 {% hint style="info" %}
-The `name` and the `description` of this example is only in English. You probably want to use translated strings in your manifest. Read [this MDN article about it](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Internationalization#Internationalizing_manifest.json).
+The `name` and the `description` of this example are only in English. If you want to use translated strings in your manifest, you can read [this MDN article about it](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Internationalization#Internationalizing_manifest.json).
 {% endhint %}
 
 The following keys correspond directly to the elements outlined in the diagram at the beginning of this page:

@@ -59,6 +59,10 @@ The main configuration file of your MailExtension is a file called `manifest.jso
 ```
 {% endcode %}
 
+{% hint style="info" %}
+The `name` and the `description` of this example is only in English. You probably want to use translated strings in your manifest. Read [this MDN article about it](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Internationalization#Internationalizing_manifest.json).
+{% endhint %}
+
 The following keys correspond directly to the elements outlined in the diagram at the beginning of this page:
 
 * `background`: Defines one or more scripts that are loaded into your background page. These scripts are executed in order, either while Thunderbird is starting, or when the add-on is being enabled. 
@@ -81,7 +85,7 @@ The possible manifest entries are not limited to the shown examples. Future APIs
 Most entry points defined in your `manifest.json` allow adding scripts. Most prominent of course the background script\(s\). Furthermore, each defined HTML page, like the `options_ui` page or popups of `browser_actions` and `compose_actions` allow including scripts via standard HTML `<script>` tags. All these scripts have access to:
 
 * Standard JavaScript methods
-* [Web API](https://developer.mozilla.org/de/docs/Web/API) \(API works in Thunderbird, if the browser compatibility chart lists Firefox\)
+* [Web API](https://developer.mozilla.org/de/docs/Web/API) \(if the browser compatibility chart lists Firefox, the API also works in Thunderbird\)
 
 As Thunderbird is based on the same code base as Firefox, we can reuse many of the WebExtension APIs provided by Firefox:
 
@@ -102,7 +106,7 @@ Thunderbird of course requires additional interfaces to messenger specific funct
 
 ## Creating a MailExtension: Examples
 
-Our [sample-extensions repository](https://github.com/thundernest/sample-extensions/tree/master/experiment) includes a few simple MailExtensions, which showcase different APIs and which will get you started to create your own.
+Our [sample-extensions repository](https://github.com/thundernest/sample-extensions/tree/master/experiment) includes a few simple MailExtensions, which showcase different APIs and which will get you started to create your own extension.
 
 We also prepared a step-by-step guide for a small Hello World MailExtension:
 

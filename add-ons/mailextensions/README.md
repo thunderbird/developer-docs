@@ -149,7 +149,7 @@ The currently available WebExtension APIs are not yet sufficient, as some areas 
 
 That API can then be used by your extension like any other WebExtension API.
 
-An Experiment API, specifically its implementation script has access to Thunderbirds internal functions, components and UI elements. Instead of using WebExtensions API, you need to interact with and get used to the actual source code of Thunderbird.
+An Experiment API, specifically its implementation script has access to Thunderbirds internal functions, components and UI elements. Instead of using WebExtensions APIs, you need to interact with and get used to the actual source code of Thunderbird.
 
 {% page-ref page="experiments.md" %}
 

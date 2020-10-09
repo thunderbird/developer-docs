@@ -59,8 +59,6 @@ The main configuration file of your MailExtension is a file called `manifest.jso
 ```
 {% endcode %}
 
-#### Understanding the structure of manifest.json
-
 At a glance there may appear to be a lot going on in this file, but it's actually pretty straightforward. You can ignore the `manifest_version` key, as it is mandatory and is simply meant to signal compatibility to Thunderbird. 
 
 The following keys define basic properties:
@@ -71,7 +69,7 @@ The following keys define basic properties:
 *  `author` : should be your name or company
 
 {% hint style="info" %}
-The `name` and the `description` of this example are only in English. If you want to use translated strings in your manifest, you can read [this MDN article about it](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Internationalization#Internationalizing_manifest.json).
+The `name` and the `description` of this example are only in English. If you want to use translated strings in your manifest, you can read [this MDN article about **Localization**](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Internationalization#Internationalizing_manifest.json).
 {% endhint %}
 
 What you need to know about the `applications` portion of the `manifest.json`:

@@ -4,10 +4,6 @@ description: Tips and tricks for successful Thunderbird add-on development.
 
 # Tips and Tricks
 
-## ATN does not support the ?. and ?? operators
-
-ES2020 introduced the [Nullish Coalescing Operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_operator) \(??\) and the [Optional Chaining Operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining). Both are supported by TB78. However, ATN's automated add-on pre-review does not yet support it and will not allow uploading add-ons using them.
-
 ## Debugging
 
 Some general tips to speed up your development workflow:

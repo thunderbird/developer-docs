@@ -29,6 +29,10 @@ If you'd like to learn to develop add-ons for Thunderbird, check out our add-on 
 
 Thunderbird uses Mozilla's Bugzilla platform to report and track bugs. The site can also be used to generate enhancement bugs, which can be used for feature requests. If you want to become a contributor to Thunderbird, you will need an account on Bugzilla as you will submit patches through this platform.
 
+### [Profiling Thunderbird Performance](https://support.mozilla.org/kb/profiling-thunderbird-performance)
+
+Creating a performance profile can be useful for developers to find the causes of high CPU load or slowness in Thunderbird.
+
 ### [Thundernest on GitHub](https://github.com/thundernest)
 
 If you want to contribute to the Thunderbird website, this documentation, or addons.thunderbird.net - you can find those repositories and their issue trackers on the Thundernest GitHub page. You'll need a GitHub account to contribute there.

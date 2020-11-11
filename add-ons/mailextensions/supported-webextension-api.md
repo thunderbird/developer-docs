@@ -274,7 +274,11 @@ _Please be aware, that MDN is dedicated to browsers and of course to Firefox. So
     <tr>
       <td style="text-align:left"><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/downloads">downloads</a>
       </td>
-      <td style="text-align:left">downloads</td>
+      <td style="text-align:left">
+        <p>downloads,</p>
+        <p><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/downloads/open">downloads.open</a>
+        </p>
+      </td>
       <td style="text-align:left">Enables extensions to interact with the browser&apos;s download manager.
         You can use this API to <a href="https://thunderbird.topicbox.com/groups/addons/Td4979394bb2782c5-Me7445c7edfb7410f6d2973a2/save-as-the-email-send">save files to disk</a>.</td>
     </tr>

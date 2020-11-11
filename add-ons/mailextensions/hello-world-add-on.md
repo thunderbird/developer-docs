@@ -51,7 +51,7 @@ You can grab the icons we use for this example from the [Thunderstorm repo](http
 
 ### popup.html
 
-Our add-on is pretty simple, it just brings up an html page in a new tab in Thunderbird. Here we are going to create the page that is pulled up. Let's create popup.html in the `hello-world` directory alongside `manifest.json`.
+Our add-on is using a `browser_action` to add a button to the Thunderbird UI. A click on that button will bring up the html page defined in the `browser_action.default_popup` key. Let's create the following popup.html in the `hello-world` directory alongside `manifest.json`.
 
 {% code title="popup.html" %}
 ```markup

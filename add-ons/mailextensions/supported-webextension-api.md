@@ -4,11 +4,202 @@
 
 Thunderbird provides the following messenger related WebExtension APIs, which are sometimes referred to as MailExtension APIs.
 
-| API | Permission | Description |
-| :--- | :--- | :--- |
-| [accounts](https://thunderbird-webextensions.readthedocs.io/en/latest/accounts.html) | accountsRead | Enables an extension to access information of accounts and identities configuered in Thunderbird\`s account manager. |
-| [addressBooks](https://thunderbird-webextensions.readthedocs.io/en/latest/addressBooks.html) | addressBooks | Enabled an extension to access, modify and create Thunderbird address books. |
-| [browserAction](https://thunderbird-webextensions.readthedocs.io/en/latest/browserAction.html) |  | Interact with a browser action button. |
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">API</th>
+      <th style="text-align:left">Permission</th>
+      <th style="text-align:left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/accounts.html">accounts</a>
+      </td>
+      <td style="text-align:left">accountsRead</td>
+      <td style="text-align:left">Enables an extension to access information of accounts and identities
+        configuered in Thunderbird&apos;s account manager.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/addressBooks.html">addressBooks</a>
+      </td>
+      <td style="text-align:left">addressBooks</td>
+      <td style="text-align:left">Enables an extension to access, modify, create and delete Thunderbird
+        address books.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/browserAction.html">browserAction</a>
+      </td>
+      <td style="text-align:left">(*)</td>
+      <td style="text-align:left">Enables an extension to interact with a <a href="https://developer.thunderbird.net/add-ons/mailextensions/supported-ui-elements#browser-action">browser action button</a>.
+        <br
+        /><em>(*) This API does not require a permission, but a <code>browser_action</code> manifest key.</em>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/cloudFile.html">cloudFile</a>
+      </td>
+      <td style="text-align:left">(*)</td>
+      <td style="text-align:left">
+        <p>Enables an extension to register a cloudFile provider, which can be used
+          to upload large attachments to a server, instead of attaching them directly
+          to the email.</p>
+        <p><em>(*) This API does not require a permission, but a <code>cloudFile</code> manifest key.</em>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/commands.html">commands</a>
+      </td>
+      <td style="text-align:left">(*)</td>
+      <td style="text-align:left">The commands API adds keyboard shortcuts that can trigger actions in an
+        extension.
+        <br /><em>(*) This API does not require a permission, but a <code>commands</code> manifest key.</em>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/compose.html">compose</a>
+      </td>
+      <td style="text-align:left">compose</td>
+      <td style="text-align:left">Enables an extension to open a new message compose window or react to
+        events while the message is being composed.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/composeAction.html">composeAction</a>
+      </td>
+      <td style="text-align:left">(*)</td>
+      <td style="text-align:left">Enables an extension to interact with a <a href="https://developer.thunderbird.net/add-ons/mailextensions/supported-ui-elements#compose-action">compose action button</a>.
+        <br
+        /><em>(*) This API does not require a permission, but a <code>compose_action</code> manifest key.</em>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/composeScripts.html">composeScripts</a>
+      </td>
+      <td style="text-align:left">compose</td>
+      <td style="text-align:left">Functionally it is the same as the <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/contentScripts">contentScripts</a> API
+        except that it works on the document of email messages during composition.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/contacts.html">contacts</a>
+      </td>
+      <td style="text-align:left">addressBooks</td>
+      <td style="text-align:left">Enables an extension to access, modify, create and delete contacts in
+        Thunderbird address books.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/folders.html">folders</a>
+      </td>
+      <td style="text-align:left">accountsFolders</td>
+      <td style="text-align:left">Enables an extension to access, modify, create and delete mail account
+        folders.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/mailingLists.html">mailingLists</a>
+      </td>
+      <td style="text-align:left">addressBooks</td>
+      <td style="text-align:left">Enables an extension to access, modify, create and delete mailing lists
+        in Thunderbird address books.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/mailTabs.html">mailTabs</a>
+      </td>
+      <td style="text-align:left">accountsFolders (*)</td>
+      <td style="text-align:left">
+        <p>Enables an extension to interact with Thunderbird main window.</p>
+        <p><em>(*) The <code>accountsFolders</code> permission is needed to set the currently displayed folder.</em>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/menus.html">menus</a>
+      </td>
+      <td style="text-align:left">
+        <p>menus,
+          <br /><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/menus.html#overridecontext-contextoptions">menus.overrideContext</a>,</p>
+        <p>accountsRead, messagesRead (*)</p>
+      </td>
+      <td style="text-align:left">
+        <p>Enables an extension to add (context-) menu entries to Thunderbird menus.</p>
+        <p><em>(*) The <code>accountsRead</code> and <code>messagesRead</code> permissions are needed to populate the associated fields in the </em>
+          <a
+          href="https://thunderbird-webextensions.readthedocs.io/en/latest/menus.html#onclickdata"><em><code>OnClickedData</code></em>
+            </a><em> object.</em>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/messageDisplay.html">messageDisplay</a>
+      </td>
+      <td style="text-align:left">messagesRead</td>
+      <td style="text-align:left">Enables an extension to react on and interact with the currently displayed
+        messages.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/messageDisplayAction.html">messageDisplayAction</a>
+      </td>
+      <td style="text-align:left"></td>
+      <td style="text-align:left">Enables an extension to interact with a <a href="https://developer.thunderbird.net/add-ons/mailextensions/supported-ui-elements#message-display-action">message display action button</a>.
+        <br
+        /><em>(*) This API does not require a permission, but a <code>message_display_action</code> manifest key.</em>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/messageDisplayScripts.html">messageDisplayScripts</a>
+      </td>
+      <td style="text-align:left">messagesModify</td>
+      <td style="text-align:left">Functionally it is the same as the <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/contentScripts">contentScripts</a> API
+        except that it works on the document of email messages being displayed.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/messages.html">messages</a>
+      </td>
+      <td style="text-align:left">
+        <p>messagesRead,</p>
+        <p>messagesMove,
+          <br />accountsRead, (*)</p>
+      </td>
+      <td style="text-align:left">
+        <p>Enables an extension to list, search, read, copy, move and delete messages.</p>
+        <p><em>(*) The <code>messagesRead</code> permission is needed to list, read, mark and tag messages.<br />The <code>messagesMove</code> permission is needed to copy, move and delete messages.</em>
+        </p>
+        <p><em>The <code>accountsRead</code> permission is needed by any function/event which involves folder information.</em>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/tabs.html">tabs</a>
+      </td>
+      <td style="text-align:left">
+        <p>activeTab,</p>
+        <p>tabs (*)</p>
+      </td>
+      <td style="text-align:left">
+        <p>Enables an extension to interact with Thunderbirds tab system. It allows
+          to create, modify, and rearrange tabs and to communicate with scripts in
+          tabs.</p>
+        <p><em>(*) The <code>tabs</code> or <code>activeTab</code> permission is only needed if the <code>url</code>, <code>favIconUrl </code>or <code>title </code>information of tabs are accessed.<br />The <code>tab</code> permission will allow access to that information in all tabs, the <code>activeTab</code> permission restricts that to the active tab. <br />Note: The <code>activeTab</code> permission implies  the <code>&lt;all_urls&gt;</code> host permission for the active tab.</em>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/windows.html">windows</a>
+      </td>
+      <td style="text-align:left">tabs (*)</td>
+      <td style="text-align:left">
+        <p>Enables extensions to interact with Thunderbird windows which can contain
+          webpage tabs and also other window types like composer or address books
+          that cannot contain webpage tabs.. You can use this API to create, modify,
+          and rearrange windows.</p>
+        <p><em>(*) The tabs permission is needed to populate the <code>url</code>, <code>favIconUrl </code>and <code>title</code> information in the tabs member of the </em>
+          <a
+          href="https://thunderbird-webextensions.readthedocs.io/en/latest/windows.html#window"><em><code>Window</code></em>
+            </a><em> object.</em>
+        </p>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 You can find more information in the [Thunderbird WebExtensions API documentation ](https://thunderbird-webextensions.readthedocs.io/).
 
@@ -67,10 +258,11 @@ _Please be aware, that MDN is dedicated to browsers and of course to Firefox. So
       <td style="text-align:left">
         <p>Enables an extension to get and set cookies, and be notified when they
           change.</p>
-        <p>
-          <br />(*) In addition to the <code>cookies</code> permission, this API also needs
-          a <a href="https://developer.mozilla.org/en-US/Add-ons/WebExtensions/manifest.json/permissions#Host_permissions">host permissions</a> for
-          the sites whose cookies are to be accessed. See <a href="https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/cookies#Permissions">cookie Permissions</a>.</p>
+        <p><em>(*) In addition to the <code>cookies</code> permission, this API also needs a </em>
+          <a
+          href="https://developer.mozilla.org/en-US/Add-ons/WebExtensions/manifest.json/permissions#Host_permissions"><em>host permissions</em>
+            </a><em> for the sites whose cookies are to be accessed. See </em><a href="https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/cookies#Permissions"><em>cookie Permissions</em></a><em>.</em>
+        </p>
       </td>
     </tr>
     <tr>
@@ -127,8 +319,8 @@ _Please be aware, that MDN is dedicated to browsers and of course to Firefox. So
       </td>
       <td style="text-align:left">management (*)</td>
       <td style="text-align:left">Gets information about installed add-ons.
-        <br />
-        <br />(*) Permission is only needed to access information of other add-on.</td>
+        <br /><em>(*) Permission is only needed to access information of other add-on. </em>
+      </td>
     </tr>
     <tr>
       <td style="text-align:left"><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/notifications">notifications</a>
@@ -159,10 +351,11 @@ _Please be aware, that MDN is dedicated to browsers and of course to Firefox. So
         <p>Enables an extension to proxy web requests. Use the <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/proxy/onRequest"><code>proxy.onRequest</code></a> event
           listener to intercept web requests, and return an object that describes
           whether and how to proxy them.</p>
-        <p>
-          <br />(*) In addition to the <code>proxy</code> permission, this API also needs
-          a <a href="https://developer.mozilla.org/en-US/Add-ons/WebExtensions/manifest.json/permissions#Host_permissions">host permissions</a> for
-          the URLs of intercepted requests.</p>
+        <p><em>(*) In addition to the <code>proxy</code> permission, this API also needs a </em>
+          <a
+          href="https://developer.mozilla.org/en-US/Add-ons/WebExtensions/manifest.json/permissions#Host_permissions"><em>host permissions</em>
+            </a><em> for the URLs of intercepted requests.</em>
+        </p>
       </td>
     </tr>
     <tr>
@@ -224,11 +417,11 @@ _Please be aware, that MDN is dedicated to browsers and of course to Firefox. So
         which includes websocket requests on <code>ws://</code> and <code>wss://</code>.
         The event listener receives detailed information about the request and
         can modify or cancel the request.
-        <br />
-        <br />(*) In addition to the <code>webRequest</code> permission, this API also
-        needs the <a href="https://developer.mozilla.org/en-US/Add-ons/WebExtensions/manifest.json/permissions#Host_permissions">host permission</a> for
-        the requested host. To use the blocking feature, the extension must also
-        have the <code>webRequestBlocking</code> API permission.</td>
+        <br /><em>(*)  In addition to the <code>webRequest</code> permission, this API also needs the </em>
+        <a
+        href="https://developer.mozilla.org/en-US/Add-ons/WebExtensions/manifest.json/permissions#Host_permissions"><em>host permission</em>
+          </a><em> for the requested host. To use the blocking feature, the extension must also have the <code>webRequestBlocking</code> API permission.</em>
+      </td>
     </tr>
   </tbody>
 </table>

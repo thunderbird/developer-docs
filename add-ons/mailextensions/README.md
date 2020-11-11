@@ -10,7 +10,7 @@ MailExtensions are based on the WebExtension technology, which is also used by m
 
 ![](../../.gitbook/assets/webext_diagram%20%281%29.png)
 
-Unlike older legacy extensions, MailExtensions access functionality through stable WebExtension APIs and do not have direct access to Thunderbird's internal components or UI elements. Consequently, MailExtensions are less likely to break and do not need frequent and complex updates when Thunderbirds internals change.
+Unlike older legacy extensions, MailExtensions access functionality through stable WebExtension APIs and do not have direct access to Thunderbird's internal components or UI elements. Consequently, MailExtensions are less likely to break and do not need frequent and complex updates when Thunderbird's internals change.
 
 The main configuration file of a MailExtension is a file called `manifest.json`, also referred to as the _manifest_. Besides defining some of the extension's basic properties like name, description and ID, it also defines how the extension hooks into Thunderbird:
 
@@ -73,7 +73,7 @@ The following manifest keys define basic properties:
 The `name` and the `description` of the given example are only in English. [This MDN article about **Localization**](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Internationalization#Internationalizing_manifest.json) explains how to use the WebExtension i18n API to localize these keys.
 {% endhint %}
 
-This `applications.gecko` manifest key defines the following properties:
+The `applications.gecko` manifest key defines the following properties:
 
 * `id` : The id serves as a unique identifier for the extension, common practice is to use `add-on-name@your-website`. Providing an id is mandatory in order to install the extension.
 * `strict_min_version`: Defines the lowest targeted version of Thunderbird.

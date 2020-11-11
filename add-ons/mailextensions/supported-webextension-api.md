@@ -18,7 +18,7 @@ Thunderbird provides the following messenger related WebExtension APIs, which ar
       </td>
       <td style="text-align:left">accountsRead</td>
       <td style="text-align:left">Enables an extension to access information of accounts and identities
-        configuered in Thunderbird&apos;s account manager.</td>
+        configured in Thunderbird&apos;s account manager.</td>
     </tr>
     <tr>
       <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/addressBooks.html">addressBooks</a>
@@ -205,7 +205,7 @@ You can find more information in the [Thunderbird WebExtensions API documentatio
 
 ## Firefox WebExtension APIs
 
-As Thunderbird is based on the same code base as Firefox, we can reuse many of the WebExtension APIs provided by Firefox. Some methods listed on the API pages may not be supported. Each API page should include a compatibility chart and if that lists support for Firefox, it works in Thunderbird as well. 
+As Thunderbird is based on the same code base as Firefox, we can reuse many of the WebExtension APIs provided by Firefox. The APIs listed in the following table are known to work with Thunderbird. Some methods listed on the API pages may not be supported. Each API page should include a compatibility chart and if that lists support for Firefox, it works in Thunderbird as well. 
 
 _Please be aware, that MDN is dedicated to browsers and of course to Firefox. Some information listed there may not apply to Thunderbird._
 

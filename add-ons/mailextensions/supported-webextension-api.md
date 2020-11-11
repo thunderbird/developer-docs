@@ -106,7 +106,7 @@ Thunderbird provides the following messenger related WebExtension APIs, which ar
       </td>
       <td style="text-align:left">accountsFolders (*)</td>
       <td style="text-align:left">
-        <p>Enables an extension to interact with Thunderbird main window.</p>
+        <p>Enables an extension to interact with Thunderbird&apos;s main window.</p>
         <p><em>(*) The <code>accountsFolders</code> permission is needed to set the currently displayed folder.</em>
         </p>
       </td>
@@ -187,10 +187,10 @@ Thunderbird provides the following messenger related WebExtension APIs, which ar
       </td>
       <td style="text-align:left">tabs (*)</td>
       <td style="text-align:left">
-        <p>Enables extensions to interact with Thunderbird windows which can contain
-          webpage tabs and also other window types like composer or address books
-          that cannot contain webpage tabs.. You can use this API to create, modify,
-          and rearrange windows.</p>
+        <p>Enables an extension to interact with Thunderbird&apos;s windows which
+          can contain webpage tabs and also other window types like composer or address
+          books that cannot contain webpage tabs.. You can use this API to create,
+          modify, and rearrange windows.</p>
         <p><em>(*) The tabs permission is needed to populate the <code>url</code>, <code>favIconUrl </code>and <code>title</code> information in the tabs member of the </em>
           <a
           href="https://thunderbird-webextensions.readthedocs.io/en/latest/windows.html#window"><em><code>Window</code></em>

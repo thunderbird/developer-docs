@@ -277,7 +277,7 @@ You can find more information in the [Thunderbird WebExtensions API documentatio
 
 As Thunderbird is based on the same code base as Firefox, we can reuse many of the WebExtension APIs provided by Firefox. The APIs listed in the following table are known to work with Thunderbird. Some methods listed on the API pages may not be supported. Each API page should include a compatibility chart and if that lists support for Firefox, it works in Thunderbird as well. 
 
-_Please be aware, that MDN is dedicated to browsers and of course to Firefox. Some information listed there may not apply to Thunderbird._
+_The following APIs are linked to their MDN description pages. Please be aware, that MDN is dedicated to browsers and of course to Firefox. Some information listed on MDN may not apply to Thunderbird._
 
 <table>
   <thead>

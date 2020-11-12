@@ -63,7 +63,7 @@ The [`menus`](https://thunderbird-webextensions.readthedocs.io/en/latest/menus.h
     <tr>
       <th style="text-align:left">Context</th>
       <th style="text-align:left">Description</th>
-      <th style="text-align:left"></th>
+      <th style="text-align:left">Example</th>
     </tr>
   </thead>
   <tbody>

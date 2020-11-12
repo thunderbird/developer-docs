@@ -2,7 +2,7 @@
 description: Descriptions of all WebExtension API supported by Thunderbird.
 ---
 
-# Supported WebExtension API
+# Supported WebExtension APIs
 
 ## Thunderbird WebExtension APIs
 

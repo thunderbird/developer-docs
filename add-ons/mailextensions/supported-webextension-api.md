@@ -149,7 +149,8 @@ Thunderbird provides the following messenger related WebExtension APIs, which ar
       <td style="text-align:left">
         <p>menus,
           <br /><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/menus.html#overridecontext-contextoptions">menus.overrideContext</a>,</p>
-        <p>accountsRead, messagesRead</p>
+        <p>accountsRead, messagesRead,</p>
+        <p>activeTab</p>
       </td>
       <td style="text-align:left">
         <p>Enables an extension to add (context-) menu entries to Thunderbird menus.
@@ -161,6 +162,8 @@ Thunderbird provides the following messenger related WebExtension APIs, which ar
           <li>The <code>menus.overrideContext</code> permission is needed to <a href="https://thunderbird-webextensions.readthedocs.io/en/latest/menus.html#overridecontext-contextoptions">override a default context</a>.</li>
           <li>The <code>accountsRead</code> and <code>messagesRead</code> permissions are
             needed to populate the associated fields in the <a href="https://thunderbird-webextensions.readthedocs.io/en/latest/menus.html#onclickdata"><code>OnClickedData</code></a> object.</li>
+          <li>The <code>activeTab</code> permission is (currently) needed to get advanced
+            information for the <code>onShown</code> event (see <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1664423">bug 1664423</a>)</li>
         </ul>
       </td>
     </tr>

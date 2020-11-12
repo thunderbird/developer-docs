@@ -215,7 +215,13 @@ Content scripts \(including [compose scripts](https://thunderbird-webextensions.
 
 ### Option Scripts
 
-todo
+Access to WebExtension APIs in options pages using  `"open_in_tab":false` is currently broken. Use `getBackgroundPage()` to replace the `browser` object of the options page with the `browser` object of your background page.
+
+```javascript
+const browser = window.browser.extension.getBackgroundPage().browser;
+```
+
+
 
 ### CloudFile Management Scripts
 

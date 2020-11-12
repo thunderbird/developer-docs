@@ -230,10 +230,18 @@ _Please be aware, that MDN is dedicated to browsers and of course to Firefox. So
     <tr>
       <td style="text-align:left"><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/clipboard">clipboard</a>
       </td>
-      <td style="text-align:left">clipboardWrite</td>
-      <td style="text-align:left">Enables an extension to copy items to the system clipboard. Currently
-        the API only supports copying images, but it&apos;s intended to support
-        copying text and HTML in the future.</td>
+      <td style="text-align:left">
+        <p>clipboardWrite,</p>
+        <p>clipboardRead (*)</p>
+      </td>
+      <td style="text-align:left">
+        <p>Enables an extension to copy items to the system clipboard. Currently
+          the API only supports copying images, but it&apos;s intended to support
+          copying text and HTML in the future.</p>
+        <p>(*) The <code>clipboardRead</code> permission is not used by this API but
+          is listed here for completeness. To read from the clipboard, the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API">Clipboard Web API</a> has
+          to be used and needs the <code>clipboardRead</code> permission.</p>
+      </td>
     </tr>
     <tr>
       <td style="text-align:left"><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/contentScripts">contentScripts</a>

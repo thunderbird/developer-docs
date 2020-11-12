@@ -1,3 +1,9 @@
+---
+description: >-
+  Descriptions and examples of MailExtension APIs to interact with Thunderbird's
+  user interface.
+---
+
 # Supported UI Elements
 
 ## Browser Action Button

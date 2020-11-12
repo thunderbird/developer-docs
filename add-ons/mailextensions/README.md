@@ -215,19 +215,21 @@ Content scripts \(including [compose scripts](https://thunderbird-webextensions.
 
 ### Option Scripts
 
-Access to WebExtension APIs in options pages using  `"open_in_tab":false` is currently broken. Use `getBackgroundPage()` to replace the `browser` object of the options page with the `browser` object of your background page.
+Access to WebExtension APIs in options pages using  `options_ui.open_in_tab: false` is currently broken. Use `getBackgroundPage()` to replace the `browser` object of the options page with the `browser` object of your background page.
 
 ```javascript
 const browser = window.browser.extension.getBackgroundPage().browser;
 ```
 
-
-
 ### CloudFile Management Scripts
 
-A script loaded from a CloudFile[ `management_url`](https://thunderbird-webextensions.readthedocs.io/en/latest/cloudFile.html#manifest-file-properties) has access to a limited subset of the WebExtension APIs: cloudFile, extension, i18n, runtime, storage.
+A script loaded from a CloudFile[ `management_url`](https://thunderbird-webextensions.readthedocs.io/en/latest/cloudFile.html#manifest-file-properties) has access to a limited subset of the WebExtension APIs: 
 
-
+* cloudFile
+* extension
+* i18n
+* runtime
+* storage
 
 ##  Creating MailExtensions: Examples
 

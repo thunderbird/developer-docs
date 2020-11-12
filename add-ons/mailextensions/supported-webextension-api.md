@@ -250,7 +250,7 @@ Thunderbird provides the following messenger related WebExtension APIs, which ar
       <td style="text-align:left">
         <p>Enables an extension to interact with Thunderbird&apos;s windows which
           can contain webpage tabs and also other window types like composer or address
-          books that cannot contain webpage tabs.. You can use this API to create,
+          books that cannot contain webpage tabs. You can use this API to create,
           modify, and rearrange windows.</p>
         <p>
           <br /><em>Permission info:</em>
@@ -324,9 +324,9 @@ _Please be aware, that MDN is dedicated to browsers and of course to Firefox. So
           <br /><em>Permission info:</em>
         </p>
         <ul>
-          <li>There is no <code>contentScripts</code> API permission, but an extension
-            must have the appropriate <a href="https://developer.mozilla.org/en-US/Add-ons/WebExtensions/manifest.json/permissions#Host_permissions">host permissions</a> for
-            any patterns it passes to <code>register()</code>.</li>
+          <li>This API does not require a dedicated permission, but an appropriate
+            <a
+            href="https://developer.mozilla.org/en-US/Add-ons/WebExtensions/manifest.json/permissions#Host_permissions">host permission</a>for any patterns it passes to <code>register()</code>.</li>
         </ul>
       </td>
     </tr>

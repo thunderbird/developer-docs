@@ -63,10 +63,10 @@ The most commonly used manifest keys are explained below.
 
 The following manifest keys define basic properties:
 
-* `manifest_version`: mandatory key to signal compatibility to Thunderbird, must be set to `2`
-* `name` : the name of the extension
+* `manifest_version`: _mandatory key_ to signal compatibility to Thunderbird, must be set to `2`
+* `name` : _mandatory key_ to set the name of the extension
+* `version` : _mandatory key_ to define a number that denotes the version of the extension
 * `description` : a brief description of what the extension does
-* `version` : a number that denotes the version of the extension
 * `author` : should be the name of a person or company representing the extensions developer
 
 {% hint style="info" %}
@@ -75,7 +75,7 @@ The `name` and the `description` of the given example are only in English. [This
 
 The `applications.gecko` manifest key defines the following properties:
 
-* `id` : The id serves as a unique identifier for the extension, common practice is to use `add-on-name@your-website`. Providing an id is mandatory in order to install the extension.
+* `id` : The id serves as a unique identifier for the extension, common practice is to use `add-on-name@your-website`. Providing an id is mandatory in order upload an extension to ATN or to be able to install it from an XPI file.
 * `strict_min_version`: Defines the lowest targeted version of Thunderbird.
 * `strict_max_version`:  Defines the highest targeted version of Thunderbird. It can be set to a specific version or a broader match to limit it to a branch \(for example `78.*`\). 
 

@@ -58,14 +58,121 @@ If a `default_popup` is defined, a popup will be opened and the defined html pag
 
 The [`menus`](https://thunderbird-webextensions.readthedocs.io/en/latest/menus.html) API allows modifying Thunderbird's menus by adding or overriding menu items. The menu items can be added to different menus based on the provided `context` type. The following values are currently supported:
 
-| Context | Description |  |
-| :--- | :--- | :--- |
-| tab | Context menu of a tab ribbon. | ![](../../.gitbook/assets/tab.png) |
-| link | Context menu of a link in a message display tab. | ![](../../.gitbook/assets/link.png) |
-| selection | Context menu of selected text in a message display tab. | ![](../../.gitbook/assets/selection.png) |
-| message\_list | Context menu in the message list. | ![](../../.gitbook/assets/message_list.png) |
-| folder\_pane | Context menu in the folder pane. | ![](../../.gitbook/assets/folder_pane.png) |
-| page | Context menu in a message display page, if its not the context menu of a selection, a link or image etc. | ![](../../.gitbook/assets/page.png) |
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Context</th>
+      <th style="text-align:left">Description</th>
+      <th style="text-align:left"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left"><code>tab</code>
+      </td>
+      <td style="text-align:left">Context menu of tab ribbons.</td>
+      <td style="text-align:left">
+        <img src="../../.gitbook/assets/tab.png" alt/>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>message_list</code>
+      </td>
+      <td style="text-align:left">Context menu of the message list area of a mail tab. Not limited to a
+        message list entry.</td>
+      <td style="text-align:left">
+        <img src="../../.gitbook/assets/message_list.png" alt/>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>folder_pane</code>
+      </td>
+      <td style="text-align:left">Context menu of the folder pane of mail tabs. Not limited to a folder
+        entry.</td>
+      <td style="text-align:left">
+        <img src="../../.gitbook/assets/folder_pane.png" alt/>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>link</code>
+      </td>
+      <td style="text-align:left">
+        <p>Context menu of links in WebExtension windows, in web tabs or in message
+          display tabs.</p>
+        <p></p>
+        <p>Limited to content areas.</p>
+      </td>
+      <td style="text-align:left">
+        <img src="../../.gitbook/assets/link.png" alt/>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>selection</code>
+      </td>
+      <td style="text-align:left">
+        <p>Context menu in WebExtension windows, web tabs or message display tabs,
+          if any text has been selected.</p>
+        <p></p>
+        <p>Limited to content areas.</p>
+      </td>
+      <td style="text-align:left">
+        <img src="../../.gitbook/assets/selection.png" alt/>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>editable</code>,
+        <br /><code>password</code>
+      </td>
+      <td style="text-align:left">
+        <p>Context menu of text/password input fields in WebExtension windows, web
+          tabs or message display tabs.</p>
+        <p></p>
+        <p>Limited to content areas.</p>
+      </td>
+      <td style="text-align:left">
+        <p></p>
+        <p>
+          <img src="../../.gitbook/assets/editable.png" alt/>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>image</code>,
+        <br /><code>audio</code>,
+        <br /><code>video</code>
+      </td>
+      <td style="text-align:left">Context menu of embedded images, audio or video players in WebExtension
+        windows, web tabs or message display tabs.
+        <br />
+        <br />Limited to content areas.</td>
+      <td style="text-align:left">
+        <img src="../../.gitbook/assets/image.png" alt/>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>page</code>,
+        <br /><code>frame</code>
+      </td>
+      <td style="text-align:left">
+        <p>Context menu of WebExtension windows, web tabs or message display tabs,
+          if none of the other content contexts apply (link, selection, image, audio,
+          video, editable, password).</p>
+        <p></p>
+        <p>If the page is loaded inside a frame, the <code>frame</code> context applies,
+          otherwise the <code>page</code> context. Limited to content areas.</p>
+      </td>
+      <td style="text-align:left">
+        <img src="../../.gitbook/assets/page.png" alt/>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><code>all</code>
+      </td>
+      <td style="text-align:left">All allowed contexts, excluding <code>tab</code>.</td>
+      <td style="text-align:left"></td>
+    </tr>
+  </tbody>
+</table>
 
 \`\`
 

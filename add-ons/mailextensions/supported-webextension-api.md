@@ -163,7 +163,7 @@ Thunderbird provides the following messenger related WebExtension APIs, which ar
           <br /><em>Permission info:</em>
         </p>
         <ul>
-          <li>The <code>menus.overrideContext</code> permission is needed to <a href="https://thunderbird-webextensions.readthedocs.io/en/latest/menus.html#overridecontext-contextoptions">override a default context</a>.</li>
+          <li>The <code>menus.overrideContext</code> permission is needed to <a href="https://thunderbird-webextensions.readthedocs.io/en/latest/menus.html#overridecontext-contextoptions">override a default menu entry</a>.</li>
           <li>The <code>accountsRead</code> and <code>messagesRead</code> permissions are
             needed to populate the associated fields in the <a href="https://thunderbird-webextensions.readthedocs.io/en/latest/menus.html#onclickdata"><code>OnClickedData</code></a> object.</li>
           <li>The <code>activeTab</code> permission is (currently) needed to get advanced

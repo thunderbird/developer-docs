@@ -4,7 +4,7 @@ description: Descriptions of all manifest keys supported by Thunderbird.
 
 # Supported Manifest Keys
 
-_Most manifest keys in the following table are linked to their MDN description pages. Please be aware, that MDN is dedicated to browsers and of course to Firefox. Some information listed there may not apply to Thunderbird._
+_Multiple manifest keys in the following table are common to Thunderbird and Firefox and link to MDN description pages. Please be aware, that MDN is dedicated to browsers and of course to Firefox. Some information listed there may not apply to Thunderbird._
 
 <table>
   <thead>

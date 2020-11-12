@@ -37,12 +37,12 @@ The main configuration file of a MailExtension is a file called `manifest.json`,
     "background": {
         "scripts": [
             "background.js"
-        ],
-    }
+        ]
+    },
     "options_ui": {
       "page": "options/options.html",
       "open_in_tab": false,
-      "browser_style": true,
+      "browser_style": true
     },
     "permissions": [
       "storage"
@@ -84,9 +84,9 @@ The `applications.gecko` manifest key defines the following properties:
         "gecko": {
             "id": "helloworld@yoursite.com",
             "strict_min_version": "78.0",
-            "strict_max_version": "78.*",
+            "strict_max_version": "78.*"
         }
-    },
+    }
 ```
 
 ### Extension Icons
@@ -98,7 +98,7 @@ The `icons` manifest key tells Thunderbird the location of icons, which should b
         "64": "images/icon-64px.png",
         "32": "images/icon-32px.png",
         "16": "images/icon-16px.png"
-    },
+    }
 ```
 
 ### Background Page
@@ -110,10 +110,10 @@ Each MailExtension has a hidden background page. Its main purpose is to load and
 ```javascript
     "background": {
         "scripts": [
-            "common.js"
+            "common.js",
             "background.js"
-        ],
-    },
+        ]
+    }
 ```
 
 This will create the background page on-the-fly and load the provided scripts. This is identical to the following background page definition.
@@ -123,7 +123,7 @@ This will create the background page on-the-fly and load the provided scripts. T
 ```javascript
     "background": {
         "page": "background.html"
-    },
+    }
 ```
 
 The defined background page can then load the JavaScript files:
@@ -144,15 +144,13 @@ The defined background page can then load the JavaScript files:
 
 The `options_ui` manifest key defines the standard MailExtension options page. The defined page will be displayed in the add-on manager.
 
-{% code title="manifest.json" %}
 ```javascript
     "options_ui": {
       "page": "options/options.html",
       "open_in_tab": false,
-      "browser_style": true,
-    },
+      "browser_style": true
+    }
 ```
-{% endcode %}
 
 The appearance of the options page can be configured as follows:
 
@@ -182,7 +180,7 @@ A core principle of the WebExtension technology is the use of permissions, so us
 ```javascript
     "permissions": [
       "storage"
-    ],
+    ]
 ```
 
 As permissions allow WebExtensions to use certain APIs, information about supported permissions can be found in the following document:
@@ -211,6 +209,20 @@ A list of all WebExtension APIs supported by Thunderbird can be found in the fol
 
 {% page-ref page="supported-webextension-api.md" %}
 
+### Content Scripts
+
+Content scripts \(including [compose scripts](https://thunderbird-webextensions.readthedocs.io/en/latest/composeScripts.html) and [message display scripts](https://thunderbird-webextensions.readthedocs.io/en/latest/messageDisplayScripts.html)\) can only access [a small subset of the WebExtension APIs](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Content_scripts#WebExtension_APIs), but they can [communicate with background scripts](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Content_scripts#Communicating_with_background_scripts) using a messaging system, and thereby indirectly access the WebExtension APIs.
+
+### Option Scripts
+
+todo
+
+### CloudFile Management Scripts
+
+A script loaded from a CloudFile[ `management_url`](https://thunderbird-webextensions.readthedocs.io/en/latest/cloudFile.html#manifest-file-properties) has access to a limited subset of the WebExtension APIs: cloudFile, extension, i18n, runtime, storage.
+
+
+
 ##  Creating MailExtensions: Examples
 
 Our [sample-extensions repository](https://github.com/thundernest/sample-extensions/tree/master/experiment) includes a few simple MailExtensions, which showcase different APIs and which will get you started to create your own extension.
@@ -234,7 +246,7 @@ The currently available WebExtension APIs are not yet sufficient, as some areas 
 				"events": ["startup"]
 			}
 		}
-	}, 
+	}
 ```
 
 That API can then be used by the MailExtension like any other WebExtension API.

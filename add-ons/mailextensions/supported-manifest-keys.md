@@ -39,18 +39,6 @@ _Several manifest keys in the following table are common to Thunderbird and Fire
         using HTML, CSS, and JavaScript.</td>
     </tr>
     <tr>
-      <td style="text-align:left"><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/chrome_settings_overrides">chrome_settings_overrides</a>
-      </td>
-      <td style="text-align:left"><b>[to be confirmed]</b>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">c<a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/chrome_url_overrides">hrome_url_overrides</a>
-      </td>
-      <td style="text-align:left"><b>[to be confirmed]</b>
-      </td>
-    </tr>
-    <tr>
       <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/cloudFile.html">cloud_file</a>
       </td>
       <td style="text-align:left">Defines a file link provider, which can be used to upload large attachments
@@ -115,16 +103,10 @@ _Several manifest keys in the following table are common to Thunderbird and Fire
           </a>keys, respectively. This is a <a href="https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Internationalization#Internationalizing_manifest.json">localizable property</a>.</td>
     </tr>
     <tr>
-      <td style="text-align:left"><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/devtools_page">devtools_page</a>
-      </td>
-      <td style="text-align:left"><b>[to be confirmed]</b> - Use this key to enable your extension to extend
-        the built-in devtools.</td>
-    </tr>
-    <tr>
       <td style="text-align:left"><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/dictionaries">dictionaries</a>
       </td>
-      <td style="text-align:left"><b>[to be confirmed]</b><em> - </em>The <code>dictionaries</code> key specifies
-        the <code>locale_code</code> for which your extension supplies a dictionary.</td>
+      <td style="text-align:left">The <code>dictionaries</code> key specifies the <code>locale_code</code> for
+        which your extension supplies a dictionary.</td>
     </tr>
     <tr>
       <td style="text-align:left"><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/homepage_url">homepage_url</a>
@@ -186,7 +168,9 @@ _Several manifest keys in the following table are common to Thunderbird and Fire
     <tr>
       <td style="text-align:left"><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/protocol_handlers">protocol_handlers</a>
       </td>
-      <td style="text-align:left"><b>[to be confirmed]</b>
+      <td style="text-align:left">This key registers one or more web-based protocol handlers. It allows
+        to register a website or an extension page as a handler for a particular
+        protocol. <em>Note: The default click handler in Thunderbird web tabs is currently not working correctly with custom defined protocol handlers. It does work in WebExtension windows.</em>
       </td>
     </tr>
     <tr>
@@ -216,9 +200,9 @@ _Several manifest keys in the following table are common to Thunderbird and Fire
     <tr>
       <td style="text-align:left"><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/user_scripts">user_scripts</a>
       </td>
-      <td style="text-align:left"><b>[to be confirmed]</b> - Instructs the browser to load a script packaged
-        in the extension, known as the API script, this script is used to export
-        a set of custom API methods for use in user scripts.</td>
+      <td style="text-align:left">Instructs the browser to load a script packaged in the extension, known
+        as the API script, this script is used to export a set of custom API methods
+        for use in user scripts.</td>
     </tr>
     <tr>
       <td style="text-align:left"><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/version">version</a>

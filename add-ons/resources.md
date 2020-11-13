@@ -84,7 +84,7 @@ description: >-
           on the Mozilla platform, some of the Mozilla documentation is valid for
           Thunderbird as well. Useful MDN pages on WebExtension are:</p>
         <ul>
-          <li>I<a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">ntroduction to WebExtensions</a>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions">Introduction to WebExtensions</a>
           </li>
           <li><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json">manifest.json</a>
           </li>

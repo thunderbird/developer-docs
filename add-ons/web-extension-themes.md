@@ -4,13 +4,11 @@ description: How to create Themes for Thunderbird.
 
 # A Guide to Themes
 
-A Theme is a Thunderbird add-on that allows to change the appearance of Thunderbird.
+A Theme is a Thunderbird add-on that allows to change the appearance of Thunderbird. This document covers the following topics:
 
-## Dynamic Themes
-
-Dynamic themes are actually MailExtensions, that use the [`theme`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/theme) API to do more interesting things with the look of Thunderbird. For instance, [one example](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/Themes/Theme_concepts#Dynamic_themes) used in the Firefox documentation is a dynamic theme that changes the theme colors based on the time of day.
-
-{% page-ref page="mailextensions/" %}
+* [Static Themes](web-extension-themes.md#static-themes)
+* [Dynamic Themes](web-extension-themes.md#dynamic-themes)
+* [Theming of message-compose-windows and message-display-tabs](web-extension-themes.md#theming-of-message-compose-windows-and-message-display-tabs)
 
 ## Static Themes
 
@@ -156,5 +154,26 @@ Here is a `manifest.json` from a Theme that uses all the above features, thanks 
     }
   }
 }
+```
+
+## Dynamic Themes
+
+Dynamic themes are actually MailExtensions, that use the [`theme`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/theme) API instead of a [`theme`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/theme) manifest key. They can set the same theme properties like static themes, but they can change them dynamically. For instance, [one example](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/Themes/Theme_concepts#Dynamic_themes) used in the Firefox documentation is a dynamic theme that changes the theme colors based on the time of day.
+
+{% page-ref page="mailextensions/" %}
+
+## Theming of message-compose-windows and message-display-tabs
+
+The default theming properties do not support the Thunderbird specific message-compose-windows and the message-display-tabs. These can be manipulated by injecting CSS files using the following WebExtension API methods:
+
+* [messageDisplayScripts.register\(\)](https://thunderbird-webextensions.readthedocs.io/en/latest/messageDisplayScripts.html#register-messagedisplayscriptoptions)
+* [composeScripts.register\(\)](https://thunderbird-webextensions.readthedocs.io/en/latest/composeScripts.html#register-composescriptoptions)
+
+To inject the file `compose.css` into the message-compose-window, register it in your background script as follows:
+
+```javascript
+messenger.composeScripts.register({
+  css : [ { file: "compose.css"} ]
+});
 ```
 

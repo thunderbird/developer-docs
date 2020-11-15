@@ -8,7 +8,7 @@ A Theme is a Thunderbird add-on that allows to change the appearance of Thunderb
 
 * [Static Themes](web-extension-themes.md#static-themes)
 * [Dynamic Themes](web-extension-themes.md#dynamic-themes)
-* [Theming of message-compose-windows and message-display-tabs](web-extension-themes.md#theming-of-message-compose-windows-and-message-display-tabs)
+* [Theming of message-compose-windows and message-display-tabs](web-extension-themes.md#theming-message-compose-windows-and-message-display-tabs)
 
 ## Static Themes
 

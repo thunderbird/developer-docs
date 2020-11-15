@@ -162,7 +162,7 @@ Dynamic themes are actually MailExtensions, that use the [`theme`](https://devel
 
 {% page-ref page="mailextensions/" %}
 
-## Theming of message-compose-windows and message-display-tabs
+## Theming message-compose-windows and message-display-tabs
 
 The default theming properties do not support the Thunderbird specific message-compose-windows and the message-display-tabs. These can be manipulated by injecting CSS files using the following WebExtension API methods:
 

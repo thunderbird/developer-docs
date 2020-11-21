@@ -16,6 +16,7 @@
   * [Using Mercurial Queues](thunderbird-development/fixing-a-bug/using-mercurial-queues.md)
   * [Using Mercurial Bookmarks](thunderbird-development/fixing-a-bug/using-mercurial-bookmarks.md)
   * [Lint and Format Code](thunderbird-development/fixing-a-bug/lint-and-format-code.md)
+  * [Using ESLint to Format Javascript Code](thunderbird-development/fixing-a-bug/using-eslint.md)
   * [Try Server](thunderbird-development/fixing-a-bug/try-server.md)
   * [Landing a Patch](thunderbird-development/fixing-a-bug/landing-a-patch.md)
   * [Care and Feeding of the Tree](thunderbird-development/fixing-a-bug/care-and-feeding-of-the-tree.md)

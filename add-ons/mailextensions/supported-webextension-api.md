@@ -381,7 +381,7 @@ _The following APIs are linked to their MDN description pages. Please be aware, 
       </td>
     </tr>
     <tr>
-      <td style="text-align:left"><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/extension">extensions</a>
+      <td style="text-align:left"><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/extension">extension</a>
       </td>
       <td style="text-align:left"></td>
       <td style="text-align:left">Utilities related to an extension. Gets URLs to resources packages with

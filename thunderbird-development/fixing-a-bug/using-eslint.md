@@ -51,7 +51,7 @@ Some of us on the Thunderbird team use the VS Code editor with these plugins:
 * [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 
   VS Code plugin by Dirk Baeumer
-  
+
 ## More Details
 
 * ['Linting' on firefox-source-docs](https://firefox-source-docs.mozilla.org/tools/lint/index.html)

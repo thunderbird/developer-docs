@@ -15,10 +15,12 @@ Mozlint is a library that standardizes linter configuration and provides an inte
 
 ## Running Linters Locally
 
-You can run all the various linters in the tree using the `mach lint` command. Simply pass in the directory or file you wish to lint (defaults to current working directory):
-```
+You can run all the various linters in the tree using the `mach lint` command. Simply pass in the directory or file you wish to lint \(defaults to current working directory\):
+
+```text
 ./mach lint path/to/files
 ```
+
 If not you're familiar with using `mach lint` on Firefox code, see the Firefox [Linting](https://firefox-source-docs.mozilla.org/code-quality/lint/index.html) documentation to get started.
 
 ## Configuring Mozlint for Thunderbird
@@ -29,13 +31,14 @@ By default, `mach lint` is configured to check Firefox code. Thunderbird has its
 
 Because `--config-path` is always relative to the source root, you can set up an alias in `~/.mozbuild/machrc` so you don't have to remember the extra option. On Windows, you should find `machrc` at `C:\Users\<you>\.mozbuild\machrc`.
 
-Add these lines your`machrc`file. 
+Add these lines your`machrc`file.
+
 ```text
 [alias]
 commlint = lint --config-path=comm/tools/lint
 ```
 
-Now `mach commlint` is the same as running `mach --lint --config-path=comm/tools/lint`.  See [mach settings](https://firefox-source-docs.mozilla.org/mach/settings.html) for more details.
+Now `mach commlint` is the same as running `mach --lint --config-path=comm/tools/lint`. See [mach settings](https://firefox-source-docs.mozilla.org/mach/settings.html) for more details.
 
 ### Suite code
 

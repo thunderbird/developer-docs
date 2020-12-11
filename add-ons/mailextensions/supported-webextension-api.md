@@ -107,7 +107,7 @@ Thunderbird provides the following messenger related WebExtension APIs, which ar
       <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/composeScripts.html">composeScripts</a>
       </td>
       <td style="text-align:left">compose</td>
-      <td style="text-align:left">Functionally it is the same as the <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/contentScripts">contentScripts</a> API
+      <td style="text-align:left">Functionally is the same as the <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/contentScripts">contentScripts</a> API
         except that it works on the document of email messages during composition.</td>
     </tr>
     <tr>
@@ -198,7 +198,7 @@ Thunderbird provides the following messenger related WebExtension APIs, which ar
       <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/messageDisplayScripts.html">messageDisplayScripts</a>
       </td>
       <td style="text-align:left">messagesModify</td>
-      <td style="text-align:left">Functionally it is the same as the <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/contentScripts">contentScripts</a> API
+      <td style="text-align:left">Functionally is the same as the <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/contentScripts">contentScripts</a> API
         except that it works on the document of email messages being displayed.</td>
     </tr>
     <tr>
@@ -275,9 +275,11 @@ You can find more information in the [Thunderbird WebExtensions API documentatio
 
 ## Firefox WebExtension APIs
 
-As Thunderbird is based on the same code base as Firefox, we can reuse many of the WebExtension APIs provided by Firefox. The APIs listed in the following table are known to work with Thunderbird. Some methods listed on the API pages may not be supported. Each API page should include a compatibility chart and if that lists support for Firefox, it works in Thunderbird as well. 
+As Thunderbird is based on Firefox, many of its WebExtension APIs can be used in Thunderbird as well. The APIs listed in the following table are known to work with Thunderbird. 
 
-_The following APIs are linked to their MDN description pages. Please be aware, that MDN is dedicated to browsers and of course to Firefox. Some information listed on MDN may not apply to Thunderbird._
+{% hint style="warning" %}
+The following APIs link to their MDN description pages. Please be aware, that MDN is dedicated to web browsers \(not limited to Firefox\). Some information listed on MDN may not apply to Thunderbird and some API methods may not be supported. Each API page should include a compatibility chart and if that includes support for Firefox, it should work in Thunderbird as well.
+{% endhint %}
 
 <table>
   <thead>

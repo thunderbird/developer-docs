@@ -39,15 +39,15 @@ _Several manifest keys in the following table are common to Thunderbird and Fire
         using HTML, CSS, and JavaScript.</td>
     </tr>
     <tr>
-      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/cloudFile.html">cloud_file</a>
+      <td style="text-align:left"><a href="https://webextension-api.thunderbird.net/en/latest/cloudFile.html">cloud_file</a>
       </td>
       <td style="text-align:left">Defines a file link provider, which can be used to upload large attachments
         to a server, instead of attaching them directly to the email.</td>
     </tr>
     <tr>
-      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/commands.html">comm</a>
+      <td style="text-align:left"><a href="https://webextension-api.thunderbird.net/en/latest/commands.html">comm</a>
         <a
-        href="https://thunderbird-webextensions.readthedocs.io/en/latest/commands.html">ands</a>
+        href="https://webextension-api.thunderbird.net/en/latest/commands.html">ands</a>
       </td>
       <td style="text-align:left">Use the commands API to add keyboard shortcuts that trigger actions in
         your extension, for example, an action to open a browser action popup.</td>
@@ -71,7 +71,7 @@ _Several manifest keys in the following table are common to Thunderbird and Fire
           learn more about the implications of this.</td>
     </tr>
     <tr>
-      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/composeAction.html">compose_action</a>
+      <td style="text-align:left"><a href="https://webextension-api.thunderbird.net/en/latest/composeAction.html">compose_action</a>
       </td>
       <td style="text-align:left">A <a href="https://developer.thunderbird.net/add-ons/mailextensions/supported-ui-elements#compose-action-button">compose action is a button</a> that
         your extension can add to the toolbar of Thunderbird&apos;s message compose
@@ -134,7 +134,7 @@ _Several manifest keys in the following table are common to Thunderbird and Fire
       </td>
     </tr>
     <tr>
-      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/messageDisplayAction.html">message_display_action</a>
+      <td style="text-align:left"><a href="https://webextension-api.thunderbird.net/en/latest/messageDisplayAction.html">message_display_action</a>
       </td>
       <td style="text-align:left">A <a href="https://developer.thunderbird.net/add-ons/mailextensions/supported-ui-elements#message-display-action-button">message display action is a button</a> that
         your extension can add to the toolbar of Thunderbird&apos;s message display

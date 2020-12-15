@@ -27,7 +27,7 @@ description: >-
         as well.</td>
     </tr>
     <tr>
-      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/">MailExtension APIs Documentation</a>
+      <td style="text-align:left"><a href="https://webextension-api.thunderbird.net/en/latest/">MailExtension APIs Documentation</a>
       </td>
       <td style="text-align:left">
         <p>Documentation of all Extension APIs created specifically for Thunderbird.

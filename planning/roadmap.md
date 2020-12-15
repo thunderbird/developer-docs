@@ -240,7 +240,7 @@ Tracked in [bug 1574136](https://bugzilla.mozilla.org/show_bug.cgi?id=1574136).
 
 ### Extensions \[TB78\]
 
-Only WebExtension type extensions will be supported. We will continue to add useful WX APIs to support this effort. Traditional “full” access to everything can only be done through a Thunderbird [Web Extension Experiment](https://thunderbird-webextensions.readthedocs.io/en/latest/how-to/experiments.html). When a WX API is available, add-ons must use that instead. Experiments should be considered just that, and add-on authors are encouraged to work with us to enable WX APIs they need. Experiments can and will break - it’s fully up to add-on authors to keep up with these changes.
+Only WebExtension type extensions will be supported. We will continue to add useful WX APIs to support this effort. Traditional “full” access to everything can only be done through a Thunderbird [Web Extension Experiment](https://webextension-api.thunderbird.net/en/latest/how-to/experiments.html). When a WX API is available, add-ons must use that instead. Experiments should be considered just that, and add-on authors are encouraged to work with us to enable WX APIs they need. Experiments can and will break - it’s fully up to add-on authors to keep up with these changes.
 
 ### Troubleshooter \[TB2021\]
 

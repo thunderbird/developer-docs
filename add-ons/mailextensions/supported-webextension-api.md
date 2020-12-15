@@ -18,21 +18,21 @@ Thunderbird provides the following messenger related WebExtension APIs, which ar
   </thead>
   <tbody>
     <tr>
-      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/accounts.html">accounts</a>
+      <td style="text-align:left"><a href="https://webextension-api.thunderbird.net/en/latest/accounts.html">accounts</a>
       </td>
       <td style="text-align:left">accountsRead</td>
       <td style="text-align:left">Enables an extension to access information of accounts and identities
         configured in Thunderbird&apos;s account manager.</td>
     </tr>
     <tr>
-      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/addressBooks.html">addressBooks</a>
+      <td style="text-align:left"><a href="https://webextension-api.thunderbird.net/en/latest/addressBooks.html">addressBooks</a>
       </td>
       <td style="text-align:left">addressBooks</td>
       <td style="text-align:left">Enables an extension to access, modify, create and delete Thunderbird
         address books.</td>
     </tr>
     <tr>
-      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/browserAction.html">browserAction</a>
+      <td style="text-align:left"><a href="https://webextension-api.thunderbird.net/en/latest/browserAction.html">browserAction</a>
       </td>
       <td style="text-align:left"></td>
       <td style="text-align:left">
@@ -49,7 +49,7 @@ Thunderbird provides the following messenger related WebExtension APIs, which ar
       </td>
     </tr>
     <tr>
-      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/cloudFile.html">cloudFile</a>
+      <td style="text-align:left"><a href="https://webextension-api.thunderbird.net/en/latest/cloudFile.html">cloudFile</a>
       </td>
       <td style="text-align:left"></td>
       <td style="text-align:left">
@@ -66,7 +66,7 @@ Thunderbird provides the following messenger related WebExtension APIs, which ar
       </td>
     </tr>
     <tr>
-      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/commands.html">commands</a>
+      <td style="text-align:left"><a href="https://webextension-api.thunderbird.net/en/latest/commands.html">commands</a>
       </td>
       <td style="text-align:left"></td>
       <td style="text-align:left">
@@ -82,14 +82,14 @@ Thunderbird provides the following messenger related WebExtension APIs, which ar
       </td>
     </tr>
     <tr>
-      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/compose.html">compose</a>
+      <td style="text-align:left"><a href="https://webextension-api.thunderbird.net/en/latest/compose.html">compose</a>
       </td>
       <td style="text-align:left">compose</td>
       <td style="text-align:left">Enables an extension to open a new message compose window or react to
         events while the message is being composed.</td>
     </tr>
     <tr>
-      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/composeAction.html">composeAction</a>
+      <td style="text-align:left"><a href="https://webextension-api.thunderbird.net/en/latest/composeAction.html">composeAction</a>
       </td>
       <td style="text-align:left"></td>
       <td style="text-align:left">
@@ -104,35 +104,35 @@ Thunderbird provides the following messenger related WebExtension APIs, which ar
       </td>
     </tr>
     <tr>
-      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/composeScripts.html">composeScripts</a>
+      <td style="text-align:left"><a href="https://webextension-api.thunderbird.net/en/latest/composeScripts.html">composeScripts</a>
       </td>
       <td style="text-align:left">compose</td>
       <td style="text-align:left">Functionally is the same as the <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/contentScripts">contentScripts</a> API
         except that it works on the document of email messages during composition.</td>
     </tr>
     <tr>
-      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/contacts.html">contacts</a>
+      <td style="text-align:left"><a href="https://webextension-api.thunderbird.net/en/latest/contacts.html">contacts</a>
       </td>
       <td style="text-align:left">addressBooks</td>
       <td style="text-align:left">Enables an extension to access, modify, create and delete contacts in
         Thunderbird address books.</td>
     </tr>
     <tr>
-      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/folders.html">folders</a>
+      <td style="text-align:left"><a href="https://webextension-api.thunderbird.net/en/latest/folders.html">folders</a>
       </td>
       <td style="text-align:left">accountsFolders</td>
       <td style="text-align:left">Enables an extension to access, modify, create and delete mail account
         folders.</td>
     </tr>
     <tr>
-      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/mailingLists.html">mailingLists</a>
+      <td style="text-align:left"><a href="https://webextension-api.thunderbird.net/en/latest/mailingLists.html">mailingLists</a>
       </td>
       <td style="text-align:left">addressBooks</td>
       <td style="text-align:left">Enables an extension to access, modify, create and delete mailing lists
         in Thunderbird address books.</td>
     </tr>
     <tr>
-      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/mailTabs.html">mailTabs</a>
+      <td style="text-align:left"><a href="https://webextension-api.thunderbird.net/en/latest/mailTabs.html">mailTabs</a>
       </td>
       <td style="text-align:left">accountsFolders</td>
       <td style="text-align:left">
@@ -148,11 +148,11 @@ Thunderbird provides the following messenger related WebExtension APIs, which ar
       </td>
     </tr>
     <tr>
-      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/menus.html">menus</a>
+      <td style="text-align:left"><a href="https://webextension-api.thunderbird.net/en/latest/menus.html">menus</a>
       </td>
       <td style="text-align:left">
         <p>menus,
-          <br /><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/menus.html#overridecontext-contextoptions">menus.overrideContext</a>,</p>
+          <br /><a href="https://webextension-api.thunderbird.net/en/latest/menus.html#overridecontext-contextoptions">menus.overrideContext</a>,</p>
         <p>accountsRead, messagesRead,</p>
         <p>activeTab</p>
       </td>
@@ -163,23 +163,23 @@ Thunderbird provides the following messenger related WebExtension APIs, which ar
           <br /><em>Permission info:</em>
         </p>
         <ul>
-          <li>The <code>menus.overrideContext</code> permission is needed to <a href="https://thunderbird-webextensions.readthedocs.io/en/latest/menus.html#overridecontext-contextoptions">override a default menu entry</a>.</li>
+          <li>The <code>menus.overrideContext</code> permission is needed to <a href="https://webextension-api.thunderbird.net/en/latest/menus.html#overridecontext-contextoptions">override a default menu entry</a>.</li>
           <li>The <code>accountsRead</code> and <code>messagesRead</code> permissions are
-            needed to populate the associated fields in the <a href="https://thunderbird-webextensions.readthedocs.io/en/latest/menus.html#onclickdata"><code>OnClickedData</code></a> object.</li>
+            needed to populate the associated fields in the <a href="https://webextension-api.thunderbird.net/en/latest/menus.html#onclickdata"><code>OnClickedData</code></a> object.</li>
           <li>The <code>activeTab</code> permission is (currently) needed to get advanced
             information for the <code>onShown</code> event (see <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1664423">bug 1664423</a>)</li>
         </ul>
       </td>
     </tr>
     <tr>
-      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/messageDisplay.html">messageDisplay</a>
+      <td style="text-align:left"><a href="https://webextension-api.thunderbird.net/en/latest/messageDisplay.html">messageDisplay</a>
       </td>
       <td style="text-align:left">messagesRead</td>
       <td style="text-align:left">Enables an extension to react on and interact with the currently displayed
         messages.</td>
     </tr>
     <tr>
-      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/messageDisplayAction.html">messageDisplayAction</a>
+      <td style="text-align:left"><a href="https://webextension-api.thunderbird.net/en/latest/messageDisplayAction.html">messageDisplayAction</a>
       </td>
       <td style="text-align:left"></td>
       <td style="text-align:left">
@@ -195,14 +195,14 @@ Thunderbird provides the following messenger related WebExtension APIs, which ar
       </td>
     </tr>
     <tr>
-      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/messageDisplayScripts.html">messageDisplayScripts</a>
+      <td style="text-align:left"><a href="https://webextension-api.thunderbird.net/en/latest/messageDisplayScripts.html">messageDisplayScripts</a>
       </td>
       <td style="text-align:left">messagesModify</td>
       <td style="text-align:left">Functionally is the same as the <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/contentScripts">contentScripts</a> API
         except that it works on the document of email messages being displayed.</td>
     </tr>
     <tr>
-      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/messages.html">messages</a>
+      <td style="text-align:left"><a href="https://webextension-api.thunderbird.net/en/latest/messages.html">messages</a>
       </td>
       <td style="text-align:left">
         <p>messagesRead,</p>
@@ -225,7 +225,7 @@ Thunderbird provides the following messenger related WebExtension APIs, which ar
       </td>
     </tr>
     <tr>
-      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/tabs.html">tabs</a>
+      <td style="text-align:left"><a href="https://webextension-api.thunderbird.net/en/latest/tabs.html">tabs</a>
       </td>
       <td style="text-align:left">tabs, activeTab, compose, messageModify</td>
       <td style="text-align:left">
@@ -251,7 +251,7 @@ Thunderbird provides the following messenger related WebExtension APIs, which ar
       </td>
     </tr>
     <tr>
-      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/windows.html">windows</a>
+      <td style="text-align:left"><a href="https://webextension-api.thunderbird.net/en/latest/windows.html">windows</a>
       </td>
       <td style="text-align:left">tabs</td>
       <td style="text-align:left">
@@ -264,7 +264,7 @@ Thunderbird provides the following messenger related WebExtension APIs, which ar
         </p>
         <ul>
           <li>The <code>tabs</code> permission is needed to populate the <code>url</code>, <code>favIconUrl </code>and <code>title</code> information
-            in the <code>tabs</code> member of the <a href="https://thunderbird-webextensions.readthedocs.io/en/latest/windows.html#window"><code>Window</code></a> object.</li>
+            in the <code>tabs</code> member of the <a href="https://webextension-api.thunderbird.net/en/latest/windows.html#window"><code>Window</code></a> object.</li>
         </ul>
       </td>
     </tr>

@@ -211,7 +211,7 @@ A list of all WebExtension APIs supported by Thunderbird can be found in the fol
 
 ### Content Scripts
 
-Content scripts \(including [compose scripts](https://thunderbird-webextensions.readthedocs.io/en/latest/composeScripts.html) and [message display scripts](https://thunderbird-webextensions.readthedocs.io/en/latest/messageDisplayScripts.html)\) can only access [a small subset of the WebExtension APIs](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Content_scripts#WebExtension_APIs), but they can [communicate with background scripts](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Content_scripts#Communicating_with_background_scripts) using a messaging system, and thereby indirectly access the WebExtension APIs.
+Content scripts \(including [compose scripts](https://webextension-api.thunderbird.net/en/latest/composeScripts.html) and [message display scripts](https://webextension-api.thunderbird.net/en/latest/messageDisplayScripts.html)\) can only access [a small subset of the WebExtension APIs](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Content_scripts#WebExtension_APIs), but they can [communicate with background scripts](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Content_scripts#Communicating_with_background_scripts) using a messaging system, and thereby indirectly access the WebExtension APIs.
 
 ### Option Scripts
 
@@ -223,7 +223,7 @@ const browser = window.browser.extension.getBackgroundPage().browser;
 
 ### CloudFile Management Scripts
 
-A script loaded from a CloudFile[ `management_url`](https://thunderbird-webextensions.readthedocs.io/en/latest/cloudFile.html#manifest-file-properties) has access to a limited subset of the WebExtension APIs: 
+A script loaded from a CloudFile[ `management_url`](https://webextension-api.thunderbird.net/en/latest/cloudFile.html#manifest-file-properties) has access to a limited subset of the WebExtension APIs: 
 
 * cloudFile
 * extension

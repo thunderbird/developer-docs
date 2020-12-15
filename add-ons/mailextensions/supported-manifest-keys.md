@@ -31,7 +31,7 @@ _Several manifest keys in the following table are common to Thunderbird and Fire
         extension is disabled or uninstalled,</td>
     </tr>
     <tr>
-      <td style="text-align:left"><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/browserAction.html">browser_action</a>
+      <td style="text-align:left"><a href="https://webextension-api.thunderbird.net/en/latest/browserAction.html">browser_action</a>
       </td>
       <td style="text-align:left">A <a href="https://developer.thunderbird.net/add-ons/mailextensions/supported-ui-elements#browser-action-button">browser action is a button</a> that
         your extension can add to Thunderbird&apos;s main mailTab toolbar. The

@@ -166,8 +166,8 @@ Dynamic themes are actually MailExtensions, that use the [`theme`](https://devel
 
 The default theming properties do not support the Thunderbird specific message-compose-windows and the message-display-tabs. These can be manipulated by injecting CSS files using the following WebExtension API methods:
 
-* [messageDisplayScripts.register\(\)](https://thunderbird-webextensions.readthedocs.io/en/latest/messageDisplayScripts.html#register-messagedisplayscriptoptions)
-* [composeScripts.register\(\)](https://thunderbird-webextensions.readthedocs.io/en/latest/composeScripts.html#register-composescriptoptions)
+* [messageDisplayScripts.register\(\)](https://webextension-api.thunderbird.net/en/latest/messageDisplayScripts.html#register-messagedisplayscriptoptions)
+* [composeScripts.register\(\)](https://webextension-api.thunderbird.net/en/latest/composeScripts.html#register-composescriptoptions)
 
 To inject the file `compose.css` into the message-compose-window, register it in your background script as follows:
 

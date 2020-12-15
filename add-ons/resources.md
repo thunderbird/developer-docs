@@ -34,11 +34,11 @@ description: >-
           They are called MailExtension APIs to distinguish them from the standard
           WebExtension APIs inherited from Firefox.</p>
         <ul>
-          <li><a href="https://thunderbird-webextensions.readthedocs.io/en/68/">API documentation for Thunderbird 68</a>
+          <li><a href="https://webextension-api.thunderbird.net/en/68/">API documentation for Thunderbird 68</a>
           </li>
-          <li><a href="https://thunderbird-webextensions.readthedocs.io/en/78/">API documentation for Thunderbird 78</a>
+          <li><a href="https://webextension-api.thunderbird.net/en/78/">API documentation for Thunderbird 78</a>
           </li>
-          <li><a href="https://thunderbird-webextensions.readthedocs.io/en/latest/">API documentation for Thunderbird 78+</a>
+          <li><a href="https://webextension-api.thunderbird.net/en/latest/">API documentation for Thunderbird 78+</a>
           </li>
         </ul>
       </td>

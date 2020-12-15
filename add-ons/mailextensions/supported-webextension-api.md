@@ -271,7 +271,7 @@ Thunderbird provides the following messenger related WebExtension APIs, which ar
   </tbody>
 </table>
 
-You can find more information in the [Thunderbird WebExtensions API documentation ](https://thunderbird-webextensions.readthedocs.io/).
+You can find more information in the [Thunderbird WebExtensions API documentation ](https://webextension-api.thunderbird.net).
 
 ## Firefox WebExtension APIs
 

@@ -51,7 +51,7 @@ The main configuration file of a MailExtension is a file called `manifest.json`,
 ```
 {% endcode %}
 
-##  Manifest keys
+## Manifest keys
 
 A list of all manifest keys supported by Thunderbird can be found in the following document:
 
@@ -199,7 +199,7 @@ In order to use modern [ES6 modules](https://hacks.mozilla.org/2015/08/es6-in-de
 ```
 {% endhint %}
 
- All these WebExtension scripts have access to:
+All these WebExtension scripts have access to:
 
 * Standard JavaScript methods
 * [Web API](https://developer.mozilla.org/de/docs/Web/API) \(if the browser compatibility chart lists Firefox, the API also works in Thunderbird\)
@@ -215,7 +215,7 @@ Content scripts \(including [compose scripts](https://webextension-api.thunderbi
 
 ### Option Scripts
 
-Access to WebExtension APIs in options pages using  `options_ui.open_in_tab: false` is currently broken. Use `getBackgroundPage()` to replace the `browser` object of the options page with the `browser` object of your background page.
+Access to WebExtension APIs in options pages using `options_ui.open_in_tab: false` is currently broken. Use `getBackgroundPage()` to replace the `browser` object of the options page with the `browser` object of your background page.
 
 ```javascript
 const browser = window.browser.extension.getBackgroundPage().browser;
@@ -223,7 +223,7 @@ const browser = window.browser.extension.getBackgroundPage().browser;
 
 ### CloudFile Management Scripts
 
-A script loaded from a CloudFile[ `management_url`](https://webextension-api.thunderbird.net/en/latest/cloudFile.html#manifest-file-properties) has access to a limited subset of the WebExtension APIs: 
+A script loaded from a CloudFile[ `management_url`](https://webextension-api.thunderbird.net/en/latest/cloudFile.html#manifest-file-properties) has access to a limited subset of the WebExtension APIs:
 
 * cloudFile
 * extension
@@ -231,7 +231,7 @@ A script loaded from a CloudFile[ `management_url`](https://webextension-api.thu
 * runtime
 * storage
 
-##  Creating MailExtensions: Examples
+## Creating MailExtensions: Examples
 
 Our [sample-extensions repository](https://github.com/thundernest/sample-extensions/tree/master/experiment) includes a few simple MailExtensions, which showcase different APIs and which will get you started to create your own extension.
 
@@ -244,17 +244,17 @@ We also prepared a step-by-step guide for a small Hello World MailExtension:
 The currently available WebExtension APIs are not yet sufficient, as some areas of Thunderbird are not accessible through these APIs. While we are working on improving the situation, add-on developers can create their own API by registering an implementation script and a schema file describing the interface in the`manifest.json` file:
 
 ```javascript
-	"experiment_apis": {
-		"LegacyPrefs": {
-			"schema": "api/LegacyPrefs/schema.json",
-			"parent": {
-				"scopes": ["addon_parent"],
-				"paths": [["LegacyPrefs"]],
-				"script": "api/LegacyPrefs/implementation.js",
-				"events": ["startup"]
-			}
-		}
-	}
+    "experiment_apis": {
+        "LegacyPrefs": {
+            "schema": "api/LegacyPrefs/schema.json",
+            "parent": {
+                "scopes": ["addon_parent"],
+                "paths": [["LegacyPrefs"]],
+                "script": "api/LegacyPrefs/implementation.js",
+                "events": ["startup"]
+            }
+        }
+    }
 ```
 
 That API can then be used by the MailExtension like any other WebExtension API.
@@ -263,7 +263,7 @@ An Experiment API, specifically its implementation script has access to Thunderb
 
 {% page-ref page="experiments.md" %}
 
-Currently and for the foreseeable future Experiments can be used in extensions released to the general public. In the meantime, we will be dedicated to API development and to improve the situation for add-on developers. 
+Currently and for the foreseeable future Experiments can be used in extensions released to the general public. In the meantime, we will be dedicated to API development and to improve the situation for add-on developers.
 
 If you need an API that does not exist yet, please [tell us about it](https://bugzilla.mozilla.org/enter_bug.cgi?product=Thunderbird&component=Add-Ons%3A+Extensions+API). If you have created an Experiment API which you think is a good fit for general use in Thunderbird, please [tell us about it](https://developer.thunderbird.net/add-ons/community).
 

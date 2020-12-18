@@ -19,7 +19,7 @@ It is controlled by the `browser_action` manifest key in the extension's `manife
     "default_title": "Restart",
     "default_icon" : "restart.png",
     "default_popup": "browser_popup.html"
-}, 
+},
 ```
 
 If a `default_popup` is defined, a popup will be opened and the defined html page will be loaded, when the button is clicked. Additionally, you can use the [`browserAction`](https://webextension-api.thunderbird.net/en/latest/browserAction.html) API in your background script to interact with the button to modify _badge text_, _icon_, _title_ or its _enabled state_.
@@ -37,14 +37,14 @@ It is controlled by `compose_action` manifest key in the extension's `manifest.j
     "default_title": "Expand lists",
     "default_icon" : "lists.png",
     "default_popup": "compose_popup.html"
-}, 
+},
 ```
 
 If a `default_popup` is defined, a popup will be opened and the defined html page will be loaded, when the button is clicked. Additionally, you can use the [`composeAction`](https://webextension-api.thunderbird.net/en/latest/composeAction.html) API in your background script to interact with the button to modify _badge text_, _icon_, _title_ or its _enabled state_.
 
 ## Message Display Action
 
- A message display action adds a button to the toolbar of the message view window:
+A message display action adds a button to the toolbar of the message view window:
 
 ![](../../.gitbook/assets/mda.png)
 
@@ -55,7 +55,7 @@ It is controlled by the `message_display_action` manifest key in the extension's
     "default_title": "Copy Patch",
     "default_icon" : "patch.png",
     "default_popup": "message_popup.html"
-	},
+    },
 ```
 
 If a `default_popup` is defined, a popup will be opened and the defined html page will be loaded, when the button is clicked. Additionally, you can use the [`messageDisplayAction`](https://webextension-api.thunderbird.net/en/latest/messageDisplayAction.html) API in your background script to interact with the button to modify _badge text_, _icon_, _title_ or its _enabled state_.
@@ -111,7 +111,6 @@ The [`menus`](https://webextension-api.thunderbird.net/en/latest/menus.html) API
       <td style="text-align:left">
         <p>Context menu of links in WebExtension windows, in web tabs or in message
           display tabs.</p>
-        <p></p>
         <p>Limited to content areas.</p>
       </td>
       <td style="text-align:left">
@@ -124,7 +123,6 @@ The [`menus`](https://webextension-api.thunderbird.net/en/latest/menus.html) API
       <td style="text-align:left">
         <p>Context menu in WebExtension windows, web tabs or message display tabs,
           if any text has been selected.</p>
-        <p></p>
         <p>Limited to content areas.</p>
       </td>
       <td style="text-align:left">
@@ -138,14 +136,10 @@ The [`menus`](https://webextension-api.thunderbird.net/en/latest/menus.html) API
       <td style="text-align:left">
         <p>Context menu of text/password input fields in WebExtension windows, web
           tabs or message display tabs.</p>
-        <p></p>
         <p>Limited to content areas.</p>
       </td>
       <td style="text-align:left">
-        <p></p>
-        <p>
-          <img src="../../.gitbook/assets/editable.png" alt/>
-        </p>
+        <img src="../../.gitbook/assets/editable.png" alt/>
       </td>
     </tr>
     <tr>
@@ -169,7 +163,6 @@ The [`menus`](https://webextension-api.thunderbird.net/en/latest/menus.html) API
         <p>Context menu of WebExtension windows, web tabs or message display tabs,
           if none of the other content contexts apply (link, selection, image, audio,
           video, editable, password).</p>
-        <p></p>
         <p>If the page is loaded inside a frame, the <code>frame</code> context applies,
           otherwise the <code>page</code> context. Limited to content areas.</p>
       </td>

@@ -56,7 +56,6 @@ Thunderbird provides the following messenger related WebExtension APIs, which ar
         <p>Enables an extension to register a cloudFile provider, which can be used
           to upload large attachments to a server, instead of attaching them directly
           to the email.</p>
-        <p></p>
         <p><em>Permission info:</em>
         </p>
         <ul>
@@ -237,7 +236,7 @@ Thunderbird provides the following messenger related WebExtension APIs, which ar
         </p>
         <ul>
           <li>The <code>tabs</code> or <code>activeTab</code> permission is only needed
-            if the <code>url</code>, <code>favIconUrl </code>or <code>title </code>information
+            if the <code>url</code>, <code>favIconUrl</code> or <code>title</code> information
             of tabs are accessed. The <code>tab</code> permission will allow access to
             that information in all tabs, the <code>activeTab</code> permission restricts
             that to the active tab.
@@ -263,7 +262,7 @@ Thunderbird provides the following messenger related WebExtension APIs, which ar
           <br /><em>Permission info:</em>
         </p>
         <ul>
-          <li>The <code>tabs</code> permission is needed to populate the <code>url</code>, <code>favIconUrl </code>and <code>title</code> information
+          <li>The <code>tabs</code> permission is needed to populate the <code>url</code>, <code>favIconUrl</code> and <code>title</code> information
             in the <code>tabs</code> member of the <a href="https://webextension-api.thunderbird.net/en/latest/windows.html#window"><code>Window</code></a> object.</li>
         </ul>
       </td>
@@ -275,7 +274,7 @@ You can find more information in the [Thunderbird WebExtensions API documentatio
 
 ## Firefox WebExtension APIs
 
-As Thunderbird is based on Firefox, many of its WebExtension APIs can be used in Thunderbird as well. The APIs listed in the following table are known to work with Thunderbird. 
+As Thunderbird is based on Firefox, many of its WebExtension APIs can be used in Thunderbird as well. The APIs listed in the following table are known to work with Thunderbird.
 
 {% hint style="warning" %}
 The following APIs link to their MDN description pages. Please be aware, that MDN is dedicated to web browsers \(not limited to Firefox\). Some information listed on MDN may not apply to Thunderbird and some API methods may not be supported. Each API page should include a compatibility chart and if that includes support for Firefox, it should work in Thunderbird as well.
@@ -545,5 +544,5 @@ The following APIs link to their MDN description pages. Please be aware, that MD
   </tbody>
 </table>
 
- You can find more information about these APIs in the [MDN WebExtension API documentation](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API).
+You can find more information about these APIs in the [MDN WebExtension API documentation](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API).
 

@@ -18,7 +18,23 @@ Use the [Advanced Search](https://bugzilla.mozilla.org/query.cgi?format=advanced
 
 Making sense of the **Thunderbird** source code, and knowing where to look, will take some time. The code base is pretty big and if you never worked with `XBL` or `Custom Elements` it can be overwhelming at first. We recommend using our code search engine, [SearchFox](https://searchfox.org/comm-central/source/), to inspect the source code and find snippets and references to help you out while investigating a bug.
 
-## Mercurial Workflows for Creating Patches
+## Creating Patches
+
+### Configuring Mercurial
+
+To ensure your work is correctly attributed to you, and to make the reviewer's task easier, these options should be set in your Mercurial configuration file \(`Mecurial.ini` on Windows, `$HOME/.hgrc` elsewhere\).
+
+```text
+[ui]
+username = Your Name <your@email.address>
+
+[diff]
+git = 1
+showfunc = 1
+unified = 8
+```
+
+### Mercurial Workflows
 
 Mercurial is pretty flexible in terms of allowing writing your own code and keeping it separate from the main code base. Based on your knowledge level and preference, you can choose between two different methods:
 

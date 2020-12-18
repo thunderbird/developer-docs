@@ -30,10 +30,6 @@ To enable MQ, put this in your `Mecurial.ini` file for Windows or the `$HOME/.hg
 ```bash
 [extensions]
 mq =
-[diff]
-git = 1
-unified = 8
-showfunc = 1
 ```
 
 Don't forget the `git` line. This allows changing binary files in your patches. The `unified` line give 8 lines patch.

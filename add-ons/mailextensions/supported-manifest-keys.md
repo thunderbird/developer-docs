@@ -45,7 +45,7 @@ _Several manifest keys in the following table are common to Thunderbird and Fire
         to a server, instead of attaching them directly to the email.</td>
     </tr>
     <tr>
-      <td style="text-align:left"><a href="https://webextension-api.thunderbird.net/en/latest/commands.html">comm</a>
+      <td style="text-align:left"><a href="https://webextension-api.thunderbird.net/en/latest/commands.html">comm</a> 
         <a
         href="https://webextension-api.thunderbird.net/en/latest/commands.html">ands</a>
       </td>
@@ -62,7 +62,7 @@ _Several manifest keys in the following table are common to Thunderbird and Fire
       <td style="text-align:left"><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/content_security_policy">content_security_policy</a>
       </td>
       <td style="text-align:left">The default policy restricts the sources from which a content script can
-        load<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script"> <code>&lt;script&gt;</code></a> and
+        load <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script"><code>&lt;script&gt;</code></a> and
         <a
         href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object"><code>&lt;object&gt;</code>
           </a>resources, and disallows potentially unsafe practices such as the use

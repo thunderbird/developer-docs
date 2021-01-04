@@ -75,9 +75,13 @@ In addition to your Experiment being loaded and unloaded as a whole, that Experi
 
 ## Passing data to and from a WebExtension
 
+### Parent implementations
+
 In general, you can always pass simple data structures as function parameters and return values of an API. Thunderbird will automatically adapt them using the [structured clone algorithm](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm), so you do not need to worry about them.
 
-If you want to pass more complex data structures, especially functions or instances of custom classes, you can do so form a _child_ implementation. There is a big caveat, though: the Experiment's implementation scripts are privileged relative to WebExtension scripts, which causes their scopes to be disjunct:
+### Child implementations
+
+If you want to pass more complex data structures, especially functions or instances of custom classes, you can do so from a _child_ implementation. There is a big caveat, though: the Experiment's implementation scripts are privileged relative to WebExtension scripts, which causes their scopes to be disjunct:
 
 * **Accessing data that belongs to the WebExtension from an Experiment:** the code in the Experiment gains [xray vision](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/Xray_vision), permitting it to directly access the chrome implementation of the given object. Usually, you don't need to worry about that and things work out just fine – but if they don't, you can opt-out via `Components.utils.waiveXrays()`.
 * **Accessing data that belongs to an Experiment from a WebExtension:** it is not possible to directly access chrome-scoped objects from a WebExtension \(but it can hold references on it\).

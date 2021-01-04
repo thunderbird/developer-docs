@@ -1,6 +1,6 @@
 # Introducing Experiments
 
-This document aggregates information on topics that commonly arise when developing a new Experiment for Thunderbird 78. For a complete documentation on each individual topic, refer to the linked articles.
+This document aggregates information on topics that commonly arise when developing a new Experiment for Thunderbird 78+. For a complete documentation on each individual topic, refer to the linked articles.
 
 {% hint style="info" %}
 Thunderbird does contain a few useful features related to Experiments [whose documentation is no longer generated](https://bugzilla.mozilla.org/show_bug.cgi?id=1556460#c23). Especially if you're writing an Experiment with complex interactions between the WebExtension and your Experiment, it may be helpful to read the documentation blocks within [`resource://gre/modules/ExtensionCommon.jsm`](https://hg.mozilla.org/mozilla-central/file/tip/toolkit/components/extensions/ExtensionCommon.jsm) and possibly other modules in the same source code folder.

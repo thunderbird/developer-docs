@@ -15,6 +15,7 @@
 * [Fixing a Bug](thunderbird-development/fixing-a-bug/README.md)
   * [Using Mercurial Queues](thunderbird-development/fixing-a-bug/using-mercurial-queues.md)
   * [Using Mercurial Bookmarks](thunderbird-development/fixing-a-bug/using-mercurial-bookmarks.md)
+  * [Debugging](https://firefox-source-docs.mozilla.org/contributing/index.html)
   * [Lint and Format Code](thunderbird-development/fixing-a-bug/lint-and-format-code.md)
   * [Using ESLint to Format Javascript Code](thunderbird-development/fixing-a-bug/using-eslint.md)
   * [Try Server](thunderbird-development/fixing-a-bug/try-server.md)

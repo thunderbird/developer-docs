@@ -18,6 +18,10 @@ Use the [Advanced Search](https://bugzilla.mozilla.org/query.cgi?format=advanced
 
 Making sense of the **Thunderbird** source code, and knowing where to look, will take some time. The code base is pretty big and if you never worked with `XBL` or `Custom Elements` it can be overwhelming at first. We recommend using our code search engine, [SearchFox](https://searchfox.org/comm-central/source/), to inspect the source code and find snippets and references to help you out while investigating a bug.
 
+## Debugging Core Code
+
+JavaScript code can be debugged using the built-in [developer tools toolbox](https://extensionworkshop.com/documentation/develop/debugging/). Debugging core C++ code requires [external tools](https://firefox-source-docs.mozilla.org/contributing/index.html).
+
 ## Creating Patches
 
 ### Configuring Mercurial

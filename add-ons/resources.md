@@ -46,8 +46,16 @@ description: >-
     <tr>
       <td style="text-align:left"><a href="https://github.com/thundernest/sample-extensions">Thundernest Sample Extension Repository</a>
       </td>
-      <td style="text-align:left">The example extension repository managed by Thunderbirds API developers,
-        showcasing different WebExtension/MailExtension APIs.</td>
+      <td style="text-align:left">A collection of MailExtensions, showing how to use Thunderbird WebExtension
+        APIs.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://github.com/mdn/webextensions-examples">MDN Sample Extension Repository</a>
+      </td>
+      <td style="text-align:left">A collection of WebExtensions, showing how to use WebExtension APIs. They
+        probably won&#x2019;t work directly in Thunderbird, but they may provide
+        hints on how to use some of the WebExtension APIs that Thunderbird inherited
+        from Firefox.</td>
     </tr>
     <tr>
       <td style="text-align:left"><a href="https://github.com/thundernest/addon-developer-support">Thundernest Add-On Developer Support Repository</a>

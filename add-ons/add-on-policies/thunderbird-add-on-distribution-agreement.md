@@ -29,7 +29,7 @@ In order to distribute an Add-on, You'll need to create an account. During regis
 
 ## 3. Privacy policy
 
-Our[ **{todo: rebrand to TB: Websites, Communications and Cookies Privacy Notice**](https://www.mozilla.org/privacy/websites/)**}** describes what information we receive from developers and how we use that information. We use the information we receive as described in the[ Mozilla Privacy Policy](https://www.mozilla.org/privacy/).
+Mozilla’s [Websites, Communications and Cookies Privacy Notice](https://www.mozilla.org/privacy/websites/) describes what information we receive from developers and how we use that information. We use the information we receive as described in Mozilla’s [Privacy Policy](https://www.mozilla.org/privacy/).
 
 ## 4. Distribution & review process
 
@@ -78,7 +78,7 @@ In addition, we may at any time suspend or terminate this Agreement with You if 
 
 #### \(c\) Take Down Request.
 
-For information on how to notify Mozilla / MZLA in connection with claimed copyright or trademark infringement \(“Take-Down Request”\) see[ **{todo: rebrand or use Mozilla? here**](https://www.mozilla.org/about/legal/report-abuse/)**}**.
+For information on how to notify Mozilla / MZLA in connection with claimed copyright or trademark infringement \(“Take-Down Request”\) see [here](https://www.mozilla.org/about/legal/report-abuse/) [todo: rebrand?].
 
 ## 8. Disclaimer of warranties
 
@@ -104,7 +104,7 @@ You and MZLA agree to submit to the exclusive jurisdiction of the courts located
 
 #### \(b\) Severability; No Waiver. 
 
-If any court of law, having the jurisdiction to decide on this matter, rules that any provision of this Agreement are invalid, then that provision will be removed from this Agreement without affecting the rest of the Agreement. The remaining provisions of this Agreement will continue to be valid and enforceable. You agree that if MZLA does not exercise or enforce any legal right or remedy which is contained in this Agreement \(or which MZLA has the benefit of under any applicable law\), this will not be taken to be a formal waiver of MZLA's rights and that those rights or remedies will still be available to MZLA.
+If any court of law, having the jurisdiction to decide on this matter, rules that any provision of this Agreement are invalid, then that provision will be removed from this Agreement without affecting the rest of the Agreement. The remaining provisions of this Agreement will continue to be valid and enforceable. You agree that if MZLA does not exercise or enforce any legal right or remedy which is contained in this Agreement \(or which MZLA has the benefit of under any applicable law\), this will not be taken to be a formal waiver of MZLA’s rights and that those rights or remedies will still be available to MZLA.
 
 Entire Agreement. This Agreement constitutes the whole legal agreement between You and MZLA for distribution of Add-ons, and completely supersedes any other related agreements between You and MZLA unless You have a separately negotiated and signed agreement in connection with a specific Add-on \("Custom Agreement"\), in which case the Custom Agreement controls. Hyperlinked documents in this Agreement, including for example, [Review Policies](review-policy-for-thunderbird-add-ons.md), are incorporated herein by reference.
 
@@ -122,5 +122,5 @@ MZLA may periodically update this Agreement. The updated Agreement will be avail
 
 #### \(f\) Contact Us
 
-If You have questions about this Agreement, send an email to {**todo**: **check and update for MZLA**: legal-notices@mozilla.com or mail us at: Attn: Mozilla – Legal Notices, 331 E. Evelyn Ave., Mountain View, CA 94041.}
+If You have questions about this Agreement, send an email to: legal-notices@mozilla.com or mail us at: Attn: Mozilla – Legal Notices, 331 E. Evelyn Ave., Mountain View, CA 94041. [todo: update]
 

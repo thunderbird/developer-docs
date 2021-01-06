@@ -10,16 +10,16 @@ MZLA is committed to promoting choice and innovation on the web. From the launch
 
 This Thunderbird Add-on Distribution Agreement \("Agreement"\) governs Your distribution of Thunderbird Add-ons. Frequently used terms in this Agreement are defined below.
 
-* “Add-on” means software that extends the functionality of Thunderbird, for example, extensions, Background Themes \(defined below\), search providers, dictionaries, and language packs. Add-ons are also commonly referred to as extensions or plugins.
+* “Add-on” means software that extends the functionality of Thunderbird, for example, extensions, themes \(defined below\), search providers, dictionaries, and language packs. Add-ons are also commonly referred to as extensions or plugins.
 * “Add-on Manager” is the Thunderbird tool to manage Add-ons. It can be accessed from the Thunderbird menu button in the toolbar.
 * “ATN” means addons.thunderbird.net, which is our online platform for developers to list and distribute Add-ons to End-Users.
-* “Background Theme” means software that personalizes the look of Thunderbird by adding a background design to the main toolbar. Themes are a type of Add-on.
+* “theme” means software that personalizes the look of Thunderbird. Themes are a type of Add-on.
 * “Brand Features” mean the trade names, trademarks, service marks, logos, domain names, and other distinctive brand features of You, Mozilla or MZLA.
 * “End-Users” mean individuals who install Add-Ons, or to whom Add-ons are promoted.
 * “Thunderbird” means the awesome email client developed by the Thunderbird community.
 * “Listed Add-on” means Add-ons that are listed and distributed on ATN.
 * “Mozilla” means Mozilla Corporation and its affiliated entities.
-* “MZLA” means {... } and designated community members who are part of the Add-on review process.
+* “MZLA” means [todo] and designated community members who are part of the Add-on review process.
 * “Unlisted Add-on” means Add-ons that are distributed to End-Users via means other than ATN.
 * “You” means the person or entity entering this Agreement for the purpose of distributing a Thunderbird Add-on.
 

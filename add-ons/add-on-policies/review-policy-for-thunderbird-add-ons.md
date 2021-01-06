@@ -35,6 +35,7 @@ Add-ons that make use of the Thunderbird trademark may use “Thunderbird” in 
 
 In addition, add-ons listed on addons.thunderbird.net \(ATN\) must adhere to the following policies:
 
+* All add-ons submitted for listing on ATN are subject to [Mozilla’s Conditions of Use](https://www.mozilla.org/about/legal/acceptable-use/). [compare check: this was missing but is probably needed]
 * Add-ons must disclose when payment is required to enable any functionality.
 * Any add-ons, or add-on content, hosted on the Thunderbird Team site\(s\) must conform to the laws of the United States.
 * The add-on listing should have an easy-to-read description about everything it does, and any information it collects.
@@ -59,6 +60,8 @@ Issues brought up during review must be addressed using best efforts and in a re
 Add-ons may contain transpiled, obfuscated, minified or otherwise machine-generated code, but the Thunderbird Team needs to review a copy of the human-readable source code. The author must provide this information to the Thunderbird Team during submission as well as instructions on how to reproduce the build.
 
 The provided source code will be reviewed by an administrator and will not be redistributed in any way. The code will only be used for the purpose of reviewing the add-on. Failure to provide this information will result in rejection.
+
+Add-ons are not allowed to contain obfuscated code, nor code that hides the purpose of the functionality involved. If external resources are used in combination with add-on code, the functionality of the code must not be obscured. To the contrary, minification of code with the intent to reduce file size is permitted. [compare check: this was missing but is probably needed]
 
 Please read [Mozilla’s Source Code Submission guidelines](https://extensionworkshop.com/documentation/publish/source-code-submission/) \[todo: rebrand?\] to avoid unexpected rejections.
 
@@ -92,10 +95,14 @@ The add-on’s privacy policy must be the full policy text; it cannot be a link 
 
 A summary of this information must be included in the add-on’s listing description. Finally, you and your add-on must also comply with all applicable data privacy laws as well as any other laws that may apply to your specific add-on.
 
+Please refer to [Mozilla’s best practices](https://extensionworkshop.com/documentation/develop/best-practices-for-collecting-user-data-consents/) for advice and examples on how to design and implement a data collection consent prompt. [compare check: this was missing but is probably needed]
+
 ## User Interactions & Technical Data
 
 * Users must be provided a clear way to control this data collection. The control mechanism must be shown during the installation process of the add-on.
 * Add-ons must only collect information about add-on performance and/or use.
+* Search functionality provided or loaded by the add-on must not collect search terms or intercept searches that are going to a third-party search provider. [compare check: this was missing but is probably needed]
+* If the collection of visited URLs or user search terms is required for the add-on to work, the user must provide affirmative consent (i.e., explicit opt-in from the user) at first-run, since that information can contain personal information.  [compare check: this was missing but is probably needed]
 * Collecting ancillary information \(e.g. any data not explicitly required for the add-on’s basic functionality\) is prohibited.
 
 ## Cookies

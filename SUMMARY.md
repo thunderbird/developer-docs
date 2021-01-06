@@ -48,6 +48,10 @@
     * [Adapt to Changes in Thunderbird 61-68](add-ons/updating/tb68/changes.md)
   * [Update for Thunderbird 78](add-ons/updating/tb78/README.md)
     * [Adapt to Changes in Thunderbird 69-78](add-ons/updating/tb78/changes.md)
+* [Add-on Policies](add-ons/add-on-policies/README.md)
+  * [Review Policy for Thunderbird Add-ons](add-ons/add-on-policies/review-policy-for-thunderbird-add-ons.md)
+  * [Thunderbird Add-on Distribution Agreement](add-ons/add-on-policies/thunderbird-add-on-distribution-agreement.md)
+  * [Add-ons Blocking Process](add-ons/add-on-policies/add-ons-blocking-process.md)
 * [Documentation & Resources](add-ons/resources.md)
 * [Developer Community](add-ons/community.md)
 

@@ -4,7 +4,7 @@ Add-ons enable users to add features to Thunderbird for a personalized user expe
 
 When the Thunderbird Team becomes aware of add-ons that go against user expectations or otherwise risk user privacy and security, it takes steps to block them from running in Thunderbird. This may happen proactively, or in response to an abuse report.
 
-The following describes our common practices for dealing with add-ons that appear to violate the [Add-on Policies](review-policy-for-thunderbird-add-ons.md). Authoritative information on the conditions for removing or revoking add-ons can be found in the [Thunderbird Add-on Distribution Agreement](thunderbird-add-on-distribution-agreement.md) and the [Add-on Policies](https://extensionworkshop.com/documentation/publish/add-on-policies/).
+The following describes our common practices for dealing with add-ons that appear to violate the [Add-on Policies](review-policy-for-thunderbird-add-ons.md). Authoritative information on the conditions for removing or revoking add-ons can be found in the [Thunderbird Add-on Distribution Agreement](thunderbird-add-on-distribution-agreement.md) and the [Add-on Policies](review-policy-for-thunderbird-add-ons.md).
 
 ### Security Over Choice
 
@@ -42,7 +42,7 @@ The Thunderbird Team only blocks add-ons based on the [Thunderbird add-on distri
 
 In addition to add-ons, the Thunderbird Team may also block other types of software that pose a risk to the user.
 
-The Thunderbird Team may limit hardware acceleration features of graphics cards for certain graphics driver versions in accordance with [Mozilla](https://wiki.mozilla.org/Blocklisting/Graphics)’[s graphics driver blocks](https://wiki.mozilla.org/Blocklisting/Graphics) policy. This is done for stability reasons, to avoid driver crashes that would interrupt the user.
+The Thunderbird Team may limit hardware acceleration features of graphics cards for certain graphics driver versions in accordance with [Mozilla’s graphics driver blocks](https://wiki.mozilla.org/Blocklisting/Graphics) policy. This is done for stability reasons, to avoid driver crashes that would interrupt the user.
 
 In addition, we may block certain plugins that are known to cause stability issues or contain security vulnerabilities. Depending on the severity, a plugin may be forced to require a click from the user to activate, is disabled with an option for the user to enable, or blocked from running in Thunderbird. This category includes injected third party libraries that interfere with the functionality of Thunderbird.
 

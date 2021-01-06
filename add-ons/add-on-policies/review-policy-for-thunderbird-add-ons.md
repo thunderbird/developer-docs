@@ -43,7 +43,7 @@ In addition, add-ons listed on addons.thunderbird.net \(ATN\) must adhere to the
 
 ## Submission Guidelines
 
-Add-ons must function only as described, and should provide an appealing user experience. Based on the description of the add-on, a user must be able to understand and use the add-on’s features without requiring expert knowledge. Tips on how to create a good user experience for your add-on can be found here.
+Add-ons must function only as described, and should provide an appealing user experience. Based on the description of the add-on, a user must be able to understand and use the add-on’s features without requiring expert knowledge. Tips on how to create a good user experience for your add-on can be found [here](https://extensionworkshop.com/documentation/develop/user-experience-best-practices/). \[**todo: rebrand?\]**
 
 During review, the add-on undergoes basic testing in addition to code review. To facilitate the functional testing, the add-on author must provide testing information and, if applicable, testing credentials required to use the add-on if an account is needed for any part of the add-on’s functionality.
 
@@ -60,7 +60,7 @@ Add-ons may contain transpiled, obfuscated, minified or otherwise machine-genera
 
 The provided source code will be reviewed by an administrator and will not be redistributed in any way. The code will only be used for the purpose of reviewing the add-on. Failure to provide this information will result in rejection.
 
-Please read our Source Code Submission guidelines to avoid unexpected rejections.
+Please read [Mozilla’s Source Code Submission guidelines](https://extensionworkshop.com/documentation/publish/source-code-submission/) \[**todo: rebrand?\]** to avoid unexpected rejections.
 
 ## Development Practices
 
@@ -75,7 +75,7 @@ While any code, method or practice in a submitted add-on is subject to review an
 * Add-on code must be written in a way that is reviewable and understandable. Reviewers may ask you to refactor parts of the code if it is not reviewable.
 * Add-ons must not negatively impact the performance or stability of Thunderbird.
 * Only release versions of third-party libraries and/or frameworks may be included with an add-on. Modifications to these libraries/frameworks are not permitted.
-* Please read our third party library guidelines to avoid unexpected rejections.
+* Please read [Mozilla’s third party library guidelines](https://extensionworkshop.com/documentation/publish/third-party-library-usage/) \[**todo: rebrand?\]** to avoid unexpected rejections.
 
 ## Data Disclosure, Collection and Management
 
@@ -125,10 +125,10 @@ As a result, we take our security policies very seriously and apply them to all 
 
 ## Monetization
 
-* Monetization mechanisms must comply with the policies in the Data Disclosure, Collection and Management section. In particular, an add-on must be accompanied with a clear user control mechanism (and opt-in for personal data) presented during the installation or update process of the add-on. Collecting ancillary information for monetization is prohibited.
-* An add-on injecting advertising into web page content must clearly identify the injected content as originating from the add-on.
+* Monetization mechanisms must comply with the policies in the [Data Disclosure, Collection and Management section](review-policy-for-thunderbird-add-ons.md#data-disclosure-collection-and-management). In particular, an add-on must be accompanied with a clear user control mechanism \(and opt-in for personal data\) presented during the installation or update process of the add-on. Collecting ancillary information for monetization is prohibited.
+* An add-on injecting advertising into web page content or user content must clearly identify the injected content as originating from the add-on.
 * The inclusion of any cryptocurrency miners or similar functionality in an add-on is prohibited.
-* Modifying web content or facilitating redirects to include affiliate promotion tags is not permitted. Conversely, the use of affiliate promotion in user interface elements clearly identified as belonging to the add-on are acceptable.
+* Modifying web content \[**todo: include user content/emails?\]** or facilitating redirects to include affiliate promotion tags is not permitted. Conversely, the use of affiliate promotion in user interface elements clearly identified as belonging to the add-on are acceptable.
 
 ## Compliance & Blocklisting
 
@@ -137,3 +137,4 @@ For add-ons that don’t meet these policies, the Thunderbird Team may reject or
 Generally, the Thunderbird Team will attempt to contact the add-on’s developer\(s\) and provide a reasonable time frame for the problems to be corrected before a block is deployed. If an add-on is considered malicious or its developers have proven unreachable or unresponsive, or in case of repeat violations, blocklisting may be immediate.
 
 The Thunderbird Team reserves the right to block or delete the developer’s account on addons.thunderbird.net, thereby preventing further use of the service.
+

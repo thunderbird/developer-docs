@@ -10,19 +10,19 @@ Mozilla is committed to promoting choice and innovation on the web. From the lau
 
 This Firefox Add-on Distribution Agreement ("Agreement") governs Your distribution of Firefox Add-ons. Frequently used terms in this Agreement are defined below.
 
- * “Add-on” means software that extends the functionality of Firefox, for example, extensions, Background Themes (defined below), search providers, dictionaries, and language packs. Add-ons are also commonly referred to as extensions or plugins.
- * “Add-on Manager” is the Firefox tool to manage Add-ons. It can be accessed from the Firefox menu button in the toolbar.
- * “AMO” means addons.mozilla.org, which is our online platform for developers to list and distribute Add-ons to End-Users.
- * “Background Theme” means software that personalizes the look of Firefox by adding a background design to the main toolbar. Themes are a type of Add-on.
- * “Brand Features” mean the trade names, trademarks, service marks, logos, domain names, and other distinctive brand features of You or Mozilla.
- * “End-Users” mean individuals who install Add-Ons, or to whom Add-ons are promoted.
- * “Firefox” means the awesome web browser developed by Mozilla.
- * “Listed Add-on” means Add-ons that are listed and distributed on AMO.
- * “Mozilla” means Mozilla Corporation, its affiliated entities, and designated community members who are part of the Add-on review process.
- * “Mozilla Certificate” means a Mozilla issued certificate to digitally sign an Add-on for use with Firefox.
- * “Signed Add-on” means an Add-on that has been issued a Mozilla Certificate.
- * “Unlisted Add-on” means Add-ons that are distributed to End-Users via means other than AMO.
- * “You” means the person or entity entering this Agreement for the purpose of distributing a Firefox Add-on.
+* “Add-on” means software that extends the functionality of Firefox, for example, extensions, Background Themes (defined below), search providers, dictionaries, and language packs. Add-ons are also commonly referred to as extensions or plugins.
+* “Add-on Manager” is the Firefox tool to manage Add-ons. It can be accessed from the Firefox menu button in the toolbar.
+* “AMO” means addons.mozilla.org, which is our online platform for developers to list and distribute Add-ons to End-Users.
+* “Background Theme” means software that personalizes the look of Firefox by adding a background design to the main toolbar. Themes are a type of Add-on.
+* “Brand Features” mean the trade names, trademarks, service marks, logos, domain names, and other distinctive brand features of You or Mozilla.
+* “End-Users” mean individuals who install Add-Ons, or to whom Add-ons are promoted.
+* “Firefox” means the awesome web browser developed by Mozilla.
+* “Listed Add-on” means Add-ons that are listed and distributed on AMO.
+* “Mozilla” means Mozilla Corporation, its affiliated entities, and designated community members who are part of the Add-on review process.
+* “Mozilla Certificate” means a Mozilla issued certificate to digitally sign an Add-on for use with Firefox.
+* “Signed Add-on” means an Add-on that has been issued a Mozilla Certificate.
+* “Unlisted Add-on” means Add-ons that are distributed to End-Users via means other than AMO.
+* “You” means the person or entity entering this Agreement for the purpose of distributing a Firefox Add-on.
 
 
 ## 2. Accounts

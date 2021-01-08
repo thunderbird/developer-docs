@@ -12,17 +12,14 @@ When deciding whether to block an add-on from running in Thunderbird, we ask whe
 
 ### Blocking Criteria
 
-Depending on the nature of the policy violation, the Thunderbird Team will employ different types of blocks. With a **hard block**, the add-on is disabled in Thunderbird, and users are not able to override the block. This action is reserved for add-ons with the following characteristics:
+The Thunderbird Team will forcefully disable add-ons with the following characteristics:
 
 * They appear to intentionally violate policy
 * They contain critical security vulnerabilities
 * They compromise user privacy
 * They severely circumvent user consent or control
-
-A **soft block** will disable an add-on by default, but allow the user to override and continue using it. Such a block is used for add-ons with the following characteristics:
-
-* They cause severe stability and performance issues in Thunderbird
-* They contain non-critical policy violations
+* They cause severe stability and performance issues in Thunderbird [former soft-block: remove?]
+* They contain non-critical policy violations [former soft-block: remove?]
 
 Add-ons that appear to be clones, repeats or close copies of already blocked add-ons will also be removed. If an issue is known to affect only a subset of versions, the block may be applied to the affected versions specifically. Add-ons that contain obfuscated or comparably unreadable code will also be blocked.
 
@@ -44,5 +41,4 @@ In addition to add-ons, the Thunderbird Team may also block other types of softw
 
 The Thunderbird Team may limit hardware acceleration features of graphics cards for certain graphics driver versions in accordance with [Mozilla’s graphics driver blocks](https://wiki.mozilla.org/Blocklisting/Graphics) policy. This is done for stability reasons, to avoid driver crashes that would interrupt the user.
 
-In addition, we may block certain plugins that are known to cause stability issues or contain security vulnerabilities. Depending on the severity, a plugin may be forced to require a click from the user to activate, is disabled with an option for the user to enable, or blocked from running in Thunderbird. This category includes injected third party libraries that interfere with the functionality of Thunderbird.
-
+In addition, we may block certain injected third party libraries that interfere with the functionality of Thunderbird.

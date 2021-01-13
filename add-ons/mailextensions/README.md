@@ -241,7 +241,11 @@ We also prepared a step-by-step guide for a small Hello World MailExtension:
 
 ## Experiment APIs
 
-The currently available WebExtension APIs are not yet sufficient, as some areas of Thunderbird are not accessible through these APIs. While we are working on improving the situation, add-on developers can create their own API by registering an implementation script and a schema file describing the interface in the`manifest.json` file:
+The currently available WebExtension APIs are not yet sufficient, as some areas of Thunderbird are not accessible through these APIs. We are working on improving the situation.
+
+Currently and for the foreseeable future Thunderbird supports Experiment APIs \(a.k.a. Experiments\), which are WebExtension APIs that are bundled and shipped together with a MailExtension. They interact directly with Thunderbird's internal APIs and allow add-ons to use additional features not yet available via built-in WebExtension APIs.
+
+These additional APIs can be registered in the `manifest.json` file by defining an implementation script and a schema file describing the interface:
 
 ```javascript
     "experiment_apis": {
@@ -257,13 +261,40 @@ The currently available WebExtension APIs are not yet sufficient, as some areas 
     }
 ```
 
-That API can then be used by the MailExtension like any other WebExtension API.
-
-An Experiment API, specifically its implementation script has access to Thunderbirds internal functions, components and UI elements. Instead of using WebExtensions APIs, add-on developers need to interact with and get used to the actual source code of Thunderbird.
+If you'd like to learn more about experiments, check out this detailed introduction:
 
 {% page-ref page="experiments.md" %}
 
-Currently and for the foreseeable future Experiments can be used in extensions released to the general public. In the meantime, we will be dedicated to API development and to improve the situation for add-on developers.
+### Sharing Experiment APIs
 
-If you need an API that does not exist yet, please [tell us about it](https://bugzilla.mozilla.org/enter_bug.cgi?product=Thunderbird&component=Add-Ons%3A+Extensions+API). If you have created an Experiment API which you think is a good fit for general use in Thunderbird, please [tell us about it](https://developer.thunderbird.net/add-ons/community).
+Developers can share and re-use Experiments, if their add-ons have similar needs. Before starting to work on your own Experiment, check if any of the following APIs could already provide the functionality you need. Using them and providing feedback to their developers will help to improve these APIs.
+
+| Name | Diskussion | Description |
+| :--- | :---: | :--- |
+| [CachingFix](https://github.com/rsjtdrjgfuzkfg/thunderbird-experiments/tree/master/experiments/cachingfix) |  | Adding this Experiment API will automatically [fix caching issues when the add-on is updated, disabled or uninstalled](https://developer.thunderbird.net/add-ons/mailextensions/experiments#managing-your-experiments-lifecycle). |
+| [Calendar](https://github.com/thundernest/tb-web-ext-experiments/blob/master/calendar) | [💬](https://thunderbird.topicbox.com/groups/addons/Ta66e29a70cfa405f-M7357f9e59c7228cc1632b601/draft-for-mailextensions-related-to-calendaring)  [📝](https://docs.google.com/document/d/15awbKiVfdOTmsRpgD1dxm3gvOt08EQZDSnMl8QRBFoY/edit?usp=sharing) | Draft for calendar-related APIs in Thunderbird. |
+| [ComposeMessageHeaders](https://github.com/gruemme/tb-api-compose_message_headers) |  | Adds missing functionality to add headers to a newly composed message. Aims to add a header object to the compose.ComposeDetails object, so headers can be set via compose.setComposeDetails |
+| [CustomUI](https://github.com/rsjtdrjgfuzkfg/thunderbird-experiments/tree/master/experiments/customui) |  | A generic UI extension framework based iframes registered at fixed extension points. |
+| [LegacyMenu](https://github.com/thundernest/addon-developer-support/tree/master/auxiliary-apis/LegacyMenu) |  | Add menu entries to Thunderbird menus currently not accessible using the built-in menus API |
+| [LegacyPrefs](https://github.com/thundernest/addon-developer-support/tree/master/auxiliary-apis/LegacyPrefs) |  | Access Thunderbird system preferences. |
+| [NotificationBar](https://github.com/jobisoft/notificationbar-API/tree/master/notificationbar) | [💬](https://thunderbird.topicbox.com/groups/addons/T576f843ea846049c-M2b3bf1c77ba25dfb1d78e7d4/notification-api-proposal)  [📝](https://docs.google.com/document/d/1mTwVozOiEcDCw3QQKxVz-N5yHY8SVFC9KUL4_x0IN68/) | Add Thunderbird notification bars. |
+| [Runtime.onDisable](https://github.com/rsjtdrjgfuzkfg/thunderbird-experiments/tree/master/experiments/runtime) |  | Permit WebExtensions to perform \(time-limited\) cleanup tasks after the add-on is disabled or uninstalled. |
+| [TCP](https://github.com/rsjtdrjgfuzkfg/thunderbird-experiments/tree/master/experiments/tcp) |  | TCP support based on ArrayBuffers \(currently client side only\). |
+
+💬: API has a public announcement post         
+📝: API has a public interface discussion
+
+If you have created an Experiment API which you think could be beneficial to other developers, please [tell us about it](https://github.com/thundernest/developer-docs/issues/new), so we can include it here.
+
+### Proposing APIs to be included in Thunderbird
+
+Creating a good WebExtension API for Thunderbird is not an easy task. New APIs need to be generic and distinct from other APIs. Their interfaces have to be designed with foresight as we should avoid scenarios, where we have to make backward incompatible changes later because we have missed something.
+
+If you want to propose and maybe collaborate on a new API, the following process is suggested:
+
+1. Announcing the idea and a first outline of the suggested API on [discuss.thunderbird.net](https://discuss.thunderbird.net/groups/addons). An actual implementation is not yet needed, but a general concept of how the API is supposed to work is helpful. This allows the add-on developer community to provide feedback and to make sure the design will cover their needs as well. 
+2. Publishing a detailed API description, which can be viewed and commented. Google docs have worked quite well \(see [here](https://docs.google.com/document/d/15awbKiVfdOTmsRpgD1dxm3gvOt08EQZDSnMl8QRBFoY/edit?usp=sharing) and [here](https://docs.google.com/document/d/1mTwVozOiEcDCw3QQKxVz-N5yHY8SVFC9KUL4_x0IN68/edit)\), but any platform that allows to collaborate will be sufficient. The goal is to shape out the event, function and type definitions of the API. 
+3. Creating a [tracking bug on bugzilla](https://bugzilla.mozilla.org/enter_bug.cgi?product=Thunderbird&component=Add-Ons%3A+Extensions+API), referencing the API description, so the core development team is notified and can comment as well. 
+4. Publishing a working implementation, so add-on developers can use it and provide feedback.  
+5. Adding a patch to the tracking bug and request review.
 

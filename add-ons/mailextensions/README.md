@@ -269,7 +269,7 @@ If you'd like to learn more about experiments, check out this detailed introduct
 
 Developers can share and re-use Experiments, if their add-ons have similar needs. Before starting to work on your own Experiment, check if any of the following APIs could already provide the functionality you need. Using them and providing feedback to their developers will help to improve these APIs.
 
-| Name | Diskussion | Description |
+| Name |  | Description |
 | :--- | :---: | :--- |
 | [CachingFix](https://github.com/rsjtdrjgfuzkfg/thunderbird-experiments/tree/master/experiments/cachingfix) |  | Adding this Experiment API will automatically [fix caching issues when the add-on is updated, disabled or uninstalled](https://developer.thunderbird.net/add-ons/mailextensions/experiments#managing-your-experiments-lifecycle). |
 | [Calendar](https://github.com/thundernest/tb-web-ext-experiments/blob/master/calendar) | [💬](https://thunderbird.topicbox.com/groups/addons/Ta66e29a70cfa405f-M7357f9e59c7228cc1632b601/draft-for-mailextensions-related-to-calendaring)  [📝](https://docs.google.com/document/d/15awbKiVfdOTmsRpgD1dxm3gvOt08EQZDSnMl8QRBFoY/edit?usp=sharing) | Draft for calendar-related APIs in Thunderbird. |

@@ -18,7 +18,7 @@ The Thunderbird Team will block add-ons with the following characteristics:
 * They compromise user privacy
 * They severely circumvent user consent or control
 * They cause severe stability and performance issues in Thunderbird
-* They contain obfuscated or comparably unreadable code
+* They contain obfuscated or comparably unreadable code (see Mozilla’s [examples](https://extensionworkshop.com/documentation/publish/source-code-submission/#use-of-obfuscated-code) of prohibited use of obfuscated code)
 
 Additionally, add-ons listed on ATN will be blocked if they seem to intentionally violate [ATN policy](review-policy-for-thunderbird-add-ons.md).
 

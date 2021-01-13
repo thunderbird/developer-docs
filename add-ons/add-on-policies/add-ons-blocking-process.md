@@ -32,7 +32,7 @@ More commonly, we will not reach out to developers prior to blocking if it appea
 
 ### Requesting a Block
 
-If you have encountered an add-on that you believe meets the criteria for being blocked, you may [request a block](http://bugzilla.mozilla.org/form.blocklist) **\[todo: update link\]**. Note that developers cannot request a block of their own add-ons [Remark my Dirk: Why?]
+If you have encountered an add-on that you believe meets the criteria for being blocked, you may [request a block](http://bugzilla.mozilla.org/form.blocklist) **\[todo: update link\]**. Note that developers cannot request a block of their own add-ons [Remark by Dirk: Why?]
 
 ### Blocking Other Types of Third Party Software
 

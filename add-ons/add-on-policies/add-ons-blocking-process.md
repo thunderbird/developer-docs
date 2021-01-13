@@ -20,7 +20,7 @@ The Thunderbird Team will block add-ons with the following characteristics:
 * They cause severe stability and performance issues in Thunderbird
 * They contain obfuscated or comparably unreadable code
 
-Additionally, add-ons listed on ATN will be blocked if they intentionally violate [ATN policy](review-policy-for-thunderbird-add-ons.md).
+Additionally, add-ons listed on ATN will be blocked if they seem to intentionally violate [ATN policy](review-policy-for-thunderbird-add-ons.md).
 
 Add-ons that appear to be clones, repeats or close copies of already blocked add-ons will also be removed. If an issue is known to affect only a subset of versions, the block may be applied to the affected versions specifically. 
 

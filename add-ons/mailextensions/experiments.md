@@ -79,6 +79,8 @@ In addition to your Experiment being loaded and unloaded as a whole, that Experi
 
 In general, you can always pass simple data structures as function parameters and return values of an API. Thunderbird will automatically adapt them using the [structured clone algorithm](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm), so you do not need to worry about them.
 
+If your API function is supposed to return a value, it must be defined as `async` in the schema file.
+
 ### Child implementations
 
 If you want to pass more complex data structures, especially functions or instances of custom classes, you can do so from a _child_ implementation. There is a big caveat, though: the Experiment's implementation scripts are privileged relative to WebExtension scripts, which causes their scopes to be disjunct:

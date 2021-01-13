@@ -4,7 +4,7 @@ Add-ons enable users to add features to Thunderbird for a personalized user expe
 
 When the Thunderbird Team becomes aware of add-ons that go against user expectations or otherwise risk user privacy and security, it takes steps to block them from running in Thunderbird. This may happen proactively, or in response to an abuse report.
 
-The following describes our common practices for dealing with add-ons that appear to violate the [Add-on Policies](review-policy-for-thunderbird-add-ons.md). Authoritative information on the conditions for removing or revoking add-ons can be found in the [Thunderbird Add-on Distribution Agreement](thunderbird-add-on-distribution-agreement.md) and the [Add-on Policies](review-policy-for-thunderbird-add-ons.md).
+The following describes our common practices for dealing with such add-ons.
 
 ### Security Over Choice
 
@@ -12,16 +12,17 @@ When deciding whether to block an add-on from running in Thunderbird, we ask whe
 
 ### Blocking Criteria
 
-The Thunderbird Team will forcefully disable add-ons with the following characteristics:
+The Thunderbird Team will block add-ons with the following characteristics:
 
-* They appear to intentionally violate policy
 * They contain critical security vulnerabilities
 * They compromise user privacy
 * They severely circumvent user consent or control
-* They cause severe stability and performance issues in Thunderbird [former soft-block: remove?]
-* They contain non-critical policy violations [former soft-block: remove?]
+* They cause severe stability and performance issues in Thunderbird
+* They contain obfuscated or comparably unreadable code
 
-Add-ons that appear to be clones, repeats or close copies of already blocked add-ons will also be removed. If an issue is known to affect only a subset of versions, the block may be applied to the affected versions specifically. Add-ons that contain obfuscated or comparably unreadable code will also be blocked.
+Additionally, add-ons listed on ATN will be blocked if they intentionally violate [ATN policy](review-policy-for-thunderbird-add-ons.md).
+
+Add-ons that appear to be clones, repeats or close copies of already blocked add-ons will also be removed. If an issue is known to affect only a subset of versions, the block may be applied to the affected versions specifically. 
 
 ### Developer Outreach
 
@@ -31,9 +32,7 @@ More commonly, we will not reach out to developers prior to blocking if it appea
 
 ### Requesting a Block
 
-If you have encountered an add-on that you believe meets the criteria for being blocked, you may [request a block](http://bugzilla.mozilla.org/form.blocklist) **\[todo: update link\]**. Note that developers cannot request a block of their own add-ons.
-
-The Thunderbird Team only blocks add-ons based on the [Thunderbird add-on distribution agreement](thunderbird-add-on-distribution-agreement.md) and [add-on policies](review-policy-for-thunderbird-add-ons.md). When requesting a block, please read these carefully as the policies do allow certain forms of monetization and data collection.
+If you have encountered an add-on that you believe meets the criteria for being blocked, you may [request a block](http://bugzilla.mozilla.org/form.blocklist) **\[todo: update link\]**. Note that developers cannot request a block of their own add-ons [Remark my Dirk: Why?]
 
 ### Blocking Other Types of Third Party Software
 

@@ -42,7 +42,7 @@ This is the Try syntax try-comm-central understands:
 * `-p` Platform. There are five platforms. Each also has a `-shippable` variant, which is a complication you probably don't need to think about.
   * `linux` 32-bit Linux
   * `linux64` 64-bit Linux
-  * `macosx64` Mac OS \(if you don't need a debug build, specify `macox64-shippable` instead\)
+  * `macosx64` Mac OS \(if you don't need a debug build, specify `macosx64-shippable` instead\)
   * `win32` 32-bit Windows
   * `win64` 64-bit Windows
   * `all` for all platforms

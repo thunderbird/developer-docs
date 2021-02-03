@@ -177,3 +177,20 @@ messenger.composeScripts.register({
 });
 ```
 
+## Theme Experiments
+
+A theme Experiment allows modifying the user interface of Thunderbird beyond what is currently possible using the [`theme`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/theme) API. These experiments are a precursor to proposing new theme features for inclusion in Thunderbird. Experimentation is done by:
+
+* Using `colors`, `images`, and `properties` to map internal Thunderbird CSS variables, such as `--arrowpanel-dimmed` to new `theme` key properties. 
+* Creating a stylesheet that defines mappings between internal CSS selectors for Thunderbird UI elements and arbitrary CSS variables. The CSS variables are then mapped in the `colors`, `images`, and `properties` objects to new `theme` key properties.
+
+The first option exposes already existing CSS variables to the [`theme`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/theme) API, the second option creates new CSS variables and exposes them to the [`theme`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/theme) API.
+
+To discover the CSS selectors for Thunderbird UI elements or internal Thunderbird CSS variables use the [browser toolbox](https://developer.mozilla.org/en-US/docs/Tools/Browser_Toolbox).
+
+{% hint style="info" %}
+Our example repository includes a [working add-on using a theme experiment](https://github.com/thundernest/sample-extensions/tree/master/theme_experiment).
+{% endhint %}
+
+Further information regarding theme experiments can be found in the [MDN documentation](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/theme_experiment). It is dedicated to Firefox, not all information apply to Thunderbird.
+

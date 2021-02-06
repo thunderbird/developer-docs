@@ -9,6 +9,7 @@ A Theme is a Thunderbird add-on that allows to change the appearance of Thunderb
 * [Static Themes](web-extension-themes.md#static-themes)
 * [Dynamic Themes](web-extension-themes.md#dynamic-themes)
 * [Theming of message-compose-windows and message-display-tabs](web-extension-themes.md#theming-message-compose-windows-and-message-display-tabs)
+* [Theme Experiments](web-extension-themes.md#theme-experiments)
 
 ## Static Themes
 
@@ -52,41 +53,9 @@ You must prepare a JSON manifest, named `manifest.json` just as with other WebEx
 Although not required by Firefox, Thunderbird requires an `applications` object with an id set for the add-on! Because we don't sign add-ons, themes will not install without it.
 {% endhint %}
 
-### Additional color properties
+### Additional theme properties
 
-Although the above theme will work as-is, there are other properties which can be added.
-
-For the `colors` object, there are many options. Those known to work are listed below:
-
-* bookmark\_text
-* frame
-* frame\_inactive
-* popup
-* popup\_text
-* popup\_border
-* popup\_highlight
-* popup\_highlight\_text
-* popup\_border
-* sidebar
-* sidebar\_text
-* sidebar\_highlight
-* sidebar\_highlight\_text
-* sidebar\_border
-* tab\_text
-* tab\_line
-* tab\_loading
-* tab\_background\_text
-* toolbar\_field
-* toolbar\_field\_text
-* toolbar\_field\_highlight
-* toolbar\_field\_highlight\_text
-* toolbar\_field\_border
-* toolbar\_field\_focus
-* toolbar\_field\_text\_focus
-* toolbar\_field\_border\_focus
-* toolbar\_top\_separator
-* toolbar\_bottom\_separator
-* toolbar\_vertical\_separator
+Although the above theme will work as-is, there are other properties which can be added. All currently supported properties are listed in the [`ThemeType`](https://webextension-api.thunderbird.net/en/latest/theme.html#theme-themetype) definition in our WebExtension API documentation.
 
 ### Icons
 
@@ -158,13 +127,13 @@ Here is a `manifest.json` from a Theme that uses all the above features, thanks 
 
 ## Dynamic Themes
 
-Dynamic themes are actually MailExtensions, that use the [`theme`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/theme) API instead of a [`theme`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/theme) manifest key. They can set the same theme properties like static themes, but they can change them dynamically. For instance, [one example](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/Themes/Theme_concepts#Dynamic_themes) used in the Firefox documentation is a dynamic theme that changes the theme colors based on the time of day.
+Dynamic themes are actually normal MailExtensions, that use the [`update()`](https://webextension-api.thunderbird.net/en/latest/theme.html#update-windowid-details) method of the [`theme`](https://webextension-api.thunderbird.net/en/latest/theme.html#theme) API instead of a static [`theme`](https://webextension-api.thunderbird.net/en/latest/theme.html) manifest key. They can set the same theme properties like static themes, but they can change them dynamically. For instance, [an example](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/Themes/Theme_concepts#Dynamic_themes) used in the Firefox documentation is a dynamic theme that changes the theme colors based on the time of day.
 
 {% page-ref page="mailextensions/" %}
 
 ## Theming message-compose-windows and message-display-tabs
 
-The default theming properties do not support the Thunderbird specific message-compose-windows and the message-display-tabs. These can be manipulated by injecting CSS files using the following WebExtension API methods:
+The built-in theming properties do not modify the message-compose-windows and the message-display-tabs. These can be manipulated by injecting CSS files using the following WebExtension API methods:
 
 * [messageDisplayScripts.register\(\)](https://webextension-api.thunderbird.net/en/latest/messageDisplayScripts.html#register-messagedisplayscriptoptions)
 * [composeScripts.register\(\)](https://webextension-api.thunderbird.net/en/latest/composeScripts.html#register-composescriptoptions)
@@ -179,18 +148,19 @@ messenger.composeScripts.register({
 
 ## Theme Experiments
 
-A theme Experiment allows modifying the user interface of Thunderbird beyond what is currently possible using the [`theme`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/theme) API. These experiments are a precursor to proposing new theme features for inclusion in Thunderbird. Experimentation is done by:
+A theme experiment allows modifying the user interface of Thunderbird beyond what is currently possible using the built-in color, image and property keys of the [`theme`](https://webextension-api.thunderbird.net/en/latest/theme.html) API. These experiments are a precursor to proposing new theme features for inclusion in Thunderbird. 
 
-* Using `colors`, `images`, and `properties` to map internal Thunderbird CSS variables, such as `--arrowpanel-dimmed` to new `theme` key properties. 
-* Creating a stylesheet that defines mappings between internal CSS selectors for Thunderbird UI elements and arbitrary CSS variables. The CSS variables are then mapped in the `colors`, `images`, and `properties` objects to new `theme` key properties.
+Experimentation is done by exposing already existing internal CSS variables \(e.g. `--arrowpanel-dimmed`\) to the [`theme`](https://webextension-api.thunderbird.net/en/latest/theme.html) API and by loading additional stylesheets to define new CSS variables, extending the theme-able areas of Thunderbird.
 
-The first option exposes already existing CSS variables to the [`theme`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/theme) API, the second option creates new CSS variables and exposes them to the [`theme`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/theme) API.
-
-To discover the CSS selectors for Thunderbird UI elements or internal Thunderbird CSS variables use the [browser toolbox](https://developer.mozilla.org/en-US/docs/Tools/Browser_Toolbox).
+Use the [browser toolbox](https://developer.mozilla.org/en-US/docs/Tools/Browser_Toolbox) to discover CSS selectors for Thunderbird UI elements or internal Thunderbird CSS variables.
 
 {% hint style="info" %}
-Our example repository includes a [working add-on using a theme experiment](https://github.com/thundernest/sample-extensions/tree/master/theme_experiment).
+Further information regarding theme experiments can be found in our [WebExtension API documentation of the theme API](https://webextension-api.thunderbird.net/en/latest/theme.html).
 {% endhint %}
 
-Further information regarding theme experiments can be found in the [MDN documentation](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/theme_experiment). It is dedicated to Firefox, not all information apply to Thunderbird.
+{% hint style="info" %}
+Our example repository includes an [add-on using a theme experiment](https://github.com/thundernest/sample-extensions/tree/master/theme_experiment) to change the color of the chat icon.
+{% endhint %}
+
+
 

@@ -250,6 +250,21 @@ Thunderbird provides the following messenger related WebExtension APIs, which ar
       </td>
     </tr>
     <tr>
+      <td style="text-align:left"><a href="https://webextension-api.thunderbird.net/en/latest/theme.html">theme</a>
+      </td>
+      <td style="text-align:left">theme</td>
+      <td style="text-align:left">
+        <p>The theme API can be used to create static or dynamic Thunderbird themes.
+          Theme experiments are supported.</p>
+        <p></p>
+        <p><em>Permission info:</em>
+        </p>
+        <ul>
+          <li>The <code>theme</code> permission is needed to dynamically update the theme.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
       <td style="text-align:left"><a href="https://webextension-api.thunderbird.net/en/latest/windows.html">windows</a>
       </td>
       <td style="text-align:left">tabs</td>
@@ -492,12 +507,6 @@ The following APIs link to their MDN description pages. Please be aware, that MD
       </td>
       <td style="text-align:left">Enables extensions to store and retrieve data, and listen for changes
         to stored items.</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/theme">theme</a>
-      </td>
-      <td style="text-align:left">theme</td>
-      <td style="text-align:left">Enables extensions to update the theme, thus creating a dynamic theme.</td>
     </tr>
     <tr>
       <td style="text-align:left"><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/userScripts">userScripts</a>

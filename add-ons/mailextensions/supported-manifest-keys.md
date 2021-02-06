@@ -186,12 +186,12 @@ _Several manifest keys in the following table are common to Thunderbird and Fire
       </td>
     </tr>
     <tr>
-      <td style="text-align:left"><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/theme">theme</a>
+      <td style="text-align:left"><a href="https://webextension-api.thunderbird.net/en/latest/theme.html">theme</a>
       </td>
       <td style="text-align:left">This key defines a static theme to be applied to Thunderbird.</td>
     </tr>
     <tr>
-      <td style="text-align:left"><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/theme_experiment">theme_experiment</a>
+      <td style="text-align:left"><a href="https://webextension-api.thunderbird.net/en/latest/theme.html">theme_experiment</a>
       </td>
       <td style="text-align:left">This key enables the definition of experimental <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/theme"><code>theme</code></a> key
         properties for the Thunderbird interface. These experiments are a precursor

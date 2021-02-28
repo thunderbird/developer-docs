@@ -127,7 +127,7 @@ Here is a `manifest.json` from a Theme that uses all the above features, thanks 
 
 ## Dynamic Themes
 
-Dynamic themes are actually normal MailExtensions, that use the [`update()`](https://webextension-api.thunderbird.net/en/latest/theme.html#update-windowid-details) method of the [`theme`](https://webextension-api.thunderbird.net/en/latest/theme.html#theme) API instead of a static [`theme`](https://webextension-api.thunderbird.net/en/latest/theme.html) manifest key. They can set the same theme properties like static themes, but they can change them dynamically. For instance, [an example](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/Themes/Theme_concepts#Dynamic_themes) used in the Firefox documentation is a dynamic theme that changes the theme colors based on the time of day.
+Dynamic themes are actually normal MailExtensions, that use the [`update()`](https://webextension-api.thunderbird.net/en/latest/theme.html#update-windowid-details) method of the [`theme`](https://webextension-api.thunderbird.net/en/latest/theme.html#theme) API instead of a static [`theme`](https://webextension-api.thunderbird.net/en/latest/theme.html) manifest key. They can set the same theme properties like static themes, but they can change them dynamically. For instance the [Night and Day theme](https://addons.thunderbird.net/addon/night-and-day-dynamic/) is a dynamic theme that changes the theme colors based on the time of day.
 
 {% page-ref page="mailextensions/" %}
 

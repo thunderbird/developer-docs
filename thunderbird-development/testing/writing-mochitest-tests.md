@@ -82,7 +82,7 @@ EventUtils.sendKey("TAB");
 
 Some other valid keys for `sendKey` include: RETURN, BACK\_SPACE, DELETE, HOME, END, UP, DOWN, LEFT, RIGHT, PAGE\_UP, PAGE\_DOWN, SHIFT, CONTROL, ALT, ESCAPE, F1, F2, etc. \(Not an exhaustive list.\)
 
-If the test is interacting with a window that is not the main one, pass the relevant window as the \(optional\) third argument:
+If the test is interacting with a window that is not the main one, pass the relevant window as the \(optional\) second argument:
 
 ```javascript
 EventUtils.sendString("some text", anotherWindow);

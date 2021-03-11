@@ -31,9 +31,6 @@ The subdirectories are:
 **common**  
 An assortment of code we've uplifted from mozilla-central as it was removed from there.
 
-**editor**  
-UI for the Compose window and the Composer part of SeaMonkey. Not used in Thunderbird.
-
 **ldap**  
 The LDAP C SDK. Used for communicating with LDAP servers.
 

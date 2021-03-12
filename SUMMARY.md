@@ -27,7 +27,7 @@
 
 ## Planning
 
-* [Roadmap](planning/roadmap-1.md)
+* [Roadmap](planning/roadmap.md)
 
 ## Add-on Development <a id="add-ons"></a>
 

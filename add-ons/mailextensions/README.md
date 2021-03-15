@@ -279,10 +279,12 @@ Developers can share and re-use Experiments, if their add-ons have similar needs
 | [LegacyPrefs](https://github.com/thundernest/addon-developer-support/tree/master/auxiliary-apis/LegacyPrefs) |  | Access Thunderbird system preferences. |
 | [NotificationBar](https://github.com/jobisoft/notificationbar-API/tree/master/notificationbar) | [💬](https://thunderbird.topicbox.com/groups/addons/T576f843ea846049c-M2b3bf1c77ba25dfb1d78e7d4/notification-api-proposal)  [📝](https://docs.google.com/document/d/1mTwVozOiEcDCw3QQKxVz-N5yHY8SVFC9KUL4_x0IN68/) | Add Thunderbird notification bars. |
 | [Runtime.onDisable](https://github.com/rsjtdrjgfuzkfg/thunderbird-experiments/tree/master/experiments/runtime) |  | Permit WebExtensions to perform \(time-limited\) cleanup tasks after the add-on is disabled or uninstalled. |
+| [TagService](https://github.com/int-red/experiment-api-tagservice) | [B](https://bugzilla.mozilla.org/show_bug.cgi?id=1651954) [💬](https://thunderbird.topicbox.com/groups/addons/T748f8fbd94681aa6-Me57c565c9f0111b493771c77) | Add/Manage email tags. |
 | [TCP](https://github.com/rsjtdrjgfuzkfg/thunderbird-experiments/tree/master/experiments/tcp) |  | TCP support based on ArrayBuffers \(currently client side only\). |
 
 💬: API has a public announcement post         
-📝: API has a public interface discussion
+📝: API has a public interface discussion  
+  B : Bugzilla Bug
 
 If you have created an Experiment API which you think could be beneficial to other developers, please [tell us about it](https://github.com/thundernest/developer-docs/issues/new), so we can include it here.
 

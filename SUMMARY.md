@@ -24,6 +24,8 @@
   * [Running Tests](thunderbird-development/testing/running-tests.md)
   * [Adding Tests](thunderbird-development/testing/adding-tests.md)
   * [Writing Mochitest Tests](thunderbird-development/testing/writing-mochitest-tests.md)
+* [C++ Development](thunderbird-development/c++-reference.md)
+* [Javascript Development](thunderbird-development/javascript-reference.md)
 
 ## Planning
 

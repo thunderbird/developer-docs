@@ -22,13 +22,13 @@ Many essential functions live in these files.
 
 * [EventUtils](https://searchfox.org/mozilla-central/source/testing/mochitest/tests/SimpleTest/EventUtils.js)
 * [BrowserTestUtils](https://searchfox.org/mozilla-central/source/testing/mochitest/BrowserTestUtils/BrowserTestUtils.jsm)
-* [mailTestUtils](https://searchfox.org/comm-central/source/mailnews/test/resources/mailTestUtils.js)
+* [MailTestUtils](https://searchfox.org/comm-central/source/mailnews/test/resources/MailTestUtils.jsm)
 
 `EventUtils` and `BrowserTestUtils` do not need to be imported as they are already available in Mochitest files. `mailTestUtils` requires importing:
 
 ```javascript
 const { mailTestUtils } = ChromeUtils.import(
-  "resource://testing-common/mailnews/mailTestUtils.js"
+  "resource://testing-common/mailnews/MailTestUtils.jsm"
 );
 ```
 

@@ -28,7 +28,7 @@ Many essential functions live in these files.
 
 ```javascript
 const { mailTestUtils } = ChromeUtils.import(
-  "resource://testing-common/mailnews/MailTestUtils.js"
+  "resource://testing-common/mailnews/MailTestUtils.jsm"
 );
 ```
 

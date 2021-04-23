@@ -70,8 +70,6 @@ See [here](https://searchfox.org/mozilla-central/rev/15f6b60e343c536305a5aa81e20
 
 ## folderPane.js
 
-### ftvItem
-
 The `ftvItem` object has been renamed to `FtvItem` in Beta 86.
 
 ## MsgComposeCommands.js
@@ -90,5 +88,7 @@ Has been replaced by `gAttachmentBucket.itemCount`.
 
 Has been replaced by `gAttachmentBucket.selectedCount`.
 
+## chrome://messenger/content/newmailalert.xhtml
 
+No longer supports the `gAlertListener`, `gUserInitiated` and `gOrigin` parameters when being opened \(argument 1-3\).
 

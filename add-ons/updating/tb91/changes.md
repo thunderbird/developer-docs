@@ -4,7 +4,7 @@
 
 ### nsIArray and nsIMutableArray
 
-Usage of nsIArray and `nsIMutableArray` is replaced by standard JavaScript Arrays. The following APIs have been updated \(links to actual patches, showing how core handled the change\):
+Usage of nsIArray and `nsIMutableArray` is replaced by standard JavaScript arrays. The following APIs have been updated \(links to actual patches, showing how core handled the change\):
 
 * [nsIAbCard.properties](https://hg.mozilla.org/comm-central/diff/f7bc5c5ef5ebaec6fcd3394905b1190f7f9043e3/mailnews/addrbook/modules/AddrBookDirectory.jsm)
 * [nsIAbDirectory.childCards](https://hg.mozilla.org/comm-central/diff/8d90e013f1e5ec392d10832272e622276010be05/mailnews/addrbook/public/nsIAbDirectory.idl)
@@ -46,18 +46,12 @@ For example [here](https://searchfox.org/comm-central/rev/bb3eb2b4cb4b17405e8efc
 
 ### nsIMsgCompose.SendMsg
 
-Renamed in Beta 86 to
-
-```text
-nsIMsgCompose.sendMsg
-```
-
-It also returns a Promise now. More details can be found [here](https://searchfox.org/comm-central/rev/bb3eb2b4cb4b17405e8efcc423563a7a07473292/mailnews/compose/public/nsIMsgCompose.idl#117).  
+Renamed in Beta 86 to `nsIMsgCompose.sendMsg`. It also returns a Promise now. More details can be found [here](https://searchfox.org/comm-central/rev/bb3eb2b4cb4b17405e8efcc423563a7a07473292/mailnews/compose/public/nsIMsgCompose.idl#117).  
 
 
 ### nsISocketTransportService.createTransport
 
-Changed in Beta 87. Needs a fifth parameter to specify a `nsIDNSRecord` value, but can be null if not needed:
+Changed in Beta 87. Needs a fifth parameter to specify a `nsIDNSRecord` value, but can be `null` if not needed:
 
 ```text
 nsISocketTransport createTransport(in Array<ACString> aSocketTypes,
@@ -77,13 +71,11 @@ The `ftvItem` object has been renamed to `FtvItem` in Beta 86.
 
 ### GetMsgAttachmentElement\(\)
 
-Has been replaced by`gAttachmentBucket`. More information can be found [here](https://hg.mozilla.org/comm-central/diff/b84ef4aee6c977f95fdf04d37f74791d3fecfbf4/mail/components/compose/content/MsgComposeCommands.js#l1.666).  
-
+Has been replaced by`gAttachmentBucket`. More information can be found [here](https://hg.mozilla.org/comm-central/diff/b84ef4aee6c977f95fdf04d37f74791d3fecfbf4/mail/components/compose/content/MsgComposeCommands.js#l1.666).
 
 ### attachmentsCount\(\) 
 
-Has been replaced by `gAttachmentBucket.itemCount`.  
-
+Has been replaced by `gAttachmentBucket.itemCount`.
 
 ### attachmentsSelectedCount\(\) 
 

@@ -25,7 +25,7 @@ MailExtensions can still run legacy code inside [Experiments](../../mailextensio
 
 * [Changes in Thunderbird 79-91](changes.md)
 
-If you have encountered a change which is not yet listed here, please [contact us](../../community.md), so we can update the list.
+If you have encountered a change which is not yet listed there, please [contact us](../../community.md), so we can update the list.
 
 ## Changes in Shared Experiments
 

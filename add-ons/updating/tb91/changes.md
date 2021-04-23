@@ -51,7 +51,7 @@ Renamed in Beta 86 to
 nsIMsgCompose.sendMsg
 ```
 
-It also returns a Promise now. See [here](https://searchfox.org/comm-central/rev/bb3eb2b4cb4b17405e8efcc423563a7a07473292/mailnews/compose/public/nsIMsgCompose.idl#117) for more details.  
+It also returns a Promise now. More details can be found [here](https://searchfox.org/comm-central/rev/bb3eb2b4cb4b17405e8efcc423563a7a07473292/mailnews/compose/public/nsIMsgCompose.idl#117).  
 
 
 ### nsISocketTransportService.createTransport

@@ -8,7 +8,8 @@ Usage of nsIArray and `nsIMutableArray` is replaced by standard JavaScript Array
 
 * [nsIAbCard.properties](https://hg.mozilla.org/comm-central/diff/f7bc5c5ef5ebaec6fcd3394905b1190f7f9043e3/mailnews/addrbook/modules/AddrBookDirectory.jsm)
 * [nsIAbDirectory.childCards](https://hg.mozilla.org/comm-central/diff/8d90e013f1e5ec392d10832272e622276010be05/mailnews/addrbook/public/nsIAbDirectory.idl)
-* nsIAbDirectory.getCardsFromProperty \(not used in core, same change as with childCards\) 
+* nsIAbDirectory.getCardsFromProperty \(returns array instead of enumerator\)
+* nsIAbManager.directories \(returns array instead of enumerator\) 
 * [nsIMsgAccountManager.accounts](https://hg.mozilla.org/comm-central/diff/1da9c365060718ffc88deb4d39b3930aeb02a1a7/calendar/base/modules/utils/calEmailUtils.jsm)
 * [nsIMsgAccountManager.allFolders](https://hg.mozilla.org/comm-central/diff/4fd2ffb624922351c4c7ec6a775c78b436339fb3/mail/test/browser/folder-display/browser_recentMenu.js)
 * [nsIMsgAccountManager.allIdentities](https://hg.mozilla.org/comm-central/diff/8d219926818378dda077442385c0d59650cc3ab6/calendar/base/modules/utils/calItipUtils.jsm)

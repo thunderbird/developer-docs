@@ -1,0 +1,50 @@
+# Adapt to Changes in Thunderbird 79-91
+
+## Changed API
+
+### nsIMsgCompose.SendMsg
+
+Renamed in Beta 86 to
+
+```text
+nsIMsgCompose.sendMsg
+```
+
+It also returns a Promise now. See [here](https://searchfox.org/comm-central/rev/bb3eb2b4cb4b17405e8efcc423563a7a07473292/mailnews/compose/public/nsIMsgCompose.idl#117) for more details.
+
+### nsISocketTransportService.createTransport
+
+Changed in Beta 87. Needs a fifth parameter to specify a `nsIDNSRecord` value, but can be null if not needed:
+
+```text
+nsISocketTransport createTransport(in Array<ACString> aSocketTypes,
+                                   in AUTF8String aHost,
+                                   in long aPort,
+                                   in nsIProxyInfo aProxyInfo,
+                                   in nsIDNSRecord dnsRecord);
+```
+
+See [here](https://searchfox.org/mozilla-central/rev/15f6b60e343c536305a5aa81e2020d7b87f93158/netwerk/base/nsISocketTransportService.idl#62) for more details.
+
+### nsIArray and nsIMutableArray
+
+Usage of nsIArray and `nsIMutableArray` is being removed and replaced by standard JavaScript Arrays. The following APIs have been updated \(links to actual patches, showing how core handled the change\):
+
+* [nsIMsgAccountManager.accounts](https://hg.mozilla.org/comm-central/diff/1da9c365060718ffc88deb4d39b3930aeb02a1a7/calendar/base/modules/utils/calEmailUtils.jsm)
+* [nsIMsgAccountManager.allFolders](https://hg.mozilla.org/comm-central/diff/4fd2ffb624922351c4c7ec6a775c78b436339fb3/mail/test/browser/folder-display/browser_recentMenu.js)
+* [nsIMsgAccountManager.allIdentities](https://hg.mozilla.org/comm-central/diff/8d219926818378dda077442385c0d59650cc3ab6/calendar/base/modules/utils/calItipUtils.jsm)
+* [nsIMsgAccountManager.allServers](https://hg.mozilla.org/comm-central/diff/16ca51abc6dda000296c7d7d082b9951ca04fd6d/mail/base/content/folderPane.js)
+* nsIMsgCopyService.CopyFolders -&gt; [nsIMsgCopyService.copyFolders](https://hg.mozilla.org/comm-central/diff/4f8d3dff196eba35f09bbbe4f6487f882c07840e/mailnews/imap/test/unit/test_localToImapFilter.js)
+* [nsIMsgCopyService.CopyMessages](https://hg.mozilla.org/comm-central/diff/fe318ec033d42bd4342a63b86c320116bfa5c5bc/mail/test/browser/message-window/browser_commands.js)
+* [nsIMsgFolder.addKeywordsToMessages](https://hg.mozilla.org/comm-central/diff/4f1fac782b47fc236f62a18e7a51a51c8982edfd/mail/base/content/mailWindowOverlay.js#l1.71)
+* [nsIMsgFolder.deleteMessages](https://hg.mozilla.org/comm-central/diff/c2ddbcc4f19781c5c61f46918a94dd33fab2c8d9/mail/components/compose/content/MsgComposeCommands.js)
+* nsIMsgFolder.deleteSubFolders -&gt; [nsIMsgFolder.deleteSelf](https://hg.mozilla.org/comm-central/diff/d4333da4784fc707a56a5bdda13392a94765c05b/mail/base/content/folderPane.js#l1.14)
+* nsIMsgFolder.listFoldersWithFlags -&gt;  [nsIMsgFolder.getFoldersWithFlags](https://hg.mozilla.org/comm-central/diff/d146b4e2061c4ec55fce6ac0615c722fed19e756/mail/base/content/folderPane.js#l1.16)
+* [nsIMsgFolder.markMessagesRead](https://hg.mozilla.org/comm-central/diff/93610e507d37b2da5e034536ba05f7d2679fcfac/mail/components/extensions/parent/ext-messages.js#l1.22) 
+* [nsIMsgFolder.markMessagesFlagged](https://hg.mozilla.org/comm-central/diff/93610e507d37b2da5e034536ba05f7d2679fcfac/mail/components/extensions/parent/ext-messages.js#l1.25)
+* [nsIMsgFolder.removeKeywordsFromMessages](https://hg.mozilla.org/comm-central/diff/4f1fac782b47fc236f62a18e7a51a51c8982edfd/mailnews/base/test/unit/test_bug428427.js#l1.40)
+* [nsIMsgFolder.setJunkScoreForMessages](https://hg.mozilla.org/comm-central/diff/93610e507d37b2da5e034536ba05f7d2679fcfac/mail/components/extensions/parent/ext-messages.js#l1.29)
+* [nsIMsgFolderListener.msgsClassified](https://hg.mozilla.org/comm-central/diff/e7ab0d2b72908c0a66347f188f8e00d3b87e7b11/mail/components/extensions/parent/ext-messages.js)
+
+
+

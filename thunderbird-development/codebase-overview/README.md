@@ -16,7 +16,7 @@ Miscellaneous files used by the build process.
 **calendar**  
 Source code of the Lightning extension and Google Calendar Provider extension.
 
-**chat**  
+\*\*\*\*[**chat**](chat/)  
 Files for the chat component of Thunderbird. There is also related code in `mail/components/im`.
 
 The subdirectories are:

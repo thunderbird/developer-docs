@@ -1,0 +1,100 @@
+# Notifications
+
+This is a page for documenting the notifications from Chat Core in Thunderbird. This is likely out of date. Notifications are grouped by interface you need to attach the observer to.
+
+{% hint style="warning" %}
+_Draft: This page is not complete._
+{% endhint %}
+
+### nsIObserverService <a id="nsiobserverservice"></a>
+
+| Topic | Subject | Data | Added | Comment |
+| :--- | :--- | :--- | :--- | :--- |
+| account-added | [imIAccount](https://searchfox.org/comm-central/source/chat/components/public/imIAccount.idl) | null | &lt;1.0 | a new account has been created |
+| account-connected | [imIAccount](https://searchfox.org/comm-central/source/chat/components/public/imIAccount.idl) | null | &lt;1.0 | the account has connected |
+| account-connecting | [imIAccount](https://searchfox.org/comm-central/source/chat/components/public/imIAccount.idl) | null | &lt;1.0 | the account has started a connection attempt |
+| account-connect-error | [imIAccount](https://searchfox.org/comm-central/source/chat/components/public/imIAccount.idl) | null | &lt;1.0 | the account has disconnecting with an error |
+| account-connect-progress | [imIAccount](https://searchfox.org/comm-central/source/chat/components/public/imIAccount.idl) | null | &lt;1.0 | the account is attempting to connect |
+| account-disconnected | [imIAccount](https://searchfox.org/comm-central/source/chat/components/public/imIAccount.idl) | null | &lt;1.0 | the account has disconnected |
+| account-disconnecting | [imIAccount](https://searchfox.org/comm-central/source/chat/components/public/imIAccount.idl) | null | &lt;1.0 | the account is disconnecting without an error reason |
+| account-list-updated | [imIAccountsService](https://searchfox.org/comm-central/source/chat/components/public/imIAccountsService.idl) | null | &lt;1.0 | the list of accounts has been updated |
+| account-removed | [imIAccount](https://searchfox.org/comm-central/source/chat/components/public/imIAccount.idl) | null | &lt;1.0 | an account is about to be removed |
+| account-updated | [imIAccount](https://searchfox.org/comm-central/source/chat/components/public/imIAccount.idl) | null | &lt;1.0 |  |
+| app-handler-pane-loaded | [nsIDOMWindow](https://searchfox.org/comm-central/source/mozilla/dom/interfaces/base/nsIDOMWindow.idl) | null | &lt;1.0 | Applications pane in preferences window is loaded |
+| autologin-processed | [imICoreService](https://searchfox.org/comm-central/source/chat/components/public/imICoreService.idl) | null | &lt;1.0 | imICoreService::processAutoLogin\(\) is complete |
+| browser-request | [prplIRequestBrowser](https://searchfox.org/comm-central/source/chat/components/public/prplIRequest.idl) | null | &lt;1.0 | Used by protocol plugins to bring up a browser window \(e.g. for an OAuth request\) |
+| closing-conversation | [prplIConversation](https://searchfox.org/comm-central/source/chat/components/public/prplIConversation.idl) | null | &lt;1.0 |  |
+| contact-moved | [imIContactsService](https://searchfox.org/comm-central/source/chat/components/public/imIContactsService.idl)  imIContact | null | &lt;1.0 | when a contact has been moved \(removed from one tag, added to another, or both\) |
+| contact-tag-added | imIContact | tag.id | &lt;1.0 | when a tag is added to a contact |
+| contact-tag-removed | imIContact | tag.id | &lt;1.0 | when a tag is removed from a contact |
+| conversation-closed | [prplIConversation](https://searchfox.org/comm-central/source/chat/components/public/prplIConversation.idl) | null | &lt;1.0 | conversation going away |
+| conversation-left-chat | [prplIConversation](https://searchfox.org/comm-central/source/chat/components/public/prplIConversation.idl) | null | &lt;1.0 | the user has left the conversation \(but it might remain visible\) |
+| conversation-loaded | [nsISupports](https://searchfox.org/comm-central/source/mozilla/xpcom/base/nsISupports.idl) | null or details | &lt;1.0 | subject is a &lt;browser type="content-conversation"&gt;, if fired because an existing conversation is moved from one window to another, the data parameter \("details"\) will contain the string "imported". |
+| im-sent | [prplIConversation](https://searchfox.org/comm-central/source/chat/components/public/prplIConversation.idl) | message text | &lt;1.0 | on sending an IM \(whether or not it succeeded\) |
+| new-conversation | [prplIConversation](https://searchfox.org/comm-central/source/chat/components/public/prplIConversation.idl) | null | &lt;1.0 | conversation created |
+| new-ui-conversation | [imIConversation](https://searchfox.org/comm-central/source/chat/components/public/imIConversationsService.idl) | null | &lt;1.0 |  |
+| prpl-quit | [imICoreService](https://searchfox.org/comm-central/source/chat/components/public/imICoreService.idl) | null | 1.2 | Core shutdown, was previously purple-quit |
+| status-changed | [imICoreService](https://searchfox.org/comm-central/source/chat/components/public/imICoreService.idl) | status text | &lt;1.0 | user \(not buddy\) status change |
+| tag-hidden | [imITag](https://searchfox.org/comm-central/source/chat/components/public/imITagsService.idl) | null | &lt;1.0 | fired when a tag is hidden |
+| tag-shown | [imITag](https://searchfox.org/comm-central/source/chat/components/public/imITagsService.idl) | null | &lt;1.0 | fired when a tag is set to be shown \(unhiding it\) |
+| ui-conversation-closed |  | null | &lt;1.0 |  |
+| unread-im-count-changed |  | count of unread messages | &lt;1.0 | fired when the number of unread messages changes |
+
+### imIBuddy <a id="imibuddy"></a>
+
+| Topic | Subject | Data | Added | Notes |
+| :--- | :--- | :--- | :--- | :--- |
+| account-buddy-availability-changed | [prplIAccountBuddy](https://dxr.mozilla.org/comm-central/source/chat/components/public/imIContactsService.idl) | null | &lt;1.0 | Possibly fired on account buddy status change |
+| account-buddy-display-name-changed | [imIContactsService](https://searchfox.org/comm-central/source/chat/components/public/imIContactsService.idl)  imIAccountBuddy | old serverAlias | &lt;1.0 | Fired when setting imIAccountBuddy::serverAlias |
+| account-buddy-icon-changed | imIAccountBuddy | null | &lt;1.0 | Fired when setting imIAccountBuddy::buddyIconFilename |
+| account-buddy-signed-off | imIAccountBuddy | null | &lt;1.0 | Possibly fired on account buddy status change |
+| account-buddy-signed-on | imIAccountBuddy | null | &lt;1.0 | Possibly fired on account buddy status change |
+| account-buddy-status-changed | imIAccountBuddy | null | &lt;1.0 | Possibly fired on account buddy status change |
+| buddy-added | [imIBuddy](https://searchfox.org/comm-central/source/chat/components/public/imIContactsService.idl) | null | &lt;1.0 | In response to account-buddy-added if the buddy previously had no account buddies |
+| buddy-availability-changed | [imIBuddy](https://searchfox.org/comm-central/source/chat/components/public/imIContactsService.idl) | null | &lt;1.0 | possibly fired on imIBuddy status updates |
+| buddy-display-name-changed | [imIBuddy](https://searchfox.org/comm-central/source/chat/components/public/imIContactsService.idl) | old serverAlias | &lt;1.0 | possibly in response to account-buddy-display-name-changed on the preferred account |
+| buddy-preferred-account-changed | [imIContactsService](https://searchfox.org/comm-central/source/chat/components/public/imIContactsService.idl)  [imIBuddy](https://searchfox.org/comm-central/source/chat/components/public/imIContactsService.idl) | null | &lt;1.0 | when setting imIBuddy::preferredAccountBuddy \(internally\) |
+| buddy-removed | [imIBuddy](https://searchfox.org/comm-central/source/chat/components/public/imIContactsService.idl) | null | &lt;1.0 | In response to account-buddy-removed if the buddy no longer has any account buddies |
+| buddy-signed-off | [imIBuddy](https://searchfox.org/comm-central/source/chat/components/public/imIContactsService.idl) | null | &lt;1.0 | possibly fired on imIBuddy status updates |
+| buddy-signed-on | [imIBuddy](https://searchfox.org/comm-central/source/chat/components/public/imIContactsService.idl) | null | &lt;1.0 | possibly fired on imIBuddy status updates |
+| buddy-status-changed | [imIBuddy](https://searchfox.org/comm-central/source/chat/components/public/imIContactsService.idl) | null | &lt;1.0 | possibly fired on imIBuddy status updates |
+
+### imIContact <a id="imicontact"></a>
+
+Note: all imIContact notifications also go to any imITag it belongs to, as well as nsIObserverService.
+
+| Topic | Subject | Data | Added | Notes |
+| :--- | :--- | :--- | :--- | :--- |
+| contact-added | imIContact | null | &lt;1.0 | When a new buddy is created with no other contact |
+| contact-availability-changed | imIContact | null | &lt;1.0 | Possibly fired on contact status updates |
+| contact-display-name-changed | imIContact | null | &lt;1.0 | Fired on setting imIContact::Alias or imIContact::preferredBuddy, or the preferred buddy's display name changed |
+| contact-no-longer-dummy | imIContact | null | &lt;1.0 | Fired when a contact is being loaded? |
+| contact-preferred-buddy-changed | imIContact | null | &lt;1.0 | Fired on setting imIContact::preferredBuddy |
+| contact-removed | imIContact | null | &lt;1.0 | When the last buddy for the contact is removed |
+| contact-signed-off | imIContact | null | &lt;1.0 | Possibly fired on contact status updates |
+| contact-signed-on | imIContact | null | &lt;1.0 | Possibly fired on contact status updates |
+| contact-status-changed | imIContact | null | &lt;1.0 | Possibly fired on contact status updates |
+
+### imITag <a id="imitag"></a>
+
+| Topic | Subject | Data | Added | Notes |
+| :--- | :--- | :--- | :--- | :--- |
+| contact-moved-in | imIContact | null | &lt;1.0 | When a contact has been moved into the tag |
+| contact-moved-out | imIContact | null | &lt;1.0 | When a contact has been moved out of the tag |
+| tag-hidden | imIContact | null | &lt;1.0 | fired when a tag is hidden |
+| tag-shown | imIContact | null | &lt;1.0 | fired when a tag is set to be shown \(unhiding it\) |
+
+### prplIConversation <a id="prpliconversation"></a>
+
+| Topic | Subject | Data | Added | Notes |
+| :--- | :--- | :--- | :--- | :--- |
+| chat-buddy-add | [nsISimpleEnumerator](https://searchfox.org/comm-central/source/mozilla/xpcom/ds/nsISimpleEnumerator.idl) | null | &lt;1.0 | When users join a chat. The enumerator elements are prplIConvChatBuddy. |
+| chat-buddy-removed | [nsISimpleEnumerator](https://searchfox.org/comm-central/source/mozilla/xpcom/ds/nsISimpleEnumerator.idl) | null | &lt;1.0 | When chat buddies leave a chat. The enumerator elements are nsISupportsString of the user name. |
+| chat-buddy-update | [prplIConvChatBuddy](https://searchfox.org/comm-central/source/chat/components/public/prplIConversation.idl) | old name, if the chat buddy is being renamed | &lt;1.0 | data is null if this is not a rename |
+| chat-buddy-topic |  | null | &lt;1.0 | The chat topic was updated |
+| new-text | [prplIMessage](https://searchfox.org/comm-central/source/chat/components/public/prplIMessage.idl) | null | &lt;1.0 | A new message will be written to a conversation. This can be an incoming, outgoing or system message. Subject was purpleIMessage until 1.2. |
+| update-buddy-status |  | null | &lt;1.0 | away-ness or online/offline |
+| update-conv-chatleft |  | null | &lt;1.0 | the user has left the chat \(it might remain visible\) |
+| update-conv-title |  | null | &lt;1.0 |  |
+| update-typing |  | null | &lt;1.0 |  |
+

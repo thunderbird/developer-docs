@@ -63,25 +63,46 @@ nsISocketTransport createTransport(in Array<ACString> aSocketTypes,
 
 See [here](https://searchfox.org/mozilla-central/rev/15f6b60e343c536305a5aa81e2020d7b87f93158/netwerk/base/nsISocketTransportService.idl#62) for more details.
 
-## folderPane.js
+## Changes in commonly used files
+
+### folderPane.js
 
 The `ftvItem` object has been renamed to `FtvItem` in Beta 86.
 
-## MsgComposeCommands.js
+### MsgComposeCommands.js
 
-### GetMsgAttachmentElement\(\)
+#### GetMsgAttachmentElement\(\)
 
 Has been replaced by`gAttachmentBucket`. More information can be found [here](https://hg.mozilla.org/comm-central/diff/b84ef4aee6c977f95fdf04d37f74791d3fecfbf4/mail/components/compose/content/MsgComposeCommands.js#l1.666).
 
-### attachmentsCount\(\) 
+#### attachmentsCount\(\) 
 
 Has been replaced by `gAttachmentBucket.itemCount`.
 
-### attachmentsSelectedCount\(\) 
+#### attachmentsSelectedCount\(\) 
 
 Has been replaced by `gAttachmentBucket.selectedCount`.
 
-## chrome://messenger/content/newmailalert.xhtml
+### chrome://messenger/content/newmailalert.xhtml
 
 No longer supports the `gAlertListener`, `gUserInitiated` and `gOrigin` parameters when being opened \(argument 1-3\).
+
+## Low-level changes
+
+### Thunderbird is now multi-process \(e10s\)
+
+Thunderbird can now separate content into different processes, which can only communicate through limited channels. This change has advantages relative to security and performance, but restricts code from freely accessing data that belongs to a different process.
+
+In Thunderbird 91, this is primarily affecting pages belonging to an Add-on, like the background page or frames injected with an experiment. Most other parts of Thunderbird did not \(yet!\) change as much.
+
+In practical terms, this means that you may need to update your experiments:
+
+{% hint style="info" %}
+For common scenarios, you can follow the [messaging system tutorial](https://github.com/thundernest/addon-developer-support/wiki/Tutorial:-Convert-add-on-parts-individually-by-using-a-messaging-system) to get started with notifyTools.
+{% endhint %}
+
+* **If you access your background page from an experiment** running in the main Thunderbird process \("parent"\), you need to switch to an e10s-compatible method to do so. For most common cases, you can use [notifyTools](https://github.com/thundernest/addon-developer-support/tree/master/scripts/notifyTools).
+* **If you create frames in Thunderbird's UI**, these frames now need the appropriate attributes to load content in the right process. You can find an example of required changes in [the E10S compatibility commit for the CustomUI experiment](https://github.com/rsjtdrjgfuzkfg/thunderbird-experiments/commit/11232201ff437e7bb293efdcb93ecc3963a8328d#diff-41cf834ce8c3fae411d5f4c18abf8c024630074e616cf98307e582cea5362be7).
+* **If you exchange raw objects between WebExtension scopes / "child" experiment code and Thunderbird / "parent" experiment code**, you need to migrate to an indirect approach, usually based on explicit message passing. Depending on the complexity of your task, this can either happen through notifyTools, a custom experiment API or through custom experiment code directly using cross-process APIs \(likely either [message managers](https://searchfox.org/mozilla-central/source/dom/chrome-webidl/MessageManager.webidl) or [actors](https://firefox-source-docs.mozilla.org/dom/ipc/jsactors.html)\).
+* As a consequence, **if you load JavaScript modules in "child" experiment code**, you will now get separate instances of the JSM: each process has its own instance, and there could be multiple child processes. If you keep using JSMs from "child" code, you may furthermore need to manually unload these separate instances on API shutdown \(`ExtensionAPI.onShutdown`\), even if you use a catch-all unloading solution like CachingFix or the WindowListener API.
 

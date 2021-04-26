@@ -60,7 +60,7 @@ These labels will be replaced with message-specific data when used in HTML files
 ```
 
 * **time**, **time{format}**: The time when the message was sent. Takes an optional format parameter \(unfortunately, the formats supported are not the same on all the OSes as this internally calls the native strftime function of the OS\),
-* **timestamp**: The time when the message was sent, as an integer value \(number of seconds since 1970\). Useful to compute intervals between messages. Added to Instantbird between 0.2beta2 and 0.2 final,
+* **timestamp**: The time when the message was sent, as an integer value \(number of seconds since 1970\). Useful to compute intervals between messages,
 * **datetime**: The date and time when the message was sent.
 * **shortTime**: The time when the message was sent,
 * **messageClasses**: CSS classes that apply to the message. This can typically be used in a class attribute of an HTML node. Possible values include:
@@ -96,7 +96,7 @@ These labels will be replaced with message-specific data when used in HTML files
 
 The file **Info.plist** is a [property list](http://en.wikipedia.org/wiki/Property_list) file containing metadata about the theme.
 
-The following keys are used by Instantbird and Thunderbird:
+The following keys are used by Thunderbird:
 
 * **DefaultVariant**: The name of the default variant. Optional. "default" will be used as the name if this key doesn't exist.
 * **MessageViewVersion**: If the version number provided is &gt;= 3, the main.css file will be used for all variants, otherwise it will be used only for the default variant \(this is for compatibility with old Adium themes. In new themes, use the value 4\).

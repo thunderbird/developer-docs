@@ -24,7 +24,7 @@ The other files are optional:
 
 | File Name | Fallback if missing | Usage |
 | :--- | :--- | :--- |
-| Footer.html | None \(will use an empty string\) | Displayed at the bottom of a conversation. This is the right place to \[\[Instantbird:Message\_Styles:JavaScript\|include JavaScript code\]\]. |
+| Footer.html | None \(will use an empty string\) | Displayed at the bottom of a conversation. |
 | Header.html | None \(will use an empty string\) | Optionally \(user preference\) displayed at the top of a conversation |
 | Status.html | Incoming/Content.html | Used for status messages |
 | NextStatus.html | Status.html | Used for status messages directly following another status message added a short time before. |
@@ -60,7 +60,7 @@ These labels will be replaced with message-specific data when used in HTML files
 ```
 
 * **time**, **time{format}**: The time when the message was sent. Takes an optional format parameter \(unfortunately, the formats supported are not the same on all the OSes as this internally calls the native strftime function of the OS\),
-* **timestamp**: The time when the message was sent, as an integer value \(number of seconds since 1970\). Useful to compute intervals between messages. Added between 0.2beta2 and 0.2 final,
+* **timestamp**: The time when the message was sent, as an integer value \(number of seconds since 1970\). Useful to compute intervals between messages,
 * **datetime**: The date and time when the message was sent.
 * **shortTime**: The time when the message was sent,
 * **messageClasses**: CSS classes that apply to the message. This can typically be used in a class attribute of an HTML node. Possible values include:
@@ -96,7 +96,7 @@ These labels will be replaced with message-specific data when used in HTML files
 
 The file **Info.plist** is a [property list](http://en.wikipedia.org/wiki/Property_list) file containing metadata about the theme.
 
-The following keys are used by Instantbird and Thunderbird:
+The following keys are used by Thunderbird:
 
 * **DefaultVariant**: The name of the default variant. Optional. "default" will be used as the name if this key doesn't exist.
 * **MessageViewVersion**: If the version number provided is &gt;= 3, the main.css file will be used for all variants, otherwise it will be used only for the default variant \(this is for compatibility with old Adium themes. In new themes, use the value 4\).
@@ -113,7 +113,7 @@ If your theme needs to work with Adium too, you need more keys, see [this page](
 
 **Example:**
 
-```text
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
@@ -140,7 +140,7 @@ DOM Mutation events are of particular interest, because they allow you to execut
 
 This can be placed in the file `inline.js`:
 
-```text
+```js
 var body = document.getElementById("ibcontent");
 body.addEventListener("DOMNodeInserted", function(aEvent) {
    if (!(aEvent.originalTarget instanceof HTMLElement))
@@ -154,7 +154,7 @@ body.addEventListener("DOMNodeInserted", function(aEvent) {
 
 ### Thunderbird-specific features <a id="instantbirdthunderbird-specific_features"></a>
 
-Below lists the known differences between message styles in Adium and in Chat Core. Keep in mind that Adium displays conversation using Webkit and that Thunderbird use Gecko, so the rendering may differ slightly.
+Below lists the known differences between message styles in Adium and in Chat Core. Keep in mind that Adium displays conversation using Webkit and that Thunderbird uses Gecko, so the rendering may differ slightly.
 
 #### Files <a id="files"></a>
 
@@ -190,4 +190,6 @@ The following element IDs are used internally by Thunderbird and must not be giv
 * **next-messages-end**
 * **unread-ruler**
 * **end-of-split-block**
+* **Chat**
+* **ibcontent**
 

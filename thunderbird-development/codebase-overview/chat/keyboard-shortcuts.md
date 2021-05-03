@@ -35,5 +35,9 @@ Depending on your OS, the **Command** key may be **Ctrl**.
 
 ### Contact list <a id="Contact_list"></a>
 
-The available shortcuts are listed in the menu next to the commands.
+**Command + Arrow Up, Command + Arrow Down** to switch between conversations
+
+**Command + Shift + Arrow Up, Command + Shift + Arrow Down** to switch between unread conversations
+
+More available shortcuts are listed in the menu next to the commands.
 

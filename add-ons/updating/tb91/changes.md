@@ -33,6 +33,19 @@ Usage of nsIArray and `nsIMutableArray` is replaced by standard JavaScript array
 
   
 
+### fixIterator\(\) & iteratorutils.jsm
+
+The function `fixIterator()` is no longer needed by any core code and was subsequently removed together with `iteratorutils.jsm`. It was used in the following way:
+
+```text
+for (let account of fixIterator(MailServices.accounts.accounts)) {
+  ...
+}
+```
+
+Since `MailServices.accounts.accounts` or `MailServices.accounts.allIdentities` return a simple array since Thunderbird 75, there is no need to pipe it through `fixIterator()` anymore. If your add-on is multi-version compatible and still supports Thunderbird 68 this has to be dealt with separately.  
+
+
 ### nsILoadInfo.SEC\_ALLOW\_CROSS\_ORIGIN\_DATA\_IS\_NULL
 
 Renamed in Beta 80 to `SEC_ALLOW_CROSS_ORIGIN_SEC_CONTEXT_IS_NULL`. This is often used as the `aSecurityFlags` argument in calls to `Services.io.newChannelFromURI()`. 

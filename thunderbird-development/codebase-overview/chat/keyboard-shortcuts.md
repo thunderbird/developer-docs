@@ -1,6 +1,6 @@
 # Keyboard shortcuts
 
-### Conversation window <a id="conversation_window"></a>
+## Conversation window <a id="conversation_window"></a>
 
 This is a list of keyboard shortcuts that are available in Thunderbird with brief descriptions of what they do.
 
@@ -20,7 +20,7 @@ Depending on your OS, the **Command** key may be **Ctrl**.
 
 **Command + 0** - resets the zoom level to 100%. \(Use the 0 key in the top row of the keyboard, not the 0 key of the numeric keypad.\)
 
-### Scrolling the conversation
+## Scrolling the conversation
 
 **Shift + PgUp/PgDn** scrolls a page up or down
 
@@ -33,7 +33,7 @@ Depending on your OS, the **Command** key may be **Ctrl**.
 
 **When the textbox is empty**, the usual navigation keys \(**cursor keys, PgUp/Dn, ...**\) will scroll the conversation view also from the textbox.
 
-### Contact list <a id="Contact_list"></a>
+## Contact list <a id="Contact_list"></a>
 
 **Command + Arrow Up, Command + Arrow Down** to switch between conversations
 

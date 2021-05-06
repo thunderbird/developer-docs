@@ -35,7 +35,7 @@ Usage of nsIArray and `nsIMutableArray` is replaced by standard JavaScript array
 
 ### fixIterator\(\) & iteratorutils.jsm
 
-The function `fixIterator()` is no longer needed by any core code and was subsequently removed together with `iteratorutils.jsm`. It was used in the following way:
+The function `fixIterator()` is no longer needed by any core code and was subsequently removed together with `iteratorutils.jsm`. It was mostly used in the following way:
 
 ```text
 for (let account of fixIterator(MailServices.accounts.accounts)) {

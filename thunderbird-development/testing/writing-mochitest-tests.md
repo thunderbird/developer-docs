@@ -222,11 +222,11 @@ let cellText = tree.view.getCellText(rowNumber, tree.columns[columnNumber]);
 // Click on a given cell in a tree:
 
 const { mailTestUtils } = ChromeUtils.import(
-  "resource://testing-common/mailnews/mailTestUtils.jsm"
+  "resource://testing-common/mailnews/MailTestUtils.jsm"
 );
 
 mailTestUtils.treeClick(EventUtils, window, tree, rowNumber, columnNumber, {
-  clickCount: 1
+  clickCount: 1,
 });
 ```
 

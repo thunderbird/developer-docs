@@ -68,7 +68,7 @@ Services.obs.notifyObservers(null, "startupcache-invalidate", null);​
 Failure to invalidate caches may cause parts of the add-on's Experiment APIs to be cached across updates of the Add-on, even if they are changed in the update. It is thus usually a good idea to execute the code above in the `onShutdown()` method of an Experiment that is always loaded.
 
 {% hint style="info" %}
-The MIT-licensed [cachingfix](https://git.generalsync.com/oss/thunderbird-experiments.git/blob/HEAD:/experiments/cachingfix/parent.js) Experiment handles startup cache invalidation and automatically unloads JSMs registered from file://- or jar://-URIs, using the techniques described above.
+The MIT-licensed [cachingfix](https://github.com/rsjtdrjgfuzkfg/thunderbird-experiments/blob/master/experiments/cachingfix/parent.js) Experiment handles startup cache invalidation and automatically unloads JSMs registered from file://- or jar://-URIs, using the techniques described above.
 {% endhint %}
 
 In addition to your Experiment being loaded and unloaded as a whole, that Experiment's API will get loaded into each WebExtension context independently. As there can be multiple contexts at the same time, an Experiment may have multiple loaded APIs in parallel. You can perform context-specific loading tasks directly in `getAPI()`, and register context-specific unloading code through `context.callOnClose()`.

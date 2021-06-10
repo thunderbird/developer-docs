@@ -6,13 +6,9 @@ Patches can land on comm-central at any time, but in general we try to organise 
 
 Sheriffs aim to merge changes to mozilla-central at \(very roughly\) 0400, 1000, 1600 and 2200 UTC. After a merge, something should land on comm-central to start a new build. Land something of your own or check for bugs flagged [checkin-needed](https://bugzilla.mozilla.org/buglist.cgi?keywords=checkin-needed-tb).
 
-{% hint style="info" %}
-At 1100 UTC, a build automatically begins to create Daily. It's good practice, but not strictly necessary, to land a patch with `DONTBUILD` in the commit message shortly before this time. `DONTBUILD` tells the build system not to build. The automatic build will begin on this push and not the previous \(already built once\) push, thus creating visual separation on TreeHerder and making debugging any problems easier.
-{% endhint %}
-
 ## Closing or Opening the Tree
 
-In extreme circumstances the tree can to be closed to prevent further pushes. Some members of the Thunderbird team \(Geoff, Patrick\) have authorisation to do this, or you can summon a sheriff by saying the word "sheriff" in \#developers.
+In extreme circumstances the tree can to be closed to prevent further pushes. Some members of the Thunderbird team \(Geoff, Patrick, Rob\) have authorisation to do this, or you can request the help of a sheriff in \#sheriffs.
 
 ## Existing failures
 

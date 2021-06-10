@@ -88,9 +88,27 @@ Adding some magic words to the commit message of the tip-most revision will caus
 
 ### Landing somebody else's patch
 
+#### From Bugzillla
+
 To land a patch you didn't write, e.g. from Bugzilla, you'll need to import it into Mercurial: `hg import -e https://bugzilla.mozilla.org/attachment.cgi?id=0000000`
 
 Use the `-e` flag as above, or `hg commit --amend` to edit the commit message as necessary.
+
+#### From Phabricator
+
+To import a patch or patches from Phabricator, use `moz-phab patch`: `moz-phab patch --apply-to tip --no-bookmark --skip-dependencies D000000`
+
+* The `--apply-to` argument adds the patch to a specific parent revision, in this case the tip revision.
+* The `--no-bookmark` argument prevents a Mercurial bookmark from being created automatically. If you're just importing to land a patch, creating and then deleting a bookmark is just wasting your time.
+* The `--skip-dependencies` argument imports _only_ the patch in question. Otherwise `moz-phab` will attempt to import all parent and child revisions in the Phabricator stack, including revisions that may already exist on your tree \(and in this case fail miserably\). You may want this to happen, in which case don't use this argument.
+
+Use `hg commit --amend` or `hg histedit` to adjust commit messages as necessary.
+
+#### Using Lando
+
+Our Phabricator installation has a system for automatically landing patches: Lando. To use it click "View stack in Lando" and follow the instructions. A few minutes may pass before an actual landing attempt happens. If it fails \(usually because the patches do not apply cleanly\) you'll be notified by email and will have to find a solution.
+
+To land several patches together, create a "stack" of patches by using the "Edit related revisions…" and section in Phabricator. This can get messy so plan in advance. Check the current stack of any revision in the "Revision Contents" section of Phabricator.
 
 ## After landing
 

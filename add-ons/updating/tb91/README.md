@@ -20,6 +20,7 @@ Our WebExtension APIs are meant to be stable, but we are adding new features and
 * [Thunderbird 88](https://webextension-api.thunderbird.net/en/latest/changes/beta88.html)
 * [Thunderbird 89](https://webextension-api.thunderbird.net/en/latest/changes/beta89.html)
 * [Thunderbird 90](https://webextension-api.thunderbird.net/en/latest/changes/beta90.html)
+* [Thunderbird 91](https://webextension-api.thunderbird.net/en/latest/changes/beta91.html)
 
 ## Changes in Thunderbird Core
 

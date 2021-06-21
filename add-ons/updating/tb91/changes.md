@@ -86,14 +86,6 @@ See [here](https://searchfox.org/mozilla-central/rev/15f6b60e343c536305a5aa81e20
 
 The Thunderbird-specific [IOUtils.jsm](https://hg.mozilla.org/comm-central/file/bec25a74919c93d954d48beeb617a1ecb92e55b8/mailnews/base/src/IOUtils.jsm) file was removed without a direct replacement. You need to alter your logic or copy code from the old JSM into your add-on. [Bug 1678109](https://bugzilla.mozilla.org/show_bug.cgi?id=1678109) might be a good inspiration, as it contains the changes that were necessary for core code.
 
-### MailServices.copy.\*
-
-Some functions have been renamed to proper camel-case:
-
-* MailServices.copy.CopyMessages\(\) ⇒ MailServices.copy.copyMessages\(\)
-* MailServices.copy.CopyFileMessage\(\) ⇒ MailServices.copy.copyFileMessage\(\)
-* MailServices.copy.NotifyCompletion\(\) ⇒ MailServices.copy.notifyCompletion\(\)
-
 ## Changes in commonly used files
 
 ### folderPane.js

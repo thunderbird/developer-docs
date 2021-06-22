@@ -108,7 +108,13 @@ Has been replaced by `gAttachmentBucket.selectedCount`.
 
 ### chrome://messenger/content/newmailalert.xhtml
 
-No longer supports the `gAlertListener`, `gUserInitiated` and `gOrigin` parameters when being opened \(argument 1-3\).
+No longer supports the `gAlertListener`, `gUserInitiated` and `gOrigin` parameters when being opened \(argument 1-3\). Instead, the following parameters are are used now:
+
+```text
++  // arguments[0] --> The real nsIMsgFolder with new mail.
++  // arguments[1] --> The keys of new messages.
++  // arguments[2] --> The nsIObserver to receive window closed event
+```
 
 ## Low-level changes
 

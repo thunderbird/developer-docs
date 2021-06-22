@@ -51,5 +51,5 @@ If you want to participate in discussions about Thunderbird development, there a
 
 ### Chat
 
-If you want to ask questions in real-time about how to hack on Thunderbird, you can join our development chat channel at [#maildev:mozilla.org](https://matrix.to/#/#maildev:mozilla.org?web-instance%5Belement.io%5D=chat.mozilla.org)
+If you want to ask questions in real-time about how to hack on Thunderbird, you can join our development chat channel at [#maildev:mozilla.org](https://matrix.to/#/#maildev:mozilla.org?via=mozilla.org&via=matrix.org&via=trancart.eu&web-instance%5Belement.io%5D=chat.mozilla.org)
 

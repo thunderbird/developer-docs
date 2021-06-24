@@ -47,13 +47,65 @@ Mercurial is pretty flexible in terms of allowing writing your own code and keep
 
 The majority of the Thunderbird developers use queues as they're easy to import and export, and avoid merging issues while pulling updates from upstream. For a first time contributor, bookmarks may be easier to get you started, but do not work well when working with multiple patches.
 
-## Upload a Patch
+## Commit messages
 
-Once you finished taking care of your favorite bug and have your patch at hand, it is time to upload your patch. Open the patch file in your code editor and make sure it includes all your code changes, and your name and commit message at the top.
+The commit message should be of the form:
 
-If everything looks good, you can access the selected bug in [Bugzilla](https://bugzilla.mozilla.org) and click on the **Attach File** link located above the first comment.
+```
+Bug xxxx - Short description of your change. r?reviewer
 
-## Ask for a Review
+Optionally, a longer description of the change.
+```
 
-When uploading a patch to Bugzilla, you can request a review from the user who opened the bug or another developer. Simply select the `?` in the dropdown selector in the _review_ option of the **Flags** section. An input field will appear which will allow you to type the name or username of the user you want to review your patch.
+## Picking reviewers
+
+All changes need to be reviewed before acceptance into the codebase. It can be pretty tricky to figure out who to ask for a review.
+
+This list of [relevant people](https://wiki.mozilla.org/Thunderbird/Core_Team) might help. Failing that you can always [ask around](https://developer.thunderbird.net/add-ons/community).
+
+Scanning through the recent commits in mercurial should also give you an idea of who is active in various areas of the code.
+
+## Submitting a Patch
+
+The preferred way to submit a patch is via [Phabricator](https://moz-conduit.readthedocs.io/en/latest/phabricator-user.html).
+
+There is a command line tool, `moz-phab`, which makes it easy to submit local changesets as patches.
+
+See the [moz-phab setup and installation](https://moz-conduit.readthedocs.io/en/latest/phabricator-user.html#setting-up-mozphab) docs.
+
+With `moz-phab` you can submit local mercurial changeset(s) like this:
+
+```
+$ moz-phab submit [start_changeset] [end_changeset]
+```
+
+The start/end changesets are optional, and if omitted `moz-phab` will guess which ones you're likely to mean.
+
+It'll ask for confirmation before uploading, so don't worry too much about accidental submissions.
+
+`moz-phab` will pick the bug number out of the commit message (`Bug xxxx`), and link back to the bugzilla bug. If there is a reviewer (`r?...`), it will automatically assign them and send them a notification. You can leave the reviewer out, but then one will have to be manually assigned via the phabricator web page.
+
+You can find more details in the `moz-phab` [README](https://github.com/mozilla-conduit/review/blob/master/README.md#submitting-commits-to-phabricator).
+
+### Submitting patches via Bugzilla
+
+The traditionally way to submit patches was to upload a file attachment to the bug in [Bugzilla](https://bugzilla.mozilla.org), set the _review_ flag to `?`, and pick a reviewer.
+
+This still works, but Phabricator is now the preferred method.
+
+## Updating patches
+
+It's very common for patches to require some updates before being accepted.
+Locally, you can use `hg commit --amend` to update a changeset.
+
+Phabricator tracks uploaded patches by adding a line to the commit message:
+```
+Differential Revision: <url>
+```
+
+When you submit the patch again with `moz-phab`, it will see that line and realise that you're updating an existing revision rather than creating a brand new one.
+
+{% hint style="warning" %}
+If you're juggling and merging local changesets with `hg histedit`, make sure you preserve the `Differential Revision:` line in the commit message for any patches you're planning to resubmit!
+{% endhint %}
 

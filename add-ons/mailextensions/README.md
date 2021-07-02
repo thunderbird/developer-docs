@@ -202,7 +202,7 @@ In order to use modern [ES6 modules](https://hacks.mozilla.org/2015/08/es6-in-de
 All these WebExtension scripts have access to:
 
 * Standard JavaScript methods
-* [Web API](https://developer.mozilla.org/de/docs/Web/API) \(if the browser compatibility chart lists Firefox, the API also works in Thunderbird\)
+* [Web API](https://developer.mozilla.org/docs/Web/API) \(if the browser compatibility chart lists Firefox, the API also works in Thunderbird\)
 * WebExtension API
 
 A list of all WebExtension APIs supported by Thunderbird can be found in the following document:

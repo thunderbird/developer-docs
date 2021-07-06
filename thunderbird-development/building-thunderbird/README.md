@@ -54,7 +54,7 @@ Building can take a significant amount of time, depending on your system, OS, an
 
 ### Make Your Build Faster
 
-Follow this guide to rely on `ccache` and other [Tips for making builds faster](../getting-started.md).
+Follow this guide to rely on [sccache](https://developer.mozilla.org/en-US/docs/Mozilla/Developer_guide/Build_Instructions/ccache) and other [Tips for making builds faster](https://developer.mozilla.org/en-US/docs/Mozilla/Developer_guide/Mozilla_build_FAQ#making_builds_faster).
 
 ## Running Thunderbird
 

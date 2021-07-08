@@ -25,5 +25,23 @@ In this session Alessandro works on fixing a bug with folders in Thunderbird, he
 
 {% embed url="https://youtu.be/XD8BzmsM-iU" %}
 
+## Compose Window and Inspecting UI Elements
+
+In this session Alessandro works on fixing some compose window bugs and explains how to work with the compose window interface and inspect the Thunderbird interface elements.
+
+{% embed url="https://youtu.be/wCaJG0jupE8" %}
+
+## Changing How Attachments Work
+
+In this session Alessandro works on changing how attachments are displayed when composing in Thunderbird.
+
+{% embed url="https://youtu.be/V1lQa8bEgls" %}
+
+## Compose Window and Attachment UI
+
+In this session Alessandro continues improvements to the compose windows and attachment interface. He also dives in-depth on styles and other bits that make up how the UI is built.
+
+{% embed url="https://youtu.be/fXofonRxCAY" %}
+
 
 

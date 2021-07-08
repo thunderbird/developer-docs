@@ -51,7 +51,7 @@ The majority of the Thunderbird developers use queues as they're easy to import 
 
 The commit message should be of the form:
 
-```
+```text
 Bug xxxx - Short description of your change. r?reviewer
 
 Optionally, a longer description of the change.
@@ -73,9 +73,9 @@ There is a command line tool, `moz-phab`, which makes it easy to submit local ch
 
 See the [moz-phab setup and installation](https://moz-conduit.readthedocs.io/en/latest/phabricator-user.html#setting-up-mozphab) docs.
 
-With `moz-phab` you can submit local mercurial changeset(s) like this:
+With `moz-phab` you can submit local mercurial changeset\(s\) like this:
 
-```
+```text
 $ moz-phab submit [start_changeset] [end_changeset]
 ```
 
@@ -83,7 +83,7 @@ The start/end changesets are optional, and if omitted `moz-phab` will guess whic
 
 It'll ask for confirmation before uploading, so don't worry too much about accidental submissions.
 
-`moz-phab` will pick the bug number out of the commit message (`Bug xxxx`), and link back to the bugzilla bug. If there is a reviewer (`r?...`), it will automatically assign them and send them a notification. You can leave the reviewer out, but then one will have to be manually assigned via the phabricator web page.
+`moz-phab` will pick the bug number out of the commit message \(`Bug xxxx`\), and link back to the bugzilla bug. If there is a reviewer \(`r?...`\), it will automatically assign them and send them a notification. You can leave the reviewer out, but then one will have to be manually assigned via the phabricator web page.
 
 You can find more details in the `moz-phab` [README](https://github.com/mozilla-conduit/review/blob/master/README.md#submitting-commits-to-phabricator).
 
@@ -95,11 +95,11 @@ This still works, but Phabricator is now the preferred method.
 
 ## Updating patches
 
-It's very common for patches to require some updates before being accepted.
-Locally, you can use `hg commit --amend` to update a changeset.
+It's very common for patches to require some updates before being accepted. Locally, you can use `hg commit --amend` to update a changeset.
 
 Phabricator tracks uploaded patches by adding a line to the commit message:
-```
+
+```text
 Differential Revision: <url>
 ```
 

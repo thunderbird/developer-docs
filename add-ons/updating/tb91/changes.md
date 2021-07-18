@@ -96,7 +96,13 @@ Interface has been dropped in favor of an observer based approach. See
 * [https://searchfox.org/comm-central/source/mail/base/content/msgHdrView.js\#277](https://searchfox.org/comm-central/source/mail/base/content/msgHdrView.js#277)
 * [https://searchfox.org/comm-central/source/mail/base/content/msgHdrView.js\#335](https://searchfox.org/comm-central/source/mail/base/content/msgHdrView.js#335)
 
-## Changes in commonly used files
+## Broken/Removed XUL Elements
+
+### &lt;xul:grid&gt;
+
+The grid element does not seem to work anymore. Alternative is to use &lt;html:table&gt;.
+
+## Changes in commonly used Files
 
 ### folderPane.js
 

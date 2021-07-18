@@ -42,7 +42,7 @@ For more on configuration options, see the page [Configuring build options](http
 Before you start, make sure that the version you checked out is not busted. For `hg` tip, you should see green Bs on [https://treeherder.mozilla.org/\#/jobs?repo=comm-central](https://treeherder.mozilla.org/#/jobs?repo=comm-central)
 {% endhint %}
 
-After you met the [build prerequisites](#build-prerequisites) for your OS the build is started in the `source` directory with:
+After you met the [build prerequisites](./#build-prerequisites) for your OS the build is started in the `source` directory with:
 
 ```text
 ./mach build

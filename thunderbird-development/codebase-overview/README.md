@@ -28,9 +28,6 @@ The subdirectories are:
 * **protocols** Various protocol implementations. Each of subdirectory implements a protocol to the interfaces found under **components**.
 * **themes** Common and platform-specific styling specific to chat. Files from this directory become `chrome://chat/skin/…`.
 
-**common**  
-An assortment of code we've uplifted from mozilla-central as it was removed from there.
-
 **ldap**  
 The LDAP C SDK. Used for communicating with LDAP servers.
 
@@ -43,6 +40,7 @@ Thunderbird specific source code. It's no coincidence that this folder is laid o
 
 The subdirectories are:
 
+* **actors** Modules which handle communication between processes. [See the Firefox documentation for information about actors](https://firefox-source-docs.mozilla.org/dom/ipc/jsactors.html).
 * **app** Configuration and packaging instructions. Contains `all-thunderbird.js`, the default preferences.
 * **base** The main mail window and several miscellaneous dialogs. Also, things which are common to many parts of the program.
 * **branding** Icons and imagery.
@@ -58,6 +56,7 @@ The subdirectories are:
 * **extensions**
 * **installer** Packaging and installation instructions.
 * **locales** The user-visible strings, in US English. Files from this directory become `chrome://messenger/locale/…`.
+* **modules** Shared JS modules. Files from this directory become `resource:///modules/….`
 * **test** The MozMill user interface tests and the code to run that test suite.
 * **themes** Common and platform-specific styling of Thunderbird user interface. Files from this directory become `chrome://messenger/skin/…`.
 

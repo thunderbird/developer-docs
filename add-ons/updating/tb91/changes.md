@@ -90,6 +90,10 @@ The Thunderbird-specific [IOUtils.jsm](https://hg.mozilla.org/comm-central/file/
 
 ## Renamed or Replaced API
 
+#### nsIMsgCopyService.CopyMessages
+
+Has been renamed to `nsIMsgCopyService.copyMessages`.
+
 #### nsIMsgCopyService.CopyFolders
 
 Has been renamed to `nsIMsgCopyService.copyFolders`.

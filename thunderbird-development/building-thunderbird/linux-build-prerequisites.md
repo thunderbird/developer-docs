@@ -18,9 +18,9 @@ uname -m
 
 if this command returns `x86_64` you can proceed.
 
-## Python 2.7
+## Python
 
-You’ll need `Python 2.7` installed, `Python 3.x` is currently not supported.
+You’ll need `Python 3.6` installed.
 
 You can check with `python --version` to see if you have it already. If not, you can install it with your distribution’s package manager. Make sure your system is up to date!
 

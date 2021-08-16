@@ -233,7 +233,7 @@ A script loaded from a CloudFile[ `management_url`](https://webextension-api.thu
 
 ## Creating MailExtensions: Examples
 
-Our [sample-extensions repository](https://github.com/thundernest/sample-extensions/tree/master/experiment) includes a few simple MailExtensions, which showcase different APIs and which will get you started to create your own extension.
+Our [sample-extensions repository](https://github.com/thundernest/sample-extensions) includes a few simple MailExtensions, which showcase different APIs and which will get you started to create your own extension.
 
 We also prepared a step-by-step guide for a small Hello World MailExtension:
 

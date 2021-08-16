@@ -79,7 +79,7 @@ With `moz-phab` you can submit local mercurial changeset\(s\) like this:
 $ moz-phab submit [start_changeset] [end_changeset]
 ```
 
-The start/end changesets are optional, and if omitted `moz-phab` will guess which ones you're likely to mean.
+The start/end changesets are optional. If omitted, `moz-phab` will guess which one(s) you mean.
 
 It'll ask for confirmation before uploading, so don't worry too much about accidental submissions.
 
@@ -89,7 +89,7 @@ You can find more details in the `moz-phab` [README](https://github.com/mozilla-
 
 ### Submitting patches via Bugzilla
 
-The traditionally way to submit patches was to upload a file attachment to the bug in [Bugzilla](https://bugzilla.mozilla.org), set the _review_ flag to `?`, and pick a reviewer.
+The traditional way to submit patches was to upload a file attachment to the bug in [Bugzilla](https://bugzilla.mozilla.org), set the _review_ flag to `?`, and pick a reviewer.
 
 This still works, but Phabricator is now the preferred method.
 

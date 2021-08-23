@@ -94,19 +94,19 @@ The Thunderbird-specific [IOUtils.jsm](https://hg.mozilla.org/comm-central/file/
 
 ## Renamed or Replaced API
 
-#### nsIMsgCopyService.CopyFileMessage
+### nsIMsgCopyService.CopyFileMessage
 
 Has been renamed to `nsIMsgCopyService.copyFileMessages`.
 
-#### nsIMsgCopyService.CopyMessages
+### nsIMsgCopyService.CopyMessages
 
 Has been renamed to `nsIMsgCopyService.copyMessages`.
 
-#### nsIMsgCopyService.CopyFolders
+### nsIMsgCopyService.CopyFolders
 
 Has been renamed to `nsIMsgCopyService.copyFolders`.
 
-#### nsIMsgFolder.deleteSubFolders
+### nsIMsgFolder.deleteSubFolders
 
 Has been replaced by [`nsIMsgFolder.deleteSelf`](https://hg.mozilla.org/comm-central/diff/d4333da4784fc707a56a5bdda13392a94765c05b/mail/base/content/folderPane.js#l1.14).
 
@@ -120,7 +120,7 @@ Interface has been dropped in favor of an observer based approach. See
 * [https://searchfox.org/comm-central/source/mail/base/content/msgHdrView.js\#277](https://searchfox.org/comm-central/source/mail/base/content/msgHdrView.js#277)
 * [https://searchfox.org/comm-central/source/mail/base/content/msgHdrView.js\#335](https://searchfox.org/comm-central/source/mail/base/content/msgHdrView.js#335)
 
-#### nsIMsgFolder.listFoldersWithFlags
+### nsIMsgFolder.listFoldersWithFlags
 
 Use [`nsIMsgFolder.getFoldersWithFlags`](https://searchfox.org/comm-central/rev/03c30c3cab0afd0fb2b5d53c7dd5a021366a8810/mailnews/base/public/nsIMsgFolder.idl#442)instead.
 

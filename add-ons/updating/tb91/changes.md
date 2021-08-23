@@ -65,6 +65,10 @@ nsIChannel newChannelFromURI(
 For example [here](https://searchfox.org/comm-central/rev/bb3eb2b4cb4b17405e8efcc423563a7a07473292/calendar/base/modules/utils/calProviderUtils.jsm#74).  
 
 
+### nsILoadInfo.SEC\_REQUIRE\_SAME\_ORIGIN\_DATA\_INHERITS
+
+Renamed in Beta 80 to `SEC_REQUIRE_SAME_ORIGIN_INHERITS_SEC_CONTEXT`.
+
 ### nsIMsgCompose.SendMsg
 
 Renamed in Beta 86 to `nsIMsgCompose.sendMsg`. It also returns a Promise now. More details can be found [here](https://searchfox.org/comm-central/rev/bb3eb2b4cb4b17405e8efcc423563a7a07473292/mailnews/compose/public/nsIMsgCompose.idl#117).  
@@ -89,6 +93,10 @@ See [here](https://searchfox.org/mozilla-central/rev/15f6b60e343c536305a5aa81e20
 The Thunderbird-specific [IOUtils.jsm](https://hg.mozilla.org/comm-central/file/bec25a74919c93d954d48beeb617a1ecb92e55b8/mailnews/base/src/IOUtils.jsm) file was removed without a direct replacement. You need to alter your logic or copy code from the old JSM into your add-on. [Bug 1678109](https://bugzilla.mozilla.org/show_bug.cgi?id=1678109) might be a good inspiration, as it contains the changes that were necessary for core code.
 
 ## Renamed or Replaced API
+
+#### nsIMsgCopyService.CopyFileMessage
+
+Has been renamed to `nsIMsgCopyService.copyFileMessages`.
 
 #### nsIMsgCopyService.CopyMessages
 

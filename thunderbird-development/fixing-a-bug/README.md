@@ -79,7 +79,7 @@ With `moz-phab` you can submit local mercurial changeset\(s\) like this:
 $ moz-phab submit [start_changeset] [end_changeset]
 ```
 
-The start/end changesets are optional. If omitted, `moz-phab` will guess which one(s) you mean.
+The start/end changesets are optional. If omitted, `moz-phab` will guess which one\(s\) you mean.
 
 It'll ask for confirmation before uploading, so don't worry too much about accidental submissions.
 

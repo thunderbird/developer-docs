@@ -47,9 +47,7 @@ This is the Try syntax try-comm-central understands:
   * `win64` 64-bit Windows
   * `all` for all platforms
 * `-u` Unit test suites.
-  * `marionette` and `marionette-headless`
   * `mochitest-thunderbird`
-  * `mozmill`
   * `xpcshell`
   * `all`
 * `--artifact` Artifact builds. See the [Artifact Builds page](../building-thunderbird/artifact-builds.md) for more information.

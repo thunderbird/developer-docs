@@ -114,7 +114,7 @@ Has been replaced by [`nsIMsgFolder.deleteSelf`](https://hg.mozilla.org/comm-cen
 
 ### Log4Moz
 
-The file `Log4moz.jsm` has been removed. Instead, use `console`:
+The file `Log4moz.jsm` has been removed in Thunderbird 85. Instead, use `console`:
 
 * `console.debug()`
 * `console.log()`

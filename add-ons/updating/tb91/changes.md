@@ -112,6 +112,36 @@ Has been replaced by [`nsIMsgFolder.deleteSelf`](https://hg.mozilla.org/comm-cen
 
 ## Removed API
 
+### Log4Moz
+
+The file `Log4moz.jsm` has been removed. Instead, use `console`:
+
+* `console.debug()`
+* `console.log()`
+* `console.trace()` - same as `console.log()`, but dumps a trace log additionally.
+* `console.info()`
+* `console.warn()`
+* `console.error()` 
+
+These basic log functions accept multiple parameters, which are all dumped to the console. For example:
+
+```text
+console.log("function XY executed", objectX, objectY);
+```
+
+Alternatively,`console.createInstance()` allows to define a custom console logger, with a `prefix` and a `maxLogLevel`. The `maxLogLevel` can be used to disable/enable logging in debug or production builds or set the level based on users choice.
+
+```text
+var gLog = console.createInstance({
+    prefix: "My great Add-on",
+    maxLogLevel: "Warn", // Error, Warn, Info, Trace, Log, Debug
+  });
+
+gLog.info("This will not be logged, as maxLogLevel is set to 'Warn'");
+```
+
+The levels `Info`, `Trace` and `Log` are actually identical.
+
 ### nsIAbListener
 
 Interface has been dropped in favor of an observer based approach. See 

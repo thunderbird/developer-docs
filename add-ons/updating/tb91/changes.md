@@ -96,7 +96,7 @@ The Thunderbird-specific [IOUtils.jsm](https://hg.mozilla.org/comm-central/file/
 
 ### nsIMsgCopyService.CopyFileMessage
 
-Has been renamed to `nsIMsgCopyService.copyFileMessages`.
+Has been renamed to `nsIMsgCopyService.copyFileMessage`.
 
 ### nsIMsgCopyService.CopyMessages
 

@@ -61,9 +61,9 @@ Optionally, a longer description of the change.
 
 All changes need to be reviewed before acceptance into the codebase. It can be pretty tricky to figure out who to ask for a review.
 
-This list of [relevant people](https://wiki.mozilla.org/Thunderbird/Core_Team) might help. Failing that you can always [ask around](https://developer.thunderbird.net/add-ons/community).
+Thunderbird code is divided into modules, each with an owner and peers. Generally, these are the best people to review your changes. Here's [the list of module owners and peers for Thunderbird](https://wiki.mozilla.org/Modules/Thunderbird). [Calendar](https://wiki.mozilla.org/Modules/Calendar) and [MailNews Core](https://wiki.mozilla.org/Modules/MailNews_Core) modules have separate lists.
 
-Scanning through the recent commits in mercurial should also give you an idea of who is active in various areas of the code.
+Scanning through the recent commits in mercurial should also give you an idea of who is active in various areas of the code. Failing that you can always [ask around](https://developer.thunderbird.net/add-ons/community).
 
 ## Submitting a Patch
 

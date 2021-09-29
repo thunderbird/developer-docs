@@ -1,5 +1,5 @@
 ---
-description: Planning for Thunderbird 91 (2021) release and beyond.
+description: Planning for Thunderbird 103 (2022) release and beyond.
 ---
 
 # Roadmap
@@ -11,8 +11,6 @@ This provides a listing of maintenance and feature work wanted for Thunderbird 1
 {% hint style="warning" %}
 **Note: This is a work in progress - everything is subject to change.**
 {% endhint %}
-
-### 
 
 ## Account setup
 

@@ -106,6 +106,10 @@ Has been renamed to `nsIMsgCopyService.copyMessages`.
 
 Has been renamed to `nsIMsgCopyService.copyFolders`.
 
+### nsIMsgCopyService.NotifyCompletion
+
+Has been renamed to `nsIMsgCopyService.notifyCompletion`.
+
 ### nsIMsgFolder.deleteSubFolders
 
 Has been replaced by [`nsIMsgFolder.deleteSelf`](https://hg.mozilla.org/comm-central/diff/d4333da4784fc707a56a5bdda13392a94765c05b/mail/base/content/folderPane.js#l1.14).

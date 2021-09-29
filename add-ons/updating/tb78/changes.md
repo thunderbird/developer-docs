@@ -42,7 +42,7 @@ If the input fields context menu is not working, you need to include two JavaScr
 
 ```markup
 <script src="chrome://global/content/globalOverlay.js"/>
-<script src="chrome://global/content/editMenuOverlay.js.js"/>
+<script src="chrome://global/content/editMenuOverlay.js"/>
 ```
 
 {% hint style="info" %}

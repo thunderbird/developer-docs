@@ -15,6 +15,17 @@ _Several manifest keys in the following table are common to Thunderbird and Fire
   </thead>
   <tbody>
     <tr>
+      <td style="text-align:left"><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/browser_specific_settings#firefox_gecko_properties">applications</a>
+      </td>
+      <td style="text-align:left">
+        <p>Contains keys that are specific to a particular host application. Information
+          for Thunderbird are stored in <code>applications.gecko</code>. See</p>
+        <p>the <a href="https://developer.thunderbird.net/add-ons/mailextensions#basic-extension-properties">hello world example</a>.</p>
+        <p></p>
+        <p><b>Note:</b> An alternative name for this key is <code>browser_specific_settings</code>.</p>
+      </td>
+    </tr>
+    <tr>
       <td style="text-align:left"><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/author">author</a>
       </td>
       <td style="text-align:left">Defines the extension&apos;s author. If the <a href="https://developer.mozilla.org/en-US/Add-ons/WebExtensions/manifest.json/developer"><code>developer</code></a> key
@@ -37,6 +48,11 @@ _Several manifest keys in the following table are common to Thunderbird and Fire
         your extension can add to Thunderbird&apos;s main mailTab toolbar. The
         button has an icon, and may optionally have a popup whose content is specified
         using HTML, CSS, and JavaScript.</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/browser_specific_settings">browser_specific_settings</a>
+      </td>
+      <td style="text-align:left">Alternative for the<code>applications</code> key.</td>
     </tr>
     <tr>
       <td style="text-align:left"><a href="https://webextension-api.thunderbird.net/en/latest/cloudFile.html">cloud_file</a>

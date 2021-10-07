@@ -58,7 +58,7 @@ Optionally, a longer description of the change.
 This can span multiple lines.
 ```
 
-Prefixing the first line of the commit message with "`WIP: `" marks the patch as a work-in-progress. `moz-phab` (see below) will pick that up and mark it as "Changes Planned".
+Prefixing the first line of the commit message with "`WIP:`" marks the patch as a work-in-progress. `moz-phab` \(see below\) will pick that up and mark it as "Changes Planned".
 
 ## Picking reviewers
 
@@ -86,8 +86,7 @@ The start/end changesets are optional. If omitted, `moz-phab` will guess which o
 
 It'll ask for confirmation before uploading, so don't worry too much about accidental submissions.
 
-`moz-phab` will pick the bug number out of the commit message \(`Bug xxxx`\), and link back to the bugzilla bug. If there is a reviewer \(`r=...`\), it will automatically assign them and send them a notification. You can leave the reviewer out, but then one will have to be manually assigned via the phabricator web page.
-If the commit message starts with "`WIP: `", the patch will be marked "Changes Planned".
+`moz-phab` will pick the bug number out of the commit message \(`Bug xxxx`\), and link back to the bugzilla bug. If there is a reviewer \(`r=...`\), it will automatically assign them and send them a notification. You can leave the reviewer out, but then one will have to be manually assigned via the phabricator web page. If the commit message starts with "`WIP:`", the patch will be marked "Changes Planned".
 
 You can find more details in the `moz-phab` [README](https://github.com/mozilla-conduit/review/blob/master/README.md#submitting-commits-to-phabricator).
 

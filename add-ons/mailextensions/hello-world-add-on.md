@@ -4,6 +4,8 @@ description: This is a tutorial for making a Hello World MailExtension.
 
 # Hello World Example
 
+In this section, we will create a very basic extension, which adds a button to the Thunderbird UI. After the basics have been covered, we will extend the example in the following sections, to interact with the users messages and address books entries.
+
 ## Writing the Extension
 
 Create a directory for your extension and navigate to it.
@@ -15,7 +17,7 @@ cd hello-world
 
 ### manifest.json
 
-As described in our [MailExtension guide](https://developer.thunderbird.net/add-ons/mailextensions), extensions require a `manifest.json` file that tells Thunderbird basic information about the add-on. The `manifest.json` file of this hello world example looks like this:
+As described in our [MailExtension guide](https://developer.thunderbird.net/add-ons/mailextensions), extensions require a `manifest.json` file that tells Thunderbird basic information about the add-on. Place the `manifest.json` file directly in the `hello-world` directory. For the hello world example it should look like this:
 
 {% code title="manifest.json" %}
 ```javascript
@@ -51,7 +53,7 @@ You can grab the icons we use for this example from the [Thunderstorm repo](http
 
 ### popup.html
 
-Our add-on is using a `browser_action` to add a button to the Thunderbird UI. A click on that button will bring up the html page defined in the `browser_action.default_popup` key. Let's create the following popup.html in the `hello-world` directory alongside `manifest.json`.
+Our add-on is using a `browser_action` manifest key to add a [browser action button](supported-ui-elements.md#browser-action) to the Thunderbird UI. A click on that button will bring up a popup loading the HTML page defined in the `browser_action.default_popup` key. Let's create the following `popup.html` in the `hello-world` directory.
 
 {% code title="popup.html" %}
 ```markup
@@ -78,16 +80,15 @@ The default [**content security policy**](https://developer.mozilla.org/en-US/do
 
 ### popup.css
 
-Now we want to make the css file referenced in our html file. We'll call it `popup.css`. This is just for decoration of the page, we'll put it in the same folder.
+Now we want to create the CSS file referenced in our HTML file. We'll call it `popup.css`. This is just for decoration of the page, we'll put it in the same folder.
 
 {% code title="popup.css" %}
 ```css
 .popup-page {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: bold;
-    width: 100%;
     height: 60px;
-    padding: 30px;
+    padding: 10px;
 }
 ```
 {% endcode %}
@@ -127,7 +128,7 @@ hello-world/
 
 ### Installing
 
-To install the add-on we created we are going to load it temporarily. Let's start by opening the Add-ons Manager:
+To install the add-on we created, we are going to load it temporarily. Let's start by opening the Add-ons Manager:
 
 ![](../../.gitbook/assets/screen1.png)
 
@@ -147,23 +148,23 @@ This should install the Add-on for this session only:
 
 ![](../../.gitbook/assets/screen5.png)
 
-### Trying it Out
+### Opening the Error Console
 
-Now we can give our new add-on a whirl. Hit the "Inspect" button under the add-on's listing \(pictured above\), this will bring up a console - we'll want that to see the results of the JavaScript `console.log()` command we put in `popup.js`.
+Our extension will print something to the error console using `console.log()`, so we need to load error console first, in order to see those log entries. Hit the "Inspect" button under the add-on's listing \(pictured above\), this will bring up the Developer Tools tab.
 
-Make sure the "Console" tab is selected in the Developer Tools window. Click the "Persist Logs" checkbox in the top right-hand corner of the Developer Tools so that we can see the output from the add-on after we've interacted with it \(otherwise it only shows output as it is happening\).
+Make sure the "Console" tab is selected in the Developer Tools. Click the "Persist Logs" checkbox in the top right-hand corner of the Developer Tools so that we can see the output from the add-on after we've interacted with it \(otherwise it only shows output as it is happening\).
 
 ![](../../.gitbook/assets/screen6.png)
 
-#### Hello, World!
+### Trying it Out
 
-Head to the home tab and click on the add-on's icon in the top right-hand corner to see a popup with your message "Hello, World!"
+Now we can give our new add-on a whirl. Head to the home tab and find the new "Hello World" button in the main toolbar in the top right-hand corner. Click on it to see a popup with your message "Hello, World!"
 
 ![](../../.gitbook/assets/screen7.png)
 
-Now if you look at the Developer Tools window, you should see something like the following in the console:
+Now if you look at the Developer Tools, you should see something like the following in the console:
 
-![](../../.gitbook/assets/screen8.png)
+![](../../.gitbook/assets/screen8%20%281%29.png)
 
 ## What's Next
 

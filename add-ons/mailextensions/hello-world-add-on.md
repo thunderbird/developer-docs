@@ -4,7 +4,7 @@ description: This is a tutorial for making a Hello World MailExtension.
 
 # Hello World Example
 
-In this section, we will create a very basic extension, which adds a button to the Thunderbird UI. After the basics have been covered, we will extend the example in the following sections, to interact with the users messages and address books entries.
+In this section, we will create a very simple extension, which adds a button to the Thunderbird UI. After the basics have been covered, we will extend the example in the following sections, to interact with the users messages and address books entries.
 
 ## Writing the Extension
 

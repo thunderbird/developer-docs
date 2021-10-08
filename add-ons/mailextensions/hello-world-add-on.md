@@ -8,7 +8,7 @@ In this section, we will create a very simple extension, which adds a button to 
 
 ## Writing the Extension
 
-Create a directory for your extension and navigate to it.
+Create a project folder for your extension and navigate to it.
 
 ```text
 mkdir hello-world
@@ -17,7 +17,7 @@ cd hello-world
 
 ### manifest.json
 
-As described in our [MailExtension guide](https://developer.thunderbird.net/add-ons/mailextensions), extensions require a `manifest.json` file that tells Thunderbird basic information about the add-on. Place the `manifest.json` file directly in the `hello-world` directory. For the hello world example it should look like this:
+As described in our [MailExtension guide](https://developer.thunderbird.net/add-ons/mailextensions), extensions require a `manifest.json` file that tells Thunderbird basic information about the add-on. Place the `manifest.json` file directly in the `hello-world` project folder. For this example add-on it should look like this:
 
 {% code title="manifest.json" %}
 ```javascript
@@ -53,7 +53,7 @@ You can grab the icons we use for this example from the [Thunderstorm repo](http
 
 ### popup.html
 
-Our add-on is using a `browser_action` manifest key to add a [browser action button](supported-ui-elements.md#browser-action) to the Thunderbird UI. A click on that button will bring up a popup loading the HTML page defined in the `browser_action.default_popup` key. Let's create the following `popup.html` in the `hello-world` directory.
+Our add-on is using a `browser_action` manifest key to add a [browser action button](supported-ui-elements.md#browser-action) to the Thunderbird UI. A click on that button will bring up a popup loading the HTML page defined in the `browser_action.default_popup` key. Let's create the following `popup.html` in the `hello-world` project folder.
 
 {% code title="popup.html" %}
 ```markup
@@ -95,7 +95,7 @@ Now we want to create the CSS file referenced in our HTML file. We'll call it `p
 
 ### popup.js
 
-At this point if you were to install the add-on it would perform its function - but we're going to add in another layer to things before we're done. We're going to create a folder called `scripts` in the `hello-world` directory, and create a file called `popup.js` within that `scripts` folder.
+We're going to create a directory called `scripts` inside the `hello-world` project folder, and create a file called `popup.js` within that `scripts` folder.
 
 In `popup.js` we will put the following code:
 
@@ -150,7 +150,7 @@ This should install the Add-on for this session only:
 
 ### Opening the Error Console
 
-Our extension will print something to the error console using `console.log()`, so we need to load error console first, in order to see those log entries. Hit the "Inspect" button under the add-on's listing \(pictured above\), this will bring up the Developer Tools tab.
+Our extension will print messages to the error console using `console.log()`, so we need to open the error console first, in order to see those log entries. Hit the "Inspect" button under the add-on's listing \(pictured above\), this will bring up the Developer Tools tab.
 
 Make sure the "Console" tab is selected in the Developer Tools. Click the "Persist Logs" checkbox in the top right-hand corner of the Developer Tools so that we can see the output from the add-on after we've interacted with it \(otherwise it only shows output as it is happening\).
 

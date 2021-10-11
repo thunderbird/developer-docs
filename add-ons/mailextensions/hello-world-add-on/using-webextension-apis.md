@@ -98,20 +98,9 @@ We use modern CSS styling to format our HTML into a tabular view (instead of usi
 
 Most if not all WebExtension API functions return a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises).
 
-The author of this example prefers the `async`/`await` syntax to work with Promises. The following function is therefore defined as async. All WebExtension calls, or better all returned Promises of WebExtension calls are awaited, which means the execution flow in this function halts until the individual Promise is fulfilled. This allows to write sequential code for async functions.
+The author of this example prefers the `async`/`await` syntax to work with Promises. The `load()` function defined in the following `popup.js` is therefore defined as `async`. All WebExtension API calls, or better all returned Promises of WebExtension calls are awaited, which means the execution flow in this function halts until the individual Promise is fulfilled. This allows to write sequential code for async functions.
 
 ```
-/**
- * Most if not all WebExtension functions return a Promise:
- * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises
- * 
- * The author of this example prefers the async/await syntax to work with Promises.
- * The following function is therefore defined as async. All WebExtension calls,
- * or better all returned Promises of WebExtension calls are awaited, which means
- * the execution flow in this function halts until the individual Promise is
- * fulfilled. This allows to write sequential code for async functions.
- * 
- */
 async function load() {
   // The user clicked our button, get the active tab in the current window using
   // the tabs API.

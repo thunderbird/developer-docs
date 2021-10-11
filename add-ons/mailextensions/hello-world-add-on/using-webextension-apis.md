@@ -103,9 +103,9 @@ Using `messeger.tabs.getCurrent()` will not work, as that always returns the tab
 
 The [`getDisplayedMessage`](https://webextension-api.thunderbird.net/en/91/messageDisplay.html#getdisplayedmessage-tabid) method of the [messageDisplay API](https://webextension-api.thunderbird.net/en/91/messageDisplay.html) provides access to the currently viewed message(s) in a given tab. It returns a [MessageHeader](https://webextension-api.thunderbird.net/en/91/messages.html#messageheader) object from the [messages API](https://webextension-api.thunderbird.net/en/91/messages.html) with basic information (line 10).
 
-At this stage we are interested in the subject (line 13 in popup.js) and the author (line 14 in popup.js).
+At this stage we are interested in the subject (line 13) and the author (line 14).
 
-As mentioned in the documentation of the getDisplayMessage method, it requires the <mark style="color:red;">`messagesRead`</mark> permission. So we have to add a `permissions` section to our `manifest.json`.
+As mentioned in the documentation of the [`getDisplayMessage`](https://webextension-api.thunderbird.net/en/91/messageDisplay.html#getdisplayedmessage-tabid) method, it requires the <mark style="color:red;">`messagesRead`</mark> permission. So we have to add a `permissions` section to our `manifest.json`.
 
 ```
 "permissions": [

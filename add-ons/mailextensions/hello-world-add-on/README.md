@@ -34,7 +34,7 @@ As described in our [MailExtension guide](https://developer.thunderbird.net/add-
         }
     },
     "browser_action": {
-        "default_popup": "mainPopup/mainPopup.html",
+        "default_popup": "mainPopup/popup.html",
         "default_title": "Hello World",
         "default_icon": "images/internet-32px.png"
     },

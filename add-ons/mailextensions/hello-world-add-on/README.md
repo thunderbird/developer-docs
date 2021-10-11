@@ -53,7 +53,7 @@ The manifest also includes the definition for a `browser_action`. That is the to
 
 ### popup.html
 
-The location of the HTML file loaded by our browser_actioA click on that button will bring up a popup loading the HTML page defined in the `browser_action.default_popup` key. Let's create a `mainPopup` folder in the `hello-world` project folder for everything related to that popup and also create the following `popup.html` .
+The location of the HTML file loaded by our browser_action is defined inA click on that button will bring up a popup loading the HTML page defined in the `browser_action.default_popup` key. Let's create a `mainPopup` folder in the `hello-world` project folder for everything related to that popup and also create the following `popup.html` .
 
 {% code title="popup.html" %}
 ```markup

@@ -96,7 +96,9 @@ We use modern CSS styling to format our HTML into a tabular view (instead of usi
 
 ## popup.js
 
+Most if not all WebExtension API functions return a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises).
 
+The author of this example prefers the `async`/`await` syntax to work with Promises. The following function is therefore defined as async. All WebExtension calls, or better all returned Promises of WebExtension calls are awaited, which means the execution flow in this function halts until the individual Promise is fulfilled. This allows to write sequential code for async functions.
 
 ```
 /**

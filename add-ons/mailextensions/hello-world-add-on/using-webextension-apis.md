@@ -91,4 +91,4 @@ document.addEventListener("DOMContentLoaded", load);
 
 ### messenger.tabs.query
 
-The tabs API gives access to Thunderbird tabs
+The [tabs API](https://webextension-api.thunderbird.net/en/91/tabs.html) gives access to Thunderbird's tabs. We need to lear

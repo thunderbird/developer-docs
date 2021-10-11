@@ -8,8 +8,11 @@ description: Tips and tricks for successful Thunderbird add-on development.
 
 Some general tips to speed up your development workflow:
 
-* To debug code running in the browser context \(e.g.: your Experiment APIs\) you must use the global browser console \(Ctrl+Shift+J\) or developer toolbox \(Ctrl+Shift+I\).  
-* To debug code running in a content page of your extension \(e.g.: your background script\), you need to select "debug add-ons" from the gear icon in the add-on tab and then inspect your add-on.   **Hint:** Alternatively you can enable content messages in the global browser console or in the developer toolbox as well. This will also show console output from popus \(e.g. from browser\_action\):
+* To debug code running in the browser context (e.g.: your Experiment APIs) you must use the global browser console (Ctrl+Shift+J) or developer toolbox (Ctrl+Shift+I). \
+
+* To debug code running in a content page of your extension (e.g.: your background script), you need to select "debug add-ons" from the gear icon in the add-on tab and then inspect your add-on. \
+  \
+  **Hint:** Alternatively you can enable content messages in the global browser console or in the developer toolbox as well. This will also show console output from popus (e.g. from browser_action):
 
 ![](../.gitbook/assets/ind2ex.png)
 
@@ -17,9 +20,9 @@ Some general tips to speed up your development workflow:
 
 There is also a [debug guide from the extension workshop](https://extensionworkshop.com/documentation/develop/debugging/) with more details and the most recent information on debugging. It is written for Mozilla Firefox but applies for Thunderbird as well.
 
-## Parallel hosting of legacy add-ons and MailExtensions on addons.thunderbird.net \(ATN\)
+## Parallel hosting of legacy add-ons and MailExtensions on addons.thunderbird.net (ATN)
 
-After updating your add-on for Thunderbird 68 and beyond, it will be treated as a WebExtension. While uploading it to addons.thunderbird.net \(ATN\), you will see a warning, that you cannot upload a new legacy version of your add-on afterwards. However:
+After updating your add-on for Thunderbird 68 and beyond, it will be treated as a WebExtension. While uploading it to addons.thunderbird.net (ATN), you will see a warning, that you cannot upload a new legacy version of your add-on afterwards. However:
 
 {% hint style="success" %}
 It **is** possible to maintain a legacy version **and** a WebExtension version of your add-on in parallel on ATN! You just need to use a higher major version number for the WebExtension version of your add-on and keep the old major version number when releasing a new legacy version. Basically releasing them in two different branches.
@@ -46,7 +49,6 @@ Services.obs.notifyObservers(null, "startupcache-invalidate", null);
 
 One way to make this happen automatically is by installing the [userChromeJS add-on](https://addons.thunderbird.net/thunderbird/addon/userchromejs-2/) and then putting the code above into the file `chrome/userChrome.js` within your Thunderbird profile directory.
 
-### `nglayout.debug.disable_xul_cache` preference \(TB68\)
+### `nglayout.debug.disable_xul_cache` preference (TB68)
 
 Go into the advanced preferences editor, create a boolean preference called `nglayout.debug.disable_xul_cache` if it doesn't already exist, set it to true, and restart Thunderbird.
-

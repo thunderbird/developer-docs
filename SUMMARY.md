@@ -2,7 +2,7 @@
 
 * [About Thunderbird](README.md)
 
-## Contributing to Thunderbird <a id="thunderbird-development"></a>
+## Contributing to Thunderbird <a href="thunderbird-development" id="thunderbird-development"></a>
 
 * [Getting Started](thunderbird-development/getting-started.md)
 * [Building Thunderbird](thunderbird-development/building-thunderbird/README.md)
@@ -37,14 +37,15 @@
 
 * [Roadmap](planning/roadmap.md)
 
-## Add-on Development <a id="add-ons"></a>
+## Add-on Development <a href="add-ons" id="add-ons"></a>
 
 * [Introduction](add-ons/about-add-ons.md)
 * [A Guide to MailExtensions](add-ons/mailextensions/README.md)
   * [Supported Manifest Keys](add-ons/mailextensions/supported-manifest-keys.md)
   * [Supported UI Elements](add-ons/mailextensions/supported-ui-elements.md)
   * [Supported WebExtension APIs](add-ons/mailextensions/supported-webextension-api.md)
-  * [Hello World Example](add-ons/mailextensions/hello-world-add-on.md)
+  * [Hello World Example](add-ons/mailextensions/hello-world-add-on/README.md)
+    * [Page 1](add-ons/mailextensions/hello-world-add-on/page-1.md)
   * [Examples in the Sample Extensions Repository](https://github.com/thundernest/sample-extensions)
   * [Introducing Experiments](add-ons/mailextensions/experiments.md)
 * [A Guide to Themes](add-ons/web-extension-themes.md)
@@ -60,4 +61,3 @@
     * [Adapt to Changes in Thunderbird 79-91](add-ons/updating/tb91/changes.md)
 * [Documentation & Resources](add-ons/resources.md)
 * [Developer Community](add-ons/community.md)
-

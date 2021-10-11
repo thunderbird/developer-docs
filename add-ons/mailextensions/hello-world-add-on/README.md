@@ -10,7 +10,7 @@ In this section, we will create a very simple extension, which adds a button to 
 
 Create a project folder for your extension and navigate to it.
 
-```text
+```
 mkdir hello-world
 cd hello-world
 ```
@@ -53,7 +53,7 @@ You can grab the icons we use for this example from the [Thunderstorm repo](http
 
 ### popup.html
 
-Our add-on is using a `browser_action` manifest key to add a [browser action button](supported-ui-elements.md#browser-action) to the Thunderbird UI. A click on that button will bring up a popup loading the HTML page defined in the `browser_action.default_popup` key. Let's create the following `popup.html` in the `hello-world` project folder.
+Our add-on is using a `browser_action` manifest key to add a [browser action button](../supported-ui-elements.md#browser-action) to the Thunderbird UI. A click on that button will bring up a popup loading the HTML page defined in the `browser_action.default_popup` key. Let's create the following `popup.html` in the `hello-world` project folder.
 
 {% code title="popup.html" %}
 ```markup
@@ -75,7 +75,7 @@ Our add-on is using a `browser_action` manifest key to add a [browser action but
 {% endcode %}
 
 {% hint style="info" %}
-The default [**content security policy**](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content_Security_Policy#Inline_JavaScript) disallows JavaScript placed directly in `<script>` tags and inline event handlers like `onclick`. Place all your Javascript code into a separate file \(like popup.js in this example\) and use [addEventListener\(\)](https://developer.mozilla.org/de/docs/Web/API/EventTarget/addEventListener) instead of inline event handlers.
+The default [**content security policy**](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content_Security_Policy#Inline_JavaScript) disallows JavaScript placed directly in `<script>` tags and inline event handlers like `onclick`. Place all your Javascript code into a separate file (like popup.js in this example) and use [addEventListener()](https://developer.mozilla.org/de/docs/Web/API/EventTarget/addEventListener) instead of inline event handlers.
 {% endhint %}
 
 ### popup.css
@@ -113,7 +113,7 @@ What our little script does is sending a message to the console each time we cli
 
 First, let's double-check that we have all the files in the right places:
 
-```text
+```
 hello-world/
     ├── manifest.json
     ├── popup.html
@@ -130,41 +130,41 @@ hello-world/
 
 To install the add-on we created, we are going to load it temporarily. Let's start by opening the Add-ons Manager:
 
-![](../../.gitbook/assets/screen1.png)
+![](../../../.gitbook/assets/screen1.png)
 
 This will open up the Add-ons Manager, make sure "Extensions" is selected on the left-hand side and click the gear to select "Debug Add-ons".
 
-![](../../.gitbook/assets/screen2.png)
+![](../../../.gitbook/assets/screen2.png)
 
 Click on the "Load Temporary Add-on..." button:
 
-![](../../.gitbook/assets/screen3.png)
+![](../../../.gitbook/assets/screen3.png)
 
 Select the `manifest.json` file from within our `hello-world` project folder:
 
-![](../../.gitbook/assets/screen4.png)
+![](../../../.gitbook/assets/screen4.png)
 
 This should install the Add-on for this session only:
 
-![](../../.gitbook/assets/screen5.png)
+![](../../../.gitbook/assets/screen5.png)
 
 ### Opening the Error Console
 
-Our extension will print messages to the error console using `console.log()`, so we need to open the error console first, in order to see those log entries. Hit the "Inspect" button under the add-on's listing \(pictured above\), this will bring up the Developer Tools tab.
+Our extension will print messages to the error console using `console.log()`, so we need to open the error console first, in order to see those log entries. Hit the "Inspect" button under the add-on's listing (pictured above), this will bring up the Developer Tools tab.
 
-Make sure the "Console" tab is selected in the Developer Tools. Click the "Persist Logs" checkbox in the top right-hand corner of the Developer Tools so that we can see the output from the add-on after we've interacted with it \(otherwise it only shows output as it is happening\).
+Make sure the "Console" tab is selected in the Developer Tools. Click the "Persist Logs" checkbox in the top right-hand corner of the Developer Tools so that we can see the output from the add-on after we've interacted with it (otherwise it only shows output as it is happening).
 
-![](../../.gitbook/assets/screen6.png)
+![](../../../.gitbook/assets/screen6.png)
 
 ### Trying it Out
 
 Now we can give our new add-on a whirl. Head to the home tab and find the new "Hello World" button in the main toolbar in the top right-hand corner. Click on it to see a popup with your message "Hello, World!"
 
-![](../../.gitbook/assets/screen7.png)
+![](../../../.gitbook/assets/screen7.png)
 
 Now if you look at the Developer Tools, you should see something like the following in the console:
 
-![](../../.gitbook/assets/screen8%20%281%29.png)
+![](<../../../.gitbook/assets/screen8 (1).png>)
 
 ## What's Next
 
@@ -175,4 +175,3 @@ If you want to do something more complicated, check out the MailExtension APIs v
 ## Creating the add-on file
 
 Once your add-on is ready for release or if you want to share it with others, you need to create a single add-on file. Simply zip the content of your add-on directory and use the `xpi` file extension. That file can be installed from the gear menu in the Thunderbird Add-On manager.
-

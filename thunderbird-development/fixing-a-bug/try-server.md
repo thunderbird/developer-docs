@@ -14,7 +14,7 @@ To use the try server, you'll need [Level 1 Commit Access](http://www.mozilla.or
 
 Try server has a separate repository based upon comm-central. You'll need to add the address to your Mercurial configuration file at `path/to/comm-central/.hg/hgrc`:
 
-```text
+```
 [paths]
 default = https://hg.mozilla.org/comm-central
 try = ssh://hg.mozilla.org/try-comm-central
@@ -24,25 +24,25 @@ You can of course [access the repository via HTTP](https://hg.mozilla.org/try-co
 
 ## Pushing to Try
 
-Having gained level 1 access and configured Mercurial, you can push to Try. In general, it's just a matter of applying your patch\(es\) and running `hg push -f try`.
+Having gained level 1 access and configured Mercurial, you can push to Try. In general, it's just a matter of applying your patch(es) and running `hg push -f try`.
 
 {% hint style="warning" %}
-Pushing to try-comm-central will create builds using the **most recent** mozilla-central code, which may or may not be a good idea at the time. Generally it's okay, but there may be unresolved problems between the two repositories. If you strike a problem, ask in the [\#maildev Matrix chat room](https://chat.mozilla.org/#/room/#maildev:mozilla.org).  
-  
+Pushing to try-comm-central will create builds using the **most recent** mozilla-central code, which may or may not be a good idea at the time. Generally it's okay, but there may be unresolved problems between the two repositories. If you strike a problem, ask in the [#maildev Matrix chat room](https://chat.mozilla.org/#/room/#maildev:mozilla.org).\
+\
 You can also work with a **specific** mozilla-central revision, see "Testing mozilla-central patches" below.
 {% endhint %}
 
-You can \(and should\) control what testing jobs you want to run on your push. This is usually done by using special code \(Try syntax\) in the commit message of the tip-most revision being pushed, for example `try: -b o -p linux64 -u all` creates only an "opt" build on 64-bit Linux, and runs all of the tests on that build.
+You can (and should) control what testing jobs you want to run on your push. This is usually done by using special code (Try syntax) in the commit message of the tip-most revision being pushed, for example `try: -b o -p linux64 -u all` creates only an "opt" build on 64-bit Linux, and runs all of the tests on that build.
 
 ## Try Syntax
 
 This is the Try syntax try-comm-central understands:
 
-* `-b` Build type. Use `o` for an opt build \(most common\), `d` for a debug build, or `do` for both.
+* `-b` Build type. Use `o` for an opt build (most common), `d` for a debug build, or `do` for both.
 * `-p` Platform. There are five platforms. Each also has a `-shippable` variant, which is a complication you probably don't need to think about.
   * `linux` 32-bit Linux
   * `linux64` 64-bit Linux
-  * `macosx64` Mac OS \(if you don't need a debug build, specify `macosx64-shippable` instead\)
+  * `macosx64` Mac OS (if you don't need a debug build, specify `macosx64-shippable` instead)
   * `win32` 32-bit Windows
   * `win64` 64-bit Windows
   * `all` for all platforms
@@ -65,5 +65,4 @@ You can change `.gecko_rev.yml` to point to any revision on the mozilla-\* trees
 
 ## Testing comm-beta and comm-esr patches
 
-When doing a Try run for patches to `comm-beta` or `comm-esr##`, the steps are the same as when doing a Try run for `comm-central`. \(For example, you do not need to change anything in your `hgrc` file.\) The try server is smart enough to automatically detect which one to build and test. This works because of the `.gecko_rev.yml` file. Note that some things might not work the same way as on `comm-central` \(e.g. the `--artifact` option only works on `comm-central`\).
-
+When doing a Try run for patches to `comm-beta` or `comm-esr##`, the steps are the same as when doing a Try run for `comm-central`. (For example, you do not need to change anything in your `hgrc` file.) The try server is smart enough to automatically detect which one to build and test. This works because of the `.gecko_rev.yml` file. Note that some things might not work the same way as on `comm-central` (e.g. the `--artifact` option only works on `comm-central`).

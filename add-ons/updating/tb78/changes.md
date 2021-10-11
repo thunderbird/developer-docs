@@ -9,7 +9,7 @@ The changes are grouped by category and are listed in the order we became aware 
 {% hint style="warning" %}
 As of Thunderbird 74, the built-in overlay loader has been removed, which means XUL overlay files are no longer supported. The preferred way to interact with Thunderbird is through WebExtension and MailExtension APIs, which only support HTML/CSS. 
 
-However, Thunderbird itself is still using XUL for its UI, and it is still possible to interact with that XUL based UI through experimental APIs. If for example you need a UI feature not yet available via MailExtension API, you can write an experimental API using a window listener and manipulate the UI as needed via JavaScript \(check out the [restart example](https://github.com/thundernest/sample-extensions/tree/master/restart)\). There are two ways to add XUL elements, either via [pure JavaScript](https://github.com/thundernest/sample-extensions/blob/master/restart/implementation.js#L23-L30) or via [parseXULToFragment\(\)](https://github.com/thundernest/addon-developer-support/blob/af11a8f7688bdfcd6467a9db8a4871fb3d081fe1/wrapper-apis/WindowListener/implementation.js#L183-L188).
+However, Thunderbird itself is still using XUL for its UI, and it is still possible to interact with that XUL based UI through experimental APIs. If for example you need a UI feature not yet available via MailExtension API, you can write an experimental API using a window listener and manipulate the UI as needed via JavaScript (check out the [restart example](https://github.com/thundernest/sample-extensions/tree/master/restart)). There are two ways to add XUL elements, either via [pure JavaScript](https://github.com/thundernest/sample-extensions/blob/master/restart/implementation.js#L23-L30) or via [parseXULToFragment()](https://github.com/thundernest/addon-developer-support/blob/af11a8f7688bdfcd6467a9db8a4871fb3d081fe1/wrapper-apis/WindowListener/implementation.js#L183-L188).
 
 Since XUL is still usable, this document includes information about deprecated and removed XUL elements.
 {% endhint %}
@@ -26,7 +26,7 @@ toolbar.setAttribute("is", "customizable-toolbar");
 ```
 {% endhint %}
 
-### &lt;textbox&gt;
+### \<textbox>
 
 Removed completely in TB71. Use
 
@@ -51,7 +51,7 @@ JavaScript methods that are using `element.localName == "textbox"` , `getElement
 Visually compare the fields before and after the conversion to be sure the UI, sizing, and spacing doesn't change.
 {% endhint %}
 
-### &lt;toolbar customizable="true"&gt;
+### \<toolbar customizable="true">
 
 In TB78, the XUL element `toolbar` with attribute `customizable` has been re-implemented as a [custom element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Custom_Elements). It needs an additional `is` attribute. The following example is taken from the [source of the Thunderbird calendar](https://searchfox.org/comm-central/rev/444b626fc442cb92b1b29ee47912600bc61bab1f/calendar/base/content/dialogs/calendar-event-dialog.xhtml#574):
 
@@ -68,7 +68,7 @@ In TB78, the XUL element `toolbar` with attribute `customizable` has been re-imp
 	 defaultset="button-url,button-delete"/>
 ```
 
-### &lt;wizard&gt;
+### \<wizard>
 
 In TB78, the XUL element `wizard` may no longer be a top level element, but must be encapsulated by a `window` element which includes some fluent locales:
 
@@ -92,7 +92,7 @@ In TB78, the XUL element `wizard` may no longer be a top level element, but must
 
 If you have referred to the `wizard` element by `document.documentElement.*`, this is now referring to the `window` element. Use `getElementById()` instead. 
 
-### &lt;wizardpage&gt;
+### \<wizardpage>
 
 If you set the label of a `wizardpage` element via JavaScript during wizard load, it will be ignored. You have to manually call `_adjustWizardHeader` after the label has been set. :
 
@@ -100,7 +100,7 @@ If you set the label of a `wizardpage` element via JavaScript during wizard load
 document.getElementById(wizardID)._adjustWizardHeader();
 ```
 
-### &lt;richlistbox&gt;
+### \<richlistbox>
 
 With TB78, the method `scrollToIndex(idx)` has been removed, replace it with:
 
@@ -110,9 +110,9 @@ richlistbox.ensureElementIsVisible(listbox.getItemAtIndex(idx),true);
 
 ## Changed API
 
-### document.createElement\(\)
+### document.createElement()
 
-With TB69, the default namespace for createElement has switched from XUL to HTML. So you can no longer create XUL elements with `document.createElement()` \(but HTML elements\). To create XUL elements, use:
+With TB69, the default namespace for createElement has switched from XUL to HTML. So you can no longer create XUL elements with `document.createElement()` (but HTML elements). To create XUL elements, use:
 
 ```javascript
 document.createXULElement();
@@ -144,7 +144,7 @@ To stay backward compatible, check the argument count of "createTransport". In c
 
 Merged into nsICookie.
 
-### window.QueryInterface\(\)
+### window.QueryInterface()
 
 With TB70, window objects don't need to be and cannot be QI'ed to nsIDOMChromeWindow, nsIDOMWindow and nsIInterfaceRequestor. You can just remove its usage, this is backwards compatible to TB 68. See the fix applied to [enigmail](https://gitlab.com/enigmail/enigmail/commit/cebbbc2a2f3d380e34ae8e4600f66e7986a0889d#6a57d3cb2d256247fb48986b448b6c289de8ffea).
 
@@ -154,7 +154,7 @@ This does not apply to `nsIXULWindow`, which for example is used in `nsIWindowMe
 
 Equally, TreeColumns and TreeContentView don't need to be and cannot be QI'ed to nsITreeView.
 
-### Services.scriptSecurityManager.createCodebasePrincipal\(\)
+### Services.scriptSecurityManager.createCodebasePrincipal()
 
 Renamed. Use
 
@@ -162,7 +162,7 @@ Renamed. Use
 Services.scriptSecurityManager.createContentPrincipal()
 ```
 
-### nsIStringBundle.formatStringFromName\(\)
+### nsIStringBundle.formatStringFromName()
 
 The 3rd parameter has been dropped, which was the length of the array passed in as the 2nd parameter. See the [patch applied to Thunderbird itself](https://bug1557829.bmoattachments.org/attachment.cgi?id=9071511).
 
@@ -174,11 +174,11 @@ Module file extension changed in TB78 from `js` to `jsm`, now available via
 const { IOUtils } = ChromeUtils.import("resource:///modules/IOUtils.jsm");
 ```
 
-### AddRecipient\(\)
+### AddRecipient()
 
 In TB78 the function `AddRecipient()` in the contact sidebar has been renamed to `awAddRecipientsArray()`.
 
-### MailServices.headerParser.parseHeadersWithArray\(\)
+### MailServices.headerParser.parseHeadersWithArray()
 
 In TB71 `MailServices.headerParser.parseHeadersWithArray()` has been removed. Instead, use:
 
@@ -191,23 +191,30 @@ for (let addr of addresses) {
 }
 ```
 
-###  nsIPromptService.select\(\)
+###  nsIPromptService.select()
 
-Since TB69 `nsIPromptService.select()` / `Services.prompt.select()` has dropped the parameter which specifies the length of the array of the item list which the user can choose from. See the [patch applied to Thunderbird itself](https://phabricator.services.mozilla.com/differential/changeset/?ref=1068287).
+Since TB69` nsIPromptService.select()` / `Services.prompt.select()` has dropped the parameter which specifies the length of the array of the item list which the user can choose from. See the [patch applied to Thunderbird itself](https://phabricator.services.mozilla.com/differential/changeset/?ref=1068287).
 
 ###  nsIEditorStyleSheets has been removed
 
 The [removal of `nsIEditorStyleSheets`](https://bugzilla.mozilla.org/show_bug.cgi?id=1449522) in TB77 necessitates the following changes:
 
-* `nsIEditorStyleSheets.addOverrideStyleSheet(uri)`  -&gt; `windowUtils.loadSheetUsingURIString(uri, windowUtils.AGENT_SHEET)` 
-* `nsIEditorStyleSheets.removeOverrideStyleSheet(uri)` -&gt; `windowUtils.removeSheet(uri, windowUtils.AGENT_SHEET)` 
-* `nsIEditorStyleSheets.enableStyleSheet(uri, enable)` Either manually load or remove the stylesheet:  -&gt; `windowUtils.loadStyleSheetUsingURIString(uri, windowUtils.AGENT_SHEET)`  -&gt; `windowUtils.removeSheet(uri, windowUtils.AGENT_SHEET)`
+* `nsIEditorStyleSheets.addOverrideStyleSheet(uri)` \
+  \-> `windowUtils.loadSheetUsingURIString(uri, windowUtils.AGENT_SHEET)`\
 
-### getAnonymousElementByAttribute\(\) and getAnonymousNodes\(\) have been removed
+* `nsIEditorStyleSheets.removeOverrideStyleSheet(uri)`\
+  \-> `windowUtils.removeSheet(uri, windowUtils.AGENT_SHEET)`\
+
+* `nsIEditorStyleSheets.enableStyleSheet(uri, enable)`\
+  Either manually load or remove the stylesheet:\
+   \-> `windowUtils.loadStyleSheetUsingURIString(uri, windowUtils.AGENT_SHEET)`\
+   \-> `windowUtils.removeSheet(uri, windowUtils.AGENT_SHEET)`
+
+### getAnonymousElementByAttribute() and getAnonymousNodes() have been removed
 
 These two methods are leftovers from de-XBL effort and have not been working since TB68. In TB72 they have been removed completely and using them will now throw an error. They have to be replaced by [`document.getElementById()`](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById), [`document.querySelectorAll()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelectorAll) or similar methods.
 
-The documents these methods have been used with have probably changed dramatically. Check out [searchfox.org](https://searchfox.org/) to learn about the current layouts.
+The documents these methods have been used with have probably changed dramatically. Check out [searchfox.org](https://searchfox.org) to learn about the current layouts.
 
 ## Changes to the Address Book
 
@@ -282,4 +289,3 @@ Preferences.addSyncToPrefListener(
 {% hint style="danger" %}
 The `nsIPrefService`is not available via WebExtension APIs. It is therefore adviced to move away from storing addon preferences in a preference brach and instead use the local storage via the [`storage`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage) API. More information can be found in the [update guide](https://developer.thunderbird.net/add-ons/updating/tb78#replacing-options).
 {% endhint %}
-

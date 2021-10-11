@@ -6,9 +6,9 @@ description: Extending the simple example extension to make use of WebExtension 
 
 In this step we will add a button to the message display header area and a click on it will show some information about the currently displayed message.
 
-## Adding the messageDisplayAction button
+## Adding a `message_display_action`
 
-Similar to adding the browserAction button in the first part, we have to extend the `manifest.json` to add the [messageDisplayAction](https://webextension-api.thunderbird.net/en/91/messageDisplayAction.html) button:
+Similar to adding the `browser_action` in the first part, we have to extend the `manifest.json` to add the message_display.:
 
 ```
 "message_display_action": {

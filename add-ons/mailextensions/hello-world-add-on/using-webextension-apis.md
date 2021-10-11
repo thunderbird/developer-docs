@@ -4,7 +4,7 @@ description: Extending the simple example extension to make use of WebExtension 
 
 # Using WebExtension APIs
 
-In this step we will add a "_Details_" button to the message header toolbar and a click on it will show some information about the currently displayed message.
+In this step we will add a "_Details_" button to the message header toolbar. A click on it will show some information about the currently displayed message, which we retrieve using Thunderbird's WebExtension APIs.
 
 ![](../../../.gitbook/assets/hello-word-2.png)
 

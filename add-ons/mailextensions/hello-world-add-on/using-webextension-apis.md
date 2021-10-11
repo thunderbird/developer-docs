@@ -53,7 +53,7 @@ The full `manifest.json` file now looks like so:
 
 ## popup.html
 
-The HTML file for our popup needs some placeholders, which we can later fill using JavaScript and Thunderbird's WebExtension APIs. Place the following `popup.html` file in the `messagePopup` folder:
+The HTML file for our popup needs some placeholders, which we can later fill using JavaScript and Thunderbird's WebExtension APIs. Create a messagePopup folder inside the hello-world projectPlace the following `popup.html` file in the `messagePopup` folder:
 
 ```
 <!DOCTYPE html>

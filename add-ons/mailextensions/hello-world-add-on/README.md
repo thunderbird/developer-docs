@@ -4,7 +4,7 @@ description: This is a tutorial for making a Hello World MailExtension.
 
 # Hello World Example
 
-In this section, we will create a very simple extension, which adds a button to the Thunderbird UI and a click on it will show a `Hello, World!` popup. 
+In this section, we will create a very simple extension, which adds a "_Hello World_" button to the Thunderbird UI and a click on it will show a `Hello, World!` popup. 
 
 ![](../../../.gitbook/assets/hello-word.png)
 
@@ -53,7 +53,9 @@ You can grab the icons we use for this example from the [Thunderstorm repo](http
 
 ### Using a `browser_action`
 
-The manifest includes the definition for a `browser_action`. That is the toolbar button we want to add to the main Thunderbird toolbar. The reference to a _browser_ in its name is inherited from Firefox. The allowed keys for the `browser_action` button are described in our [API documentation](https://webextension-api.thunderbird.net/en/91/browserAction.html). We define a popup, which should open if the button is clicked, a title and an icon.
+The manifest includes the definition for a `browser_action`. That is the toolbar button we want to add to the main Thunderbird toolbar. The reference to a _browser_ in its name is inherited from the Firefox Browser.
+
+The allowed keys for the `browser_action` button are described in our [API documentation](https://webextension-api.thunderbird.net/en/91/browserAction.html). We define a popup, which should open if the button is clicked, a title and an icon.
 
 #### popup.html
 
@@ -109,7 +111,7 @@ console.log('Hello, World! - from popup.js');
 ```
 {% endcode %}
 
-What our little script does is sending a message to the console each time we click on our add-on. We'll take a look at that in a moment when we try out our add-on. The first line is just a comment, so we can remember what our code is doing.
+What our little script does is sending a message to the console each time we click on our "_Hello World_" button. We'll take a look at that in a moment when we try out our add-on. The first line is just a comment, so we can remember what our code is doing.
 
 ## Testing the Extension
 
@@ -160,7 +162,7 @@ Make sure the "Console" tab is selected in the Developer Tools. Click the "Persi
 
 ### Trying it Out
 
-Now we can give our new add-on a whirl. Head to the home tab and find the new "Hello World" button in the main toolbar in the top right-hand corner. Click on it to see a popup with your message `Hello, World!`
+Now we can give our new add-on a whirl. Head to the home tab and find the new "_Hello World_" button in the main toolbar in the top right-hand corner. Click on it to see a popup with your message `Hello, World!`
 
 ![](../../../.gitbook/assets/screen7.png)
 
@@ -170,4 +172,4 @@ Now, if you look at the Developer Tools, you should see something like the follo
 
 ## Creating the add-on file
 
-Once your add-on is ready for release or if you want to share it with others, you need to create a single add-on file. Simply zip the content of your add-on directory and use the `xpi` file extension. That file can be installed from the gear menu in the Thunderbird Add-On manager.
+Once your add-on is ready for release or if you want to share it with others, you need to create a single add-on file. Simply zip the content of your add-on directory and use the `xpi` file extension. That file can be installed from the gear menu in the Thunderbird Add-Ons Manager.

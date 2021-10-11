@@ -74,8 +74,7 @@ async function load() {
   let tabs = await messenger.tabs.query({active: true, currentWindow: true});
 
   // Get the message currently displayed in the active tab, using the
-  // messageDisplay API
-  // Note: As stated in the documentation this needs the messagesRead permission.
+  // messageDisplay API. Note: This needs  // the messagesRead permission.
 
   // The returned message is a MessageHeader object with the most relevant
   // information
@@ -95,7 +94,7 @@ In Thunderbird, all WebExtension API can be accessed through the _browser.\*_ na
 
 ### messenger.tabs.query
 
-The [tabs API](https://webextension-api.thunderbird.net/en/91/tabs.html) provides access to Thunderbird's tabs. We need to get hold of the current active tab to learn which message is displayed there. We use the [`query`](using-webextension-apis.md#adding-a-message_display_action) method to find it.
+The [tabs API](https://webextension-api.thunderbird.net/en/91/tabs.html) provides access to Thunderbird's tabs. We need to get hold of the current active tab to learn which message is displayed there. We use the [`query`](using-webextension-apis.md#adding-a-message_display_action) method to find it (line 4).
 
 {% hint style="info" %}
 Using `messeger.tabs.getCurrent()` will not work, as that always returns the tab in which it is being called from. In our case, the call is executed from inside the popup of the `message_display_action` and not from inside the tab we are looking for.

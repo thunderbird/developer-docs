@@ -72,3 +72,8 @@ The HTML file for our popup needs some placeholders, which we can later fill usi
 </body>
 </html>
 ```
+
+## popup.css
+
+We will use the following `popup.css` file. Place it in the same folder as the `popup.html` file.
+

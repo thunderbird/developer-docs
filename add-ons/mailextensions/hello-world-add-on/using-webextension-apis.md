@@ -92,4 +92,4 @@ Place the following `popup.css` file in the same folder as the `popup.html` file
 }
 ```
 
-We use modern CSS styling to format our HTML into a tabular view (instead of using tables). The `display: grid` container defines how the DIVs in
+We use modern CSS styling to format our HTML into a tabular view (instead of using tables). The `display: grid` container defines how our 4 DIV elements inside the container DIV are aligned. Check the grid documentation for more details.

@@ -54,7 +54,7 @@ You can grab the icons we use for this example from the [Thunderstorm repo](http
 
 ### mainPopup.html
 
-Our add-on is using a `browser_action` manifest key to add a [browser action button](../supported-ui-elements.md#browser-action) to the Thunderbird UI. A click on that button will bring up a popup loading the HTML page defined in the `browser_action.default_popup` key. Let's create a mainPopup folder for everything related to that popup and cretae the following p`opup.html` in the `hello-world` project folder.
+Our add-on is using a `browser_action` manifest key to add a [browser action button](../supported-ui-elements.md#browser-action) to the Thunderbird UI. A click on that button will bring up a popup loading the HTML page defined in the `browser_action.default_popup` key. Let's create a `mainPopup` folder in the `hello-world` project folder for everything related to that popup and also create the following `popup.html` .
 
 {% code title="popup.html" %}
 ```markup

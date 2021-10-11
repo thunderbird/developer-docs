@@ -75,5 +75,21 @@ The HTML file for our popup needs some placeholders, which we can later fill usi
 
 ## popup.css
 
-We will use the following `popup.css` file. Place it in the same folder as the `popup.html` file.
+Place the following `popup.css` file in the same folder as the `popup.html` file.
 
+```
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+}
+
+.header {
+    font-weight: bold
+}
+
+.grid-container div {
+    margin: 1ex;
+}
+```
+
+We use 

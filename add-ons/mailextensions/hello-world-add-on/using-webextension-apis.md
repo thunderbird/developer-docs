@@ -94,5 +94,5 @@ document.addEventListener("DOMContentLoaded", load);
 The [tabs API](https://webextension-api.thunderbird.net/en/91/tabs.html) gives access to Thunderbird's tabs. We need to know the current active tab to learn which message is displayed there. We use the `query` method to find it.
 
 {% hint style="info" %}
-Using me
+Using messeger.tabs.getCurrent() will not work, as the code is executed inside the popup and not inside the tab, we
 {% endhint %}

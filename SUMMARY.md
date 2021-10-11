@@ -46,8 +46,6 @@
   * [Supported WebExtension APIs](add-ons/mailextensions/supported-webextension-api.md)
   * [Hello World Example](add-ons/mailextensions/hello-world-add-on/README.md)
     * [Page 1](add-ons/mailextensions/hello-world-add-on/page-1.md)
-    * [Page 1](add-ons/mailextensions/hello-world-add-on/page-1-1.md)
-    * [Page 1](add-ons/mailextensions/hello-world-add-on/page-1-2.md)
   * [Page 1](add-ons/mailextensions/page-1.md)
   * [Page 1](add-ons/mailextensions/page-1-1.md)
   * [Examples in the Sample Extensions Repository](https://github.com/thundernest/sample-extensions)

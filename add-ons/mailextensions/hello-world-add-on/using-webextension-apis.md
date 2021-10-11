@@ -18,8 +18,6 @@ Similar to adding the `browser_action` in the first part, we have to extend the 
 },
 ```
 
-The full `manifest.json` file now looks like so:
-
 ```
 {
     "manifest_version": 2,
@@ -121,4 +119,6 @@ async function load() {
 
 document.addEventListener("DOMContentLoaded", load);
 ```
+
+### messenger.tabs.query
 

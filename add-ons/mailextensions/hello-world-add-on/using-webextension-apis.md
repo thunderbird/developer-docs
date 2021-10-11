@@ -51,3 +51,6 @@ The full `manifest.json` file now looks like so:
 }
 ```
 
+## popup.html
+
+The HTML file for our popup needs some placeholders which we can later fill using JavaScript and Thun

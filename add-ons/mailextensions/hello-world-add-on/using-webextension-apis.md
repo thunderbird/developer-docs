@@ -1,5 +1,5 @@
 ---
-description: Extending the simple example extension to make use of WebExtension APIs.
+description: Extending the simple example extension to make use of WebExtension APIs. 2
 ---
 
 # Using WebExtension APIs

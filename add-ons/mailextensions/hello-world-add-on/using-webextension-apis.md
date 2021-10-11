@@ -107,4 +107,4 @@ The [`getDisplayedMessage`](https://webextension-api.thunderbird.net/en/91/messa
 
 At this stage we are interested in the subject (line 26 in popup.js) and the author (line 27 in popup.js).
 
-A
+As mentioned in the documentation of the getDisplayMessage method, it requires the <mark style="color:red;">`messagesRead`</mark> permission. 

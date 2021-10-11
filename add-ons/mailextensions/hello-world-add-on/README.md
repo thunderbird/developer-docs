@@ -8,16 +8,9 @@ In this section, we will create a very simple extension, which adds a "_Hello Wo
 
 ![](../../../.gitbook/assets/hello-word.png)
 
-## Writing the Extension
+## Creating a manifest.json
 
-Create a project folder for your extension and navigate to it.
-
-```
-mkdir hello-world
-cd hello-world
-```
-
-### Creating a manifest.json
+First create an empty `hello-world` project folder for your extension and navigate to it. 
 
 As described in our [MailExtension guide](https://developer.thunderbird.net/add-ons/mailextensions), extensions require a `manifest.json` file that tells Thunderbird basic information about the add-on. Place the following `manifest.json` file directly in the `hello-world` project folder.
 
@@ -51,13 +44,13 @@ As described in our [MailExtension guide](https://developer.thunderbird.net/add-
 
 You can grab the icons we use for this example from the [Thunderstorm repo](https://github.com/cleidigh/ThunderStorm/tree/master/examples/MailExtensions/HelloWorld-Popup/images). Make sure to create an `images` directory in the `hello-world` project folder for them.
 
-### Using a `browser_action`
+## Using a `browser_action`
 
 The manifest includes the definition for a `browser_action`. That is the toolbar button we want to add to the main Thunderbird toolbar. The reference to a _browser_ in its name is inherited from the Firefox Browser.
 
 The allowed keys for the `browser_action` button are described in our [API documentation](https://webextension-api.thunderbird.net/en/91/browserAction.html). We define a popup, which should open if the button is clicked, a title and an icon.
 
-#### popup.html
+### popup.html
 
 The location of the HTML file loaded by the popup of our `browser_action` is defined in the `browser_action.default_popup` key. Let's create a `mainPopup` directory in the `hello-world` project folder for everything related to that popup and start with the following `popup.html` .
 
@@ -84,7 +77,7 @@ The location of the HTML file loaded by the popup of our `browser_action` is def
 The default [**content security policy**](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content_Security_Policy#Inline_JavaScript) disallows JavaScript placed directly in `<script>` tags and inline event handlers like `onclick`. Place all your Javascript code into a separate file (like popup.js in this example) and use [addEventListener()](https://developer.mozilla.org/de/docs/Web/API/EventTarget/addEventListener) instead of inline event handlers.
 {% endhint %}
 
-#### popup.css
+### popup.css
 
 Now we want to create the CSS file referenced in our HTML file. We'll call it `popup.css`. This is just for decoration of the page, we'll put it in the same folder as the `popup.html` file.
 
@@ -99,7 +92,7 @@ Now we want to create the CSS file referenced in our HTML file. We'll call it `p
 ```
 {% endcode %}
 
-#### popup.js
+### popup.js
 
 We're going to create the following file called `popup.js` and place it in the same folder as the `popup.html` file.
 

@@ -20,3 +20,39 @@ Similar to adding the browserAction button in the first part, we have to extend 
 
 The full `manifest.json` file now looks like so:
 
+```
+{
+    "manifest_version": 2,
+    "name": "Hello World",
+    "description": "Your basic Hello World extension!",
+    "version": "2.0",
+    "author": "[Your Name Here]",
+    "applications": {
+        "gecko": {
+            "id": "helloworld@yoursite.com",
+            "strict_min_version": "78.0"
+        }
+    },
+    "browser_action": {
+        "default_popup": "mainPopup/mainPopup.html",
+        "default_title": "Hello World",
+        "default_icon": "images/internet-32px.png"
+    },
+    "message_display_action": {
+        "default_popup": "messagePopup/messagePopup.html",
+        "default_title": "Hello World",
+        "default_icon": "images/internet-32px.png"
+    },
+    "permissions": [
+        "messagesRead"
+    ],
+    "background": {
+        "scripts": ["background.js"]
+    },
+    "icons": {
+        "64": "images/internet.png",
+        "32": "images/internet-32px.png",
+        "16": "images/internet-16px.png"
+    }
+}
+```

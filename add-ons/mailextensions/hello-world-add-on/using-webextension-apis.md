@@ -53,14 +53,14 @@ The full `manifest.json` file now looks like so:
 
 ## popup.html
 
-The HTML file for our popup needs some placeholders which we can later fill using JavaScript and Thunderbird's WebExtension APIs
+The HTML file for our popup needs some placeholders, which we can later fill using JavaScript and Thunderbird's WebExtension APIs. Place the following popup.html file in the `messagePopup` folder:
 
 ```
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Hello World</title>
+    <title>Details</title>
     <link rel="stylesheet" type="text/css" media="screen" href="popup.css">
     <script src="popup.js"></script>
 </head>

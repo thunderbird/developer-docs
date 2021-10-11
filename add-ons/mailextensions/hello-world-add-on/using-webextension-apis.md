@@ -89,14 +89,18 @@ async function load() {
 document.addEventListener("DOMContentLoaded", load);
 ```
 
+{% hint style="info" %}
+In Thunderbird, all WebExtension API can be accessed through the _browser.\*_ namespace, as with Firefox, but also through the _messenger.\*_ namespace, which is a better fit for Thunderbird.
+{% endhint %}
+
 ### messenger.tabs.query
 
 The [tabs API](https://webextension-api.thunderbird.net/en/91/tabs.html) gives access to Thunderbird's tabs. We need to get hold of the current active tab to learn which message is displayed there. We use the `query` method to find it.
 
 {% hint style="info" %}
-All WebExtension APIs
-{% endhint %}
-
-{% hint style="info" %}
 Using `messeger.tabs.getCurrent()` will not work, as the code is executed inside the popup and not inside the tab we are looking for.
 {% endhint %}
+
+### messenger.messageDisplay.getDisplayedMessage
+
+The

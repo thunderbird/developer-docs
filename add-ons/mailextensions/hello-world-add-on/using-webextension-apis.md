@@ -105,4 +105,6 @@ Using `messeger.tabs.getCurrent()` will not work, as that always returns the tab
 
 The [`getDisplayedMessage`](https://webextension-api.thunderbird.net/en/91/messageDisplay.html#getdisplayedmessage-tabid) method of the [messageDisplay API](https://webextension-api.thunderbird.net/en/91/messageDisplay.html) provides access to the currently viewed message(s) in a given tab. It returns a [MessageHeader](https://webextension-api.thunderbird.net/en/91/messages.html#messageheader) object from the [messages API](https://webextension-api.thunderbird.net/en/91/messages.html) with basic information.
 
-At this stag
+At this stage we are interested in the subject (line 26 in popup.js) and the author (line 27 in popup.js).
+
+A

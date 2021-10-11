@@ -47,13 +47,13 @@ As described in our [MailExtension guide](https://developer.thunderbird.net/add-
 ```
 {% endcode %}
 
-You can grab the icons we use for this example from herethe [Thunderstorm repo](https://github.com/cleidigh/ThunderStorm/tree/master/examples/MailExtensions/HelloWorld-Popup/images). Make sure to create an `images` directory in the `hello-world` project folder for them.
+You can grab the icons we use for this example from the [Thunderstorm repo](https://github.com/cleidigh/ThunderStorm/tree/master/examples/MailExtensions/HelloWorld-Popup/images). Make sure to create an `images` directory in the `hello-world` project folder for them.
 
-The manifest also includes the definition for a `browser_action`. That is the toolbar button we want to add to the main Thunderbird toolbar. The reference to a browser here is inherited from Firefox. The allowed keys for the browser_action button are described in our [API documentation](https://webextension-api.thunderbird.net/en/91/browserAction.html). We define a popup, which should open if the button is clicked and a title and an icon.
+The manifest also includes the definition for a `browser_action`. That is the toolbar button we want to add to the main Thunderbird toolbar. The reference to a browser in its name is inherited from Firefox. The allowed keys for the `browser_action` button are described in our [API documentation](https://webextension-api.thunderbird.net/en/91/browserAction.html). We define a popup, which should open if the button is clicked, and a title and an icon.
 
-### mainPopup.html
+### popup.html
 
-Our add-on is using a `browser_action` manifest key to add a [browser action button](../supported-ui-elements.md#browser-action) to the Thunderbird UI. A click on that button will bring up a popup loading the HTML page defined in the `browser_action.default_popup` key. Let's create a `mainPopup` folder in the `hello-world` project folder for everything related to that popup and also create the following `popup.html` .
+The location of the HTML file loaded by our browser_actioA click on that button will bring up a popup loading the HTML page defined in the `browser_action.default_popup` key. Let's create a `mainPopup` folder in the `hello-world` project folder for everything related to that popup and also create the following `popup.html` .
 
 {% code title="popup.html" %}
 ```markup

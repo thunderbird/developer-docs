@@ -54,7 +54,7 @@ You can grab the icons we use for this example from the [Thunderstorm repo](http
 
 ### mainPopup.html
 
-Our add-on is using a `browser_action` manifest key to add a [browser action button](../supported-ui-elements.md#browser-action) to the Thunderbird UI. A click on that button will bring up a popup loading the HTML page defined in the `browser_action.default_popup` key. Let's create the following `popup.html` in the `hello-world` project folder.
+Our add-on is using a `browser_action` manifest key to add a [browser action button](../supported-ui-elements.md#browser-action) to the Thunderbird UI. A click on that button will bring up a popup loading the HTML page defined in the `browser_action.default_popup` key. Let's create athe following `mainPopup.html` in the `hello-world` project folder.
 
 {% code title="popup.html" %}
 ```markup
@@ -63,8 +63,8 @@ Our add-on is using a `browser_action` manifest key to add a [browser action but
 <head>
     <meta charset="utf-8">
     <title>Hello World</title>
-    <link rel="stylesheet" type="text/css" media="screen" href="popup.css">
-    <script src="scripts/popup.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="mainPopup.css">
+    <script src="mainPopup.js"></script>
 </head>
 <body>
     <div class="popup-page">

@@ -103,4 +103,4 @@ Using `messeger.tabs.getCurrent()` will not work, as that always returns the tab
 
 ### messenger.messageDisplay.getDisplayedMessage
 
-The [messageDisplay API](https://webextension-api.thunderbird.net/en/91/messageDisplay.html) provides access to the currently viewed message(s). We use the `getDisplayedMessage` method to a MessageHeader object of the currently viewed message. 
+The `getDisplayedMessage` method of the [messageDisplay API](https://webextension-api.thunderbird.net/en/91/messageDisplay.html) provides access to the currently viewed message(s) in a given tab. It returns a MessageHeader object with basic

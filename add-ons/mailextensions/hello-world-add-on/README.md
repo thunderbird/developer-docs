@@ -38,9 +38,6 @@ As described in our [MailExtension guide](https://developer.thunderbird.net/add-
         "default_title": "Hello World",
         "default_icon": "images/internet-32px.png"
     },
-    "background": {
-        "scripts": ["background.js"]
-    },
     "icons": {
         "64": "images/internet.png",
         "32": "images/internet-32px.png",
@@ -51,6 +48,8 @@ As described in our [MailExtension guide](https://developer.thunderbird.net/add-
 {% endcode %}
 
 You can grab the icons we use for this example from the [Thunderstorm repo](https://github.com/cleidigh/ThunderStorm/tree/master/examples/MailExtensions/HelloWorld-Popup/images). Make sure to create an `images` directory in the `hello-world` project folder for them.
+
+As you can see, the manifest also includes the definition for a `browser_action`. That is the toolbar butto
 
 ### mainPopup.html
 

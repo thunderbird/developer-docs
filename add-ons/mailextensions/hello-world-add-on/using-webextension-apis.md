@@ -98,7 +98,7 @@ We use modern CSS styling to format our HTML into a tabular view (instead of usi
 
 Most if not all WebExtension API functions return a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises).
 
-The author of this example prefers the `async`/`await` syntax to work with Promises. The `load()` function defined in the following `popup.js` is therefore defined as `async`. All used WebExtension API calls, or better all returned Promises of WebExtension API calls are awaited, which means the execution flow in this function sorthalts(1) until the individual Promise is fulfilled. This allows to write sequential code for async functions.
+The author of this example prefers the `async`/`await` syntax to work with Promises. The `load()` function defined in the following `popup.js` is therefore defined as `async`. All used WebExtension API calls, or better all returned Promises of WebExtension API calls are awaited, which means the execution flow in this function sort of halts until the individual Promise is fulfilled. This allows to write sequential code for async functions.
 
 ```
 async function load() {
@@ -106,12 +106,12 @@ async function load() {
   // the tabs API.
   let tabs = await messenger.tabs.query({active: true, currentWindow: true});
 
-  // Get the message currently displayed in the active tab, using the messageDisplay API
+  // Get the message currently displayed in the active tab, using the
+  // messageDisplay API
   // Note: As stated in the documentation this needs the messagesRead permission.
-  // https://webextension-api.thunderbird.net/en/91/messageDisplay.html#getdisplayedmessage-tabid
 
-  // The returned message is a MessageHeader object with the most relevant information:
-  // https://webextension-api.thunderbird.net/en/91/messages.html#messageheader
+  // The returned message is a MessageHeader object with the most relevant
+  // information
   let message = await messenger.messageDisplay.getDisplayedMessage(tabs[0].id);
 
   // Update the HTML fields with the message subject and sender.
@@ -121,3 +121,4 @@ async function load() {
 
 document.addEventListener("DOMContentLoaded", load);
 ```
+

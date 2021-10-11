@@ -95,7 +95,7 @@ In Thunderbird, all WebExtension API can be accessed through the _browser.\*_ na
 
 ### messenger.tabs.query
 
-The [tabs API](https://webextension-api.thunderbird.net/en/91/tabs.html) provides access to Thunderbird's tabs. We need to get hold of the current active tab to learn which message is displayed there. We use the `query` method to find it.
+The [tabs API](https://webextension-api.thunderbird.net/en/91/tabs.html) provides access to Thunderbird's tabs. We need to get hold of the current active tab to learn which message is displayed there. We use the [`query`](using-webextension-apis.md#adding-a-message_display_action) method to find it.
 
 {% hint style="info" %}
 Using `messeger.tabs.getCurrent()` will not work, as the code is executed inside the popup and not inside the tab we are looking for.
@@ -103,4 +103,4 @@ Using `messeger.tabs.getCurrent()` will not work, as the code is executed inside
 
 ### messenger.messageDisplay.getDisplayedMessage
 
-The [messageDisplay API](https://webextension-api.thunderbird.net/en/91/messageDisplay.html) provides access to the currently viewed message(s). We use the getDisplayedMessage method to a Messageget the currently viewed message. 
+The [messageDisplay API](https://webextension-api.thunderbird.net/en/91/messageDisplay.html) provides access to the currently viewed message(s). We use the `getDisplayedMessage` method to a MessageHeader object of the currently viewed message. 

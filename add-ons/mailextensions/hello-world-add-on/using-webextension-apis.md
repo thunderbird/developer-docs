@@ -4,4 +4,4 @@ description: Extending the simple example extension to make use of WebExtension 
 
 # Using WebExtension APIs
 
-Test
+In this step we will add a button to the message display headerTest

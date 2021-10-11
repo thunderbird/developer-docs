@@ -8,12 +8,12 @@ In this step we will add a button to the message display header area and a click
 
 ## Adding a `message_display_action`
 
-Similar to adding the `browser_action` in the first part, we have to extend the `manifest.json` to add the message_display.:
+Similar to adding the `browser_action` in the first part, we have to extend the `manifest.json` to add the `message_display_action`.:
 
 ```
 "message_display_action": {
-    "default_popup": "messagePopup/messagePopup.html",
-    "default_title": "Show Details",
+    "default_popup": "messagePopup/popup.html",
+    "default_title": "Details",
     "default_icon": "images/internet-32px.png"
 },
 ```
@@ -34,20 +34,14 @@ The full `manifest.json` file now looks like so:
         }
     },
     "browser_action": {
-        "default_popup": "mainPopup/mainPopup.html",
+        "default_popup": "mainPopup/popup.html",
         "default_title": "Hello World",
         "default_icon": "images/internet-32px.png"
     },
     "message_display_action": {
-        "default_popup": "messagePopup/messagePopup.html",
-        "default_title": "Hello World",
+        "default_popup": "messagePopup/popup.html",
+        "default_title": "Details",
         "default_icon": "images/internet-32px.png"
-    },
-    "permissions": [
-        "messagesRead"
-    ],
-    "background": {
-        "scripts": ["background.js"]
     },
     "icons": {
         "64": "images/internet.png",
@@ -56,3 +50,4 @@ The full `manifest.json` file now looks like so:
     }
 }
 ```
+

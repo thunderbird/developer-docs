@@ -34,12 +34,13 @@ As described in our [MailExtension guide](https://developer.thunderbird.net/add-
         }
     },
     "browser_action": {
-        "default_popup": "popup.html",
+        "default_popup": "mainPopup/mainPopup.html",
         "default_title": "Hello World",
         "default_icon": "images/internet-32px.png"
     },
-    "permissions": [
-    ],
+    "background": {
+        "scripts": ["background.js"]
+    },
     "icons": {
         "64": "images/internet.png",
         "32": "images/internet-32px.png",
@@ -51,7 +52,7 @@ As described in our [MailExtension guide](https://developer.thunderbird.net/add-
 
 You can grab the icons we use for this example from the [Thunderstorm repo](https://github.com/cleidigh/ThunderStorm/tree/master/examples/MailExtensions/HelloWorld-Popup/images). Make sure to create an `images` directory in the `hello-world` project folder for them.
 
-### popup.html
+### mainPopup.html
 
 Our add-on is using a `browser_action` manifest key to add a [browser action button](../supported-ui-elements.md#browser-action) to the Thunderbird UI. A click on that button will bring up a popup loading the HTML page defined in the `browser_action.default_popup` key. Let's create the following `popup.html` in the `hello-world` project folder.
 

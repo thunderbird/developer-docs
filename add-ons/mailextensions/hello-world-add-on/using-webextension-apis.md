@@ -94,3 +94,39 @@ Place the following `popup.css` file in the same folder as the `popup.html` file
 
 We use modern CSS styling to format our HTML into a tabular view (instead of using tables). The `display: grid` container defines how our 4 DIV elements inside the container DIV are aligned. Check the [grid documentation](https://developer.mozilla.org/de/docs/Web/CSS/CSS_Grid_Layout) or this [grid guide](https://css-tricks.com/snippets/css/complete-guide-grid/) for more details.
 
+## popup.js
+
+
+
+```
+/**
+ * Most if not all WebExtension functions return a Promise:
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises
+ * 
+ * The author of this example prefers the async/await syntax to work with Promises.
+ * The following function is therefore defined as async. All WebExtension calls,
+ * or better all returned Promises of WebExtension calls are awaited, which means
+ * the execution flow in this function halts until the individual Promise is
+ * fulfilled. This allows to write sequential code for async functions.
+ * 
+ */
+async function load() {
+  // The user clicked our button, get the active tab in the current window using
+  // the tabs API.
+  let tabs = await messenger.tabs.query({active: true, currentWindow: true});
+
+  // Get the message currently displayed in the active tab, using the messageDisplay API
+  // Note: As stated in the documentation this needs the messagesRead permission.
+  // https://webextension-api.thunderbird.net/en/91/messageDisplay.html#getdisplayedmessage-tabid
+
+  // The returned message is a MessageHeader object with the most relevant information:
+  // https://webextension-api.thunderbird.net/en/91/messages.html#messageheader
+  let message = await messenger.messageDisplay.getDisplayedMessage(tabs[0].id);
+
+  // Update the HTML fields with the message subject and sender.
+  document.getElementById("subject").textContent = message.subject;
+  document.getElementById("from").textContent = message.author;
+}
+
+document.addEventListener("DOMContentLoaded", load);
+```

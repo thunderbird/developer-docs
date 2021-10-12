@@ -6,7 +6,7 @@ description: Extending the simple example extension to use a backgroud page.
 
 In this third section of the Hello World Example, we will introduce the concept of the WebExtension background page.
 
-We will keep track of incoming mail, add a menu entry to the tools menu and also a context menu entry to our toolbar button in the main Thunderbird toolbar and a click both will open notifications with the collected information from the last 24h.
+We will keep track of incoming mails, add a menu entry to the tools menu and also a context menu entry to our toolbar button in the main Thunderbird toolbar and a click on both will open notifications with the collected information from the last 24h.
 
 ![](../../../.gitbook/assets/hello-word-3.png)
 
@@ -130,7 +130,7 @@ The call to `storage.local.get()` returns a Promise for a single object with the
 }
 ```
 
-To access the content of the `messageLog` member, one would have to use `rv.messageLog`. That is sometimes not the desired behavior, and instead one could store the requested value directly in a variable, as shown in line 18 of our background script. This is called _object destructering_ and it is mapping the content of the `messageLog` member of the returned object to the `messageLog` variable. Any other non-matching returned member is ignored.
+To access the content of the `messageLog` member, one would have to use `rv.messageLog`. That is sometimes not the desired behavior, and instead one could store the requested value directly in a variable, as shown in line 18 of our background script. This is called _object destructering_ and it maps the content of the `messageLog` member of the returned object to the `messageLog` variable. Any other non-matching returned member is ignored.
 
 {% hint style="warning" %}
 Access to the local storage requires the <mark style="color:red;">`storage`</mark> permission, which needs to be added to the `permissions` key in our `manifest.json` file.

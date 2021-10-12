@@ -4,13 +4,13 @@ description: Extending the simple example extension to make use of WebExtension 
 
 # Using WebExtension APIs
 
-In this step we will add a "_Details_" button to the message header toolbar. A click on it will show some information about the currently displayed message, which we retrieve using Thunderbird's WebExtension APIs.
+In this second section of the Hello World Example, we will add a "_Details_" button to the message header toolbar. A click on it will show some information about the currently displayed message, which we retrieve using Thunderbird's WebExtension APIs.
 
 ![](../../../.gitbook/assets/hello-word-2.png)
 
 ## Using a `message_display_action`
 
-Similar to adding the `browser_action` in the first part, we have to extend the `manifest.json` to add the `message_display_action`.:
+Similar to adding the `browser_action` in the first section of the Hello World Example, we have to extend the `manifest.json` to add the `message_display_action`.:
 
 ```
 "message_display_action": {
@@ -62,7 +62,7 @@ Place the following `popup.css` file in the same folder as the `popup.html` file
 }
 ```
 
-We use modern CSS styling to format our HTML into a tabular view (instead of using tables). The `display: grid` container defines how our 4 DIV elements inside the container DIV are aligned. Check the [grid documentation](https://developer.mozilla.org/de/docs/Web/CSS/CSS_Grid_Layout) or this [grid guide](https://css-tricks.com/snippets/css/complete-guide-grid/) for more details.
+We use modern CSS styling to format our HTML into a tabular view (instead of using tables). The `display: grid` container defines how our 6 DIV elements inside the container DIV are aligned. Check the [grid documentation](https://developer.mozilla.org/de/docs/Web/CSS/CSS_Grid_Layout) or this [grid guide](https://css-tricks.com/snippets/css/complete-guide-grid/) for more details.
 
 ### popup.js
 
@@ -185,7 +185,7 @@ This is how our `manifest.json` should now look like:
 
 ### Installing
 
-As described in the [first section](./#installing), go to the Add-ons Manager to open the Debug Add-on Page and temporarily install the extension.
+As described in the [first section of the Hello World Example](./#installing), go to the Add-ons Manager to open the Debug Add-on Page and temporarily install the extension.
 
 ### Trying it Out
 

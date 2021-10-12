@@ -54,7 +54,7 @@ messenger.messages.onNewMailReceived.addListener(async (folder, messages) => {
 })
 ```
 
-The above code is using an inline arrow function to define the callback function, which is called for each onNewMailReceived event. This is identical to the following implicit function definition:
+The above code is using an inline arrow function to define the callback function, which is called for each `onNewMailReceived` event. This is identical to the following implicit function definition:
 
 ```java
 async function onNewMailReceivedCallback(folder, messages) {
@@ -63,7 +63,76 @@ async function onNewMailReceivedCallback(folder, messages) {
 messenger.messages.onNewMailReceived.addListener(onNewMailReceivedCallback)
 ```
 
-The author of this example prefers to use inline arrow functions, if the same function is not used in a differeneension
+The author of this example prefers to use inline arrow functions, if the function is not used elsewhere.
+
+As described in the [documentation of the `onNewMailReceived`](https://webextension-api.thunderbird.net/en/91/messages.html#onnewmailreceived)event, its callback function has two parameters: `folder` being a [`MailFolder`](https://webextension-api.thunderbird.net/en/91/folders.html#folders-mailfolder) and `messages` being a [`MessageList`](https://webextension-api.thunderbird.net/en/91/messages.html#messages-messagelist). 
+
+{% hint style="info" %}
+Since Thunderbird's WebExtension API potentially has to handle a lot of messages, messages in a `MessageList` object are paginated. For more information, please check the [Working with Message Lists](https://webextension-api.thunderbird.net/en/91/how-to/messageLists.html) tutorial.
+{% endhint %}
+
+To store the information of the new received mail, we add the following code to our background script:
+
+```javascript
+// A wrapper function returning an async iterator for a MessageList.
+async function* iterateMessagePages(page) {
+    for (let message of page.messages) {
+        yield message;
+    }
+
+    while (page.id) {
+        page = await messenger.messages.continueList(page.id);
+        for (let message of page.messages) {
+            yield message;
+        }
+    }
+}
+
+// Listener for new message events.
+messenger.messages.onNewMailReceived.addListener(async (folder, messages) => {
+    let { messageLog } = await messenger.storage.local.get({ messageLog: [] });
+
+    for await (let message of iterateMessagePages(messages)) {
+        messageLog.push({
+            folder: folder.name,
+            time: Date.now(),
+            message: message
+        })
+    }
+
+    await messenger.storage.local.set({ messageLog });
+})
+
+```
+
+### messenger.storage.local.get
+
+In line 17 of the shown background script, we request the current `messageLog` entry from the WebExtensions local storage. The used syntax allows defining the default value of `[]`(an empty array), if there currently is no `messageLog` entry stored. 
+
+We could also request multiple values:
+
+```javascript
+let storage = await messenger.storage.local.get({
+  messageLog: [],
+  aBoolValue: true,
+  aStringValue: "none"
+});
+console.log(storage);
+```
+
+The call to `storage.local.get` returns a single object with the requested entries, for example the above `console.log(storage)` could print the following:
+
+```
+{
+  messageLog: [],
+  aBoolValue: false,
+  aStringValue: "The sky is the limit."
+}
+```
+
+To access the content of the `messageLog` member, one would have to use `storage.messageLog`. That is sometimes not the desired behavior, and instead one could store the requested value directly in a variable, as shown in line 17 of our background script. This is called _object destructering_ and it is mapping the content of the `messageLog` member of the returned object to the `messageLog` variable. Any other non-matching returned member is ignored.
+
+## Testing the Extension
 
 Let's double-check that we have all the files in the right places:
 

@@ -112,7 +112,7 @@ Has been renamed to `nsIMsgCopyService.copyMessages`.
 
 ### nsIMsgCopyService.CopyFolders
 
-Has been renamed to `nsIMsgCopyService.copyFolders`.
+Has been renamed to `nsIMsgCopyService.copyFolder` and no longer accepts an Array of src folders, but a single src folder.
 
 ### nsIMsgCopyService.NotifyCompletion
 

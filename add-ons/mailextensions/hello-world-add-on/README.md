@@ -4,15 +4,15 @@ description: This is a tutorial for making a Hello World MailExtension.
 
 # Hello World Example
 
-In this first section of the Hello World Example, we will create a very simple extension, which adds a "_Hello World_" button to the main Thunderbird toolbar and a click on it will show a `Hello, World!` popup. 
+In this first section of the Hello World Example, we will create a very simple extension, which adds a "_Hello World_" button to Thunderbird's main toolbar and a click on it will show a `Hello, World!` popup. 
 
 ![](../../../.gitbook/assets/hello-word.png)
 
 ## Creating a manifest.json
 
-First create an empty `hello-world` project folder for your extension and navigate to it. 
+First we create an empty `hello-world` project folder for your extension and navigate to it. 
 
-As described in our [MailExtension guide](https://developer.thunderbird.net/add-ons/mailextensions), extensions require a `manifest.json` file that tells Thunderbird a few basic information about the add-on. Place the following `manifest.json` file directly in the `hello-world` project folder.
+As described in our [MailExtension guide](https://developer.thunderbird.net/add-ons/mailextensions), extensions require a `manifest.json` file that tells Thunderbird a few basic information about the add-on. Let's place the following `manifest.json` file directly in the `hello-world` project folder.
 
 {% code title="manifest.json" %}
 ```json
@@ -46,9 +46,9 @@ You can grab the icons we use for this example from the [Thunderstorm repo](http
 
 ## Using a `browser_action`
 
-The above manifest includes the definition for a `browser_action`. That is the toolbar button we want to add to the main Thunderbird toolbar. The reference to a _browser_ in its name is inherited from the Firefox Browser.
+The above manifest includes the definition for a `browser_action`. That is the toolbar button we want to add to Thunderbird's main toolbar. The reference to a _browser_ in its name is inherited from the Firefox Browser.
 
-The allowed keys for the `browser_action` button are described in our [API documentation](https://webextension-api.thunderbird.net/en/91/browserAction.html). We define a popup, which should open if the button is clicked, a title and an icon.
+The allowed keys for the `browser_action` button are described in our [API documentation](https://webextension-api.thunderbird.net/en/91/browserAction.html). We define a popup HTML page, which should be loaded if the button is clicked, a title and an icon.
 
 ### popup.html
 

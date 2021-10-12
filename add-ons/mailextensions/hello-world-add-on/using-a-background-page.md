@@ -6,7 +6,7 @@ description: Extending the simple example extension to use a backgroud page.
 
 In this third section of the Hello World Example, we will introduce the concept of the WebExtension background page.
 
-We will keep track of incoming mails, add a menu entry to the tools menu and also a context menu entry to our toolbar button in the main Thunderbird toolbar and a click on both will open notifications with the collected information from the last 24h.
+We will keep track of incoming mails, add a menu entry to the tools menu and also a context menu entry to our toolbar button in Thunderbird's main toolbar and a click on both will open notifications with the collected information from the last 24h.
 
 ![](../../../.gitbook/assets/hello-word-3.png)
 
@@ -150,9 +150,9 @@ In line 28 we store the updated `messageLog` Array back into the local storage. 
 await messenger.storage.local.set({ messageLog: messageLog });
 ```
 
-## Adding a Context Menu Entry
+## Adding Menu Entries
 
-Let's add the following code to your background script:
+Let's add the following code to your background script,which will add both menu entries and will react to them being clicked on :
 
 ```javascript
 async function addContextMenu() {
@@ -336,6 +336,6 @@ As described in the [first section of the Hello World Example](./#installing), g
 
 ### Trying it Out
 
-After you have received one or more new message, while the add-on has been active, open the context menu of our `browser_action` button in Thunderbird's main toolbar and click on "Show received emails". For each received message, you should see a notification.
+After you have received one or more new messages, while the add-on has been active, open the context menu of our `browser_action` button in Thunderbird's main toolbar and click on "Show received emails". For each received message, you should see a notification.
 
 ![](../../../.gitbook/assets/hello-word-3-try.png)

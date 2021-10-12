@@ -29,8 +29,8 @@ The author of this example prefers the first option, as it allows declaring the 
 
 We place the following `background.html` file into our `hello-world` project folder:
 
-{% code title="b" %}
-```
+{% code title="background.html" %}
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,11 +44,26 @@ Since we declare the `background.js` file as a module, we can use the JavaScript
 
 Let's create an empty `background.js` script in the `hello-world` project folder, which we can extend in the following sections.
 
-## Creating a background script
+## Listening for New Messages
 
-TBD
+In order to listen for new messages, we have to add a listener for the [`onNewMessageReceived`](https://webextension-api.thunderbird.net/en/91/messages.html#onnewmailreceived) event:
 
-## Testing the Extension
+```javascript
+messenger.messages.onNewMailReceived.addListener(async (folder, messages) => {
+    // Do something with folder and messages.
+})
+```
+
+The above code is using an inline arrow function to define the callback function, which is called for each onNewMailReceived event. This is identical to the following implicit function definition:
+
+```java
+async function onNewMailReceivedCallback(folder, messages) {
+    // Do something with folder and messages.
+}
+messenger.messages.onNewMailReceived.addListener(onNewMailReceivedCallback)
+```
+
+The author of this example prefers to use inline arrow functions, if the same function is not used in a differeneension
 
 Let's double-check that we have all the files in the right places:
 

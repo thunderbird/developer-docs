@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", load);
 In Thunderbird, all WebExtension API can be accessed through the _browser.\*_ namespace, as with Firefox, but also through the _messenger.\*_ namespace, which is a better fit for Thunderbird.
 {% endhint %}
 
-#### messenger.tabs.query
+#### messenger.tabs.query()
 
 The [tabs API](https://webextension-api.thunderbird.net/en/91/tabs.html) provides access to Thunderbird's tabs. We need to get hold of the current active tab to learn which message is displayed there. We use the [`query`](using-webextension-apis.md#adding-a-message_display_action) method to find it (line 4).
 
@@ -112,13 +112,15 @@ The [tabs API](https://webextension-api.thunderbird.net/en/91/tabs.html) provide
 Using `messeger.tabs.getCurrent()` will not work, as that always returns the tab in which it is being called from. In our case, the call is executed from inside the popup of the `message_display_action` and not from inside the tab we are looking for.
 {% endhint %}
 
-#### messenger.messageDisplay.getDisplayedMessage
+#### messenger.messageDisplay.getDisplayedMessage()
 
 The [`getDisplayedMessage`](https://webextension-api.thunderbird.net/en/91/messageDisplay.html#getdisplayedmessage-tabid) method of the [messageDisplay API](https://webextension-api.thunderbird.net/en/91/messageDisplay.html) provides access to the currently viewed message in a given tab. It returns a Promise for a [MessageHeader](https://webextension-api.thunderbird.net/en/91/messages.html#messageheader) object from the [messages API](https://webextension-api.thunderbird.net/en/91/messages.html) with basic information about the message (line 10).
 
 At this stage we are interested in the subject (line 13) and the author (line 14).
 
-As mentioned in the documentation of the [`getDisplayMessage`](https://webextension-api.thunderbird.net/en/91/messageDisplay.html#getdisplayedmessage-tabid) method, the <mark style="color:red;">`messagesRead`</mark> permission is required to be able to use it. So we have to add a `permissions` section to our `manifest.json`.
+{% hint style="warning" %}
+The [`getDisplayMessage`](https://webextension-api.thunderbird.net/en/91/messageDisplay.html#getdisplayedmessage-tabid) method requires the <mark style="color:red;">`messagesRead`</mark> permission, which needs to be added to the `permissions` key of our `manifest.json` file.
+{% endhint %}
 
 ```json
 "permissions": [
@@ -126,7 +128,7 @@ As mentioned in the documentation of the [`getDisplayMessage`](https://webextens
 ],
 ```
 
-#### messenger.messages.getFull
+#### messenger.messages.getFull()
 
 We also want to get the `received` header from the message. That information is not part of the general `MessageHeader` object, so we have to request the full message.
 

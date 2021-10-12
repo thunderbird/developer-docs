@@ -12,7 +12,7 @@ In this second section of the Hello World Example, we will add a "_Details_" but
 
 Similar to adding the `browser_action` in the first section of the Hello World Example, we have to extend the `manifest.json` to add the `message_display_action`.:
 
-```
+```json
 "message_display_action": {
     "default_popup": "messagePopup/popup.html",
     "default_title": "Details",
@@ -24,7 +24,8 @@ Similar to adding the `browser_action` in the first section of the Hello World E
 
 The HTML file for our popup needs some place-holders, which we can later fill using JavaScript and Thunderbird's WebExtension APIs. We create a `messagePopup` folder inside the `hello-world` project folder and place the following `popup.html` file in the newly created folder:
 
-```
+{% code title="popup.html" %}
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,12 +43,14 @@ The HTML file for our popup needs some place-holders, which we can later fill us
 </body>
 </html>
 ```
+{% endcode %}
 
 ### popup.css
 
 We place the following `popup.css` file in the same folder as the `popup.html` file.
 
-```
+{% code title="popup.css" %}
+```css
 .grid-container {
     display: grid;
     grid-template-columns: 1fr 6fr;
@@ -61,6 +64,7 @@ We place the following `popup.css` file in the same folder as the `popup.html` f
     margin: 1ex;
 }
 ```
+{% endcode %}
 
 Instead of tables, we use modern CSS styling to format our HTML into a tabular view. The `display: grid` container defines how our 6 DIV elements inside the container DIV are aligned. Check the [grid documentation](https://developer.mozilla.org/de/docs/Web/CSS/CSS_Grid_Layout) or this [grid guide](https://css-tricks.com/snippets/css/complete-guide-grid/) for more details.
 
@@ -70,7 +74,8 @@ All WebExtension API functions return a [Promise](https://developer.mozilla.org/
 
 The author of this example prefers [the `async`/`await` syntax](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await) over the `.then()` approach for handling Promises. The `load()` function defined in the following `popup.js` is therefore defined as `async`. All used WebExtension API calls, or better all returned Promises of WebExtension API calls are awaited, which means the execution flow in this function sort of halts until the individual Promise is fulfilled. This allows to use asynchronous functions but still being able to write sequential code.
 
-```
+{% code title="popup.js" %}
+```javascript
 async function load() {
   // The user clicked our button, get the active tab in the current window using
   // the tabs API.
@@ -93,6 +98,7 @@ async function load() {
 
 document.addEventListener("DOMContentLoaded", load);
 ```
+{% endcode %}
 
 {% hint style="info" %}
 In Thunderbird, all WebExtension API can be accessed through the _browser.\*_ namespace, as with Firefox, but also through the _messenger.\*_ namespace, which is a better fit for Thunderbird.
@@ -114,7 +120,7 @@ At this stage we are interested in the subject (line 13) and the author (line 14
 
 As mentioned in the documentation of the [`getDisplayMessage`](https://webextension-api.thunderbird.net/en/91/messageDisplay.html#getdisplayedmessage-tabid) method, the <mark style="color:red;">`messagesRead`</mark> permission is required to be able to use it. So we have to add a `permissions` section to our `manifest.json`.
 
-```
+```json
 "permissions": [
     "messagesRead"
 ],
@@ -149,7 +155,8 @@ hello-world/
 
 This is how our `manifest.json` should now look like:
 
-```
+{% code title="manifest.json" %}
+```json
 {
     "manifest_version": 2,
     "name": "Hello World",
@@ -182,6 +189,7 @@ This is how our `manifest.json` should now look like:
     }
 }
 ```
+{% endcode %}
 
 ### Installing
 

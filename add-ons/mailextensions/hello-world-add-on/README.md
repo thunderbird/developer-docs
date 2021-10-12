@@ -15,7 +15,7 @@ First create an empty `hello-world` project folder for your extension and naviga
 As described in our [MailExtension guide](https://developer.thunderbird.net/add-ons/mailextensions), extensions require a `manifest.json` file that tells Thunderbird a few basic information about the add-on. Place the following `manifest.json` file directly in the `hello-world` project folder.
 
 {% code title="manifest.json" %}
-```javascript
+```json
 {
     "manifest_version": 2,
     "name": "Hello World",
@@ -55,7 +55,7 @@ The allowed keys for the `browser_action` button are described in our [API docum
 The location of the HTML file loaded by the popup of our `browser_action` is defined in the `browser_action.default_popup` key. Let's create a `mainPopup` directory in the `hello-world` project folder for everything related to that popup and start with the following `popup.html` .
 
 {% code title="popup.html" %}
-```markup
+```html
 <!DOCTYPE html>
 <html>
 <head>

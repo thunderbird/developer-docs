@@ -14,4 +14,9 @@ In contrast to the fact that those HTML pages are only loaded after the user has
 
 ### Background Scripts vs Background Page
 
-The background page is a standard HTML page, but it is never shown to the user. Its main purpose is to load one or more JavaScript files. Aand there are two ways to do that as 
+The background page is a standard HTML page, but it is never shown to the user. Its main purpose is to load one or more JavaScript files. As [described in the MailExtension guide](../#background-page), there are two ways to do that:
+
+1. Actually defining a background HTML page, that uses `script` tags to load the JavaScript files.
+2. Just defining the to-be-loaded JavaScript files and let Thunderbird create a background page on-the-fly.
+
+The author of this example prefers the first option, as it allows declaring the loaded JavaScript file (in the script tag) as `type="module"`, which enables support for [using ES6 modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules). 

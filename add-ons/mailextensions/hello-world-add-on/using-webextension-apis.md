@@ -22,7 +22,7 @@ Similar to adding the `browser_action` in the first section of the Hello World E
 
 ### popup.html
 
-The HTML file for our popup needs some place-holders, which we can later fill using JavaScript and Thunderbird's WebExtension APIs. Create a `messagePopup` folder inside the `hello-world` project folder and place the following `popup.html` file in the newly created folder:
+The HTML file for our popup needs some place-holders, which we can later fill using JavaScript and Thunderbird's WebExtension APIs. We create a `messagePopup` folder inside the `hello-world` project folder and place the following `popup.html` file in the newly created folder:
 
 ```
 <!DOCTYPE html>
@@ -45,7 +45,7 @@ The HTML file for our popup needs some place-holders, which we can later fill us
 
 ### popup.css
 
-Place the following `popup.css` file in the same folder as the `popup.html` file.
+We place the following `popup.css` file in the same folder as the `popup.html` file.
 
 ```
 .grid-container {
@@ -62,7 +62,7 @@ Place the following `popup.css` file in the same folder as the `popup.html` file
 }
 ```
 
-We use modern CSS styling to format our HTML into a tabular view (instead of using tables). The `display: grid` container defines how our 6 DIV elements inside the container DIV are aligned. Check the [grid documentation](https://developer.mozilla.org/de/docs/Web/CSS/CSS_Grid_Layout) or this [grid guide](https://css-tricks.com/snippets/css/complete-guide-grid/) for more details.
+Instead of tables, we use modern CSS styling to format our HTML into a tabular view. The `display: grid` container defines how our 6 DIV elements inside the container DIV are aligned. Check the [grid documentation](https://developer.mozilla.org/de/docs/Web/CSS/CSS_Grid_Layout) or this [grid guide](https://css-tricks.com/snippets/css/complete-guide-grid/) for more details.
 
 ### popup.js
 
@@ -108,7 +108,7 @@ Using `messeger.tabs.getCurrent()` will not work, as that always returns the tab
 
 #### messenger.messageDisplay.getDisplayedMessage
 
-The [`getDisplayedMessage`](https://webextension-api.thunderbird.net/en/91/messageDisplay.html#getdisplayedmessage-tabid) method of the [messageDisplay API](https://webextension-api.thunderbird.net/en/91/messageDisplay.html) provides access to the currently viewed message(s) in a given tab. It returns a Promise for a [MessageHeader](https://webextension-api.thunderbird.net/en/91/messages.html#messageheader) object from the [messages API](https://webextension-api.thunderbird.net/en/91/messages.html) with basic information about the message (line 10).
+The [`getDisplayedMessage`](https://webextension-api.thunderbird.net/en/91/messageDisplay.html#getdisplayedmessage-tabid) method of the [messageDisplay API](https://webextension-api.thunderbird.net/en/91/messageDisplay.html) provides access to the currently viewed message in a given tab. It returns a Promise for a [MessageHeader](https://webextension-api.thunderbird.net/en/91/messages.html#messageheader) object from the [messages API](https://webextension-api.thunderbird.net/en/91/messages.html) with basic information about the message (line 10).
 
 At this stage we are interested in the subject (line 13) and the author (line 14).
 

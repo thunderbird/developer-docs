@@ -4,13 +4,13 @@ description: Extending the simple example extension to make use of WebExtension 
 
 # Using WebExtension APIs
 
-In this second section of the Hello World Example, we will add a "_Details_" button to the message header toolbar. A click on it will show some information about the currently displayed message, which we retrieve using Thunderbird's WebExtension APIs.
+In this second part of the Hello World Example, we will add a "_Details_" button to the message header toolbar. A click on it will show some information about the currently displayed message, which we retrieve using Thunderbird's WebExtension APIs.
 
 ![](../../../.gitbook/assets/hello-word-2.png)
 
 ## Using a `message_display_action`
 
-Similar to adding the `browser_action` in the first section of the Hello World Example, we have to extend the `manifest.json` to add the `message_display_action`.:
+Similar to adding the `browser_action` in the first part of the Hello World Example, we have to extend the `manifest.json` to add the `message_display_action`.:
 
 ```json
 "message_display_action": {
@@ -195,7 +195,7 @@ This is how our `manifest.json` should now look like:
 
 ### Installing
 
-As described in the [first section of the Hello World Example](./#installing), go to the Add-ons Manager to open the Debug Add-on Page and temporarily install the extension.
+As described in the [first part of the Hello World Example](./#installing), go to the Add-ons Manager to open the Debug Add-on Page and temporarily install the extension.
 
 ### Trying it Out
 

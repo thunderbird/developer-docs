@@ -4,7 +4,7 @@ description: Extending the simple example extension to use a backgroud page.
 
 # Using a Background Page
 
-In this third section of the Hello World Example, we will introduce the concept of the WebExtension background page.
+In this third part of the Hello World Example, we will introduce the concept of the WebExtension background page.
 
 We will keep track of incoming mails, add a menu entry to the tools menu and also a context menu entry to our toolbar button in Thunderbird's main toolbar and a click on both will open notifications with the collected information from the last 24h.
 
@@ -12,7 +12,7 @@ We will keep track of incoming mails, add a menu entry to the tools menu and als
 
 ## Background Page and Background Scripts
 
-In the first two sections of the Hello World Example, we used well-defined UI hooks to load HTML pages when the user opened one of our popups. In contrast, the background page - if defined - is automatically loaded when the add-on is enabled during Thunderbird start or after the add-on has been manually enabled or installed. It is automatically destroyed when the add-on is shutting down.
+In the first two parts of the Hello World Example, we used well-defined UI hooks to load HTML pages when the user opened one of our popups. In contrast, the background page - if defined - is automatically loaded when the add-on is enabled during Thunderbird start or after the add-on has been manually enabled or installed. It is automatically destroyed when the add-on is shutting down.
 
 The background page is a standard HTML page, supporting the same technologies as ordinary HTML pages, but it is never shown to the user. Its main purpose is to load one or more JavaScript files into the background. Those background scripts can be used to listen for events or to initialize and properly set up the add-on. As [described in the MailExtension guide](../#background-page), there are two ways to load background scripts:
 
@@ -332,7 +332,7 @@ document.addEventListener("DOMContentLoaded", addContextMenu);
 
 ### Installing
 
-As described in the [first section of the Hello World Example](./#installing), go to the Add-ons Manager to open the Debug Add-on Page and temporarily install the extension.
+As described in the pfirst section of the Hello World Example, go to the Add-ons Manager to open the Debug Add-on Page and temporarily install the extension.
 
 ### Trying it Out
 

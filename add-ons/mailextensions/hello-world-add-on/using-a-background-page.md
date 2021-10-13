@@ -1,10 +1,10 @@
 ---
-description: Extending the simple example extension to use a backgroud page.
+description: Extending the example extension to use a backgroud page.
 ---
 
 # Using a Background Page
 
-In this third part of the Hello World Example, we will introduce the concept of the WebExtension background page.
+In this third part of the Hello World Extension Tutorial, we will introduce the concept of the WebExtension background page.
 
 We will keep track of incoming mails, add a menu entry to the tools menu and also a context menu entry to our toolbar button in Thunderbird's main toolbar and a click on both will open notifications with the collected information from the last 24h.
 
@@ -12,7 +12,7 @@ We will keep track of incoming mails, add a menu entry to the tools menu and als
 
 ## Background Page and Background Scripts
 
-In the first two parts of the Hello World Example, we used well-defined UI hooks to load HTML pages when the user opened one of our popups. In contrast, the background page - if defined - is automatically loaded when the add-on is enabled during Thunderbird start or after the add-on has been manually enabled or installed. It is automatically destroyed when the add-on is shutting down.
+In the first two parts of the Hello World Extension Tutorial, we used well-defined UI hooks to load HTML pages when the user opened one of our popups. In contrast, the background page - if defined - is automatically loaded when the add-on is enabled during Thunderbird start or after the add-on has been manually enabled or installed. It is automatically destroyed when the add-on is shutting down.
 
 The background page is a standard HTML page, supporting the same technologies as ordinary HTML pages, but it is never shown to the user. Its main purpose is to load one or more JavaScript files into the background. Those background scripts can be used to listen for events or to initialize and properly set up the add-on. As [described in the MailExtension guide](../#background-page), there are two ways to load background scripts:
 
@@ -21,7 +21,7 @@ The background page is a standard HTML page, supporting the same technologies as
 
 The author of this example prefers the first option, as it allows declaring the loaded JavaScript file (in the script tag) as `type="module"`, which enables support for [using ES6 modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules). We therefore add the following section to our `manifest.json` file:
 
-```
+```json
 "background": {
     "page": "background.html"
 },
@@ -40,15 +40,24 @@ We place the following `background.html` file into our `hello-world` project fol
 ```
 {% endcode %}
 
-{% hint style="info" %}
-Since we declare the `background.js` file as a module, we can use the JavaScript [`import`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules#importing_features_into_your_script) statement to load other JavaScript module files and have full control over our dependencies from within `background.js` and never have to adjust the `manifest.json` file or the `background.js` file in order to load additional JavaScript files.
-{% endhint %}
+Let's create the following barebone `background.js` script in the `hello-world` project folder:
 
-Let's create an empty `background.js` script in the `hello-world` project folder, which we can extend in the following sections.
+{% code title="background.js" %}
+```javascript
+// We are adding an event listener at the end of this script, which runs this load
+// function once the background page is fully loaded. Avoid placing function
+// calls outside of this function.
+async function load() {
 
-## Listening for New Messages
+}
 
-In order to listen for new messages, we have to add a listener for the [`onNewMessageReceived`](https://webextension-api.thunderbird.net/en/91/messages.html#onnewmailreceived) event to our background script:
+document.addEventListener("DOMContentLoaded", load);
+```
+{% endcode %}
+
+### Listening for New Messages
+
+In order to listen for new messages, we have to add a listener for the [`onNewMessageReceived`](https://webextension-api.thunderbird.net/en/91/messages.html#onnewmailreceived) event:
 
 ```javascript
 messenger.messages.onNewMailReceived.addListener(async (folder, messages) => {
@@ -71,10 +80,10 @@ The author of this example prefers to use inline arrow functions, if the functio
 The `onNewMessageReceived` event requires the <mark style="color:red;">`accountsRead`</mark> permission, which needs to be added to the `permissions` key in our `manifest.json` file.
 {% endhint %}
 
-The callback function of the `onNewMailReceived` event receives two parameters: `folder` being a [`MailFolder`](https://webextension-api.thunderbird.net/en/91/folders.html#folders-mailfolder) and `messages` being a [`MessageList`](https://webextension-api.thunderbird.net/en/91/messages.html#messages-messagelist). To store the folder and the message information of the new received mail, we add the following code to our background script:
+The callback function of the `onNewMailReceived` event receives two parameters: `folder` being a [`MailFolder`](https://webextension-api.thunderbird.net/en/91/folders.html#folders-mailfolder) and `messages` being a [`MessageList`](https://webextension-api.thunderbird.net/en/91/messages.html#messages-messagelist). The updated background script, which stores the folder and the message information of the new received mail, could look as follows:
 
 ```javascript
-// A wrapper function returning an async iterator for a MessageList. Derived from 
+// A wrapper function returning an async iterator for a MessageList. Derived from
 // https://webextension-api.thunderbird.net/en/91/how-to/messageLists.html
 async function* iterateMessagePages(page) {
     for (let message of page.messages) {
@@ -89,25 +98,34 @@ async function* iterateMessagePages(page) {
     }
 }
 
-// Listener for new message events.
-messenger.messages.onNewMailReceived.addListener(async (folder, messages) => {
-    let { messageLog } = await messenger.storage.local.get({ messageLog: [] });
+// We are adding an event listener at the end of this script, which runs this load
+// function once the background page is fully loaded. Avoid placing function
+// calls outside of this function.
+async function load() {
 
-    for await (let message of iterateMessagePages(messages)) {
-        messageLog.push({
-            folder: folder.name,
-            time: Date.now(),
-            message: message
-        })
-    }
+    // Add a listener for the new onNewMailReceived events.
+    await messenger.messages.onNewMailReceived.addListener(async (folder, messages) => {
+        let { messageLog } = await messenger.storage.local.get({ messageLog: [] });
 
-    await messenger.storage.local.set({ messageLog });
-})
+        for await (let message of iterateMessagePages(messages)) {
+            messageLog.push({
+                folder: folder.name,
+                time: Date.now(),
+                message: message
+            })
+        }
+
+        await messenger.storage.local.set({ messageLog });
+    })
+
+}
+
+document.addEventListener("DOMContentLoaded", load);
 ```
 
 #### messenger.storage.local.get()
 
-In line 18 of the shown background script, we request the current `messageLog` entry from the WebExtensions local storage. The used syntax allows defining the default value of `[]`(an empty Array), if there currently is no `messageLog` entry stored. 
+In line 23 of the shown script, we request the current `messageLog` entry from the WebExtensions local storage. The used syntax allows defining the default value of `[]`(an empty Array), if there currently is no `messageLog` entry stored. 
 
 We could also request multiple values from the local storage:
 
@@ -122,7 +140,7 @@ console.log(rv);
 
 The call to `storage.local.get()` returns a Promise for a single object with the requested entries, for example the above `console.log(rv)` could produce the following output:
 
-```
+```json
 {
   messageLog: [],
   aBoolValue: false,
@@ -130,7 +148,7 @@ The call to `storage.local.get()` returns a Promise for a single object with the
 }
 ```
 
-To access the content of the `messageLog` member, one would have to use `rv.messageLog`. That is sometimes not the desired behavior, and instead one could store the requested value directly in a variable, as shown in line 18 of our background script. This is called _object destructering_ and it maps the content of the `messageLog` member of the returned object to the `messageLog` variable. Any other non-matching returned member is ignored.
+To access the content of the `messageLog` member, one would have to use `rv.messageLog`. That is sometimes not the desired behavior, and instead one could store the requested value directly in a variable, as shown in line 23 of our background script. This is called _object destructering_ and it maps the content of the `messageLog` member of the returned object to the `messageLog` variable. Any other non-matching returned member is ignored.
 
 {% hint style="warning" %}
 Access to the local storage requires the <mark style="color:red;">`storage`</mark> permission, which needs to be added to the `permissions` key in our `manifest.json` file.
@@ -140,53 +158,47 @@ Access to the local storage requires the <mark style="color:red;">`storage`</mar
 
 Since Thunderbird's WebExtension API potentially has to handle a lot of messages, the [`MessageList`](https://webextension-api.thunderbird.net/en/91/messages.html#messagelist) data type is paginated. Please check the [Working with Message Lists](https://webextension-api.thunderbird.net/en/91/how-to/messageLists.html) tutorial for more information.
 
-The provided` iterateMessagePages()` wrapper function is doing most of the heavy lifting and allows to asynchronously loop over the returned messages in line 20 of the shown background script. For each received message, we subsequently push a new entry into the `messageLog` Array.
+The provided` iterateMessagePages()` wrapper function is doing most of the heavy lifting and allows to asynchronously loop over the returned messages in line 25 of the shown background script. For each received message, we subsequently push a new entry into the `messageLog` Array.
 
 #### messenger.storage.local.set()
 
-In line 28 we store the updated `messageLog` Array back into the local storage. We use the object shorthand notation, which allows leaving out the actual value definition, if the value is stored in a variable with the same name as the object's member name. If the shorthand notation is unwanted, one could instead write the following:
+In line 33 we store the updated `messageLog` Array back into the local storage. We use the object shorthand notation, which allows leaving out the actual value definition, if the value is stored in a variable with the same name as the object's member name. If the shorthand notation is unwanted, one could instead write the following:
 
 ```javascript
 await messenger.storage.local.set({ messageLog: messageLog });
 ```
 
-## Adding Menu Entries
+### Adding Menu Entries
 
-Let's add the following code to your background script,which will add both menu entries and will react to them being clicked on :
+Let's add the following code to your `load` function, which will add both menu entries and will react to them being clicked:
 
 ```javascript
-async function addContextMenu() {
-    let menu_id = await messenger.menus.create({
-        title: "Show received email",
-        contexts: [
-            "browser_action",
-            "tools_menu"
-        ],
-    });
-    
-    messenger.menus.onClicked.addListener(async (info, tab) => {
-        if (info.menuItemId == menu_id) {
-            // Our menu entry was clicked, get the log.
-            let { messageLog } = await messenger.storage.local.get({ messageLog: [] });
+let menu_id = await messenger.menus.create({
+    title: "Show received email",
+    contexts: [
+        "browser_action",
+        "tools_menu"
+    ],
+});
 
-            // Filter the data to the last 24h
-            let now = Date.now();
-            let last24h = messageLog.filter(e => (now - e.time) < 24* 60 * 1000);
+await messenger.menus.onClicked.addListener(async (info, tab) => {
+    if (info.menuItemId == menu_id) {
+        // Our menu entry was clicked
+        let { messageLog } = await messenger.storage.local.get({ messageLog: [] });
 
-            // Loop over the found entries and create a notification
-            for (let entry of last24h) {
-                messenger.notifications.create({
-                    "type": "basic",
-                    "iconUrl": messenger.runtime.getURL("images/internet.png"),
-                    "title": `${entry.folder}: ${entry.message.author}`,
-                    "message": entry.message.subject
-                  });                
-            }
+        let now = Date.now();
+        let last24h = messageLog.filter(e => (now - e.time) < 24 * 60 * 1000);
+
+        for (let entry of last24h) {
+            messenger.notifications.create({
+                "type": "basic",
+                "iconUrl": messenger.runtime.getURL("images/internet.png"),
+                "title": `${entry.folder}: ${entry.message.author}`,
+                "message": entry.message.subject
+                });                
         }
-    });
-}
-
-document.addEventListener("DOMContentLoaded", addContextMenu);
+    }
+});
 ```
 
 TBD
@@ -263,11 +275,12 @@ This is how our `manifest.json` should now look like:
 ```
 {% endcode %}
 
-This is how our background script should look like:
+Our background script should look as follows:
 
 {% code title="background.js" %}
 ```javascript
-// A wrapper function returning an async iterator for a MessageList.
+// A wrapper function returning an async iterator for a MessageList. Derived from
+// https://webextension-api.thunderbird.net/en/91/how-to/messageLists.html
 async function* iterateMessagePages(page) {
     for (let message of page.messages) {
         yield message;
@@ -281,22 +294,26 @@ async function* iterateMessagePages(page) {
     }
 }
 
-// Listener for new message events.
-messenger.messages.onNewMailReceived.addListener(async (folder, messages) => {
-    let { messageLog } = await messenger.storage.local.get({ messageLog: [] });
+// We are adding an event listener at the end of this script, which runs this load
+// function once the background page is fully loaded. Avoid placing function
+// calls outside of this function.
+async function load() {
 
-    for await (let message of iterateMessagePages(messages)) {
-        messageLog.push({
-            folder: folder.name,
-            time: Date.now(),
-            message: message
-        })
-    }
+    // Add a listener for the new onNewMailReceived events.
+    await messenger.messages.onNewMailReceived.addListener(async (folder, messages) => {
+        let { messageLog } = await messenger.storage.local.get({ messageLog: [] });
 
-    await messenger.storage.local.set({ messageLog });
-})
+        for await (let message of iterateMessagePages(messages)) {
+            messageLog.push({
+                folder: folder.name,
+                time: Date.now(),
+                message: message
+            })
+        }
 
-async function addContextMenu() {
+        await messenger.storage.local.set({ messageLog });
+    })
+
     let menu_id = await messenger.menus.create({
         title: "Show received email",
         contexts: [
@@ -305,13 +322,13 @@ async function addContextMenu() {
         ],
     });
     
-    messenger.menus.onClicked.addListener(async (info, tab) => {
+    await messenger.menus.onClicked.addListener(async (info, tab) => {
         if (info.menuItemId == menu_id) {
             // Our menu entry was clicked
             let { messageLog } = await messenger.storage.local.get({ messageLog: [] });
 
             let now = Date.now();
-            let last24h = messageLog.filter(e => (now - e.time) < 24* 60 * 1000);
+            let last24h = messageLog.filter(e => (now - e.time) < 24 * 60 * 1000);
 
             for (let entry of last24h) {
                 messenger.notifications.create({
@@ -325,14 +342,13 @@ async function addContextMenu() {
     });
 }
 
-document.addEventListener("DOMContentLoaded", addContextMenu);
-
+document.addEventListener("DOMContentLoaded", load);
 ```
 {% endcode %}
 
 ### Installing
 
-As described in the pfirst section of the Hello World Example, go to the Add-ons Manager to open the Debug Add-on Page and temporarily install the extension.
+As described in the [first part of the Hello World Extension Tutorial](./#installing), go to the Add-ons Manager to open the Debug Add-on Page and temporarily install the extension.
 
 ### Trying it Out
 

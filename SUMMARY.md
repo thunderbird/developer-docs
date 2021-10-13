@@ -44,7 +44,7 @@
   * [Supported Manifest Keys](add-ons/mailextensions/supported-manifest-keys.md)
   * [Supported UI Elements](add-ons/mailextensions/supported-ui-elements.md)
   * [Supported WebExtension APIs](add-ons/mailextensions/supported-webextension-api.md)
-  * [Hello World Example](add-ons/mailextensions/hello-world-add-on/README.md)
+  * [Hello World Extension Tutorial](add-ons/mailextensions/hello-world-add-on/README.md)
     * [Using WebExtension APIs](add-ons/mailextensions/hello-world-add-on/using-webextension-apis.md)
     * [Using a Background Page](add-ons/mailextensions/hello-world-add-on/using-a-background-page.md)
   * [Examples in the Sample Extensions Repository](https://github.com/thundernest/sample-extensions)

@@ -20,7 +20,7 @@ Most usage of `nsIArray` and `nsIMutableArray` has been replaced by standard Jav
 
 * nsIMsgCompFields.attachments (returns array)\
 
-* [nsIMsgCopyService.CopyFolders](https://hg.mozilla.org/comm-central/diff/4f8d3dff196eba35f09bbbe4f6487f882c07840e/mailnews/imap/test/unit/test_localToImapFilter.js) (has been [renamed](changes.md#nsimsgcopyservice-copyfolders) and now only accepts a single src folder)
+* [nsIMsgCopyService.CopyFolders](https://hg.mozilla.org/comm-central/diff/4f8d3dff196eba35f09bbbe4f6487f882c07840e/mailnews/imap/test/unit/test_localToImapFilter.js) (expects an array for the first argument, and has been [renamed](changes.md#nsimsgcopyservice-copyfolders))
 *   [nsIMsgCopyService.CopyMessages](https://hg.mozilla.org/comm-central/diff/fe318ec033d42bd4342a63b86c320116bfa5c5bc/mail/test/browser/message-window/browser_commands.js) (expects an array for the second argument)
 
 

@@ -190,7 +190,7 @@ await messenger.menus.onClicked.addListener(async (info, tab) => {
         for (let entry of last24h) {
             messenger.notifications.create({
                 "type": "basic",
-                "iconUrl": messenger.runtime.getURL("images/internet.png"),
+                "iconUrl": "images/internet.png",
                 "title": `${entry.folder}: ${entry.message.author}`,
                 "message": entry.message.subject
                 });                
@@ -346,7 +346,7 @@ async function load() {
             for (let entry of last24h) {
                 messenger.notifications.create({
                     "type": "basic",
-                    "iconUrl": messenger.runtime.getURL("images/internet.png"),
+                    "iconUrl": "images/internet.png",
                     "title": `${entry.folder}: ${entry.message.author}`,
                     "message": entry.message.subject
                   });                

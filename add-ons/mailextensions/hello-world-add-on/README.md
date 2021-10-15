@@ -4,7 +4,7 @@ description: This is a tutorial for making a Hello World MailExtension.
 
 # Hello World Extension Tutorial
 
-In this first part of the Hello World Extension Tutorial, we will create a very simple extension, which adds a "_Hello World_" button to Thunderbird's main toolbar and a click on it will show a `Hello, World!` popup. 
+In the first part of the Hello World Extension Tutorial, we will create a very simple extension, which adds a "_Hello World_" button to Thunderbird's main toolbar and a click on it will show a `Hello, World!` popup. 
 
 ![](../../../.gitbook/assets/hello-word.png)
 

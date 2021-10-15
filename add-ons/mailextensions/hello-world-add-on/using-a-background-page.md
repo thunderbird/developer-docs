@@ -34,6 +34,7 @@ We place the following `background.html` file into our `hello-world` project fol
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8"/>
     <script src="background.js" type="module"></script>
 </head>
 </html>

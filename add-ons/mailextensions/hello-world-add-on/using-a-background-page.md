@@ -4,7 +4,7 @@ description: Extending the example extension to use a backgroud page.
 
 # Using a Background Page
 
-In this third part of the Hello World Extension Tutorial, we will introduce the concept of the WebExtension background page.
+In the third part of the Hello World Extension Tutorial, we will introduce the concept of the WebExtension background page.
 
 We will keep track of incoming mails, add a menu entry to the tools menu and also a context menu entry to our toolbar button in Thunderbird's main toolbar and a click on both will open notifications with the collected information from the last 24h.
 

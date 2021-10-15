@@ -47,6 +47,7 @@
   * [Hello World Extension Tutorial](add-ons/mailextensions/hello-world-add-on/README.md)
     * [Using WebExtension APIs](add-ons/mailextensions/hello-world-add-on/using-webextension-apis.md)
     * [Using a Background Page](add-ons/mailextensions/hello-world-add-on/using-a-background-page.md)
+    * [Using Content Scripts](add-ons/mailextensions/hello-world-add-on/using-content-scripts.md)
   * [Examples in the Sample Extensions Repository](https://github.com/thundernest/sample-extensions)
   * [Introducing Experiments](add-ons/mailextensions/experiments.md)
 * [A Guide to Themes](add-ons/web-extension-themes.md)

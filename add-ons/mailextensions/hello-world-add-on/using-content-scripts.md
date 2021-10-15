@@ -169,10 +169,119 @@ This is how our `manifest.json` should now look like:
 
 Our background script should look as follows:
 
-{% code title="background.js" %}
-```javascript
 ```
-{% endcode %}
+// A wrapper function returning an async iterator for a MessageList. Derived from
+// https://webextension-api.thunderbird.net/en/91/how-to/messageLists.html
+async function* iterateMessagePages(page) {
+    for (let message of page.messages) {
+        yield message;
+    }
+
+    while (page.id) {
+        page = await messenger.messages.continueList(page.id);
+        for (let message of page.messages) {
+            yield message;
+        }
+    }
+}
+
+async function load() {
+
+    // Add a listener for the onNewMailReceived events.
+    await messenger.messages.onNewMailReceived.addListener(async (folder, messages) => {
+        let { messageLog } = await messenger.storage.local.get({ messageLog: [] });
+
+        for await (let message of iterateMessagePages(messages)) {
+            messageLog.push({
+                folder: folder.name,
+                time: Date.now(),
+                message: message
+            })
+        }
+
+        await messenger.storage.local.set({ messageLog });
+    })
+
+    // Create the menu entries.
+    let menu_id = await messenger.menus.create({
+        title: "Show received email",
+        contexts: [
+            "browser_action",
+            "tools_menu"
+        ],
+    });
+
+    // Register a listener for the menus.onClicked event.
+    await messenger.menus.onClicked.addListener(async (info, tab) => {
+        if (info.menuItemId == menu_id) {
+            // Our menu entry was clicked
+            let { messageLog } = await messenger.storage.local.get({ messageLog: [] });
+
+            let now = Date.now();
+            let last24h = messageLog.filter(e => (now - e.time) < 24 * 60 * 1000);
+
+            for (let entry of last24h) {
+                messenger.notifications.create({
+                    "type": "basic",
+                    "iconUrl": "images/internet.png",
+                    "title": `${entry.folder}: ${entry.message.author}`,
+                    "message": entry.message.subject
+                });
+            }
+        }
+    });
+
+    /**
+     * Add a handler for communication with other parts of the extension,
+     * like our message display script.
+     *
+     * Note: If this handler is defined async, there should be only one such
+     *       handler in the background script for all incoming messages.
+     */
+    messenger.runtime.onMessage.addListener(async (message, sender) => {
+        console.log({message, sender});
+        if (message && message.hasOwnProperty("command")) {
+
+            // Get the command from the message.
+            const { command } = message;
+            // Get the tab from the sender.
+            const { tab } = sender;
+
+            // Get the message currently displayed in the sending tab, abort if
+            // that failed.
+            const messageHeader = await messenger.messageDisplay.getDisplayedMessage(tab.id);
+            if (!messageHeader) {
+                console.log("NO");
+                return;
+            }
+
+            // Check for known commands.
+            console.log({command});
+            switch (command) {
+                case "getBannerDetails":
+                    // Create the information we want to return to our message display script.
+                    console.log(`Mail subject is "${messageHeader.subject}"`);
+                    return { text: `Mail subject is "${messageHeader.subject}"` };
+
+                case "markUnread":
+                    // mark the message as unread
+                    messenger.messages.update(messageHeader.id, {
+                        read: false,
+                    });
+                    break;
+            }
+        }
+    });
+
+    // Register the message display script.
+    messenger.messageDisplayScripts.register({
+        js: [{ file: "messageDisplay/message-content-script.js" }],
+        css: [{ file: "messageDisplay/message-content-styles.css" }],
+    });
+}
+
+document.addEventListener("DOMContentLoaded", load);
+```
 
 ### Installing
 

@@ -4,7 +4,7 @@ description: Extending the example extension to use a content script.
 
 # Using Content Scripts
 
-In the fourth part of the Hello World Extension Tutorial, we will introduce the concept of content scripts, to inject code into existing pages.
+In the fourth part of the Hello World Extension Tutorial, we will introduce the concept of content scripts.
 
 We will add a banner to the top of the message display area, displaying some information about the currently viewed message. The banner will also include a button to mark the currently viewed message as unread.
 
@@ -18,8 +18,6 @@ In addition to [standard content scripts](https://developer.mozilla.org/en-US/do
 
 * compose scripts loaded into the editor of the message composer
 * message display scripts loaded into rendered messages when displayed to the user
-
-
 
 We will be using a message display script in this example. In order to register one, we use the [`messageDisplayScripts`](https://webextension-api.thunderbird.net/en/91/messageDisplayScripts.html) API and add the following code to our background script:
 

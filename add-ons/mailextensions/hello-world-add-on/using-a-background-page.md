@@ -164,7 +164,7 @@ In line 30 we store the updated `messageLog` Array back into the local storage. 
 await messenger.storage.local.set({ messageLog: messageLog });
 ```
 
-### Adding Menu Entries
+### Adding Menu Entries and their Actions
 
 Let's add the following code to your `load` function, which will add both menu entries and will react to them being clicked:
 
@@ -199,10 +199,26 @@ await messenger.menus.onClicked.addListener(async (info, tab) => {
 });
 ```
 
-TBD
+#### messenger.menus.create()
+
+In line 2 we create a new menu entry. We use the title `Show received email` and we add it to the `browser_action` context and to the `tools_menu` context. A list of other available contexts can be found on the [Supported UI Elements](../supported-ui-elements.md#menu-items) page.
+
+The [menus.create()](https://webextension-api.thunderbird.net/en/91/menus.html#create-createproperties-callback) function returns the `id` of the new menu, which we can use to identify our menu, or - for example - add submenus by using the `id` as the `parentId` for other menu entries.
 
 {% hint style="warning" %}
 Using the `menus` API requires the <mark style="color:red;">`menus`</mark> permission, which needs to be added to the `permissions` key in our `manifest.json` file.
+{% endhint %}
+
+#### messenger.menus.onClicked()
+
+In order to do something when our menu is clicked, we add a listener for the [onClicked](https://webextension-api.thunderbird.net/en/91/menus.html#onclicked) event. We check the `id` of the clicked menu to see which of our menus was clicked (we only added one, but checking here anyhow).
+
+#### messenger.notifications.create()
+
+After we have retrieved the current `messageLog` from the local storage, we loop over all entries and [create a notification](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/notifications) for each entry in line 20. 
+
+{% hint style="warning" %}
+Using the `notifications` API requires the <mark style="color:red;">`notifications`</mark> permission, which needs to be added to the `permissions` key in our manifest.json file.
 {% endhint %}
 
 ## Testing the Extension

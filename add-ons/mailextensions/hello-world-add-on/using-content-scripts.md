@@ -169,7 +169,7 @@ This is how our `manifest.json` should now look like:
 
 Our background script should look as follows:
 
-```
+```javascript
 // A wrapper function returning an async iterator for a MessageList. Derived from
 // https://webextension-api.thunderbird.net/en/91/how-to/messageLists.html
 async function* iterateMessagePages(page) {

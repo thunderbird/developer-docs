@@ -10,9 +10,9 @@ In the first part of the Hello World Extension Tutorial, we will create a very s
 
 ## Creating a manifest.json
 
-First we create an empty `hello-world` project folder for your extension and navigate to it. 
+First we create an empty `hello-world` project folder for our extension and navigate to it. 
 
-As described in our [MailExtension guide](https://developer.thunderbird.net/add-ons/mailextensions), extensions require a `manifest.json` file that tells Thunderbird a few basic information about the add-on. Let's place the following `manifest.json` file directly in the `hello-world` project folder.
+As described in the [MailExtension guide](https://developer.thunderbird.net/add-ons/mailextensions), extensions require a `manifest.json` file that tells Thunderbird a few basic information about the add-on. Let's place the following `manifest.json` file directly in the `hello-world` project folder.
 
 {% code title="manifest.json" %}
 ```json
@@ -46,7 +46,7 @@ You can grab the icons we use for this example from the [Thunderstorm repo](http
 
 ## Using a `browser_action`
 
-The above manifest includes the definition for a `browser_action`. That is the toolbar button we want to add to Thunderbird's main toolbar. The reference to a _browser_ in its name is inherited from the Firefox Browser.
+The above manifest includes the definition for a `browser_action`. That is the button we want to add to Thunderbird's main toolbar. The reference to a _browser_ in its name is inherited from the Firefox Browser.
 
 The allowed keys for the `browser_action` button are described in our [API documentation](https://webextension-api.thunderbird.net/en/91/browserAction.html). We define a popup HTML page, which should be loaded if the button is clicked, a title and an icon.
 
@@ -74,7 +74,7 @@ The location of the HTML file loaded by the popup of our `browser_action` is def
 {% endcode %}
 
 {% hint style="info" %}
-The default [**content security policy**](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content_Security_Policy#Inline_JavaScript) disallows JavaScript placed directly in `<script>` tags and inline event handlers like `onclick`. Place all your Javascript code into a separate file (like popup.js in this example) and use [addEventListener()](https://developer.mozilla.org/de/docs/Web/API/EventTarget/addEventListener) instead of inline event handlers.
+The default [**content security policy**](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content_Security_Policy#Inline_JavaScript) disallows JavaScript placed directly in `<script>` tags and inline event handlers like `onclick`. Place all Javascript code into a separate file (like popup.js in this example) and use [addEventListener()](https://developer.mozilla.org/de/docs/Web/API/EventTarget/addEventListener) instead of inline event handlers.
 {% endhint %}
 
 ### popup.css
@@ -155,7 +155,7 @@ Make sure the "Console" tab is selected in the Developer Tools. Click the "Persi
 
 ### Trying it Out
 
-Now we can give our new add-on a whirl. Head to the home tab and find the new "_Hello World_" button in the main toolbar in the top right-hand corner. Click on it to see a popup with your message `Hello, World!`
+Now we can give our new add-on a whirl. Head to the home tab and find the new "_Hello World_" button in the main toolbar in the top right-hand corner. Click on it to see a popup with the `Hello, World!` message.
 
 ![](../../../.gitbook/assets/screen7.png)
 
@@ -165,4 +165,4 @@ Now, if you look at the Developer Tools, you should see something like the follo
 
 ## Creating the add-on file
 
-Once your add-on is ready for release or if you want to share it with others, you need to create a single add-on file. Simply zip the content of your add-on directory and use the `xpi` file extension. That file can be installed from the gear menu in the Thunderbird Add-Ons Manager.
+Once the add-on is ready for release or if you want to share it with others, you need to create a single add-on file. Simply zip the content of the add-on's project folder and use the `xpi` file extension. That file can be installed from the gear menu in the Thunderbird Add-Ons Manager.

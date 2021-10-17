@@ -93,11 +93,19 @@ showBanner();
 ```
 {% endcode %}
 
-The main purpose of the `message-content-script.js` file is to manipulate the rendered message and add the banner at its top. We use basic DOM manipulation techniques. 
+The main purpose of the `message-content-script.js` file is to manipulate the rendered message and add a banner at its top. We use basic DOM manipulation techniques. 
 
-What is special however is how displayed information is retrieved. In the second part of this tutorial, we used the `tabs` API and the `messageDisplay` API to learn which message is currently displayed and then used the `messages` API to get the required information. This does not work for content scripts, as [their access is limited](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content_scripts#webextension_apis). Instead, we will have to request this information from the background script.
+What is special however is how the displayed information is retrieved. In the second part of this tutorial, we used the `tabs` API and the `messageDisplay` API to learn which message is currently displayed and then used the `messages` API to get the required information. This does not work for content scripts, as [their access is limited](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content_scripts#webextension_apis). Instead, we have to request this information from the background script using runtime messaging.
 
-#### messenger.runtime.sendMessage()
+#### Sending a runtime message
+
+The [`sendMessage()`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/sendMessage) method of the [`runtime`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime) API will send a message to each active page, including the background page, the options page and other HTML pages of our extension loaded using [`windows.create()`](using-content-scripts.md#using-a-message-display-script) or [`tabs.create()`](using-content-scripts.md#using-a-message-display-script).
+
+The message itself can be a string, an integer, a boolean, an array or an object. It must abide to the [structured clone algorythm](using-content-scripts.md#testing-the-extension). 
+
+In line 2 of our example, we send the message object `{command: "getBannerDetails"}`, to request the display details from the background page. In line 23 we send the message object `{command: "markUnread"}`, to request the background page to mark the currently viewed message as unread.
+
+#### Receiving a runtime message
 
 TBD
 

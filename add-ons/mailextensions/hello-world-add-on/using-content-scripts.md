@@ -14,7 +14,7 @@ We will add a banner to the top of the message display area, displaying some inf
 
 Content Scripts are JavaScript files that are loaded and executed in content pages. This technology was mainly developed for browsers, where it is used to interact with the currently viewed web page.
 
-In addition to [standard content scripts](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content_scripts), Thunderbird supports the following special types of content scripts:
+In addition to [standard content scripts](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content\_scripts), Thunderbird supports the following special types of content scripts:
 
 * compose scripts loaded into the editor of the message composer
 * message display scripts loaded into rendered messages when displayed to the user
@@ -93,19 +93,64 @@ showBanner();
 ```
 {% endcode %}
 
-The main purpose of the `message-content-script.js` file is to manipulate the rendered message and add a banner at its top. We use basic DOM manipulation techniques. 
+The main purpose of the `message-content-script.js` file is to manipulate the rendered message and add a banner at its top. We use basic DOM manipulation techniques.&#x20;
 
-What is special however is how the displayed information is retrieved. In the second part of this tutorial, we used the `tabs` API and the `messageDisplay` API from our background page, to learn which message is currently displayed and then used the `messages` API to get the required information. This does not work for content scripts, as [their access is limited](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content_scripts#webextension_apis). Instead, we have to request this information from the background script using runtime messaging.
+What is special however is how the displayed information is retrieved. In the second part of this tutorial, we used the `tabs` API and the `messageDisplay` API from our background page, to learn which message is currently displayed and then used the `messages` API to get the required information. This does not work for content scripts, as [their access is limited](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content\_scripts#webextension\_apis). Instead, we have to request this information from the background script using runtime messaging.
 
 #### Sending a runtime message
 
-The [`sendMessage()`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/sendMessage) method of the [`runtime`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime) API will send a message to each active page, including the background page, the options page, popup pages and other HTML pages of our extension loaded using [`windows.create()`](using-content-scripts.md#using-a-message-display-script) or [`tabs.create()`](using-content-scripts.md#using-a-message-display-script). The message itself can be a string, an integer, a boolean, an array or an object. It must abide to the [structured clone algorythm](using-content-scripts.md#testing-the-extension). 
+The [`sendMessage()`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/sendMessage) method of the [`runtime`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime) API will send a message to each active page, including the background page, the options page, popup pages and other HTML pages of our extension loaded using [`windows.create()`](using-content-scripts.md#using-a-message-display-script) or [`tabs.create()`](using-content-scripts.md#using-a-message-display-script). The message itself can be a string, an integer, a boolean, an array or an object. It must abide to the [structured clone algorythm](using-content-scripts.md#testing-the-extension).&#x20;
 
 In line 2 of `message-content-script.js`, we send the message object `{command: "getBannerDetails"}`, to request the display details from the background page. In line 23 we send the message object `{command: "markUnread"}`, to request the background page to mark the currently viewed message as unread.
 
 #### Receiving a runtime message
 
-TBD
+The background page can listen for runtime messages, by registering the following listener:
+
+```javascript
+/**
+ * Add a handler for communication with other parts of the extension,
+ * like our message display script.
+ *
+ * Note: If this handler is defined async, there should be only one such
+ *       handler in the background script for all incoming messages.
+ */
+messenger.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
+    // Check if the message includes our command member.
+    if (message && message.hasOwnProperty("command")) {
+        // Get the message currently displayed in the sending tab, abort if
+        // that failed.
+        const messageHeader = await messenger.messageDisplay.getDisplayedMessage(sender.tab.id);
+        if (!messageHeader) {
+            return;
+        }
+        // Check for known commands.
+        switch (message.command) {
+            case "getBannerDetails":
+                // Create the information we want to return to our message display script.
+                return { text: `Mail subject is "${messageHeader.subject}"` };
+            case "markUnread":
+                // mark the message as unread
+                messenger.messages.update(messageHeader.id, {
+                    read: false,
+                });
+                break;
+        }
+    }
+});
+```
+
+The `message` passed to the `onMessage` listener will be whatever has been sent using `sendMessage()`, the `sender` is of type [`MessageSender`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/MessageSender) and will include the sending tab.
+
+In this example, we check if the runtime message includes our command and based on its value either return the banner details or mark the viewed message as unread.
+
+{% hint style="danger" %}
+**Note**: The `onMessage` listener has a third parameter `sendResponse`, which is a callback function to send a synchronous response back to the sending tab. For Thundebird however the prefered way is to return an asynchronous response using a Promise instead.
+
+If only one `onMessage` listener is used in the entire extension, the listener can be declared `async`, which will always return a Promise. Even if no return statement is explicitly defined, it will return a Promise for `undefiend`.
+
+If multiple `onMessage` listeners are used and each should react on a different set of messages, the listeners must **not** be defined as async, but only return a Promsise for the requested messages. See the [examples ans explenations](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/onMessage#addlistener\_syntax) given on MDN.
+{% endhint %}
 
 ## Testing the Extension
 
@@ -251,30 +296,19 @@ async function load() {
      *       handler in the background script for all incoming messages.
      */
     messenger.runtime.onMessage.addListener(async (message, sender) => {
-        console.log({message, sender});
+        // Check if the message includes our command member.
         if (message && message.hasOwnProperty("command")) {
-
-            // Get the command from the message.
-            const { command } = message;
-            // Get the tab from the sender.
-            const { tab } = sender;
-
             // Get the message currently displayed in the sending tab, abort if
             // that failed.
-            const messageHeader = await messenger.messageDisplay.getDisplayedMessage(tab.id);
+            const messageHeader = await messenger.messageDisplay.getDisplayedMessage(sender.tab.id);
             if (!messageHeader) {
-                console.log("NO");
                 return;
             }
-
             // Check for known commands.
-            console.log({command});
-            switch (command) {
+            switch (message.command) {
                 case "getBannerDetails":
                     // Create the information we want to return to our message display script.
-                    console.log(`Mail subject is "${messageHeader.subject}"`);
                     return { text: `Mail subject is "${messageHeader.subject}"` };
-
                 case "markUnread":
                     // mark the message as unread
                     messenger.messages.update(messageHeader.id, {
@@ -283,7 +317,7 @@ async function load() {
                     break;
             }
         }
-    });
+    });    
 
     // Register the message display script.
     messenger.messageDisplayScripts.register({

@@ -5,10 +5,11 @@
 ## Contributing to Thunderbird <a href="thunderbird-development" id="thunderbird-development"></a>
 
 * [Getting Started](thunderbird-development/getting-started.md)
+* [Prerequisites for the build](thunderbird-development/prerequisites-build/README.md)
+  * [Windows Build Prerequisites](thunderbird-development/prerequisites-build/windows-build-prerequisites.md)
+  * [Linux Build Prerequisites](thunderbird-development/prerequisites-build/linux-build-prerequisites.md)
+  * [macOS Build Prerequisites](thunderbird-development/prerequisites-build/macos-build-prerequisites.md)
 * [Building Thunderbird](thunderbird-development/building-thunderbird/README.md)
-  * [Windows Build Prerequisites](thunderbird-development/building-thunderbird/windows-build-prerequisites.md)
-  * [Linux Build Prerequisites](thunderbird-development/building-thunderbird/linux-build-prerequisites.md)
-  * [macOS Build Prerequisites](thunderbird-development/building-thunderbird/macos-build-prerequisites.md)
   * [Artifact Builds](thunderbird-development/building-thunderbird/artifact-builds.md)
 * [Codebase Overview](thunderbird-development/codebase-overview/README.md)
   * [Chat Core](thunderbird-development/codebase-overview/chat/README.md)

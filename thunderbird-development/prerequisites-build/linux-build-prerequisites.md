@@ -24,10 +24,6 @@ You’ll need `Python 3.6` installed.
 
 You can check with `python --version` to see if you have it already. If not, you can install it with your distribution’s package manager. Make sure your system is up to date!
 
-## 30 GB of free space
-
-The Thunderbird build will take up to 30 GB of disk space in order to complete. Be sure to have enough free space and a fast internet connection to avoid interruptions.
-
 ## Bootstrap your system
 
 Access the location where you downloaded the `mozilla-central` source code, most likely `source/` and trigger this command:
@@ -76,7 +72,7 @@ If you still are unable to find rustc and cargo via the ˋwhichˋ command after 
 
 ## You're all set
 
-Got back to the [Building Thunderbird](./#build-configuration) page and continue following the guide.
+Go back to the [Prerequisites for the build](./#build-configuration) page and continue following the guide.
 
 {% page-ref page="./" %}
 

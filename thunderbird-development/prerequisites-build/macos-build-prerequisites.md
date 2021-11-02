@@ -70,7 +70,7 @@ export PATH=$HOME/.cargo/bin:$PATH
 
 ## You're all set
 
-Got back to the [Building Thunderbird](./#build-configuration) page and continue following the guide:
+Got back to the [Prerequisites for the build](./#build-configuration) page and continue following the guide:
 
 {% page-ref page="./" %}
 

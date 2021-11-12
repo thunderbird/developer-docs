@@ -28,9 +28,6 @@ The subdirectories are:
 * **protocols** Various protocol implementations. Each of subdirectory implements a protocol to the interfaces found under **components**.
 * **themes** Common and platform-specific styling specific to chat. Files from this directory become `chrome://chat/skin/…`.
 
-**ldap**  
-The LDAP C SDK. Used for communicating with LDAP servers.
-
 **mail**  
 Thunderbird specific source code. It's no coincidence that this folder is laid out a lot like the `browser` and `toolkit` directories on mozilla-central. Many of the subdirectories follow the same pattern:
 

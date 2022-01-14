@@ -57,7 +57,7 @@ It could happen that some libraries will not be installed by the `bootstrap` com
 
 If one or both commands return an empty output, you need to install them manually. We recommend using [HomeBrew](https://brew.sh/) to download and install these packages in your system. After that, follow these steps:
 
-* Install Rust: `brew install rustc`
+* Install Rust: `brew install rust`
 * Install C bindings: `cargo install cbindgen`
 
 {% hint style="info" %}

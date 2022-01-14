@@ -1,5 +1,5 @@
 ---
-description: Extending the example extension to use a backgroud page.
+description: Extending the example extension to use a background page.
 ---
 
 # Using a Background Page

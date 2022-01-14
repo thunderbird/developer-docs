@@ -99,7 +99,7 @@ What is special however is how the displayed information is retrieved. In the se
 
 #### Sending a runtime message
 
-The [`sendMessage()`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/sendMessage) method of the [`runtime`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime) API will send a message to each active page, including the background page, the options page, popup pages and other HTML pages of our extension loaded using [`windows.create()`](using-content-scripts.md#using-a-message-display-script) or [`tabs.create()`](using-content-scripts.md#using-a-message-display-script). The message itself can be a string, an integer, a boolean, an array or an object. It must abide to the [structured clone algorythm](using-content-scripts.md#testing-the-extension).&#x20;
+The [`sendMessage()`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/sendMessage) method of the [`runtime`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime) API will send a message to each active page, including the background page, the options page, popup pages and other HTML pages of our extension loaded using [`windows.create()`](using-content-scripts.md#using-a-message-display-script) or [`tabs.create()`](using-content-scripts.md#using-a-message-display-script). The message itself can be a string, an integer, a boolean, an array or an object. It must abide to the [structured clone algorithm](using-content-scripts.md#testing-the-extension).&#x20;
 
 In line 2 of `message-content-script.js`, we send the message object `{command: "getBannerDetails"}`, to request the display details from the background page. In line 23 we send the message object `{command: "markUnread"}`, to request the background page to mark the currently viewed message as unread.
 
@@ -145,7 +145,7 @@ The `message` passed to the `onMessage` listener will be whatever has been sent 
 In this example, we check if the runtime message includes our command and based on its value either return the banner details or mark the viewed message as unread.
 
 {% hint style="danger" %}
-**Note**: The `onMessage` listener has a third parameter `sendResponse`, which is a callback function to send a synchronous response back to the sending tab. For Thundebird however the prefered way is to return an asynchronous response using a Promise instead.
+**Note**: The `onMessage` listener has a third parameter `sendResponse`, which is a callback function to send a synchronous response back to the sending tab. For Thunderbird however the preferred way is to return an asynchronous response using a Promise instead.
 
 If only one `onMessage` listener is used in the entire extension, the listener can be declared `async`, which will always return a Promise. Even if no return statement is explicitly defined, it will return a Promise for `undefiend`.
 

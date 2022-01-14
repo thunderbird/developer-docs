@@ -137,7 +137,7 @@ await new Promise(resolve => setTimeout(resolve));
 
 ## Interacting with Regular Windows
 
-Some tests will need to interact with windows that are not the main window. For exaple, below is a function that opens the address book window. It returns the `window` \(`nsIDOMWindow`\) object for the address book window, which can then be used when calling functions like `EventUtils.sendKey`.
+Some tests will need to interact with windows that are not the main window. For example, below is a function that opens the address book window. It returns the `window` \(`nsIDOMWindow`\) object for the address book window, which can then be used when calling functions like `EventUtils.sendKey`.
 
 The key point is the use of `BrowserTestUtils.domWindowOpened`, but this example also demonstrates some of the other tips found in this document. \(See below for dialog windows which are handled differently.\)
 

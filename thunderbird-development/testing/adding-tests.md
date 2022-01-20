@@ -10,37 +10,37 @@ This document doesn't cover actually writing tests, for that see this page for M
 
 * [Writing Mochitest Tests](https://developer.thunderbird.net/testing/writing-mochitest-tests)
 
-And also these pages on MDN:
+And also these pages:
 
-* [Writing xpcshell-based unit tests](https://developer.mozilla.org/en-US/docs/Mozilla/QA/Writing_xpcshell-based_unit_tests)
-* [Mochitest](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/Mochitest)
+* [Writing xpcshell-based unit tests](https://firefox-source-docs.mozilla.org/testing/xpcshell/index.html)
+* [Mochitest](http://devdoc.net/web/developer.mozilla.org/en-US/docs/Mochitest.html) (archived MDN content)
 
-\(Just note that the MDN pages are Firefox-centric and include some ancient ideas and practices.\)
+(Just note that these pages are Firefox-centric and include some ancient ideas and practices.)
 
 ## XPCShell & Mochitest
 
-Tests should be added to a directory near the code they are located. For example, code in `mail/components/extensions` is tested by tests in `mail/components/extensions/test`. Inside the `test` directory is a subdirectory named after the type of test: `browser` for Mozmill tests \(as in Firefox terms they are "browser-chrome" Mozmill tests\), and `xpcshell` or `unit` for XPCShell tests.
+Tests should be added to a directory near the code they are located. For example, code in `mail/components/extensions` is tested by tests in `mail/components/extensions/test`. Inside the `test` directory is a subdirectory named after the type of test: `browser` for Mozmill tests (as in Firefox terms they are "browser-chrome" Mozmill tests), and `xpcshell` or `unit` for XPCShell tests.
 
 A new directory needs a test manifest:
 
-### XPCShell test manifest \(xpcshell.ini\)
+### XPCShell test manifest (xpcshell.ini)
 
 The default section isn't even necessary here, but you probably want to add a `head.js` file if you're going to have more than one test.
 
 {% code title="xpcshell.ini" %}
-```text
+```
 [default]
 
 [test_firstTest.js]
 ```
 {% endcode %}
 
-### Mochitest manifest \(browser.ini\)
+### Mochitest manifest (browser.ini)
 
 Mochitest needs some prefs set, or automated testing will fail.
 
 {% code title="browser.ini" %}
-```text
+```
 [default]
 prefs =
   ldap_2.servers.osx.description=
@@ -59,13 +59,13 @@ subsuite = thunderbird
 
 For tests that need to load messages in the UI, add this pref:
 
-```text
+```
   browser.tabs.remote.autostart=false
 ```
 
 For calendar mochitests, also add this pref so the tests don't fail on beta or ESR where they're packaged differently:
 
-```text
+```
   extensions.installDistroAddons=true
 ```
 
@@ -83,4 +83,3 @@ XPCSHELL_TESTS_MANIFESTS += [
 ]
 ```
 {% endcode %}
-

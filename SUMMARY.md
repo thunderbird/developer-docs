@@ -2,7 +2,7 @@
 
 * [About Thunderbird](README.md)
 
-## Contributing to Thunderbird <a href="thunderbird-development" id="thunderbird-development"></a>
+## Contributing to Thunderbird <a href="#thunderbird-development" id="thunderbird-development"></a>
 
 * [Getting Started](thunderbird-development/getting-started.md)
 * [Building Thunderbird](thunderbird-development/building-thunderbird/README.md)
@@ -11,6 +11,7 @@
   * [macOS Build Prerequisites](thunderbird-development/building-thunderbird/macos-build-prerequisites.md)
   * [Artifact Builds](thunderbird-development/building-thunderbird/artifact-builds.md)
 * [Codebase Overview](thunderbird-development/codebase-overview/README.md)
+  * [Address Book](thunderbird-development/codebase-overview/address-book.md)
   * [Chat Core](thunderbird-development/codebase-overview/chat/README.md)
     * [Notifications](thunderbird-development/codebase-overview/chat/notifications.md)
     * [Message Styles](thunderbird-development/codebase-overview/chat/message-styles.md)
@@ -37,7 +38,7 @@
 
 * [Roadmap](planning/roadmap.md)
 
-## Add-on Development <a href="add-ons" id="add-ons"></a>
+## Add-on Development <a href="#add-ons" id="add-ons"></a>
 
 * [Introduction](add-ons/about-add-ons.md)
 * [A Guide to MailExtensions](add-ons/mailextensions/README.md)

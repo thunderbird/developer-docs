@@ -10,7 +10,7 @@ XPCShell tests test Thunderbird's components, without opening the user interface
 
 To run an XPCShell test, or a directory of them, use mach:
 
-```text
+```
 mach xpcshell-test comm/mail/components/extensions/test/xpcshell
 ```
 
@@ -18,23 +18,14 @@ mach xpcshell-test comm/mail/components/extensions/test/xpcshell
 
 If more than one test runs, just a summary of the results will be displayed. You can pass `--verbose` to get the full output if necessary.
 
-{% hint style="info" %}
-You may notice a long pause when running tests for the first time after building. Mach is reindexing the tests.
-{% endhint %}
-
 ## Mochitest
 
 Like XPCShell tests, mochitests are a type of test used on Firefox. The main difference is that mochitest runs with the full UI, in the context of the main mail window.
 
 To run a mochitest, or a directory of them, use mach:
 
-```text
+```
 mach mochitest mail/components/extensions/test/browser
 ```
 
-`mach` must point to mach. The path argument is **not** relative to the mozilla-central root, it points directly at the test in the source directory.
-
-{% hint style="info" %}
-You may notice a long pause when running tests for the first time after building. Mach is reindexing the tests.
-{% endhint %}
-
+`mach` must point to mach. Any test path that matches the path given runs, for example instead of a path you could just put `browser_foo.js` and every test with that name in any directory would run.

@@ -4,7 +4,7 @@ description: How to add your own tests for Thunderbird.
 
 # Adding Tests
 
-Generally, tests live near the code they are testing, however Mozmill tests live in two particular directories.
+Generally, tests live near the code they are testing, however some old tests are in a separate test directory.
 
 This document doesn't cover actually writing tests, for that see this page for Mochitests:
 
@@ -19,7 +19,7 @@ And also these pages:
 
 ## XPCShell & Mochitest
 
-Tests should be added to a directory near the code they are located. For example, code in `mail/components/extensions` is tested by tests in `mail/components/extensions/test`. Inside the `test` directory is a subdirectory named after the type of test: `browser` for Mozmill tests (as in Firefox terms they are "browser-chrome" Mozmill tests), and `xpcshell` or `unit` for XPCShell tests.
+Tests should be added to a directory near the code they are located. For example, code in `mail/components/extensions` is tested by tests in `mail/components/extensions/test`. Inside the `test` directory is a subdirectory named after the type of test: `browser` for mochitests (as in Firefox terms they are "browser-chrome" mochitests), and `xpcshell` or `unit` for XPCShell tests.
 
 A new directory needs a test manifest:
 
@@ -30,10 +30,14 @@ The default section isn't even necessary here, but you probably want to add a `h
 {% code title="xpcshell.ini" %}
 ```
 [default]
+prefs =
+  calendar.timezone.local=UTC
 
 [test_firstTest.js]
 ```
 {% endcode %}
+
+The calendar preferences in line 3 is unnecessary outside of the calendar tests. Calendar tests always run in UTC.
 
 ### Mochitest manifest (browser.ini)
 
@@ -43,6 +47,8 @@ Mochitest needs some prefs set, or automated testing will fail.
 ```
 [default]
 prefs =
+  calendar.timezone.local=UTC
+  calendar.week.start=0
   ldap_2.servers.osx.description=
   ldap_2.servers.osx.dirType=-1
   ldap_2.servers.osx.uri=
@@ -57,17 +63,7 @@ subsuite = thunderbird
 ```
 {% endcode %}
 
-For tests that need to load messages in the UI, add this pref:
-
-```
-  browser.tabs.remote.autostart=false
-```
-
-For calendar mochitests, also add this pref so the tests don't fail on beta or ESR where they're packaged differently:
-
-```
-  extensions.installDistroAddons=true
-```
+The calendar preferences in lines 3-4 are unnecessary outside of the calendar tests. Calendar tests always run in UTC with the week starting on Sunday.
 
 ### Linking to manifests
 

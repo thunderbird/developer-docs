@@ -15,7 +15,7 @@ Unlike older legacy extensions, MailExtensions access functionality through stab
 The main configuration file of a MailExtension is a file called `manifest.json`, also referred to as the _manifest_. Besides defining some of the extension's basic properties like name, description and ID, it also defines how the extension hooks into Thunderbird:
 
 {% code title="manifest.json" %}
-```javascript
+```json
 {
     "manifest_version": 2,
     "name": "Hello World",
@@ -81,7 +81,7 @@ The `applications.gecko` manifest key defines the following properties:
 * `strict_min_version`: Defines the lowest targeted version of Thunderbird.
 * `strict_max_version`:  Defines the highest targeted version of Thunderbird. It can be set to a specific version or a broader match to limit it to a branch (for example `78.*`).&#x20;
 
-```javascript
+```json
     "applications": {
         "gecko": {
             "id": "helloworld@yoursite.com",
@@ -95,7 +95,7 @@ The `applications.gecko` manifest key defines the following properties:
 
 The `icons` manifest key tells Thunderbird the location of icons, which should be used to represent the MailExtension. Thunderbird supports basic image types like PNG files, but also SVG files. Thunderbird uses different file icon sizes in different places and allows registering a dedicated file for each size. The MailExtension will use the standard puzzle icon, if no icons have been defined.
 
-```javascript
+```json
     "icons": {
         "64": "images/icon-64px.png",
         "32": "images/icon-32px.png",
@@ -109,7 +109,7 @@ Each MailExtension has a hidden background page. Its main purpose is to load and
 
 #### Defining one or more background scripts
 
-```javascript
+```json
     "background": {
         "scripts": [
             "common.js",
@@ -122,7 +122,7 @@ This will create the background page on-the-fly and load the provided scripts. T
 
 #### Defining a background page
 
-```javascript
+```json
     "background": {
         "page": "background.html"
     }
@@ -146,7 +146,7 @@ The defined background page can then load the JavaScript files:
 
 The `options_ui` manifest key defines the standard MailExtension options page. The defined page will be displayed in the add-on manager.
 
-```javascript
+```json
     "options_ui": {
       "page": "options/options.html",
       "open_in_tab": false,
@@ -181,7 +181,7 @@ Further information about these UI elements can be found in the following docume
 
 A core principle of the WebExtension technology is the use of permissions, so users can see which areas of Thunderbird a MailExtension wants to access. Add-on developers can predefine all requested permissions in the `permissions` manifest key:
 
-```javascript
+```json
     "permissions": [
       "storage"
     ]
@@ -257,7 +257,7 @@ Currently and for the foreseeable future Thunderbird supports Experiment APIs (a
 
 These additional APIs can be registered in the `manifest.json` file by defining an implementation script and a schema file describing the interface:
 
-```javascript
+```json
     "experiment_apis": {
         "LegacyPrefs": {
             "schema": "api/LegacyPrefs/schema.json",

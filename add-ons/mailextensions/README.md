@@ -272,7 +272,7 @@ These additional APIs can be registered in the `manifest.json` file by defining 
 ```
 
 {% hint style="danger" %}
-Experiment APIs have full access to Thunderbird's core functions and can bypass the WebExtension permission system entirely. Including one or more Experiment APIs will therefore disable the individual permission prompt and instead prompt the user only for the [_Have full, unrestricted access to Thunderbird, and your computer_](https://support.mozilla.org/de/kb/permission-request-messages-thunderbird-extensions#w\_have-full-unrestricted-access-to-thunderbird-and-your-computer) permission.
+Experiment APIs have full access to Thunderbird's core functions and can bypass the WebExtension permission system entirely. Including one or more Experiment APIs will therefore disable the individual permission prompt and instead prompt the user only for the [_Have full, unrestricted access to Thunderbird, and your computer_](https://support.mozilla.org/kb/permission-request-messages-thunderbird-extensions) permission.
 {% endhint %}
 
 If you'd like to learn more about experiments, check out this detailed introduction:

@@ -8,6 +8,10 @@ description: How to build MailExtensions for Thunderbird.
 
 MailExtensions are based on the WebExtension technology, which is also used by many web browsers. Such an extension is a simple collection of files which modify Thunderbirds appearance and behavior. It can add user interface elements, alter content, or perform background tasks. MailExtensions are created using standard JavaScript, CSS and HTML. Interaction with Thunderbird itself, like adding UI elements or accessing the users messages or contacts is done through special WebExtension APIs.
 
+{% hint style="warning" %}
+Even though Thunderbird Themes are also MailExtensions, they have a very distinct objective and are therefore described [in their own guide](../web-extension-themes.md).
+{% endhint %}
+
 ![](<../../.gitbook/assets/webext\_diagram (1).png>)
 
 Unlike older legacy extensions, MailExtensions access functionality through stable WebExtension APIs and do not have direct access to Thunderbird's internal components or UI elements. Consequently, MailExtensions are less likely to break and do not need frequent and complex updates when Thunderbird's internals change.

@@ -6,7 +6,7 @@ description: Planning for Thunderbird 102 (2022) release and beyond.
 
 ## Thunderbird 102+ Roadmap <a href="#docs-internal-guid-eded1439-7fff-6f14-47e0-bc47fa85ed4f" id="docs-internal-guid-eded1439-7fff-6f14-47e0-bc47fa85ed4f"></a>
 
-This provides a listing of maintenance and feature work wanted for Thunderbird 103 (2022) release and beyond. How much of it we can do for 103 depends on how many contributors we have available.
+This provides a listing of maintenance and feature work wanted for Thunderbird 102 (2022) release and beyond. How much of it we can do for 102 depends on how many contributors we have available.
 
 {% hint style="warning" %}
 **Note: This is a work in progress - everything is subject to change.**

@@ -32,11 +32,17 @@ Pushing to try-comm-central will create builds using the **most recent** mozilla
 You can also work with a **specific** mozilla-central revision, see "Testing mozilla-central patches" below.
 {% endhint %}
 
-You can (and should) control what testing jobs you want to run on your push. This is usually done by using special code (Try syntax) in the commit message of the tip-most revision being pushed, for example `try: -b o -p linux64 -u all` creates only an "opt" build on 64-bit Linux, and runs all of the tests on that build.
 
-## Try Syntax
 
-This is the Try syntax try-comm-central understands:
+## Choosing what tasks to run
+
+You can (and should) control what testing tasks you want to run on your push. There are several methods to do so:
+
+### Try syntax
+
+This is the easiest and most common way. A special code (known as Try syntax) is put in the commit message of the tip-most revision being pushed, for example `try: -b o -p linux64 -u all` creates only an "opt" build on 64-bit Linux, and runs all of the tests on that build.
+
+Here is the Try syntax try-comm-central understands:
 
 * `-b` Build type. Use `o` for an opt build (most common), `d` for a debug build, or `do` for both.
 * `-p` Platform. There are five platforms. Each also has a `-shippable` variant, which is a complication you probably don't need to think about.
@@ -51,6 +57,48 @@ This is the Try syntax try-comm-central understands:
   * `xpcshell`
   * `all`
 * `--artifact` Artifact builds. See the [Artifact Builds page](../building-thunderbird/artifact-builds.md) for more information.
+
+### Try task configuration
+
+For more control, a special file named `try_task_config.json` and containing a list of the tasks to run is included in one of the pushed revisions.
+
+The contents of the file look like this:
+
+```
+{
+  "version": 1,
+  "use-artifact-builds": true,
+  "tasks": [
+    "test-linux1804-64-qr/opt-mochitest-thunderbird-e10s-1",
+    "test-linux1804-64-qr/opt-mochitest-thunderbird-e10s-2",
+    "test-linux1804-64-qr/opt-mochitest-thunderbird-e10s-3",
+    "test-linux1804-64-qr/opt-mochitest-thunderbird-e10s-4",
+    "test-linux1804-64-qr/opt-mochitest-thunderbird-e10s-5",
+    "test-linux1804-64-qr/opt-mochitest-thunderbird-e10s-6",
+    "test-linux1804-64-qr/opt-mochitest-thunderbird-e10s-7",
+    "test-linux1804-64-qr/opt-xpcshell-e10s-1",
+    "test-linux1804-64-qr/opt-xpcshell-e10s-2",
+    "test-linux1804-64-qr/opt-xpcshell-e10s-3",
+    "test-linux1804-64-qr/opt-xpcshell-e10s-4"
+  ]
+}
+```
+
+`use-artifact-builds` tells the Try server to do an artifact build. Set to false or remove it for a full build. See the [Artifact Builds page](../building-thunderbird/artifact-builds.md) for more information.
+
+`tasks` is a list of tasks to run. In this example it's all of the 64-bit Linux tests. A 64-bit Linux build will also run, because it is required by the tasks specified.
+
+A copy of the file with all available tests is maintained [here](https://github.com/darktrojan/mozconfigs/blob/master/try\_task\_config.json). A typical workflow would be to copy the file into your working directory, remove the tasks you don't want to run, and commit it. For efficiency you could export the commit as a patch and import it again when needed.
+
+{% hint style="info" %}
+Task configurations and names change over time. If you're not getting the tasks you requested, this may be why.
+{% endhint %}
+
+To find the name of any particular task, click on existing instance in Treeherder, then look for the "job name" in the lower-left corner of the page.
+
+### Adding tasks to an empty Try run
+
+If you commit with neither Try syntax nor a `try_task_config.json` file (or you want to add to an existing run), you can one or more tasks using Treeherder. Once the decision (D) task has completed, click the drop-down arrow to the right of it, and choose "Add new jobs".
 
 ## Testing mozilla-central patches
 

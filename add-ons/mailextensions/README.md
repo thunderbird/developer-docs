@@ -84,8 +84,7 @@ The `applications.gecko` manifest key defines the following properties:
 *   `id`: The id serves as a unique identifier for the extension and is mandatory in order upload an extension to ATN or to be able to install it from an XPI file.\
 
 
-    Best practice is to use "email-address-style" ids on a domain you control, for example\
-    `name-of-your-addon@example.com`, if you own `example.com`. As the id of your add-on cannot get changed once it is published, it is highly recommended to use a domain that you plan to keep for the forseeable future. If you don't have a domain that fits the bill, feel free to use `your-atn-username.addons.thunderbird.net` (based on your username on [ATN](https://addons.thunderbird.net)).\
+    Best practice is to use an "email-address-style" id (but not a real email address) on a domain you control, for example `name-of-your-addon@example.com`, if you own `example.com`. As the id of your add-on cannot be changed once it is published, it is highly recommended to use a domain that you plan to keep for the forseeable future. If you don't have a domain that fits the bill, feel free to use `your-atn-username.addons.thunderbird.net` (based on your username on [ATN](https://addons.thunderbird.net)).\
 
 
     Alternatively to the preferred style, you may use an UUID enclosed in curly braces, for example\

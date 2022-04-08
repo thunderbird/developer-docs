@@ -49,7 +49,7 @@ This provides a listing of maintenance and feature work wanted for Thunderbird 1
 ## Calendar
 
 1. Redo the today pane agenda panel. Tracked in [~~bug 1728743~~](https://bugzilla.mozilla.org/show\_bug.cgi?id=1728743) - **Completed**
-2. Fix how the calendar widgets interact with the backend: this will facilitate code sharing. [~~bug 1727711~~](https://bugzilla.mozilla.org/show\_bug.cgi?id=1727711) - **Completed**
+2. Fix how the calendar widgets interact with the backend: this will facilitate code sharing. [~~bug 1727711~~](https://bugzilla.mozilla.org/show\_bug.cgi?id=1727711), [~~bug 1753558~~](https://bugzilla.mozilla.org/show\_bug.cgi?id=1753558), [bug 1763752](https://bugzilla.mozilla.org/show\_bug.cgi?id=1763752), [bug 1763753](https://bugzilla.mozilla.org/show\_bug.cgi?id=1763753)
 3. Consider only having cached calendars - for performance. [Bug 1731115](https://bugzilla.mozilla.org/show\_bug.cgi?id=1731115)&#x20;
 4. ical.js: Putting effort into making ical.js performant enough will let us drop our very old fork of the C++ libical and focus on making the JavaScript implementation great. Tracked in [bug 978570](https://bugzilla.mozilla.org/show\_bug.cgi?id=978570).
 5. Support hierarchical tasks. Tracked in [bug 194863](https://bugzilla.mozilla.org/show\_bug.cgi?id=194863).
@@ -111,8 +111,8 @@ This provides a listing of maintenance and feature work wanted for Thunderbird 1
 
 ## Front-end
 
-1. Replace the 3pane implementation. Instead of one global data view we should have one view per tab. [bug 1729379](https://bugzilla.mozilla.org/show\_bug.cgi?id=1729379)
-2. Convert xul tree usage to html widgets. [bug 1724841](https://bugzilla.mozilla.org/show\_bug.cgi?id=1724841)
+1. Replace the 3pane implementation. Instead of one global data view we should have one view per tab ([bug 1729379](https://bugzilla.mozilla.org/show\_bug.cgi?id=1729379)). - **Deferred to 114**
+2. Convert xul tree usage to html widgets ([bug 1724841](https://bugzilla.mozilla.org/show\_bug.cgi?id=1724841)). - **Deferred to 114**
    1. folder pane
    2. thread pane
 3. XUL replacements ([Bug 1570943](https://bugzilla.mozilla.org/show\_bug.cgi?id=1570943))

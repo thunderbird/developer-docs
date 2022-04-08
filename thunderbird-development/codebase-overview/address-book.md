@@ -111,11 +111,11 @@ When a card is saved to a directory, the following things happen:
 
 * If it supports vCard, the `vCardProperties` member is serialised.
 * If it doesn't, the existing key/value pairs are converted to a `VCardProperties` object, then serialised.
-* Some key properties are collected from the card:
-  * display name
-  * first and last names
-  * first and second preference email addresses
-  * nick name
+* Some properties are collected from the card:
+  * display name (`DisplayName`)
+  * first and last names (`FirstName` and `LastName`)
+  * first and second preference email addresses (`PrimaryEmail` and `SecondEmail`)
+  * nick name (`NickName`)
 * The serialised vCard, these properties, and any key/value properties which _can't_ be stored in a vCard are saved.
 * Any key/value properties which _can_ be stored in the vCard are abandoned. No information is lost because the values are part of the vCard.
 

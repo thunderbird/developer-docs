@@ -49,7 +49,7 @@ Mailing lists are implemented in `AddrBookMailingList`.
 
 The address book code fires observer service notifications. The notification names should be self-explanatory.
 
-#### Notifications about directories
+### Notifications about directories
 
 In all cases the "subject" of the notification is the directory.
 
@@ -60,7 +60,7 @@ In all cases the "subject" of the notification is the directory.
 * addrbook-directory-synced – CardDAV sync succeeded
 * addrbook-directory-sync-failed – CardDAV sync failed
 
-#### Notifications about contacts
+### Notifications about contacts
 
 In all cases the "subject" of the notification is the contact, and unless otherwise stated "data" contains the UID of the directory containing the contact.
 
@@ -69,7 +69,7 @@ In all cases the "subject" of the notification is the contact, and unless otherw
 * addrbook-contact-properties-updated – "data" contains a JSON-stringified object containing the old and new values of any properties that changed
 * addrbook-contact-deleted
 
-#### Notifications about lists
+### Notifications about lists
 
 In these cases the "subject" of the notification is the list as `nsIAbDirectory` and "data" is the parent directory's UID.
 
@@ -82,3 +82,47 @@ In these cases the "subject" is the contact in question, and "data" is the list'
 * addrbook-list-member-added
 * addrbook-list-member-removed
 
+## Transition to vCard Storage
+
+As mentioned above, contact properties are stored as key/value pairs. This has limitations in a modern address book:
+
+* There's a fixed set of keys. Although there's no real restrictions on keys you _could_ use, no user interface is available for anything outside of the known keys.
+* Multiple values for the same key aren't possible. For example if a contact has three email addresses, the first two can be stored in `PrimaryEmail` and `SecondEmail`, but there's nowhere to store the third.
+* Storing meta information about the values is impossible. There's no way to mark an email address as a work address or a home address, for example.
+
+To combat this, from Thunderbird 102 contacts stored in local directories will be converted to use the [industry standard vCard format](https://tools.ietf.org/html/rfc6350). CardDAV directories already use vCard, although the data was converted to key/value pairs so the UI could use it.
+
+LDAP and OS-specific address books will continue to use keys/values.
+
+### New interface properties
+
+`nsIAbCard` gains two new members:
+
+* `supportsVCard` a boolean value indicating support for vCard (or lack thereof). Only `AddrBookCard` objects currently support vCard.
+* `vCardProperties` is a `VCardProperties` object if the card supports vCard, or null.
+
+The `VCardProperties` class contains methods for parsing, manipulating, and serialising vCards. Each piece of information in a card is represented by a `VCardPropertyEntry` object. See [VCardUtils.jsm](https://searchfox.org/comm-central/source/mailnews/addrbook/modules/VCardUtils.jsm) for more information.
+
+### Storage changes
+
+In practice, we'll be storing the vCard data as just another key/value pair. The key used will be `_vCard` and the value will be the entire vCard.
+
+When a card is saved to a directory, the following things happen:
+
+* If it supports vCard, the `vCardProperties` member is serialised.
+* If it doesn't, the existing key/value pairs are converted to a `VCardProperties` object, then serialised.
+* Some key properties are collected from the card:
+  * display name
+  * first and last names
+  * first and second preference email addresses
+  * nick name
+* The serialised vCard, these properties, and any key/value properties which _can't_ be stored in a vCard are saved.
+* Any key/value properties which _can_ be stored in the vCard are abandoned. No information is lost because the values are part of the vCard.
+
+The names and addresses stored separately are for performance reasons. The vCard is considered the true source of information.
+
+{% hint style="info" %}
+No migration takes place when the user upgrades to a Thunderbird version that supports vCard. However at this point the version number of the database storage is incremented (from 3 to 4) and a backup is automatically created.
+
+Cards are only migrated when they are saved.
+{% endhint %}

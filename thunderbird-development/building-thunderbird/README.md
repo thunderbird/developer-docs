@@ -23,10 +23,9 @@ To build Thunderbird, you need to create a file named `mozconfig` to the root di
 
 ```
 echo 'ac_add_options --enable-application=comm/mail' > mozconfig
-echo 'ac_add_options --with-app-basename=Thunderbird' >> mozconfig
 ```
 
-**If you omit these lines, the build system will build Firefox instead**. Other build configuration options can be added to this file, although it's **strongly recommended** that you only use options that you fully understand. For example, to create a debug build instead of a release build, that file would also contain the line:
+**If you omit this lines, the build system will build Firefox instead**. Other build configuration options can be added to this file, although it's **strongly recommended** that you only use options that you fully understand. For example, to create a debug build instead of a release build, that file would also contain the line:
 
 ```
 echo 'ac_add_options --enable-debug' >> mozconfig

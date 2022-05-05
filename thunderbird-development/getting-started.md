@@ -25,7 +25,7 @@ The source code requires 3.6GB of free space or more and additionally 5GB or mor
 {% endhint %}
 
 {% hint style="danger" %}
-**For Windows Users:** If you are using Windows, you will want to follow instructions on the Windows Build Prerequisities page before getting the source and building Thunderbird.
+**For Windows Users: **If you are using Windows, you will want to follow instructions on the Windows Build Prerequisities page before getting the source and building Thunderbird.
 {% endhint %}
 
 {% content-ref url="building-thunderbird/windows-build-prerequisites.md" %}

@@ -4,7 +4,7 @@ description: Tips on writing Mochitest tests for Thunderbird.
 
 # Writing Mochitest Tests
 
-This document offers some basic tips for writing Mochitest tests. \(See also this [Mochitest](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/Mochitest) page on MDN, which is Firefox-centric but may still be useful.\)
+This document offers some basic tips for writing Mochitest tests. (See also this [Mochitest](https://firefox-source-docs.mozilla.org/testing/mochitest-plain/index.html) page in the Firefox docs, which is Firefox-centric but may still be useful.)
 
 ## Adding a New Test
 
@@ -32,11 +32,11 @@ const { mailTestUtils } = ChromeUtils.import(
 );
 ```
 
-This document is a basic introduction. To go further, explore these files \(particularly the docstrings of the various functions in them\) and look at existing tests.
+This document is a basic introduction. To go further, explore these files (particularly the docstrings of the various functions in them) and look at existing tests.
 
 ## Assertion Functions
 
-Use the `is` and `ok` functions to make test assertions. `is` compares two values \(using JavaScript's `===` equality comparison\). `ok` asserts that a single value is truthy \(in JavaScript's sense of truthy\).
+Use the `is` and `ok` functions to make test assertions. `is` compares two values (using JavaScript's `===` equality comparison). `ok` asserts that a single value is truthy (in JavaScript's sense of truthy).
 
 The last argument to each is a message printed to the console to identify the assertion. It is optional but is a good practice for more understandable test logs.
 
@@ -64,7 +64,7 @@ To double-click change the `clickCount` from 1 to 2. There is a shorthand for a 
 EventUtils.synthesizeMouseAtCenter(element, {});
 ```
 
-If the test is interacting with a window that is not the main one, pass the relevant window as the \(optional\) third argument:
+If the test is interacting with a window that is not the main one, pass the relevant window as the (optional) third argument:
 
 ```javascript
 EventUtils.synthesizeMouseAtCenter(element, {}, anotherWindow);
@@ -80,9 +80,9 @@ EventUtils.sendString("some text");
 EventUtils.sendKey("TAB");
 ```
 
-Some other valid keys for `sendKey` include: RETURN, BACK\_SPACE, DELETE, HOME, END, UP, DOWN, LEFT, RIGHT, PAGE\_UP, PAGE\_DOWN, SHIFT, CONTROL, ALT, ESCAPE, F1, F2, etc. \(Not an exhaustive list.\)
+Some other valid keys for `sendKey` include: RETURN, BACK\_SPACE, DELETE, HOME, END, UP, DOWN, LEFT, RIGHT, PAGE\_UP, PAGE\_DOWN, SHIFT, CONTROL, ALT, ESCAPE, F1, F2, etc. (Not an exhaustive list.)
 
-If the test is interacting with a window that is not the main one, pass the relevant window as the \(optional\) second argument:
+If the test is interacting with a window that is not the main one, pass the relevant window as the (optional) second argument:
 
 ```javascript
 EventUtils.sendString("some text", anotherWindow);
@@ -90,7 +90,7 @@ EventUtils.sendString("some text", anotherWindow);
 EventUtils.sendKey("TAB", anotherWindow);
 ```
 
-## Modifier Keys \(Ctrl, Alt, Shift\)
+## Modifier Keys (Ctrl, Alt, Shift)
 
 To press a key along with one or more modifier keys:
 
@@ -106,7 +106,7 @@ EventUtils.synthesizeKey("b", {
 });
 ```
 
-Some other options are `altKey`, `shiftKey`, and `ctrlKey` \(a non-exhaustive list\).
+Some other options are `altKey`, `shiftKey`, and `ctrlKey` (a non-exhaustive list).
 
 Similar to `sendString` and `sendKey`, there is an optional third `window` argument to use when interacting with a specific window.
 
@@ -137,9 +137,9 @@ await new Promise(resolve => setTimeout(resolve));
 
 ## Interacting with Regular Windows
 
-Some tests will need to interact with windows that are not the main window. For example, below is a function that opens the address book window. It returns the `window` \(`nsIDOMWindow`\) object for the address book window, which can then be used when calling functions like `EventUtils.sendKey`.
+Some tests will need to interact with windows that are not the main window. For example, below is a function that opens the address book window. It returns the `window` (`nsIDOMWindow`) object for the address book window, which can then be used when calling functions like `EventUtils.sendKey`.
 
-The key point is the use of `BrowserTestUtils.domWindowOpened`, but this example also demonstrates some of the other tips found in this document. \(See below for dialog windows which are handled differently.\)
+The key point is the use of `BrowserTestUtils.domWindowOpened`, but this example also demonstrates some of the other tips found in this document. (See below for dialog windows which are handled differently.)
 
 ```javascript
 async function openAddressBookWindow() {
@@ -229,4 +229,3 @@ mailTestUtils.treeClick(EventUtils, window, tree, rowNumber, columnNumber, {
   clickCount: 1,
 });
 ```
-

@@ -70,3 +70,10 @@ Message header tracking bug.
 
 Maildir is a message storage format that should improve data safety, allow for incremental (delta) backups of messages and allow for antivirus to interact better with messages. Maildir will be vastly improved for 102, but may not be pref'd on by default.
 
+{% embed url="https://bugzilla.mozilla.org/show_bug.cgi?id=845952" %}
+
+## Protocol Rewrites
+
+* POP3 in Javascript
+* NNTP in Javascript
+

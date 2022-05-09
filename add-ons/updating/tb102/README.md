@@ -4,7 +4,7 @@ description: Required steps to update add-ons for Thunderbird 102.
 
 # Update for Thunderbird 102
 
-This section covers the required update steps for add-ons which are already compatible with Thunderbird 91 and need to be made compatible with Thunderbird 102+.
+This section covers the required update steps for add-ons which are already compatible with Thunderbird 91 and need to be made compatible with Thunderbird 102.
 
 ## Changes in WebExtension APIs
 

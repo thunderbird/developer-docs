@@ -12,7 +12,7 @@ The id of the editor element in the composer has been changed from [`content-fra
 
 ### calICalendar.\*
 
-Since TB 96 many calendar functions return Promises. This includes:
+Since TB 96, many calendar functions return Promises. This includes:
 
 * `addItem()`
 * `adoptItem()`
@@ -83,7 +83,7 @@ for await (let items of this.iterator) {
 
 ### calStorageCalendar.resetItemOfflineFlag()
 
-Since TB 96 this function returns a Promise. Replace
+Since TB 96, this function returns a Promise. Replace
 
 ```
 let resetListener = {

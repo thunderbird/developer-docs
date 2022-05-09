@@ -10,6 +10,99 @@ The id of the editor element in the composer has been changed from [`content-fra
 
 ## Changed API
 
+### calICalendar.\*
+
+Since TB 96 many calendar functions return Promises. This includes:
+
+* `addItem()`
+* `adoptItem()`
+* `deleteItem()`
+* `deleteOfflineItem()`
+* `getItem()`
+* `getItemOfflineFlag()`
+* `modifyItem()`
+
+The former methods to promisify these functions have been removed together with `calAsyncUtils.jsm`. Replace
+
+```
+let pcal = cal.async.promisifyCalendar(calendar.wrappedJSObject);
+let item = await pcal.getItem(itemId);
+```
+
+by
+
+```
+let item = await calendar.getItem(itemId);
+```
+
+If your code is synchronous, you will have to rework it to make use of asynchronous functions. Feel free to reach out for further help on this through our[ community channels](../../community.md).
+
+### calICalendar.getItems()
+
+Since TB 96, `calICalendar.getItems()` returns a `ReadableStream`. Replace
+
+```
+let aCalIOperationListener = {
+    QueryInterface: ChromeUtils.generateQI(["calIOperationListener"]),
+    onOperationComplete(calendar, status, operationType, id, detail) {
+        currentView().setSelectedItems(items, false);
+    },
+    onGetResult(calendar, status, itemType, detail, itemsArg) {
+        for (let item of itemsArg) {
+            // Do something with item.
+        }
+    },
+};
+calendar.getItems(
+    aItemFilter,
+    aCount,
+    aCalIDateTimeRangeStart,
+    aCalIDateTimeRangeEndEx,
+    aCalIOperationListener
+);
+```
+
+by
+
+```
+let iterator = cal.iterate.streamValues(
+    calendar.getItems(
+        aItemFilter,
+        aCount,
+        aCalIDateTimeRangeStart,
+        aCalIDateTimeRangeEndEx
+    )
+);
+
+for await (let items of this.iterator) {
+    for (let item of items) {
+        // Do something with item.
+    }
+}
+```
+
+### calStorageCalendar.resetItemOfflineFlag()
+
+Since TB 96 this function returns a Promise. Replace
+
+```
+let resetListener = {
+    QueryInterface: ChromeUtils.generateQI(["calIOperationListener"]),
+    onGetResult(calendar, status, itemType, detail, items) { },
+    onOperationComplete(calendar, status, opType, id, detail) {
+      // Reset completed.
+    },
+}
+storage.resetItemOfflineFlag(aItem, resetListener);
+```
+
+by
+
+```
+await storage.resetItemOfflineFlag(aItem);
+// Reset completed.
+```
+
 ### `ChromeUtils.import()`
 
 Since TB 102, it is no longer possible to load JSMs via extension URLs, for example&#x20;

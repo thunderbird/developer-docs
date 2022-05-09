@@ -12,7 +12,7 @@ The id of the editor element in the composer has been changed from [`content-fra
 
 ### calICalendar.\*
 
-Since TB 96, many calendar functions return Promises. This includes:
+Since TB 96, [many calendar functions return Promises](https://searchfox.org/comm-central/source/calendar/base/public/calICalendar.idl). This includes:
 
 * `addItem()`
 * `adoptItem()`
@@ -34,6 +34,7 @@ by
 ```
 let item = await calendar.getItem(itemId);
 ```
+The `calIOperationListener` and `calIOperation` interfaces are still used in various places but the general direction is to remove them eventually after 102 in favor of Promises and ReadableStreams. If you have code that uses them internally, please update where feasible.
 
 If your code is synchronous, you will have to rework it to make use of asynchronous functions. Feel free to reach out for further help on this through our[ community channels](../../community.md).
 

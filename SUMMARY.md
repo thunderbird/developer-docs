@@ -63,7 +63,7 @@
     * [Adapt to Changes in Thunderbird 69-78](add-ons/updating/tb78/changes.md)
   * [Update for Thunderbird 91](add-ons/updating/tb91/README.md)
     * [Adapt to Changes in Thunderbird 79-91](add-ons/updating/tb91/changes.md)
-  * [Updates for Thunderbird 102](add-ons/updating/tb102/README.md)
+  * [Update for Thunderbird 102](add-ons/updating/tb102/README.md)
     * [Adapt to Changes in Thunderbird 92-102](add-ons/updating/tb102/adapt-to-changes-in-thunderbird-92-102.md)
 * [Documentation & Resources](add-ons/resources.md)
 * [Developer Community](add-ons/community.md)

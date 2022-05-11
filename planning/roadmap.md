@@ -74,6 +74,13 @@ Maildir is a message storage format that should improve data safety, allow for i
 
 ## Protocol Rewrites
 
-* POP3 in Javascript
-* NNTP in Javascript
+### POP3 in Javascript
+
+{% embed url="https://bugzilla.mozilla.org/show_bug.cgi?id=1707548" %}
+Meta bug for rewriting POP3 in Javascript
+{% endembed %}
+
+### NNTP in Javascript
+
+{% embed url="https://bugzilla.mozilla.org/show_bug.cgi?id=1719413" %}
 

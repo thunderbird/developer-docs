@@ -4,15 +4,17 @@ This document tries to cover all the internal changes that may be needed to make
 
 ## Changed DOM Elements
 
-### content-frame
+### composer
 
 The id of the editor element in the composer has been renamed from [`content-frame`](https://searchfox.org/comm-esr91/source/mail/components/compose/content/messengercompose.xhtml#2478) to [`messageEditor`](https://searchfox.org/comm-central/rev/36c713a3d0bf0d0ca2208fdf74f8a133d4ed7edd/mail/components/compose/content/messengercompose.xhtml#2460).
 
-### expandedHeaders2
+### message window
 
 The id of the additional header area in the message display window has been renamed from [`expandedHeaders2`](https://searchfox.org/comm-esr91/source/mail/base/content/msgHdrView.inc.xhtml#268) to [`extraHeadersArea`](https://searchfox.org/comm-central/rev/7e775d6f5ba8334b968619bed2082cd967615a75/mail/base/content/msgHdrView.inc.xhtml#408). The element has also been converted from a `table` to a `div`.&#x20;
 
-The class named `headerName` used for the styling has been renamed to `message-header-label`.
+The class `headerName` used for the styling header entries has been renamed to `message-header-label`. The class`message-header-row` has been added, styling the entire row.
+
+The class `msgHeaderView-button` used to style toolbar buttons has been renamed to `message-header-view-button`.
 
 ## Changed API
 

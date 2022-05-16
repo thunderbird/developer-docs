@@ -10,7 +10,7 @@ The id of the editor element in the composer has been renamed from [`content-fra
 
 ### message window
 
-The id of the additional header area in the message display window has been renamed from [`expandedHeaders2`](https://searchfox.org/comm-esr91/source/mail/base/content/msgHdrView.inc.xhtml#268) to [`extraHeadersArea`](https://searchfox.org/comm-central/rev/7e775d6f5ba8334b968619bed2082cd967615a75/mail/base/content/msgHdrView.inc.xhtml#408). The element has also been converted from a `table` to a `div`.&#x20;
+The id of the additional header area in the message display window has been renamed from [`expandedHeaders2`](https://searchfox.org/comm-esr91/source/mail/base/content/msgHdrView.inc.xhtml#268) to [`extraHeadersArea`](https://searchfox.org/comm-central/rev/7e775d6f5ba8334b968619bed2082cd967615a75/mail/base/content/msgHdrView.inc.xhtml#408). The element has also been converted from a `table` to a `div`.
 
 The class `headerName` used for the styling header entries has been renamed to `message-header-label`. The class`message-header-row` has been added, styling the entire row.
 
@@ -42,6 +42,7 @@ by
 ```
 let item = await calendar.getItem(itemId);
 ```
+
 The `calIOperationListener` and `calIOperation` interfaces are still used in various places but the general direction is to remove them eventually after 102 in favor of Promises and ReadableStreams. If you have code that uses them internally, please update where feasible.
 
 If your code is synchronous, you will have to rework it to make use of asynchronous functions. Feel free to reach out for further help on this through our[ community channels](../../community.md).
@@ -114,7 +115,7 @@ await storage.resetItemOfflineFlag(aItem);
 
 ### `ChromeUtils.import()`
 
-Since TB 102, it is no longer possible to load JSMs via extension URLs, for example&#x20;
+Since TB 101, it is no longer possible to load JSMs via extension URLs, for example
 
 ```
 var { myModule } = ChromeUtils.import(extension.rootURI.resolve("myModule.jsm"));

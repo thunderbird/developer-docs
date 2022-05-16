@@ -84,7 +84,7 @@ The `applications.gecko` manifest key defines the following properties:
 *   `id`: The id serves as a unique identifier for the extension and is mandatory in order upload an extension to ATN or to be able to install it from an XPI file.\
 
 
-    Best practice is to use an "email-address-style" id (but not a real email address) on a domain you control, for example `name-of-your-addon@example.com`, if you own `example.com`. As the id of your add-on cannot be changed once it is published, it is highly recommended to use a domain that you plan to keep for the forseeable future. If you don't have a domain that fits the bill, feel free to use `your-atn-username.addons.thunderbird.net` (based on your username on [ATN](https://addons.thunderbird.net)).\
+    Best practice is to use an "email-address-style" id (but not a real email address) on a domain you control, for example `name-of-your-addon@example.com`, if you own `example.com`. As the id of your add-on cannot be changed once it is published, it is highly recommended to use a domain that you plan to keep for the forseeable future. If you don't have a domain that fits the bill, feel free to use `your-atn-username.addons.thunderbird.net` (based on your username on [ATN](https://addons.thunderbird.net/)).\
 
 
     Alternatively to the preferred style, you may use an UUID enclosed in curly braces, for example\
@@ -204,6 +204,8 @@ As permissions allow WebExtensions to use certain APIs, information about suppor
 [supported-webextension-api.md](supported-webextension-api.md)
 {% endcontent-ref %}
 
+The user may not deny individual permissions requested in the permissions manifest key. He must either accept all of them during add-on install, or abort the install. It is however possible to request [optional permissions](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/optional\_permissions), which can be managed by the user during runtime.
+
 ## WebExtension Scripts
 
 Most entry points defined in the extensions manifest allow adding scripts. Most prominent of course the background script(s). Furthermore, each defined HTML page, like the `options_ui` page allow including scripts via standard HTML `<script>` tags.
@@ -284,6 +286,8 @@ These additional APIs can be registered in the `manifest.json` file by defining 
 
 {% hint style="danger" %}
 Experiment APIs have full access to Thunderbird's core functions and can bypass the WebExtension permission system entirely. Including one or more Experiment APIs will therefore disable the individual permission prompt and instead prompt the user only for the [_Have full, unrestricted access to Thunderbird, and your computer_](https://support.mozilla.org/kb/permission-request-messages-thunderbird-extensions) permission.
+
+The use of optional permissions is not supported for the same reason.
 {% endhint %}
 
 If you'd like to learn more about experiments, check out this detailed introduction:

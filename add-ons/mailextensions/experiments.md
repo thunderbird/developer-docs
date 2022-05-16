@@ -13,6 +13,8 @@ For reference, the parent implementations of all built-in APIs can be found in\
 
 {% hint style="danger" %}
 Experiment APIs have full access to Thunderbird's core functions and can bypass the WebExtension permission system entirely. Including one or more Experiment APIs will therefore disable the individual permission prompt and instead prompt the user only for the [_Have full, unrestricted access to Thunderbird, and your computer_](https://support.mozilla.org/kb/permission-request-messages-thunderbird-extensions) permission.
+
+The use of optional permissions is not supported for the same reason.
 {% endhint %}
 
 ## Designing the API

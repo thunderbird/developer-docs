@@ -126,3 +126,21 @@ No migration takes place when the user upgrades to a Thunderbird version that su
 
 Cards are only migrated when they are saved.
 {% endhint %}
+
+### Data conversion between keys/values and vCard
+
+[VCardUtils.jsm](https://searchfox.org/comm-central/source/mailnews/addrbook/modules/VCardUtils.jsm) contains a number of utility functions for converting between the storage types:
+
+* `VCardUtils.abCardToVCard` converts an `nsIAbCard` (any implementation) into a vCard string.
+* `VCardUtils.propertyMapToVCard` converts a `Map` of keys and values to a vCard string.
+* `VCardUtils.vCardToAbCard` converts a vCard string to an `AddrBookCard`.
+* `VCardProperties.fromVCard` converts vCard string to a `VCardProperties` object.
+* `VCardProperties.fromPropertyMap` converts a `Map` of keys and values to a `VCardProperties` object.
+* `VCardProperties.prototype.toPropertyMap` converts a `VCardProperties` object to a `Map` of keys and values.
+* `VCardProperties.prototype.toVCard` converts a `VCardProperties` object to a vCard string.
+
+{% hint style="warning" %}
+Conversion from a key/value dictionary to vCard should not result in any data loss. In the other direction data loss is possible.
+{% endhint %}
+
+To see exactly what fields are converted and what they are converted to, see `typeMap` in VCardUtils.jsm.

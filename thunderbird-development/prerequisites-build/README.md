@@ -25,20 +25,19 @@ Depending on your Operating System you will need to carry out a different proces
 
 To build Thunderbird, you need to create a file named `mozconfig` to the root directory of the mozilla-central checkout that contains the option `comm/mail` enabled. You can create a file with this line by doing this in the `source/` directory:
 
-```text
+```
 echo 'ac_add_options --enable-application=comm/mail' > mozconfig
-echo 'ac_add_options --with-app-basename=Thunderbird' >> mozconfig
 ```
 
-**If you omit these lines, the build system will build Firefox instead**. Other build configuration options can be added to this file, although it's **strongly recommended** that you only use options that you fully understand. For example, to create a debug build instead of a release build, that file would also contain the line:
+**If you omit this line, the build system will build Firefox instead**. Other build configuration options can be added to this file, although it's **strongly recommended** that you only use options that you fully understand. For example, to create a debug build instead of a release build, that file would also contain the line:
 
-```text
+```
 echo 'ac_add_options --enable-debug' >> mozconfig
 ```
 
 _Each of these ac\_add\_options entries needs to be on its own line._
 
-For more on configuration options, see the page [Configuring build options](https://developer.mozilla.org/en/Configuring_Build_Options). Note that if you use an MOZ\_OBJDIR it cannot be a sibling folder to your source directory. Use an absolute path to be sure!
+For more on configuration options, see the page [Configuring build options](https://firefox-source-docs.mozilla.org/setup/configuring_build_options.html). Note that if you use an MOZ\_OBJDIR it cannot be a sibling folder to your source directory. Use an absolute path to be sure!
 
 ## You're all set
 

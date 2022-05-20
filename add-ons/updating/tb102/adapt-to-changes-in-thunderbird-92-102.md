@@ -8,9 +8,15 @@ Some developers use the version string to determine which function to call in ad
 
 ```
 if (xulAppInfo.version >= "91.0") {
-  restartButton.addEventListener("command", () => MailUtils.restartApplication());
+  restartButton.addEventListener(
+    "command", 
+    () => MailUtils.restartApplication()
+  );
 } else {
-  restartButton.addEventListener("command", () => BrowserUtils.restartApplication());
+  restartButton.addEventListener(
+    "command", 
+    () => BrowserUtils.restartApplication()
+  );
 }
 ```
 
@@ -33,9 +39,15 @@ In this specific case, one could also use feature detection itself:
 
 ```
 if ("restartApplication" in MailUtils)
-  restartButton.addEventListener("command", () => MailUtils.restartApplication());
+  restartButton.addEventListener(
+    "command", 
+    () => MailUtils.restartApplication()
+  );
 } else {
-  restartButton.addEventListener("command", () => BrowserUtils.restartApplication());
+  restartButton.addEventListener(
+    "command", 
+    () => BrowserUtils.restartApplication()
+  );
 }
 ```
 

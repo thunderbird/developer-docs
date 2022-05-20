@@ -2,6 +2,43 @@
 
 This document tries to cover all the internal changes that may be needed to make add-ons compatible with Thunderbird Beta. If you find changes which are not yet listed on this page, you can ask for help and advice in one of our [communication channels](https://developer.thunderbird.net/#getting-plugged-into-the-community).
 
+## String comparison against the version string
+
+Some developers use the version string to determine which function to call in add-ons which try to be backward compatible. For example:
+
+```
+if (xulAppInfo.version >= "91.0") {
+  restartButton.addEventListener("command", () => MailUtils.restartApplication());
+} else {
+  restartButton.addEventListener("command", () => BrowserUtils.restartApplication());
+}
+```
+
+This fails for TB100 and newer, because this is a string comparison and not an integer comparison. A function to get the integer values could look like so:
+
+```
+function getThunderbirdVersion() {
+    let parts = Services.appinfo.version.split(".");
+    return {
+        major: parseInt(parts[0]),
+        minor: parseInt(parts[1]),
+        revision: parts.length > 2 ? parseInt(parts[2]) : 0,
+    }
+}
+```
+
+And then just use `getThunderbirdVersion().major >= 91` to check the version.
+
+In this specific case, one could also use feature detection itself:
+
+```
+if ("restartApplication" in MailUtils)
+  restartButton.addEventListener("command", () => MailUtils.restartApplication());
+} else {
+  restartButton.addEventListener("command", () => BrowserUtils.restartApplication());
+}
+```
+
 ## Changed DOM Elements
 
 ### composer

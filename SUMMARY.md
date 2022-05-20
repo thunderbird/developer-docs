@@ -2,7 +2,7 @@
 
 * [About Thunderbird](README.md)
 
-## Contributing to Thunderbird <a href="thunderbird-development" id="thunderbird-development"></a>
+## Contributing to Thunderbird <a href="#thunderbird-development" id="thunderbird-development"></a>
 
 * [Getting Started](thunderbird-development/getting-started.md)
 * [Prerequisites for the build](thunderbird-development/prerequisites-build/README.md)
@@ -12,6 +12,7 @@
 * [Building Thunderbird](thunderbird-development/building-thunderbird/README.md)
   * [Artifact Builds](thunderbird-development/building-thunderbird/artifact-builds.md)
 * [Codebase Overview](thunderbird-development/codebase-overview/README.md)
+  * [Address Book](thunderbird-development/codebase-overview/address-book.md)
   * [Chat Core](thunderbird-development/codebase-overview/chat/README.md)
     * [Notifications](thunderbird-development/codebase-overview/chat/notifications.md)
     * [Message Styles](thunderbird-development/codebase-overview/chat/message-styles.md)
@@ -37,8 +38,9 @@
 ## Planning
 
 * [Roadmap](planning/roadmap.md)
+* [Backlog](planning/roadmap-1.md)
 
-## Add-on Development <a href="add-ons" id="add-ons"></a>
+## Add-on Development <a href="#add-ons" id="add-ons"></a>
 
 * [Introduction](add-ons/about-add-ons.md)
 * [A Guide to MailExtensions](add-ons/mailextensions/README.md)
@@ -62,7 +64,7 @@
     * [Adapt to Changes in Thunderbird 69-78](add-ons/updating/tb78/changes.md)
   * [Update for Thunderbird 91](add-ons/updating/tb91/README.md)
     * [Adapt to Changes in Thunderbird 79-91](add-ons/updating/tb91/changes.md)
-  * [Updates for Thunderbird Beta](add-ons/updating/updates-for-thunderbird-beta/README.md)
-    * [Adapt to Changes in Thunderbird Beta](add-ons/updating/updates-for-thunderbird-beta/adapt-to-changes-in-thunderbird-beta.md)
+  * [Update for Thunderbird 102](add-ons/updating/tb102/README.md)
+    * [Adapt to Changes in Thunderbird 92-102](add-ons/updating/tb102/adapt-to-changes-in-thunderbird-92-102.md)
 * [Documentation & Resources](add-ons/resources.md)
 * [Developer Community](add-ons/community.md)

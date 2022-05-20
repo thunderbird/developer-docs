@@ -1,22 +1,28 @@
 ---
-description: Required steps to update add-ons for Thunderbird Beta.
+description: Required steps to update add-ons for Thunderbird 102.
 ---
 
-# Updates for Thunderbird Beta
+# Update for Thunderbird 102
 
-This section covers the required update steps for add-ons which are already compatible with Thunderbird 91 and need to be made compatible with Thunderbird Beta (91+).
+This section covers the required update steps for add-ons which are already compatible with Thunderbird 91 and need to be made compatible with Thunderbird 102.
 
 ## Changes in WebExtension APIs
 
 Our WebExtension APIs are meant to be stable, but we are adding new features and since this is a very young technology this might also require backward incompatible changes. All WebExtension API changes are listed in our API documentation:
 
 * [Thunderbird 95](https://webextension-api.thunderbird.net/en/latest/changes/beta95.html)
+* [Thunderbird 96](https://webextension-api.thunderbird.net/en/latest/changes/beta96.html)
+* [Thunderbird 97](https://webextension-api.thunderbird.net/en/latest/changes/beta97.html)
+* [Thunderbird 98](https://webextension-api.thunderbird.net/en/latest/changes/beta98.html)
+* [Thunderbird 100](https://webextension-api.thunderbird.net/en/latest/changes/beta100.html)
+* [Thunderbird 101](https://webextension-api.thunderbird.net/en/latest/changes/beta101.html)
+* [Thunderbird 102](https://webextension-api.thunderbird.net/en/latest/changes/beta102.html)
 
 ## Changes in Thunderbird Core
 
 MailExtensions can still run legacy code inside [Experiments](../../mailextensions/#experiment-apis). Such legacy code has to be adjusted to changes made in Thunderbird Core. All known changes are listed in the following document:
 
-* [Changes in Thunderbird Beta](adapt-to-changes-in-thunderbird-beta.md)
+* [Changes in Thunderbird 92-102](adapt-to-changes-in-thunderbird-92-102.md)
 
 If you have encountered a change which is not yet listed there, please [contact us](../../community.md), so we can update the list.
 

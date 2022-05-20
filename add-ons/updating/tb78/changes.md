@@ -287,5 +287,5 @@ Preferences.addSyncToPrefListener(
 ```
 
 {% hint style="danger" %}
-The `nsIPrefService`is not available via WebExtension APIs. It is therefore adviced to move away from storing addon preferences in a preference brach and instead use the local storage via the [`storage`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage) API. More information can be found in the [update guide](https://developer.thunderbird.net/add-ons/updating/tb78#replacing-options).
+The `nsIPrefService`is not available via WebExtension APIs. It is therefore advised to move away from storing addon preferences in a preference branch and instead use the local storage via the [`storage`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage) API. More information can be found in the [update guide](https://developer.thunderbird.net/add-ons/updating/tb78#replacing-options).
 {% endhint %}

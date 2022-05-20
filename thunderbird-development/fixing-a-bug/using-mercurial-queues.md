@@ -144,8 +144,8 @@ Even if you're not the sheriff, it's sometimes handy to be able to backout one o
 
 ```bash
 hg qbackout -r 0e7bfdf1b900
-hg qbackout -r 0e7bfdf1b900:0e7bfdf1b901 (multiple consequtive changesets)
-hg qbackout -r 0e7bfdf1b900 -r 0e7bfdf1b955 (non-consequtive)
+hg qbackout -r 0e7bfdf1b900:0e7bfdf1b901 (multiple consecutive changesets)
+hg qbackout -r 0e7bfdf1b900 -r 0e7bfdf1b955 (non-consecutive)
 hg qbackout -s -r 0e7bfdf1b900:0e7bfdf1b901 (merge into a single backout changeset)
 ```
 

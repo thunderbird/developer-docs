@@ -15,7 +15,12 @@ You can check out many of the add-ons available for Thunderbird at [addons.thund
 
 ### MailExtensions
 
-MailExtensions are based on the WebExtension technology, which is also used by many web browsers. Such a MailExtension is a simple collection of files which modify Thunderbirds appearance and behavior. It can add user interface elements, alter content, or perform background tasks. MailExtensions are created using standard JavaScript, CSS and HTML. Interaction with Thunderbird itself, like adding UI elements or accessing the users messages or contacts is done through special WebExtension APIs.
+MailExtensions are based on the WebExtension technology, which is also used by many web browsers. Such a MailExtension is a simple collection of files which modify Thunderbirds appearance and behaviour. It can add user interface elements, alter content, or perform background tasks. MailExtensions are created using standard JavaScript, CSS and HTML.
+
+Key features:
+
+* MailExtensions use stable WebExtension APIs, independent of Thunderbird's own code, and are therefore less likely to break when a new version of Thunderbird is released.
+* The WebExtension technology introduced a permission mechanism, and users have to acknowledge all permissions requested by add-ons before they can be installed. These permission requests enable users to know what an add-on is actually doing. This is a major improvement, as legacy add-ons always had the same privileges as Thunderbird itself, which many users were not aware of. More information can be found in the support article about [Permission request messages for Thunderbird extensions](https://support.mozilla.org/kb/permission-request-messages-thunderbird-extensions).
 
 {% content-ref url="mailextensions/" %}
 [mailextensions](mailextensions/)
@@ -82,7 +87,7 @@ This type of extension uses a bootstrap file (`bootstrap.js`) as an entry point 
 
 #### Update Strategy
 
-It is recommended to update legacy bootstrap extensions to legacy WebExtensions first, before converting them to MailExtension. The update guide assumes, the extension is currently compatible with Thunderbird 60. If that is not the case, you can find further update instructions [here](https://wiki.mozilla.org/Thunderbird/Add-ons_Guide\_57).
+It is recommended to update legacy bootstrap extensions to legacy WebExtensions first, before converting them to MailExtension. The update guide assumes, the extension is currently compatible with Thunderbird 60. If that is not the case, you can find further update instructions [here](https://wiki.mozilla.org/Thunderbird/Add-ons\_Guide\_57).
 
 {% content-ref url="updating/tb68/bootstrapped.md" %}
 [bootstrapped.md](updating/tb68/bootstrapped.md)
@@ -100,7 +105,7 @@ The original type of extension for Thunderbird and Firefox, using documents that
 
 #### Update Strategy
 
-It is recommended to update legacy overlay extensions to legacy WebExtensions first, before converting them to MailExtensions. The update guide assumes, the extension is currently compatible with Thunderbird 60. If that is not the case, you can find further update instructions [here](https://wiki.mozilla.org/Thunderbird/Add-ons_Guide\_57).
+It is recommended to update legacy overlay extensions to legacy WebExtensions first, before converting them to MailExtensions. The update guide assumes, the extension is currently compatible with Thunderbird 60. If that is not the case, you can find further update instructions [here](https://wiki.mozilla.org/Thunderbird/Add-ons\_Guide\_57).
 
 {% content-ref url="updating/tb68/overlays.md" %}
 [overlays.md](updating/tb68/overlays.md)

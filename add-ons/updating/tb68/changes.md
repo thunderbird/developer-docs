@@ -371,7 +371,7 @@ Removed. Thunderbird now has fixed build in notification boxes, where notificati
    `let notifyBox = specialTabs.msgNotificationBar;`
 * Message composer window:\
    `let notifyBox = gNotification.notificationbox;`
-* Below the receipient list in the message composer window:  `let notifyBox = gMessageNotificationBar.msgNotificationBar;`
+* Below the recipient list in the message composer window:  `let notifyBox = gMessageNotificationBar.msgNotificationBar;`
 * Most calendar dialogs:\
   `let notifyBox = gNotification.notificationbox;`
 

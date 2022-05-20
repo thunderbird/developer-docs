@@ -79,6 +79,8 @@ Since TB 96, [many calendar functions return Promises](https://searchfox.org/com
 * `getItemOfflineFlag()`
 * `modifyItem()`
 
+*Please note: The `getItem()` method has been changed to return one item instead of an array*.
+
 The former methods to promisify these functions have been removed together with `calAsyncUtils.jsm`. Replace
 
 ```
@@ -139,6 +141,17 @@ for await (let items of this.iterator) {
     }
 }
 ```
+
+#### Offline Support
+For providers with offline support, you may need to support a `_cachedAdoptItemCallback` property on your provider class. This is an unfortunate
+hack needed to maintain the order the "onAddItem" event is fired by `calCachedCalendar`.
+
+`calCachedCalendar` sets this property in the `doAdoptItem()` method and it should be called by your provider just before returning in the `adopItem()` method. An example of this can be seen [here](https://searchfox.org/comm-central/rev/510ad49d89eba24e69ff7809e2f75483125fe7a4/calendar/providers/ics/CalICSCalendar.jsm#472) in the ICS provider.
+
+#### calICalendar.getItemsAsArray()
+
+This is a new addition to the API that returns the results as an array instead of a `ReadableStream`. The `BaseClass` provider has a default 
+implementation however providers not extending it should provide their own implementation.
 
 ### calStorageCalendar.resetItemOfflineFlag()
 

@@ -79,7 +79,7 @@ Since Thunderbird 96, [many calendar functions return Promises](https://searchfo
 * `deleteOfflineItem()`
 * `getItemOfflineFlag()`
 
-The former methods to promisify these functions have been removed together with `calAsyncUtils.jsm`. Additionally, the `getItem()` method will return the item directly instead of an arrayi with the item. Replace
+The former methods to promisify these functions have been removed together with `calAsyncUtils.jsm`. Additionally, the `getItem()` method will return the item directly instead of an array with the item. Replace
 
 ```javascript
 let pcal = cal.async.promisifyCalendar(calendar.wrappedJSObject);
@@ -96,16 +96,11 @@ The `calIOperationListener` and `calIOperation` interfaces are still used in var
 
 If your code is synchronous, you will have to rework it to make use of asynchronous functions. Feel free to reach out for further help on this through our[ community channels](../../community.md).
 
-
 #### Provider changes in calICalendar.addItem/adoptItem/modifyItem
-Calendar providers need to change above mentioned functions to be asynchronous. Calling the
-listeners is no longer necessary. Instead, you should return the item from the
-`addItem`/`adoptItem`/`modifyItem` functions and make sure to throw an error in case of failure.
 
-For providers with offline support, you need to call listeners set by the cache layer using the
-`_cachedAdoptItemCallback` and `_cachedModifyItemCallback` properties on your provider class. This
-is an unfortunate hack needed to maintain the order the `onAddItem` event is fired by
-`calCachedCalendar`. These listeners need to be called just before returning.
+Calendar providers need to change above mentioned functions to be asynchronous. Calling the listeners is no longer necessary. Instead, you should return the item from the `addItem`/`adoptItem`/`modifyItem` functions and make sure to throw an error in case of failure.
+
+For providers with offline support, you need to call listeners set by the cache layer using the `_cachedAdoptItemCallback` and `_cachedModifyItemCallback` properties on your provider class. This is an unfortunate hack needed to maintain the order the `onAddItem` event is fired by `calCachedCalendar`. These listeners need to be called just before returning.
 
 ```javascript
 class CalendarProvider extends cal.provider.BaseClass {
@@ -206,8 +201,7 @@ for await (let items of iterator) {
 }
 ```
 
-If you are implementing a provider you will need to adapt your code to return a `ReadableStream`.
-For cached providers, ensure you are returning the result from the offline cache:
+If you are implementing a provider you will need to adapt your code to return a `ReadableStream`. For cached providers, ensure you are returning the result from the offline cache:
 
 ```javascript
 getItems(aFilter, aCount, aRangeStart, aRangeEnd) {
@@ -218,8 +212,7 @@ getItems(aFilter, aCount, aRangeStart, aRangeEnd) {
 
 #### calICalendar.getItemsAsArray()
 
-This is a new addition to the API that returns the results as an array instead of a `ReadableStream`. The `BaseClass` provider has a default 
-implementation however providers not extending it should provide their own implementation. If you intend to use this method, please be careful about memory usage with large queries.
+This is a new addition to the API that returns the results as an array instead of a `ReadableStream`. The `BaseClass` provider has a default implementation however providers not extending it should provide their own implementation. If you intend to use this method, please be careful about memory usage with large queries.
 
 ### calStorageCalendar.resetItemOfflineFlag()
 

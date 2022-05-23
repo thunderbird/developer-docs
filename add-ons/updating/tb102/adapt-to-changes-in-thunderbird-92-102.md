@@ -6,7 +6,7 @@ This document tries to cover all the internal changes that may be needed to make
 
 Some developers use the version string to determine which function to call in add-ons which try to be backward compatible. For example:
 
-```
+```javascript
 if (xulAppInfo.version >= "91.0") {
   restartButton.addEventListener(
     "command", 
@@ -20,9 +20,9 @@ if (xulAppInfo.version >= "91.0") {
 }
 ```
 
-This fails for TB100 and newer, because this is a string comparison and not an integer comparison. A function to get the integer values could look like so:
+This fails for Thunderbird 100 and newer, because this is a string comparison and not an integer comparison. A function to get the integer values could look like so:
 
-```
+```javascript
 function getThunderbirdVersion() {
     let parts = Services.appinfo.version.split(".");
     return {
@@ -37,7 +37,7 @@ And then just use `getThunderbirdVersion().major >= 91` to check the version.
 
 In this specific case, one could also use feature detection itself:
 
-```
+```javascript
 if ("restartApplication" in MailUtils)
   restartButton.addEventListener(
     "command", 
@@ -69,28 +69,26 @@ The class `msgHeaderView-button` used to style toolbar buttons has been renamed 
 
 ### calICalendar.\*
 
-Since TB 96, [many calendar functions return Promises](https://searchfox.org/comm-central/source/calendar/base/public/calICalendar.idl). This includes:
+Since Thunderbird 96, [many calendar functions return Promises](https://searchfox.org/comm-central/source/calendar/base/public/calICalendar.idl). This includes:
 
+* `getItem()`
 * `addItem()`
 * `adoptItem()`
+* `modifyItem()`
 * `deleteItem()`
 * `deleteOfflineItem()`
-* `getItem()`
 * `getItemOfflineFlag()`
-* `modifyItem()`
 
-*Please note: The `getItem()` method has been changed to return one item instead of an array*.
+The former methods to promisify these functions have been removed together with `calAsyncUtils.jsm`. Additionally, the `getItem()` method will return the item directly instead of an arrayi with the item. Replace
 
-The former methods to promisify these functions have been removed together with `calAsyncUtils.jsm`. Replace
-
-```
+```javascript
 let pcal = cal.async.promisifyCalendar(calendar.wrappedJSObject);
-let item = await pcal.getItem(itemId);
+let item = await pcal.getItem(itemId)[0];
 ```
 
 by
 
-```
+```javascript
 let item = await calendar.getItem(itemId);
 ```
 
@@ -98,15 +96,92 @@ The `calIOperationListener` and `calIOperation` interfaces are still used in var
 
 If your code is synchronous, you will have to rework it to make use of asynchronous functions. Feel free to reach out for further help on this through our[ community channels](../../community.md).
 
-### calICalendar.getItems()
 
-Since TB 96, `calICalendar.getItems()` returns a `ReadableStream`. Replace
+#### Provider changes in calICalendar.addItem/adoptItem/modifyItem
+Calendar providers need to change above mentioned functions to be asynchronous. Calling the
+listeners is no longer necessary. Instead, you should return the item from the
+`addItem`/`adoptItem`/`modifyItem` functions and make sure to throw an error in case of failure.
 
+For providers with offline support, you need to call listeners set by the cache layer using the
+`_cachedAdoptItemCallback` and `_cachedModifyItemCallback` properties on your provider class. This
+is an unfortunate hack needed to maintain the order the `onAddItem` event is fired by
+`calCachedCalendar`. These listeners need to be called just before returning.
+
+```javascript
+class CalendarProvider extends cal.provider.BaseClass {
+    _cachedAdoptItemCallback = null;
+    _cachedModifyItemCallback = null;
+
+    async addItem(aItem) {
+        return this.adoptItem(aItem.clone());
+    }
+
+    async adoptItem(aItem) {
+        try {
+            let item = aItem; // Create your item here
+            if (this._cachedAdoptItemCallback) {
+                await this._cachedAdoptItemCallback(
+                    this.superCalendar,
+                    Cr.NS_OK,
+                    Ci.calIOperationListener.ADD,
+                    item.id,
+                    item
+                );
+            }
+            return item;
+        } catch (e) {
+            if (this._cachedAdoptItemCallback) {
+                await this._cachedAdoptItemCallback(
+                    this.superCalendar,
+                    e.result || Cr.NS_ERROR_FAILURE;,
+                    Ci.calIOperationListener.ADD,
+                    aItem.id,
+                    aItem
+                );
+            }
+            throw e;
+        }
+    }
+
+    async modifyItem(aNewItem, aOldItem) {
+        try {
+            let item = aNewItem; // Modify your item here
+            if (this._cachedModifyItemCallback) {
+                await this._cachedModifyItemCallback(
+                    this.superCalendar,
+                    Cr.NS_OK,
+                    Ci.calIOperationListener.MODIFY,
+                    item.id,
+                    item
+                );
+            }
+            return item;
+        } catch (e) {
+            if (this._cachedModifyItemCallback) {
+                let code = e.result || Cr.NS_ERROR_FAILURE;
+                await this._cachedModifyItemCallback(
+                    this.superCalendar,
+                    code,
+                    Ci.calIOperationListener.MODIFY,
+                    aNewItem.id,
+                    aNewItem
+                );
+            }
+            throw e;
+        }
+    }
+}
 ```
-let aCalIOperationListener = {
+
+#### calICalendar.getItems()
+
+Since Thunderbird 96, `calICalendar.getItems()` returns a `ReadableStream`. Replace
+
+```javascript
+let operationListener = {
     QueryInterface: ChromeUtils.generateQI(["calIOperationListener"]),
     onOperationComplete(calendar, status, operationType, id, detail) {
-        currentView().setSelectedItems(items, false);
+        // Completed
     },
     onGetResult(calendar, status, itemType, detail, itemsArg) {
         for (let item of itemsArg) {
@@ -114,50 +189,43 @@ let aCalIOperationListener = {
         }
     },
 };
-calendar.getItems(
-    aItemFilter,
-    aCount,
-    aCalIDateTimeRangeStart,
-    aCalIDateTimeRangeEndEx,
-    aCalIOperationListener
-);
+calendar.getItems(itemFilter, count, rangeStart, rangeEnd, operationListener);
 ```
 
 by
 
-```
+```javascript
 let iterator = cal.iterate.streamValues(
-    calendar.getItems(
-        aItemFilter,
-        aCount,
-        aCalIDateTimeRangeStart,
-        aCalIDateTimeRangeEndEx
-    )
+    calendar.getItems(itemFilter, count, rangeStart, rangeEnd)
 );
 
-for await (let items of this.iterator) {
+for await (let items of iterator) {
     for (let item of items) {
         // Do something with item.
     }
 }
 ```
 
-#### Offline Support
-For providers with offline support, you may need to support a `_cachedAdoptItemCallback` property on your provider class. This is an unfortunate
-hack needed to maintain the order the "onAddItem" event is fired by `calCachedCalendar`.
+If you are implementing a provider you will need to adapt your code to return a `ReadableStream`.
+For cached providers, ensure you are returning the result from the offline cache:
 
-`calCachedCalendar` sets this property in the `doAdoptItem()` method and it should be called by your provider just before returning in the `adopItem()` method. An example of this can be seen [here](https://searchfox.org/comm-central/rev/510ad49d89eba24e69ff7809e2f75483125fe7a4/calendar/providers/ics/CalICSCalendar.jsm#472) in the ICS provider.
+```javascript
+getItems(aFilter, aCount, aRangeStart, aRangeEnd) {
+    // Previous code may have been missing the return, and used aListener
+    return this.mOfflineStorage.getItems(...arguments);
+}
+```
 
 #### calICalendar.getItemsAsArray()
 
 This is a new addition to the API that returns the results as an array instead of a `ReadableStream`. The `BaseClass` provider has a default 
-implementation however providers not extending it should provide their own implementation.
+implementation however providers not extending it should provide their own implementation. If you intend to use this method, please be careful about memory usage with large queries.
 
 ### calStorageCalendar.resetItemOfflineFlag()
 
-Since TB 96, this function returns a Promise. Replace
+Since Thunderbird 96, this function returns a Promise. Replace
 
-```
+```javascript
 let resetListener = {
     QueryInterface: ChromeUtils.generateQI(["calIOperationListener"]),
     onGetResult(calendar, status, itemType, detail, items) { },
@@ -165,21 +233,21 @@ let resetListener = {
       // Reset completed.
     },
 }
-storage.resetItemOfflineFlag(aItem, resetListener);
+storage.resetItemOfflineFlag(item, resetListener);
 ```
 
 by
 
-```
-await storage.resetItemOfflineFlag(aItem);
+```javascript
+await storage.resetItemOfflineFlag(item);
 // Reset completed.
 ```
 
 ### `ChromeUtils.import()`
 
-Since TB 101, it is no longer possible to load JSMs via extension URLs, for example
+Since Thunderbird 101, it is no longer possible to load JSMs via extension URLs, for example
 
-```
+```javascript
 var { myModule } = ChromeUtils.import(extension.rootURI.resolve("myModule.jsm"));
 ```
 
@@ -187,4 +255,32 @@ It is now mandatory to register an internal URL, for example a `resource://` URL
 
 ### `NotificationBox.appendNotification()`
 
-The parameters have [changed](https://searchfox.org/mozilla-central/rev/f8576fec48d866c5f988baaf1fa8d2f8cce2a82f/toolkit/content/widgets/notificationbox.js#78-149) in TB 94.
+The parameters have [changed](https://searchfox.org/mozilla-central/rev/f8576fec48d866c5f988baaf1fa8d2f8cce2a82f/toolkit/content/widgets/notificationbox.js#78-149) in Thunderbird 94. Most former properties have moved into an object. Replace this
+
+```javascript
+notificationbox.appendNotification(
+  notificationLabel,
+  notificationId,
+  imageUrl,
+  notificationbox.PRIORITY_CRITICAL_HIGH,
+  buttons,
+  eventCallback,
+  customElementClass
+);
+```
+
+with this
+
+```javascript
+let notification = notificationbox.appendNotification(
+    notificationId,
+    {
+        label: notificationLabel,
+        priority: notificationbox.PRIORITY_CRITICAL_HIGH,
+        eventCallback: eventCallback,
+        notificationIs: customElementClass
+    },
+    buttons
+);
+notification.messageImage.src = imageUrl;
+```

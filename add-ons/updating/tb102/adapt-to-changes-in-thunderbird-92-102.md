@@ -65,6 +65,18 @@ The class `headerName` used for the styling header entries has been renamed to `
 
 The class `msgHeaderView-button` used to style toolbar buttons has been renamed to `message-header-view-button`.
 
+### \<stringbundle id="bundle\_smime\_read\_info">
+
+This `stringbundle` element has been removed from `messageWindow.xhtml` and `messenger.xhtml`. To access the strings, you have to load the bundle directly:
+
+```
+let bundle = Services.strings.createBundle(
+    "chrome://messenger-smime/locale/msgSecurityInfo.properties"
+);
+```
+
+The  method to retrieve strings from the created bundle is slightly different, instead of `getString()` use `GetStringFromName()` .
+
 ## Changed API
 
 ### calICalendar.\*

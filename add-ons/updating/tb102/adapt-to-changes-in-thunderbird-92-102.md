@@ -289,3 +289,50 @@ let notification = notificationbox.appendNotification(
 );
 notification.messageImage.src = imageUrl;
 ```
+
+### nsICollationFactory
+
+Has been removed in Thunderbird 93. One of its use case was to compare locale strings. You can replace the following:
+
+```
+function localeCompare(a, b) { 
+  var collator = Cc["@mozilla.org/intl/collation-factory;1"]
+    .getService(Components.interfaces.nsICollationFactory)
+    .CreateCollation();
+  return collator.compareString(0, a, b);
+}
+```
+
+by
+
+```
+function localeCompare(a, b) { 
+  return a.localeCompare(b);
+}
+```
+
+### nsIMsgCompSendFormat.AskUser
+
+Has been renamed to `nsIMsgCompSendFormat.Auto` in Thunderbird 101.
+
+### nsIMsgSendListener.onGetDraftFolderURI(aFolderURI)
+
+The parameters of this listener have been changed in Thunderbird 102. The header messageId has been added:
+
+```
+nsIMsgSendListener.onGetDraftFolderURI(aMsgId, aFolderURI)
+```
+
+The new parameter has been added at the first position to[ match all the other listeners](https://searchfox.org/comm-central/rev/7923bcceab6029d38d0be76a021424b300997dbe/mailnews/compose/public/nsIMsgSendListener.idl), which already return the messageId.
+
+### nsIPrintSettings.\*
+
+A few members and methods have been removed without replacement:
+
+* `isPrintSelectionRBEnabled`
+* `isCancelled`
+* `saveOnCancel`
+* `showPrintProgress`&#x20;
+* `SetupSilentPrinting()`
+
+Instead of `printToFile`, use [outputDestination](https://searchfox.org/mozilla-central/rev/3419858c997f422e3e70020a46baae7f0ec6dacc/widget/nsIPrintSettings.idl#291) with a value from [`OutputDestinationType`](https://searchfox.org/mozilla-central/rev/3419858c997f422e3e70020a46baae7f0ec6dacc/widget/nsIPrintSettings.idl#93).

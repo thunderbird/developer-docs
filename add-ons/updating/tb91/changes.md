@@ -4,7 +4,7 @@ This document tries to cover all the internal changes that may be needed to make
 
 ## Changed API
 
-### nsISimpleEnumerator, nsIArray and nsIMutableArray 
+### nsISimpleEnumerator, nsIArray and nsIMutableArray&#x20;
 
 Most usage of `nsIArray` and `nsIMutableArray` has been replaced by standard JavaScript arrays and functions which returned a `nsISimpleEnumerator`have been changed to return a JavaScript array as well. The following APIs have been updated (links to actual patches, showing how core handled the change):
 
@@ -14,14 +14,14 @@ Most usage of `nsIArray` and `nsIMutableArray` has been replaced by standard Jav
 * nsIAbManager.directories (returns array)\
 
 * [nsIMsgAccountManager.accounts](https://hg.mozilla.org/comm-central/diff/1da9c365060718ffc88deb4d39b3930aeb02a1a7/calendar/base/modules/utils/calEmailUtils.jsm) (returns array)
-* [nsIMsgAccountManager.allFolders](https://hg.mozilla.org/comm-central/diff/4fd2ffb624922351c4c7ec6a775c78b436339fb3/mail/test/browser/folder-display/browser_recentMenu.js) (returns array)
+* [nsIMsgAccountManager.allFolders](https://hg.mozilla.org/comm-central/diff/4fd2ffb624922351c4c7ec6a775c78b436339fb3/mail/test/browser/folder-display/browser\_recentMenu.js) (returns array)
 * [nsIMsgAccountManager.allIdentities](https://hg.mozilla.org/comm-central/diff/8d219926818378dda077442385c0d59650cc3ab6/calendar/base/modules/utils/calItipUtils.jsm) (returns array)
 * [nsIMsgAccountManager.allServers](https://hg.mozilla.org/comm-central/diff/16ca51abc6dda000296c7d7d082b9951ca04fd6d/mail/base/content/folderPane.js) (returns array)\
 
 * nsIMsgCompFields.attachments (returns array)\
 
-* [nsIMsgCopyService.CopyFolders](https://hg.mozilla.org/comm-central/diff/4f8d3dff196eba35f09bbbe4f6487f882c07840e/mailnews/imap/test/unit/test_localToImapFilter.js) (has been [renamed](changes.md#nsimsgcopyservice-copyfolders) and now only accepts a single src folder)
-*   [nsIMsgCopyService.CopyMessages](https://hg.mozilla.org/comm-central/diff/fe318ec033d42bd4342a63b86c320116bfa5c5bc/mail/test/browser/message-window/browser_commands.js) (expects an array for the second argument)
+* [nsIMsgCopyService.CopyFolders](https://hg.mozilla.org/comm-central/diff/4f8d3dff196eba35f09bbbe4f6487f882c07840e/mailnews/imap/test/unit/test\_localToImapFilter.js) (has been [renamed](changes.md#nsimsgcopyservice-copyfolders) and now only accepts a single src folder)
+*   [nsIMsgCopyService.CopyMessages](https://hg.mozilla.org/comm-central/diff/fe318ec033d42bd4342a63b86c320116bfa5c5bc/mail/test/browser/message-window/browser\_commands.js) (expects an array for the second argument)
 
 
 *   nsIMsgFilterCustomAction.getCustomActions (returns array)
@@ -32,9 +32,9 @@ Most usage of `nsIArray` and `nsIMutableArray` has been replaced by standard Jav
 * [nsIMsgFolder.listFoldersWithFlags](https://hg.mozilla.org/comm-central/diff/d146b4e2061c4ec55fce6ac0615c722fed19e756/mail/base/content/folderPane.js#l1.16) (returns array)
 * [nsIMsgFolder.markMessagesRead](https://hg.mozilla.org/comm-central/diff/93610e507d37b2da5e034536ba05f7d2679fcfac/mail/components/extensions/parent/ext-messages.js#l1.22) (expects an array for the first argument)
 * [nsIMsgFolder.markMessagesFlagged](https://hg.mozilla.org/comm-central/diff/93610e507d37b2da5e034536ba05f7d2679fcfac/mail/components/extensions/parent/ext-messages.js#l1.25) (expects an array for the first argument)
-* [nsIMsgFolder.removeKeywordsFromMessages](https://hg.mozilla.org/comm-central/diff/4f1fac782b47fc236f62a18e7a51a51c8982edfd/mailnews/base/test/unit/test_bug428427.js#l1.40) (expects an array for the first argument)
+* [nsIMsgFolder.removeKeywordsFromMessages](https://hg.mozilla.org/comm-central/diff/4f1fac782b47fc236f62a18e7a51a51c8982edfd/mailnews/base/test/unit/test\_bug428427.js#l1.40) (expects an array for the first argument)
 * [nsIMsgFolder.setJunkScoreForMessages](https://hg.mozilla.org/comm-central/diff/93610e507d37b2da5e034536ba05f7d2679fcfac/mail/components/extensions/parent/ext-messages.js#l1.29) (expects an array for the first argument)
-* [nsIMsgFolder.subFolders](https://hg.mozilla.org/comm-central/diff/d0c8f7c8585e0f485a80f67ccb483b329115eedd/mail/test/browser/folder-pane/browser_folderNamesInRecentMode.js) (returns array)\
+* [nsIMsgFolder.subFolders](https://hg.mozilla.org/comm-central/diff/d0c8f7c8585e0f485a80f67ccb483b329115eedd/mail/test/browser/folder-pane/browser\_folderNamesInRecentMode.js) (returns array)\
 
 * [nsIMsgFolderListener.msgsClassified](https://hg.mozilla.org/comm-central/diff/e7ab0d2b72908c0a66347f188f8e00d3b87e7b11/mail/components/extensions/parent/ext-messages.js) (first parameter is an array)\
 
@@ -56,9 +56,9 @@ for (let account of fixIterator(MailServices.accounts.accounts)) {
 Since `MailServices.accounts.accounts` or `MailServices.accounts.allIdentities` return a simple array since Thunderbird 75, there is no need to pipe it through `fixIterator()` anymore. If your add-on is multi-version compatible and still supports Thunderbird 68 this has to be dealt with separately.\
 
 
-### nsILoadInfo.SEC_ALLOW_CROSS_ORIGIN_DATA_IS_NULL
+### nsILoadInfo.SEC\_ALLOW\_CROSS\_ORIGIN\_DATA\_IS\_NULL
 
-Renamed in Beta 80 to `SEC_ALLOW_CROSS_ORIGIN_SEC_CONTEXT_IS_NULL`. This is often used as the `aSecurityFlags` argument in calls to `Services.io.newChannelFromURI()`. 
+Renamed in Beta 80 to `SEC_ALLOW_CROSS_ORIGIN_SEC_CONTEXT_IS_NULL`. This is often used as the `aSecurityFlags` argument in calls to `Services.io.newChannelFromURI()`.&#x20;
 
 ```
 nsIChannel newChannelFromURI(
@@ -73,7 +73,7 @@ nsIChannel newChannelFromURI(
 For example [here](https://searchfox.org/comm-central/rev/bb3eb2b4cb4b17405e8efcc423563a7a07473292/calendar/base/modules/utils/calProviderUtils.jsm#74).\
 
 
-### nsILoadInfo.SEC_REQUIRE_SAME_ORIGIN_DATA_INHERITS
+### nsILoadInfo.SEC\_REQUIRE\_SAME\_ORIGIN\_DATA\_INHERITS
 
 Renamed in Beta 80 to `SEC_REQUIRE_SAME_ORIGIN_INHERITS_SEC_CONTEXT`.
 
@@ -98,7 +98,7 @@ See [here](https://searchfox.org/mozilla-central/rev/15f6b60e343c536305a5aa81e20
 
 ### IOUtils.jsm
 
-The Thunderbird-specific [IOUtils.jsm](https://hg.mozilla.org/comm-central/file/bec25a74919c93d954d48beeb617a1ecb92e55b8/mailnews/base/src/IOUtils.jsm) file was removed without a direct replacement. You need to alter your logic or copy code from the old JSM into your add-on. [Bug 1678109](https://bugzilla.mozilla.org/show_bug.cgi?id=1678109) might be a good inspiration, as it contains the changes that were necessary for core code.
+The Thunderbird-specific [IOUtils.jsm](https://hg.mozilla.org/comm-central/file/bec25a74919c93d954d48beeb617a1ecb92e55b8/mailnews/base/src/IOUtils.jsm) file was removed without a direct replacement. You need to alter your logic or copy code from the old JSM into your add-on. [Bug 1678109](https://bugzilla.mozilla.org/show\_bug.cgi?id=1678109) might be a good inspiration, as it contains the changes that were necessary for core code.
 
 ## Renamed or Replaced API
 
@@ -133,7 +133,7 @@ The file `Log4moz.jsm` has been removed in Thunderbird 85. Instead, use `console
 * `console.trace()` - same as `console.log()`, but dumps a trace log additionally.
 * `console.info()`
 * `console.warn()`
-* `console.error()` 
+* `console.error()`&#x20;
 
 These basic log functions accept multiple parameters, which are all dumped to the console. For example:
 
@@ -156,7 +156,7 @@ The levels `Info`, `Trace` and `Log` are actually identical.
 
 ### nsIAbListener
 
-Interface has been dropped in favor of an observer based approach. See 
+Interface has been dropped in favor of an observer based approach. See&#x20;
 
 * [https://searchfox.org/comm-central/source/mail/base/content/msgHdrView.js#379-429](https://searchfox.org/comm-central/source/mail/base/content/msgHdrView.js#379-429)
 * [https://searchfox.org/comm-central/source/mail/base/content/msgHdrView.js#277](https://searchfox.org/comm-central/source/mail/base/content/msgHdrView.js#277)
@@ -165,6 +165,10 @@ Interface has been dropped in favor of an observer based approach. See
 ### nsIMsgFolder.listFoldersWithFlags
 
 Use [`nsIMsgFolder.getFoldersWithFlags`](https://searchfox.org/comm-central/rev/03c30c3cab0afd0fb2b5d53c7dd5a021366a8810/mailnews/base/public/nsIMsgFolder.idl#442)instead.
+
+### nsIMsgFolderNotificationService.notifyItemElement()
+
+Use the dedicated function [`MailServices.mfn.notifyMsgsJunkStatusChanged`](https://searchfox.org/comm-esr91/rev/4732e5ce696f2c33f616e7105ce253c2e89057ae/mailnews/base/public/nsIMsgFolderNotificationService.idl#83) or [`MailServices.mfn.notifyFolderReindexTriggered`](https://searchfox.org/comm-esr91/rev/4732e5ce696f2c33f616e7105ce253c2e89057ae/mailnews/base/public/nsIMsgFolderNotificationService.idl#118) instead.
 
 ## Broken/Removed XUL Elements
 
@@ -184,11 +188,11 @@ The `ftvItem` object has been renamed to `FtvItem` in Beta 86.
 
 Has been replaced by`gAttachmentBucket`. More information can be found [here](https://hg.mozilla.org/comm-central/diff/b84ef4aee6c977f95fdf04d37f74791d3fecfbf4/mail/components/compose/content/MsgComposeCommands.js#l1.666).
 
-#### attachmentsCount() 
+#### attachmentsCount()&#x20;
 
 Has been replaced by `gAttachmentBucket.itemCount`.
 
-#### attachmentsSelectedCount() 
+#### attachmentsSelectedCount()&#x20;
 
 Has been replaced by `gAttachmentBucket.selectedCount`.
 

@@ -14,7 +14,7 @@ The following directories are included in the comm-central repository:
 Miscellaneous files used by the build process.
 
 **calendar**\
-Source code of the Lightning extension and Google Calendar Provider extension.
+The calendar component of Thunderbird (formerly known as the Lightning extension).
 
 [**chat**](chat/)\
 Files for the chat component of Thunderbird. There is also related code in `mail/components/im`.

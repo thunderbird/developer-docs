@@ -114,69 +114,48 @@ Calendar providers need to change above mentioned functions to be asynchronous. 
 
 For providers with offline support, you need to call listeners set by the cache layer using the `_cachedAdoptItemCallback` and `_cachedModifyItemCallback` properties on your provider class. This is an unfortunate hack needed to maintain the order the `onAddItem` event is fired by `calCachedCalendar`. These listeners need to be called just before returning.
 
+> Note: It is important to store the callbacks before executing any async work to avoid issues when the same operation is run in concurrently. See the example below.
+
 ```javascript
 class CalendarProvider extends cal.provider.BaseClass {
-    _cachedAdoptItemCallback = null;
-    _cachedModifyItemCallback = null;
+  _cachedAdoptItemCallback = null;
+  _cachedModifyItemCallback = null;
 
-    async addItem(aItem) {
-        return this.adoptItem(aItem.clone());
-    }
+  async addItem(item) {
+    return this.adoptItem(item.clone());
+  }
 
-    async adoptItem(aItem) {
-        try {
-            let item = aItem; // Create your item here
-            if (this._cachedAdoptItemCallback) {
-                await this._cachedAdoptItemCallback(
-                    this.superCalendar,
-                    Cr.NS_OK,
-                    Ci.calIOperationListener.ADD,
-                    item.id,
-                    item
-                );
-            }
-            return item;
-        } catch (e) {
-            if (this._cachedAdoptItemCallback) {
-                await this._cachedAdoptItemCallback(
-                    this.superCalendar,
-                    e.result || Cr.NS_ERROR_FAILURE;,
-                    Ci.calIOperationListener.ADD,
-                    aItem.id,
-                    aItem
-                );
-            }
-            throw e;
-        }
-    }
+  async adoptItem(item) {
+    let adoptCallback = this._cachedAdoptItemCallback; // Store callback locally to execute later.
+    let createdItem = item; // Create your item here, this may be asynchronous.
 
-    async modifyItem(aNewItem, aOldItem) {
-        try {
-            let item = aNewItem; // Modify your item here
-            if (this._cachedModifyItemCallback) {
-                await this._cachedModifyItemCallback(
-                    this.superCalendar,
-                    Cr.NS_OK,
-                    Ci.calIOperationListener.MODIFY,
-                    item.id,
-                    item
-                );
-            }
-            return item;
-        } catch (e) {
-            if (this._cachedModifyItemCallback) {
-                let code = e.result || Cr.NS_ERROR_FAILURE;
-                await this._cachedModifyItemCallback(
-                    this.superCalendar,
-                    code,
-                    Ci.calIOperationListener.MODIFY,
-                    aNewItem.id,
-                    aNewItem
-                );
-            }
-            throw e;
-        }
+    if (adoptCallback) {
+      await adoptCallback(
+        this.superCalendar,
+        Cr.NS_OK,
+        Ci.calIOperationListener.ADD,
+        createdItem.id,
+        createdItem
+      );
     }
+    return item;
+  }
+
+  async modifyItem(newItem, oldItem) {
+    let modifyCallback = this._cachedModifyItemCallback;
+    let modifiedItem = newItem; // Modify your item here, this may be asynchronous.
+
+    if (modifyCallback) {
+      await modifyCallback(
+        this.superCalendar,
+        Cr.NS_OK,
+        Ci.calIOperationListener.MODIFY,
+        modifiedItem.id,
+        modifiedItem
+      );
+    }
+    return modifiedItem;
+  }
 }
 ```
 

@@ -292,7 +292,7 @@ notification.messageImage.src = imageUrl;
 
 ### nsIAbCard
 
-The interface itself has not changed much, but contact details are handled differently now. Instead of storing the individual contact details as key/value property pairs, they are now stored as a vCard string in the `_vCard` property. The interface has gained two new members:
+The interface itself has not changed much, but contact details are handled differently now. Instead of storing the individual contact details as key/value pairs, they are now stored as a vCard string in the `_vCard` property. The interface has gained two new members:
 
 * `supportsVCard` a boolean value indicating support for vCard (or lack thereof).&#x20;
 * `vCardProperties` is a `VCardProperties` object if the card supports vCard, or null

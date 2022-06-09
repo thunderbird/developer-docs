@@ -301,7 +301,7 @@ All former standard contact properties (now referred to as [banished properties]
 
 #### Creating a new card
 
-The new `AddrBookCard` object is a wrapper for `nsIAbCard` to enable support for vCards. To create a new card no longer create a `nsIAbCard`:
+The new `AddrBookCard` object is a wrapper for `nsIAbCard` to enable support for vCards. No longer use `nsIAbCard` to create a new card:
 
 ```javascript
 let card = Cc["@mozilla.org/addressbook/cardproperty;1"].createInstance(
@@ -336,7 +336,7 @@ addrbook.addCard(newCard);
 
 #### Modifying an existing card
 
-To update a card, create a new AddrBookCard from a different vCard and use the same UID:
+To update a card, create a new `AddrBookCard` from a different vCard string, using the same UID:
 
 ```javascript
 let updatedCard = new AddrBookCard();
@@ -345,7 +345,7 @@ card.setProperty("_vCard", "BEGIN:VCARD\r\nVERSION:4.0\r\nFN:Admin User\r\nEMAIL
 addrbook.modifyCard(newCard);
 ```
 
-Alternativly, modify the vCardProperties:
+Alternativly, modify the card's `vCardProperties`:
 
 ```javascript
 newCard.vCardProperties.addValue("email","lazy@inter.net");
@@ -357,7 +357,7 @@ addrbook.modifyCard(newCard);
 {% hint style="warning" %}
 After an `AddrBookCard` has been created, its `vCardProperties` object is populated on first access from the cards `_vCard` string property. While saving the card, its `_vCard` string property is re-generated from its `vCardProperties`.&#x20;
 
-This effectivly means that **all changes to the** `_vCard` **string property** after its **** `vCardProperties` **object** has been used, **are ignored.**
+This effectivly means that all changes to the `_vCard` string property after its `vCardProperties` object has been used, are ignored.
 {% endhint %}
 
 #### Convert between key/value pairs and vCard

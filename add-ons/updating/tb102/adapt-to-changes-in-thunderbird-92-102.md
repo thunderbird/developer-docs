@@ -290,11 +290,104 @@ let notification = notificationbox.appendNotification(
 notification.messageImage.src = imageUrl;
 ```
 
+### nsIAbCard
+
+The interface itself has not changed much, but contact details are handled differently now. Instead of storing the individual contact details as key/value property pairs, they are now stored as a vCard string in the `_vCard` property. The interface has gained two new members:
+
+* `supportsVCard` a boolean value indicating support for vCard (or lack thereof).&#x20;
+* `vCardProperties` is a `VCardProperties` object if the card supports vCard, or null
+
+All former standard contact properties (now referred to as [banished properties](https://searchfox.org/comm-central/rev/04aca864bfedc60a0318ea5b3f546186a69246d6/mailnews/addrbook/modules/VCardUtils.jsm#293-335)) are migrated into the vCard string and can no longer be updated directly via `card.setProperty()`. A limited set of banished properties can still be read from: `DisplayName`, `FirstName`, `LastName`, `PrimaryEmail`, `SecondEmail`, and `NickName`.
+
+#### Creating a new card
+
+The new `AddrBookCard` object is a wrapper for `nsIAbCard` to enable support for vCards. To create a new card no longer create a `nsIAbCard`:
+
+```javascript
+let card = Cc["@mozilla.org/addressbook/cardproperty;1"].createInstance(
+    Ci.nsIAbCard
+);
+card.setProperty("DisplayName", "Default User");
+card.setProperty("PrimareEmail", "user@inter.net");
+addrbook.addCard(card);
+```
+
+Instead, create an `AddrBookCard`:
+
+```javascript
+const { XPCOMUtils } = ChromeUtils.import(
+  "resource://gre/modules/XPCOMUtils.jsm"
+);
+XPCOMUtils.defineLazyModuleGetters(this, {
+  AddrBookCard: "resource:///modules/AddrBookCard.jsm",
+  VCardProperties: "resource:///modules/VCardUtils.jsm",
+  VCardPropertyEntry: "resource:///modules/VCardUtils.jsm",
+});
+
+// Create a new card from a vCard.
+let newCard = new AddrBookCard();
+// The card automatically gets a UID and any UID specified in
+// the vCard string is ignored. Set card.UID to enforce a 
+// specifc UID.
+newCard.UID = "85bb505a-2ac0-4bad-be9b-be07d0333255";
+newCard.setProperty("_vCard", "BEGIN:VCARD\r\nVERSION:4.0\r\nFN:Default User\r\nEMAIL:user@inter.net\r\nEND:VCARD\r\n");
+addrbook.addCard(newCard);
+```
+
+#### Modifying an existing card
+
+To update a card, create a new AddrBookCard from a different vCard and use the same UID:
+
+```javascript
+let updatedCard = new AddrBookCard();
+updatedCard.UID = newCard.UID;
+card.setProperty("_vCard", "BEGIN:VCARD\r\nVERSION:4.0\r\nFN:Admin User\r\nEMAIL:admin@inter.net\r\nEND:VCARD\r\n");
+addrbook.modifyCard(newCard);
+```
+
+Alternativly, modify the vCardProperties:
+
+```javascript
+newCard.vCardProperties.addValue("email","lazy@inter.net");
+newCard.vCardProperties.removeValue("email","admin@inter.net");
+newCard.vCardProperties.getFirstEntry("fn").value = "Lazy User";
+addrbook.modifyCard(newCard);
+```
+
+{% hint style="warning" %}
+After an `AddrBookCard` has been created, its `vCardProperties` object is populated on first access from the cards `_vCard` string property. While saving the card, its `_vCard` string property is re-generated from its `vCardProperties`.&#x20;
+
+This effectivly means that **all changes to the** `_vCard` **string property** after its **** `vCardProperties` **object** has been used, **are ignored.**
+{% endhint %}
+
+#### Convert between key/value pairs and vCard
+
+[VCardUtils.jsm](https://searchfox.org/comm-central/source/mailnews/addrbook/modules/VCardUtils.jsm) contains a number of utility functions for converting between the storage types:
+
+```javascript
+// Convert a vCard string into a key/value property Map. Not all details stored
+// in the card will be available. Data loss is inevitable.
+let vCardProperties = VCardProperties.fromVCard(vCardString);
+let propertyMap = vCardProperties.toPropertyMap();
+
+propertyMap.set("Notes", "This is a note");
+
+// Convert the updated property Map back into a vCard.
+let vCardPropertiesUpdated = VCardProperties.fromPropertyMap(propertyMap);
+let vCardStringUpdated = vCardProperties.toVCard();
+```
+
+Read more about the address book implementation in Thunderbirds core documentation:
+
+{% content-ref url="../../../thunderbird-development/codebase-overview/address-book.md" %}
+[address-book.md](../../../thunderbird-development/codebase-overview/address-book.md)
+{% endcontent-ref %}
+
 ### nsICollationFactory
 
 Has been removed in Thunderbird 93. One of its use case was to compare locale strings. You can replace the following:
 
-```
+```javascript
 function localeCompare(a, b) { 
   var collator = Cc["@mozilla.org/intl/collation-factory;1"]
     .getService(Components.interfaces.nsICollationFactory)
@@ -305,7 +398,7 @@ function localeCompare(a, b) {
 
 by
 
-```
+```javascript
 function localeCompare(a, b) { 
   return a.localeCompare(b);
 }
@@ -319,7 +412,7 @@ Has been renamed to `nsIMsgCompSendFormat.Auto` in Thunderbird 101.
 
 The parameters of this listener have been changed in Thunderbird 102. The header messageId has been added:
 
-```
+```javascript
 nsIMsgSendListener.onGetDraftFolderURI(aMsgId, aFolderURI)
 ```
 

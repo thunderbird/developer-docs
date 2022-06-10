@@ -404,6 +404,26 @@ function localeCompare(a, b) {
 }
 ```
 
+### nsIFolderListener
+
+Its generic callback functions have been renamed from `onItem*()` to `onFolder*()` in Thunderbird 94. Where needed, dedicated `onMessage*()` callback functions have been added:
+
+* OnItemAdded(in nsIMsgFolder aParentItem, in nsISupports aItem)\
+  \-> _onFolderAdded(in nsIMsgFolder parent, in nsIMsgFolder child)_\
+  \-> _onMessageAdded(in nsIMsgFolder parent, in nsIMsgDBHdr msg)_
+* OnItemRemoved(in nsIMsgFolder aParentItem, in nsISupports aItem)\
+  \-> _onFolderRemoved(in nsIMsgFolder parent, in nsIMsgFolder child)_\
+  \-> _onMessageRemoved(in nsIMsgFolder parent, in nsIMsgDBHdr msg)_
+
+The following callback functions were renamed without changing their parameters:
+
+* OnItemEvent -> _onFolderEvent_
+* OnItemPropertyChanged -> _onFolderPropertyChanged_
+* OnItemIntPropertyChanged -> _onFolderIntPropertyChanged_
+* OnItemBoolPropertyChanged -> _onFolderBoolPropertyChanged_
+* OnItemUnicharPropertyChanged -> _onFolderUnicharPropertyChanged_
+* OnItemPropertyFlagChanged -> _onFolderPropertyFlagChanged_
+
 ### nsIMsgCompSendFormat.AskUser
 
 Has been renamed to `nsIMsgCompSendFormat.Auto` in Thunderbird 101.

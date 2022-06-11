@@ -326,11 +326,11 @@ XPCOMUtils.defineLazyModuleGetters(this, {
 
 // Create a new card from a vCard.
 let newCard = new AddrBookCard();
-newCard.setProperty("_vCard", "BEGIN:VCARD\r\nVERSION:4.0\r\nFN:Default User\r\nEMAIL:user@inter.net\r\nEND:VCARD\r\n");
+newCard.setProperty("_vCard", "BEGIN:VCARD\r\nVERSION:4.0\r\nFN:Default User\r\nUID:123456\r\nEMAIL:user@inter.net\r\nEND:VCARD\r\n");
 // When a card is saved, a UID which might have been set in the _vCard string
 // is ignored. The UID of the card is the one specified in its UID member. If
-// it is not set, a new UID will be generated. Use the vCardProperties object
-// to access the parsed UID and manually update the cards UID.
+// it is not set, a new UID will be generated. Use its vCardProperties object
+// to access the parsed UID and manually update the card's UID.
 let uid = newCard.vCardProperties.getFirstValue("uid");
 if (uid) {
   newCard.UID = uid;
@@ -340,7 +340,7 @@ addrbook.addCard(newCard);
 
 #### Modifying an existing card
 
-To update a card, create a new `AddrBookCard` from a different vCard string, using the same UID:
+To update a card, create a new `AddrBookCard` from the updated vCard string and enforce the same UID:
 
 ```javascript
 let updatedCard = new AddrBookCard();

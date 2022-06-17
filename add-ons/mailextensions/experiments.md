@@ -3,6 +3,10 @@
 This document aggregates information on topics that commonly arise when developing a new Experiment. For a complete documentation on each individual topic, refer to the linked articles.
 
 {% hint style="info" %}
+Since Experiments directly interact with Thunderbird's core functions, it is necessary to get used to the source code of Thunderbird itself. We gathered the most useful resources on the [Documentation & Resources](../resources.md#legacy-extension-development) page.
+{% endhint %}
+
+{% hint style="info" %}
 Thunderbird does contain a few useful features related to Experiments [whose documentation is no longer generated](https://bugzilla.mozilla.org/show\_bug.cgi?id=1556460#c23). Especially if you're writing an Experiment with complex interactions between the WebExtension and your Experiment, it may be helpful to read the documentation blocks within [`resource://gre/modules/ExtensionCommon.jsm`](https://hg.mozilla.org/mozilla-central/file/tip/toolkit/components/extensions/ExtensionCommon.jsm) and possibly other modules in the same source code folder.
 {% endhint %}
 

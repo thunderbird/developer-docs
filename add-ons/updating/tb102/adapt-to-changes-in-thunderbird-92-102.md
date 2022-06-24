@@ -437,7 +437,23 @@ A few members and methods have been removed without replacement:
 
 Instead of `printToFile`, use [`outputDestination`](https://searchfox.org/mozilla-central/rev/3419858c997f422e3e70020a46baae7f0ec6dacc/widget/nsIPrintSettings.idl#291) with a value from [`OutputDestinationType`](https://searchfox.org/mozilla-central/rev/3419858c997f422e3e70020a46baae7f0ec6dacc/widget/nsIPrintSettings.idl#93).
 
-## Changed JSM files
+## Changed Core Functions
+
+### OpenMessageInNewTab
+
+The parameters of this function have changed: It is now possible to specify, which msgHdr is to be displayed. To open the currently selected message, update your usage from
+
+```
+OpenMessageInNewTab(event);
+```
+
+to
+
+```
+OpenMessageInNewTab(gFolderDisplay.selectedMessage, { event });
+```
+
+## Changed JSM Files
 
 ### folderUtils.jsm
 

@@ -75,7 +75,7 @@ let bundle = Services.strings.createBundle(
 );
 ```
 
-The  method to retrieve strings from the created bundle is slightly different, instead of `getString()` use `GetStringFromName()` .
+The method to retrieve strings from the created bundle is slightly different, instead of `getString()` use `GetStringFromName()` .
 
 ## Changed API
 
@@ -273,7 +273,7 @@ notification.messageImage.src = imageUrl;
 
 The interface itself has not changed much, but contact details are handled differently now. Instead of storing the individual contact details as key/value pairs, they are now stored as a vCard string in the `_vCard` property. The interface has gained two new members:
 
-* `supportsVCard` a boolean value indicating support for vCard (or lack thereof).&#x20;
+* `supportsVCard` a boolean value indicating support for vCard (or lack thereof).
 * `vCardProperties` is a `VCardProperties` object if the card supports vCard, or null
 
 All former standard contact properties (now referred to as [banished properties](https://searchfox.org/comm-central/rev/04aca864bfedc60a0318ea5b3f546186a69246d6/mailnews/addrbook/modules/VCardUtils.jsm#293-335)) are migrated into the vCard string and can no longer be updated directly via `card.setProperty()`. A limited set of banished properties can still be read from: `DisplayName`, `FirstName`, `LastName`, `PrimaryEmail`, `SecondEmail`, and `NickName`.
@@ -338,7 +338,7 @@ addrbook.modifyCard(newCard);
 ```
 
 {% hint style="warning" %}
-After an `AddrBookCard` has been created, its `vCardProperties` object is populated on first access from the cards `_vCard` string property. While saving the card, its `_vCard` string property is re-generated from its `vCardProperties`.&#x20;
+After an `AddrBookCard` has been created, its `vCardProperties` object is populated on first access from the cards `_vCard` string property. While saving the card, its `_vCard` string property is re-generated from its `vCardProperties`.
 
 This effectivly means that all changes to the `_vCard` string property after its `vCardProperties` object has been used, are ignored.
 {% endhint %}
@@ -387,6 +387,10 @@ function localeCompare(a, b) {
 }
 ```
 
+### nsIFileProtocolHandler
+
+The method `getURLSpecFromFile` has been replaced by `getURLSpecFromActualFile` and `getURLSpecFromDir` in Thunderbird 92. Use the variant which fits your `file` object.
+
 ### nsIFolderListener
 
 Its generic callback functions have been renamed from `onItem*()` to `onFolder*()` in Thunderbird 94. Where needed, dedicated `onMessage*()` callback functions have been added:
@@ -428,7 +432,7 @@ A few members and methods have been removed without replacement:
 * `isPrintSelectionRBEnabled`
 * `isCancelled`
 * `saveOnCancel`
-* `showPrintProgress`&#x20;
+* `showPrintProgress`
 * `SetupSilentPrinting()`
 
 Instead of `printToFile`, use [`outputDestination`](https://searchfox.org/mozilla-central/rev/3419858c997f422e3e70020a46baae7f0ec6dacc/widget/nsIPrintSettings.idl#291) with a value from [`OutputDestinationType`](https://searchfox.org/mozilla-central/rev/3419858c997f422e3e70020a46baae7f0ec6dacc/widget/nsIPrintSettings.idl#93).

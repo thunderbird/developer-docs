@@ -436,3 +436,32 @@ A few members and methods have been removed without replacement:
 * `SetupSilentPrinting()`
 
 Instead of `printToFile`, use [`outputDestination`](https://searchfox.org/mozilla-central/rev/3419858c997f422e3e70020a46baae7f0ec6dacc/widget/nsIPrintSettings.idl#291) with a value from [`OutputDestinationType`](https://searchfox.org/mozilla-central/rev/3419858c997f422e3e70020a46baae7f0ec6dacc/widget/nsIPrintSettings.idl#93).
+
+## Changed JSM files
+
+### folderUtils.jsm
+
+Since Thunderbird 97, the JSM no longer exports a set of functions but a single object. The file has also been renamed from `folderUtils.jsm` to `FolderUtils.jsm`. Replace this former usage:
+
+```
+var { 
+  getFolderProperties,
+  allAccountsSorted,
+  getMostRecentFolders,
+  folderNameCompare 
+} = ChromeUtils.import("resource:///modules/folderUtils.jsm");
+```
+
+by
+
+```
+var { FolderUtils } = ChromeUtils.import("resource:///modules/FolderUtils.jsm");
+var {
+  getFolderProperties,
+  allAccountsSorted,
+  getMostRecentFolders,
+  folderNameCompare,
+} = FolderUtils;
+```
+
+or use the FolderUtils namespace to access its functions.

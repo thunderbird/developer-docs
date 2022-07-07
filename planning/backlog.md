@@ -146,7 +146,7 @@ Below is a listing of maintenance and feature work wanted for Thunderbird that i
 
 ## Localization
 
-For localization Firefox is moving ([https://arewefluentyet.com/](https://arewefluentyet.com)) to Fluent, and Thunderbird should follow.\
+For localization Firefox is moving ([https://arewefluentyet.com/](https://arewefluentyet.com/)) to Fluent, and Thunderbird should follow.\
 
 
 Firefox has officially deprecated the old style localization system since October 2019. Thunderbird should do the same: i.e. adding/changing strings only allowed for Fluent strings, with properties/dtd files basically freezed.\

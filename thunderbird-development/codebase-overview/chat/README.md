@@ -25,7 +25,7 @@ This is a list of the available keyboard shortcuts with brief descriptions of wh
 
 #### [Message Styles](message-styles.md)
 
-Chat Core uses a message style system based on HTML, JS and CSS that is very similar to the one created for [Adium](https://adium.im).  If you plan to create a message style, reading the Adium documentation on the topic may be helpful -- see this [tutorial](https://web.archive.org/web/20160408094746/https://trac.adium.im/wiki/CreatingMessageStyles/Tutorial) and this [reference sheet](https://web.archive.org/web/20160715205801/https://trac.adium.im/wiki/CreatingMessageStyles).
+Chat Core uses a message style system based on HTML, JS and CSS that is very similar to the one created for [Adium](https://adium.im/).  If you plan to create a message style, reading the Adium documentation on the topic may be helpful -- see this [tutorial](https://web.archive.org/web/20160408094746/https://trac.adium.im/wiki/CreatingMessageStyles/Tutorial) and this [reference sheet](https://web.archive.org/web/20160715205801/https://trac.adium.im/wiki/CreatingMessageStyles).
 
 #### [Notifications](notifications.md)
 

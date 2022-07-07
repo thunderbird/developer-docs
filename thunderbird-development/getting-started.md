@@ -14,7 +14,7 @@ Thunderbird is built on the Mozilla platform, the same base that Firefox is buil
 
 ### Mercurial Version Control
 
-Mozilla uses the [Mercurial version control](https://www.mercurial-scm.org) software to propose, review, incorporate, and log changes to its code. In order to contribute to Thunderbird, you will need to be able to use this software.
+Mozilla uses the [Mercurial version control](https://www.mercurial-scm.org/) software to propose, review, incorporate, and log changes to its code. In order to contribute to Thunderbird, you will need to be able to use this software.
 
 Information for how to install Mercurial is available [via the download page on their wiki](https://www.mercurial-scm.org/wiki/Download).
 

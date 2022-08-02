@@ -11,6 +11,7 @@
   * [macOS Build Prerequisites](thunderbird-development/building-thunderbird/macos-build-prerequisites.md)
   * [Artifact Builds](thunderbird-development/building-thunderbird/artifact-builds.md)
 * [Codebase Overview](thunderbird-development/codebase-overview/README.md)
+  * [Account Configuration](thunderbird-development/codebase-overview/account-configuration.md)
   * [Address Book](thunderbird-development/codebase-overview/address-book.md)
   * [Chat Core](thunderbird-development/codebase-overview/chat/README.md)
     * [Notifications](thunderbird-development/codebase-overview/chat/notifications.md)

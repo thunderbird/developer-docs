@@ -44,7 +44,7 @@ All identities can be found at `MailServices.accounts.allIdentities`. To get a p
 
 ## SMTP
 
-SMTP breaks some of the pattern you might've noticed in the previous classes. The SMTP service, `MailServices.smtp` or `mozilla::Components::SMTP::Service()`, implements [`nsISmtpService`](https://searchfox.org/comm-central/source/mailnews/compose/public/nsISmtpService.idl) as [`SmtpService`](https://searchfox.org/comm-central/source/mailnews/compose/src/SmtpService.jsm).
+SMTP breaks some of the pattern you might've noticed in the previous classes. The SMTP service, `MailServices.smtp` or `mozilla::Components::Smtp::Service()`, implements [`nsISmtpService`](https://searchfox.org/comm-central/source/mailnews/compose/public/nsISmtpService.idl) as [`SmtpService`](https://searchfox.org/comm-central/source/mailnews/compose/src/SmtpService.jsm).
 
 SMTP server configuration is kept by objects implementing [`nsISmtpServer`](https://searchfox.org/comm-central/source/mailnews/compose/public/nsISmtpServer.idl) as [`SmtpServer`](https://searchfox.org/comm-central/source/mailnews/compose/src/SmtpServer.jsm). They also are identified by a `key` property, which is the word `smtp` and then a number. Preferences for an account have the prefix `mail.smtpserver.smtpX` .
 

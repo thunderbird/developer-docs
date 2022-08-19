@@ -78,6 +78,12 @@ Be sure your commit message is clear and has been approved during review. The st
 
 Take a look at the [TreeHerder](https://treeherder.mozilla.org/#/jobs?repo=comm-central) to see your push show up at the top of the list.
 
+{% hint style="warning" %}
+If your patch is faulty (i.e. it breaks the build or fails tests), it may be backed out without any warning. It's up to you to fix it.
+
+The tree is monitored for failures by a team of people and although they are nice people they are not expected to tolerate your broken patch. A tree without failures is much easier to work with for everybody concerned.
+{% endhint %}
+
 ### Commit message magic words
 
 Adding some magic words to the commit message of the tip-most revision will cause the build system to do different things. Getting it wrong or making a typo will not get the desired result.
@@ -115,12 +121,6 @@ To land several patches together, create a "stack" of patches by using the "Edit
 If you worded your commit message correctly, a bot will post a message in your bug with a link to the changes you made, and close the bug. To prevent the bot from closing a bug, add the `leave-open` keyword to the bug before landing. The bot will automatically remove the `checkin-needed-tb` flag if it is set.
 
 At this point you should set the Target Milestone field in the bug to the current version, which is generally, but not always, the last option for that field.
-
-{% hint style="warning" %}
-If your patch is faulty (i.e. it breaks the build or fails tests), it may be backed out without any warning. It's up to you to fix it.
-
-The tree is monitored for failures by a team of people and although they are nice people they are not expected to tolerate your broken patch. A tree without failures is much easier to work with for everybody concerned.
-{% endhint %}
 
 ## Landing a patch on beta or ESR
 

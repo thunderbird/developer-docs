@@ -24,7 +24,19 @@ You can of course [access the repository via HTTP](https://hg.mozilla.org/try-co
 
 ## Pushing to Try
 
-Having gained level 1 access and configured Mercurial, you can push to Try. In general, it's just a matter of applying your patch(es) and running `hg push -r . try`.
+Having gained level 1 access and configured Mercurial, you can push to Try. In general, it's just a matter of applying your patch(es) and running `hg push -r . try` if you're planning to manually trigger tasks from the **Taskcluster** web interface.
+
+For pushes via the command line, we recommend using the `push-to-try` extensions in order to simplify the commands required to automatically trigger jobs and tasks on the try server.
+
+An example of a command to trigger all _mochitest_ jobs for an artifact build will look like this:
+
+{% code overflow="wrap" lineNumbers="true" %}
+```bash
+hg push-to-try -s ssh://hg.mozilla.org/try-comm-central -m "try: -b o -p all -u mochitest --artifact"
+```
+{% endcode %}
+
+Read the full list of [try syntax commands](try-server.md#try-syntax) to write in your commit message.
 
 {% hint style="warning" %}
 Pushing to try-comm-central will create builds using the **most recent** mozilla-central code, which may or may not be a good idea at the time. Generally it's okay, but there may be unresolved problems between the two repositories. If you strike a problem, ask in the [#maildev Matrix chat room](https://chat.mozilla.org/#/room/#maildev:mozilla.org).\

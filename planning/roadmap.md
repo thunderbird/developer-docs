@@ -1,14 +1,14 @@
 ---
-description: Planned work for the 114 (2023) release of Thunderbird.
+description: Planned work for the 115 (2023) release of Thunderbird.
 ---
 
 # Roadmap
 
-Below are the large projects planned for the 114 (2023) release of Thunderbird.
+Below are the large projects planned for the 115 (2023) release of Thunderbird.
 
 ## Firefox Sync
 
-![Accounts and syncing options in 114.](<../.gitbook/assets/User recognition - Donor care.png>)
+![Accounts and syncing options in 115.](<../.gitbook/assets/User recognition - Donor care.png>)
 
 #### Expected Delivery: Q4 2022
 
@@ -24,7 +24,7 @@ A single, reusable, global toolbar that is present throughout the app and acts a
 
 ## **App Menu**
 
-![The expanded app menu in 114.](../.gitbook/assets/account\_mail\_tab.png)
+![The expanded app menu in 115.](../.gitbook/assets/account\_mail\_tab.png)
 
 **Expected Delivery: Q3 2022**
 
@@ -78,7 +78,7 @@ Link Preview Card tracking bug.
 
 ![The new Account Setup Hub](../.gitbook/assets/account-setup.png)
 
-When setting up an email, autodiscovery of calendars and address books works really well! But managing accounts and setting up after the first time has lagged. We are updating that experience in 114 with a centralized place to set up accounts, with a consistent experience regardless of when you bring a new account into Thunderbird.
+When setting up an email, autodiscovery of calendars and address books works really well! But managing accounts and setting up after the first time has lagged. We are updating that experience in 115 with a centralized place to set up accounts, with a consistent experience regardless of when you bring a new account into Thunderbird.
 
 {% embed url="https://bugzilla.mozilla.org/show_bug.cgi?id=1664179" %}
 Account setup hub tracking bug.

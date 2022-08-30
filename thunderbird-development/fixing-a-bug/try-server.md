@@ -8,7 +8,20 @@ Thunderbird's Try server is often referred to as "try-comm-central", or "try-cc"
 
 ## Getting access to the Try Server
 
-To use the try server, you'll need [Level 1 Commit Access](http://www.mozilla.org/hacking/commit-access-policy/). You can learn more about Mozilla's commit access policies and start the process of signing up for an account here: [Becoming a Mozilla Contributor](http://www.mozilla.org/hacking/committer/)
+To use the try server, you'll need [Level 1 Commit Access](http://www.mozilla.org/hacking/commit-access-policy/). You can learn more about Mozilla's commit access policies and start the process of signing up for an account here: [Becoming a Mozilla Contributor](http://www.mozilla.org/hacking/committer/).
+
+### Configure your SSH Host
+
+You need to make sure your `~/.ssh/config` is properly configured to use the correct SSH username for the Mozilla Mercurial repository.
+
+Your SSH config file should have something like this:
+
+```bash
+Host hg.mozilla.org
+  User nemo@thunderbird.net
+```
+
+Your **User** should match the SSH username that has been grante [Level 1 Commit Access](http://www.mozilla.org/hacking/commit-access-policy/).
 
 ## Adding Try to your Mercurial configuration
 

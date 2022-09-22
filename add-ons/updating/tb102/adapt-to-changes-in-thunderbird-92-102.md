@@ -237,6 +237,24 @@ var { myModule } = ChromeUtils.import(extension.rootURI.resolve("myModule.jsm"))
 
 It is now mandatory to register an internal URL, for example a `resource://` URL. We have created the [ResourceUrl Experiment API](https://github.com/thundernest/addon-developer-support/tree/master/auxiliary-apis/ResourceUrl), which is doing the heavy lifting. It is used by our [Experiment API example](https://github.com/thundernest/sample-extensions/tree/master/experiment).
 
+### DisplayNameUtils.getCardForEmail()
+
+This method has been removed in 102.3.0. Replace its former usage
+
+```javascript
+let cardDetails = DisplayNameUtils.getCardForEmail(emailAddress);
+```
+
+by
+
+```javascript
+let card = MailServices.ab.cardForEmailAddress(emailAddress);
+let cardDetails = {
+  card,
+  book: card ? MailServices.ab.getDirectoryFromUID(card.directoryUID) : null,
+a};
+```
+
 ### `NotificationBox.appendNotification()`
 
 The parameters have [changed](https://searchfox.org/mozilla-central/rev/f8576fec48d866c5f988baaf1fa8d2f8cce2a82f/toolkit/content/widgets/notificationbox.js#78-149) in Thunderbird 94. Most former properties have moved into an object. Replace this

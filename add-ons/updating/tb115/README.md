@@ -10,8 +10,6 @@ This section covers the required update steps for add-ons which are already comp
 
 Our WebExtension APIs are meant to be stable, but we are adding new features and since this is a very young technology this might also require backward incompatible changes. All WebExtension API changes are listed in our API documentation:
 
-* [Thunderbird 103](https://webextension-api.thunderbird.net/en/latest/changes/beta103.html)
-* [Thunderbird 104](https://webextension-api.thunderbird.net/en/latest/changes/beta104.html)
 * [Thunderbird 106](https://webextension-api.thunderbird.net/en/latest/changes/beta106.html)
 * [Thunderbird 107](https://webextension-api.thunderbird.net/en/latest/changes/beta107.html)
 

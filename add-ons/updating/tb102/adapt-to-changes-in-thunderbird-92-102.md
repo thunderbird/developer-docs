@@ -447,13 +447,25 @@ The new parameter has been added at the first position to[ match all the other l
 
 A few members and methods have been removed without replacement:
 
-* `isPrintSelectionRBEnabled`
+* `isPrintSelectionRBEnabled` (see alternative described in the following section)
 * `isCancelled`
 * `saveOnCancel`
 * `showPrintProgress`
 * `SetupSilentPrinting()`
 
 Instead of `printToFile`, use [`outputDestination`](https://searchfox.org/mozilla-central/rev/3419858c997f422e3e70020a46baae7f0ec6dacc/widget/nsIPrintSettings.idl#291) with a value from [`OutputDestinationType`](https://searchfox.org/mozilla-central/rev/3419858c997f422e3e70020a46baae7f0ec6dacc/widget/nsIPrintSettings.idl#93).
+
+### nsIPrintingPromptService.\*
+
+Has been replaced by `nsIPrintDialogService.*`.&#x20;
+
+The function `showPrintDialog()` has also been updated to accept a new parameter to indicate if the entire document or just the current selection should be printed (replacement for the removed `nsIPrintSettings.isPrintSelectionRBEnabled`).
+
+```javascript
+await Cc["@mozilla.org/widget/printdialog-service;1"]
+ .getService(Ci.nsIPrintDialogService)
+ .showPrintDialog(window, selectionOnly, printingSettings);
+```
 
 ## Changed Core Functions
 

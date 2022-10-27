@@ -4,36 +4,15 @@ description: How to build and run Thunderbird.
 
 # Building Thunderbird
 
-## Hardware Requirements
+## Prerequisites
 
-* At least **4 GB of RAM**. 8 GB or more is recommended. While you can build Thunderbird on older hardware it can take quite a bit of time to compile on slower machines with less RAM.
-* Good internet connection for the initial source download.
+Ensure that your [Prerequisites for the build](thunderbird-development/prerequisites-build/README.md) are met.
 
-## Build Prerequisites
+You should have done the following:
 
-Depending on your Operating System you will need to carry out a different process to prepare your machine. So firstly complete the instructions for your OS and then continue following these build instructions.
-
-* [Windows Build Prerequisites](windows-build-prerequisites.md)
-* [Linux Build Prerequisites](linux-build-prerequisites.md)
-* [macOS Build Prerequisites](macos-build-prerequisites.md)
-
-## Build Configuration
-
-To build Thunderbird, you need to create a file named `mozconfig` to the root directory of the mozilla-central checkout that contains the option `comm/mail` enabled. You can create a file with this line by doing this in the `source/` directory:
-
-```
-echo 'ac_add_options --enable-application=comm/mail' > mozconfig
-```
-
-**If you omit this lines, the build system will build Firefox instead**. Other build configuration options can be added to this file, although it's **strongly recommended** that you only use options that you fully understand. For example, to create a debug build instead of a release build, that file would also contain the line:
-
-```
-echo 'ac_add_options --enable-debug' >> mozconfig
-```
-
-_Each of these ac\_add\_options entries needs to be on its own line._
-
-For more on configuration options, see the page [Configuring build options](https://developer.mozilla.org/en/Configuring\_Build\_Options). Note that if you use an MOZ\_OBJDIR it cannot be a sibling folder to your source directory. Use an absolute path to be sure!
+* Installed tools for ./mach bootstrap depending on your OS
+* Finished ./mach bootstrap in `Firefox for Desktop` mode
+* The [Build Configuration](thunderbird-development/prerequisites-build/README.md) in a seperate `source/mozconfig` file so that Thunderbird is build and not Firefox
 
 ## Building
 
@@ -41,19 +20,19 @@ For more on configuration options, see the page [Configuring build options](http
 Before you start, make sure that the version you checked out is not busted. For `hg` tip, you should see green Bs on [https://treeherder.mozilla.org/#/jobs?repo=comm-central](https://treeherder.mozilla.org/#/jobs?repo=comm-central)
 {% endhint %}
 
-After you met the [build prerequisites](./#build-prerequisites) for your OS the build is started in the `source` directory with:
+The build is started in the `source` directory with:
 
 ```
 ./mach build
 ```
 
-mach is our command-line tool to streamline common developer tasks. See the [mach](https://developer.mozilla.org/en-US/docs/Mozilla/Developer\_guide/mach) article for more.
+mach is our command-line tool to streamline common developer tasks. See the [mach](https://firefox-source-docs.mozilla.org/mach/index.html) article for more.
 
 Building can take a significant amount of time, depending on your system, OS, and chosen build options. Linux builds on a fast box may take under _15 minutes_, but Windows builds on a slow box may take _several hours_.
 
 ### Make Your Build Faster
 
-Follow this guide to rely on [sccache](https://firefox-source-docs.mozilla.org/setup/configuring\_build\_options.html?highlight=sccache#sccache) and other [Tips for making builds faster](https://firefox-source-docs.mozilla.org/build/buildsystem/slow.html#why-the-build-system-is-slow).
+Follow this guide to rely on [sccache](https://firefox-source-docs.mozilla.org/setup/configuring_build_options.html#sccache) and other [Tips for making builds faster](https://firefox-source-docs.mozilla.org/build/buildsystem/slow.html).
 
 ## Running Thunderbird
 

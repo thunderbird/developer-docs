@@ -129,14 +129,16 @@ Here is a `manifest.json` from a Theme that uses all the above features, thanks 
 
 Dynamic themes are actually normal MailExtensions, that use the [`update()`](https://webextension-api.thunderbird.net/en/latest/theme.html#update-windowid-details) method of the [`theme`](https://webextension-api.thunderbird.net/en/latest/theme.html#theme) API instead of a static [`theme`](https://webextension-api.thunderbird.net/en/latest/theme.html) manifest key. They can set the same theme properties like static themes, but they can change them dynamically. For instance the [Night and Day theme](https://addons.thunderbird.net/addon/night-and-day-dynamic/) is a dynamic theme that changes the theme colors based on the time of day.
 
-{% page-ref page="mailextensions/" %}
+{% content-ref url="mailextensions/" %}
+[mailextensions](mailextensions/)
+{% endcontent-ref %}
 
 ## Theming message-compose-windows and message-display-tabs
 
 The built-in theming properties do not modify the message-compose-windows and the message-display-tabs. These can be manipulated by injecting CSS files using the following WebExtension API methods:
 
-* [messageDisplayScripts.register\(\)](https://webextension-api.thunderbird.net/en/latest/messageDisplayScripts.html#register-messagedisplayscriptoptions)
-* [composeScripts.register\(\)](https://webextension-api.thunderbird.net/en/latest/composeScripts.html#register-composescriptoptions)
+* [messageDisplayScripts.register()](https://webextension-api.thunderbird.net/en/latest/messageDisplayScripts.html#register-messagedisplayscriptoptions)
+* [composeScripts.register()](https://webextension-api.thunderbird.net/en/latest/composeScripts.html#register-composescriptoptions)
 
 To inject the file `compose.css` into the message-compose-window, register it in your background script as follows:
 
@@ -150,7 +152,7 @@ messenger.composeScripts.register({
 
 A theme experiment allows modifying the user interface of Thunderbird beyond what is currently possible using the built-in color, image and property keys of the [`theme`](https://webextension-api.thunderbird.net/en/latest/theme.html) API. These experiments are a precursor to proposing new theme features for inclusion in Thunderbird. 
 
-Experimentation is done by exposing already existing internal CSS variables \(e.g. `--arrowpanel-dimmed`\) to the [`theme`](https://webextension-api.thunderbird.net/en/latest/theme.html) API and by loading additional stylesheets to define new CSS variables, extending the theme-able areas of Thunderbird.
+Experimentation is done by exposing already existing internal CSS variables (e.g.` --arrowpanel-dimmed`) to the [`theme`](https://webextension-api.thunderbird.net/en/latest/theme.html) API and by loading additional stylesheets to define new CSS variables, extending the theme-able areas of Thunderbird.
 
 Use the [browser toolbox](https://developer.mozilla.org/en-US/docs/Tools/Browser_Toolbox) to discover CSS selectors for Thunderbird UI elements or internal Thunderbird CSS variables.
 
@@ -161,6 +163,4 @@ Further information regarding theme experiments can be found in our [WebExtensio
 {% hint style="info" %}
 Our example repository includes an [add-on using a theme experiment](https://github.com/thundernest/sample-extensions/tree/master/theme_experiment) to change the color of the chat icon.
 {% endhint %}
-
-
 

@@ -27,7 +27,7 @@ Another helpful extension that `mach vcs-setup` does not configure for you is [m
 mozext = <home_dir>/.mozbuild/version-control-tools/hgext/mozext
 ```
 
-## Getting access to comm-central <a id="getting-access-to-the-try-server"></a>
+## Getting access to comm-central <a href="#getting-access-to-the-try-server" id="getting-access-to-the-try-server"></a>
 
 To push a patch to comm-central, you'll need [Level 3 Commit Access](http://www.mozilla.org/hacking/commit-access-policy/). You can learn more about Mozilla's commit access policies and start the process of signing up for an account here: [Becoming a Mozilla Contributor](http://www.mozilla.org/hacking/committer/)
 
@@ -45,31 +45,29 @@ In this example we used the label `live-cc` but you can use whatever you like. U
 
 You can of course [access the repository via HTTP](https://hg.mozilla.org/try-comm-central/), but not push to it, hence the ssh:// address.
 
-## Before pushing <a id="pushing-to-try"></a>
+## Before pushing <a href="#pushing-to-try" id="pushing-to-try"></a>
 
-**Is the tree open?** Check [TreeHerder](https://treeherder.mozilla.org/#/jobs?repo=comm-central) – the name of the tree in the top-left corner shows you the status of the tree. Usually it's "open" \(a green circle is displayed\), which means you can push. Other statuses are "approval required" \(yellow padlock\) and "closed" \(red X\) which mean you can't push without permission, and in fact the server will prevent you from doing so.
+**Is the tree open?** Check [TreeHerder](https://treeherder.mozilla.org/#/jobs?repo=comm-central) – the name of the tree in the top-left corner shows you the status of the tree. Usually it's "open" (a green circle is displayed), which means you can push. Other statuses are "approval required" (yellow padlock) and "closed" (red X) which mean you can't push without permission, and in fact the server will prevent you from doing so.
 
 **Is it a good time to push?** The best time to push is shortly after Mozilla updates the Firefox live server. Since Thunderbird builds on top of Firefox, pushing to live then will ensure that the build will get the latest changes.
 
-Mozilla usually updates the Firefox Live Server around **0400**, **1000**, **1600**, and **2200** **UTC** on weekdays and **1000 and 2200 UTC** on weekends \(give or take an hour\). If one of these times is approaching, it's probably not a good time to push. You can check [mozilla-central on TreeHerder](https://treeherder.mozilla.org/#/jobs?repo=mozilla-central) to see when they last pushed.
+Mozilla usually updates the Firefox Live Server around **0400**, **1000**, **1600**, and **2200** **UTC** on weekdays and **1000 and 2200 UTC** on weekends (give or take an hour). If one of these times is approaching, it's probably not a good time to push. You can check [mozilla-central on TreeHerder](https://treeherder.mozilla.org/#/jobs?repo=mozilla-central) to see when they last pushed.
 
 {% hint style="warning" %}
-Coordinate with others in the [\#maildev Matrix chat room](https://chat.mozilla.org/#/room/#maildev:mozilla.org) as they may already be planning to push. A Firefox push is usually followed by an assigned person landing something to check the build is not broken.
+Coordinate with others in the [#maildev Matrix chat room](https://chat.mozilla.org/#/room/#maildev:mozilla.org) as they may already be planning to push. A Firefox push is usually followed by an assigned person landing something to check the build is not broken.
 {% endhint %}
 
-**Is there a build in progress already?** If there is, please wait until you're reasonably sure the first build is not broken. In most cases this means that the Linux and OS X builds \(B\) are complete and tests \(bct, X\) are starting to turn green \(free from major failures\).
+**Is there a build in progress already?** If there is, please wait until you're reasonably sure the first build is not broken. In most cases this means that the Linux and OS X builds (B) are complete and tests (bct, X) are starting to turn green (free from major failures).
 
-**Is the tree green?** If it isn't, do not push. Pushing something on top of an already broken build wastes resources \(both computing and human\).
+**Is the tree green?** If it isn't, do not push. Pushing something on top of an already broken build wastes resources (both computing and human).
 
 {% hint style="warning" %}
-Pushing to comm-central will create builds using the **most recent** mozilla-central code, which may or may not be a good idea at the time. Generally it's okay, but there may be unresolved problems between the two repositories. If you strike a problem, ask for help in the [\#maildev Matrix chat room](https://chat.mozilla.org/#/room/#maildev:mozilla.org).
+Pushing to comm-central will create builds using the **most recent** mozilla-central code, which may or may not be a good idea at the time. Generally it's okay, but there may be unresolved problems between the two repositories. If you strike a problem, ask for help in the [#maildev Matrix chat room](https://chat.mozilla.org/#/room/#maildev:mozilla.org).
 {% endhint %}
 
+## Pushing to comm-central <a href="#pushing-to-try" id="pushing-to-try"></a>
 
-
-## Pushing to comm-central <a id="pushing-to-try"></a>
-
-Having gained level 3 access and configured Mercurial, you can push to comm-central. In general, it's just a matter of applying your patch\(es\) and running `hg push`, but let's not do that right now as a series of important checks need to happen before.
+Having gained level 3 access and configured Mercurial, you can push to comm-central. In general, it's just a matter of applying your patch(es) and running `hg push`, but let's not do that right now as a series of important checks need to happen before.
 
 {% hint style="danger" %}
 You should not push without having complete a successful push and build to the [Try Server](try-server.md).
@@ -84,22 +82,28 @@ Be sure your commit message is clear and has been approved during review. The st
 #### Mercurial Queues
 
 * Run `hg qpop -a` to clean your local queue.
-* Run `hg in` to check if there are updates on the live server. \(This isn't strictly necessary if you always do the next step.\)
+* Run `hg in` to check if there are updates on the live server. (This isn't strictly necessary if you always do the next step.)
 * Run `hg pull -u` to download and apply the most recent changes.
 * Reorder your queue and run `hg qpush` to apply only the patches you want to push to Live.
 * Run `hg qseries` to double check your have the right patches applied.
 * Run `hg qfinish --applied` to include all the currently applied patches in your local tree.
-* Run `hg out` to see a list of patches that will be pushed to the Live server. **Check your commit message\(s\) again.**
-* Run `hg push live-cc` \(or any shorthand you used in your `hgrc` file\) to push your applied patches to comm-central.
+* Run `hg out` to see a list of patches that will be pushed to the Live server. **Check your commit message(s) again.**
+* Run `hg push live-cc` (or any shorthand you used in your `hgrc` file) to push your applied patches to comm-central.
 
 #### Mercurial Bookmarks
 
 * Run `hg pull` to download and apply the most recent changes.
 * Run `hg rebase -b my-bookmark-name -d XXX` to rebase your patches. Replace the XXX with the latest public revision.
-* Run `hg out -r my-bookmark-name` to see a list of patches that will be pushed to the Live server. **Check only the patches you intend to send are listed. Check your commit message\(s\) again.**
+* Run `hg out -r my-bookmark-name` to see a list of patches that will be pushed to the Live server. **Check only the patches you intend to send are listed. Check your commit message(s) again.**
 * Run `hg push live-cc -r my-bookmark-name`to push your applied patches to comm-central. Always specify a bookmark or revision to avoid sending more than one branch.
 
 Take a look at the [TreeHerder](https://treeherder.mozilla.org/#/jobs?repo=comm-central) to see your push show up at the top of the list.
+
+{% hint style="warning" %}
+If your patch is faulty (i.e. it breaks the build or fails tests), it may be backed out without any warning. It's up to you to fix it.
+
+The tree is monitored for failures by a team of people and although they are nice people they are not expected to tolerate your broken patch. A tree without failures is much easier to work with for everybody concerned.
+{% endhint %}
 
 ### Commit message magic words
 
@@ -107,7 +111,7 @@ Adding some magic words to the commit message of the tip-most revision will caus
 
 * `DONTBUILD` tells the build system not to build on this push. Only the decision and linting tasks will happen, unless another process comes along and starts a build, such as the Daily automatic build.
 * `CLOSED TREE` allows you to push to a closed tree. I hope you have permission!
-* `a=approver` You must specify who approved the changes on some trees \(not comm-central\).
+* `a=approver` You must specify who approved the changes on some trees (not comm-central).
 
 ### Landing somebody else's patch
 
@@ -123,13 +127,13 @@ To import a patch or patches from Phabricator, use `moz-phab patch`: `moz-phab p
 
 * The `--apply-to` argument adds the patch to a specific parent revision, in this case the tip revision.
 * The `--no-bookmark` argument prevents a Mercurial bookmark from being created automatically. If you're just importing to land a patch, creating and then deleting a bookmark is just wasting your time.
-* The `--skip-dependencies` argument imports _only_ the patch in question. Otherwise `moz-phab` will attempt to import all parent and child revisions in the Phabricator stack, including revisions that may already exist on your tree \(and in this case fail miserably\). You may want this to happen, in which case don't use this argument.
+* The `--skip-dependencies` argument imports _only_ the patch in question. Otherwise `moz-phab` will attempt to import all parent and child revisions in the Phabricator stack, including revisions that may already exist on your tree (and in this case fail miserably). You may want this to happen, in which case don't use this argument.
 
 Use `hg commit --amend` or `hg histedit` to adjust commit messages as necessary.
 
 #### Using Lando
 
-Our Phabricator installation has a system for automatically landing patches: Lando. To use it click "View stack in Lando" and follow the instructions. A few minutes may pass before an actual landing attempt happens. If it fails \(usually because the patches do not apply cleanly\) you'll be notified by email and will have to find a solution.
+Our Phabricator installation has a system for automatically landing patches: Lando. To use it click "View stack in Lando" and follow the instructions. A few minutes may pass before an actual landing attempt happens. If it fails (usually because the patches do not apply cleanly) you'll be notified by email and will have to find a solution.
 
 To land several patches together, create a "stack" of patches by using the "Edit related revisions…" and section in Phabricator. This can get messy so plan in advance. Check the current stack of any revision in the "Revision Contents" section of Phabricator.
 

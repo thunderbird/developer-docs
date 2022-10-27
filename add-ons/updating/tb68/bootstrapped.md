@@ -2,7 +2,7 @@
 
 ## Switch to JSON manifest
 
-You _must_ switch from an RDF manifest \(`install.rdf`\) to a JSON manifest \(`manifest.json`\). Here is a basic example. This RDF manifest:
+You _must_ switch from an RDF manifest (`install.rdf`) to a JSON manifest (`manifest.json`). Here is a basic example. This RDF manifest:
 
 ```markup
 <?xml version="1.0" encoding="utf-8"?>
@@ -67,7 +67,7 @@ The URL for icons must no longer be full chrome URL as before, but a simple path
 The shown example also specifies an optional `options` key to define the options page. The key `open_in_tab`  is optional and defaults to a value of`false`. If your old RDF manifest included an `em:optionsType` of 3, you can set `open_in_tab` to `true`, to have your options opened again in a new tab instead of a new window.
 
 {% hint style="info" %}
-This example is only in English. You probably want to use translated strings in your manifest. Read [this MDN article about it](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Internationalization#Internationalizing_manifest.json). Unfortunately that means you now need two sets of translated strings, one \(that you already have\) for your extension and another for the manifest.
+This example is only in English. You probably want to use translated strings in your manifest. Read [this MDN article about it](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Internationalization#Internationalizing_manifest.json). Unfortunately that means you now need two sets of translated strings, one (that you already have) for your extension and another for the manifest.
 {% endhint %}
 
 ## Possible timing issues
@@ -75,9 +75,10 @@ This example is only in English. You probably want to use translated strings in 
 The changes made in Thunderbird for bootstrapped add-ons to use `manifest.json` may have changed when your code runs relative to events or notifications you've been listening for.
 
 * Use the window mediator or window watcher services to be notified about opening and closing windows, rather than listening for notifications.
-* Wherever you access a window, always check if it has been completely loaded \(`document.readyState == "complete"`\), or otherwise, wait for the load event.
+* Wherever you access a window, always check if it has been completely loaded\
+  (`document.readyState == "complete"`), or otherwise, wait for the load event.
 
-In the following example, `loadIntoWindow` is waiting for the window to be fully loaded and eventually calls `loadIntoWindowAfterWindowIsReady` to actually do something with it. There is no need to listen to any other load events outside of `loadIntoWindow`. This example also checks the state of already open windows during startup \(line 14\).
+In the following example, `loadIntoWindow` is waiting for the window to be fully loaded and eventually calls `loadIntoWindowAfterWindowIsReady` to actually do something with it. There is no need to listen to any other load events outside of `loadIntoWindow`. This example also checks the state of already open windows during startup (line 14).
 
 {% code title="bootstrap.js" %}
 ```javascript
@@ -173,4 +174,3 @@ var WindowListener = {
 {% endcode %}
 
 So you basically have to rename your current `loadIntoWindow` to `loadIntoWindowAfterWindowIsReady` and add the new asynchronous `loadIntoWindow` , to make sure to access the window only after it has been fully loaded.
-

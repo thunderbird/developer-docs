@@ -8,7 +8,7 @@ description: How to make a "Hello World" prompt in Thunderbird.
 
 No project is a real project without a Hello World guide. In this guide we will create a function in JavaScript that triggers an alert that says "Hello World!" - then we will add a menu item that triggers that function. The idea is to give you a chance to dig through the code and make some fun changes beyond this guide, and learn how to change Thunderbird!
 
-### function helloWorld\(\)
+### function helloWorld()
 
 The first thing we want to do is create the function that will run and create our JavaScript alert - this alert will create a new window with our message: "Hello World!"
 
@@ -46,13 +46,13 @@ function helloWorld(){
 
 ### Triggering Hello World
 
-For this tutorial we are going to create a new menu item in the App Menu \(often called the hamburger menu\) to call our `helloWorld()` function in `mailCore.js`.
+For this tutorial we are going to create a new menu item in the App Menu (often called the hamburger menu) to call our `helloWorld()` function in `mailCore.js`.
 
 {% hint style="info" %}
 For this part of the tutorial we are going to interact with a XHTML file.
 {% endhint %}
 
-In the directory: `comm -> mail -> components -> customizableui -> content` - we are going to open the file `panelUI.inc.xhtml` and find the `"appmenu_help"` toolbarbutton \(you'll likely want to use **Ctrl+F** again to find it\).
+In the directory: `comm -> mail -> components -> customizableui -> content` - we are going to open the file `panelUI.inc.xhtml` and find the `"appmenu_help"` toolbarbutton (you'll likely want to use **Ctrl+F** again to find it).
 
 Once you found the `appmenu_help` toolbarbutton, insert the following code below it:
 
@@ -85,13 +85,13 @@ In context:
 
 Make sure all your work is saved and then you can build Thunderbird using the `./mach build` command. Once you have built Thunderbird with the changes, we can use `./mach run` to try out our modified version of Thunderbird.
 
-Click to open the App Menu on the right hand side and you should see "Hello World" \(pictured below\):
+Click to open the App Menu on the right hand side and you should see "Hello World" (pictured below):
 
-![Hello World in the App Menu](../../.gitbook/assets/hello_world_menu_item.png)
+![Hello World in the App Menu](../../.gitbook/assets/hello\_world\_menu\_item.png)
 
-When you click on the "Hello World" menu item, you should get an alert prompt \(pictured below\):
+When you click on the "Hello World" menu item, you should get an alert prompt (pictured below):
 
-![](../../.gitbook/assets/hello_world_pop_up.png)
+![](../../assets/hello\_world\_pop\_up.png)
 
 If that alert window appears when you click the menu item then it works!
 
@@ -99,9 +99,8 @@ If that alert window appears when you click the menu item then it works!
 
 Spend some time playing around with the menu and even try experimenting with the helloWorld function. Most of all have fun and don't worry about messing things up.
 
-If you get in trouble you can reset the repository via the commands below \(in the `/comm` directory\) - **these will remove all the changes you've made**:
+If you get in trouble you can reset the repository via the commands below (in the `/comm` directory) - **these will remove all the changes you've made**:
 
-```text
+```
 hg update --clean
 ```
-

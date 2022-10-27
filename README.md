@@ -1,5 +1,5 @@
 ---
-description: >-
+Description: >-
   Thunderbird is a powerful and customizable open source Email client with
   millions of users. It is based on the Mozilla platform that Firefox is also
   built on. These docs teach you how to contribute!
@@ -43,13 +43,13 @@ We have a complete listing of the ways in which you can get involved with Thunde
 
 ### Mailing Lists
 
-If you want to participate in discussions about Thunderbird development, there are two main mailing lists you want to join.
+If you want to participate in discussions about Thunderbird development, these are the main channels.
 
 1. [**TB-Planning**](https://wiki.mozilla.org/Thunderbird/tb-planning)**:** This mailing list is higher level topics like: the future of Thunderbird, potential features, and changes that you would like to see happen. It is also used to discuss a variety of broader issues around community and governance of the project.
-2. [**Maildev**](http://lists.thunderbird.net/mailman/listinfo/maildev_lists.thunderbird.net)**:** A moderated mailing list for discussing engineering plans for Thunderbird. It is a place where you can raise questions and ideas for core Thunderbird development.
+2. [**Topicbox**](https://thunderbird.topicbox.com/groups/developers)**:** A moderated mailing list for discussing engineering plans for Thunderbird. It is a place where you can raise questions and ideas for core Thunderbird development.
 3. [**Add-on Developers**](https://thunderbird.topicbox.com/groups/addons): A list for Thunderbird add-on developers and aspiring add-on developers to ask questions and share knowledge.
 
 ### Chat
 
-If you want to ask questions in real-time about how to hack on Thunderbird, you can join our development chat channel at [#maildev:mozilla.org](https://matrix.to/#/#maildev:mozilla.org?via=mozilla.org&via=matrix.org&via=trancart.eu&web-instance%5Belement.io%5D=chat.mozilla.org)
+If you want to ask questions in real-time about how to hack on Thunderbird, you can join our development chat channel at [\#maildev:mozilla.org](https://matrix.to/#/#maildev:mozilla.org?via=mozilla.org&via=matrix.org&via=trancart.eu&web-instance%5Belement.io%5D=chat.mozilla.org)
 

@@ -10,13 +10,13 @@ description: >-
 
 The following directories are included in the comm-central repository:
 
-**build**  
+**build**\
 Miscellaneous files used by the build process.
 
-**calendar**  
-Source code of the Lightning extension and Google Calendar Provider extension.
+**calendar**\
+The calendar component of Thunderbird (formerly known as the Lightning extension).
 
-\*\*\*\*[**chat**](chat/)  
+[**chat**](chat/)\
 Files for the chat component of Thunderbird. There is also related code in `mail/components/im`.
 
 The subdirectories are:
@@ -28,13 +28,7 @@ The subdirectories are:
 * **protocols** Various protocol implementations. Each of subdirectory implements a protocol to the interfaces found under **components**.
 * **themes** Common and platform-specific styling specific to chat. Files from this directory become `chrome://chat/skin/…`.
 
-**common**  
-An assortment of code we've uplifted from mozilla-central as it was removed from there.
-
-**ldap**  
-The LDAP C SDK. Used for communicating with LDAP servers.
-
-**mail**  
+**mail**\
 Thunderbird specific source code. It's no coincidence that this folder is laid out a lot like the `browser` and `toolkit` directories on mozilla-central. Many of the subdirectories follow the same pattern:
 
 * **content** User interface files which become `chrome://messenger/content/…`.
@@ -43,13 +37,14 @@ Thunderbird specific source code. It's no coincidence that this folder is laid o
 
 The subdirectories are:
 
+* **actors** Modules which handle communication between processes. [See the Firefox documentation for information about actors](https://firefox-source-docs.mozilla.org/dom/ipc/jsactors.html).
 * **app** Configuration and packaging instructions. Contains `all-thunderbird.js`, the default preferences.
 * **base** The main mail window and several miscellaneous dialogs. Also, things which are common to many parts of the program.
 * **branding** Icons and imagery.
 * **components** Various Thunderbird features, including:
   * **accountcreation** The account setup wizard.
-  * **addrbook** The address book user front end. \(Not the address book back end, which is in `mailnews/addrbook`\).
-  * **cloudfile** The cloud attachment feature \(a.k.a. FileLink\).
+  * **addrbook** The address book user front end. (Not the address book back end, which is in `mailnews/addrbook`).
+  * **cloudfile** The cloud attachment feature (a.k.a. FileLink).
   * **compose** Email composition window.
   * **extensions** WebExtensions schema and implementation.
   * **im** The chat front end.
@@ -58,27 +53,27 @@ The subdirectories are:
 * **extensions**
 * **installer** Packaging and installation instructions.
 * **locales** The user-visible strings, in US English. Files from this directory become `chrome://messenger/locale/…`.
+* **modules** Shared JS modules. Files from this directory become `resource:///modules/….`
 * **test** The MozMill user interface tests and the code to run that test suite.
 * **themes** Common and platform-specific styling of Thunderbird user interface. Files from this directory become `chrome://messenger/skin/…`.
 
-**mailnews**  
+**mailnews**\
 Source code specific to the Mail and Newsgroups part of Thunderbird and SeaMonkey.
 
-**mozharness**  
+**mozharness**\
 Files needed for Thunderbird's test infrastructure.
 
-**other-licenses**  
+**other-licenses**\
 Code that is not under the Mozilla license. See [http://www.mozilla.org/MPL/](http://www.mozilla.org/MPL/) for more info.
 
-**suite**  
+**suite**\
 SeaMonkey-specific source code. Not used in Thunderbird.
 
-**taskcluster**  
+**taskcluster**\
 Files needed for Thunderbird's build infrastructure.
 
-**testing**  
+**testing**\
 Files needed for Thunderbird's test infrastructure.
 
-**third\_party**  
+**third\_party**\
 Libraries developed elsewhere that are included in Thunderbird
-

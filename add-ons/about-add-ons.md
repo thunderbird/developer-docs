@@ -15,9 +15,16 @@ You can check out many of the add-ons available for Thunderbird at [addons.thund
 
 ### MailExtensions
 
-MailExtensions are based on the WebExtension technology, which is also used by many web browsers. Such a MailExtension is a simple collection of files which modify Thunderbirds appearance and behavior. It can add user interface elements, alter content, or perform background tasks. MailExtensions are created using standard JavaScript, CSS and HTML. Interaction with Thunderbird itself, like adding UI elements or accessing the users messages or contacts is done through special WebExtension APIs.
+MailExtensions are based on the WebExtension technology, which is also used by many web browsers. Such a MailExtension is a simple collection of files which modify Thunderbirds appearance and behaviour. It can add user interface elements, alter content, or perform background tasks. MailExtensions are created using standard JavaScript, CSS and HTML.
 
-{% page-ref page="mailextensions/" %}
+Key features:
+
+* MailExtensions use stable WebExtension APIs, independent of Thunderbird's own code, and are therefore less likely to break when a new version of Thunderbird is released.
+* The WebExtension technology introduced a permission mechanism, and users have to acknowledge all permissions requested by add-ons before they can be installed. These permission requests enable users to know what an add-on is actually doing. This is a major improvement, as legacy add-ons always had the same privileges as Thunderbird itself, which many users were not aware of. More information can be found in the support article about [Permission request messages for Thunderbird extensions](https://support.mozilla.org/kb/permission-request-messages-thunderbird-extensions).
+
+{% content-ref url="mailextensions/" %}
+[mailextensions](mailextensions/)
+{% endcontent-ref %}
 
 ### Legacy Extension Types
 
@@ -35,7 +42,7 @@ Status: **Deprecated in Thunderbird 78.**
 
 Legacy WebExtensions are legacy overlay extensions or legacy bootstrap extensions wrapped inside a WebExtension.
 
-They use a JSON manifest \(`manifest.json`\) with the `legacy` key \(which has been deprecated in Thunderbird 78\):
+They use a JSON manifest (`manifest.json`) with the `legacy` key (which has been deprecated in Thunderbird 78):
 
 ```javascript
 {
@@ -64,37 +71,49 @@ They use a JSON manifest \(`manifest.json`\) with the `legacy` key \(which has b
 
 #### Update Strategy
 
-{% page-ref page="updating/tb78/" %}
+{% content-ref url="updating/tb78/" %}
+[tb78](updating/tb78/)
+{% endcontent-ref %}
 
-{% page-ref page="updating/tb78/changes.md" %}
+{% content-ref url="updating/tb78/changes.md" %}
+[changes.md](updating/tb78/changes.md)
+{% endcontent-ref %}
 {% endtab %}
 
 {% tab title="Legacy Bootstrap Extension" %}
 Status: **Deprecated in Thunderbird 68.**
 
-This type of extension uses a bootstrap file \(`bootstrap.js`\) as an entry point to the extension. The file defines four methods \(`install`, `uninstall`, `startup`, and `shutdown`\) from which all extension behaviour is controlled. These extensions can be installed/uninstalled and enabled/disabled without restarting Thunderbird, so they are sometimes called "restartless" extensions. They use an RDF manifest \(`install.rdf`\).
+This type of extension uses a bootstrap file (`bootstrap.js`) as an entry point to the extension. The file defines four methods (`install`, `uninstall`, `startup`, and `shutdown`) from which all extension behaviour is controlled. These extensions can be installed/uninstalled and enabled/disabled without restarting Thunderbird, so they are sometimes called "restartless" extensions. They use an RDF manifest (`install.rdf`).
 
 #### Update Strategy
 
-It is recommended to update legacy bootstrap extensions to legacy WebExtensions first, before converting them to MailExtension. The update guide assumes, the extension is currently compatible with Thunderbird 60. If that is not the case, you can find further update instructions [here](https://wiki.mozilla.org/Thunderbird/Add-ons_Guide_57).
+It is recommended to update legacy bootstrap extensions to legacy WebExtensions first, before converting them to MailExtension. The update guide assumes, the extension is currently compatible with Thunderbird 60. If that is not the case, you can find further update instructions [here](https://wiki.mozilla.org/Thunderbird/Add-ons\_Guide\_57).
 
-{% page-ref page="updating/tb68/bootstrapped.md" %}
+{% content-ref url="updating/tb68/bootstrapped.md" %}
+[bootstrapped.md](updating/tb68/bootstrapped.md)
+{% endcontent-ref %}
 
-{% page-ref page="updating/tb68/changes.md" %}
+{% content-ref url="updating/tb68/changes.md" %}
+[changes.md](updating/tb68/changes.md)
+{% endcontent-ref %}
 {% endtab %}
 
 {% tab title="Legacy Overlay Extension" %}
 Status: **Deprecated in Thunderbird 68.**
 
-The original type of extension for Thunderbird and Firefox, using documents that overlay the Thunderbird UI, adding to and modifying it. These extensions use an RDF manifest \(`install.rdf`\) and require a restart of Thunderbird for installation/uninstallation, upgrading/downgrading and enabling/disabling.
+The original type of extension for Thunderbird and Firefox, using documents that overlay the Thunderbird UI, adding to and modifying it. These extensions use an RDF manifest (`install.rdf`) and require a restart of Thunderbird for installation/uninstallation, upgrading/downgrading and enabling/disabling.
 
 #### Update Strategy
 
-It is recommended to update legacy overlay extensions to legacy WebExtensions first, before converting them to MailExtensions. The update guide assumes, the extension is currently compatible with Thunderbird 60. If that is not the case, you can find further update instructions [here](https://wiki.mozilla.org/Thunderbird/Add-ons_Guide_57).
+It is recommended to update legacy overlay extensions to legacy WebExtensions first, before converting them to MailExtensions. The update guide assumes, the extension is currently compatible with Thunderbird 60. If that is not the case, you can find further update instructions [here](https://wiki.mozilla.org/Thunderbird/Add-ons\_Guide\_57).
 
-{% page-ref page="updating/tb68/overlays.md" %}
+{% content-ref url="updating/tb68/overlays.md" %}
+[overlays.md](updating/tb68/overlays.md)
+{% endcontent-ref %}
 
-{% page-ref page="updating/tb68/changes.md" %}
+{% content-ref url="updating/tb68/changes.md" %}
+[changes.md](updating/tb68/changes.md)
+{% endcontent-ref %}
 {% endtab %}
 {% endtabs %}
 
@@ -102,7 +121,8 @@ It is recommended to update legacy overlay extensions to legacy WebExtensions fi
 
 Themes change the way that Thunderbird looks, for instance - here is a screenshot of the side panel using the built-in dark theme:
 
-![It&apos;s Dark](../.gitbook/assets/screenshot-from-2019-03-23-13-47-57.png)
+![It's Dark](../.gitbook/assets/screenshot-from-2019-03-23-13-47-57.png)
 
-{% page-ref page="web-extension-themes.md" %}
-
+{% content-ref url="web-extension-themes.md" %}
+[web-extension-themes.md](web-extension-themes.md)
+{% endcontent-ref %}

@@ -2,7 +2,7 @@
 
 * [About Thunderbird](README.md)
 
-## Contributing to Thunderbird <a id="thunderbird-development"></a>
+## Contributing to Thunderbird <a href="#thunderbird-development" id="thunderbird-development"></a>
 
 * [Getting Started](thunderbird-development/getting-started.md)
 * [Building Thunderbird](thunderbird-development/building-thunderbird/README.md)
@@ -11,6 +11,8 @@
   * [macOS Build Prerequisites](thunderbird-development/building-thunderbird/macos-build-prerequisites.md)
   * [Artifact Builds](thunderbird-development/building-thunderbird/artifact-builds.md)
 * [Codebase Overview](thunderbird-development/codebase-overview/README.md)
+  * [Account Configuration](thunderbird-development/codebase-overview/account-configuration.md)
+  * [Address Book](thunderbird-development/codebase-overview/address-book.md)
   * [Chat Core](thunderbird-development/codebase-overview/chat/README.md)
     * [Notifications](thunderbird-development/codebase-overview/chat/notifications.md)
     * [Message Styles](thunderbird-development/codebase-overview/chat/message-styles.md)
@@ -36,15 +38,20 @@
 ## Planning
 
 * [Roadmap](planning/roadmap.md)
+* [Backlog](planning/backlog.md)
+* [Android Roadmap](planning/android-roadmap.md)
 
-## Add-on Development <a id="add-ons"></a>
+## Add-on Development <a href="#add-ons" id="add-ons"></a>
 
 * [Introduction](add-ons/about-add-ons.md)
 * [A Guide to MailExtensions](add-ons/mailextensions/README.md)
   * [Supported Manifest Keys](add-ons/mailextensions/supported-manifest-keys.md)
   * [Supported UI Elements](add-ons/mailextensions/supported-ui-elements.md)
   * [Supported WebExtension APIs](add-ons/mailextensions/supported-webextension-api.md)
-  * [Hello World Example](add-ons/mailextensions/hello-world-add-on.md)
+  * [Hello World Extension Tutorial](add-ons/mailextensions/hello-world-add-on/README.md)
+    * [Using WebExtension APIs](add-ons/mailextensions/hello-world-add-on/using-webextension-apis.md)
+    * [Using a Background Page](add-ons/mailextensions/hello-world-add-on/using-a-background-page.md)
+    * [Using Content Scripts](add-ons/mailextensions/hello-world-add-on/using-content-scripts.md)
   * [Examples in the Sample Extensions Repository](https://github.com/thundernest/sample-extensions)
   * [Introducing Experiments](add-ons/mailextensions/experiments.md)
 * [A Guide to Themes](add-ons/web-extension-themes.md)
@@ -58,6 +65,9 @@
     * [Adapt to Changes in Thunderbird 69-78](add-ons/updating/tb78/changes.md)
   * [Update for Thunderbird 91](add-ons/updating/tb91/README.md)
     * [Adapt to Changes in Thunderbird 79-91](add-ons/updating/tb91/changes.md)
+  * [Update for Thunderbird 102](add-ons/updating/tb102/README.md)
+    * [Adapt to Changes in Thunderbird 92-102](add-ons/updating/tb102/adapt-to-changes-in-thunderbird-92-102.md)
+  * [Update for Thunderbird Beta](add-ons/updating/tb115/README.md)
+    * [Adapt to Changes in Thunderbird 103-115](add-ons/updating/tb115/adapt-to-changes-in-thunderbird-103-115.md)
 * [Documentation & Resources](add-ons/resources.md)
 * [Developer Community](add-ons/community.md)
-

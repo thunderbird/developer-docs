@@ -54,9 +54,10 @@ Using standard forms for commit messages not only looks better when looking at t
 Commit messages should be of the form:
 
 ```text
-Bug xxxx - Short description of your change. r?reviewer
+Bug xxxx - Short description of your change. r=reviewer
 
 Optionally, a longer description of the change.
+This can span multiple lines.
 ```
 
 For follow-up commits that fix a problem with a lint test or other failure, the suggested form is:
@@ -71,13 +72,15 @@ When fixing a bug caused by a change made to mozilla-central, often referred to 
 Bug NNNN - Port bug ZZZZ: Useful short description. r?reviewer
 ```
 
+Prefixing the first line of the commit message with "`WIP:`" marks the patch as a work-in-progress. `moz-phab` \(see below\) will pick that up and mark it as "Changes Planned".
+
 ## Picking reviewers
 
 All changes need to be reviewed before acceptance into the codebase. It can be pretty tricky to figure out who to ask for a review.
 
-This list of [relevant people](https://wiki.mozilla.org/Thunderbird/Core_Team) might help. Failing that you can always [ask around](https://developer.thunderbird.net/add-ons/community).
+Thunderbird code is divided into modules, each with an owner and peers. Generally, these are the best people to review your changes. Here's [the list of module owners and peers for Thunderbird](https://wiki.mozilla.org/Modules/Thunderbird). [Calendar](https://wiki.mozilla.org/Modules/Calendar) and [MailNews Core](https://wiki.mozilla.org/Modules/MailNews_Core) modules have separate lists.
 
-Scanning through the recent commits in mercurial should also give you an idea of who is active in various areas of the code.
+Scanning through the recent commits in mercurial should also give you an idea of who is active in various areas of the code. Failing that you can always [ask around](https://developer.thunderbird.net/add-ons/community).
 
 ## Submitting a Patch
 
@@ -93,17 +96,17 @@ With `moz-phab` you can submit local mercurial changeset\(s\) like this:
 $ moz-phab submit [start_changeset] [end_changeset]
 ```
 
-The start/end changesets are optional, and if omitted `moz-phab` will guess which ones you're likely to mean.
+The start/end changesets are optional. If omitted, `moz-phab` will guess which one\(s\) you mean.
 
 It'll ask for confirmation before uploading, so don't worry too much about accidental submissions.
 
-`moz-phab` will pick the bug number out of the commit message \(`Bug xxxx`\), and link back to the bugzilla bug. If there is a reviewer \(`r?...`\), it will automatically assign them and send them a notification. You can leave the reviewer out, but then one will have to be manually assigned via the phabricator web page.
+`moz-phab` will pick the bug number out of the commit message \(`Bug xxxx`\), and link back to the bugzilla bug. If there is a reviewer \(`r=...`\), it will automatically assign them and send them a notification. You can leave the reviewer out, but then one will have to be manually assigned via the phabricator web page. If the commit message starts with "`WIP:`", the patch will be marked "Changes Planned".
 
 You can find more details in the `moz-phab` [README](https://github.com/mozilla-conduit/review/blob/master/README.md#submitting-commits-to-phabricator).
 
 ### Submitting patches via Bugzilla
 
-The traditionally way to submit patches was to upload a file attachment to the bug in [Bugzilla](https://bugzilla.mozilla.org), set the _review_ flag to `?`, and pick a reviewer.
+The traditional way to submit patches was to upload a file attachment to the bug in [Bugzilla](https://bugzilla.mozilla.org), set the _review_ flag to `?`, and pick a reviewer.
 
 This still works, but Phabricator is now the preferred method.
 

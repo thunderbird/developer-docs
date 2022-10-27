@@ -28,24 +28,24 @@ A bunch of global variables available in some window scopes were removed. If you
 
 XBL is on death row. Many XBL bindings have been replaced or simply no longer exist. The remainder are being removed. This may result in slight behaviour changes for some UI components.
 
-With [this query](https://bugzilla.mozilla.org/buglist.cgi?o1=equals&v1=1484976&f1=blocked), you can see all the bugs related to de-XBL-ing Thunderbird, and see how the removal of each binding is handled.
+With [this query](https://bugzilla.mozilla.org/buglist.cgi?o1=equals\&v1=1484976\&f1=blocked), you can see all the bugs related to de-XBL-ing Thunderbird, and see how the removal of each binding is handled.
 
 {% hint style="info" %}
 If you have your own XBL bindings, you can convert them to [custom elements](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Custom_Elements). Here are some notes on the process of[ converting an XBL binding into a custom element](https://wiki.mozilla.org/Thunderbird/de-xbl).
 {% endhint %}
 
 {% hint style="info" %}
-As part of the de-XBL effort, the usage of the [nsIDOMDocumentXBL](https://developer.mozilla.org/en-US/docs/Archive/Mozilla/XBL/XBL_1.0_Reference/DOM_Interfaces) Interface has also been deprecated. This includes:
+As part of the de-XBL effort, the usage of the [nsIDOMDocumentXBL](https://developer.mozilla.org/en-US/docs/Archive/Mozilla/XBL/XBL\_1.0\_Reference/DOM_Interfaces) Interface has also been deprecated. This includes:
 
-* getAnonymousElementByAttribute\(\)
-* getAnonymousNodes\(\)
+* getAnonymousElementByAttribute()
+* getAnonymousNodes()
 
-They have to be replaced by [`document.getElementById()`](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById), [`document.querySelectorAll()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelectorAll) or similar methods. The documents these methods have been used with have probably changed dramatically. Check out [searchfox.org](https://searchfox.org/) to learn about the current layouts.
+They have to be replaced by [`document.getElementById()`](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById), [`document.querySelectorAll()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelectorAll) or similar methods. The documents these methods have been used with have probably changed dramatically. Check out [searchfox.org](https://searchfox.org) to learn about the current layouts.
 {% endhint %}
 
 ## Removed XUL elements
 
-Some XUL elements \(or some of their attributes\) no longer exist and must be replaced by an HTML element or some other XUL element. It does not matter, if you use these elements in a XUL file \(as in overlay extensions\) or create them via JavaScript \(as in bootstrapped extensions\).
+Some XUL elements (or some of their attributes) no longer exist and must be replaced by an HTML element or some other XUL element. It does not matter, if you use these elements in a XUL file (as in overlay extensions) or create them via JavaScript (as in bootstrapped extensions).
 
 In order to use HTML elements in a XUL file, you must load the HTML namespace into your overlay or dialog:
 
@@ -61,7 +61,7 @@ The following list also includes deprecated elements, which could still be used 
 The replacements listed here might work in subtly different ways. Check your functionality!
 {% endhint %}
 
-### &lt;colorpicker&gt;
+### \<colorpicker>
 
 Removed. Use
 
@@ -69,7 +69,7 @@ Removed. Use
 <html:input type="color">
 ```
 
-### &lt;progressmeter&gt;
+### \<progressmeter>
 
 Removed. Use
 
@@ -77,9 +77,9 @@ Removed. Use
 <html:progress max="100">
 ```
 
-### &lt;listbox&gt;, &lt;listitem&gt;, &lt;listcell&gt; and &lt;listcols&gt;
+### \<listbox>, \<listitem>, \<listcell> and \<listcols>
 
-All `<listbox>` related elements have been removed. Use[`<richlistbox>`](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XUL/richlistbox) instead. A `<richlistbox>` does not support cells or columns, just one `<richlistitem>` per row \(which can contain multiple other elements like `hbox`, `vbox`, `label`or `image` elements\)
+All `<listbox>` related elements have been removed. Use[`<richlistbox>`](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XUL/richlistbox) instead. A `<richlistbox>` does not support cells or columns, just one `<richlistitem>` per row (which can contain multiple other elements like `hbox`, `vbox`, `label`or `image` elements)
 
 Furthermore, a few dedicated `listbox/richtlistbox`methods have been removed and can be replaced as follows:
 
@@ -115,7 +115,7 @@ refNode.parentNode.insertBefore(newNode, refNode);
 listbox.getItemAtIndex(index).remove();
 ```
 
-### &lt;textbox multiline="true"&gt;
+### \<textbox multiline="true">
 
 Removed. Use
 
@@ -123,7 +123,7 @@ Removed. Use
 <html:textarea>
 ```
 
-### &lt;prefwindow&gt;, &lt;prefpane&gt;, &lt;preferences&gt; and &lt;preference&gt;
+### \<prefwindow>, \<prefpane>, \<preferences> and \<preference>
 
 All preference related XUL elements have been removed. If you have something like this in your add-on:
 
@@ -204,7 +204,7 @@ it must be replaced by a `dialog` as follows:
 
 Note that the `DOCTYPE` changed and the `preference` attribute now contains the full ID of the preference. If you used more than one `prefpane` you need to rework the UI into [tabs](https://developer.mozilla.org/de/docs/Mozilla/Tech/XUL/tabbox).
 
-Furthermore, note the included JavaScript file [`preferencesBindings.js`](https://searchfox.org/mozilla-central/source/toolkit/content/preferencesBindings.js) at the bottom, which is mandatory to recreate the functionality of the `preference` attribute. It is also mandatory, that you include a custom JavaScript file \(as`preferences.js` in the above example\) afterwards, which defines the types of the used preferences \(which was formerly done inside the `preferences` tag\). The file can be as short as this:
+Furthermore, note the included JavaScript file [`preferencesBindings.js`](https://searchfox.org/mozilla-central/source/toolkit/content/preferencesBindings.js) at the bottom, which is mandatory to recreate the functionality of the `preference` attribute. It is also mandatory, that you include a custom JavaScript file (as`preferences.js` in the above example) afterwards, which defines the types of the used preferences (which was formerly done inside the `preferences` tag). The file can be as short as this:
 
 {% tabs %}
 {% tab title="preferences.js" %}
@@ -233,10 +233,10 @@ Per default, all preferences will be saved instantly after they have been change
 {% endtabs %}
 
 {% hint style="info" %}
-If you are doing or plan to do any advanced stuff with the preferences in JavaScript, like validating user entered values and such, it is recommended to abandon the usage of the `preference` attribute \(and `preferencesBindings.js`\) and directly use the [preferences service](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Reference/Interface/nsIPrefService) instead. Check out [options.xul](https://github.com/darktrojan/shrunked/blob/master/content/options.xul) and [options.js](https://github.com/darktrojan/shrunked/blob/master/content/options.js) of the Shrunked Image Resizer.
+If you are doing or plan to do any advanced stuff with the preferences in JavaScript, like validating user entered values and such, it is recommended to abandon the usage of the `preference` attribute (and `preferencesBindings.js`) and directly use the [preferences service](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Reference/Interface/nsIPrefService) instead. Check out [options.xul](https://github.com/darktrojan/shrunked/blob/master/content/options.xul) and [options.js](https://github.com/darktrojan/shrunked/blob/master/content/options.js) of the Shrunked Image Resizer.
 {% endhint %}
 
-### &lt;stringbundleset&gt; and &lt;stringbundle&gt;
+### \<stringbundleset> and \<stringbundle>
 
 Both elements have been removed. To load and access your own string property files, include the following in your JavaScript:
 
@@ -245,7 +245,7 @@ let bundle = Services.strings.createBundle("chrome://path/to/your/string.propert
 let stringProp = bundle.GetStringFromName("...");
 ```
 
-### **&lt;statusbar&gt; and &lt;statusbarpanel&gt;**
+### **\<statusbar> and \<statusbarpanel>**
 
 Both elements are deprecated and its usage in Thunderbird is removed. They can be replaced by `hbox`elements with an appropriate `class` identifier:
 
@@ -260,7 +260,7 @@ Both elements are deprecated and its usage in Thunderbird is removed. They can b
 
 You may actually use other elements besides `hbox` as a replacement for the `statusbarpanel`, like `label` or `image`.
 
-### &lt;menulist editable="true"&gt;
+### \<menulist editable="true">
 
 The XUL element `menulist` no longer supports the `editable` attribute. However, editable menulists have been re-implemented as [custom elements](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Custom_Elements). To be able to use it, you need some extra files to be linked from your document:
 
@@ -292,7 +292,7 @@ menulist.setAttribute("is", "menulist-editable");
 menulist.setAttribute("editable", "true");
 ```
 
-### &lt;menulist&gt; and &lt;menupopup&gt;
+### \<menulist> and \<menupopup>
 
 Even though the `menupopup` element is defined as a direct child of the `menulist` element in the above example, it cannot be accessed by
 
@@ -302,13 +302,13 @@ menuListElement.firstChild
 
 anymore. You may assign its own ID to the `menupop` element, or get it by
 
-```text
+```
 menuListElement.getElementsByTagName("menupopup")
 ```
 
 You may use the inspector of the developer tools to see the full DOM structure of the `menulist` element.
 
-### &lt;groupbox&gt; and &lt;caption&gt;
+### \<groupbox> and \<caption>
 
 These two do not display as before. You now need to include the following css file:
 
@@ -331,7 +331,7 @@ While the `groupbox` tag continues to work, the `caption` tag has been removed. 
 In the current Thunderbird 68 Beta, this still looks a bit wrong, but will be fixed in Beta 3. More details can be found in [bug 1559964](https://bugzilla.mozilla.org/show_bug.cgi?id=1559964).
 {% endhint %}
 
-### &lt;datepicker&gt; and &lt;timepicker&gt;
+### \<datepicker> and \<timepicker>
 
 Removed. Currently there is no working replacement part of Thunderbird itself, but Lightning has its own `datetimepicker`, which can be used.
 
@@ -355,7 +355,7 @@ To be able to use the `datetimepicker`, the following CSS files need to be inclu
 
 The following JavaScript files also need to be included:
 
-```text
+```
 <script src="chrome://calendar/content/calendar-ui-utils.js"/>
 <script src="chrome://messenger/content/customElements.js"/>
 <script src="chrome://calendar/content/datetimepickers/datetimepickers.js"/>
@@ -363,14 +363,17 @@ The following JavaScript files also need to be included:
 
 If you do not want to be dependent on Lightning being installed, you need to include the above files with your add-on.
 
-### &lt;notificationbox&gt;
+### \<notificationbox>
 
 Removed. Thunderbird now has fixed build in notification boxes, where notifications can be added. The following list shows how to access some of them:
 
-* Main window:  `let notifyBox = specialTabs.msgNotificationBar;`
-* Message composer window:  `let notifyBox = gNotification.notificationbox;`
-* Below the receipient list in the message composer window:  `let notifyBox = gMessageNotificationBar.msgNotificationBar;`
-* Most calendar dialogs: `let notifyBox = gNotification.notificationbox;`
+* Main window:\
+   `let notifyBox = specialTabs.msgNotificationBar;`
+* Message composer window:\
+   `let notifyBox = gNotification.notificationbox;`
+* Below the recipient list in the message composer window:  `let notifyBox = gMessageNotificationBar.msgNotificationBar;`
+* Most calendar dialogs:\
+  `let notifyBox = gNotification.notificationbox;`
 
 {% hint style="warning" %}
 Since you no longer "own" notification boxes, you should not clear them by calling
@@ -386,37 +389,37 @@ and remove only that via
 `notificationbox.removeNotification(notification);`
 {% endhint %}
 
-You can still add notification boxes wherever you want, if you do not want to use the build in notification boxes \(or if there is none\). More details can be found [here](https://github.com/thundernest/developer-docs/issues/31#issuecomment-508872843).
+You can still add notification boxes wherever you want, if you do not want to use the build in notification boxes (or if there is none). More details can be found [here](https://github.com/thundernest/developer-docs/issues/31#issuecomment-508872843).
 
-### &lt;textbox type="search"&gt;
+### \<textbox type="search">
 
 Removed. Use:
 
-```text
+```
 <textbox is="search-textbox" class="searchBox">
 ```
 
 ## Renamed XUL elements
 
-### &lt;mail-multi-emailHeaderField&gt;
+### \<mail-multi-emailHeaderField>
 
-The element `mail-multi-emailHeaderField` has been renamed into `mail-multi-emailheaderfield` \(no camelCase anymore\).
+The element `mail-multi-emailHeaderField` has been renamed into `mail-multi-emailheaderfield` (no camelCase anymore).
 
-See e.g. [https://searchfox.org/comm-central/source/mail/base/content/msgHdrView.inc.xul\#238](https://searchfox.org/comm-central/source/mail/base/content/msgHdrView.inc.xul#238)
+See e.g. [https://searchfox.org/comm-central/source/mail/base/content/msgHdrView.inc.xul#238](https://searchfox.org/comm-central/source/mail/base/content/msgHdrView.inc.xul#238)
 
-```text
+```
 <mail-multi-emailheaderfield id="expandedfromBox" flex="1"/>
 ```
 
 ## Changed XUL elements
 
-### &lt;treecol&gt;
+### \<treecol>
 
 Each `treecol` can be either shown or hidden via the column picker. Up to TB68 the column picker closed after a column had been selected/toggled. By adding `closemenu="none"` to a `treecol`, the column picker stays open after the display state of associated `treecol` has been toggled.
 
 ## Changed event behavior
 
-### &lt;dialog&gt; events
+### \<dialog> events
 
 Previously, if you had a `<dialog>` and you wanted to respond to the buttons being pressed, you’d have something like this:
 
@@ -439,7 +442,7 @@ To prevent closing of the dialog, call `preventDefault()`. A return value is not
 
 This is valid for `ondialogaccept`, `ondialogextra1`, `ondialogextra2` and `ondialogcancel`.
 
-### &lt;wizard&gt; and &lt;wizardpage&gt; events
+### \<wizard> and \<wizardpage> events
 
 The section about `<dialog>` events also applies to all `onwizard…` events on `<wizard>`, and `onpage…` events on `<wizardpage>`.
 
@@ -475,7 +478,7 @@ The following String methods are affected by the change:
   replace(), split(), substr(), concat(), localeCompare()
 ```
 
-\(All other String methods use the instance paradigm already\)
+(All other String methods use the instance paradigm already)
 
 ## Changes for JavaScript modules
 
@@ -483,7 +486,7 @@ The following String methods are affected by the change:
 
 A number of Javascript modules have been renamed with the `.jsm` extension. Most notably:
 
-* `mailServices.js` has been renamed to `MailServices.jsm`. This change was originally backwards-compatible with a deprecation warning, but the changes to module importing \(see [below](changes.md#changed-javascript-module-import)\) made that pointless and the old file has now been removed completely.
+* `mailServices.js` has been renamed to `MailServices.jsm`. This change was originally backwards-compatible with a deprecation warning, but the changes to module importing (see [below](changes.md#changed-javascript-module-import)) made that pointless and the old file has now been removed completely.
 * `MailUtils.js` is now `MailUtils.jsm`.
   * `MailUtils.getFolderForUri` was renamed to `MailUtils.getExistingFolder`.
 
@@ -515,7 +518,7 @@ var { Foo } = ChromeUtils.import("resource://foo/modules/Foo.jsm");
 var scope = ChromeUtils.import("resource://foo/modules/Foo.jsm"); // scope.Foo…
 ```
 
-`ChromeUtils.import` is a replacement for `Components.utils.import` \(which was also changed in this way\). Note that no second argument is supplied. The returned object is a dictionary of only the objects listed in `EXPORTED_SYMBOLS`.
+`ChromeUtils.import` is a replacement for `Components.utils.import` (which was also changed in this way). Note that no second argument is supplied. The returned object is a dictionary of only the objects listed in `EXPORTED_SYMBOLS`.
 
 ## Changed API
 
@@ -523,25 +526,25 @@ var scope = ChromeUtils.import("resource://foo/modules/Foo.jsm"); // scope.Foo�
 
 The function to retrieve passwords has lost its first parameter. Instead of
 
-```text
+```
 var logins = Services.logins.findLogins({}, origin, formOrigin, realm);
 ```
 
 call it as
 
-```text
+```
 var logins = Services.logins.findLogins(origin, formOrigin, realm);
 ```
 
-### document.persist\(id, attribute\)
+### document.persist(id, attribute)
 
 Removed, use:
 
-```text
+```
 Services.xulStore.persist(node, attribute);
 ```
 
-Note: document.persist\(\) used the ID attribute whereas xulStore.persist\(\) uses the actual DOM node. More details in bug [1476678](https://bugzilla.mozilla.org/show_bug.cgi?id=1476678).
+Note: document.persist() used the ID attribute whereas xulStore.persist() uses the actual DOM node. More details in bug [1476678](https://bugzilla.mozilla.org/show_bug.cgi?id=1476678).
 
 ### AddonManager
 
@@ -559,9 +562,9 @@ AddonManager.getAddonByID(addon_id).then(callback_function)
 
 ### nsIMsgAccountManager
 
-The `defaultAccount` member can \(since TB 65\) have a `null` value - if for some reason it doesn't have, or can't work out, the default account.
+The `defaultAccount` member can (since TB 65) have a `null` value - if for some reason it doesn't have, or can't work out, the default account.
 
-Hence you need to null-check it, and possibly handle not having an account at all \(if in no other way than by an error message\).
+Hence you need to null-check it, and possibly handle not having an account at all (if in no other way than by an error message).
 
 ### nsIStringBundleService
 
@@ -597,7 +600,7 @@ The `onStartRequest` and `onStopRequest` methods also no longer have a `context`
 
 ### **nsIProtocolHandler**
 
-The obsolete method `newChannel` was removed and `newChannel2` was renamed to `newChannel`. \([Bug 1528971](https://bugzilla.mozilla.org/show_bug.cgi?id=1528971).\)
+The obsolete method `newChannel` was removed and `newChannel2` was renamed to `newChannel`. ([Bug 1528971](https://bugzilla.mozilla.org/show_bug.cgi?id=1528971).)
 
 As `newChannel` has been unused for a long time it should be safe to just replace the old `newChannel` implementation with the `newChannel2` and forward calls from `newChannel2`.
 
@@ -666,27 +669,26 @@ Some noteworthy changes:
 * If a method requires a `TreeColumn` parameter,  a simple `{ id: columnName }` object no longer works. Get a proper `TreeColumn` object via `tree.columns.getNamedColumn(columnName)`.
 * Trees no longer support selecting individual cells. The `TreeColumn` object no longer has a `selectable` attribute and `nsITreeView` has lost its `isSelectable()` method.
 
-In general, check [searchfox.com](https://searchfox.org/) to see the current definitions of tree related implementations:
+In general, check [searchfox.com](https://searchfox.org) to see the current definitions of tree related implementations:
 
 * [XULTreeElement](https://searchfox.org/mozilla-beta/rev/b906de73ca1c11ffb73473731920f7867d364557/dom/chrome-webidl/XULTreeElement.webidl)
 * [nsITreeView](https://searchfox.org/mozilla-beta/rev/b906de73ca1c11ffb73473731920f7867d364557/layout/xul/tree/nsITreeView.idl)
 * [TreeColumn](https://searchfox.org/mozilla-beta/rev/b906de73ca1c11ffb73473731920f7867d364557/dom/webidl/TreeColumn.webidl)
 
-### XPCOMUtils.generateQI\(\)
+### XPCOMUtils.generateQI()
 
 Removed. Use
 
-```text
+```
 ChromeUtils.generateQI()
 ```
 
-### Services.io.newChannelFromURI2\(\)
+### Services.io.newChannelFromURI2()
 
 Renamed to
 
-```text
+```
 Services.io.newChannelFromURI()
 ```
 
-A long time ago newChannelFromURI2\(\) has been added as an alternative to newChannelFromURI\(\), which as become deprecated by now. With ESR68 the old name is used again.
-
+A long time ago newChannelFromURI2() has been added as an alternative to newChannelFromURI(), which as become deprecated by now. With ESR68 the old name is used again.

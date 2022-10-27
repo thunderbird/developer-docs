@@ -4,6 +4,29 @@ description: Tutorial on how to push approved and reviewed patches to the produc
 
 # Landing a Patch
 
+## Helpful Mercurial extensions
+
+If you ran `mach bootstrap`, you were given the option to configure Mercurial as well. If you didn't do so at the time, you can run `mach vcs-setup` at any time. This will clone the [version-control-tools](https://hg.mozilla.org/hgcustom/version-control-tools) repository to your `.mozbuild` directory and configure your `.hgrc` file.
+
+`mach vcs-setup` will offer to enable the [`firefoxtree`](https://mozilla-version-control-tools.readthedocs.io/en/latest/hgmozilla/firefoxtree.html) extension. Despite its name, it is helpful for Thunderbird work as well.
+
+Firefoxtree's main feature is automatic configuration of remote repository paths. The documentation doesn't mention them, but the Thunderbird repositories are mapped as well:
+
+| Repository                                  | FXTree aliases     |
+|---------------------------------------------|--------------------|
+| https://hg.mozilla.org/comm-central         | comm, c-c, cc      |
+| https://hg.mozilla.org/releases/comm-beta   | comm-beta, c-b, cb |
+| https://hg.mozilla.org/releases/comm-esr102 | comm-esr102        |
+| https://hg.mozilla.org/projects/ash         | ash                |
+| https://hg.mozilla.org/projects/jamun       | jamun              |
+| https://hg.mozilla.org/try-comm-central     | try-comm           |
+
+Another helpful extension that `mach vcs-setup` does not configure for you is [mozext](https://mozilla-version-control-tools.readthedocs.io/en/latest/hgmods/extensions.html#mozext). It adds several revision set specifiers and templates to Mercurial. Run `hg help mozext` after enabling it to see what it offers. To enable, add to you `~/.hgrc` file's `[extensions]` section (replace `<home_dir>` with your actual home directory):
+
+```ini
+mozext = <home_dir>/.mozbuild/version-control-tools/hgext/mozext
+```
+
 ## Getting access to comm-central <a id="getting-access-to-the-try-server"></a>
 
 To push a patch to comm-central, you'll need [Level 3 Commit Access](http://www.mozilla.org/hacking/commit-access-policy/). You can learn more about Mozilla's commit access policies and start the process of signing up for an account here: [Becoming a Mozilla Contributor](http://www.mozilla.org/hacking/committer/)
@@ -12,7 +35,7 @@ To push a patch to comm-central, you'll need [Level 3 Commit Access](http://www.
 
 You'll need to add the address to your Mercurial configuration file at `path/to/comm-central/.hg/hgrc`:
 
-```text
+```ini
 [paths]
 default = https://hg.mozilla.org/comm-central
 live-cc = ssh://hg.mozilla.org/comm-central

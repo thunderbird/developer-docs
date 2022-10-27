@@ -120,7 +120,10 @@ At this point you should set the Target Milestone field in the bug to the curren
 
 You do not need to land patches on beta or ESR. We have authorised people to do that for you.
 
-Request approval on Bugzilla in the same way you request review, using the `approval-comm-beta` and `approval-comm-esrXX` flags. Filling out the request form is not required. At an appropriate point approval will be granted \(or denied!\) and your patch will be landed for you.
+Request approval on Bugzilla in the same way you request review, using the `approval-comm-beta` and `approval-comm-esrXX` flags. At an appropriate point approval will be granted \(or denied!\) and your patch will be landed for you. Filling out the request form, especially the "Regression bug" and "Risk" fields, will help the approver prioritize the patch.
+
+When requesting uplift approval for a bug with multiple patches, a single request is sufficient. It's helpful to specify in the request that multiple patches are to be uplifted. Likewise, if a bug has dependencies on another bug, specifying those dependencies and what order they should be uplifted can save a lot of time.
 
 Uplifting patches to earlier versions is for fixes to major bugs, and regressions that break the user interface. It should not be used as a shortcut to get new features to users earlier \(some exceptions apply\). The release channels ensure that changes are exposed to a test audience for a period of time before being shipped to all users.
 
+The comm-esrXX repositories in particular can be difficult to uplift patches to because of code-churn since the repository was created. Sometimes it's necessary to create a patch specifically for comm-esrXX. In these cases, attach the patch in Bugzilla rather than Phabricator. The fix still needs to be applied to comm-central and comm-beta first unless the bug really only affects comm-esrXX. (Bugs that only affect comm-esrXX are actually quite rare. At some point the bug most likely was present on comm-central and was fixed.)

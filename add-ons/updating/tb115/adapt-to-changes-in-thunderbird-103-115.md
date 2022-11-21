@@ -6,7 +6,7 @@ This document tries to cover all the internal changes that may be needed to make
 
 ### Services.jsm
 
-Removed in Thunderbird 103. The [service object is now globally available](https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/basics.html#globals-available-in-the-api-scripts-global) in API implementation scripts. If needed in self-created JSMs, it can be loaded as follows:
+Removed in Thunderbird 103. The [service object is now globally available](https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/basics.html#globals-available-in-the-api-scripts-global) in API implementation scripts. If needed in self-created JSMs, it can be accessed as follows:
 
 ```javascript
 const Services = globalThis.Services;
@@ -27,3 +27,8 @@ In Thunderbird 106, this has been changed from an enumerator to a simple array.
 ### callTimezoneService.aliasIds
 
 Removed in Thunderbird 106.
+
+### nsIMsgDatabase.ContainsKey()
+
+Renamed in Thunderbird 108 to `containsKey()`. Example `msgHdr.folder.msgDatabase.containsKey()`.
+

@@ -22,7 +22,7 @@ Depending on your Operating System you will need to carry out a different proces
 To build Thunderbird, you need to create a file named `mozconfig` to the root directory of the mozilla-central checkout that contains the option `comm/mail` enabled. You can create a file with this line by doing this in the `source/` directory:
 
 ```
-echo 'ac_add_options --enable-application=comm/mail' > mozconfig
+echo 'ac_add_options --enable-project=comm/mail' > mozconfig
 ```
 
 **If you omit this lines, the build system will build Firefox instead**. Other build configuration options can be added to this file, although it's **strongly recommended** that you only use options that you fully understand. For example, to create a debug build instead of a release build, that file would also contain the line:

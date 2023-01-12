@@ -4,13 +4,13 @@ description: This is a tutorial for making a Hello World MailExtension.
 
 # Hello World Extension Tutorial
 
-In the first part of the Hello World Extension Tutorial, we will create a very simple extension, which adds a "_Hello World_" button to Thunderbird's main toolbar and a click on it will show a `Hello, World!` popup. 
+In the first part of the Hello World Extension Tutorial, we will create a very simple extension, which adds a "_Hello World_" button to Thunderbird's main toolbar and a click on it will show a `Hello, World!` popup.&#x20;
 
 ![](../../../.gitbook/assets/hello-word.png)
 
 ## Creating a manifest.json
 
-First we create an empty `hello-world` project folder for our extension and navigate to it. 
+First, we create an empty `hello-world` project folder for our extension and navigate to it.&#x20;
 
 As described in the [MailExtension guide](https://developer.thunderbird.net/add-ons/mailextensions), extensions require a `manifest.json` file that tells Thunderbird a few basic information about the add-on. Let's place the following `manifest.json` file directly in the `hello-world` project folder.
 
@@ -22,7 +22,7 @@ As described in the [MailExtension guide](https://developer.thunderbird.net/add-
     "description": "Your basic Hello World extension!",
     "version": "1.0",
     "author": "[Your Name Here]",
-    "applications": {
+    "browser_specific_settings": {
         "gecko": {
             "id": "helloworld@yoursite.com",
             "strict_min_version": "78.0"
@@ -74,7 +74,7 @@ The location of the HTML file loaded by the popup of our `browser_action` is def
 {% endcode %}
 
 {% hint style="info" %}
-The default [**content security policy**](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content_Security_Policy#Inline_JavaScript) disallows JavaScript placed directly in `<script>` tags and inline event handlers like `onclick`. Place all Javascript code into a separate file (like popup.js in this example) and use [addEventListener()](https://developer.mozilla.org/de/docs/Web/API/EventTarget/addEventListener) instead of inline event handlers.
+The default [**content security policy**](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content\_Security\_Policy#Inline\_JavaScript) disallows JavaScript placed directly in `<script>` tags and inline event handlers like `onclick`. Place all Javascript code into a separate file (like popup.js in this example) and use [addEventListener()](https://developer.mozilla.org/de/docs/Web/API/EventTarget/addEventListener) instead of inline event handlers.
 {% endhint %}
 
 ### popup.css

@@ -76,7 +76,7 @@ Check out the [Experiment Generator](https://darktrojan.github.io/generator/gene
 {% endhint %}
 
 {% hint style="info" %}
-Check out the [Example Experiment API](https://github.com/thundernest/sample-extensions/tree/master/experiment) in our sample-extensions repository.
+Check out the [Example Experiment API](https://github.com/thundernest/sample-extensions/tree/master/manifest\_v3/experiment) in our sample-extensions repository.
 {% endhint %}
 
 {% hint style="warning" %}

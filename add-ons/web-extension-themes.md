@@ -25,7 +25,7 @@ You must prepare a JSON manifest, named `manifest.json` just as with other WebEx
 ```javascript
 {
   "manifest_version":2,
-  "applications":{
+  "browser_specific_settings":{
     "gecko":{
       "id":"mytheme@sample.themes.thunderbird.net",
       "strict_min_version":"60.0"
@@ -46,11 +46,11 @@ You must prepare a JSON manifest, named `manifest.json` just as with other WebEx
 }
 ```
 
-* `manifest_version` is always 2.
-* `id` is a unique GUID for your theme.
+* `manifest_version` : supported are 2 or 3 (since Thunderbird 110)
+* `id` : a unique GUID for your theme.
 
 {% hint style="danger" %}
-Although not required by Firefox, Thunderbird requires an `applications` object with an id set for the add-on! Because we don't sign add-ons, themes will not install without it.
+Although not required by Firefox, Thunderbird requires an `browser_specific_settings` object with an `id` set for the add-on! Because we don't sign add-ons, themes will not install without it.
 {% endhint %}
 
 ### Additional theme properties
@@ -78,7 +78,7 @@ Here is a `manifest.json` from a Theme that uses all the above features, thanks 
   "manifest_version": 2,
   "name": "Nuvola WebExtension theme",
   "version": "1.1",
-  "applications": {
+  "browser_specific_settings": {
     "gecko": {
       "id": "nuvola@paenglab.ch",
       "strict_min_version": "60.0"
@@ -150,17 +150,17 @@ messenger.composeScripts.register({
 
 ## Theme Experiments
 
-A theme experiment allows modifying the user interface of Thunderbird beyond what is currently possible using the built-in color, image and property keys of the [`theme`](https://webextension-api.thunderbird.net/en/latest/theme.html) API. These experiments are a precursor to proposing new theme features for inclusion in Thunderbird. 
+A theme experiment allows modifying the user interface of Thunderbird beyond what is currently possible using the built-in color, image and property keys of the [`theme`](https://webextension-api.thunderbird.net/en/latest/theme.html) API. These experiments are a precursor to proposing new theme features for inclusion in Thunderbird.&#x20;
 
-Experimentation is done by exposing already existing internal CSS variables (e.g.` --arrowpanel-dimmed`) to the [`theme`](https://webextension-api.thunderbird.net/en/latest/theme.html) API and by loading additional stylesheets to define new CSS variables, extending the theme-able areas of Thunderbird.
+Experimentation is done by exposing already existing internal CSS variables (e.g. `--arrowpanel-dimmed`) to the [`theme`](https://webextension-api.thunderbird.net/en/latest/theme.html) API and by loading additional stylesheets to define new CSS variables, extending the theme-able areas of Thunderbird.
 
-Use the [browser toolbox](https://developer.mozilla.org/en-US/docs/Tools/Browser_Toolbox) to discover CSS selectors for Thunderbird UI elements or internal Thunderbird CSS variables.
+Use the [browser toolbox](https://developer.mozilla.org/en-US/docs/Tools/Browser\_Toolbox) to discover CSS selectors for Thunderbird UI elements or internal Thunderbird CSS variables.
 
 {% hint style="info" %}
 Further information regarding theme experiments can be found in our [WebExtension API documentation of the theme API](https://webextension-api.thunderbird.net/en/latest/theme.html).
 {% endhint %}
 
 {% hint style="info" %}
-Our example repository includes an [add-on using a theme experiment](https://github.com/thundernest/sample-extensions/tree/master/theme_experiment) to change the color of the chat icon.
+Our example repository includes an [add-on using a theme experiment](https://github.com/thundernest/sample-extensions/tree/master/manifest\_v3/theme\_experiment) to change the color of the chat icon.
 {% endhint %}
 

@@ -8,7 +8,7 @@ In the fourth part of the Hello World Extension Tutorial, we will introduce the 
 
 We will add a banner to the top of the message display area, displaying some information about the currently viewed message. The banner will also include a button to mark the currently viewed message as unread.
 
-![](../../../.gitbook/assets/hello-world-4.png)
+![](<../../../.gitbook/assets/hello-world-4 (1).png>)
 
 ## Using a Message Display Script
 
@@ -149,7 +149,7 @@ In this example, we check if the runtime message includes our command and based 
 
 If only one `onMessage` listener is used in the entire extension, the listener can be declared `async`, which will always return a Promise. Even if no return statement is explicitly defined, it will return a Promise for `undefiend`.
 
-If multiple `onMessage` listeners are used and each should react on a different set of messages, the listeners must **not** be defined as async, but only return a Promsise for the requested messages. See the [examples ans explenations](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/onMessage#addlistener\_syntax) given on MDN.
+If multiple `onMessage` listeners are used and each should react on a different set of messages, the listeners must **not** be defined as async, but only return a Promsise for the requested messages. See the [examples and explenations](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/onMessage#addlistener\_syntax) given on MDN.
 {% endhint %}
 
 ## Testing the Extension
@@ -188,7 +188,7 @@ This is how our `manifest.json` should now look like:
     "description": "Your basic Hello World extension!",
     "version": "4.0",
     "author": "[Your Name Here]",
-    "applications": {
+    "browser_specific_settings": {
         "gecko": {
             "id": "helloworld@yoursite.com",
             "strict_min_version": "78.0"
@@ -335,4 +335,4 @@ As described in the [first part of the Hello World Extension Tutorial](./#instal
 
 ### Trying it Out
 
-Open a message. There should be a red banner added at the top of it with its subject and a button labeled _"Mark unread"_. Clicking that button should mark the message as unread
+Open a message. There should be a red banner added at the top of it with its subject and a button labelled _"Mark unread"_. Clicking that button should mark the message as unread

@@ -24,6 +24,8 @@ It is controlled by the `browser_action` manifest key in the extension's `manife
 
 If a `default_popup` is defined, a popup will be opened and the defined html page will be loaded, when the button is clicked. Additionally, you can use the [`browserAction`](https://webextension-api.thunderbird.net/en/latest/browserAction.html) API in your background script to interact with the button to modify _badge text_, _icon_, _title_ or its _enabled state_.
 
+**Note:** The `browserAction` API has been renamed to `action` in[ manifest v3](https://webextension-api.thunderbird.net/en/latest-mv3/action.html).
+
 ## Compose Action
 
 A compose action adds a button to the toolbar of the composer window:

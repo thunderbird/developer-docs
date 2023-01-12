@@ -66,13 +66,13 @@ We place the following `popup.css` file in the same folder as the `popup.html` f
 ```
 {% endcode %}
 
-Instead of tables, we use modern CSS styling to format our HTML into a tabular view. The `display: grid` container defines how our 6 DIV elements inside the container DIV are aligned. Check the [grid documentation](https://developer.mozilla.org/de/docs/Web/CSS/CSS_Grid_Layout) or this [grid guide](https://css-tricks.com/snippets/css/complete-guide-grid/) for more details.
+Instead of tables, we use modern CSS styling to format our HTML into a tabular view. The `display: grid` container defines how our 6 DIV elements inside the container DIV are aligned. Check the [grid documentation](https://developer.mozilla.org/de/docs/Web/CSS/CSS\_Grid\_Layout) or this [grid guide](https://css-tricks.com/snippets/css/complete-guide-grid/) for more details.
 
 ### popup.js
 
-All WebExtension API functions return a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises) instead of an actual value. This aims to simplify the handling of asynchronous functions.
+All WebExtension API functions return a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using\_promises) instead of an actual value. This aims to simplify the handling of asynchronous functions.
 
-The author of this example prefers [the `async`/`await` syntax](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await) over the `.then()` approach for handling Promises. The `load()` function defined in the following `popup.js` is therefore defined as `async`. All used WebExtension API calls, or better all returned Promises of WebExtension API calls are awaited, which means the execution flow in this function sort of halts until the individual Promise is fulfilled. This allows to use asynchronous functions but still being able to write sequential code.
+The author of this example prefers [the `async`/`await` syntax](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async\_await) over the `.then()` approach for handling Promises. The `load()` function defined in the following `popup.js` is therefore defined as `async`. All used WebExtension API calls, or better all returned Promises of WebExtension API calls are awaited, which means the execution flow in this function sort of halts until the individual Promise is fulfilled. This allows to use asynchronous functions but still being able to write sequential code.
 
 {% code title="popup.js" %}
 ```javascript
@@ -106,7 +106,7 @@ In Thunderbird, all WebExtension API can be accessed through the _browser.\*_ na
 
 #### messenger.tabs.query()
 
-The [tabs API](https://webextension-api.thunderbird.net/en/91/tabs.html) provides access to Thunderbird's tabs. We need to get hold of the current active tab to learn which message is displayed there. We use the [`query`](using-webextension-apis.md#adding-a-message_display_action) method to find it (line 4).
+The [tabs API](https://webextension-api.thunderbird.net/en/91/tabs.html) provides access to Thunderbird's tabs. We need to get hold of the current active tab to learn which message is displayed there. We use the [`query`](using-webextension-apis.md#adding-a-message\_display\_action) method to find it (line 4).
 
 {% hint style="info" %}
 Using `messeger.tabs.getCurrent()` will not work, as that always returns the tab in which it is being called from. In our case, the call is executed from inside the popup of the `message_display_action` and not from inside the tab we are looking for.
@@ -165,7 +165,7 @@ This is how our `manifest.json` should now look like:
     "description": "Your basic Hello World extension!",
     "version": "2.0",
     "author": "[Your Name Here]",
-    "applications": {
+    "browser_specific_settings": {
         "gecko": {
             "id": "helloworld@yoursite.com",
             "strict_min_version": "78.0"

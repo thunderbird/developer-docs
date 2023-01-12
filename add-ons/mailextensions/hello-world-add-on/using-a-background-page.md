@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", load);
 
 #### messenger.storage.local.get()
 
-In line 20 of the shown script, we request the current `messageLog` entry from the WebExtensions local storage. The used syntax allows defining the default value of `[]`(an empty Array), if there currently is no `messageLog` entry stored. 
+In line 20 of the shown script, we request the current `messageLog` entry from the WebExtensions local storage. The used syntax allows defining the default value of `[]`(an empty Array), if there currently is no `messageLog` entry stored.
 
 We could also request multiple values from the local storage:
 
@@ -155,7 +155,7 @@ Access to the local storage requires the <mark style="color:red;">`storage`</mar
 
 Since Thunderbird's WebExtension API potentially has to handle a lot of messages, the [`MessageList`](https://webextension-api.thunderbird.net/en/91/messages.html#messagelist) data type is paginated. Please check the [Working with Message Lists](https://webextension-api.thunderbird.net/en/91/how-to/messageLists.html) tutorial for more information.
 
-The provided` iterateMessagePages()` wrapper function is doing most of the heavy lifting and allows to asynchronously loop over the returned messages in line 22 of the shown background script. For each received message, we subsequently push a new entry into the `messageLog` Array.
+The provided `iterateMessagePages()` wrapper function is doing most of the heavy lifting and allows to asynchronously loop over the returned messages in line 22 of the shown background script. For each received message, we subsequently push a new entry into the `messageLog` Array.
 
 #### messenger.storage.local.set()
 
@@ -216,7 +216,7 @@ In order to do something when our menu is clicked, we add a listener for the [on
 
 #### messenger.notifications.create()
 
-After we have retrieved the current `messageLog` from the local storage, we loop over all entries and [create a notification](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/notifications) for each entry in line 20. 
+After we have retrieved the current `messageLog` from the local storage, we loop over all entries and [create a notification](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/notifications) for each entry in line 20.
 
 {% hint style="warning" %}
 Using the `notifications` API requires the <mark style="color:red;">`notifications`</mark> permission, which needs to be added to the `permissions` key in our manifest.json file.
@@ -255,7 +255,7 @@ This is how our `manifest.json` should now look like:
     "description": "Your basic Hello World extension!",
     "version": "3.0",
     "author": "[Your Name Here]",
-    "applications": {
+    "browser_specific_settings": {
         "gecko": {
             "id": "helloworld@yoursite.com",
             "strict_min_version": "78.0"

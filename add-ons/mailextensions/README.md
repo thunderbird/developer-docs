@@ -26,7 +26,7 @@ The main configuration file of a MailExtension is a file called `manifest.json`,
     "description": "A basic Hello World extension!",
     "version": "1.0",
     "author": "[Your Name Here]",
-    "applications": {
+    "browser_specific_settings": {
         "gecko": {
             "id": "helloworld@yoursite.com",
             "strict_min_version": "78.0",
@@ -69,7 +69,7 @@ The most commonly used manifest keys are explained below.
 
 The following manifest keys define basic properties:
 
-* `manifest_version`: _mandatory key_ to signal compatibility to Thunderbird, must be set to `2`
+* `manifest_version`: _mandatory key_ to signal compatibility to Thunderbird, supported versions are `2` and `3` (since Thunderbird Beta 110)
 * `name` : _mandatory key_ to set the name of the extension
 * `version` : _mandatory key_ to define a number that denotes the version of the extension
 * `description` : a brief description of what the extension does
@@ -79,21 +79,21 @@ The following manifest keys define basic properties:
 The `name` and the `description` of the given example are only in English. [This MDN article about **Localization**](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Internationalization#Internationalizing\_manifest.json) explains how to use the WebExtension i18n API to localize these keys.
 {% endhint %}
 
-The `applications.gecko` manifest key defines the following properties:
+The `browser_specific_settings.gecko` manifest key defines the following properties:
 
 *   `id`: The id serves as a unique identifier for the extension and is mandatory in order upload an extension to ATN or to be able to install it from an XPI file.\
 
 
-    Best practice is to use an "email-address-style" id (but not a real email address) on a domain you control, for example `name-of-your-addon@example.com`, if you own `example.com`. As the id of your add-on cannot be changed once it is published, it is highly recommended to use a domain that you plan to keep for the forseeable future. If you don't have a domain that fits the bill, feel free to use `your-atn-username.addons.thunderbird.net` (based on your username on [ATN](https://addons.thunderbird.net/)).\
+    Best practice is to use an "email-address-style" id (but not a real email address) on a domain you control, for example `name-of-your-addon@example.com`, if you own `example.com`. As the id of your add-on cannot be changed once it is published, it is highly recommended to use a domain that you plan to keep for the forseeable future. If you don't have a domain to use, feel free to use `your-atn-username.addons.thunderbird.net` (based on your username on [ATN](https://addons.thunderbird.net/)).\
 
 
     Alternatively to the preferred style, you may use an UUID enclosed in curly braces, for example\
     `{e4aa2097-8ee9-49a4-9ec7-c633b1e8dfda}`. Make sure you generate a new UUID for each add-on you want to develop, you can find free UUID generators throughout the internet.
 * `strict_min_version`: Defines the lowest targeted version of Thunderbird.
-* `strict_max_version`: Defines the highest targeted version of Thunderbird. It can be set to a specific version or a broader match to limit it to a branch (for example `78.*`).
+* `strict_max_version`: Defines the highest targeted version of Thunderbird. It can be set to a specific version or a broader match to limit it to a branch (for example `102.*`).
 
 ```json
-    "applications": {
+    "browser_specific_settings": {
         "gecko": {
             "id": "helloworld@yoursite.com",
             "strict_min_version": "78.0",
@@ -254,7 +254,7 @@ A script loaded from a CloudFile[ `management_url`](https://webextension-api.thu
 
 ## Creating MailExtensions: Examples
 
-Our [sample-extensions repository](https://github.com/thundernest/sample-extensions) includes a few simple MailExtensions, which showcase different APIs and which will get you started to create your own extension.
+Our [sample-extensions repository](https://github.com/thundernest/sample-extensions) includes a few simple MailExtensions, which showcase different APIs. They will help you to get started to create your own extension.
 
 We also prepared a step-by-step guide for a small Hello World MailExtension:
 

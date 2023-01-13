@@ -20,7 +20,7 @@ An add-on can either be an **extension** (adding functionality or changing the w
 
 ## Getting Started
 
-There's a lot of information out there when it comes to add-on development, and finding the most relevant one can be time-consuming. We have therefore put together a tutorial that explains step by step how to create your first extension:
+There's a lot of information out there when it comes to add-on development, and finding the most relevant one can be time-consuming. We have therefore put together a tutorial that explains step by step how to create your first extension for Thunderbird:
 
 {% content-ref url="hello-world-add-on/" %}
 [hello-world-add-on](hello-world-add-on/)

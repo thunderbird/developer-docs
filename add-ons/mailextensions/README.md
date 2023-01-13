@@ -4,11 +4,7 @@ description: How to create extensions for Thunderbird.
 
 # A Guide to Extensions
 
-An extension is a Thunderbird add-on, that provides additional functionality by adding new user interface elements, alter content, or perform background tasks. For a quick start, try the following tutorial:
-
-{% content-ref url="../hello-world-add-on/" %}
-[hello-world-add-on](../hello-world-add-on/)
-{% endcontent-ref %}
+An extension is a Thunderbird add-on, that provides additional functionality by adding new user interface elements, alter content, or perform background tasks.&#x20;
 
 ## The `manifest.json` file
 

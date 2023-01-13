@@ -1,6 +1,6 @@
 # A "Hello World" Extension Tutorial
 
-The idea of this tutorial is to get started right away by providing just the information you need to get your first Thunderbird extension running.
+The idea of this tutorial is to get started right away by providing all the information you need to get your first Thunderbird extension running.
 
 In the first part of this tutorial, we will create a very simple extension, which adds a "_Hello World_" button to Thunderbird's main toolbar and a click on it will show a `Hello, World!` popup.&#x20;
 
@@ -62,7 +62,7 @@ Make sure to create an `images` directory in the `hello-world` project folder fo
 
 The above manifest includes the definition for a `browser_action`. That is the button we want to add to Thunderbird's main toolbar. The reference to a _browser_ in its name is inherited from the Firefox Browser.
 
-The allowed keys for the `browser_action` button are described in our [API documentation](https://webextension-api.thunderbird.net/en/91/browserAction.html). We define a popup HTML page, which should be loaded if the button is clicked, a title and an icon.
+The allowed keys for the `browser_action` button are described in our [API documentation](https://webextension-api.thunderbird.net/en/stable/). We define a popup HTML page, which should be loaded if the button is clicked, a title and an icon.
 
 ### popup.html
 
@@ -155,7 +155,7 @@ Select the `manifest.json` file from within our `hello-world` project folder:
 
 ![](../../.gitbook/assets/hello-word-load.png)
 
-This should install the Add-on for this session only:
+This should install the add-on for this session only:
 
 ![](../../.gitbook/assets/screen5.png)
 
@@ -179,4 +179,4 @@ Now, if you look at the Developer Tools, you should see something like the follo
 
 ## Creating the add-on file
 
-Once the add-on is ready for release or if you want to share it with others, you need to create a single add-on file. Simply zip the content of the add-on's project folder and use the `xpi` file extension. That file can be installed from the gear menu in the Thunderbird Add-Ons Manager.
+Once the add-on is ready for release or if you want to share it with others, you need to create a single add-on file. Simply zip the content of the add-on's project folder and use the `xpi` file extension. That file can be installed from the gear menu in the Thunderbird Add-ons Manager.

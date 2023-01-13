@@ -44,6 +44,7 @@
 ## Add-on Development <a href="#add-ons" id="add-ons"></a>
 
 * [Introduction](add-ons/about-add-ons.md)
+* [What's new?](add-ons/whats-new.md)
 * [A "Hello World" Extension Tutorial](add-ons/hello-world-add-on/README.md)
   * [Using WebExtension APIs](add-ons/hello-world-add-on/using-webextension-apis.md)
   * [Using a Background Page](add-ons/hello-world-add-on/using-a-background-page.md)
@@ -55,6 +56,7 @@
   * [Examples in the Sample Extensions Repository](https://github.com/thundernest/sample-extensions)
   * [Introducing Experiments](add-ons/mailextensions/experiments.md)
 * [A Guide to Themes](add-ons/web-extension-themes.md)
+* [Manifest V3](add-ons/manifest-v3.md)
 * [Tips and Tricks](add-ons/tips-and-tricks.md)
 * [Developer Community](add-ons/community.md)
 * [Documentation & Resources](add-ons/resources.md)

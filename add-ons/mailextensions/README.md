@@ -156,12 +156,6 @@ An inline options page may look as follows:
 
 ![](../../.gitbook/assets/options.png)
 
-Access to WebExtension APIs in options pages using `options_ui.open_in_tab: false` is currently broken. Use `getBackgroundPage()` to replace the `browser` object of the options page with the `browser` object of your background page.
-
-```javascript
-const browser = window.browser.extension.getBackgroundPage().browser;
-```
-
 ### User Interface Elements
 
 Some UI elements MailExtensions can use are controlled by manifest keys, for example
@@ -225,7 +219,7 @@ Content scripts (including [compose scripts](https://webextension-api.thunderbir
 * [menus.getTargetElement](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/menus/getTargetElement)
 * [storage](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage).\*
 
-Content scripts can [communicate with background scripts](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Content\_scripts#Communicating\_with\_background\_scripts) using a messaging system, and thereby indirectly access the WebExtension APIs.
+Content scripts can [communicate with background scripts](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Content\_scripts#Communicating\_with\_background\_scripts) using runtime messaging, and thereby can indirectly access the WebExtension APIs. See our [messageDisplayScript example extension](https://github.com/thundernest/sample-extensions/tree/master/manifest\_v3/messageDisplayScript.pdfPreview).
 
 ### CloudFile Management Scripts
 
@@ -237,7 +231,7 @@ A script loaded from a CloudFile[ `management_url`](https://webextension-api.thu
 * [runtime](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime).\*
 * [storage](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage).\*
 
-CloudFile management scripts can [communicate with background scripts](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Content\_scripts#Communicating\_with\_background\_scripts) using a messaging system, and thereby indirectly access the WebExtension APIs.
+CloudFile management scripts can [communicate with background scripts](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Content\_scripts#Communicating\_with\_background\_scripts) using runtime messaging, and thereby can indirectly access the WebExtension APIs.
 
 ## Experiment APIs
 

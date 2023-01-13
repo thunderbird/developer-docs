@@ -1,18 +1,16 @@
----
-description: This is a tutorial for making a Hello World MailExtension.
----
+# A "Hello World" Extension Tutorial
 
-# Hello World Extension Tutorial
+The idea of this tutorial is to get started right away by providing just the information you need to get your first Thunderbird extension running.
 
-In the first part of the Hello World Extension Tutorial, we will create a very simple extension, which adds a "_Hello World_" button to Thunderbird's main toolbar and a click on it will show a `Hello, World!` popup.&#x20;
+In the first part of this tutorial, we will create a very simple extension, which adds a "_Hello World_" button to Thunderbird's main toolbar and a click on it will show a `Hello, World!` popup.&#x20;
 
-![](../../../.gitbook/assets/hello-word.png)
+![](../../.gitbook/assets/hello-word.png)
 
 ## Creating a manifest.json
 
 First, we create an empty `hello-world` project folder for our extension and navigate to it.&#x20;
 
-As described in the [MailExtension guide](https://developer.thunderbird.net/add-ons/mailextensions), extensions require a `manifest.json` file that tells Thunderbird a few basic information about the add-on. Let's place the following `manifest.json` file directly in the `hello-world` project folder.
+Extensions require a `manifest.json` file that tells Thunderbird a few basic information about the add-on. Let's place the following `manifest.json` file directly in the `hello-world` project folder.
 
 {% code title="manifest.json" %}
 ```json
@@ -42,7 +40,23 @@ As described in the [MailExtension guide](https://developer.thunderbird.net/add-
 ```
 {% endcode %}
 
-You can grab the icons we use for this example from the [Thunderstorm repo](https://github.com/cleidigh/ThunderStorm/tree/master/examples/MailExtensions/HelloWorld-Popup/images). Make sure to create an `images` directory in the `hello-world` project folder for them.
+You can grab the icons we use for this example from here:
+
+<div>
+
+<figure><img src="../../.gitbook/assets/internet.png" alt=""><figcaption></figcaption></figure>
+
+ 
+
+<figure><img src="../../.gitbook/assets/internet-32px.png" alt=""><figcaption></figcaption></figure>
+
+ 
+
+<figure><img src="../../.gitbook/assets/internet-16px.png" alt=""><figcaption></figcaption></figure>
+
+</div>
+
+Make sure to create an `images` directory in the `hello-world` project folder for them.
 
 ## Using a `browser_action`
 
@@ -127,23 +141,23 @@ hello-world/
 
 To install the add-on we created, we are going to load it temporarily. Let's start by opening the Add-ons Manager:
 
-![](../../../.gitbook/assets/screen1.png)
+![](../../.gitbook/assets/screen1.png)
 
 This will open up the Add-ons Manager, make sure "Extensions" is selected on the left-hand side and click the gear to select "Debug Add-ons".
 
-![](../../../.gitbook/assets/screen2.png)
+![](../../.gitbook/assets/screen2.png)
 
 Click on the "Load Temporary Add-on..." button:
 
-![](../../../.gitbook/assets/screen3.png)
+![](../../.gitbook/assets/screen3.png)
 
 Select the `manifest.json` file from within our `hello-world` project folder:
 
-![](../../../.gitbook/assets/hello-word-load.png)
+![](../../.gitbook/assets/hello-word-load.png)
 
 This should install the Add-on for this session only:
 
-![](../../../.gitbook/assets/screen5.png)
+![](../../.gitbook/assets/screen5.png)
 
 ### Opening the Error Console
 
@@ -151,17 +165,17 @@ Our extension will print messages to the error console using `console.log()`, so
 
 Make sure the "Console" tab is selected in the Developer Tools. Click the "Persist Logs" checkbox in the top right-hand corner of the Developer Tools so that we can see the output from the add-on after we've interacted with it (otherwise it only shows output as it is happening).
 
-![](../../../.gitbook/assets/screen6.png)
+![](../../.gitbook/assets/screen6.png)
 
 ### Trying it Out
 
 Now we can give our new add-on a whirl. Head to the home tab and find the new "_Hello World_" button in the main toolbar in the top right-hand corner. Click on it to see a popup with the `Hello, World!` message.
 
-![](../../../.gitbook/assets/screen7.png)
+![](../../.gitbook/assets/screen7.png)
 
 Now, if you look at the Developer Tools, you should see something like the following in the console:
 
-![](<../../../.gitbook/assets/screen8 (1).png>)
+![](<../../.gitbook/assets/screen8 (1).png>)
 
 ## Creating the add-on file
 

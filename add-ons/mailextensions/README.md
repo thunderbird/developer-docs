@@ -1,22 +1,18 @@
 ---
-description: How to build MailExtensions for Thunderbird.
+description: How to create extensions for Thunderbird.
 ---
 
-# A Guide to MailExtensions
+# A Guide to Extensions
 
-## Introduction
+An extension is a Thunderbird add-on, that provides additional functionality by adding new user interface elements, alter content, or perform background tasks. For a quick start, try the following tutorial:
 
-MailExtensions are based on the WebExtension technology, which is also used by many web browsers. Such an extension is a simple collection of files which modify Thunderbirds appearance and behavior. It can add user interface elements, alter content, or perform background tasks. MailExtensions are created using standard JavaScript, CSS and HTML. Interaction with Thunderbird itself, like adding UI elements or accessing the users messages or contacts is done through special WebExtension APIs.
+{% content-ref url="../hello-world-add-on/" %}
+[hello-world-add-on](../hello-world-add-on/)
+{% endcontent-ref %}
 
-{% hint style="warning" %}
-Even though Thunderbird Themes are also MailExtensions, they have a very distinct objective and are therefore described [in their own guide](../web-extension-themes.md).
-{% endhint %}
+## The `manifest.json` file
 
-![](<../../.gitbook/assets/webext\_diagram (1).png>)
-
-Unlike older legacy extensions, MailExtensions access functionality through stable WebExtension APIs and do not have direct access to Thunderbird's internal components or UI elements. Consequently, MailExtensions are less likely to break and do not need frequent and complex updates when Thunderbird's internals change.
-
-The main configuration file of a MailExtension is a file called `manifest.json`, also referred to as the _manifest_. Besides defining some of the extension's basic properties like name, description and ID, it also defines how the extension hooks into Thunderbird:
+The main configuration file of an extension is called `manifest.json`, also referred to as the _manifest_. Besides defining some of the extension's basic properties like name, description and ID, it also defines how the extension hooks into Thunderbird:
 
 {% code title="manifest.json" %}
 ```json
@@ -39,9 +35,7 @@ The main configuration file of a MailExtension is a file called `manifest.json`,
         "16": "images/icon-16px.png"
     },
     "background": {
-        "scripts": [
-            "background.js"
-        ]
+        "page": "background.html"
     },
     "options_ui": {
       "page": "options/options.html",
@@ -55,52 +49,38 @@ The main configuration file of a MailExtension is a file called `manifest.json`,
 ```
 {% endcode %}
 
-## Manifest keys
-
 A list of all manifest keys supported by Thunderbird can be found in the following document:
 
 {% content-ref url="supported-manifest-keys.md" %}
 [supported-manifest-keys.md](supported-manifest-keys.md)
 {% endcontent-ref %}
 
-The most commonly used manifest keys are explained below.
-
-### Basic extension properties
-
 The following manifest keys define basic properties:
 
-* `manifest_version`: _mandatory key_ to signal compatibility to Thunderbird, supported versions are `2` and `3` (since Thunderbird Beta 110)
-* `name` : _mandatory key_ to set the name of the extension
-* `version` : _mandatory key_ to define a number that denotes the version of the extension
-* `description` : a brief description of what the extension does
-* `author` : should be the name of a person or company representing the extensions developer
+* `manifest_version`: A _mandatory key_ defining the Manifest version used by the extension. Supported versions are `2` and `3` (since Thunderbird Beta 110). The Manifest defines the basic rules how a WebExtension needs to be crafted and how it can interact with Thunderbird.
+* `name` : A _mandatory key_ to set the name of the extension.
+* `version` : A _mandatory key_ to define a number that denotes the version of the extension.
+* `description` : A brief description of what the extension does.
+* `author` : The name of a person or company representing the extension developer.
 
 {% hint style="info" %}
-The `name` and the `description` of the given example are only in English. [This MDN article about **Localization**](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Internationalization#Internationalizing\_manifest.json) explains how to use the WebExtension i18n API to localize these keys.
+The `name` and the `description` of the shown example are only in English. [This MDN article about **Localization**](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Internationalization#Internationalizing\_manifest.json) explains how to use the WebExtension i18n API to localize these keys.
 {% endhint %}
 
 The `browser_specific_settings.gecko` manifest key defines the following properties:
 
-*   `id`: The id serves as a unique identifier for the extension and is mandatory in order upload an extension to ATN or to be able to install it from an XPI file.\
-
-
-    Best practice is to use an "email-address-style" id (but not a real email address) on a domain you control, for example `name-of-your-addon@example.com`, if you own `example.com`. As the id of your add-on cannot be changed once it is published, it is highly recommended to use a domain that you plan to keep for the forseeable future. If you don't have a domain to use, feel free to use `your-atn-username.addons.thunderbird.net` (based on your username on [ATN](https://addons.thunderbird.net/)).\
-
-
-    Alternatively to the preferred style, you may use an UUID enclosed in curly braces, for example\
-    `{e4aa2097-8ee9-49a4-9ec7-c633b1e8dfda}`. Make sure you generate a new UUID for each add-on you want to develop, you can find free UUID generators throughout the internet.
 * `strict_min_version`: Defines the lowest targeted version of Thunderbird.
-* `strict_max_version`: Defines the highest targeted version of Thunderbird. It can be set to a specific version or a broader match to limit it to a branch (for example `102.*`).
+* `strict_max_version`: Defines the highest targeted version of Thunderbird. It can be set to a specific version or a broader match to limit it to a branch (for example `102.*`). Usually not needed.
+* `id`: The id serves as a unique identifier for the extension and is mandatory in order upload an extension to ATN or to be able to install it from an XPI file.
 
-```json
-    "browser_specific_settings": {
-        "gecko": {
-            "id": "helloworld@yoursite.com",
-            "strict_min_version": "78.0",
-            "strict_max_version": "78.*"
-        }
-    }
-```
+{% hint style="info" %}
+Best practice is to use an "email-address-style" id (but not a real email address) on a domain you control, for example `name-of-your-addon@example.com`, if you own `example.com`. As the id of your add-on cannot be changed once it is published, it is highly recommended to use a domain that you plan to keep for the forseeable future. If you don't have a domain to use, feel free to use:\
+`<username>.addons.thunderbird.net` (based on your username on [ATN](https://addons.thunderbird.net/)).\
+
+
+Alternatively, you may use an UUID enclosed in curly braces, for example:\
+`{e4aa2097-8ee9-49a4-9ec7-c633b1e8dfda}`
+{% endhint %}
 
 ### Extension Icons
 
@@ -116,9 +96,35 @@ The `icons` manifest key tells Thunderbird the location of icons, which should b
 
 ### Background Page
 
-Each MailExtension has a hidden background page. Its main purpose is to load and execute JavaScript files when the MailExtension is loaded. There are two options for its definition:
+The extension's background page is loaded in a hidden window when the add-on is started and can be used to load additional JavaScript files.
 
-#### Defining one or more background scripts
+```json
+    "background": {
+        "page": "background.html"
+    }
+```
+
+The background page specifies the JavaScript files to be loaded:
+
+```markup
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <script src="common.js"></script>
+        <script type="module" src="background.js"></script>
+    </head>
+    <body>
+    </body>
+</html>
+```
+
+{% hint style="success" %}
+The `type` attribute in the shown `script` tag of `background.js` defines it as a top level module and enables it to use modern [ES6 modules](https://hacks.mozilla.org/2015/08/es6-in-depth-modules/).
+{% endhint %}
+
+#### Defining one or more background scripts directly
+
+Instead of defining a background page, the extension can specify a simple list of JavaScript files. This will auto-generate a background page and then load the JavaScript files.
 
 ```json
     "background": {
@@ -129,33 +135,13 @@ Each MailExtension has a hidden background page. Its main purpose is to load and
     }
 ```
 
-This will create the background page on-the-fly and load the provided scripts. This is identical to the following background page definition.
-
-#### Defining a background page
-
-```json
-    "background": {
-        "page": "background.html"
-    }
-```
-
-The defined background page can then load the JavaScript files:
-
-```markup
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <script src="common.js"></script>
-        <script src="background.js"></script>
-    </head>
-    <body>
-    </body>
-</html>
-```
+{% hint style="danger" %}
+This approach does not allow to use [ES6 modules](https://hacks.mozilla.org/2015/08/es6-in-depth-modules/) in any of the specified files.
+{% endhint %}
 
 ### Options Page
 
-The `options_ui` manifest key defines the standard MailExtension options page. The defined page will be displayed in the add-on manager.
+The `options_ui` manifest key defines the standard MailExtension options page. The defined page will be displayed in the add-on manager by default.
 
 ```json
     "options_ui": {
@@ -167,20 +153,26 @@ The `options_ui` manifest key defines the standard MailExtension options page. T
 
 The appearance of the options page can be configured as follows:
 
-* `open_in_tab` : Open the options page in a tab instead of inline in the add-ons property page.
+* `open_in_tab` : Open the options page in a tab instead of inline in the add-on manager.
 * `browser_style`: Use default browser styles for the options page (recommended).
 
 An inline options page may look as follows:
 
 ![](../../.gitbook/assets/options.png)
 
+Access to WebExtension APIs in options pages using `options_ui.open_in_tab: false` is currently broken. Use `getBackgroundPage()` to replace the `browser` object of the options page with the `browser` object of your background page.
+
+```javascript
+const browser = window.browser.extension.getBackgroundPage().browser;
+```
+
 ### User Interface Elements
 
 Some UI elements MailExtensions can use are controlled by manifest keys, for example
 
-* browser\_action
-* compose\_action
-* message\_display\_action
+* `browser_action` (renamed to `action` in Manifest v3)
+* `compose_action`
+* `message_display_action`
 
 Further information about these UI elements can be found in the following document:
 
@@ -190,7 +182,7 @@ Further information about these UI elements can be found in the following docume
 
 ### Permissions
 
-A core principle of the WebExtension technology is the use of permissions, so users can see which areas of Thunderbird a MailExtension wants to access. Add-on developers can predefine all requested permissions in the `permissions` manifest key:
+A core principle of the WebExtension technology is the use of permissions, so users can see which areas of Thunderbird an add-on wants to access. Add-on developers can predefine all requested permissions in the `permissions` manifest key:
 
 ```json
     "permissions": [
@@ -198,31 +190,21 @@ A core principle of the WebExtension technology is the use of permissions, so us
     ]
 ```
 
-As permissions allow WebExtensions to use certain APIs, information about supported permissions can be found in the following document:
+Information about required permissions can be found in the following document:
 
 {% content-ref url="supported-webextension-api.md" %}
 [supported-webextension-api.md](supported-webextension-api.md)
 {% endcontent-ref %}
 
-The user may not deny individual permissions requested in the permissions manifest key. He must either accept all of them during add-on install, or abort the install. It is however possible to request [optional permissions](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/optional\_permissions), which can be managed by the user during runtime.
+For most permissions, the user must either accept all of the requested permissions during add-on install, or abort the install. Some permissions however can be requested as [optional permissions](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/optional\_permissions), which can be managed by the user during runtime.
 
 ## WebExtension Scripts
 
-Most entry points defined in the extensions manifest allow adding scripts. Most prominent of course the background script(s). Furthermore, each defined HTML page, like the `options_ui` page allow including scripts via standard HTML `<script>` tags.
-
-{% hint style="info" %}
-In order to use modern [ES6 modules](https://hacks.mozilla.org/2015/08/es6-in-depth-modules/) in a loaded script, the `type` attribute of its `script` tag must be set to `module`.
-
-```markup
-<script type="module" src="background.js"></script>
-```
-{% endhint %}
-
-All these WebExtension scripts have access to:
+All JavaScript files loaded by an extension have access to:
 
 * Standard JavaScript methods
 * [Web API](https://developer.mozilla.org/docs/Web/API) (if the browser compatibility chart lists Firefox, the API also works in Thunderbird)
-* WebExtension API
+* WebExtension APIs (see restrictions for content scripts and cloudFile scripts below)
 
 A list of all WebExtension APIs supported by Thunderbird can be found in the following document:
 
@@ -232,35 +214,34 @@ A list of all WebExtension APIs supported by Thunderbird can be found in the fol
 
 ### Content Scripts
 
-Content scripts (including [compose scripts](https://webextension-api.thunderbird.net/en/latest/composeScripts.html) and [message display scripts](https://webextension-api.thunderbird.net/en/latest/messageDisplayScripts.html)) can only access [a small subset of the WebExtension APIs](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Content\_scripts#WebExtension\_APIs), but they can [communicate with background scripts](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Content\_scripts#Communicating\_with\_background\_scripts) using a messaging system, and thereby indirectly access the WebExtension APIs.
+Content scripts (including [compose scripts](https://webextension-api.thunderbird.net/en/latest/composeScripts.html) and [message display scripts](https://webextension-api.thunderbird.net/en/latest/messageDisplayScripts.html)) can only use the following WebExtension APIs:
 
-### Option Scripts
+* [runtime.connect()](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/connect)
+* [runtime.getManifest()](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/getManifest)
+* [runtime.getURL()](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/getURL)
+* [runtime.onConect](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/onConnect)
+* [runtime.onMessage](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/onMessage)
+* [runtime.sendMessage](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/sendMessage)
+* [i18n.getMessage()](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/i18n/getMessage)
+* [i18n.getAcceptLanguages()](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/i18n/getAcceptLanguages)
+* [i18n.getUILanguage()](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/i18n/getUILanguage)
+* [i18n.detectLanguage()](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/i18n/detectLanguage)
+* [menus.getTargetElement](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/menus/getTargetElement)
+* [storage](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage).\*
 
-Access to WebExtension APIs in options pages using `options_ui.open_in_tab: false` is currently broken. Use `getBackgroundPage()` to replace the `browser` object of the options page with the `browser` object of your background page.
-
-```javascript
-const browser = window.browser.extension.getBackgroundPage().browser;
-```
+Content scripts can [communicate with background scripts](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Content\_scripts#Communicating\_with\_background\_scripts) using a messaging system, and thereby indirectly access the WebExtension APIs.
 
 ### CloudFile Management Scripts
 
-A script loaded from a CloudFile[ `management_url`](https://webextension-api.thunderbird.net/en/latest/cloudFile.html#manifest-file-properties) has access to a limited subset of the WebExtension APIs:
+A script loaded from a CloudFile[ `management_url`](https://webextension-api.thunderbird.net/en/latest/cloudFile.html#manifest-file-properties) can only use the following WebExtension APIs:
 
-* cloudFile
-* extension
-* i18n
-* runtime
-* storage
+* [cloudFile](https://webextension-api.thunderbird.net/en/stable/cloudFile.html).\*
+* [extension](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/extension).\*
+* [i18n](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/i18n).\*
+* [runtime](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime).\*
+* [storage](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage).\*
 
-## Creating MailExtensions: Examples
-
-Our [sample-extensions repository](https://github.com/thundernest/sample-extensions) includes a few simple MailExtensions, which showcase different APIs. They will help you to get started to create your own extension.
-
-We also prepared a step-by-step guide for a small Hello World MailExtension:
-
-{% content-ref url="hello-world-add-on/" %}
-[hello-world-add-on](hello-world-add-on/)
-{% endcontent-ref %}
+CloudFile management scripts can [communicate with background scripts](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Content\_scripts#Communicating\_with\_background\_scripts) using a messaging system, and thereby indirectly access the WebExtension APIs.
 
 ## Experiment APIs
 
@@ -314,12 +295,10 @@ Developers can share and re-use Experiments, if their add-ons have similar needs
 | [onAfterSend](https://github.com/int-red/experiment-api-composeevent)                                          |                                                                                                                                                                                                                                                         | Adds "onAfterSend" event. It returns the messageId of the sent email in the Sent folder.                                                                                                                                          |
 | [ResourceUrl](https://github.com/thundernest/addon-developer-support/tree/master/auxiliary-apis/ResourceUrl)   |                                                                                                                                                                                                                                                         | Register a custom `resource://` URL to be able to load custom JSM files.                                                                                                                                                          |
 | [Runtime.onDisable](https://github.com/rsjtdrjgfuzkfg/thunderbird-experiments/tree/master/experiments/runtime) |                                                                                                                                                                                                                                                         | Permit WebExtensions to perform (time-limited) cleanup tasks after the add-on is disabled or uninstalled.                                                                                                                         |
-| [TagService](https://github.com/int-red/experiment-api-tagservice)                                             |                                               [B](https://bugzilla.mozilla.org/show\_bug.cgi?id=1651954) [💬](https://thunderbird.topicbox.com/groups/addons/T748f8fbd94681aa6-Me57c565c9f0111b493771c77)                                               | Add/Manage email tags.                                                                                                                                                                                                            |
 | [TCP](https://github.com/rsjtdrjgfuzkfg/thunderbird-experiments/tree/master/experiments/tcp)                   |                                                                                                                                                                                                                                                         | TCP support based on ArrayBuffers (currently client side only).                                                                                                                                                                   |
 
 💬: API has a public announcement post\
-📝: API has a public interface discussion\
-B : Bugzilla Bug
+📝: API has a public interface discussion
 
 If you have created an Experiment API which you think could be beneficial to other developers, please [tell us about it](https://github.com/thundernest/developer-docs/issues/new), so we can include it here.
 

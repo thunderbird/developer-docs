@@ -8,13 +8,13 @@ In the third part of the Hello World Extension Tutorial, we will introduce the c
 
 We will keep track of incoming mails, add a menu entry to the tools menu and also a context menu entry to our button in Thunderbird's main toolbar and a click on both will open notifications with the collected information from the last 24h.
 
-![](../../../.gitbook/assets/hello-word-3.png)
+![](../../.gitbook/assets/hello-word-3.png)
 
 ## Background Page and Background Scripts
 
 In the first two parts of the Hello World Extension Tutorial, we used well-defined UI hooks to load HTML pages when the user opened one of our popups. In contrast, the background page - if defined - is automatically loaded when the add-on is enabled during Thunderbird start or after the add-on has been manually enabled or installed. It is automatically destroyed when the add-on is shutting down.
 
-The background page is a standard HTML page, supporting the same technologies as ordinary HTML pages, but it is never shown to the user. Its main purpose is to load one or more JavaScript files into the background. Those background scripts can be used to listen for events or to initialize and properly set up the add-on. As [described in the MailExtension guide](../#background-page), there are two ways to load background scripts:
+The background page is a standard HTML page, supporting the same technologies as ordinary HTML pages, but it is never shown to the user. Its main purpose is to load one or more JavaScript files into the background. Those background scripts can be used to listen for events or to initialize and properly set up the add-on. As [described in the MailExtension guide](../mailextensions/#background-page), there are two ways to load background scripts:
 
 1. Actually defining a background HTML page, that uses `script` tags to load the JavaScript files.
 2. Just defining the to-be-loaded JavaScript files and let Thunderbird create a background page on-the-fly.
@@ -202,7 +202,7 @@ await messenger.menus.onClicked.addListener(async (info, tab) => {
 
 #### messenger.menus.create()
 
-In line 2 we create a new menu entry. We use the title `Show received email` and we add it to the `browser_action` context and to the `tools_menu` context. A list of other available contexts can be found on the [Supported UI Elements](../supported-ui-elements.md#menu-items) page.
+In line 2 we create a new menu entry. We use the title `Show received email` and we add it to the `browser_action` context and to the `tools_menu` context. A list of other available contexts can be found on the [Supported UI Elements](../mailextensions/supported-ui-elements.md#menu-items) page.
 
 The [menus.create()](https://webextension-api.thunderbird.net/en/91/menus.html#create-createproperties-callback) function returns the `id` of the new menu, which we can use to identify our menu, or - for example - add submenus by using the `id` as the `parentId` for other menu entries.
 
@@ -368,4 +368,4 @@ As described in the [first part of the Hello World Extension Tutorial](./#instal
 
 After you have received one or more new messages, while the add-on has been active, open the context menu of our `browser_action` button in Thunderbird's main toolbar and click on "Show received emails". For each received message, you should see a notification.
 
-![](../../../.gitbook/assets/hello-word-3-try.png)
+![](../../.gitbook/assets/hello-word-3-try.png)

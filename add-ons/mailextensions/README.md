@@ -71,7 +71,7 @@ The `browser_specific_settings.gecko` manifest key defines the following propert
 
 {% hint style="info" %}
 Best practice is to use an "email-address-style" id (but not a real email address) on a domain you control, for example `name-of-your-addon@example.com`, if you own `example.com`. As the id of your add-on cannot be changed once it is published, it is highly recommended to use a domain that you plan to keep for the forseeable future. If you don't have a domain to use, feel free to use:\
-`<username>.addons.thunderbird.net` (based on your username on [ATN](https://addons.thunderbird.net/)).\
+`<atn-user-name>.<add-on-name>@addons.thunderbird.net`\
 
 
 Alternatively, you may use an UUID enclosed in curly braces, for example:\

@@ -10,6 +10,3 @@ Mozilla introduced [Limited Event Pages](https://github.com/w3c/webextensions/is
 
 In addition to these fundamental operational changes, some APIs are changed to remove inconsistencies. All methods and properties marked as deprecated are removed.
 
-## Migrating to MV3
-
-TBD / WIP

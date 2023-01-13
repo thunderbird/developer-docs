@@ -14,7 +14,7 @@ Key features of MailExtensions (Thunderbird add-ons based on WebExtension techno
 
 * They use stable APIs and do not need to be updated when a new version of Thunderbird is released.
 * They use a permission mechanism that requires users to confirm any permission requested by add-ons before they can be installed. These permission requests enable users to know what an add-on is actually doing.&#x20;
-* Advanced add-on developers (with in-depth knowledge of Thunderbird source code) can extend the current available set of APIs by creating their own APIs and shipping them with the add-ons. These APIs are called [Experiments](mailextensions/#experiment-apis), and they interact directly with Thunderbird's internal APIs, allowing add-ons to use additional features not yet available via built-in WebExtension APIs.
+* Advanced add-on developers (with in-depth knowledge of Thunderbird source code) can extend the current available set of APIs by creating their own APIs and ship them with the add-ons. These APIs are called [Experiments](mailextensions/#experiment-apis), and they interact directly with Thunderbird's internal APIs, allowing add-ons to use additional features not yet available via built-in WebExtension APIs.
 
 An add-on can either be an **extension** (adding functionality or changing the way Thunderbird works) or a **theme** (changing the way Thunderbird looks).
 

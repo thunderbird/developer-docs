@@ -18,9 +18,17 @@ Key features of MailExtensions (Thunderbird add-ons based on WebExtension techno
 
 An add-on can either be an **extension** (adding functionality or changing the way Thunderbird works) or a **theme** (changing the way Thunderbird looks).
 
+## Getting Started
+
+There's a lot of information out there when it comes to add-on development, and finding the most relevant ones can be time-consuming. We have therefore put together a tutorial that explains step by step how to create your first extension.
+
+{% content-ref url="hello-world-add-on/" %}
+[hello-world-add-on](hello-world-add-on/)
+{% endcontent-ref %}
+
 ## Add-On Guides
 
-For more information on the two add-on types supported by Thunderbird, see their respective guides:
+For more detailed information on the two add-on types supported by Thunderbird, see their respective guides:
 
 {% content-ref url="mailextensions/" %}
 [mailextensions](mailextensions/)

@@ -6,7 +6,7 @@ description: Extending the simple example extension to make use of WebExtension 
 
 In the second part of the Hello World Extension Tutorial, we will add a "_Details_" button to the message header toolbar. A click on it will show some information about the currently displayed message, which we retrieve using Thunderbird's WebExtension APIs.
 
-![](../../../.gitbook/assets/hello-word-2.png)
+![](../../.gitbook/assets/hello-word-2.png)
 
 ## Using a `message_display_action`
 
@@ -72,7 +72,7 @@ Instead of tables, we use modern CSS styling to format our HTML into a tabular v
 
 All WebExtension API functions return a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using\_promises) instead of an actual value. This aims to simplify the handling of asynchronous functions.
 
-The author of this example prefers [the `async`/`await` syntax](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async\_await) over the `.then()` approach for handling Promises. The `load()` function defined in the following `popup.js` is therefore defined as `async`. All used WebExtension API calls, or better all returned Promises of WebExtension API calls are awaited, which means the execution flow in this function sort of halts until the individual Promise is fulfilled. This allows to use asynchronous functions but still being able to write sequential code.
+The author of this example prefers [the `async`/`await` syntax](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async\_await) over the `.then()` approach for handling Promises. The `load()` function defined in the following `popup.js` is therefore defined as `async`. This allows us to avoid the so called callback-hell of asynchronous functions and instead keep writing sequential code by simply awaiting all the returned Promises.
 
 {% code title="popup.js" %}
 ```javascript

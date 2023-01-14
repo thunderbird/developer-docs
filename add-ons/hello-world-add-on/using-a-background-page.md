@@ -6,7 +6,7 @@ description: Extending the example extension to use a background page.
 
 In the third part of the Hello World Extension Tutorial, we will introduce the concept of the WebExtension background page.
 
-We will keep track of incoming mails, add a menu entry to the tools menu and also a context menu entry to our button in Thunderbird's main toolbar and a click on both will open notifications with the collected information from the last 24h.
+We will keep track of incoming mails, add a menu entry to the tools menu and also a context menu entry to our button in Thunderbird's main toolbar and a click on both will open notifications with the collected information from the last 24 hours.
 
 ![](../../.gitbook/assets/hello-word-3.png)
 

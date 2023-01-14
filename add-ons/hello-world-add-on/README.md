@@ -1,6 +1,10 @@
-# A "Hello World" Extension Tutorial
+---
+description: >-
+  This section contains all the information you need to get your first
+  Thunderbird extension up and running.
+---
 
-The idea of this tutorial is to get started right away by providing all the information you need to get your first Thunderbird extension running.
+# A "Hello World" Extension Tutorial
 
 In the first part of this tutorial, we will create a very simple extension, which adds a "_Hello World_" button to Thunderbird's main toolbar and a click on it will show a `Hello, World!` popup.&#x20;
 

@@ -1,7 +1,7 @@
 ---
 description: >-
-  This section contains all the information you need to get your first
-  Thunderbird extension up and running.
+  All the information you need to get your first Thunderbird extension up and
+  running.
 ---
 
 # A "Hello World" Extension Tutorial

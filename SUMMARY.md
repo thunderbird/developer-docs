@@ -19,6 +19,7 @@
     * [Keyboard shortcuts](thunderbird-development/codebase-overview/chat/keyboard-shortcuts.md)
     * [Chat Core Protocols](thunderbird-development/codebase-overview/chat/chat-core-protocols.md)
     * [Contacts](thunderbird-development/codebase-overview/chat/contacts.md)
+  * [Mail Front-End](thunderbird-development/codebase-overview/mail-front-end.md)
 * [Tutorials and Examples](thunderbird-development/tutorials-and-examples/README.md)
   * [Hello World Example](thunderbird-development/tutorials-and-examples/hello-world.md)
   * [Thunderbird Live Development Videos](thunderbird-development/tutorials-and-examples/thunderbird-live-development-videos.md)

@@ -129,14 +129,14 @@ messenger.runtime.onMessage.addListener((message, sender, sendResponse) => {
     // Check what type of message we have received and invoke the appropriate
     // handler function.
     if (message && message.hasOwnProperty("command")) {
-        return commandHandler();
+        return commandHandler(message, sender);
     }
     // Return false if the message was not handled by this listener.
     return false;
 });
 
 // The actual (asynchronous) handler for command messages.
-async function commandHandler() {
+async function commandHandler(message, sender) {
     // Get the message currently displayed in the sending tab, abort if
     // that failed.
     const messageHeader = await messenger.messageDisplay.getDisplayedMessage(
@@ -297,6 +297,12 @@ await messenger.menus.onClicked.addListener(async (info, tab) => {
             });
         }
     }
+});
+
+// Register the message display script.
+messenger.messageDisplayScripts.register({
+    js: [{ file: "messageDisplay/message-content-script.js" }],
+    css: [{ file: "messageDisplay/message-content-styles.css" }],
 });
 
 /**

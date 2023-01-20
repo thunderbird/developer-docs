@@ -28,19 +28,25 @@ The HTML file for our popup needs some place-holders, which we can later fill us
 ```html
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <title>Details</title>
     <link rel="stylesheet" type="text/css" media="screen" href="popup.css">
-    <script src="popup.js"></script>
 </head>
+
 <body>
     <div class="grid-container">
-        <div class="header">Subject:</div><div id="subject" class="content"></div>
-        <div class="header">From:</div><div id="from" class="content"></div>
-        <div class="header">Received-Header:</div><div id="received" class="content"></div>
+        <div class="header">Subject:</div>
+        <div id="subject" class="content"></div>
+        <div class="header">From:</div>
+        <div id="from" class="content"></div>
+        <div class="header">Received-Header:</div>
+        <div id="received" class="content"></div>
     </div>
+    <script type="module" src="popup.js"></script>
 </body>
+
 </html>
 ```
 {% endcode %}
@@ -72,41 +78,51 @@ Instead of tables, we use modern CSS styling to format our HTML into a tabular v
 
 All WebExtension API functions return a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using\_promises) instead of an actual value. This aims to simplify the handling of asynchronous functions.
 
-The author of this example prefers [the `async`/`await` syntax](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async\_await) over the `.then()` approach for handling Promises. The `load()` function defined in the following `popup.js` is therefore defined as `async`. This allows us to avoid the so called callback-hell of asynchronous functions and instead keep writing sequential code by simply awaiting all the returned Promises.
+The author of this example prefers [the `async`/`await` syntax](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async\_await) over the `.then()` approach for handling Promises. This allows us to avoid the so called callback-hell of asynchronous functions and instead keep writing sequential code by simply awaiting all the returned Promises.
 
-{% code title="popup.js" %}
+{% code title="popup.js" lineNumbers="true" %}
 ```javascript
-async function load() {
-  // The user clicked our button, get the active tab in the current window using
-  // the tabs API.
-  let tabs = await messenger.tabs.query({active: true, currentWindow: true});
+// The user clicked our button, get the active tab in the current window using
+// the tabs API.
+let tabs = await messenger.tabs.query({ active: true, currentWindow: true });
 
-  // Get the message currently displayed in the active tab, using the
-  // messageDisplay API. Note: This needs the messagesRead permission.
-  // The returned message is a MessageHeader object with the most relevant
-  // information.
-  let message = await messenger.messageDisplay.getDisplayedMessage(tabs[0].id);
+// Get the message currently displayed in the active tab, using the
+// messageDisplay API. Note: This needs the messagesRead permission.
+// The returned message is a MessageHeader object with the most relevant
+// information.
+let message = await messenger.messageDisplay.getDisplayedMessage(tabs[0].id);
 
-  // Update the HTML fields with the message subject and sender.
-  document.getElementById("subject").textContent = message.subject;
-  document.getElementById("from").textContent = message.author;
-  
-  // Request the full message to access its full set of headers.
-  let full = await messenger.messages.getFull(message.id);
-  document.getElementById("received").textContent = full.headers.received[0];
-}
+// Update the HTML fields with the message subject and sender.
+document.getElementById("subject").textContent = message.subject;
+document.getElementById("from").textContent = message.author;
 
-document.addEventListener("DOMContentLoaded", load);
+// Request the full message to access its full set of headers.
+let full = await messenger.messages.getFull(message.id);
+document.getElementById("received").textContent = full.headers.received[0];
+
 ```
 {% endcode %}
 
+{% hint style="warning" %}
+The `popup.js` file was loaded as a top level ES6 module by specifying `type="module"` in its `script` tag. This allows us to use the `await` keyword directly in file scope code. Otherwise we would need to use an asynchronous wrapper function:\
+\
+`async function load() {`\
+&#x20;  `let tabs = await messenger.tabs.query({` \
+&#x20;     `active: true,`\
+&#x20;     `currentWindow: true,`\
+&#x20;  `});`\
+&#x20;  `...`\
+`}`\
+`load();`
+{% endhint %}
+
 {% hint style="info" %}
-In Thunderbird, all WebExtension API can be accessed through the _browser.\*_ namespace, as with Firefox, but also through the _messenger.\*_ namespace, which is a better fit for Thunderbird.
+In Thunderbird, all WebExtension API can be accessed through the `browser.*` namespace, as with Firefox, but also through the `messenger.*` namespace, which is a better fit for Thunderbird.
 {% endhint %}
 
 #### messenger.tabs.query()
 
-The [tabs API](https://webextension-api.thunderbird.net/en/91/tabs.html) provides access to Thunderbird's tabs. We need to get hold of the current active tab to learn which message is displayed there. We use the [`query`](using-webextension-apis.md#adding-a-message\_display\_action) method to find it (line 4).
+The [tabs API](https://webextension-api.thunderbird.net/en/91/tabs.html) provides access to Thunderbird's tabs. We need to get hold of the current active tab to learn which message is displayed there. We use the [`query`](using-webextension-apis.md#adding-a-message\_display\_action) method to find it in line `3`.
 
 {% hint style="info" %}
 Using `messeger.tabs.getCurrent()` will not work, as that always returns the tab in which it is being called from. In our case, the call is executed from inside the popup of the `message_display_action` and not from inside the tab we are looking for.
@@ -114,9 +130,9 @@ Using `messeger.tabs.getCurrent()` will not work, as that always returns the tab
 
 #### messenger.messageDisplay.getDisplayedMessage()
 
-The [`getDisplayedMessage`](https://webextension-api.thunderbird.net/en/91/messageDisplay.html#getdisplayedmessage-tabid) method of the [messageDisplay API](https://webextension-api.thunderbird.net/en/91/messageDisplay.html) provides access to the currently viewed message in a given tab. It returns a Promise for a [MessageHeader](https://webextension-api.thunderbird.net/en/91/messages.html#messageheader) object from the [messages API](https://webextension-api.thunderbird.net/en/91/messages.html) with basic information about the message (line 10).
+The [`getDisplayedMessage`](https://webextension-api.thunderbird.net/en/91/messageDisplay.html#getdisplayedmessage-tabid) method of the [messageDisplay API](https://webextension-api.thunderbird.net/en/91/messageDisplay.html) provides access to the currently viewed message in a given tab. It returns a Promise for a [MessageHeader](https://webextension-api.thunderbird.net/en/91/messages.html#messageheader) object from the [messages API](https://webextension-api.thunderbird.net/en/91/messages.html) with basic information about the message in line `9`.
 
-At this stage we are interested in the subject (line 13) and the author (line 14).
+At this stage we are interested in the subject (line `12`) and the author (line `13`).
 
 {% hint style="warning" %}
 The [`getDisplayMessage`](https://webextension-api.thunderbird.net/en/91/messageDisplay.html#getdisplayedmessage-tabid) method requires the <mark style="color:red;">`messagesRead`</mark> permission, which needs to be added to the `permissions` key of our `manifest.json` file.
@@ -132,27 +148,27 @@ The [`getDisplayMessage`](https://webextension-api.thunderbird.net/en/91/message
 
 We also want to get the `received` header from the message. That information is not part of the general `MessageHeader` object, so we have to request the full message.
 
-The [`getFull`](https://webextension-api.thunderbird.net/en/91/messages.html#getfull-messageid) method (line 17) returns a Promise for a [`MessagePart`](https://webextension-api.thunderbird.net/en/91/messages.html#messages-messagepart) object, which relates to messages containing multiple MIME parts. The `headers` member of the part returned by `getFull` includes the headers of the message (excluding headers which are part of nested MIME parts available through the `parts` member).
+The [`getFull`](https://webextension-api.thunderbird.net/en/91/messages.html#getfull-messageid) method in line `16` returns a Promise for a [`MessagePart`](https://webextension-api.thunderbird.net/en/91/messages.html#messages-messagepart) object, which relates to messages containing multiple MIME parts. The `headers` member of the part returned by `getFull` includes the headers of the message (excluding headers which are part of nested MIME parts available through the `parts` member).
 
 ## Testing the Extension
 
-Let's double-check that we have all the files in the right places:
+Let's double-check that we made the [correct changes](https://github.com/thundernest/sample-extensions/commit/73f5b3776b0d4f9c0e9281168de8f9313cc474f8?diff=unified) and have all the files in the right places:
 
 ```
 hello-world/
   ├── manifest.json
-  ├── mainPopup/
-      ├── popup.html
-      ├── popup.css
-      └── popup.js
-  ├── messagePopup/
-      ├── popup.html
-      ├── popup.css
-      └── popup.js
-  └── images/
+  ├── images/
       ├── internet.png
-      ├── internet-32px.png
-      └── internet-16px.png
+      ├── internet-16px.png
+      └── internet-32px.png
+  ├── mainPopup/
+      ├── popup.css
+      ├── popup.html
+      └── popup.js
+  └── messagePopup/
+      ├── popup.css
+      ├── popup.html
+      └── popup.js
 ```
 
 This is how our `manifest.json` should now look like:
@@ -161,10 +177,10 @@ This is how our `manifest.json` should now look like:
 ```json
 {
     "manifest_version": 2,
-    "name": "Hello World",
-    "description": "Your basic Hello World extension!",
+    "name": "Hello World Example",
+    "description": "A basic Hello World example extension!",
     "version": "2.0",
-    "author": "[Your Name Here]",
+    "author": "Thunderbird Team",
     "browser_specific_settings": {
         "gecko": {
             "id": "helloworld@yoursite.com",

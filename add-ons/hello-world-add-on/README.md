@@ -20,10 +20,10 @@ Extensions require a `manifest.json` file that tells Thunderbird a few basic inf
 ```json
 {
     "manifest_version": 2,
-    "name": "Hello World",
-    "description": "Your basic Hello World extension!",
+    "name": "Hello World Example",
+    "description": "A basic Hello World example extension!",
     "version": "1.0",
-    "author": "[Your Name Here]",
+    "author": "Thunderbird Team",
     "browser_specific_settings": {
         "gecko": {
             "id": "helloworld@yoursite.com",
@@ -44,23 +44,7 @@ Extensions require a `manifest.json` file that tells Thunderbird a few basic inf
 ```
 {% endcode %}
 
-You can grab the icons we use for this example from here:
-
-<div>
-
-<figure><img src="../../.gitbook/assets/internet.png" alt=""><figcaption></figcaption></figure>
-
- 
-
-<figure><img src="../../.gitbook/assets/internet-32px.png" alt=""><figcaption></figcaption></figure>
-
- 
-
-<figure><img src="../../.gitbook/assets/internet-16px.png" alt=""><figcaption></figcaption></figure>
-
-</div>
-
-Make sure to create an `images` directory in the `hello-world` project folder for them.
+You can grab the icons we use for this example from the [example repository](https://github.com/thundernest/sample-extensions/tree/master/hello-world/images). Make sure to create an `images` directory in the `hello-world` project folder for them.
 
 ## Using a `browser_action`
 
@@ -76,17 +60,20 @@ The location of the HTML file loaded by the popup of our `browser_action` is def
 ```html
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <title>Hello World</title>
     <link rel="stylesheet" type="text/css" media="screen" href="popup.css">
-    <script src="popup.js"></script>
 </head>
+
 <body>
     <div class="popup-page">
-    Hello, World!
+        Hello, World!
     </div>
+    <script type="module" src="popup.js"></script>
 </body>
+
 </html>
 ```
 {% endcode %}
@@ -94,6 +81,26 @@ The location of the HTML file loaded by the popup of our `browser_action` is def
 {% hint style="info" %}
 The default [**content security policy**](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content\_Security\_Policy#Inline\_JavaScript) disallows JavaScript placed directly in `<script>` tags and inline event handlers like `onclick`. Place all Javascript code into a separate file (like popup.js in this example) and use [addEventListener()](https://developer.mozilla.org/de/docs/Web/API/EventTarget/addEventListener) instead of inline event handlers.
 {% endhint %}
+
+{% hint style="warning" %}
+The `script` tag to include `popup.js` is setting `type="module"`, which loads the script as a top level ES6 module. This enables the script to use the await keyword in file scope code and to load other ES6 modules.&#x20;
+
+We will not use these features in this step of the tutorial, but we still use the modern ES6 module approach here to introduce it as a standard programming practice.
+{% endhint %}
+
+### popup.js
+
+We're going to create the following file called `popup.js` and place it in the same folder as the `popup.html` file.
+
+{% code title="popup.js" %}
+```javascript
+// Below is what we'll log to the console.
+
+console.log('Hello, World! - from popup.js');
+```
+{% endcode %}
+
+What our little script does is sending a message to the console each time we click on our "_Hello World_" toolbar button. We'll take a look at that in a moment when we try out our add-on. The first line is just a comment, so we can remember what our code is doing.
 
 ### popup.css
 
@@ -110,35 +117,21 @@ Now we want to create the CSS file referenced in our HTML file. We'll call it `p
 ```
 {% endcode %}
 
-### popup.js
-
-We're going to create the following file called `popup.js` and place it in the same folder as the `popup.html` file.
-
-{% code title="popup.js" %}
-```javascript
-// Below is what we'll log to the console.
-
-console.log('Hello, World! - from popup.js');
-```
-{% endcode %}
-
-What our little script does is sending a message to the console each time we click on our "_Hello World_" toolbar button. We'll take a look at that in a moment when we try out our add-on. The first line is just a comment, so we can remember what our code is doing.
-
 ## Testing the Extension
 
-First, let's double-check that we have all the files in the right places:
+First, let's double-check that we created [the correct files](https://github.com/thundernest/sample-extensions/commit/230eba3fd9f5c633cb30c0a83d5500e532c283c4?diff=unified) and have them in the right places:
 
 ```
 hello-world/
   ├── manifest.json
-  ├── mainPopup/
-      ├── popup.html
-      ├── popup.css
-      └── popup.js
-  └── images/
+  ├── images/
       ├── internet.png
-      ├── internet-32px.png
-      └── internet-16px.png
+      ├── internet-16px.png
+      └── internet-32px.png
+  └── mainPopup/
+      ├── popup.css
+      ├── popup.html
+      └── popup.js
 ```
 
 ### Installing

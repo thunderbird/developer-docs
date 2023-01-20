@@ -8,7 +8,7 @@ In the fourth part of the Hello World Extension Tutorial, we will introduce the 
 
 We will add a banner to the top of the message display area, displaying some information about the currently viewed message. The banner will also include a button to mark the currently viewed message as unread.
 
-![](<../../../.gitbook/assets/hello-world-4 (1).png>)
+![](<../../.gitbook/assets/hello-world-4 (1).png>)
 
 ## Using a Message Display Script
 
@@ -33,12 +33,12 @@ messenger.messageDisplayScripts.register({
 The `messageDisplayScripts` API requires the <mark style="color:red;">`messagesModify`</mark> permission, which needs to be added to the `permissions` key in our `manifest.json` file.
 {% endhint %}
 
-Whenever a message is displayed to the user, the registered CSS file will be added and the registered JavaScript file will be injected and executed. Let's create a `messageDisplay` directory inside our `hello-world` project folder with the following two files:
+Whenever a message is displayed to the user, the registered CSS file will be added and the registered JavaScript file will be injected and executed.&#x20;
 
-{% code title="message-content-styles.css" %}
-```css
-.thunderbirdMessageDisplayActionExample {
-  background-color: #d70022;
+Let's create a `messageDisplay` directory inside our `hello-world` project folder with the following two files:
+
+<pre class="language-css" data-title="message-content-styles.css"><code class="lang-css"><strong>.thunderbirdMessageDisplayActionExample {
+</strong>  background-color: #d70022;
   color: white;
   font-weight: 400;
   padding: 0.25rem 0.5rem;
@@ -49,49 +49,53 @@ Whenever a message is displayed to the user, the registered CSS file will be add
 .thunderbirdMessageDisplayActionExample_Text {
   flex-grow: 1;
 }
-```
-{% endcode %}
+</code></pre>
 
-{% code title="message-content-script.js" %}
+{% code title="message-content-script.js" lineNumbers="true" %}
 ```javascript
-const showBanner = async () => {
-  let bannerDetails = await browser.runtime.sendMessage({
-    command: "getBannerDetails",
-  });
-
-  // get the details back from the formerly serialized content
-  const { text } = bannerDetails;
-
-  // create the banner element itself
-  const banner = document.createElement("div");
-  banner.className = "thunderbirdMessageDisplayActionExample";
-
-  // create the banner text element
-  const bannerText = document.createElement("div");
-  bannerText.className = "thunderbirdMessageDisplayActionExample_Text";
-  bannerText.innerText = text;
-
-  // create a button to display it in the banner
-  const markUnreadButton = document.createElement("button");
-  markUnreadButton.innerText = "Mark unread";
-  markUnreadButton.addEventListener("click", async () => {
-    // add the button event handler to send the command to the background script
-    browser.runtime.sendMessage({
-      command: "markUnread",
+async function showBanner() {
+    let bannerDetails = await browser.runtime.sendMessage({
+        command: "getBannerDetails",
     });
-  });
 
-  // add text and button to the banner
-  banner.appendChild(bannerText);
-  banner.appendChild(markUnreadButton);
+    // Get the details back from the formerly serialized content.
+    const { text } = bannerDetails;
 
-  // and insert it as the very first element in the message
-  document.body.insertBefore(banner, document.body.firstChild);
+    // Create the banner element itself.
+    const banner = document.createElement("div");
+    banner.className = "thunderbirdMessageDisplayActionExample";
+
+    // Create the banner text element.
+    const bannerText = document.createElement("div");
+    bannerText.className = "thunderbirdMessageDisplayActionExample_Text";
+    bannerText.innerText = text;
+
+    // Create a button to display it in the banner.
+    const markUnreadButton = document.createElement("button");
+    markUnreadButton.innerText = "Mark unread";
+    markUnreadButton.addEventListener("click", async () => {
+        // Add the button event handler to send the command to the
+        // background script.
+        browser.runtime.sendMessage({
+            command: "markUnread",
+        });
+    });
+
+    // Add text and button to the banner.
+    banner.appendChild(bannerText);
+    banner.appendChild(markUnreadButton);
+
+    // Insert it as the very first element in the message.
+    document.body.insertBefore(banner, document.body.firstChild);
 };
 
 showBanner();
 ```
 {% endcode %}
+
+{% hint style="danger" %}
+Content scripts cannot yet be loaded as top level ES6 modules. They cannot load other ES6 modules.  They can also not use the `async` keyword in file scope code, we therefore have to create the async wrapper function `showBanner()`.
+{% endhint %}
 
 The main purpose of the `message-content-script.js` file is to manipulate the rendered message and add a banner at its top. We use basic DOM manipulation techniques.
 
@@ -101,7 +105,7 @@ What is special however is how the displayed information is retrieved. In the se
 
 The [`sendMessage()`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/sendMessage) method of the [`runtime`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime) API will send a message to each active page, including the background page, the options page, popup pages and other HTML pages of our extension loaded using [`windows.create()`](using-content-scripts.md#using-a-message-display-script) or [`tabs.create()`](using-content-scripts.md#using-a-message-display-script). The message itself can be a string, an integer, a boolean, an array or an object. It must abide to the [structured clone algorithm](using-content-scripts.md#testing-the-extension).
 
-In line 2 of `message-content-script.js`, we send the message object `{command: "getBannerDetails"}`, to request the display details from the background page. In line 23 we send the message object `{command: "markUnread"}`, to request the background page to mark the currently viewed message as unread.
+In line `2` of `message-content-script.js`, we send the message object `{command: "getBannerDetails"}`, to request the display details from the background page. In line `24` we send the message object `{command: "markUnread"}`, to request the background page to mark the currently viewed message as unread.
 
 #### Receiving a runtime message
 
@@ -109,73 +113,94 @@ The background page can listen for runtime messages, by registering the followin
 
 ```javascript
 /**
- * Add a handler for communication with other parts of the extension,
+ * Add a handler for the communication with other parts of the extension,
  * like our message display script.
  *
- * Note: If this handler is defined async, there should be only one such
- *       handler in the background script for all incoming messages.
+ * Note: It is best practice to always define a synchronous listener
+ *       function for the runtime.onMessage event.
+ *       If defined asynchronously, it will always return a Promise
+ *       and therefore answer all messages, even if a different listener
+ *       defined elsewhere is supposed to handle these.
+ * 
+ *       The listener should only return a Promise for messages it is
+ *       actually supposed to handle.
  */
-messenger.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
-    // Check if the message includes our command member.
+messenger.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    // Check what type of message we have received and invoke the appropriate
+    // handler function.
     if (message && message.hasOwnProperty("command")) {
-        // Get the message currently displayed in the sending tab, abort if
-        // that failed.
-        const messageHeader = await messenger.messageDisplay.getDisplayedMessage(sender.tab.id);
-        if (!messageHeader) {
-            return;
-        }
-        // Check for known commands.
-        switch (message.command) {
-            case "getBannerDetails":
-                // Create the information we want to return to our message display script.
-                return { text: `Mail subject is "${messageHeader.subject}"` };
-            case "markUnread":
-                // mark the message as unread
-                messenger.messages.update(messageHeader.id, {
-                    read: false,
-                });
-                break;
-        }
+        return commandHandler();
     }
+    // Return false if the message was not handled by this listener.
+    return false;
 });
+
+// The actual (asynchronous) handler for command messages.
+async function commandHandler() {
+    // Get the message currently displayed in the sending tab, abort if
+    // that failed.
+    const messageHeader = await messenger.messageDisplay.getDisplayedMessage(
+        sender.tab.id
+    );
+
+    if (!messageHeader) {
+        return;
+    }
+
+    // Check for known commands.
+    switch (message.command) {
+        case "getBannerDetails":
+            // Create the information we want to return to our message display
+            // script.
+            return { text: `Mail subject is "${messageHeader.subject}"` };
+        case "markUnread":
+            // Mark the message as unread.
+            messenger.messages.update(messageHeader.id, {
+                read: false,
+            });
+            break;
+    }
+}
 ```
 
-The `message` passed to the `onMessage` listener will be whatever has been sent using `sendMessage()`, the `sender` is of type [`MessageSender`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/MessageSender) and will include the sending tab.
+The `message` passed to the `onMessage` listener will be whatever has been sent using `sendMessage().` The `sender` is of type [`MessageSender`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/MessageSender) and will include the sending tab.
 
 In this example, we check if the runtime message includes our command and based on its value either return the banner details or mark the viewed message as unread.
 
 {% hint style="danger" %}
 **Note**: The `onMessage` listener has a third parameter `sendResponse`, which is a callback function to send a synchronous response back to the sending tab. For Thunderbird however the preferred way is to return an asynchronous response using a Promise instead.
 
-If only one `onMessage` listener is used in the entire extension, the listener can be declared `async`, which will always return a Promise. Even if no return statement is explicitly defined, it will return a Promise for `undefiend`.
+**Note**: It is best practice to always define a synchronous listener function for the `runtime.onMessage` event. If defined asynchronously, it will always return a Promise and therefore answer all messages, even if a different listener defined elsewhere is supposed to handle these.
 
-If multiple `onMessage` listeners are used and each should react on a different set of messages, the listeners must **not** be defined as async, but only return a Promsise for the requested messages. See the [examples and explenations](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/onMessage#addlistener\_syntax) given on MDN.
+The listener should only return a Promise for messages it is actually supposed to handle.
 {% endhint %}
 
 ## Testing the Extension
 
-Let's double-check that we have all the files in the right places:
+Let's double-check that we made the [correct changes](https://github.com/thundernest/sample-extensions/commit/65df906647525b85fa0d2367bd20dc8c3599558d?diff=unified) and have all the files in the right places:
 
 ```
 hello-world/
-  ├── manifest.json
   ├── background.html
   ├── background.js
+  ├── manifest.json
+  ├── images/
+      ├── internet.png
+      ├── internet-16px.png
+      └── internet-32px.png
   ├── mainPopup/
-      ├── popup.html
       ├── popup.css
-      └── popup.js
-  ├── messagePopup/
       ├── popup.html
-      ├── popup.css
       └── popup.js
   ├── messageDisplay/
       ├── message-content-script.js
       └── message-content-styles.css
-  └── images/
-      ├── internet.png
-      ├── internet-32px.png
-      └── internet-16px.png
+  ├── messagePopup/
+      ├── popup.css
+      ├── popup.html
+      └── popup.js
+  └── modules/
+      └── messageTools.mjs
 ```
 
 This is how our `manifest.json` should now look like:
@@ -184,10 +209,10 @@ This is how our `manifest.json` should now look like:
 ```json
 {
     "manifest_version": 2,
-    "name": "Hello World",
-    "description": "Your basic Hello World extension!",
+    "name": "Hello World Example",
+    "description": "A basic Hello World example extension!",
     "version": "4.0",
-    "author": "[Your Name Here]",
+    "author": "Thunderbird Team",
     "browser_specific_settings": {
         "gecko": {
             "id": "helloworld@yoursite.com",
@@ -227,106 +252,102 @@ This is how our `manifest.json` should now look like:
 Our background script should look as follows:
 
 ```javascript
-// A wrapper function returning an async iterator for a MessageList. Derived from
-// https://webextension-api.thunderbird.net/en/91/how-to/messageLists.html
-async function* iterateMessagePages(page) {
-    for (let message of page.messages) {
-        yield message;
+// Import all functions defined in the messageTools module.
+import * as messageTools from '/modules/messageTools.mjs';
+
+// Add a listener for the onNewMailReceived events.
+messenger.messages.onNewMailReceived.addListener(async (folder, messages) => {
+    let { messageLog } = await messenger.storage.local.get({ messageLog: [] });
+
+    for await (let message of messageTools.iterateMessagePages(messages)) {
+        messageLog.push({
+            folder: folder.name,
+            time: Date.now(),
+            message: message
+        })
     }
 
-    while (page.id) {
-        page = await messenger.messages.continueList(page.id);
-        for (let message of page.messages) {
-            yield message;
-        }
-    }
-}
+    await messenger.storage.local.set({ messageLog });
+})
 
-async function load() {
+// Create the menu entries.
+let menu_id = await messenger.menus.create({
+    title: "Show received email",
+    contexts: [
+        "browser_action",
+        "tools_menu"
+    ],
+});
 
-    // Add a listener for the onNewMailReceived events.
-    await messenger.messages.onNewMailReceived.addListener(async (folder, messages) => {
+// Register a listener for the menus.onClicked event.
+await messenger.menus.onClicked.addListener(async (info, tab) => {
+    if (info.menuItemId == menu_id) {
+        // Our menu entry was clicked
         let { messageLog } = await messenger.storage.local.get({ messageLog: [] });
 
-        for await (let message of iterateMessagePages(messages)) {
-            messageLog.push({
-                folder: folder.name,
-                time: Date.now(),
-                message: message
-            })
+        let now = Date.now();
+        let last24h = messageLog.filter(e => (now - e.time) < 24 * 60 * 1000);
+
+        for (let entry of last24h) {
+            messenger.notifications.create({
+                "type": "basic",
+                "iconUrl": "images/internet.png",
+                "title": `${entry.folder}: ${entry.message.author}`,
+                "message": entry.message.subject
+            });
         }
+    }
+});
 
-        await messenger.storage.local.set({ messageLog });
-    })
+/**
+ * Add a handler for the communication with other parts of the extension,
+ * like our message display script.
+ *
+ * Note: It is best practice to always define a synchronous listener
+ *       function for the runtime.onMessage event.
+ *       If defined asynchronously, it will always return a Promise
+ *       and therefore answer all messages, even if a different listener
+ *       defined elsewhere is supposed to handle these.
+ * 
+ *       The listener should only return a Promise for messages it is
+ *       actually supposed to handle.
+ */
+messenger.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    // Check what type of message we have received and invoke the appropriate
+    // handler function.
+    if (message && message.hasOwnProperty("command")) {
+        return commandHandler(message, sender);
+    }
+    // Return false if the message was not handled by this listener.
+    return false;
+});
 
-    // Create the menu entries.
-    let menu_id = await messenger.menus.create({
-        title: "Show received email",
-        contexts: [
-            "browser_action",
-            "tools_menu"
-        ],
-    });
+// The actual (asynchronous) handler for command messages.
+async function commandHandler(message, sender) {
+    // Get the message currently displayed in the sending tab, abort if
+    // that failed.
+    const messageHeader = await messenger.messageDisplay.getDisplayedMessage(
+        sender.tab.id
+    );
 
-    // Register a listener for the menus.onClicked event.
-    await messenger.menus.onClicked.addListener(async (info, tab) => {
-        if (info.menuItemId == menu_id) {
-            // Our menu entry was clicked
-            let { messageLog } = await messenger.storage.local.get({ messageLog: [] });
+    if (!messageHeader) {
+        return;
+    }
 
-            let now = Date.now();
-            let last24h = messageLog.filter(e => (now - e.time) < 24 * 60 * 1000);
-
-            for (let entry of last24h) {
-                messenger.notifications.create({
-                    "type": "basic",
-                    "iconUrl": "images/internet.png",
-                    "title": `${entry.folder}: ${entry.message.author}`,
-                    "message": entry.message.subject
-                });
-            }
-        }
-    });
-
-    /**
-     * Add a handler for communication with other parts of the extension,
-     * like our message display script.
-     *
-     * Note: If this handler is defined async, there should be only one such
-     *       handler in the background script for all incoming messages.
-     */
-    messenger.runtime.onMessage.addListener(async (message, sender) => {
-        // Check if the message includes our command member.
-        if (message && message.hasOwnProperty("command")) {
-            // Get the message currently displayed in the sending tab, abort if
-            // that failed.
-            const messageHeader = await messenger.messageDisplay.getDisplayedMessage(sender.tab.id);
-            if (!messageHeader) {
-                return;
-            }
-            // Check for known commands.
-            switch (message.command) {
-                case "getBannerDetails":
-                    // Create the information we want to return to our message display script.
-                    return { text: `Mail subject is "${messageHeader.subject}"` };
-                case "markUnread":
-                    // mark the message as unread
-                    messenger.messages.update(messageHeader.id, {
-                        read: false,
-                    });
-                    break;
-            }
-        }
-    });    
-
-    // Register the message display script.
-    messenger.messageDisplayScripts.register({
-        js: [{ file: "messageDisplay/message-content-script.js" }],
-        css: [{ file: "messageDisplay/message-content-styles.css" }],
-    });
+    // Check for known commands.
+    switch (message.command) {
+        case "getBannerDetails":
+            // Create the information we want to return to our message display
+            // script.
+            return { text: `Mail subject is "${messageHeader.subject}"` };
+        case "markUnread":
+            // Mark the message as unread.
+            messenger.messages.update(messageHeader.id, {
+                read: false,
+            });
+            break;
+    }
 }
-
-document.addEventListener("DOMContentLoaded", load);
 ```
 
 ### Installing

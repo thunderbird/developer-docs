@@ -47,7 +47,7 @@ After you met the [build prerequisites](./#build-prerequisites) for your OS the 
 ./mach build
 ```
 
-mach is our command-line tool to streamline common developer tasks. See the [mach](https://developer.mozilla.org/en-US/docs/Mozilla/Developer\_guide/mach) article for more.
+mach is our command-line tool to streamline common developer tasks. See [mach](https://firefox-source-docs.mozilla.org/mach/index.html) docs for more.
 
 Building can take a significant amount of time, depending on your system, OS, and chosen build options. Linux builds on a fast box may take under _15 minutes_, but Windows builds on a slow box may take _several hours_.
 

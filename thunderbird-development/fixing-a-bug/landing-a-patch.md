@@ -58,6 +58,10 @@ These are a series of recommended steps to always go through before pushing to L
 
 Be sure your commit message is clear and has been approved during review. The standard syntax of a commit message is `Bug 000000 - Description of the patch and fix. r=reviewer`.
 
+{% hint style="warning" %}
+Always check the reviewer in a commit message matches the person who actually reviewed the patch. A patch could be reviewed by someone other than the originally intended person, or it could have been sent to a group of reviewers.
+{% endhint %}
+
 #### Mercurial Queues
 
 * Run `hg qpop -a` to clean your local queue.

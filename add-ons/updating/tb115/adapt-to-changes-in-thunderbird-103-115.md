@@ -2,6 +2,10 @@
 
 This document tries to cover all the internal changes that may be needed to make add-ons compatible with Thunderbird Beta. If you find changes which are not yet listed on this page, you can ask for help and advice in one of our [communication channels](https://developer.thunderbird.net/#getting-plugged-into-the-community).
 
+Thunderbird Supernova has received an overhaul, which is more than just a facelift. The `about:3pane` has been reworked, most notably the XUL tree elements of `folderTree` and `threadTree` have been replaced by HTML lists and HTML tables. The mail toolbar has been replaced by the unified toolbar.
+
+**A general and very helpful introduction to the new front end can be found in its** [**official documentation**](https://developer.thunderbird.net/thunderbird-development/codebase-overview/mail-front-end)**.**
+
 ## Removed JSM files
 
 ### Services.jsm

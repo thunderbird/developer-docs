@@ -1,8 +1,8 @@
 ---
-description: Required steps to update add-ons for Thunderbird Beta.
+description: Required steps to update add-ons for Thunderbird Supernova 115.
 ---
 
-# Update for Thunderbird Beta
+# Update for Thunderbird Supernova
 
 This section covers the required update steps for add-ons which are already compatible with Thunderbird 102 and need to be made compatible with Thunderbird Beta.
 
@@ -12,6 +12,8 @@ Our WebExtension APIs are meant to be stable, but we are adding new features and
 
 * [Thunderbird 106](https://webextension-api.thunderbird.net/en/latest/changes/beta106.html)
 * [Thunderbird 107](https://webextension-api.thunderbird.net/en/latest/changes/beta107.html)
+* [Thunderbird 111](https://webextension-api.thunderbird.net/en/latest/changes/beta111.html)
+* [Thunderbird 113](https://webextension-api.thunderbird.net/en/latest/changes/beta113.html)
 
 ## Changes in Thunderbird Core
 

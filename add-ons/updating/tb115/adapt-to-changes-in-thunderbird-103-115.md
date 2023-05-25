@@ -22,6 +22,16 @@ For a backward compatible solution, use
 const Services = globalThis.Services || ChromeUtils.import("resource://gre/modules/Services.jsm").Services;
 ```
 
+### osfile.jsm
+
+Removed in Thunderbird 115. Can be replaced as follows:
+
+* `OS.Constants.Sys.Name` -> `Services.appinfo.OS`
+* `OS.Constants.Path.profileDir` -> `PathUtils.profileDir`
+* `OS.Constants.Path.tmpDir`-> `PathUtils.tempDir`
+* `OS.File.*` -> [`IOUtils.*`](https://searchfox.org/comm-central/source/mozilla/dom/chrome-webidl/IOUtils.webidl)&#x20;
+* `OS.Path.*` -> [`PathUtils.*`](https://searchfox.org/comm-central/source/mozilla/dom/chrome-webidl/PathUtils.webidl)
+
 ## Changed API
 
 ### calITimezoneService.timezoneIds

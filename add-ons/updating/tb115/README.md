@@ -13,7 +13,8 @@ Our WebExtension APIs are meant to be stable, but we are adding new features and
 * [Thunderbird 106](https://webextension-api.thunderbird.net/en/latest/changes/beta106.html)
 * [Thunderbird 107](https://webextension-api.thunderbird.net/en/latest/changes/beta107.html)
 * [Thunderbird 111](https://webextension-api.thunderbird.net/en/latest/changes/beta111.html)
-* [Thunderbird 113](https://webextension-api.thunderbird.net/en/latest/changes/beta113.html)
+* [Thunderbird 113 Manifest v2](https://webextension-api.thunderbird.net/en/latest/changes/beta113.html) and [Thunderbird 113 Manifest v3](https://webextension-api.thunderbird.net/en/latest-mv3/changes/beta113.html)
+* [Thunderbird 115 Manifest v2](https://webextension-api.thunderbird.net/en/latest/changes/beta115.html) and [Thunderbird 115 Manifest v3](https://webextension-api.thunderbird.net/en/latest-mv3/changes/beta115.html)
 
 ## Changes in Thunderbird Core
 

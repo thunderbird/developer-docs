@@ -73,7 +73,7 @@ messenger.messages.onNewMailReceived.addListener(async (folder, messages) => {
 {% hint style="info" %}
 The above code is using an inline arrow function to define the callback function for the event listener (which is called for each `onNewMailReceived` event). This is identical to the following implicit function definition:
 
-``\
+\
 `async function onNewMailReceivedCallback(folder, messages) {`\
 &#x20;  `...`\
 `}`\

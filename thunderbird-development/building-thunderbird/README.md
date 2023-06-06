@@ -33,7 +33,7 @@ echo 'ac_add_options --enable-debug' >> mozconfig
 
 _Each of these ac\_add\_options entries needs to be on its own line._
 
-For more on configuration options, see the page [Configuring build options](https://developer.mozilla.org/en/Configuring\_Build\_Options). Note that if you use an MOZ\_OBJDIR it cannot be a sibling folder to your source directory. Use an absolute path to be sure!
+For more on configuration options, see the page [Configuring build options](https://firefox-source-docs.mozilla.org/setup/configuring\_build\_options.html#configuring-build-options). Note that if you use an MOZ\_OBJDIR it cannot be a sibling folder to your source directory. Use an absolute path to be sure!
 
 ## Building
 

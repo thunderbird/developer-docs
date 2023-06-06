@@ -91,7 +91,7 @@ Click to open the App Menu on the right hand side and you should see "Hello Worl
 
 When you click on the "Hello World" menu item, you should get an alert prompt (pictured below):
 
-![](../../.gitbook/assets/hello\_world\_pop\_up.png)
+![](../../assets/hello\_world\_pop\_up.png)
 
 If that alert window appears when you click the menu item then it works!
 

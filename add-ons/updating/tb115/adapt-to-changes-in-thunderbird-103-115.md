@@ -82,3 +82,10 @@ Removed in Thunderbird 106.
 
 Renamed in Thunderbird 108 to `containsKey()`. Example `msgHdr.folder.msgDatabase.containsKey()`.
 
+## Process Restrictions
+
+Content processes, such as the extension process executing "child" experiment code, are subject to additional restrictions compared to Thunderbird 102. Known limitations include:
+
+* Raw TCP socket operations never complete, even if timeouts are set up. It is likely that other networking primitives are affected in a similar way.
+
+In consequence, you might need to move some functionality from "child" experiment code to the "parent" context. One way to achieve this is to implement the necessary functionality as a regular asynchronous API method in the "parent" experiment (without extending the API schema), then using `await context.childManager.callParentAsyncFunction("your_api_name.some_function", [arguments, passed, to, some_function])` to call it from the child experiment. Note that function arguments passed in between processes are subject to the [structured clone algorithm](https://developer.mozilla.org/en-US/docs/Web/API/Web\_Workers\_API/Structured\_clone\_algorithm).

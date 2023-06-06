@@ -16,7 +16,7 @@ Thunderbird Supernova has received an overhaul, which is more than just a faceli
 
 It is recommended to leverage WebExtension APIs as much a possible. Instead of adjusting to core changes, the following WebExtension APIs can be helpful:
 
-* Use the [menus API](https://webextension-api.thunderbird.net/en/latest/menus.html) to add entries to Thunderbirds context menu (for example in the folder pane or in  thread pane)
+* Use the [menus API](https://webextension-api.thunderbird.net/en/latest/menus.html) to add entries to Thunderbird's context menu (for example in the folder pane or in  thread pane)
 * Use the [commands API](https://webextension-api.thunderbird.net/en/latest/commands.html) to register keyboard shortcuts. Additional benefit: all WebExtension shortcuts can be adjusted by the user in the Add-on Manager according to their needs.
 * Use the [mailTabs API](https://webextension-api.thunderbird.net/en/latest/mailTabs.html) to interact with the mail tab.
 

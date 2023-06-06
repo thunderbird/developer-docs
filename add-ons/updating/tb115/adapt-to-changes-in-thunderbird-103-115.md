@@ -1,6 +1,6 @@
 # Adapt to Changes in Thunderbird 103-115
 
-This document tries to cover all the internal changes that may be needed to make add-ons compatible with Thunderbird Beta. If you find changes which are not yet listed on this page, you can ask for help and advice in one of our [communication channels](https://developer.thunderbird.net/#getting-plugged-into-the-community).
+This document tries to cover all the internal changes that may be needed to make add-ons compatible with Thunderbird Supernova. If you find changes which are not yet listed on this page, you can ask for help and advice in one of our [communication channels](https://developer.thunderbird.net/#getting-plugged-into-the-community).
 
 ## Rework of Thunderbird's main mail window
 
@@ -22,7 +22,7 @@ It is recommended to leverage WebExtension APIs as much a possible. Instead of a
 
 ### Using shared Experiments
 
-There may already be a shared Experiment, which could help to update an add-on (or which could give helpful hints):
+There may already be a shared Experiment, which could help with add-on updates (or which could give helpful hints):
 
 * [LegacyCSS API](https://github.com/thundernest/addon-developer-support/tree/master/auxiliary-apis/LegacyCSS): Inject into `about:3pane` or `about:message`, to style the `folderpane` (see [Hide Local Folders](https://addons.thunderbird.net/addon/hide-local-folders-for-tb78/versions/?page=1#version-3.0.1) Add-on), the `threadpane` or the message display area.
 * [WindowListener API](https://github.com/thundernest/addon-developer-support/tree/master/wrapper-apis/WindowListener): Inject into `about:3pane` or `about:message`, to manipulate the `folderpane` (see [Phoenity Icons](https://addons.thunderbird.net/addon/phoenity-icons/versions/?page=1#version-3.9) Add-On), the `threadpane` or the message display area.

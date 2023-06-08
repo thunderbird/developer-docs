@@ -34,7 +34,7 @@ Folders are currently not displayed in a hierarchical way in K-9. That creates a
 
 Better display messages by default, better scrolling within a message, better default “zoom” so that the message appears at the correct size even if it is formatted in a bad way.
 
-## **UI/UX Updates**
+## **Material 3**
 
 **Expected Delivery: Q4 2023**
 
@@ -45,6 +45,12 @@ The K-9 interface looks outdated, does not conform to the current material desig
 **Expected Delivery: Q4 2024**
 
 Many K-9 users report that the application settings are too complex and things don’t appear where they expect them. Need to better arrange and contextually expose settings.
+
+## K9 -> Thunderbird for Android
+
+**Expected Delivery: Q4 2024**
+
+Thunderbird for Android released!
 
 ## **Tags**
 

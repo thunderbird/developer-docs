@@ -1,18 +1,59 @@
 # Adapt to Changes in Thunderbird 103-115
 
-This document tries to cover all the internal changes that may be needed to make Experiment add-ons compatible with Thunderbird Supernova. If you find changes which are not yet listed on this page, you can ask for help and advice in one of our [communication channels](https://developer.thunderbird.net/add-ons/community).
+This document tries to cover the internal changes that may be needed to make Experiment add-ons compatible with Thunderbird Supernova. If you find changes which are not yet listed on this page, you can ask for help and advice in one of our [communication channels](https://developer.thunderbird.net/add-ons/community).
 
-## Rework of Thunderbird's main mail window
+## Rework of Thunderbird's main messenger window
 
-Thunderbird Supernova has received an overhaul, which is more than just a facelift:
+### Changed tab implementation
 
-* The tab system has been improved. Each tab is now loaded into its own browser element, and a lot of functionality has been moved from the top level messenger window into either `about:3pane` or `about:message`, which is important if add-ons need to manipulate the UI or call system methods.&#x20;
-* The mail toolbar has been replaced by the unified toolbar. Adding your own buttons will become difficult, because the unified toolbar tends to remove unknown objects. Instead, use the [browserAction API](https://webextension-api.thunderbird.net/en/latest/browserAction.html) to add buttons.
-* The `about:3pane` (the mail tab) has been reworked, most notably the XUL `tree` elements of `folderTree` and `threadTree` have been replaced by HTML `lists` and HTML `tables`.&#x20;
+Each `mail3PaneTab` and `mailMessageTab` in Thunderbird's main messenger window is now loaded into its own browser element, instead of sharing and updating a single browser.&#x20;
 
 **A general and very helpful introduction to the new front end can be found in its** [**official documentation**](https://developer.thunderbird.net/thunderbird-development/codebase-overview/mail-front-end)**.**
 
-### Using WebExtension APIs
+The `mail3PaneWindow` (`about:3pane`) can now be accessed as follows:
+
+1. `window.gTabmail.currentAbout3Pane`
+2. `window.gTabmail.currentTabInfo.chromeBrowser.contentWindow`
+3. `window.gTabmail.tabInfo[0].chromeBrowser.contentWindow`
+4. `window.gTabmail.tabInfo.find(`\
+   &#x20;  `t => t.mode.name == "mail3PaneTab"`\
+   `).chromeBrowser.contentWindow`
+
+Options _#1 & #2_ will only work if the current active tab is a `mail3PaneTab`. Option _#3_ assumes the first tab is always a `mail3PaneTab`. \
+\
+The  `mailMessageWindow` (`about:message`) can be accessed similarly:
+
+1. `window.gTabmail.currentAboutMessage`
+2. `window.gTabmail.currentTabInfo.chromeBrowser.contentWindow`
+3. `mail3PaneWindow.messageBrowser.contentWindow`
+4. `window.messageBrowser.contentWindow`
+
+Option _#1_ will only work if the current tab is a `mail3PaneTab` or a `mailMessageTab`. Option _#2_ will return the `mailMessageWindow`, if the current tab is a `mailMessageTab` (it will return the `mail3PaneWindow`, if the current tab is a `mail3PaneTab`). Option _#3_ will return the nested message browser of a `mail3PaneTab` through its `mail3PaneWindow` as defined in the previous section. Option _#4_ will return the message browser of a message window.
+
+#### Moved global objects
+
+Some of the global objects defined in Thunderbird's main messenger window have been moved into the `mail3PaneWindow` (`about:3pane`) and/or the `mailMessageWindow` (`about:message`). Some objects have been removed.
+
+* `gDBView`: Available in `mail3PaneWindow` and in `mailMessageWindow`.
+* `gFolderDisplay`: Removed. Find displayed folder via `mail3PaneWindow.gFolder`.&#x20;
+* `gMessageDisplay`: Removed. Find displayed message via `mailMessageWindow.gMessage` or `mailMessageWindow.gMessageURI`.
+
+Useful functions, methods and objects which have been moved from elsewhere:
+
+* `mail3PaneWindow.displayFolder(folderURI)`
+* `mail3PaneWindow.messagePane.displayMessage(messageURI)`
+* `mail3PaneWindow.messagePane.displayMessages(messageURIs)`
+* `mail3PaneWindow.messagePane.displayWebPage(url)`
+* `mail3PaneWindow.folderPane.*`
+* `mail3PaneWindow.folderTree.*`
+* `mail3PaneWindow.threadPane.*`
+* `mail3PaneWindow.threadTree.*`
+* `mailMessageWindow.currentHeaderData`
+* `mailMessageWindow.currentAttachments`
+
+This [topicbox post](https://thunderbird.topicbox.com/groups/addons/Te5f62259df8c0c74-M7ea49d57cdc60d61a620c6b0) holds instructions on how to find other moved objects and functions.
+
+#### Using WebExtension APIs
 
 It is recommended to leverage WebExtension APIs as much a possible. Instead of adjusting to core changes, the following WebExtension APIs can be helpful:
 
@@ -20,7 +61,7 @@ It is recommended to leverage WebExtension APIs as much a possible. Instead of a
 * Use the [commands API](https://webextension-api.thunderbird.net/en/latest/commands.html) to register keyboard shortcuts. Additional benefit: all WebExtension shortcuts can be adjusted by the user in the Add-on Manager according to their needs.
 * Use the [mailTabs API](https://webextension-api.thunderbird.net/en/latest/mailTabs.html) to interact with the mail tab.
 
-### Using shared Experiments
+#### Using shared Experiments
 
 There may already be a shared Experiment, which could help with add-on updates (or which could give helpful hints):
 
@@ -30,7 +71,15 @@ There may already be a shared Experiment, which could help with add-on updates (
 
 More interesting Experiments are available at the [addon-developer-support](https://github.com/thundernest/addon-developer-support/tree/master/auxiliary-apis) repository and on [DTN](https://developer.thunderbird.net/add-ons/mailextensions#sharing-experiment-apis).
 
-## XUL flexbox changes
+### Unified Toolbar
+
+The mail toolbar has been replaced by the unified toolbar. Adding your own buttons will become difficult, because the unified toolbar tends to remove unknown objects. Instead, use the [browserAction API](https://webextension-api.thunderbird.net/en/latest/browserAction.html) to add buttons.
+
+### XUL Tree replacement
+
+The `folderTree` and `threadTree` in `about:3pane` (the `mail3PaneTab`) no longer use the deprecated XUL `tree` elements, but have been replaced by HTML `lists` and HTML `tables`.
+
+### XUL flexbox changes
 
 Mozilla continued to remove XUL in favour of standard HTML5/CSS. The most relevant changes are related to the XUL flexbox. A very helpful read is [this blogpost from the responsible developer](https://crisal.io/words/2023/03/30/xul-layout-is-gone.html).
 

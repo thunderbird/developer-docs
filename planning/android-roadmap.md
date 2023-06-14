@@ -48,7 +48,7 @@ Many K-9 users report that the application settings are too complex and things d
 
 ## K9 -> Thunderbird for Android
 
-**Expected Delivery: Q4 2024**
+**Expected Delivery: Q4 2023**
 
 Thunderbird for Android released!
 

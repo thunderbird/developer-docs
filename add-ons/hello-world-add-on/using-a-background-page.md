@@ -127,7 +127,7 @@ The listener is using a helper function to be able to loop over the received mes
 ```javascript
 // A wrapper function returning an async iterator for a MessageList. Derived from
 // https://webextension-api.thunderbird.net/en/91/how-to/messageLists.html
-async function* iterateMessagePages(page) {
+export async function* iterateMessagePages(page) {
     for (let message of page.messages) {
         yield message;
     }

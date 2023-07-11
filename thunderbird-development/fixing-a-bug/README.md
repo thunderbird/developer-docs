@@ -70,7 +70,7 @@ Scanning through the recent commits in mercurial should also give you an idea of
 
 ## Submitting a Patch
 
-The preferred way to submit a patch is via [Phabricator](https://moz-conduit.readthedocs.io/en/latest/phabricator-user.html).
+The way to submit a patch is via [Phabricator](https://moz-conduit.readthedocs.io/en/latest/phabricator-user.html).
 
 There is a command line tool, `moz-phab`, which makes it easy to submit local changesets as patches.
 
@@ -89,12 +89,6 @@ It'll ask for confirmation before uploading, so don't worry too much about accid
 `moz-phab` will pick the bug number out of the commit message \(`Bug xxxx`\), and link back to the bugzilla bug. If there is a reviewer \(`r=...`\), it will automatically assign them and send them a notification. You can leave the reviewer out, but then one will have to be manually assigned via the phabricator web page. If the commit message starts with "`WIP:`", the patch will be marked "Changes Planned".
 
 You can find more details in the `moz-phab` [README](https://github.com/mozilla-conduit/review/blob/master/README.md#submitting-commits-to-phabricator).
-
-### Submitting patches via Bugzilla
-
-The traditional way to submit patches was to upload a file attachment to the bug in [Bugzilla](https://bugzilla.mozilla.org), set the _review_ flag to `?`, and pick a reviewer.
-
-This still works, but Phabricator is now the preferred method.
 
 ## Updating patches
 

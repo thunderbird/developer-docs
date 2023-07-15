@@ -57,6 +57,7 @@ This [topicbox post](https://thunderbird.topicbox.com/groups/addons/Te5f62259df8
 
 It is recommended to leverage WebExtension APIs as much a possible. Instead of adjusting to core changes, the following WebExtension APIs can be helpful:
 
+* Use the [browserAction API](https://webextension-api.thunderbird.net/en/stable/browserAction.html) to add buttons to Thunderbird's unified toolbar
 * Use the [menus API](https://webextension-api.thunderbird.net/en/latest/menus.html) to add entries to Thunderbird's context menu (for example in the folder pane or in the thread pane)
 * Use the [commands API](https://webextension-api.thunderbird.net/en/latest/commands.html) to register keyboard shortcuts. Additional benefit: all WebExtension shortcuts can be adjusted by the user in the Add-on Manager according to their needs.
 * Use the [mailTabs API](https://webextension-api.thunderbird.net/en/latest/mailTabs.html) to interact with the mail tab.

@@ -125,7 +125,7 @@ In Thunderbird, all WebExtension API can be accessed through the `browser.*` nam
 The [tabs API](https://webextension-api.thunderbird.net/en/91/tabs.html) provides access to Thunderbird's tabs. We need to get hold of the current active tab to learn which message is displayed there. We use the [`query`](using-webextension-apis.md#adding-a-message\_display\_action) method to find it in line `3`.
 
 {% hint style="info" %}
-Using `messeger.tabs.getCurrent()` will not work, as that always returns the tab in which it is being called from. In our case, the call is executed from inside the popup of the `message_display_action` and not from inside the tab we are looking for.
+Using `messenger.tabs.getCurrent()` will not work, as that always returns the tab in which it is being called from. In our case, the call is executed from inside the popup of the `message_display_action` and not from inside the tab we are looking for.
 {% endhint %}
 
 #### messenger.messageDisplay.getDisplayedMessage()

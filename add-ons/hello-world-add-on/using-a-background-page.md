@@ -121,7 +121,7 @@ Access to the local storage requires the <mark style="color:red;">`storage`</mar
 
 #### messageTools.iterateMessagePages()
 
-The listener is using a helper function to be able to loop over the received messages. The `iterateMessagePages` function is defined in an ES6 module, which is loaded in line `2` of the background script shown above.
+The listener is using a helper function to be able to loop over the received messages. The `iterateMessagePages` function is defined in an ES6 module, which is loaded in line `2` of the background script shown above. So, we create a `modules` subfolder into our `hello-world` project folder. Then, we place the `messageTools.mjs` file within. Here follows what it should contain.
 
 {% code title="messageTools.mjs" %}
 ```javascript

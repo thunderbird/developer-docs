@@ -5,6 +5,8 @@ Description: >-
   built on. These docs teach you how to contribute!
 ---
 
+*test change to showcase PR inline comments - do not merge*
+
 # About Thunderbird
 
 ## I Want to Start Hacking

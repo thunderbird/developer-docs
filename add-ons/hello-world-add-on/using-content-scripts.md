@@ -22,11 +22,25 @@ In addition to [standard content scripts](https://developer.mozilla.org/en-US/do
 We will be using a message display script in this example. In order to register one, we use the [`messageDisplayScripts`](https://webextension-api.thunderbird.net/en/91/messageDisplayScripts.html) API and add the following code to our background script:
 
 ```javascript
-// Register the message display script.
+// Register the message display script for all newly opened message tabs.
 messenger.messageDisplayScripts.register({
     js: [{ file: "messageDisplay/message-content-script.js" }],
     css: [{ file: "messageDisplay/message-content-styles.css" }],
 });
+
+// Inject script and CSS in all already open message tabs.
+let openTabs = await messenger.tabs.query();
+let messageTabs = openTabs.filter(
+    tab => ["mail", "messageDisplay"].includes(tab.type)
+);
+for (let messageTab of messageTabs) {
+    browser.tabs.executeScript(messageTab.id, {
+        file: "messageDisplay/message-content-script.js"
+    })
+    browser.tabs.insertCSS(messageTab.id, {
+        file: "messageDisplay/message-content-styles.css"
+    })
+}
 ```
 
 {% hint style="warning" %}

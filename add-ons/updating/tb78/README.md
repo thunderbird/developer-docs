@@ -21,7 +21,7 @@ This guide covers the 'proper' migration strategy to convert a legacy add-on int
 This will be a complex task: almost all interactions with Thunderbird will need to be re-written to use the new APIs. If these APIs are not yet sufficient for your add-on, you may even need to implement additional APIs yourself. Don't worry though: you can find information on all aspects of the migration process below, including links to many advanced topics you may be interested in.
 
 {% hint style="info" %}
-Knowing that following the proper migration strategy is not easy, we created [two wrapper APIs which do not require all of these changes](https://github.com/thundernest/addon-developer-support/wiki). Using these APIs, you can quickly get your add-on running in Thunderbird 78 again, but you will not get the benefits of a MailExtension. The idea behind this is to make add-ons compatible with the current ESR as quickly and easily as possible, so users can continue to work with their beloved add-ons. The actual conversion to a pure MailExtension can then take place in smaller steps. To assist you, we will release small tutorials to remove the legacy parts one after another.
+Knowing that following the proper migration strategy is not easy, we created [two wrapper APIs which do not require all of these changes](https://github.com/thunderbird/addon-developer-support/wiki). Using these APIs, you can quickly get your add-on running in Thunderbird 78 again, but you will not get the benefits of a MailExtension. The idea behind this is to make add-ons compatible with the current ESR as quickly and easily as possible, so users can continue to work with their beloved add-ons. The actual conversion to a pure MailExtension can then take place in smaller steps. To assist you, we will release small tutorials to remove the legacy parts one after another.
 {% endhint %}
 
 ## Dropping the legacy key and adding new entry points
@@ -82,7 +82,7 @@ Instead of a XUL dialog, the specified HTML document is used, which will be acce
 
 The settings themselves should be stored using one of the new APIs to store data, such as [`storage`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage), so it may be necessary to add an Experiment to migrate existing settings from nsIPrefBranch or other mechanisms not accessible through modern APIs.
 
-The [legacyPrefMigration example add-on](https://github.com/thundernest/sample-extensions/tree/master/legacyPrefMigration) includes such a migration API.
+The [legacyPrefMigration example add-on](https://github.com/thunderbird/sample-extensions/tree/master/legacyPrefMigration) includes such a migration API.
 
 ## Replacing chrome.manifest
 
@@ -98,18 +98,18 @@ The `chrome.manifest` file is no longer supported. Many mechanisms have a more o
 Inside Experiment APIs some calls do not work with `file://*` URLs \(e.g. `new ChromeWorker()`\) , here one needs to manually register a `chrome://*` URL, as done in the [enigmail add-on](https://github.com/cleidigh/ThunderKdB/blob/fa91a81ba77f71358b34533095381f03b0a3b3ed/xall/x68/71-enigmail/src/webextension.js#L15-L54).
 
 * **locale**   Localization for WebExtensions is handled using the [`i18n` API](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/i18n), which uses a single `messages.json` file to store translations. We have created a tool to convert the legacy DTD and property files. See section '[Converting locale files](https://developer.thunderbird.net/add-ons/updating/tb78#converting-locale-files)' below.  
-* **style** Use an [Experiment to monitor open windows](https://github.com/thundernest/sample-extensions/blob/f44d61ad796fa86c04da6add0dda162084aaea44/restart/implementation.js#L19), and inject the style through that Experiment. 
+* **style** Use an [Experiment to monitor open windows](https://github.com/thunderbird/sample-extensions/blob/f44d61ad796fa86c04da6add0dda162084aaea44/restart/implementation.js#L19), and inject the style through that Experiment. 
 * **overlay**  See section ['Replacing Overlays' ](./#replacing-overlays)below.
 
 There are no direct equivalents to manifest flags, so add-ons now need to provide their own mechanisms to switch code or resources depending on the runtime environment. Relevant information is accessible through the [`runtime` API](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/).
 
 ## Converting locale files
 
-You may use our python script [`localeConverter.py`](https://github.com/thundernest/addon-developer-support/tree/master/tools/locale-converter) to convert the legacy DTD and property files into the new JSON format. That script will merge the new entries into a potentially existing `messages.json` file.
+You may use our python script [`localeConverter.py`](https://github.com/thunderbird/addon-developer-support/tree/master/tools/locale-converter) to convert the legacy DTD and property files into the new JSON format. That script will merge the new entries into a potentially existing `messages.json` file.
 
 To access the new locales use [`messenger.i18n.getMessage()`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/i18n/getMessage), from within an Experiment API use `context.extension.localeData.localizeMessage()`.
 
-There is no automatic replacement of locale placeholder entities like `&myLocaleIdentifier;` in HTML or XHTML files anymore. Instead you can use placeholders like `__MSG_myLocaleIdentifier__` and include the `i18n.js` script provided by the [addon-developer-support repository](https://github.com/thundernest/addon-developer-support/tree/master/scripts/i18n).
+There is no automatic replacement of locale placeholder entities like `&myLocaleIdentifier;` in HTML or XHTML files anymore. Instead you can use placeholders like `__MSG_myLocaleIdentifier__` and include the `i18n.js` script provided by the [addon-developer-support repository](https://github.com/thunderbird/addon-developer-support/tree/master/scripts/i18n).
 
 ## Replacing Overlays
 
@@ -120,7 +120,7 @@ XUL overlays are no longer supported and you need to find an alternative:
 * Overlays extending the user interface in a way that can be replaced by calls in the background script to built-in APIs:
   * [Example](https://github.com/cleidigh/EditEmailSubject-MX/blob/30c8dd9bf6a7326873a1ad37541384ec8c4bfb36/src/background.js#L11-L16) for adding context menu items using the [`menus` API](https://webextension-api.thunderbird.net/en/78/menus.html)    
 * Overlays extending the user interface beyond the built-in APIs:
-  * Use an [Experiment API with a window listener](https://github.com/thundernest/sample-extensions/blob/master/restart/implementation.js) to manually add UI elements.
+  * Use an [Experiment API with a window listener](https://github.com/thunderbird/sample-extensions/blob/master/restart/implementation.js) to manually add UI elements.
 
 ## Replacing XUL windows and dialogs
 
@@ -139,7 +139,7 @@ From these dialogs, all WebExtension and MailExtension APIs can be accessed in t
 
 **We do not suggest to keep working with XUL dialogs, because we want to protect authors from spending conversion time on a dead technology, which is being removed step by step and requires constant updates to the add-on.** However, there might be cases where it is currently reasonable to keep loading a XUL document, which could be done like so:
 
-1. Manually inject the button, menuitem or whatever is opening the dialog via a window listener Experiment \(see the [restart example extension](https://github.com/thundernest/sample-extensions/blob/f44d61ad796fa86c04da6add0dda162084aaea44/restart/implementation.js#L19)\).
+1. Manually inject the button, menuitem or whatever is opening the dialog via a window listener Experiment \(see the [restart example extension](https://github.com/thunderbird/sample-extensions/blob/f44d61ad796fa86c04da6add0dda162084aaea44/restart/implementation.js#L19)\).
 2. An event handler attached to the injected element runs in privileged chrome context and can call functions like `window.open()` or `window.openDialog()`. 
 3. You need a global path to specify the location of your XUL file, either use a`file://*` or `chrome://*` path as described in the section ["Replacing chrome.manifest"](https://developer.thunderbird.net/add-ons/updating/tb78#replacing-chrome-manifest) above.
 4. In TB78 you need to rename your `*.xul` file to `*.xhtml` .

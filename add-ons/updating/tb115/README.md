@@ -31,4 +31,4 @@ If you have encountered a change which is not yet listed there, please [contact 
 If you are using any of the shared Experiments, you probably do not have to update them on your own. Check if an updated version is already available:
 
 * [Shared Experiments on DTN](../../mailextensions/#sharing-experiment-apis)
-* [Wrapper Experiments available in the ADS repository](https://github.com/thundernest/addon-developer-support/tree/master/wrapper-apis)
+* [Wrapper Experiments available in the ADS repository](https://github.com/thunderbird/addon-developer-support/tree/master/wrapper-apis)

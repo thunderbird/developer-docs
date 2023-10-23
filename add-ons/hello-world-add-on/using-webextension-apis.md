@@ -152,7 +152,7 @@ The [`getFull`](https://webextension-api.thunderbird.net/en/91/messages.html#get
 
 ## Testing the Extension
 
-Let's double-check that we made the [correct changes](https://github.com/thundernest/sample-extensions/commit/73f5b3776b0d4f9c0e9281168de8f9313cc474f8?diff=unified) and have all the files in the right places:
+Let's double-check that we made the [correct changes](https://github.com/thunderbird/sample-extensions/commit/73f5b3776b0d4f9c0e9281168de8f9313cc474f8?diff=unified) and have all the files in the right places:
 
 ```
 hello-world/

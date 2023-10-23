@@ -54,7 +54,7 @@
   * [Supported Manifest Keys](add-ons/mailextensions/supported-manifest-keys.md)
   * [Supported UI Elements](add-ons/mailextensions/supported-ui-elements.md)
   * [Supported WebExtension APIs](add-ons/mailextensions/supported-webextension-api.md)
-  * [Examples in the Sample Extensions Repository](https://github.com/thundernest/sample-extensions)
+  * [Examples in the Sample Extensions Repository](https://github.com/thunderbird/sample-extensions)
   * [Introducing Experiments](add-ons/mailextensions/experiments.md)
 * [A Guide to Themes](add-ons/web-extension-themes.md)
 * [Manifest V3](add-ons/manifest-v3.md)

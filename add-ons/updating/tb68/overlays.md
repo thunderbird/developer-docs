@@ -95,7 +95,7 @@ Those errors come from the old system, which no longer deals with such things.
 You might see the same line, but regarding `interfaces`.
 
 {% hint style="danger" %}
-**Registering your own interfaces using `.xpt`files is no longer possible.** However, they can be converted to JavaScript Modules \(the Quicktext add-on includes an [example migration](https://github.com/thundernest/quicktext/commit/e1ef58dce2816ac1e685f562d30882968e24a391)\).
+**Registering your own interfaces using `.xpt`files is no longer possible.** However, they can be converted to JavaScript Modules \(the Quicktext add-on includes an [example migration](https://github.com/thunderbird/quicktext/commit/e1ef58dce2816ac1e685f562d30882968e24a391)\).
 {% endhint %}
 
 ## Notes about `<script>` tags

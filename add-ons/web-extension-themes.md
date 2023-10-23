@@ -179,6 +179,6 @@ Further information regarding theme experiments can be found in our [WebExtensio
 {% endhint %}
 
 {% hint style="info" %}
-Our example repository includes an [add-on using a theme experiment](https://github.com/thundernest/sample-extensions/tree/master/manifest\_v3/theme\_experiment) to change the color of the chat icon.
+Our example repository includes an [add-on using a theme experiment](https://github.com/thunderbird/sample-extensions/tree/master/manifest\_v3/theme\_experiment) to change the color of the chat icon.
 {% endhint %}
 

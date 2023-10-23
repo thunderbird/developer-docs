@@ -33,9 +33,9 @@ Thunderbird uses Mozilla's Bugzilla platform to report and track bugs. The site 
 
 Creating a performance profile can be useful for developers to find the causes of high CPU load or slowness in Thunderbird.
 
-### [Thundernest on GitHub](https://github.com/thundernest)
+### [Thunderbird on GitHub](https://github.com/thunderbird)
 
-If you want to contribute to the Thunderbird website, this documentation, or addons.thunderbird.net - you can find those repositories and their issue trackers on the Thundernest GitHub page. You'll need a GitHub account to contribute there.
+If you want to contribute to the Thunderbird website, this documentation, or addons.thunderbird.net - you can find those repositories and their issue trackers on the Thunderbird GitHub page. You'll need a GitHub account to contribute there.
 
 ## Getting Plugged into the Community
 

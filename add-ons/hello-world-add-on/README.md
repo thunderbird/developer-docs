@@ -44,7 +44,7 @@ Extensions require a `manifest.json` file that tells Thunderbird a few basic inf
 ```
 {% endcode %}
 
-You can grab the icons we use for this example from the [example repository](https://github.com/thundernest/sample-extensions/tree/master/hello-world/images). Make sure to create an `images` directory in the `hello-world` project folder for them.
+You can grab the icons we use for this example from the [example repository](https://github.com/thunderbird/sample-extensions/tree/master/hello-world/images). Make sure to create an `images` directory in the `hello-world` project folder for them.
 
 ## Using a `browser_action`
 
@@ -119,7 +119,7 @@ Now we want to create the CSS file referenced in our HTML file. We'll call it `p
 
 ## Testing the Extension
 
-First, let's double-check that we created [the correct files](https://github.com/thundernest/sample-extensions/commit/230eba3fd9f5c633cb30c0a83d5500e532c283c4?diff=unified) and have them in the right places:
+First, let's double-check that we created [the correct files](https://github.com/thunderbird/sample-extensions/commit/230eba3fd9f5c633cb30c0a83d5500e532c283c4?diff=unified) and have them in the right places:
 
 ```
 hello-world/

@@ -235,7 +235,7 @@ Since Thunderbird 101, it is no longer possible to load JSMs via extension URLs,
 var { myModule } = ChromeUtils.import(extension.rootURI.resolve("myModule.jsm"));
 ```
 
-It is now mandatory to register an internal URL, for example a `resource://` URL. We have created the [ResourceUrl Experiment API](https://github.com/thundernest/addon-developer-support/tree/master/auxiliary-apis/ResourceUrl), which is doing the heavy lifting. It is used by our [Experiment API example](https://github.com/thundernest/sample-extensions/tree/master/experiment).
+It is now mandatory to register an internal URL, for example a `resource://` URL. We have created the [ResourceUrl Experiment API](https://github.com/thunderbird/addon-developer-support/tree/master/auxiliary-apis/ResourceUrl), which is doing the heavy lifting. It is used by our [Experiment API example](https://github.com/thunderbird/sample-extensions/tree/master/experiment).
 
 ### DisplayNameUtils.getCardForEmail()
 

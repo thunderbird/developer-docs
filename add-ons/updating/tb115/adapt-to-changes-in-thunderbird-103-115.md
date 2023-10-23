@@ -66,11 +66,11 @@ It is recommended to leverage WebExtension APIs as much a possible. Instead of a
 
 There may already be a shared Experiment, which could help with add-on updates (or which could give helpful hints):
 
-* [LegacyCSS API](https://github.com/thundernest/addon-developer-support/tree/master/auxiliary-apis/LegacyCSS): Inject into `about:3pane` or `about:message`, to style the `folderpane` (see [Hide Local Folders](https://addons.thunderbird.net/addon/hide-local-folders-for-tb78/versions/?page=1#version-3.0.1) Add-on), the `threadpane` or the message display area.
-* [WindowListener API](https://github.com/thundernest/addon-developer-support/tree/master/wrapper-apis/WindowListener): Inject into `about:3pane` or `about:message`, to manipulate the `folderpane` (see [Phoenity Icons](https://addons.thunderbird.net/addon/phoenity-icons/versions/?page=1#version-3.9) Add-On), the `threadpane` or the message display area.
-* [UnifiedFolders API](https://github.com/thundernest/addon-developer-support/tree/master/auxiliary-apis/UnifiedFolders): Interact with the "smart" folder display mode.
+* [LegacyCSS API](https://github.com/thunderbird/addon-developer-support/tree/master/auxiliary-apis/LegacyCSS): Inject into `about:3pane` or `about:message`, to style the `folderpane` (see [Hide Local Folders](https://addons.thunderbird.net/addon/hide-local-folders-for-tb78/versions/?page=1#version-3.0.1) Add-on), the `threadpane` or the message display area.
+* [WindowListener API](https://github.com/thunderbird/addon-developer-support/tree/master/wrapper-apis/WindowListener): Inject into `about:3pane` or `about:message`, to manipulate the `folderpane` (see [Phoenity Icons](https://addons.thunderbird.net/addon/phoenity-icons/versions/?page=1#version-3.9) Add-On), the `threadpane` or the message display area.
+* [UnifiedFolders API](https://github.com/thunderbird/addon-developer-support/tree/master/auxiliary-apis/UnifiedFolders): Interact with the "smart" folder display mode.
 
-More interesting Experiments are available at the [addon-developer-support](https://github.com/thundernest/addon-developer-support/tree/master/auxiliary-apis) repository and on [DTN](https://developer.thunderbird.net/add-ons/mailextensions#sharing-experiment-apis).
+More interesting Experiments are available at the [addon-developer-support](https://github.com/thunderbird/addon-developer-support/tree/master/auxiliary-apis) repository and on [DTN](https://developer.thunderbird.net/add-ons/mailextensions#sharing-experiment-apis).
 
 ### Unified Toolbar
 

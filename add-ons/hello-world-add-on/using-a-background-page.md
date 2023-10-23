@@ -219,7 +219,7 @@ Using the `notifications` API requires the <mark style="color:red;">`notificatio
 
 ## Testing the Extension
 
-Let's double-check that we made the [correct changes](https://github.com/thundernest/sample-extensions/commit/bb719ee48994101c52a3d8849d7c07ac6a46db01?diff=unified) and have all the files in the right places:
+Let's double-check that we made the [correct changes](https://github.com/thunderbird/sample-extensions/commit/bb719ee48994101c52a3d8849d7c07ac6a46db01?diff=unified) and have all the files in the right places:
 
 ```
 hello-world/

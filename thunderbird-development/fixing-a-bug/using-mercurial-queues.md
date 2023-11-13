@@ -4,7 +4,9 @@ description: Tutorial on how to activate and use Mercurial Queues.
 
 # Using Mercurial Queues
 
-Mercurial Queues is the primary method used by many Thunderbird developers to create patches and work on multiple bugs without stumbling upon merge conflicts.
+{% hint style="danger" %}
+Mercurial Queues is not compatible with the `moz-phab` code submission tool. This page is here for historical reference only.
+{% endhint %}
 
 {% hint style="info" %}
 If you're already familiar with Mercurial Queues but you need a quick overview of all the available commands, take a look at the [Mercurial Queues reference](http://hgbook.red-bean.com/read/mercurial-queues-reference.html)
@@ -51,7 +53,7 @@ The commit message is optional and you can add it at a later time with a `qrefre
 
 ## Refresh the Code
 
-Whenever you change something in your code, you need to trigger the `hg qrefresh` command in order to update your current patch with the latest changes. Do a `hg diff` before you issue `hg qefresh` to see which changes will be added to your patch. If you use multiple patches \(see section below\), it may be a good idea to do a `hg qseries` to make sure the right patch is on top. Otherwise the changes will be added to the wrong patch.
+Whenever you change something in your code, you need to trigger the `hg qrefresh` command in order to update your current patch with the latest changes. Do a `hg diff` before you issue `hg qefresh` to see which changes will be added to your patch. If you use multiple patches (see section below), it may be a good idea to do a `hg qseries` to make sure the right patch is on top. Otherwise the changes will be added to the wrong patch.
 
 It's always good practice to check if the current changes have been properly saved in your patch by using the command `hg qdiff`. All the diffs will be listed in your terminal.
 
@@ -77,7 +79,7 @@ Use the `hg qseries` command to visualize a list of currently applied patches an
 
 ### Reordering the Patches
 
-Sometimes the queue ends up not being in the order you want. For example, maybe you've been working on two patches, and the second one \(the topmost one in your queue\) is ready to be pushed before the first one is.
+Sometimes the queue ends up not being in the order you want. For example, maybe you've been working on two patches, and the second one (the topmost one in your queue) is ready to be pushed before the first one is.
 
 If you have Mercurial 1.6 or newer, the best way to reorder your queue is `hg qpush --move`. For example:
 
@@ -132,7 +134,7 @@ Note that `hg export qtip > ~/bug-123456-fix.patch` is not necessary since all t
 
 If you think that something has gone wrong, do this:
 
-First check your patch queue: `hg qseries`. If that looks right, do a `hg diff` to see the latest changes which aren't in your patch yet. You can either add them to the patch using `hg qrefresh` or remove them with `hg revert --all`. Your best friend is the `hg out` command, it shows all the changesets you have locally which aren't pushed to the repository yet. If for some reason you committed a patch to push it \(using `hg qfinish`\), an action that only the sheriff does, or accidentally used `hg import` instead of `hg qimport`, `hg out` will show changes that are not controlled by patches in a MQ. In this case you can strip all changeset `hg out` shows using `hg strip -r` with the lowest revision shown. After that, do `hg update -C default`.
+First check your patch queue: `hg qseries`. If that looks right, do a `hg diff` to see the latest changes which aren't in your patch yet. You can either add them to the patch using `hg qrefresh` or remove them with `hg revert --all`. Your best friend is the `hg out` command, it shows all the changesets you have locally which aren't pushed to the repository yet. If for some reason you committed a patch to push it (using `hg qfinish`), an action that only the sheriff does, or accidentally used `hg import` instead of `hg qimport`, `hg out` will show changes that are not controlled by patches in a MQ. In this case you can strip all changeset `hg out` shows using `hg strip -r` with the lowest revision shown. After that, do `hg update -C default`.
 
 ## Advanced Usage
 
@@ -149,5 +151,4 @@ hg qbackout -r 0e7bfdf1b900 -r 0e7bfdf1b955 (non-consecutive)
 hg qbackout -s -r 0e7bfdf1b900:0e7bfdf1b901 (merge into a single backout changeset)
 ```
 
-There is also limited integration with Phabricator with `hg phabread`. That needs a special setup. Ask the resident Thunderbird sheriff for details or read [here](https://www.mercurial-scm.org/wiki/Phabricator#Setting_up_hg) \(but there's more to it\).
-
+There is also limited integration with Phabricator with `hg phabread`. That needs a special setup. Ask the resident Thunderbird sheriff for details or read [here](https://www.mercurial-scm.org/wiki/Phabricator#Setting\_up\_hg) (but there's more to it).

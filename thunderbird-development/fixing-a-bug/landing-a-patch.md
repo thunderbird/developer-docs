@@ -4,6 +4,10 @@ description: Tutorial on how to push approved and reviewed patches to the produc
 
 # Landing a Patch
 
+{% hint style="info" %}
+As a new contributor, you probably don't need to land your own patches. Instead add the keyword `checkin-needed-tb` to the Bugzilla bug, and one of our friendly sheriffs will land it for you.
+{% endhint %}
+
 ## Getting access to comm-central <a href="#getting-access-to-the-try-server" id="getting-access-to-the-try-server"></a>
 
 To push a patch to comm-central, you'll need [Level 3 Commit Access](http://www.mozilla.org/hacking/commit-access-policy/). You can learn more about Mozilla's commit access policies and start the process of signing up for an account here: [Becoming a Mozilla Contributor](http://www.mozilla.org/hacking/committer/)
@@ -41,8 +45,6 @@ Coordinate with others in the [#maildev Matrix chat room](https://chat.mozilla.o
 {% hint style="warning" %}
 Pushing to comm-central will create builds using the **most recent** mozilla-central code, which may or may not be a good idea at the time. Generally it's okay, but there may be unresolved problems between the two repositories. If you strike a problem, ask for help in the [#maildev Matrix chat room](https://chat.mozilla.org/#/room/#maildev:mozilla.org).
 {% endhint %}
-
-
 
 ## Pushing to comm-central <a href="#pushing-to-try" id="pushing-to-try"></a>
 

@@ -6,13 +6,13 @@ description: >-
 
 # A "Hello World" Extension Tutorial
 
-In the first part of this tutorial, we will create a very simple extension, which adds a "_Hello World_" button to Thunderbird's main toolbar and a click on it will show a `Hello, World!` popup.&#x20;
+In the first part of this tutorial, we will create a very simple extension, which adds a "_Hello World_" button to Thunderbird's main toolbar and a click on it will show a `Hello, World!` popup.
 
 ![](../../.gitbook/assets/hello-word.png)
 
 ## Creating a manifest.json
 
-First, we create an empty `hello-world` project folder for our extension and navigate to it.&#x20;
+First, we create an empty `hello-world` project folder for our extension and navigate to it.
 
 Extensions require a `manifest.json` file that tells Thunderbird a few basic information about the add-on. Let's place the following `manifest.json` file directly in the `hello-world` project folder.
 
@@ -83,7 +83,7 @@ The default [**content security policy**](https://developer.mozilla.org/en-US/do
 {% endhint %}
 
 {% hint style="warning" %}
-The `script` tag to include `popup.js` is setting `type="module"`, which loads the script as a top level ES6 module. This enables the script to use the await keyword in file scope code and to load other ES6 modules.&#x20;
+The `script` tag to include `popup.js` is setting `type="module"`, which loads the script as a top level ES6 module. This enables the script to use the await keyword in file scope code and to load other ES6 modules.
 
 We will not use these features in this step of the tutorial, but we still use the modern ES6 module approach here to introduce it as a standard programming practice.
 {% endhint %}
@@ -146,7 +146,7 @@ This will open up the Add-ons Manager, make sure "Extensions" is selected on the
 
 Click on the "Load Temporary Add-on..." button:
 
-![](../../.gitbook/assets/screen3.png)
+![](../../.gitbook/assets/screen3.PNG)
 
 Select the `manifest.json` file from within our `hello-world` project folder:
 
@@ -172,7 +172,7 @@ Now we can give our new add-on a whirl. Head to the home tab and find the new "_
 
 Now, if you look at the Developer Tools, you should see something like the following in the console:
 
-![](<../../.gitbook/assets/screen8 (1).png>)
+![](../../.gitbook/assets/screen8.png)
 
 ## Creating the add-on file
 

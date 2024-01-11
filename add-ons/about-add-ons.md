@@ -8,7 +8,7 @@ Current Thunderbird add-ons are based on the WebExtension technology, which is a
 
 MailExtensions are a collection of files that change the way Thunderbird looks and behaves. They can add user interface elements, alter content, or perform background tasks. Thunderbird add-ons are created using standard JavaScript, CSS and HTML.
 
-<figure><img src="../.gitbook/assets/webext_diagram (1).png" alt="Structure of a MailExtension (a Thunderbird add-on based on WebExtension technology) and how it interacts with Thunderbird."><figcaption><p>Structure of a MailExtension (a Thunderbird add-on based on WebExtension technology) and how it interacts with Thunderbird.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/webext_diagram.png" alt="Structure of a MailExtension (a Thunderbird add-on based on WebExtension technology) and how it interacts with Thunderbird."><figcaption><p>Structure of a MailExtension (a Thunderbird add-on based on WebExtension technology) and how it interacts with Thunderbird.</p></figcaption></figure>
 
 Key features of MailExtensions:
 

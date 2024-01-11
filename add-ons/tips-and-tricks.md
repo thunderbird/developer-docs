@@ -14,7 +14,7 @@ Some general tips to speed up your development workflow:
   \
   **Hint:** Alternatively you can enable content messages in the global browser console or in the developer toolbox as well. This will also show console output from popus (e.g. from browser\_action):
 
-![](../.gitbook/assets/ind2ex.png)
+![](<../.gitbook/assets/ind2ex (1).png>)
 
 * The add-on debugging tools accessible through the add-on page's gear icon permit to directly install add-ons without packaging them. Using that option permits to reload the add-on without restarting Thunderbird.
 

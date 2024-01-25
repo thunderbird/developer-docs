@@ -1,77 +1,39 @@
 ---
-description: Android Priorities through the summer of 2023.
+description: Planned work for the 2024 release of Thunderbird for Android (K-9 Mail).
 ---
 
 # Android Roadmap
 
-## OAuth Support for Major Providers
+### Improve Account Setup
 
-**Expected Delivery: DONE**
+Implement a more automated account setup flow with settings auto-discovery and guided setup steps.
 
-Ensure OAuth support for the major providers: Outlook/O365/hotmail, Gmail, and Yahoo.
+### Folders Drawer UI improvements
 
-## Swipe Between Messages
+Default implementation of unified folder alongside the ability to manage and organize long folder lists.
 
-**Expected Delivery: DONE**
+### Message View UI improvements
 
-Users have long requested the ability to swipe between messages that are in the current folder being viewed.
+Improvements of the content rendering of single message view, better management of contacts, extra info, and attachment through bottom sheets.
 
-## Improve Account Setup
+### **Material 3**
 
-**Expected Delivery: Q1 2023**
+Complete adoption of the Material 3 UI toolkit.
 
-Currently, the K-9 account setup is not as “smart” as the Thunderbird account setup and will sometimes make wrong assumptions about an account’s server. We will leverage Thunderbird’s auto-configuration service to make K-9 account setup much better.
+### Simplified Settings
 
-## Hierarchical Folder View
+Improvement and reorganization of the settings in order to offer simpler and more intuitive paths to customization and control.
 
-**Expected Delivery: Q3 2023**
+### K9 -> Thunderbird for Android
 
-Folders are currently not displayed in a hierarchical way in K-9. That creates a bad UX and makes managing messages in folders a pain.
+Thunderbird for Android will be released once all these major efforts are completed and the most glaring bugs and crashes are resolved in K-9.
 
-## Message View Overhaul
+Thunderbird for Android will not replace K-9 as both app will be maintained and released at the same time and can be used in parallel.
 
-**Expected Delivery: Q3 2023**
+### Conversation View
 
-Better display messages by default, better scrolling within a message, better default “zoom” so that the message appears at the correct size even if it is formatted in a bad way.
+Implementations of a threaded “conversation” - similar to the mobile Gmail interface.
 
-## **Material 3**
+### Syncing Support
 
-**Expected Delivery: Q4 2023**
-
-The K-9 interface looks outdated, does not conform to the current material design (Android platform) standards. We intend to bring it up-to-date with these as well as fix some workflow issues.
-
-## Simplify Settings
-
-**Expected Delivery: Q4 2024**
-
-Many K-9 users report that the application settings are too complex and things don’t appear where they expect them. Need to better arrange and contextually expose settings.
-
-## K9 -> Thunderbird for Android
-
-**Expected Delivery: Q4 2023**
-
-Thunderbird for Android released!
-
-## **Tags**
-
-&#x20;**Expected Delivery: Q1 2024**
-
-Currently K-9 doesn’t support tags, even though this is part of the IMAP standard. It’s a relatively easy lift with most of the work coming from UX/UI considerations.
-
-## **Filters**
-
-**Expected Delivery: Q1 2024**
-
-Currently K-9 doesn’t support filters. This is something that users will expect coming from desktop Thunderbird - we want feature parity here.
-
-## Conversation View
-
-**Expected Delivery: Q1 2024**
-
-K-9 users have long requested the ability to view a thread as a “conversation” - similar to the mobile Gmail interface.
-
-## Syncing Support
-
-**Expected Delivery: Q1 2024**
-
-With syncing coming to Thunderbird desktop in 114, the ability to sync accounts and other data (such as filters) with the mobile Thunderbird experience should be supported.
+Implementation of Mozilla Accounts and Sync between Desktop and Mobile.

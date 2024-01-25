@@ -24,11 +24,11 @@ Complete adoption of the Material 3 UI toolkit.
 
 Improvement and reorganization of the settings in order to offer simpler and more intuitive paths to customization and control.
 
-### K9 -> Thunderbird for Android
+### K-9 Mail -> Thunderbird for Android
 
-Thunderbird for Android will be released once all these major efforts are completed and the most glaring bugs and crashes are resolved in K-9.
+Thunderbird for Android will be released once all these major efforts are completed and the most glaring bugs and crashes are resolved in K-9 Mail.
 
-Thunderbird for Android will not replace K-9 as both app will be maintained and released at the same time and can be used in parallel.
+Thunderbird for Android will not replace K-9 Mail as both app will be maintained and released at the same time and can be used in parallel.
 
 ### Conversation View
 

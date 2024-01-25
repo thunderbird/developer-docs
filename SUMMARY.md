@@ -44,7 +44,6 @@
 ## Planning
 
 * [Roadmap](planning/roadmap.md)
-* [Backlog](planning/backlog.md)
 * [Android Roadmap](planning/android-roadmap.md)
 
 ## Add-on Development <a href="#add-ons" id="add-ons"></a>

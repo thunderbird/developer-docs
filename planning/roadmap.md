@@ -10,6 +10,12 @@ Below are the large projects planned for the 2024 release of Thunderbird.
 
 This is a list of all the primary objectives and efforts that we will try to complete for 2024. These are not currently tied to any particular beta release nor ESR release and they will be available when ready.
 
+### Mozilla Account + Sync
+
+[Bug 1833177 - \[meta\] Account Sync implementation](https://bugzilla.mozilla.org/show\_bug.cgi?id=1833177)
+
+Implement Mozilla Account login and syncing server functionalities to synchronize accounts and settings across installations.
+
 ### **Exchange email support**
 
 [Bug 1847846 - \[meta\] Implement Microsoft Exchange](https://bugzilla.mozilla.org/show\_bug.cgi?id=1847846)

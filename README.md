@@ -9,7 +9,7 @@ Description: >-
 
 ## I Want to Start Hacking
 
-This page has some information on where to get information and how to get plugged into the Community. If you are ready to start hacking, head over to one of the following sections.
+This page has some information on how to get plugged into the Community. If you are ready to start hacking, head over to one of the following sections.
 
 ### Contributing to Thunderbird
 
@@ -33,9 +33,9 @@ Thunderbird uses Mozilla's Bugzilla platform to report and track bugs. The site 
 
 Creating a performance profile can be useful for developers to find the causes of high CPU load or slowness in Thunderbird.
 
-### [Thundernest on GitHub](https://github.com/thundernest)
+### [Thunderbird on GitHub](https://github.com/thunderbird)
 
-If you want to contribute to the Thunderbird website, this documentation, or addons.thunderbird.net - you can find those repositories and their issue trackers on the Thundernest GitHub page. You'll need a GitHub account to contribute there.
+If you want to contribute to the Thunderbird website, this documentation, or addons.thunderbird.net - you can find those repositories and their issue trackers on the Thunderbird GitHub page. You'll need a GitHub account to contribute there.
 
 ## Getting Plugged into the Community
 

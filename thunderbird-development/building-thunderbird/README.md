@@ -19,13 +19,13 @@ Depending on your Operating System you will need to carry out a different proces
 
 ## Build Configuration
 
-To build Thunderbird, you need to create a file named `mozconfig` to the root directory of the mozilla-central checkout that contains the option `comm/mail` enabled. You can create a file with this line by doing this in the `source/` directory:
+To build Thunderbird, you need to create a file named `mozconfig` in the root directory of the mozilla-central checkout that contains the option `comm/mail` enabled. You can create a file with this line by doing this in the `source/` directory:
 
 ```
-echo 'ac_add_options --enable-application=comm/mail' > mozconfig
+echo 'ac_add_options --enable-project=comm/mail' > mozconfig
 ```
 
-**If you omit this lines, the build system will build Firefox instead**. Other build configuration options can be added to this file, although it's **strongly recommended** that you only use options that you fully understand. For example, to create a debug build instead of a release build, that file would also contain the line:
+**If you omit this line, the build system will build Firefox instead**. Other build configuration options can be added to this file, although it's **strongly recommended** that you only use options that you fully understand. For example, to create a debug build instead of a release build, that file would also contain the line:
 
 ```
 echo 'ac_add_options --enable-debug' >> mozconfig
@@ -33,7 +33,7 @@ echo 'ac_add_options --enable-debug' >> mozconfig
 
 _Each of these ac\_add\_options entries needs to be on its own line._
 
-For more on configuration options, see the page [Configuring build options](https://developer.mozilla.org/en/Configuring\_Build\_Options). Note that if you use an MOZ\_OBJDIR it cannot be a sibling folder to your source directory. Use an absolute path to be sure!
+For more info on configuration options, see the page [Configuring build options](https://firefox-source-docs.mozilla.org/setup/configuring\_build\_options.html#configuring-build-options). Note that if you use a MOZ\_OBJDIR it cannot be a sibling folder to your source directory. Use an absolute path to be sure!
 
 ## Building
 
@@ -41,13 +41,13 @@ For more on configuration options, see the page [Configuring build options](http
 Before you start, make sure that the version you checked out is not busted. For `hg` tip, you should see green Bs on [https://treeherder.mozilla.org/#/jobs?repo=comm-central](https://treeherder.mozilla.org/#/jobs?repo=comm-central)
 {% endhint %}
 
-After you met the [build prerequisites](./#build-prerequisites) for your OS the build is started in the `source` directory with:
+After you have met the [build prerequisites](./#build-prerequisites) for your OS, the build is started in the `source` directory with:
 
 ```
 ./mach build
 ```
 
-mach is our command-line tool to streamline common developer tasks. See the [mach](https://developer.mozilla.org/en-US/docs/Mozilla/Developer\_guide/mach) article for more.
+mach is our command-line tool to streamline common developer tasks. See the [mach](https://firefox-source-docs.mozilla.org/mach/) article for more.
 
 Building can take a significant amount of time, depending on your system, OS, and chosen build options. Linux builds on a fast box may take under _15 minutes_, but Windows builds on a slow box may take _several hours_.
 

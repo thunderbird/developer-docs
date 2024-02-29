@@ -1,8 +1,8 @@
 ---
-description: Required steps to update add-ons for Thunderbird Beta.
+description: Required steps to update add-ons for Thunderbird Supernova 115.
 ---
 
-# Update for Thunderbird Beta
+# Update for Thunderbird Supernova
 
 This section covers the required update steps for add-ons which are already compatible with Thunderbird 102 and need to be made compatible with Thunderbird Beta.
 
@@ -12,6 +12,9 @@ Our WebExtension APIs are meant to be stable, but we are adding new features and
 
 * [Thunderbird 106](https://webextension-api.thunderbird.net/en/latest/changes/beta106.html)
 * [Thunderbird 107](https://webextension-api.thunderbird.net/en/latest/changes/beta107.html)
+* [Thunderbird 111](https://webextension-api.thunderbird.net/en/latest/changes/beta111.html)
+* [Thunderbird 113 Manifest v2](https://webextension-api.thunderbird.net/en/latest/changes/beta113.html) and [Thunderbird 113 Manifest v3](https://webextension-api.thunderbird.net/en/latest-mv3/changes/beta113.html)
+* [Thunderbird 115 Manifest v2](https://webextension-api.thunderbird.net/en/latest/changes/beta115.html) and [Thunderbird 115 Manifest v3](https://webextension-api.thunderbird.net/en/latest-mv3/changes/beta115.html)
 
 ## Changes in Thunderbird Core
 
@@ -28,4 +31,4 @@ If you have encountered a change which is not yet listed there, please [contact 
 If you are using any of the shared Experiments, you probably do not have to update them on your own. Check if an updated version is already available:
 
 * [Shared Experiments on DTN](../../mailextensions/#sharing-experiment-apis)
-* [Wrapper Experiments available in the ADS repository](https://github.com/thundernest/addon-developer-support/tree/master/wrapper-apis)
+* [Wrapper Experiments available in the ADS repository](https://github.com/thunderbird/addon-developer-support/tree/master/wrapper-apis)

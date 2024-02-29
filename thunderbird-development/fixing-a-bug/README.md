@@ -8,7 +8,7 @@ All the issues, bugs, work in progress patches, or updates related to Thunderbir
 
 ## Create a Bugzilla Account
 
-Creating an account is necessary in order to submit patches, leave comments, and interact with any other aspect of Bugzilla. If you're currently using a username in one of our Matrix chat rooms \(e.g. [\#maildev](https://chat.mozilla.org/#/room/#maildev:mozilla.org)\), we recommend saving your profile name with the current format `Firstname Lastname (:username)` in order to be easily searchable and allow the Thunderbird team to offer better support.
+Creating an account is necessary in order to submit patches, leave comments, and interact with any other aspect of Bugzilla. If you're currently using a username in one of our Matrix chat rooms (e.g. [#maildev](https://chat.mozilla.org/#/room/#maildev:mozilla.org)), we recommend saving your profile name with the current format `Firstname Lastname (:username)` in order to be easily searchable and allow the Thunderbird team to offer better support.
 
 ## Find a Bug
 
@@ -26,9 +26,9 @@ JavaScript code can be debugged using the built-in [developer tools toolbox](htt
 
 ### Configuring Mercurial
 
-To ensure your work is correctly attributed to you, and to make the reviewer's task easier, these options should be set in your Mercurial configuration file \(`Mecurial.ini` on Windows, `$HOME/.hgrc` elsewhere\).
+To ensure your work is correctly attributed to you, and to make the reviewer's task easier, these options should be set in your Mercurial configuration file (`Mecurial.ini` on Windows, `$HOME/.hgrc` elsewhere).
 
-```text
+```
 [ui]
 username = Your Name <your@email.address>
 
@@ -40,12 +40,7 @@ unified = 8
 
 ### Mercurial Workflows
 
-Mercurial is pretty flexible in terms of allowing writing your own code and keeping it separate from the main code base. Based on your knowledge level and preference, you can choose between two different methods:
-
-* [Using Queues](using-mercurial-queues.md)
-* [Using Bookmarks](using-mercurial-bookmarks.md)
-
-The majority of the Thunderbird developers use queues as they're easy to import and export, and avoid merging issues while pulling updates from upstream. For a first time contributor, bookmarks may be easier to get you started, but do not work well when working with multiple patches.
+Mercurial is pretty flexible in terms of allowing writing your own code and keeping it separate from the main code base. See [the page on using Mercurial bookmarks](using-mercurial-bookmarks.md) for more information.
 
 ## Commit messages
 
@@ -53,12 +48,13 @@ Using standard forms for commit messages not only looks better when looking at t
 
 Commit messages should be of the form:
 
-```text
+```
 Bug xxxx - Short description of your change. r=reviewer
 
 Optionally, a longer description of the change.
 This can span multiple lines.
 ```
+
 
 For follow-up commits that fix a problem with a lint test or other failure, the suggested form is:
 
@@ -74,41 +70,36 @@ Bug NNNN - Port bug ZZZZ: Useful short description. r?reviewer
 
 Prefixing the first line of the commit message with "`WIP:`" marks the patch as a work-in-progress. `moz-phab` \(see below\) will pick that up and mark it as "Changes Planned".
 
+
 ## Picking reviewers
 
 All changes need to be reviewed before acceptance into the codebase. It can be pretty tricky to figure out who to ask for a review.
 
-Thunderbird code is divided into modules, each with an owner and peers. Generally, these are the best people to review your changes. Here's [the list of module owners and peers for Thunderbird](https://wiki.mozilla.org/Modules/Thunderbird). [Calendar](https://wiki.mozilla.org/Modules/Calendar) and [MailNews Core](https://wiki.mozilla.org/Modules/MailNews_Core) modules have separate lists.
+Thunderbird code is divided into modules, each with an owner and peers. Generally, these are the best people to review your changes. Here's [the list of module owners and peers for Thunderbird](https://wiki.mozilla.org/Modules/Thunderbird). [Calendar](https://wiki.mozilla.org/Modules/Calendar) and [MailNews Core](https://wiki.mozilla.org/Modules/MailNews\_Core) modules have separate lists.
 
 Scanning through the recent commits in mercurial should also give you an idea of who is active in various areas of the code. Failing that you can always [ask around](https://developer.thunderbird.net/add-ons/community).
 
 ## Submitting a Patch
 
-The preferred way to submit a patch is via [Phabricator](https://moz-conduit.readthedocs.io/en/latest/phabricator-user.html).
+The way to submit a patch is via [Phabricator](https://moz-conduit.readthedocs.io/en/latest/phabricator-user.html).
 
 There is a command line tool, `moz-phab`, which makes it easy to submit local changesets as patches.
 
 See the [moz-phab setup and installation](https://moz-conduit.readthedocs.io/en/latest/phabricator-user.html#setting-up-mozphab) docs.
 
-With `moz-phab` you can submit local mercurial changeset\(s\) like this:
+With `moz-phab` you can submit local mercurial changeset(s) like this:
 
-```text
+```
 $ moz-phab submit [start_changeset] [end_changeset]
 ```
 
-The start/end changesets are optional. If omitted, `moz-phab` will guess which one\(s\) you mean.
+The start/end changesets are optional. If omitted, `moz-phab` will guess which one(s) you mean.
 
 It'll ask for confirmation before uploading, so don't worry too much about accidental submissions.
 
-`moz-phab` will pick the bug number out of the commit message \(`Bug xxxx`\), and link back to the bugzilla bug. If there is a reviewer \(`r=...`\), it will automatically assign them and send them a notification. You can leave the reviewer out, but then one will have to be manually assigned via the phabricator web page. If the commit message starts with "`WIP:`", the patch will be marked "Changes Planned".
+`moz-phab` will pick the bug number out of the commit message (`Bug xxxx`), and link back to the bugzilla bug. If there is a reviewer (`r=...`), it will automatically assign them and send them a notification. You can leave the reviewer out, but then one will have to be manually assigned via the phabricator web page. If the commit message starts with "`WIP:`", the patch will be marked "Changes Planned".
 
 You can find more details in the `moz-phab` [README](https://github.com/mozilla-conduit/review/blob/master/README.md#submitting-commits-to-phabricator).
-
-### Submitting patches via Bugzilla
-
-The traditional way to submit patches was to upload a file attachment to the bug in [Bugzilla](https://bugzilla.mozilla.org), set the _review_ flag to `?`, and pick a reviewer.
-
-This still works, but Phabricator is now the preferred method.
 
 ## Updating patches
 
@@ -116,7 +107,7 @@ It's very common for patches to require some updates before being accepted. Loca
 
 Phabricator tracks uploaded patches by adding a line to the commit message:
 
-```text
+```
 Differential Revision: <url>
 ```
 
@@ -125,4 +116,3 @@ When you submit the patch again with `moz-phab`, it will see that line and reali
 {% hint style="warning" %}
 If you're juggling and merging local changesets with `hg histedit`, make sure you preserve the `Differential Revision:` line in the commit message for any patches you're planning to resubmit!
 {% endhint %}
-

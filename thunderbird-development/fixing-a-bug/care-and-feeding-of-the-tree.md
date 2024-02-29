@@ -4,17 +4,17 @@
 
 Patches can land on comm-central at any time, but in general we try to organise this around when mozilla-central changes. Since the mozilla-central code can break Thunderbird in any number of ways, and they won't stop to wait for us to catch up, we try to meet every mozilla-central push with a push of our own.
 
-Sheriffs aim to merge changes to mozilla-central at \(very roughly\) 0400, 1000, 1600 and 2200 UTC. After a merge, something should land on comm-central to start a new build. Land something of your own or check for bugs flagged [checkin-needed](https://bugzilla.mozilla.org/buglist.cgi?keywords=checkin-needed-tb).
+Sheriffs aim to merge changes to mozilla-central at (very roughly) 0400, 1000, 1600 and 2200 UTC. After a merge, something should land on comm-central to start a new build. Land something of your own or check for bugs flagged [checkin-needed](https://bugzilla.mozilla.org/buglist.cgi?keywords=checkin-needed-tb).
 
 ## Closing or Opening the Tree
 
-In extreme circumstances the tree can to be closed to prevent further pushes. Some members of the Thunderbird team \(Geoff, Patrick, Rob\) have authorisation to do this, or you can request the help of a sheriff in \#sheriffs.
+In extreme circumstances the tree can to be closed to prevent further pushes. Some members of the Thunderbird team (Geoff, Patrick, Rob) have authorisation to do this, or you can request the help of a sheriff in #sheriffs.
 
 ## Existing failures
 
-Our code is not perfect. You might have noticed. :-\)
+Our code is not perfect. You might have noticed. :-)
 
-Some things fail occasionally \(we call these intermittent failures\) or most of the time \(permanent failures\). If a test fails every now and then, it's not generally a problem – usually it's a sign that a test hasn't accounted for something, like some asynchronous code happening in a different order than expected.
+Some things fail occasionally (we call these intermittent failures) or most of the time (permanent failures). If a test fails every now and then, it's not generally a problem – usually it's a sign that a test hasn't accounted for something, like some asynchronous code happening in a different order than expected.
 
 ### Marking intermittent failures
 
@@ -29,7 +29,7 @@ If a _new_ intermittent failure appears, you can click the blue bug icon next to
 {% hint style="info" %}
 Usually new intermittent failures get ignored for a while and they go away, or are so infrequent it's not worth the hassle. Don't feel the need to file a bug about every one you see.
 
-Some things aren't usually starred, like out-of-memory failures on debug builds or failures from mozilla-central tests \(ours all start with `comm/`\). There's little benefit to doing so.
+Some things aren't usually starred, like out-of-memory failures on debug builds or failures from mozilla-central tests (ours all start with `comm/`). There's little benefit to doing so.
 {% endhint %}
 
 The pinboard can be used for other things. Collect tasks there with the pin icon or ctrl+clicking on them, and you can mark tasks as expected failures or to say they've been fixed by something that has landed since.
@@ -41,7 +41,7 @@ If the build fails, we've got a serious problem that should be dealt with before
 If a test starts failing on multiple platforms, something is broken and should be dealt with. Some failures can hide other failures, and it's not nice to fix one only to find another has appeared in the meantime.
 
 {% hint style="info" %}
-History lesson: a long time ago, when bug numbers had five digits, TreeHerder's predecessor was Tinderbox, a huge grid showing the status of every build and test machine. Statuses were displayed in various colours: green, yellow, red, and black with flames \(an animated GIF!\). If you see the phrase "\[xyz\] is burning", that's where it comes from.
+History lesson: a long time ago, when bug numbers had five digits, TreeHerder's predecessor was Tinderbox, a huge grid showing the status of every build and test machine. Statuses were displayed in various colours: green, yellow, red, and black with flames (an animated GIF!). If you see the phrase "\[xyz] is burning", that's where it comes from.
 {% endhint %}
 
 ### Debugging
@@ -54,12 +54,12 @@ Check the Failure Summary of TreeHerder for the most basic details. Check the ta
 
 #### What changed on mozilla-central?
 
-The most likely cause of an unexpected failure is a change to mozilla-central. Sometimes we are warned in advance of things we need to do, sometimes not. To figure out what has changed on mozilla-central, get the revision from the last build before the problem and the first build with the problem, by clicking on the build task or the decision task \(D or Nd\):
+The most likely cause of an unexpected failure is a change to mozilla-central. Sometimes we are warned in advance of things we need to do, sometimes not. To figure out what has changed on mozilla-central, get the revision from the last build before the problem and the first build with the problem, by clicking on the build task or the decision task (D or Nd):
 
-![](../../.gitbook/assets/build-details.svg.png)
+![](<../../.gitbook/assets/build details.svg.png>)
 
-You can then view the mozilla-central pushlog by copying the revisions into the URL:  
-https://hg.mozilla.org/mozilla-central/pushloghtml?fromchange=**\[good revision\]**&tochange=**\[bad revision\]**
+You can then view the mozilla-central pushlog by copying the revisions into the URL:\
+https://hg.mozilla.org/mozilla-central/pushloghtml?fromchange=**\[good revision]**\&tochange=**\[bad revision]**
 
 From there it's a matter of finding the most likely candidates and figuring out if they are the cause of the problem. In many cases there's a change that needs to be copied into comm-central.
 
@@ -67,7 +67,7 @@ From there it's a matter of finding the most likely candidates and figuring out 
 
 #### Retrigger a task
 
-Is that failed task really a failure? In some cases simply starting it again can help, such as if there's network problems. Click the retrigger button \(looks just like the Firefox reload button\) to restart a failed task.
+Is that failed task really a failure? In some cases simply starting it again can help, such as if there's network problems. Click the retrigger button (looks just like the Firefox reload button) to restart a failed task.
 
 #### Fixing a test
 
@@ -80,6 +80,7 @@ To disable a test, add the appropriate `skip-if` notation to the test manifest. 
 #### Backout
 
 If it looks like a Thunderbird developer is responsible for causing a problem, contact them or their reviewer. If neither can be found and there's a serious failure, consider backing out their changes. Check whether you're right first – finding out your work has been backed out overnight is not the nicest way to start a day.
+
 
 When performing a backout, use the `hg oops` command (part of the `mozext` extension from [Mozilla’s Version Control Tools](https://mozilla-version-control-tools.readthedocs.io)). The extension needs to be enabled in your `.hgrc` file as described in [Landing A Patch](landing-a-patch.md).
 
@@ -95,3 +96,4 @@ After pushing the backout, update the bug in Bugzilla:
 * Link to the backout commit starting with https://hg.mozilla.org
 * Link to the push in Treeherder
 * Set the NEEDINFO flag in Bugzilla to make sure the patch author sees it. 
+

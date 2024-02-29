@@ -4,6 +4,7 @@ description: Tutorial on how to push approved and reviewed patches to the produc
 
 # Landing a Patch
 
+
 ## Helpful Mercurial extensions
 
 If you ran `mach bootstrap`, you were given the option to configure Mercurial as well. If you didn't do so at the time, you can run `mach vcs-setup` at any time. This will clone the [version-control-tools](https://hg.mozilla.org/hgcustom/version-control-tools) repository to your `.mozbuild` directory and configure your `.hgrc` file.
@@ -26,6 +27,11 @@ Another helpful extension that `mach vcs-setup` does not configure for you is [m
 ```ini
 mozext = <home_dir>/.mozbuild/version-control-tools/hgext/mozext
 ```
+
+{% hint style="info" %}
+As a new contributor, you probably don't need to land your own patches. Instead add the keyword `checkin-needed-tb` to the Bugzilla bug, and one of our friendly sheriffs will land it for you.
+{% endhint %}
+
 
 ## Getting access to comm-central <a href="#getting-access-to-the-try-server" id="getting-access-to-the-try-server"></a>
 
@@ -78,6 +84,10 @@ You should not push without having complete a successful push and build to the [
 These are a series of recommended steps to always go through before pushing to Live to ensure you're pushing only what you need.
 
 Be sure your commit message is clear and has been approved during review. The standard syntax of a commit message is `Bug 000000 - Description of the patch and fix. r=reviewer`.
+
+{% hint style="warning" %}
+Always check the reviewer in a commit message matches the person who actually reviewed the patch. A patch could be reviewed by someone other than the originally intended person, or it could have been sent to a group of reviewers.
+{% endhint %}
 
 #### Mercurial Queues
 

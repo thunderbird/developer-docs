@@ -10,7 +10,7 @@ description: >-
 
 ### Mozilla Code Base
 
-Thunderbird is built on the Mozilla platform, the same base that Firefox is built from. As such the two projects share a lot of code and much of the documentation for one will apply, in many ways, to the other. If at any point you are looking for answers that you can't find here, try looking at [Firefox Source Tree Documentation](https://firefox-source-docs.mozilla.org/).
+Thunderbird is built on the Mozilla platform, the same base that Firefox is built from. As such the two projects share a lot of code and much of the documentation for one will apply, in many ways, to the other. If at any point you are looking for answers that you can't find here, try looking at [Mozilla's Developer site called: **MDN**](https://developer.mozilla.org). Another good resource is [Firefox Source Tree Documentation](https://firefox-source-docs.mozilla.org/).
 
 ### Mercurial Version Control
 

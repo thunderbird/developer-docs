@@ -136,6 +136,12 @@ If you have changes that affect mozilla-central, you may wish to do a Try run to
 
 You can change `.gecko_rev.yml` to point to any revision on the mozilla-\* trees to test your comm-central patch against them.
 
+{% hint style="info" %}
+It's not required, but you _should_ base your comm-central patch on a known good revision of comm-central (probably the tip), and your mozilla-central patch on the matching mozilla-central revision (also probably the tip). Otherwise changes made to one tree but not the other (such as build configuration changes) can cause problems.
+
+To find the matching revision, open the log of the comm-central decision (D) task and search for "built from mozilla-central revision".
+{% endhint %}
+
 ## Testing comm-beta and comm-esr patches
 
 When doing a Try run for patches to `comm-beta` or `comm-esr##`, the steps are the same as when doing a Try run for `comm-central`. (For example, you do not need to change anything in your `hgrc` file.) The try server is smart enough to automatically detect which one to build and test. This works because of the `.gecko_rev.yml` file. Note that some things might not work the same way as on `comm-central` (e.g. the `--artifact` option only works on `comm-central`).

@@ -1,93 +1,96 @@
 ---
-description: Planned work for the 115 (2023) release of Thunderbird.
+description: Planned work for the 2024 release of Thunderbird.
 ---
 
 # Roadmap
 
-Below are the large projects planned for the 115 (2023) release of Thunderbird.
+Below are the large projects planned for the 2024 release of Thunderbird.
 
-## Firefox Sync
+## Primary Objectives
 
-![Accounts and syncing options in 115.](<../.gitbook/assets/User recognition - Donor care.png>)
+This is a list of all the primary objectives and efforts that we will try to complete for 2024. These are not currently tied to any particular beta release nor ESR release and they will be available when ready.
 
-#### Expected Delivery: Q4 2022
+### Mozilla Account + Sync
 
-Syncing between Thunderbird installations and the Android app should work seamlessly. Tags, filters, email accounts and relevants settings should be synced.
+[Bug 1833177 - \[meta\] Account Sync implementation](https://bugzilla.mozilla.org/show\_bug.cgi?id=1833177)
 
-## Unified Toolbar
+Implement Mozilla Account login and syncing server functionalities to synchronize accounts and settings across installations.
 
-**Expected Delivery: Q4 2022**
+### **Exchange email support**
 
-A single, reusable, global toolbar that is present throughout the app and acts as a simple interaction point for searching, interacting with the app menu and tab management.
+[Bug 1847846 - \[meta\] Implement Microsoft Exchange](https://bugzilla.mozilla.org/show\_bug.cgi?id=1847846)
 
-****
+Implement full support for Microsoft Exchange (EWS) into core for account create and email usage.
 
-## **App Menu**
+### **Global Message Database**
 
-![The expanded app menu in 115.](../.gitbook/assets/account\_mail\_tab.png)
+[Bug 1572000 - \[meta\] database backed global message index](https://bugzilla.mozilla.org/show\_bug.cgi?id=1572000)
 
-**Expected Delivery: Q3 2022**
+Move away from the old Mork database and implement a real global message database, enabling **conversation view** and other modern paradigms.
 
-A single menu for the app that replaces the current hamburger menu, but also handles accounts and syncing.
+### **Telemetry Heat Mapping**
 
-## Mail Tab Redesign
+Automatic generation of a visual heatmaps from telemetry clicks.
 
-#### Expected Delivery: Q4 2022/Q1 2023
+### **Cards View UI completion**
 
-Update the Mail space with improved UX and UI, some of these enhancements include multi-line message list and "conversational" threads. It will be possible to reply to messages in the conversations area.
+[Bug 1819710 - \[meta\] Implement a complete and usable cards message list for Vertical View layout](https://bugzilla.mozilla.org/show\_bug.cgi?id=1819710)
 
-#### Depends On:
+Finalize the cards view interface to implement all missing features and flexibility required.
 
-### "Conversational" View
+### **Message list context menu**
 
-**Expected Delivery: Q4 2022**
+[Bug 1875802 - Implement the new message context menu structure](https://bugzilla.mozilla.org/show\_bug.cgi?id=1875802)
 
-&#x20;By default, Thunderbird users should be able to see all messages in a thread as a "conversation". With each message in that thread collapsible and expandable, with all messages showing up in that thread regardless of what folder they exist within.
+Improve the context menu of the message list to make it more usable and digestible.
 
-{% embed url="https://bugzilla.mozilla.org/show_bug.cgi?id=1686504" %}
-Bug for conversations in Thunderbird
-{% endembed %}
+### **Dark reader email content**
 
-### Global Message Index
+[Bug 1715361 - Dark UI: automatically convert light message content to dark](https://bugzilla.mozilla.org/show\_bug.cgi?id=1715361)
 
-**Expected Delivery: Q4 2022**
+Support full dark mode also for message content and properly handle images and graphics.
 
-In order to do Conversations correctly, we need to be able to keep track of what folders messages in a thread are in, so we can display them in a conversation. This means we need to have a database that keeps track of the location of all emails.
+### **Folder Pane UI completion**
 
-### 3Pane (replacing XUL tree)
+[Bug 1811366 - \[meta\] Supernova Folder Pane improvements](https://bugzilla.mozilla.org/show\_bug.cgi?id=1811366)
 
-**Expected Delivery: Q4 2022**
+Complete the work of the new folder pane that was starting with the Supernova effort.
 
-### Drop Window
+### **Account Hub**
 
+[Bug 1789966 - \[meta\] Implement a new Account Hub in a dialog for all account creation workflows](https://bugzilla.mozilla.org/show\_bug.cgi?id=1789966)
 
+Implement a single entry point for all account setups and offer a better guided setup experience for first time users.
 
-## Link Preview Card Improvements
+### **Firefox Translate**
 
-![Link Preview Card (WIP)](../.gitbook/assets/link-preview.png)
+Opt in feature allowing users to translate email content.
 
-Link previews should be improved to be more useful and visually appealing.
+### Notes
 
-{% embed url="https://bugzilla.mozilla.org/show_bug.cgi?id=1572648" %}
-Link Preview Card tracking bug.
-{% endembed %}
+Standalone Rust component experiment of a notes implementation in Thunderbird.
 
-## Account Setup Hub
+## Maintenance Sprints
 
-**Expected Delivery Q4 2022**
+Alongside the primary objective for the year we will continue the effort of improving our codebase, keeping up with the changes upstream, as well as bug fixes and performance improvements.
 
-![The new Account Setup Hub](../.gitbook/assets/account-setup.png)
+Some of the efforts of this maintenance cycle are:
 
-When setting up an email, autodiscovery of calendars and address books works really well! But managing accounts and setting up after the first time has lagged. We are updating that experience in 115 with a centralized place to set up accounts, with a consistent experience regardless of when you bring a new account into Thunderbird.
+* **OpenPGP and S/MIME improvements and fixes**
+* **Add-ons API Improvements**
+* **Fluent Migration**
+* **ESMification**
 
-{% embed url="https://bugzilla.mozilla.org/show_bug.cgi?id=1664179" %}
-Account setup hub tracking bug.
-{% endembed %}
+## Out of scope
 
-## Customizable Shortcuts
+As we focus on these primary objectives with the goal of bringing them to full completion, as well as making sure we have enough resources to tackle bug reports and regressions, we won't be dedicating any major commitment to the following areas of the application during this year.
 
-**Expected  Delivery: Q4 2022**
+* **Calendar**
+* **Chat**
+* **Tasks**
+* **Settings**
+* **Compose**
+* **Search**
+* **and everything else...**
 
-## Calendar UI
-
-**Expected Delivery: Q1 2023**
+We will always have dedicated resources allocated to tackle crashes or performance regressions caused by any of these components.

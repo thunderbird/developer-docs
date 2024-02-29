@@ -76,7 +76,7 @@ Check out the [Experiment Generator](https://darktrojan.github.io/generator/gene
 {% endhint %}
 
 {% hint style="info" %}
-Check out the [Example Experiment API](https://github.com/thundernest/sample-extensions/tree/master/experiment) in our sample-extensions repository.
+Check out the [Example Experiment API](https://github.com/thunderbird/sample-extensions/tree/master/manifest\_v3/experiment) in our sample-extensions repository.
 {% endhint %}
 
 {% hint style="warning" %}
@@ -119,7 +119,7 @@ If you want to pass more complex data structures, especially functions or instan
 
     There are two options to work around that: either the Experiment clones the object into the unprivileged scope of the WebExtension or it directly constructs an unprivileged object.
 
-    The first option usually boils down to invoking [`Components.utils.cloneInto()`](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Language\_Bindings/Components.utils.cloneInto) or a related function with `context.cloneScope` as target scope. A notable exception is returning data from async API functions or wrapping Promises via [`context.wrapPromise()`](https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/reference.html#BaseContext.wrapPromise), which causes automatic cloning of the result (unless the result is wrapped into a `ExtensionCommon.NoCloneSpreadArgs`).
+    The first option usually boils down to invoking [`Components.utils.cloneInto()`](http://www.devdoc.net/web/developer.mozilla.org/en-US/docs/Components.utils.cloneInto.html) or a related function with `context.cloneScope` as target scope. A notable exception is returning data from async API functions or wrapping Promises via [`context.wrapPromise()`](https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/reference.html#BaseContext.wrapPromise), which causes automatic cloning of the result (unless the result is wrapped into a `ExtensionCommon.NoCloneSpreadArgs`).
 
     The second option is using the constructors in `context.cloneScope` directly from the Experiment. Their results can be used from the WebExtension without further cloning.
 

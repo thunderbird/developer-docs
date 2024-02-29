@@ -4,9 +4,34 @@ description: Tutorial on how to push approved and reviewed patches to the produc
 
 # Landing a Patch
 
+
+## Helpful Mercurial extensions
+
+If you ran `mach bootstrap`, you were given the option to configure Mercurial as well. If you didn't do so at the time, you can run `mach vcs-setup` at any time. This will clone the [version-control-tools](https://hg.mozilla.org/hgcustom/version-control-tools) repository to your `.mozbuild` directory and configure your `.hgrc` file.
+
+`mach vcs-setup` will offer to enable the [`firefoxtree`](https://mozilla-version-control-tools.readthedocs.io/en/latest/hgmozilla/firefoxtree.html) extension. Despite its name, it is helpful for Thunderbird work as well.
+
+Firefoxtree's main feature is automatic configuration of remote repository paths. The documentation doesn't mention them, but the Thunderbird repositories are mapped as well:
+
+| Repository                                  | FXTree aliases     |
+|---------------------------------------------|--------------------|
+| https://hg.mozilla.org/comm-central         | comm, c-c, cc      |
+| https://hg.mozilla.org/releases/comm-beta   | comm-beta, c-b, cb |
+| https://hg.mozilla.org/releases/comm-esr102 | comm-esr102        |
+| https://hg.mozilla.org/projects/ash         | ash                |
+| https://hg.mozilla.org/projects/jamun       | jamun              |
+| https://hg.mozilla.org/try-comm-central     | try-comm           |
+
+Another helpful extension that `mach vcs-setup` does not configure for you is [mozext](https://mozilla-version-control-tools.readthedocs.io/en/latest/hgmods/extensions.html#mozext). It adds several revision set specifiers and templates to Mercurial. Run `hg help mozext` after enabling it to see what it offers. To enable, add to you `~/.hgrc` file's `[extensions]` section (replace `<home_dir>` with your actual home directory):
+
+```ini
+mozext = <home_dir>/.mozbuild/version-control-tools/hgext/mozext
+```
+
 {% hint style="info" %}
 As a new contributor, you probably don't need to land your own patches. Instead add the keyword `checkin-needed-tb` to the Bugzilla bug, and one of our friendly sheriffs will land it for you.
 {% endhint %}
+
 
 ## Getting access to comm-central <a href="#getting-access-to-the-try-server" id="getting-access-to-the-try-server"></a>
 
@@ -16,7 +41,7 @@ To push a patch to comm-central, you'll need [Level 3 Commit Access](http://www.
 
 You'll need to add the address to your Mercurial configuration file at `path/to/comm-central/.hg/hgrc`:
 
-```
+```ini
 [paths]
 default = https://hg.mozilla.org/comm-central
 live-cc = ssh://hg.mozilla.org/comm-central
@@ -132,6 +157,10 @@ At this point you should set the Target Milestone field in the bug to the curren
 
 You do not need to land patches on beta or ESR. We have authorised people to do that for you.
 
-Request approval on Bugzilla in the same way you request review, using the `approval-comm-beta` and `approval-comm-esrXX` flags. Filling out the request form is not required. At an appropriate point approval will be granted (or denied!) and your patch will be landed for you.
+Request approval on Bugzilla in the same way you request review, using the `approval-comm-beta` and `approval-comm-esrXX` flags. At an appropriate point approval will be granted \(or denied!\) and your patch will be landed for you. Filling out the request form, especially the "Regression bug" and "Risk" fields, will help the approver prioritize the patch.
 
-Uplifting patches to earlier versions is for fixes to major bugs, and regressions that break the user interface. It should not be used as a shortcut to get new features to users earlier (some exceptions apply). The release channels ensure that changes are exposed to a test audience for a period of time before being shipped to all users.
+When requesting uplift approval for a bug with multiple patches, a single request is sufficient. It's helpful to specify in the request that multiple patches are to be uplifted. Likewise, if a bug has dependencies on another bug, specifying those dependencies and what order they should be uplifted can save a lot of time.
+
+Uplifting patches to earlier versions is for fixes to major bugs, and regressions that break the user interface. It should not be used as a shortcut to get new features to users earlier \(some exceptions apply\). The release channels ensure that changes are exposed to a test audience for a period of time before being shipped to all users.
+
+The comm-esrXX repositories in particular can be difficult to uplift patches to because of code-churn since the repository was created. Sometimes it's necessary to create a patch specifically for comm-esrXX. In these cases, attach the patch in Bugzilla rather than Phabricator. The fix still needs to be applied to comm-central and comm-beta first unless the bug really only affects comm-esrXX. (Bugs that only affect comm-esrXX are actually quite rare. At some point the bug most likely was present on comm-central and was fixed.)

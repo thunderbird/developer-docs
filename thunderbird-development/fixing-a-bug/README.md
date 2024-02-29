@@ -44,7 +44,9 @@ Mercurial is pretty flexible in terms of allowing writing your own code and keep
 
 ## Commit messages
 
-The commit message should be of the form:
+Using standard forms for commit messages not only looks better when looking at the revision logs, it also helps various automation tools parse the messages.
+
+Commit messages should be of the form:
 
 ```
 Bug xxxx - Short description of your change. r=reviewer
@@ -53,7 +55,21 @@ Optionally, a longer description of the change.
 This can span multiple lines.
 ```
 
-Prefixing the first line of the commit message with "`WIP:`" marks the patch as a work-in-progress. `moz-phab` (see below) will pick that up and mark it as "Changes Planned".
+
+For follow-up commits that fix a problem with a lint test or other failure, the suggested form is:
+
+```text
+Bug XXXX - Follow-up: Fixed lint failure. r?reviewer
+```
+
+When fixing a bug caused by a change made to mozilla-central, often referred to as "porting" a fix to Thunderbird, mention the upstream bug in the commit message like below. Doing so helps identify bugs that need uplifting to beta or release when the ported mozilla-central bug is uplifted.
+
+```text
+Bug NNNN - Port bug ZZZZ: Useful short description. r?reviewer
+```
+
+Prefixing the first line of the commit message with "`WIP:`" marks the patch as a work-in-progress. `moz-phab` \(see below\) will pick that up and mark it as "Changes Planned".
+
 
 ## Picking reviewers
 

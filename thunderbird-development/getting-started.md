@@ -6,11 +6,14 @@ description: >-
 
 # Getting Started
 
-## What You Need to Know
+## Build Prerequisites
+Before you can build Thunderbird, please follow your platform's build prerequisites page:
 
-### Mozilla Code Base
+* [Windows Build Prerequisites](windows-build-prerequisites.md)
+* [Linux Build Prerequisites](linux-build-prerequisites.md)
+* [macOS Build Prerequisites](macos-build-prerequisites.md)
 
-Thunderbird is built on the Mozilla platform, the same base that Firefox is built from. As such the two projects share a lot of code and much of the documentation for one will apply, in many ways, to the other. If at any point you are looking for answers that you can't find here, try looking at [Mozilla's Developer site called: **MDN**](https://developer.mozilla.org). Another good resource is [Firefox Source Tree Documentation](https://firefox-source-docs.mozilla.org/).
+## General Information
 
 ### Mercurial Version Control
 
@@ -18,35 +21,25 @@ Mozilla uses the [Mercurial version control](https://www.mercurial-scm.org/) sof
 
 Information for how to install Mercurial is available [via the download page on their wiki](https://www.mercurial-scm.org/wiki/Download).
 
-## Get the Source
+### Mozilla Code Base
 
-{% hint style="warning" %}
-The source code requires 3.6GB of free space or more and additionally 5GB or more for default build.
-{% endhint %}
+#### mozilla-central vs. comm-central
 
-{% hint style="danger" %}
-**For Windows Users:** If you are using Windows, you will want to follow instructions on the Windows Build Prerequisities page before getting the source and building Thunderbird.
-{% endhint %}
+The latest Mozilla source code comes from Mozilla's `mozilla-central` Mercurial code repository, often called `source/` but it can be named anything you like. The latest Thunderbird source code comes from Mozilla's `comm-central` Mercurial code repositoryand needs to be placed **inside** the Mozilla source code, in a directory that must be named `comm/`.
 
-{% content-ref url="building-thunderbird/windows-build-prerequisites.md" %}
-[windows-build-prerequisites.md](building-thunderbird/windows-build-prerequisites.md)
-{% endcontent-ref %}
+Mozilla-central will build Firefox without the comm-central repo present and a few options set (detailed on the [Building Thunderbird](building-thunderbird/) page).
 
-Get the latest Mozilla source code from Mozilla's `mozilla-central` Mercurial code repository, and check it out into a local directory `source` (or however you want to call it). Then, get the latest Thunderbird source code from Mozilla's `comm-central` Mercurial code repository. It now needs to be placed **inside** the Mozilla source code, in a directory named `comm/`:
+### Additional Documentation 
 
-```
-hg clone https://hg.mozilla.org/mozilla-central source/
-cd source/
-hg clone https://hg.mozilla.org/comm-central comm/
-```
+Thunderbird is built on the Mozilla platform, the same base that Firefox is built from. As such the two projects share a lot of code and much of the documentation for one will apply, in many ways, to the other. If at any point you are looking for answers that you can't find here, here are some additional useful resources:
 
-### mozilla-central vs. comm-central
-
-Mozilla-central will build Firefox without the comm-central repo present and a few options set (detailed on the [Building Thunderbird](building-thunderbird/) page). Mozilla-central is the Firefox codebase and comm-central features the additions that turn Firefox into Thunderbird.
+* [Thunderbird Source Tree Documentation](https://source-docs.thunderbird.net)
+* [Firefox Source Tree Documentation](https://firefox-source-docs.mozilla.org/)
+* [Mozilla's Developer site called: **MDN**](https://developer.mozilla.org)
 
 ## What's Next
 
-Let's build the latest Thunderbird:
+If you have already gone through the relevant build prerequisite steps, then let's build the latest Thunderbird:
 
 {% content-ref url="building-thunderbird/" %}
 [building-thunderbird](building-thunderbird/)

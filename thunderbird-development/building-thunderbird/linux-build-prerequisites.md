@@ -18,7 +18,11 @@ if this command returns `x86_64` you can proceed.
 
 ## 30 GB of free space
 
-The Thunderbird build will take up to 30 GB of disk space in order to complete. Be sure to have enough free space and a fast internet connection to avoid interruptions.
+The Thunderbird build can use 30-40GB of disk space to complete depending on your operating system.
+
+{% hint style="warning" %}
+Note that while it's not technically required to have an internet connection to build, the default when building from `mozilla/comm-central` is that `--enable-bootstrap` is set so that the toolchains download automatically. If you do not have an active internet connection then 
+{% endhint %}
 
 # Build Environment
 
@@ -48,6 +52,10 @@ sudo dnf install mercurial
 # Getting the Code
 
 Once you have Mercurial installed, you are ready to grab the source code. There are a couple of different methods to do this.
+
+{% hint style="warning" %}
+Mozilla-central will build Firefox without the comm-central repo present and a few options set. Mozilla-central is the Firefox codebase and comm-central features the additions that turn Firefox into Thunderbird.
+{% endhint %}
 
 ## Scripted
 
@@ -79,7 +87,7 @@ cd source/
 hg clone https://hg.mozilla.org/comm-central comm/
 ```
 
-### Mach Bootstrap
+## Mach Bootstrap
 In the `source` directory run the following command to get additional dependencies needed to install Thunderbird:
 
 ```
@@ -98,9 +106,13 @@ Please choose the version of Firefox you want to build:
 
 Please choose option 2 to proceed with a successful build.
 
-This action will install all the remaining libraries and dependencies necessary to build Thunderbird locally.
+This action should install all the remaining libraries and dependencies necessary to build Thunderbird locally.
 
-# Missing libraries
+### Create `mozconfig` file
+
+This step will need to be performed if you manually checked out the code and performed the bootstrap, and it will covered in the next section you follow, [Building Thunderbire](./#build-configuration).
+
+## Missing libraries
 
 It could happen that some libraries will not be installed by the `bootstrap` command, specifically those related to the `Rust` programming language. Check whether these packages are available in your system by running these commands in your terminal:
 
@@ -124,7 +136,7 @@ export PATH=$HOME/.cargo/bin:$PATH
 If you still are unable to find rustc and cargo via the ˋwhichˋ command after installing them, you may need to restart your session (log out and back into your user account, or restart your computer) to be able to see them.
 {% endhint %}
 
-## You're all set
+# You're all set
 
 Go back to the [Building Thunderbird](./#build-configuration) page and continue following the guide.
 

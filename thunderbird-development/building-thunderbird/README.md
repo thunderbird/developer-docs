@@ -7,7 +7,7 @@ description: How to build and run Thunderbird.
 ## Hardware Requirements
 
 * At least **4 GB of RAM**. 8 GB or more is recommended. While you can build Thunderbird on older hardware it can take quite a bit of time to compile on slower machines with less RAM.
-* 30 GB of free space. The Thunderbird build will take up to 30 GB of disk space in order to complete.
+* 30 GB of free space. The Thunderbird build can use 30-40GB of disk space to complete depending on your operating system.
 * Good internet connection for the initial source download.
 
 ## Build Prerequisites

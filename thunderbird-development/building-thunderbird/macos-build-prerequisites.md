@@ -4,39 +4,94 @@ description: >-
   environment set up and ready to hack on Thunderbird.
 ---
 
-# macOS Build Prerequisites
+# Hardware Requirements
 
-This guide assumes you already followed the [Getting Started](../getting-started.md) documentation and you already downloaded `mozilla-central` and `comm-central` source code.
+## 30 GB of free space
 
-## Install Xcode
+The Thunderbird build can use 30-40GB of disk space to complete depending on your operating system.
 
-`Xcode` is a prerequisite to build Firefox an you will need administrator permissions on your machine to install it. You can verify that you have these permission in `System Preferences -> Users & Groups`.\)
-
-{% hint style="info" %}
-`Xcode` is pretty large and it could take up to 1 hour to complete the download and installation process
+{% hint style="warning" %}
+Note that while it's not technically required to have an internet connection to build, the default when building from `mozilla/comm-central` is that `--enable-bootstrap` is set so that the toolchains download automatically. If you do not have an active internet connection then
 {% endhint %}
 
-## Install macOS SDK headers
+# Build Environment
 
-After installing `Xcode` you will find the SDK header at this location
+## Python
 
-```text
-cd /Library/Developer/CommandLineTools/SDKs/
+You will need `python` (version 3.8 or later) and `pipx` (used to install packages from `pypi`). Both of these can be installed from homebrew. If you have not yet setup homebrew, please see [the homebrew installation instructions](https://brew.sh/).
+
+```
+brew install python pipx
 ```
 
-Launch the `MacOSX{your-version}.sdk` \(eg. `MacOSX10.14.sdk`\) by double clicking on it and follow the installation instructions.
+{% hint style="warning" %}
+Note that once homebrew is installed, the macOS SDK headers are installed already and can be found under `/Library/Developer/CommandLineTools/SDKs`. There should be no additional action required to install these SDK headers.
+{% endhint %}
 
-## Bootstrap your system
+### Use pipx to install mozphab
 
-Access the location where you downloaded the `mozilla-central` source code, most likely `source/` and trigger this command:
+MozPhab is the tool needed to interface with Mozilla's instance of Phabricator. This step is needed before the bootstrap step. Pipx is the tool that we will use to install MozPhab and then we will make sure the relevant `~/.local/bin` has been added to the PATH envirnoment variable.
 
-```text
+```
+pipx install MozPhab
+pipx ensurepath 
+```
+## Mercurial
+
+As noted in the [Getting Started page](../getting-started#mercurial-version-control), both `mozilla-central` and `comm-central` are version controlled with Mercurial. This means you will need to install Mercurial.
+Here is a quick command to install it with mercurial but for a more complete list of instructions, please see [Mercurial's download page on their wiki](https://www.mercurial-scm.org/wiki/Download).
+
+```
+brew install mercurial
+```
+# Get the Source
+
+Once you have Mercurial and MozPhab installed, you are ready to grab the source code. There are a couple of different methods to do this.
+
+{% hint style="warning" %}
+Mozilla-central will build Firefox without the comm-central repo present and a few options set. Mozilla-central is the Firefox codebase and comm-central features the additions that turn Firefox into Thunderbird.
+{% endhint %}
+
+## Scripted
+
+We have created and host a script that will grab the two source repos you need, run `./mach bootstrap` for you, and sets up a necessary `mozconfig` file. This script is called [`bootstrap.py`](https://hg.mozilla.org/comm-central/raw-file/tip/python/rocboot/bin/bootstrap.py). Download this file to the directory where you would like your source code folder to live, either by clicking the link and moving the file to the appropriate location or using `wget`. Then we will make it executable and run it.
+
+```
+mkdir tb-build && cd tb-build
+wget https://hg.mozilla.org/comm-central/raw-file/tip/python/rocboot/bin/bootstrap.py
+chmod +x bootstrap.py
+./bootstrap.py
+```
+
+This will create a `mozilla-unified` directory with both a `mozconfig` and a `comm/` folder inside. The `mozconfig` file is setup to build Thunderbird and you can verify this with `cat mozconfig`; the `--enable-project` parameter should be `comm/mail`:
+
+```
+ac_add_options --enable-project=comm/mail
+```
+
+## Manually
+
+If you would rather manually gather the source code, perform the bootstrap, and create your `mozconfig` file, then follow these steps.
+
+### Checkout the Source Code
+Get the latest Mozilla source code from Mozilla's `mozilla-central` Mercurial code repository, and check it out into a local directory `source` (or however you want to call it). Then, get the latest Thunderbird source code from Mozilla's `comm-central` Mercurial code repository. It needs to be placed **inside** the Mozilla source code, in a directory named `comm/`:
+
+```
+hg clone https://hg.mozilla.org/mozilla-central source/
+cd source/
+hg clone https://hg.mozilla.org/comm-central comm/
+```
+
+### Mach Bootstrap
+In the `source` directory run the following command to get additional dependencies needed to install Thunderbird:
+
+```
 ./mach bootstrap
 ```
 
-You will be asked to choose from the following list of options
+You will be presented with the following options:
 
-```text
+```
 Please choose the version of Firefox you want to build:
   1. Firefox for Desktop Artifact Mode
   2. Firefox for Desktop
@@ -46,9 +101,13 @@ Please choose the version of Firefox you want to build:
 
 Please choose option 2 to proceed with a successful build.
 
-This action will install all the libraries and dependencies necessary to build Thunderbird locally.
+This action should install all the remaining libraries and dependencies necessary to build Thunderbird locally.
 
-### Missing libraries
+### Create `mozconfig` file
+
+This step will need to be performed if you manually checked out the code and performed the bootstrap, and it will covered in the next section you follow, [Building Thunderbire](./#build-configuration).
+
+## Missing libraries
 
 It could happen that some libraries will not be installed by the `bootstrap` command, specifically `Rust` and `Go`. Check if these packages are available in your system by running these commands in your terminal:
 
@@ -68,7 +127,7 @@ export PATH=$HOME/.cargo/bin:$PATH
 ```
 {% endhint %}
 
-## You're all set
+# You're all set
 
 Got back to the [Building Thunderbird](./#build-configuration) page and continue following the guide:
 

@@ -82,6 +82,10 @@ cd source/
 hg clone https://hg.mozilla.org/comm-central comm/
 ```
 
+### Create `mozconfig` file
+
+This step will need to be performed if you manually checked out the code and performed the bootstrap, and it will covered in the next section you follow, [Building Thunderbire](./#build-configuration).
+
 ### Mach Bootstrap
 In the `source` directory run the following command to get additional dependencies needed to install Thunderbird:
 
@@ -102,10 +106,6 @@ Please choose the version of Firefox you want to build:
 Please choose option 2 to proceed with a successful build.
 
 This action should install all the remaining libraries and dependencies necessary to build Thunderbird locally.
-
-### Create `mozconfig` file
-
-This step will need to be performed if you manually checked out the code and performed the bootstrap, and it will covered in the next section you follow, [Building Thunderbire](./#build-configuration).
 
 ## Missing libraries
 

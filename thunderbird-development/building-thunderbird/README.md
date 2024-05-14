@@ -20,7 +20,7 @@ Depending on your Operating System you will need to carry out a different proces
 
 ## Build Configuration
 
-To build Thunderbird, you need a file named `mozconfig` in the root directory of the mozilla-central checkout that contains the option `comm/mail` enabled. If you do not already have this file, then you can create a file with this line by doing this in the `source/` directory:
+To build Thunderbird, you need a file named `mozconfig` in the root directory of the mozilla-central checkout that contains the option `comm/mail` enabled. If you do not already have this file, then you can create it with this line by doing this in the `source/` directory:
 
 ```
 echo 'ac_add_options --enable-project=comm/mail' > mozconfig

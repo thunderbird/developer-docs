@@ -21,7 +21,7 @@ if this command returns `x86_64` you can proceed.
 The Thunderbird build can use 30-40GB of disk space to complete depending on your operating system.
 
 {% hint style="warning" %}
-Note that while it's not technically required to have an internet connection to build, the default when building from `mozilla/comm-central` is that `--enable-bootstrap` is set so that the toolchains download automatically. If you do not have an active internet connection then 
+Note that while it's not technically required to have an internet connection to build, the default setup has `--enable-bootstrap` so that the toolchains download automatically.
 {% endhint %}
 
 # Build Environment
@@ -87,6 +87,10 @@ cd source/
 hg clone https://hg.mozilla.org/comm-central comm/
 ```
 
+### Create `mozconfig` file
+
+This step will need to be performed if you manually checked out the code and performed the bootstrap, and it will covered in the next section you follow, [Building Thunderbire](./#build-configuration).
+
 ## Mach Bootstrap
 In the `source` directory run the following command to get additional dependencies needed to install Thunderbird:
 
@@ -107,10 +111,6 @@ Please choose the version of Firefox you want to build:
 Please choose option 2 to proceed with a successful build.
 
 This action should install all the remaining libraries and dependencies necessary to build Thunderbird locally.
-
-### Create `mozconfig` file
-
-This step will need to be performed if you manually checked out the code and performed the bootstrap, and it will covered in the next section you follow, [Building Thunderbire](./#build-configuration).
 
 ## Missing libraries
 

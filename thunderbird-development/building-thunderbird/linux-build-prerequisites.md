@@ -59,7 +59,7 @@ Mozilla-central will build Firefox without the comm-central repo present and a f
 
 ## Scripted
 
-We have created and host a script that will grab the two source repos you need, run `./mach bootstrap` for you, and sets up a necessary `mozconfig` file. This script is called [`bootstrap.py`](https://hg.mozilla.org/comm-central/raw-file/tip/python/rocboot/bin/bootstrap.py). Download this file to the directory where you would like your source code folder to live, either by clicking the link and moving the file to the appropriate location or using `wget`. Then we will make it executable and run it.
+We have created and host a script that will grab the two source repos you need, run `./mach bootstrap` for you, and sets up a necessary `mozconfig` file. This script is called [`bootstrap.py`](https://hg.mozilla.org/comm-central/raw-file/tip/python/rocboot/bin/bootstrap.py). Download this file to the directory where you would like your source code folder to live, either by clicking the link and moving the file to the appropriate location or using `wget`. Then make it executable and run it.
 
 ```
 mkdir tb-build && cd tb-build

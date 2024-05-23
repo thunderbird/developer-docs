@@ -9,9 +9,9 @@ description: >-
 ## Build Prerequisites
 Before you can build Thunderbird, please follow your platform's build prerequisites page:
 
-* [Windows Build Prerequisites](windows-build-prerequisites.md)
-* [Linux Build Prerequisites](linux-build-prerequisites.md)
-* [macOS Build Prerequisites](macos-build-prerequisites.md)
+* [Windows Build Prerequisites](building-thunderbird/windows-build-prerequisites.md)
+* [Linux Build Prerequisites](building-thunderbird/linux-build-prerequisites.md)
+* [macOS Build Prerequisites](building-thunderbird/macos-build-prerequisites.md)
 
 ## General Information
 

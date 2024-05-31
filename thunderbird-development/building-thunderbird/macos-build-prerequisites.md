@@ -84,7 +84,7 @@ hg clone https://hg.mozilla.org/comm-central comm/
 
 ### Create `mozconfig` file
 
-This step will need to be performed if you manually checked out the code and performed the bootstrap, and it will covered in the next section you follow, [Building Thunderbire](./#build-configuration).
+This step will need to be performed if you manually checked out the code and performed the bootstrap, and it will covered in the next section you follow, [Building Thunderbird](./#build-configuration).
 
 ### Mach Bootstrap
 In the `source` directory run the following command to get additional dependencies needed to install Thunderbird:

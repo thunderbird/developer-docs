@@ -46,7 +46,7 @@ A common use case for bookmarks is for working on a given feature or bug. A book
 
    If you need to add a new file use `hg add some-filename` before committing.
 
-8. Commit your changes with `hg commit -m "Bug ##### - fixing something amazing"`.
+8. Commit your changes with `hg commit -m "Bug ##### - fixing something amazing."`.
 
    The `-m` is short for `--message` and lets you provide a commit message for your changeset.
 

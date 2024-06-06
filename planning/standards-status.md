@@ -46,7 +46,7 @@ description: This list collects standards that the Thunderbird family of applica
 | [CalDAV Scheduling](https://datatracker.ietf.org/doc/html/rfc6638) |                |      N/A       |                            |         |
 | [iTIP](https://datatracker.ietf.org/doc/html/rfc2446)              |  &#10004;      |                |                            |         |
 
-## Messaging
+## Instant Messaging
 
 | Spec Name                                                          | Desktop Status | Android Status | Standards Involvement      | Comment |
 |:------------------------------------------------------------------ |:--------------:|:--------------:|:-------------------------- |:------- |

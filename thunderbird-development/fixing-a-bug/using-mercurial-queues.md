@@ -38,11 +38,11 @@ Don't forget the `git` line. This allows changing binary files in your patches. 
 
 ## Create a new Patch
 
-Create a new patch with the command `hg qnew -m "Bug ###### - fixing something amazing" patch-name`. Let's quickly analyze this command:
+Create a new patch with the command `hg qnew -m "Bug ###### - fixing something amazing" patch-name.`. Let's quickly analyze this command:
 
 * `qnew` is the command to initial a new patch.
 * `-m` is the command that allows you to write a commit message.
-* `"Bug ###### - fixing something amazing"` is the format we recommend using for the commit message, specifying the number of the Bug you're working on and a small description stating what you fixed.
+* `"Bug ###### - fixing something amazing."` is the format we recommend using for the commit message, specifying the number of the Bug you're working on and a small description stating what you fixed.
 * `patch-name` is, obviously, the name of your patch, and that can be anything.
 
 Each repository has its own queue of patches managed by MQ. They're just stored as files in the `.hg/patches` directory under the repository.

@@ -6,10 +6,10 @@ description: This list collects standards that the Thunderbird family of applica
 
 | Spec Name                                                          | Desktop Status | Android Status | Standards Involvement      | Comment |
 |:------------------------------------------------------------------ |:--------------:|:--------------:|:-------------------------- |:------- |
-| [POP3](https://www.rfc-editor.org/rfc/rfc1939)                     |  &#10004;      |   &#10004;     |                            |         |
+| [POP3](https://datatracker.ietf.org/doc/html/rfc1939)              |  &#10004;      |   &#10004;     |                            |         |
 | [IMAP 4r1](https://datatracker.ietf.org/doc/html/rfc3501)          |  &#10004;      |   &#10004;     |                            |         |
 | [IMAP IDLE](https://datatracker.ietf.org/doc/html/rfc2177)         |  &#10004;      |   &#10004;     |                            |         |
-| [SMTP](https://www.rfc-editor.org/rfc/rfc821)                      |  &#10004;      |   &#10004;     |                            |         |
+| [SMTP](https://datatracker.ietf.org/doc/html/rfc821)               |  &#10004;      |   &#10004;     |                            |         |
 | [NNTP](https://datatracker.ietf.org/doc/html/rfc977)               |  &#10004;      |   &#10004;     |                            |         |
 
 ## RSS Feeder
@@ -17,14 +17,14 @@ description: This list collects standards that the Thunderbird family of applica
 | Spec Name                                                          | Desktop Status | Android Status | Standards Involvement      | Comment |
 |:------------------------------------------------------------------ |:--------------:|:--------------:|:-------------------------- |:------- |
 | [RSS](https://www.rssboard.org/rss-specification)                  |  &#10004;      |      N/A       |                            | RSS 0.9 vs 1.0 vs 2.0 are rather different. Which do we support?  |
-| [Atom](https://www.rfc-editor.org/rfc/rfc4287)                     |  &#10004;      |      N/A       |                            |         |
+| [Atom](https://datatracker.ietf.org/doc/html/rfc4287)              |  &#10004;      |      N/A       |                            |         |
 
 ## Security and Authentication
 
 | Spec Name                                                          | Desktop Status | Android Status | Standards Involvement      | Comment |
 |:------------------------------------------------------------------ |:--------------:|:--------------:|:-------------------------- |:------- |
-| [MIME](https://www.rfc-editor.org/rfc/rfc2045)                     |  &#10004;      |   &#10004;     |                            | MIME is actually over 3 RFCs: [RFC2045](https://www.rfc-editor.org/rfc/rfc2045), [RFC2046](https://www.rfc-editor.org/rfc/rfc2046), and [RFC2047](https://www.rfc-editor.org/rfc/rfc2047). All 3 are supported for both Desktop and Android platforms. |
-| [List Management Headers](https://www.rfc-editor.org/rfc/rfc2369)  |                |                |                            | See [Bug 29041](https://bugzilla.mozilla.org/show_bug.cgi?id=29041)  |
+| [MIME](https://datatracker.ietf.org/doc/html/rfc2045)              |  &#10004;      |   &#10004;     |                            | MIME is actually over 3 RFCs: [RFC2045](https://datatracker.ietf.org/doc/html/rfc2045), [RFC2046](https://datatracker.ietf.org/doc/html/rfc2046), and [RFC2047](https://datatracker.ietf.org/doc/html/rfc2047). All 3 are supported for both Desktop and Android platforms. |
+| [List Management Headers](https://datatracker.ietf.org/doc/html/rfc2369) |          |                |                            | See [Bug 29041](https://bugzilla.mozilla.org/show_bug.cgi?id=29041)  |
 | OpenPGP                                                            |  &#10004;      |   &#10004;     | [KaiE]() actively involved |         |
 | S/MIME version?                                                    |  &#10004;      |                |                            |         |
 | [oAuth 2.0](https://datatracker.ietf.org/doc/html/rfc6749)         |  &#10004;      |   &#10004;     |                            | See https://oauth.net/2/  |
@@ -44,7 +44,7 @@ description: This list collects standards that the Thunderbird family of applica
 | [iCalendar](https://datatracker.ietf.org/doc/html/rfc5545)         |  &#10004;      |                |                            |         |
 | [CalDAV](https://datatracker.ietf.org/doc/html/rfc4791)            |  &#10004;      |      N/A       |                            |         |
 | [CalDAV Scheduling](https://datatracker.ietf.org/doc/html/rfc6638) |                |      N/A       |                            |         |
-| [iTIP](https://www.rfc-editor.org/rfc/rfc2446)                     |  &#10004;      |                |                            |         |
+| [iTIP](https://datatracker.ietf.org/doc/html/rfc2446)              |  &#10004;      |                |                            |         |
 
 ## Messaging
 

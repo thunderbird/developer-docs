@@ -24,7 +24,7 @@ description: This list collects standards that the Thunderbird family of applica
 | Spec Name                                                          | Desktop Status | Android Status | Standards Involvement      | Comment |
 |:------------------------------------------------------------------ |:--------------:|:--------------:|:-------------------------- |:------- |
 | [MIME](https://datatracker.ietf.org/doc/html/rfc2045)              |  &#10004;      |   &#10004;     |                            | MIME is actually over 3 RFCs: [RFC2045](https://datatracker.ietf.org/doc/html/rfc2045), [RFC2046](https://datatracker.ietf.org/doc/html/rfc2046), and [RFC2047](https://datatracker.ietf.org/doc/html/rfc2047). All 3 are supported for both Desktop and Android platforms. |
-| [List Management Headers](https://datatracker.ietf.org/doc/html/rfc2369) |          |                |                            | See [Bug 29041](https://bugzilla.mozilla.org/show_bug.cgi?id=29041)  |
+| [List Management Headers](https://datatracker.ietf.org/doc/html/rfc2369) | &#10004; |                |                            | List Management Headers is over 2 RFCs: [RFC2369](https://datatracker.ietf.org/doc/html/rfc2369) and [RFC5064](https://datatracker.ietf.org/doc/html/rfc5064)  |
 | OpenPGP                                                            |  &#10004;      |   &#10004;     | Kai Engert actively involved |        |
 | S/MIME version?                                                    |  &#10004;      |                |                            |         |
 | [oAuth 2.0](https://datatracker.ietf.org/doc/html/rfc6749)         |  &#10004;      |   &#10004;     |                            | See https://oauth.net/2/  |

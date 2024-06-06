@@ -28,7 +28,6 @@ description: This list collects standards that the Thunderbird family of applica
 | OpenPGP                                                            |  &#10004;      |   &#10004;     | [KaiE]() actively involved |         |
 | S/MIME version?                                                    |  &#10004;      |                |                            |         |
 | [oAuth 2.0](https://datatracker.ietf.org/doc/html/rfc6749)         |  &#10004;      |   &#10004;     |                            | See https://oauth.net/2/  |
-| [LDAP](https://datatracker.ietf.org/doc/html/rfc4511)              |  &#10004;      |      N/A       |                            |         |
 
 ## Address Book
 
@@ -36,6 +35,7 @@ description: This list collects standards that the Thunderbird family of applica
 |:------------------------------------------------------------------ |:--------------:|:--------------:|:-------------------------- |:------- |
 | [vCard](https://datatracker.ietf.org/doc/html/rfc6350)             |  &#10004;      |                |                            |         |
 | [CardDAV](https://datatracker.ietf.org/doc/html/rfc4511)           |  &#10004;      |      N/A       |                            |         |
+| [LDAP](https://datatracker.ietf.org/doc/html/rfc4511)              |  &#10004;      |      N/A       |                            |         |
 
 ## Calendar
 

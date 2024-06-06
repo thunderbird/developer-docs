@@ -16,8 +16,8 @@ description: This list collects standards that the Thunderbird family of applica
 
 | Spec Name                                                          | Desktop Status | Android Status | Standards Involvement      | Comment |
 |:------------------------------------------------------------------ |:--------------:|:--------------:|:-------------------------- |:------- |
-| [RSS](https://www.rssboard.org/rss-specification)                  |  &#10004;      |      N/A       |                            | RSS 0.9 vs 1.0 vs 2.0 are rather different. Which do we support?  |
-| [Atom](https://datatracker.ietf.org/doc/html/rfc4287)              |  &#10004;      |      N/A       |                            |         |
+| [RSS](https://www.rssboard.org/rss-specification)                  |  &#10004;      |      N/A       |                            | Both [RSS 0.9](https://www.rssboard.org/rss-0-9-0) and [RSS 2.0](https://www.rssboard.org/rss-specification) are supported. |
+| [Atom](https://datatracker.ietf.org/doc/html/rfc4287)              |  &#10004;      |      N/A       |                            | Both [Atom 0.3](https://datatracker.ietf.org/doc/html/draft-ietf-atompub-format-00) and [Atom 1.0](https://datatracker.ietf.org/doc/html/rfc4287) are supported. |
 
 ## Security and Authentication
 

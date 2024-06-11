@@ -12,17 +12,17 @@ This list collects standards that the Thunderbird family of applications current
 
 | Spec Name                           | Spec URLs                             | Desktop Status | Android Status | Standards Involvement        | Comment |
 |:------------------------------------|:-------------------------------------:|:--------------:|:--------------:|:---------------------------- |:------- |
-| POP3                                | [^rfc1939]                            |  &#10004;      |   &#10004;     |                              |         |
-| IMAP 4r1                            | [^rfc3501]                            |  &#10004;      |   &#10004;     |                              |         |
-| IMAP IDLE                           | [^rfc2177]                            |  &#10004;      |   &#10004;     |                              |         |
-| SMTP                                | [^rfc821]                             |  &#10004;      |   &#10004;     |                              |         |
-| NNTP                                | [^rfc977]                             |  &#10004;      |   &#10004;     |                              |         |
+| POP3                                | [^1]                            |  &#10004;      |   &#10004;     |                              |         |
+| IMAP 4r1                            | [^2]                            |  &#10004;      |   &#10004;     |                              |         |
+| IMAP IDLE                           | [^3]                            |  &#10004;      |   &#10004;     |                              |         |
+| SMTP                                | [^4]                             |  &#10004;      |   &#10004;     |                              |         |
+| NNTP                                | [^5]                             |  &#10004;      |   &#10004;     |                              |         |
 
-[^rfc1939]: https://datatracker.ietf.org/doc/html/rfc1939
-[^rfc3501]: https://datatracker.ietf.org/doc/html/rfc3501
-[^rfc2177]: https://datatracker.ietf.org/doc/html/rfc2177
-[^rfc821]: https://datatracker.ietf.org/doc/html/rfc821
-[^rfc977]: https://datatracker.ietf.org/doc/html/rfc977 
+[^1]: https://datatracker.ietf.org/doc/html/rfc1939
+[^2]: https://datatracker.ietf.org/doc/html/rfc3501
+[^3]: https://datatracker.ietf.org/doc/html/rfc2177
+[^4]: https://datatracker.ietf.org/doc/html/rfc821
+[^5]: https://datatracker.ietf.org/doc/html/rfc977 
 
 ## RSS Feeder
 

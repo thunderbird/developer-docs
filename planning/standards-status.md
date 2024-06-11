@@ -283,15 +283,15 @@
 
 ### Mail
 
-| Spec Name | Spec URLs | Desktop Status | Android Status | Standards Involvement | Comment |
-| --------- | :-------: | :------------: | :------------: | --------------------- | ------- |
-| POP3      |   \[^1]   |        ✔       |        ✔       |                       |         |
-| IMAP 4r1  |           |        ✔       |        ✔       |                       |         |
-| IMAP IDLE |           |        ✔       |        ✔       |                       |         |
-| SMTP      |           |        ✔       |        ✔       |                       |         |
-| NNTP      |           |        ✔       |        ✔       |                       |         |
+| Spec Name |  Spec URLs  | Desktop Status | Android Status | Standards Involvement | Comment |
+| --------- | :---------: | :------------: | :------------: | --------------------- | ------- |
+| POP3      | \[^rfc1939] |        ✔       |        ✔       |                       |         |
+| IMAP 4r1  |             |        ✔       |        ✔       |                       |         |
+| IMAP IDLE |             |        ✔       |        ✔       |                       |         |
+| SMTP      |             |        ✔       |        ✔       |                       |         |
+| NNTP      |             |        ✔       |        ✔       |                       |         |
 
-\[^1]: [https://datatracker.ietf.org/doc/html/rfc1939](https://datatracker.ietf.org/doc/html/rfc1939)
+\[^rfc1939]: [https://datatracker.ietf.org/doc/html/rfc1939](https://datatracker.ietf.org/doc/html/rfc1939)
 
 ### RSS Feeder
 

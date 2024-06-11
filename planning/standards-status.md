@@ -31,13 +31,21 @@ description: This list collects standards that the Thunderbird family of applica
 [^rss-spec]: https://www.rssboard.org/rss-specification
 [^atom-0-3]: https://datatracker.ietf.org/doc/html/draft-ietf-atompub-format-00
 [^atom-1-0]: https://datatracker.ietf.org/doc/html/rfc4287
- 
+
+## Mailing Lists
+
+| Spec Name                           | Spec URLs                             | Desktop Status | Android Status | Standards Involvement        | Comment |
+|:------------------------------------|:-------------------------------------:|:--------------:|:--------------:|:---------------------------- |:------- |
+| List Management Headers             | [^rfc2369], [^rfc5064]                |  &#10004;      |                |                              |         |
+
+[^rfc2369]: https://datatracker.ietf.org/doc/html/rfc2369
+[^rfc5064]: https://datatracker.ietf.org/doc/html/rfc5064
+
 ## Security and Authentication
 
 | Spec Name                           | Spec URLs                             | Desktop Status | Android Status | Standards Involvement        | Comment |
 |:------------------------------------|:-------------------------------------:|:--------------:|:--------------:|:---------------------------- |:------- |
 | MIME                                | [^rfc2045], [^rfc2046], [^rfc2047]    |  &#10004;      |   &#10004;     |                              | All 3 are supported for both Desktop and Android platforms. |
-| List Management Headers             | [^rfc2369], [^rfc5064]                |  &#10004;      |                |                              |         |
 | OpenPGP                             |                                       |  &#10004;      |   &#10004;     | Kai Engert actively involved |         |
 | S/MIME version?                     |                                       |  &#10004;      |                |                              |         |
 | oAuth 2.0                           | [^rfc6749]                            |  &#10004;      |   &#10004;     |                              | See also https://oauth.net/2/  |
@@ -45,8 +53,6 @@ description: This list collects standards that the Thunderbird family of applica
 [^rfc2045]: https://datatracker.ietf.org/doc/html/rfc2045
 [^rfc2046]: https://datatracker.ietf.org/doc/html/rfc2046
 [^rfc2047]: https://datatracker.ietf.org/doc/html/rfc2047
-[^rfc2369]: https://datatracker.ietf.org/doc/html/rfc2369
-[^rfc5064]: https://datatracker.ietf.org/doc/html/rfc5064
 [^rfc6749]: https://datatracker.ietf.org/doc/html/rfc6749
 
 ## Address Book

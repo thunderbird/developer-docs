@@ -1,6 +1,12 @@
 ---
-description: This list collects standards that the Thunderbird family of applications currently at least partially implements or supports (in our code base, ignoring things like TCP which we inherit from upstream components). It reflects the state of the current latest main repo code.
+This list collects standards that the Thunderbird family of applications currently at least partially implements or supports (in our code base, ignoring things like TCP which we inherit from upstream components). It reflects the state of the current latest main repo code.
 ---
+
+**Legend**
+- &#10004; = This line item is supported for the given platform
+- *empty* = We have not collected the standards information for the given platform yet
+- N/A = The standard does not apply to the given platform
+
 
 ## Mail
 

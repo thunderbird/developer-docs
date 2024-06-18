@@ -7,6 +7,7 @@ description: This list collects standards that the Thunderbird family of applica
 **Legend**
 
 * ✔ = This line item is supported for the given platform
+* ✖ = This line item is not (yet) supported for the given platform
 * _empty_ = We have not collected the standards information for the given platform yet
 * N/A = The standard does not apply to the given platform
 
@@ -33,22 +34,22 @@ description: This list collects standards that the Thunderbird family of applica
 
 | Spec Name               |                                                      Spec URLs                                                     | Desktop Status | Android Status | Standards Involvement | Comment |
 | ----------------------- | :----------------------------------------------------------------------------------------------------------------: | :------------: | :------------: | --------------------- | ------- |
-| List Management Headers | [rfc2369](https://datatracker.ietf.org/doc/html/rfc2369), [rfc5064](https://datatracker.ietf.org/doc/html/rfc5064) |        ✔       |                |                       |         |
+| List Management Headers | [rfc2369](https://datatracker.ietf.org/doc/html/rfc2369), [rfc5064](https://datatracker.ietf.org/doc/html/rfc5064) |        ✔       |        ✔       |                       |         |
 
 ### Security and Authentication
 
 | Spec Name       |                                                                                   Spec URLs                                                                                  | Desktop Status | Android Status | Standards Involvement        | Comment                                                     |
 | --------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :------------: | :------------: | ---------------------------- | ----------------------------------------------------------- |
 | MIME            | [rfc2045](https://datatracker.ietf.org/doc/html/rfc2045), [rfc2046](https://datatracker.ietf.org/doc/html/rfc2046), [rfc2047](https://datatracker.ietf.org/doc/html/rfc2047) |        ✔       |        ✔       |                              | All 3 are supported for both Desktop and Android platforms. |
-| OpenPGP         | [rfc4880](https://datatracker.ietf.org/doc/html/rfc4880)                                                                                                                                                                             |        ✔       |        ✔       | Kai Engert actively involved |                                                             |
-| S/MIME version? |                                                                                                                                                                              |        ✔       |                |                              |                                                             |
-| oAuth 2.0       |                                                           [rfc6749](https://datatracker.ietf.org/doc/html/rfc6749)                                                           |        ✔       |        ✔       |                              | See also [https://oauth.net/2/](https://oauth.net/2/)                               |
+| OpenPGP         | [rfc4880](https://datatracker.ietf.org/doc/html/rfc4880)                                                                                                                     |        ✔       |        ✔       | Kai Engert actively involved |                                                             |
+| S/MIME version? |                                                                                                                                                                              |        ✔       |        ✖       |                              |                                                             |
+| oAuth 2.0       |                                                           [rfc6749](https://datatracker.ietf.org/doc/html/rfc6749)                                                           |        ✔       |        ✔       |                              | See also [https://oauth.net/2/](https://oauth.net/2/)       |
 
 ### Address Book
 
 | Spec Name |                                                                                                    Spec URLs                                                                                                    | Desktop Status | Android Status | Standards Involvement | Comment                                                                                       |
 | --------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :------------: | :------------: | --------------------- | --------------------------------------------------------------------------------------------- |
-| vCard     | <p><a href="https://datatracker.ietf.org/doc/html/rfc6350">rfc6350</a><br><a href="https://datatracker.ietf.org/doc/html/rfc2425">rfc2425</a><br><a href="http://www.imc.com/pdi/vcard-21.txt">vcard-21</a></p> |        ✔       |                |                       | Version 4 used by default                                                                     |
+| vCard     | <p><a href="https://datatracker.ietf.org/doc/html/rfc6350">rfc6350</a><br><a href="https://datatracker.ietf.org/doc/html/rfc2425">rfc2425</a><br><a href="http://www.imc.com/pdi/vcard-21.txt">vcard-21</a></p> |        ✔       |        ✖       |                       | Version 4 used by default                                                                     |
 | CardDAV   |                                                                             [rfc6352](https://datatracker.ietf.org/doc/html/rfc6352)                                                                            |        ✔       |       N/A      |                       | See also [https://devguide.calconnect.org/CardDAV/](https://devguide.calconnect.org/CardDAV/) |
 | LDAP      |                                                                             [rfc4511](https://datatracker.ietf.org/doc/html/rfc4511)                                                                            |        ✔       |       N/A      |                       | See also [https://ldap.com/](https://ldap.com/)                                               |
 | LDIF      |                                                                             [rfc2849](https://datatracker.ietf.org/doc/html/rfc2849)                                                                            |        ✔       |       N/A      |                       | Supported for import and export                                                               |
@@ -57,10 +58,10 @@ description: This list collects standards that the Thunderbird family of applica
 
 | Spec Name         |                         Spec URLs                        | Desktop Status | Android Status | Standards Involvement | Comment                                                                                     |
 | ----------------- | :------------------------------------------------------: | :------------: | :------------: | --------------------- | ------------------------------------------------------------------------------------------- |
-| iCalendar         | [rfc5545](https://datatracker.ietf.org/doc/html/rfc5545) |        ✔       |                |                       |                                                                                             |
+| iCalendar         | [rfc5545](https://datatracker.ietf.org/doc/html/rfc5545) |        ✔       |        ✖       |                       |                                                                                             |
 | CalDAV            | [rfc4791](https://datatracker.ietf.org/doc/html/rfc4791) |        ✔       |       N/A      |                       | See also [https://devguide.calconnect.org/CalDAV/](https://devguide.calconnect.org/CalDAV/) |
 | CalDAV Scheduling | [rfc6638](https://datatracker.ietf.org/doc/html/rfc6638) |                |       N/A      |                       |                                                                                             |
-| iTIP              | [rfc2446](https://datatracker.ietf.org/doc/html/rfc2446) |        ✔       |                |                       |                                                                                             |
+| iTIP              | [rfc2446](https://datatracker.ietf.org/doc/html/rfc2446) |        ✔       |        ✖       |                       |                                                                                             |
 
 ### Instant Messaging
 

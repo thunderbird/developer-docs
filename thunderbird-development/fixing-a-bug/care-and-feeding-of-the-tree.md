@@ -54,12 +54,14 @@ Check the Failure Summary of TreeHerder for the most basic details. Check the ta
 
 #### What changed on mozilla-central?
 
-The most likely cause of an unexpected failure is a change to mozilla-central. Sometimes we are warned in advance of things we need to do, sometimes not. To figure out what has changed on mozilla-central, get the revision from the last build before the problem and the first build with the problem, by clicking on the build task or the decision task (D or Nd):
+The most likely cause of an unexpected failure is a change to mozilla-central. Sometimes we are warned in advance of things we need to do, sometimes not. To figure out what has changed on mozilla-central, get the revision from the last build before the problem and the first build with the problem, by clicking on the decision task (D or Nd) and looking at the Artifacts tab:
 
-![](<../../.gitbook/assets/build details.svg.png>)
+![](../../.gitbook/assets/bitmap.png)
 
 You can then view the mozilla-central pushlog by copying the revisions into the URL:\
 https://hg.mozilla.org/mozilla-central/pushloghtml?fromchange=**\[good revision]**\&tochange=**\[bad revision]**
+
+Or, install [this simple add-on](https://github.com/darktrojan/treeherder/releases), which will add buttons to TreeHerder to do the above steps for you.
 
 From there it's a matter of finding the most likely candidates and figuring out if they are the cause of the problem. In many cases there's a change that needs to be copied into comm-central.
 
@@ -81,19 +83,19 @@ To disable a test, add the appropriate `skip-if` notation to the test manifest. 
 
 If it looks like a Thunderbird developer is responsible for causing a problem, contact them or their reviewer. If neither can be found and there's a serious failure, consider backing out their changes. Check whether you're right first – finding out your work has been backed out overnight is not the nicest way to start a day.
 
-
 When performing a backout, use the `hg oops` command (part of the `mozext` extension from [Mozilla’s Version Control Tools](https://mozilla-version-control-tools.readthedocs.io)). The extension needs to be enabled in your `.hgrc` file as described in [Landing A Patch](landing-a-patch.md).
 
 For backing out a single revision, use `hg oops -er <rev>`. This will open an editor with a commit message started. Add a reason for the backout like:
-````text
+
+```
 Backed out changeset def0af88e262 (bug 1359017) for mochitest failures. r=backout
-````
+```
 
 For multiple revisions, `hg oops` can condense the backout to a single commit with the `-s` argument like `hg oops -esr 2f665a0a379f -r 478cffed4b5f`.
 
 After pushing the backout, update the bug in Bugzilla:
+
 * Mention the reason for the backout.
 * Link to the backout commit starting with https://hg.mozilla.org
 * Link to the push in Treeherder
-* Set the NEEDINFO flag in Bugzilla to make sure the patch author sees it. 
-
+* Set the NEEDINFO flag in Bugzilla to make sure the patch author sees it.

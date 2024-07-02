@@ -1,5 +1,8 @@
 ---
-description: This list collects standards that the Thunderbird family of applications currently at least partially implements or supports (in our code base, ignoring things like TCP which we inherit from upstream components). It reflects the state of the current latest main repo code.
+description: >-
+  This list collects standards that the Thunderbird family of applications
+  currently at least partially implements or supports (in our code base,
+  ignoring things like TCP which we inherit from upstream
 ---
 
 # Supported Standards
@@ -41,7 +44,7 @@ description: This list collects standards that the Thunderbird family of applica
 | Spec Name       |                                                                                   Spec URLs                                                                                  | Desktop Status | Android Status | Standards Involvement        | Comment                                                     |
 | --------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :------------: | :------------: | ---------------------------- | ----------------------------------------------------------- |
 | MIME            | [rfc2045](https://datatracker.ietf.org/doc/html/rfc2045), [rfc2046](https://datatracker.ietf.org/doc/html/rfc2046), [rfc2047](https://datatracker.ietf.org/doc/html/rfc2047) |        ✔       |        ✔       |                              | All 3 are supported for both Desktop and Android platforms. |
-| OpenPGP         | [rfc4880](https://datatracker.ietf.org/doc/html/rfc4880)                                                                                                                     |        ✔       |        ✔       | Kai Engert actively involved |                                                             |
+| OpenPGP         |                                                           [rfc4880](https://datatracker.ietf.org/doc/html/rfc4880)                                                           |        ✔       |        ✔       | Kai Engert actively involved |                                                             |
 | S/MIME version? |                                                                                                                                                                              |        ✔       |        ✖       |                              |                                                             |
 | oAuth 2.0       |                                                           [rfc6749](https://datatracker.ietf.org/doc/html/rfc6749)                                                           |        ✔       |        ✔       |                              | See also [https://oauth.net/2/](https://oauth.net/2/)       |
 

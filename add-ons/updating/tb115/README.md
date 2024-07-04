@@ -2,13 +2,13 @@
 description: Required steps to update add-ons for Thunderbird Supernova 115.
 ---
 
-# Update for Thunderbird Supernova
+# Update for Thunderbird 115
 
-This section covers the required update steps for add-ons which are already compatible with Thunderbird 102 and need to be made compatible with Thunderbird Beta.
+This section covers the required update steps for add-ons which are already compatible with Thunderbird 102 and need to be made compatible with Thunderbird 115.
 
 ## Changes in WebExtension APIs
 
-Our WebExtension APIs are meant to be stable, but we are adding new features and since this is a very young technology this might also require backward incompatible changes. All WebExtension API changes are listed in our API documentation:
+Our WebExtension APIs are meant to be stable, but we are adding new features and since this is a very young technology this might also require backward incompatible changes. All WebExtension API changes are listed in our WebExtension API documentation:
 
 * [Thunderbird 106](https://webextension-api.thunderbird.net/en/latest/changes/beta106.html)
 * [Thunderbird 107](https://webextension-api.thunderbird.net/en/latest/changes/beta107.html)
@@ -18,13 +18,11 @@ Our WebExtension APIs are meant to be stable, but we are adding new features and
 
 ## Changes in Thunderbird Core
 
-MailExtensions can still run legacy code inside [Experiments](../../mailextensions/#experiment-apis). Such legacy code has to be adjusted to changes made in Thunderbird Core. All known changes are listed in the following document:
+Thunderbird WebExtensions can still run legacy code inside [Experiments](../../mailextensions/#experiment-apis). Such legacy code has to be adjusted to changes made in Thunderbird Core. All known changes are listed in the following document:
 
 * [Changes in Thunderbird 103-115](adapt-to-changes-in-thunderbird-103-115.md)
 
 If you have encountered a change which is not yet listed there, please [contact us](../../community.md), so we can update the list.
-
-
 
 ## Changes in Shared Experiments
 

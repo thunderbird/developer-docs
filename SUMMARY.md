@@ -77,6 +77,7 @@
     * [Adapt to Changes in Thunderbird 79-91](add-ons/updating/tb91/changes.md)
   * [Update for Thunderbird 102](add-ons/updating/tb102/README.md)
     * [Adapt to Changes in Thunderbird 92-102](add-ons/updating/tb102/adapt-to-changes-in-thunderbird-92-102.md)
-  * [Update for Thunderbird Supernova](add-ons/updating/tb115/README.md)
+  * [Update for Thunderbird 115](add-ons/updating/tb115/README.md)
     * [Adapt to Changes in Thunderbird 103-115](add-ons/updating/tb115/adapt-to-changes-in-thunderbird-103-115.md)
+  * [Update for Thunderbird 128](add-ons/updating/tb128.md)
 * [Historical Overview](add-ons/historical-overview.md)

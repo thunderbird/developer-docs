@@ -20,7 +20,7 @@ Our WebExtension APIs are meant to be stable, but we are adding new features and
 
 ## Changes in Thunderbird Core
 
-MailExtensions can still run legacy code inside [Experiments](../../mailextensions/#experiment-apis). Such legacy code has to be adjusted to changes made in Thunderbird Core. All known changes are listed in the following document:
+Thunderbird WebExtensions can still run legacy code inside [Experiments](../../mailextensions/#experiment-apis). Such legacy code has to be adjusted to changes made in Thunderbird Core. All known changes are listed in the following document:
 
 * [Changes in Thunderbird 92-102](adapt-to-changes-in-thunderbird-92-102.md)
 

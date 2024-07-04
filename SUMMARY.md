@@ -62,7 +62,7 @@
   * [Examples in the Sample Extensions Repository](https://github.com/thunderbird/sample-extensions)
   * [Introducing Experiments](add-ons/mailextensions/experiments.md)
 * [A Guide to Themes](add-ons/web-extension-themes.md)
-* [Manifest V3](add-ons/manifest-v3.md)
+* [Manifest Version 3](add-ons/manifest-v3.md)
 * [Tips and Tricks](add-ons/tips-and-tricks.md)
 * [Developer Community](add-ons/community.md)
 * [Documentation & Resources](add-ons/resources.md)

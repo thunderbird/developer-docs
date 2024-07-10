@@ -8,7 +8,7 @@ Sheriffs aim to merge changes to mozilla-central at (very roughly) 0400, 1000, 1
 
 ## Closing or Opening the Tree
 
-In extreme circumstances the tree can to be closed to prevent further pushes. Some members of the Thunderbird team (Geoff, Patrick, Rob) have authorisation to do this, or you can request the help of a sheriff in #sheriffs.
+In extreme circumstances the tree can to be closed to prevent further pushes. Some members of the Thunderbird team (Daniel, Geoff, Magnus, Rob) have authorisation to do this, or you can request the help of a MoCo sheriff in #sheriffs.
 
 ## Existing failures
 

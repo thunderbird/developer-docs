@@ -7,7 +7,7 @@ Since Experiments directly interact with Thunderbird's core functions, it is nec
 {% endhint %}
 
 {% hint style="info" %}
-Thunderbird does contain a few useful features related to Experiments [whose documentation is no longer generated](https://bugzilla.mozilla.org/show\_bug.cgi?id=1556460#c23). Especially if you're writing an Experiment with complex interactions between the WebExtension and your Experiment, it may be helpful to read the documentation blocks within [`resource://gre/modules/ExtensionCommon.jsm`](https://hg.mozilla.org/mozilla-central/file/tip/toolkit/components/extensions/ExtensionCommon.jsm) and possibly other modules in the same source code folder.
+Thunderbird does contain a few useful features related to Experiments [whose documentation is no longer generated](https://bugzilla.mozilla.org/show\_bug.cgi?id=1556460#c23). Especially if you're writing an Experiment with complex interactions between the WebExtension and your Experiment, it may be helpful to read the documentation blocks within [`ExtensionCommon.sys.mjs`](https://searchfox.org/mozilla-central/source/toolkit/components/extensions/ExtensionCommon.sys.mjs) and possibly other modules in the same source code folder.
 {% endhint %}
 
 {% hint style="info" %}
@@ -66,7 +66,7 @@ A typical entry in the manifest.json file to register an Experiment:
 Either _parent_ or _child_ implementation may be omitted. Full examples for [a simple function with parent and child implementations](https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/functions.html) and [events add-ons can listen for](https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/events.html) are available in the Firefox source documentation.
 
 {% hint style="info" %}
-Technically speaking, Thunderbird 78 is not actually using multiple processes (yet). However, the APIs were designed with multiple processes in mind and enforce at least some constraints as if the parts were in different processes.
+Technically speaking, Thunderbird is not actually using multiple processes (yet). However, the APIs were designed with multiple processes in mind and enforce at least some constraints as if the parts were in different processes.
 {% endhint %}
 
 In most cases, you can start by formalizing your API draft into a schema and adding a _parent_ implementation using one of the linked articles as base. Add or switch to a _child_ implementation if you have performance considerations or need to pass more complex data (see below).
@@ -87,18 +87,13 @@ Avoid declaring global variables in the implementation of your Experiment, as th
 
 Experiments are loaded on demand. In order for an Experiment to get loaded, you thus need to either use the API from the WebExtension or register an implementation for the `startup` event (which calls the `onStartup()` method of that implementation's `ExtensionAPI` object once your add-on is loaded).
 
-If your add-on is unloaded, Thunderbird will call the `onShutdown()` method of each _loaded_ implementation's `ExtensionAPI` object. You should perform any cleanup tasks in that method, for example unloading [loaded JSMs](experiments.md#structuring-experiment-code) or native resources. You furthermore **must** invalidate Thunderbird's startup cache whenever your add-on is unloaded for a non-shutdown reason:
+If your add-on is unloaded, Thunderbird will call the `onShutdown()` method of each _loaded_ implementation's `ExtensionAPI` object. You should perform any cleanup tasks in that method, for example unloading [all loaded custom system modules](experiments.md#structuring-experiment-code) or native resources. You furthermore **must** invalidate Thunderbird's startup cache whenever your add-on is unloaded for a non-shutdown reason:
 
 ```javascript
-const { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");​
 Services.obs.notifyObservers(null, "startupcache-invalidate", null);​
 ```
 
 Failure to invalidate caches may cause parts of the add-on's Experiment APIs to be cached across updates of the Add-on, even if they are changed in the update. It is thus usually a good idea to execute the code above in the `onShutdown()` method of an Experiment that is always loaded.
-
-{% hint style="info" %}
-The MIT-licensed [cachingfix](https://github.com/rsjtdrjgfuzkfg/thunderbird-experiments/blob/master/experiments/cachingfix/parent.js) Experiment handles startup cache invalidation and automatically unloads JSMs registered from file://- or jar://-URIs, using the techniques described above.
-{% endhint %}
 
 In addition to your Experiment being loaded and unloaded as a whole, that Experiment's API will get loaded into each WebExtension context independently. As there can be multiple contexts at the same time, an Experiment may have multiple loaded APIs in parallel. You can perform context-specific loading tasks directly in `getAPI()`, and register context-specific unloading code through `context.callOnClose()`.
 
@@ -143,14 +138,8 @@ const { /* ... exported symbols ... */ } =
 Components.utils.unload(extension.rootURI.resolve("path/to/module.jsm"));
 ```
 
-Do not use `moz-extension://*`URLs obtained by `extension.getURL()` in Experiments, but instead use  `extension.rootURI.resolve()` to get the raw `file://*` or `jar://*` URL. Some calls may have issues with these raw URLs as well (e.g. `new ChromeWorker()`). In that case you need to manually register a `chrome://*` URL (see the [enigmail add-on](https://github.com/cleidigh/ThunderKdB/blob/fa91a81ba77f71358b34533095381f03b0a3b3ed/xall/x68/71-enigmail/src/webextension.js#L17-L54)), and always use that URL when referring to the JSM.
-
-{% hint style="warning" %}
-Using different URLs for the same JSM will cause multiple instances of the same JSM to be loaded. These instances will **NOT** share the same scope and need to get unloaded separately.
-{% endhint %}
-
 {% hint style="danger" %}
-[The global scope of a JSM is cleared on unload](https://bugzilla.mozilla.org/show\_bug.cgi?id=769253). Unloading JSMs that are still used is only safe if they don't use the global scope and don't store any state information.
+[The global scope of a system module is cleared on unload](https://bugzilla.mozilla.org/show\_bug.cgi?id=769253). Unloading system modules that are still used is only safe if they don't use the global scope and don't store any state information.
 {% endhint %}
 
 ## Accessing WebExtensions directly from an Experiment

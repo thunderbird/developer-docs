@@ -47,7 +47,7 @@ for (let messageTab of messageTabs) {
 The `messageDisplayScripts` API requires the <mark style="color:red;">`messagesModify`</mark> permission, which needs to be added to the `permissions` key in our `manifest.json` file.
 {% endhint %}
 
-Whenever a message is displayed to the user, the registered CSS file will be added and the registered JavaScript file will be injected and executed.&#x20;
+Whenever a message is displayed to the user, the registered CSS file will be added and the registered JavaScript file will be injected and executed.
 
 Let's create a `messageDisplay` directory inside our `hello-world` project folder with the following two files:
 
@@ -108,7 +108,7 @@ showBanner();
 {% endcode %}
 
 {% hint style="danger" %}
-Content scripts cannot yet be loaded as top level ES6 modules. They cannot load other ES6 modules.  They can also not use the `async` keyword in file scope code, we therefore have to create the async wrapper function `showBanner()`.
+Content scripts cannot yet be loaded as top level ES6 modules. They cannot load other ES6 modules. They can also not use the `async` keyword in file scope code, we therefore have to create the async wrapper function `showBanner()`.
 {% endhint %}
 
 The main purpose of the `message-content-script.js` file is to manipulate the rendered message and add a banner at its top. We use basic DOM manipulation techniques.
@@ -176,6 +176,10 @@ async function commandHandler(message, sender) {
     }
 }
 ```
+
+{% hint style="info" %}
+The `messages.update()` function requires the <mark style="color:red;">`messagesUpdate`</mark> permission, which needs to be added to the `permissions` key in our `manifest.json` file.
+{% endhint %}
 
 The `message` passed to the `onMessage` listener will be whatever has been sent using `sendMessage().` The `sender` is of type [`MessageSender`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/MessageSender) and will include the sending tab.
 
@@ -245,6 +249,7 @@ This is how our `manifest.json` should now look like:
     },
     "permissions": [
         "messagesRead",
+        "messagesUpdate",
         "accountsRead",
         "storage",
         "menus",

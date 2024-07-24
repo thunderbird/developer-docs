@@ -27,7 +27,7 @@ Extensions require a `manifest.json` file that tells Thunderbird a few basic inf
     "browser_specific_settings": {
         "gecko": {
             "id": "helloworld@yoursite.com",
-            "strict_min_version": "78.0"
+            "strict_min_version": "128.0"
         }
     },
     "browser_action": {

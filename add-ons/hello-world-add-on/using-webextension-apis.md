@@ -107,11 +107,11 @@ document.getElementById("received").textContent = full.headers.received[0];
 The `popup.js` file was loaded as a top level ES6 module by specifying `type="module"` in its `script` tag. This allows us to use the `await` keyword directly in file scope code. Otherwise we would need to use an asynchronous wrapper function:\
 \
 `async function load() {`\
-&#x20;  `let tabs = await messenger.tabs.query({` \
-&#x20;     `active: true,`\
-&#x20;     `currentWindow: true,`\
-&#x20;  `});`\
-&#x20;  `...`\
+`let tabs = await messenger.tabs.query({`\
+`active: true,`\
+`currentWindow: true,`\
+`});`\
+`...`\
 `}`\
 `load();`
 {% endhint %}
@@ -184,7 +184,7 @@ This is how our `manifest.json` should now look like:
     "browser_specific_settings": {
         "gecko": {
             "id": "helloworld@yoursite.com",
-            "strict_min_version": "78.0"
+            "strict_min_version": "128.0"
         }
     },
     "browser_action": {

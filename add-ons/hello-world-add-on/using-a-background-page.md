@@ -75,10 +75,10 @@ The above code is using an inline arrow function to define the callback function
 
 \
 `async function onNewMailReceivedCallback(folder, messages) {`\
-&#x20;  `...`\
+`...`\
 `}`\
 `messenger.messages.onNewMailReceived.addListener(`\
-&#x20; `onNewMailReceivedCallback`\
+`onNewMailReceivedCallback`\
 `);`
 {% endhint %}
 
@@ -255,7 +255,7 @@ This is how our `manifest.json` should now look like:
     "browser_specific_settings": {
         "gecko": {
             "id": "helloworld@yoursite.com",
-            "strict_min_version": "78.0"
+            "strict_min_version": "128.0"
         }
     },
     "browser_action": {

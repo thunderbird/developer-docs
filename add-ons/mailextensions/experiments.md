@@ -80,14 +80,14 @@ Check out the [Example Experiment API](https://github.com/thunderbird/sample-ext
 {% endhint %}
 
 {% hint style="warning" %}
-Avoid declaring global variables in the implementation of your Experiment, as that can cause collisions with other Experiments loaded. Instead declare them as members of your API.
+Avoid declaring global variables in the implementation of your Experiment, as that can cause collisions with other Experiments loaded. Instead declare them as members of your API, or use a closure.
 {% endhint %}
 
 ## Managing your Experiment's lifecycle
 
 Experiments are loaded on demand. In order for an Experiment to get loaded, you thus need to either use the API from the WebExtension or register an implementation for the `startup` event (which calls the `onStartup()` method of that implementation's `ExtensionAPI` object once your add-on is loaded).
 
-If your add-on is unloaded, Thunderbird will call the `onShutdown()` method of each _loaded_ implementation's `ExtensionAPI` object. You should perform any cleanup tasks in that method, for example unloading [all loaded custom system modules](experiments.md#structuring-experiment-code) or native resources. You furthermore **must** invalidate Thunderbird's startup cache whenever your add-on is unloaded for a non-shutdown reason:
+If your add-on is unloaded, Thunderbird will call the `onShutdown()` method of each _loaded_ implementation's `ExtensionAPI` object. You should perform any cleanup tasks in that method, for example you **must** invalidate Thunderbird's startup cache whenever your add-on is unloaded for a non-shutdown reason:
 
 ```javascript
 Services.obs.notifyObservers(null, "startupcache-invalidate", null);​
@@ -124,23 +124,23 @@ Common pitfall: `async` functions return a `Promise` in the scope of the functio
 
 ## Structuring Experiment code
 
-If your Experiment API is so complex that it does not reasonably fit into a single source file, you can use JavaScript modules just like in legacy extensions with some additional boilerplate:
+If your Experiment API is so complex that it does not reasonably fit into a single source file, you can use system modules with some additional boilerplate. You first need to include the [ResourceUrl](https://github.com/thunderbird/addon-developer-support/tree/master/auxiliary-apis/ResourceUrl) Experiment API, to define an internal `resoure://` url for your extension. The url has to be registered in your background script:
 
-```javascript
-const { ExtensionParent } = ChromeUtils.import(
-    "resource://gre/modules/ExtensionParent.jsm");
-const extension = ExtensionParent.GlobalManager.getExtension(
-    "insert-your-extension-id-here@example.com");
-const { /* ... exported symbols ... */ } =
-    ChromeUtils.import(extension.rootURI.resolve("path/to/module.jsm"));
-
-// when unloading: (safe to call even if the import is conditional / elsewhere!)
-Components.utils.unload(extension.rootURI.resolve("path/to/module.jsm"));
+```
+// Define the resource URL for the "modules" folder, which is part of your own
+// extension.
+await browser.ResourceUrl.register("aUniqueName","modules/");
 ```
 
-{% hint style="danger" %}
-[The global scope of a system module is cleared on unload](https://bugzilla.mozilla.org/show\_bug.cgi?id=769253). Unloading system modules that are still used is only safe if they don't use the global scope and don't store any state information.
-{% endhint %}
+The files in the `modules/*` folder (for example `modules/myModule.sys.mjs`) will be accessible via `resource://aUniqueName/*` and modules can now be loaded:
+
+```javascript
+var { MyModule } = ChromeUtils.importESModule(
+    "resource://aUniqueName/myModule.sys.mjs"
+);
+```
+
+The module will be automatically unloaded, when your add-on is disabled or uninstalled.
 
 ## Accessing WebExtensions directly from an Experiment
 

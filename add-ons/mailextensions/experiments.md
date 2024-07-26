@@ -124,23 +124,105 @@ Common pitfall: `async` functions return a `Promise` in the scope of the functio
 
 ## Structuring Experiment code
 
-If your Experiment API is so complex that it does not reasonably fit into a single source file, you can use system modules with some additional boilerplate. You first need to include the [ResourceUrl](https://github.com/thunderbird/addon-developer-support/tree/master/auxiliary-apis/ResourceUrl) Experiment API, to define an internal `resoure://` url for your extension. The url has to be registered in your background script:
-
-```
-// Define the resource URL for the "modules" folder, which is part of your own
-// extension.
-await browser.ResourceUrl.register("aUniqueName","modules/");
-```
-
-The files in the `modules/*` folder (for example `modules/myModule.sys.mjs`) will be accessible via `resource://aUniqueName/*` and modules can now be loaded:
+If your Experiment API is so complex that it does not reasonably fit into a single source file, you can use system modules with some additional boilerplate. In order to load system modules, your Experiment needs to define a  `resoure://` url. The required code is as follows:
 
 ```javascript
-var { MyModule } = ChromeUtils.importESModule(
-    "resource://aUniqueName/myModule.sys.mjs"
+var { ExtensionUtils } = ChromeUtils.importESModule(
+  "resource://gre/modules/ExtensionUtils.sys.mjs"
 );
+var { ExtensionError } = ExtensionUtils;
+
+var resourceUrl = {
+  register(customNamespace, extension, folder) {
+    const resProto = Cc[
+      "@mozilla.org/network/protocol;1?name=resource"
+    ].getService(Ci.nsISubstitutingProtocolHandler);
+
+    if (resProto.hasSubstitution(customNamespace)) {
+      throw new ExtensionError(
+        `There is already a resource:// url for the namespace "${customNamespace}"`
+      );
+    }
+
+    let uri = Services.io.newURI(
+      folder || ".",
+      null,
+      extension.rootURI
+    );
+    resProto.setSubstitutionWithFlags(
+      customNamespace,
+      uri,
+      resProto.ALLOW_CONTENT_ACCESS
+    );
+  },
+
+  unloadAllModules(customNamespace) {
+    for (let module of Cu.loadedModules) {
+      let [schema, , namespace] = module.split("/");
+      if (
+        schema == "resource:" && 
+        customNamespace.toLowerCase() == namespace.toLowerCase()
+      ) {
+        console.log("Unloading module", module);
+        Cu.unload(module);
+      }
+    }
+  },
+  
+  unregister(customNamespace) {
+    const resProto = Cc[
+      "@mozilla.org/network/protocol;1?name=resource"
+    ].getService(Ci.nsISubstitutingProtocolHandler);
+    console.log("Unloading namespace", customNamespace);
+    resProto.setSubstitution(customNamespace, null);
+  },
+}
 ```
 
-The module will be automatically unloaded, when your add-on is disabled or uninstalled.
+In this example, we are registering a custom namespace exampleAddon1234:
+
+```javascript
+// Register a resource:// url with a custom namespace, which points to a
+// "modules" folder. The namespace should be unique to avoid conflicts with
+// other add-ons.
+resourceUrl.register("exampleAddon1234", extension, "modules/");
+
+```
+
+The file TestModule.sys.mjs in the `modules` folder will then be accessible via resource://exampleAddon1234/TestModule.sys.mjs and can be loaded:
+
+```javascript
+// Load TestModule.sys.mjs. 
+var { TestModule } = ChromeUtils.importESModule(
+  "resource://exampleAddon1234/TestModule.sys.mjs"
+)
+```
+
+The Experiment must unregister the custom resource:// url and also unload any loaded module in its onShutdown() method:
+
+```
+onShutdown(isAppShutdown) {
+  // This function is called if the extension is disabled or removed, or
+  // Thunderbird closes. We usually do not have to do any cleanup, if
+  // Thunderbird is shutting down entirely.
+  if (isAppShutdown) {
+    return;
+  }
+  
+  // Unload all modules which have been loaded with our resource:// url.
+  resourceUrl.unloadAllModules("exampleAddon1234");
+
+  // Unregister our resource:// url.
+  resourceUrl.unregister("exampleAddon1234");
+
+  // Flush all caches.
+  Services.obs.notifyObservers(null, "startupcache-invalidate");
+
+  console.log("Goodbye world!");
+}
+```
+
+The Experiment example in our sample repository is using this method.
 
 ## Accessing WebExtensions directly from an Experiment
 

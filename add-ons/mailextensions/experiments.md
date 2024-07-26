@@ -3,7 +3,7 @@
 This document aggregates information on topics that commonly arise when developing a new Experiment. For a complete documentation on each individual topic, refer to the linked articles.
 
 {% hint style="info" %}
-Since Experiments directly interact with Thunderbird's core functions, it is necessary to get used to the source code of Thunderbird itself. We gathered the most useful resources on the [Documentation & Resources](../resources.md#legacy-extension-development) page.
+Since Experiments directly interact with Thunderbird's core functions, it is necessary to get used to the source code of Thunderbird itself. We gathered the most useful resources on the [Documentation & Resources](../resources/#legacy-extension-development) page.
 {% endhint %}
 
 {% hint style="info" %}
@@ -124,7 +124,7 @@ Common pitfall: `async` functions return a `Promise` in the scope of the functio
 
 ## Structuring Experiment code
 
-If your Experiment API is so complex that it does not reasonably fit into a single source file, you can use system modules with some additional boilerplate. In order to load system modules, your Experiment needs to define a  `resource://` url. The required code is as follows:
+If your Experiment API is so complex that it does not reasonably fit into a single source file, you can use system modules with some additional boilerplate. In order to load system modules, your Experiment needs to define a `resource://` url. The required code is as follows:
 
 ```javascript
 var { ExtensionUtils } = ChromeUtils.importESModule(
@@ -201,7 +201,7 @@ var { TestModule } = ChromeUtils.importESModule(
 
 The Experiment **must** unregister the custom `resource://` url and also **must** unload any loaded module in its `onShutdown()` method:
 
-```
+```javascript
 onShutdown(isAppShutdown) {
   // This function is called if the extension is disabled or removed, or
   // Thunderbird closes. We usually do not have to do any cleanup, if
@@ -223,7 +223,7 @@ onShutdown(isAppShutdown) {
 }
 ```
 
-The [Experiment example](https://github.com/thunderbird/sample-extensions/tree/master/manifest_v2/experiment) in our sample repository is using this method.
+The [Experiment example](https://github.com/thunderbird/sample-extensions/tree/master/manifest\_v2/experiment) in our sample repository is using this method.
 
 ## Accessing WebExtensions directly from an Experiment
 

@@ -223,7 +223,7 @@ onShutdown(isAppShutdown) {
 }
 ```
 
-The Experiment example in our sample repository is using this method.
+The [Experiment example](https://github.com/thunderbird/sample-extensions/tree/master/manifest_v2/experiment) in our sample repository is using this method.
 
 ## Accessing WebExtensions directly from an Experiment
 

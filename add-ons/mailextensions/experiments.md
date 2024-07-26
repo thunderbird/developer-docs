@@ -124,7 +124,7 @@ Common pitfall: `async` functions return a `Promise` in the scope of the functio
 
 ## Structuring Experiment code
 
-If your Experiment API is so complex that it does not reasonably fit into a single source file, you can use system modules with some additional boilerplate. In order to load system modules, your Experiment needs to define a  `resoure://` url. The required code is as follows:
+If your Experiment API is so complex that it does not reasonably fit into a single source file, you can use system modules with some additional boilerplate. In order to load system modules, your Experiment needs to define a  `resource://` url. The required code is as follows:
 
 ```javascript
 var { ExtensionUtils } = ChromeUtils.importESModule(
@@ -179,26 +179,27 @@ var resourceUrl = {
 }
 ```
 
-In this example, we are registering a custom namespace exampleAddon1234:
+In this example, we are registering a custom `resource://` url with the namespace `example123`:
 
 ```javascript
 // Register a resource:// url with a custom namespace, which points to a
 // "modules" folder. The namespace should be unique to avoid conflicts with
 // other add-ons.
-resourceUrl.register("exampleAddon1234", extension, "modules/");
+resourceUrl.register("example123", extension, "modules/");
 
 ```
 
-The file TestModule.sys.mjs in the `modules` folder will then be accessible via resource://exampleAddon1234/TestModule.sys.mjs and can be loaded:
+The file `TestModules.sys.mjs` in the `modules` folder will then be accessible via\
+`resource://example123/TestModule.sys.mjs`, and can be loaded:
 
 ```javascript
 // Load TestModule.sys.mjs. 
 var { TestModule } = ChromeUtils.importESModule(
-  "resource://exampleAddon1234/TestModule.sys.mjs"
+  "resource://example123/TestModule.sys.mjs"
 )
 ```
 
-The Experiment must unregister the custom resource:// url and also unload any loaded module in its onShutdown() method:
+The Experiment **must** unregister the custom `resource://` url and also **must** unload any loaded module in its `onShutdown()` method:
 
 ```
 onShutdown(isAppShutdown) {
@@ -210,10 +211,10 @@ onShutdown(isAppShutdown) {
   }
   
   // Unload all modules which have been loaded with our resource:// url.
-  resourceUrl.unloadAllModules("exampleAddon1234");
+  resourceUrl.unloadAllModules("example123");
 
   // Unregister our resource:// url.
-  resourceUrl.unregister("exampleAddon1234");
+  resourceUrl.unregister("example123");
 
   // Flush all caches.
   Services.obs.notifyObservers(null, "startupcache-invalidate");

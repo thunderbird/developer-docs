@@ -25,7 +25,7 @@ Information for how to install Mercurial is available [via the download page on 
 
 #### mozilla-central vs. comm-central
 
-The latest Mozilla source code comes from Mozilla's `mozilla-central` Mercurial code repository, often called `source/` but it can be named anything you like. The latest Thunderbird source code comes from Mozilla's `comm-central` Mercurial code repositoryand needs to be placed **inside** the Mozilla source code, in a directory that must be named `comm/`.
+The latest Mozilla source code comes from Mozilla's `mozilla-central` Mercurial code repository, often called `source/` but it can be named anything you like. The latest Thunderbird source code comes from Mozilla's `comm-central` Mercurial code repository and needs to be placed **inside** the Mozilla source code, in a directory that must be named `comm/`.
 
 Mozilla-central will build Firefox without the comm-central repo present and a few options set (detailed on the [Building Thunderbird](building-thunderbird/) page).
 

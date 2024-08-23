@@ -4,13 +4,13 @@ description: What you need to know about making add-ons for Thunderbird.
 
 # Introduction
 
-Current Thunderbird add-ons are based on the WebExtension technology, which is also used by many web browsers. Browser vendors usually refer to their add-ons as _WebExtensions._ Thunderbird however has a lot of features not available in Browsers, and add-ons written for Thunderbird will most likely not work in Browsers. They are therefore referred to as _MailExtensions_ instead.
+Current Thunderbird add-ons are based on the WebExtension technology, which is also used by many web browsers. Browser vendors usually refer to their add-ons as _WebExtensions._ Thunderbird however has a lot of features not available in Browsers, and add-ons written for Thunderbird will most likely not work in Browsers. They are therefore sometimes referred to as _MailExtensions_ instead.
 
-MailExtensions are a collection of files that change the way Thunderbird looks and behaves. They can add user interface elements, alter content, or perform background tasks. Thunderbird add-ons are created using standard JavaScript, CSS and HTML.
+WebExtensions are a collection of files that change the way Thunderbird looks and behaves. They can add user interface elements, alter content, or perform background tasks. Thunderbird add-ons are created using standard JavaScript, CSS and HTML.
 
-<figure><img src="../.gitbook/assets/webext_diagram.png" alt="Structure of a MailExtension (a Thunderbird add-on based on WebExtension technology) and how it interacts with Thunderbird."><figcaption><p>Structure of a MailExtension (a Thunderbird add-on based on WebExtension technology) and how it interacts with Thunderbird.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/webext_diagram.png" alt="Structure of a MailExtension (a Thunderbird add-on based on WebExtension technology) and how it interacts with Thunderbird."><figcaption><p>Structure of a WebExtension and how it interacts with Thunderbird.</p></figcaption></figure>
 
-Key features of MailExtensions:
+Key features of WebExtensions:
 
 * They use stable APIs and do not need to be updated when a new version of Thunderbird is released.
 * They use a permission mechanism that requires users to confirm any permission requested by add-ons before they can be installed. These permission requests enable users to know what an add-on is actually doing.&#x20;

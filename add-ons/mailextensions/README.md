@@ -21,8 +21,7 @@ The main configuration file of an extension is called `manifest.json`, also refe
     "browser_specific_settings": {
         "gecko": {
             "id": "helloworld@yoursite.com",
-            "strict_min_version": "78.0",
-            "strict_max_version": "78.*"
+            "strict_min_version": "128.0"
         }
     },
     "icons": {
@@ -53,7 +52,7 @@ A list of all manifest keys supported by Thunderbird can be found in the followi
 
 The following manifest keys define basic properties:
 
-* `manifest_version`: A _mandatory key_ defining the Manifest version used by the extension. Supported versions are `2` and `3` (since Thunderbird Beta 110). The Manifest defines the basic rules how a WebExtension needs to be crafted and how it can interact with Thunderbird.
+* `manifest_version`: A _mandatory key_ defining the Manifest version used by the extension. Supported versions are `2` and `3` (since Thunderbird 128). The Manifest defines the basic rules how a WebExtension needs to be crafted and how it can interact with Thunderbird.
 * `name` : A _mandatory key_ to set the name of the extension.
 * `version` : A _mandatory key_ to define a number that denotes the version of the extension.
 * `description` : A brief description of what the extension does.
@@ -66,7 +65,7 @@ The `name` and the `description` of the shown example are only in English. [This
 The `browser_specific_settings.gecko` manifest key defines the following properties:
 
 * `strict_min_version`: Defines the lowest targeted version of Thunderbird.
-* `strict_max_version`: Defines the highest targeted version of Thunderbird. It can be set to a specific version or a broader match to limit it to a branch (for example `102.*`). Usually not needed.
+* `strict_max_version`: Defines the highest targeted version of Thunderbird. It can be set to a specific version or a broader match to limit it to a branch (for example `128.*`). Usually only needed if Experiments are included.
 * `id`: The id serves as a unique identifier for the extension and is mandatory in order upload an extension to ATN or to be able to install it from an XPI file.
 
 {% hint style="info" %}
@@ -126,12 +125,13 @@ Instead of defining a background page, the extension can specify a simple list o
         "scripts": [
             "common.js",
             "background.js"
-        ]
+        ],
+        "type": "module"
     }
 ```
 
-{% hint style="danger" %}
-This approach does not allow to use [ES6 modules](https://hacks.mozilla.org/2015/08/es6-in-depth-modules/) in any of the specified files.
+{% hint style="success" %}
+The optional `type` property in the shown `background` definition loads all specified scripts as modules, allowing all of them to use [ES6 modules](https://hacks.mozilla.org/2015/08/es6-in-depth-modules/).
 {% endhint %}
 
 ### Options Page
@@ -157,7 +157,7 @@ An inline options page may look as follows:
 
 ### User Interface Elements
 
-Some UI elements MailExtensions can use are controlled by manifest keys, for example
+Some UI elements Thunderbird WebExtensions can use are controlled by manifest keys, for example
 
 * `browser_action` (renamed to `action` in Manifest v3)
 * `compose_action`
@@ -270,12 +270,9 @@ If you'd like to learn more about experiments, check out this detailed introduct
 
 Developers can share and re-use Experiments, if their add-ons have similar needs. Before starting to work on your own Experiment, check if any of the following APIs could already provide the functionality you need. Using them and providing feedback to their developers will help to improve these APIs.
 
-<table><thead><tr><th width="289.3333333333333">Name</th><th width="121" align="center"></th><th>Description</th></tr></thead><tbody><tr><td><a href="https://github.com/thunderbird/tb-web-ext-experiments/tree/main/calendar">Calendar</a></td><td align="center"><a href="https://thunderbird.topicbox.com/groups/addons/Ta66e29a70cfa405f-M7357f9e59c7228cc1632b601/draft-for-mailextensions-related-to-calendaring">💬</a> <a href="https://docs.google.com/document/d/15awbKiVfdOTmsRpgD1dxm3gvOt08EQZDSnMl8QRBFoY/edit?usp=sharing">📝</a></td><td>Draft for calendar-related APIs in Thunderbird.</td></tr><tr><td><a href="https://github.com/gruemme/tb-api-compose_message_headers">ComposeMessageHeaders</a></td><td align="center"></td><td><p>Adds missing functionality to add headers to a newly composed message.<br></p><p><em>Note: Adding <code>X-</code> headers is supported by the compose API since Thunderbird 102</em>.</p></td></tr><tr><td><a href="https://github.com/rsjtdrjgfuzkfg/thunderbird-experiments/tree/master/experiments/customui">CustomUI</a></td><td align="center"><a href="https://thunderbird.topicbox.com/groups/addons/T07afba099782a5c5/customui-api-experiment">💬</a>​</td><td>A generic UI extension framework based on iframes registered at fixed extension points.<br><br><em>Note: Does not yet fully support Thunderbird Supernova</em></td></tr><tr><td><a href="https://github.com/thunderbird/addon-developer-support/tree/master/auxiliary-apis/FileSystem">FileSystem</a></td><td align="center"></td><td>An API to access files in the users profile folder. Until Mozilla has made a final decision about including the <a href="https://web.dev/file-system-access/">Chrome FileSystem API</a>, this API can be used as an interim solution.</td></tr><tr><td><a href="https://github.com/thunderbird/addon-developer-support/tree/master/auxiliary-apis/LegacyCSS">LegacyCSS</a></td><td align="center"></td><td>Load custom CSS files into Thunderbird windows.</td></tr><tr><td><a href="https://github.com/thunderbird/addon-developer-support/tree/master/auxiliary-apis/LegacyPrefs">LegacyPrefs</a></td><td align="center"></td><td>Access Thunderbird system preferences.</td></tr><tr><td><a href="https://github.com/thunderbird/addon-developer-support/tree/master/auxiliary-apis/NotificationBox">NotificationBox</a></td><td align="center"></td><td>Show notifications inside Thunderbird.</td></tr><tr><td><a href="https://github.com/thunderbird/addon-developer-support/tree/master/auxiliary-apis/NotifyTools">NotifyTools</a></td><td align="center"></td><td>Provides a messaging system between legacy code and the WebExtension background.</td></tr><tr><td><a href="https://github.com/rsjtdrjgfuzkfg/thunderbird-experiments/tree/master/experiments/runtime">Runtime.onDisable</a></td><td align="center"></td><td>Permit WebExtensions to perform (time-limited) cleanup tasks after the add-on is disabled or uninstalled.</td></tr><tr><td><a href="https://github.com/rsjtdrjgfuzkfg/thunderbird-experiments/tree/master/experiments/tcp">TCP</a></td><td align="center"></td><td>TCP support based on ArrayBuffers (currently client side only).</td></tr></tbody></table>
+<table><thead><tr><th width="289.3333333333333">Name</th><th>Description</th></tr></thead><tbody><tr><td><a href="https://github.com/thunderbird/tb-web-ext-experiments/tree/main/calendar">Calendar</a></td><td>Draft for calendar-related APIs in Thunderbird.</td></tr><tr><td><a href="https://github.com/gruemme/tb-api-compose_message_headers">ComposeMessageHeaders</a></td><td><p>Adds missing functionality to add headers to a newly composed message.<br></p><p><em>Note: Adding <code>X-</code> headers is supported by the compose API since Thunderbird 102</em>.</p></td></tr><tr><td><a href="https://github.com/rsjtdrjgfuzkfg/thunderbird-experiments/tree/master/experiments/customui">CustomUI</a></td><td>A generic UI extension framework based on iframes registered at fixed extension points.<br><br><em>Note: Does not yet fully support Thunderbird Supernova</em></td></tr><tr><td><a href="https://github.com/thunderbird/webext-support/tree/master/experiments/FileSystem">FileSystem</a></td><td>An API to access files in the users profile folder. Until Mozilla has made a final decision about including the <a href="https://web.dev/file-system-access/">Chrome FileSystem API</a>, this API can be used as an interim solution.</td></tr><tr><td><a href="https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyCSS">LegacyCSS</a></td><td>Load custom CSS files into Thunderbird windows.</td></tr><tr><td><a href="https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyPrefs">LegacyPrefs</a></td><td>Access Thunderbird system preferences.</td></tr><tr><td><a href="https://github.com/thunderbird/webext-experiments/tree/main/NotificationBox">NotificationBox</a></td><td>Show notifications inside Thunderbird.</td></tr><tr><td><a href="https://github.com/rsjtdrjgfuzkfg/thunderbird-experiments/tree/master/experiments/runtime">Runtime.onDisable</a></td><td>Permit WebExtensions to perform (time-limited) cleanup tasks after the add-on is disabled or uninstalled.</td></tr><tr><td><a href="https://github.com/rsjtdrjgfuzkfg/thunderbird-experiments/tree/master/experiments/tcp">TCP</a></td><td>TCP support based on ArrayBuffers (currently client side only).</td></tr></tbody></table>
 
-💬: API has a public announcement post\
-📝: API has a public interface discussion
-
-If you have created an Experiment API which you think could be beneficial to other developers, please [tell us about it](https://github.com/thunderbird/developer-docs/issues/new), so we can include it here.
+If you have created an Experiment API which you think could be beneficial to other developers, please [tell us about it](https://github.com/thunderbird/webext-experiments/issues/new), so we can include it here.
 
 ### Proposing APIs to be included in Thunderbird
 

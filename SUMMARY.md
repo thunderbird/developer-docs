@@ -61,7 +61,7 @@
   * [Supported UI Elements](add-ons/mailextensions/supported-ui-elements.md)
   * [Supported WebExtension APIs](add-ons/mailextensions/supported-webextension-api.md)
   * [Thunderbird's WebExtension API Documentation](https://webextension-api.thunderbird.net/en/stable/)
-  * [Examples in the Sample Extensions Repository](https://github.com/thunderbird/webext-examples)
+  * [Thunderbird WebExtension Examples](https://github.com/thunderbird/webext-examples)
   * [Introducing Experiments](add-ons/mailextensions/experiments.md)
 * [A Guide to Themes](add-ons/web-extension-themes.md)
 * [Developer Community](add-ons/community.md)

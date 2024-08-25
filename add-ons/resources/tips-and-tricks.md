@@ -12,7 +12,7 @@ Some general tips to speed up your development workflow:
 
 * To debug code running in a content page of your extension (e.g.: your background script), you need to select "debug add-ons" from the gear icon in the add-on tab and then inspect your add-on. \
   \
-  **Hint:** Alternatively you can enable content messages in the global browser console or in the developer toolbox as well. This will also show console output from popus (e.g. from browser\_action):
+  **Hint:** Alternatively, you can enable content messages in the global browser console or in the developer toolbox as well. This will also show console output from popus (e.g. from browser\_action):
 
 ![](<../../.gitbook/assets/ind2ex (1).png>)
 
@@ -33,8 +33,7 @@ DMO [claims](https://developer.mozilla.org/en-US/docs/Mozilla/Command\_Line\_Opt
 Executing this JavaScript code inside Thunderbird will cause the XUL cache to be invalidated the next time it restarts:
 
 ```javascript
-const { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");​
 Services.obs.notifyObservers(null, "startupcache-invalidate", null);
 ```
 
-One way to make this happen automatically is by installing the [userChromeJS add-on](https://addons.thunderbird.net/thunderbird/addon/userchromejs-2/) and then putting the code above into the file `chrome/userChrome.js` within your Thunderbird profile directory.
+This is described in more detail in the section [Introducing Experiments](../mailextensions/experiments.md).

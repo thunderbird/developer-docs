@@ -30,12 +30,12 @@ Your add-on should now install in current versions of Thunderbird without issues
 
 ## Step 2: Converting locale files
 
-One of the first steps should be to convert your locale files (DTD and property files) into the new JSON format used by WebExtensions. Our [`localeConverter.py`](https://github.com/thunderbird/addon-developer-support/tree/master/tools/locale-converter) python script will do the heavy lifting, it will merge the new entries into a potentially existing `messages.json` files.
+One of the first steps should be to convert your locale files (DTD and property files) into the new JSON format used by WebExtensions. Our [`localeConverter.py`](https://github.com/thunderbird/addon-developer-support/tree/master/tools/locale-converter) python script will do the heavy lifting, it will merge the new entries into potentially existing `messages.json` files.
 
 The new locale data can be accessed through the [i18n](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/i18n) WebExtension API:
 
 ```javascript
-browser.i18h.getMessage("a-locale-string");
+browser.i18n.getMessage("a-locale-string");
 ```
 
 ## Step 3: Converting the XUL options page
@@ -57,8 +57,6 @@ Most legacy extensions stored their preferences in an `nsIPrefBranch`. Modern We
 ```javascript
 let color = await browser.LegacyPrefs.getPref("extensions.addon123.color");
 ```
-
-The very last step of the conversion process will be the migration of the preferences from the `nsIPrefBranch` to the WebExtension [`storage`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage). The [legacyPrefMigration example add-on](https://github.com/thunderbird/webext-examples/tree/master/manifest\_v2/experiment.prefMigration) performs such a migration API.
 
 There is no automatic replacement of locale placeholder entities like `&myLocaleIdentifier;` in WebExtension HTML files any more. Instead, you can use placeholders like `__MSG_myLocaleIdentifier__` in your markup and include the `i18n.js` script provided by the [webext-support](https://github.com/thunderbird/webext-support/tree/master/scripts/i18n) repository. It will replace all `__MSG_*__` locale placeholders on page load using the `i18n` API.
 
@@ -112,7 +110,7 @@ Examples Experiments:
 
 * [open the search dialog](https://github.com/thunderbird/webext-examples/tree/master/manifest\_v2/experiment.openSearchDialog)
 * [adding a click handler by overlaying the messenger window, and load code from a module](https://github.com/thunderbird/webext-examples/tree/master/manifest\_v2/experiment)
-* [preference migration](https://github.com/thunderbird/webext-examples/tree/master/manifest\_v2/experiment.prefMigration)
+* [preference migration from nsIPrefBranch to WebExtension storage](https://github.com/thunderbird/webext-examples/tree/master/manifest\_v2/experiment.prefMigration)
 
 ## Replacing various discontinued features within Experiment code
 

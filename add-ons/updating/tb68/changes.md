@@ -35,7 +35,7 @@ If you have your own XBL bindings, you can convert them to [custom elements](htt
 {% endhint %}
 
 {% hint style="info" %}
-As part of the de-XBL effort, the usage of the [nsIDOMDocumentXBL](https://developer.mozilla.org/en-US/docs/Archive/Mozilla/XBL/XBL\_1.0\_Reference/DOM_Interfaces) Interface has also been deprecated. This includes:
+As part of the de-XBL effort, the usage of the [nsIDOMDocumentXBL](https://udn.realityripple.com/docs/Archive/Mozilla/XBL/XBL_1.0_Reference/DOM_Interfaces) Interface has also been deprecated. This includes:
 
 * getAnonymousElementByAttribute()
 * getAnonymousNodes()
@@ -405,7 +405,7 @@ Removed. Use:
 
 The element `mail-multi-emailHeaderField` has been renamed into `mail-multi-emailheaderfield` (no camelCase anymore).
 
-See e.g. [https://searchfox.org/comm-central/source/mail/base/content/msgHdrView.inc.xul#238](https://searchfox.org/comm-central/source/mail/base/content/msgHdrView.inc.xul#238)
+See e.g. [https://searchfox.org/comm-esr68/source/mail/base/content/msgHdrView.inc.xul#282](https://searchfox.org/comm-esr68/source/mail/base/content/msgHdrView.inc.xul#282)
 
 ```
 <mail-multi-emailheaderfield id="expandedfromBox" flex="1"/>

@@ -76,7 +76,7 @@ Check out the [Experiment Generator](https://darktrojan.github.io/generator/gene
 {% endhint %}
 
 {% hint style="info" %}
-Check out the [Example Experiment API](https://github.com/thunderbird/sample-extensions/tree/master/manifest\_v3/experiment) in our sample-extensions repository.
+Check out the [Example Experiment API](https://github.com/thunderbird/webext-examples/tree/master/manifest_v2/experiment) in our sample-extensions repository.
 {% endhint %}
 
 {% hint style="warning" %}
@@ -223,7 +223,7 @@ onShutdown(isAppShutdown) {
 }
 ```
 
-The [Experiment example](https://github.com/thunderbird/sample-extensions/tree/master/manifest\_v2/experiment) in our sample repository is using this method.
+The [Experiment example](https://github.com/thunderbird/webext-examples/tree/master/manifest_v2/experiment) in our sample repository is using this method.
 
 ## Accessing WebExtensions directly from an Experiment
 

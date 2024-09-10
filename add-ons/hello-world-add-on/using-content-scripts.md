@@ -195,7 +195,7 @@ The listener should only return a Promise for messages it is actually supposed t
 
 ## Testing the Extension
 
-Let's double-check that we made the [correct changes](https://github.com/thunderbird/sample-extensions/commit/65df906647525b85fa0d2367bd20dc8c3599558d?diff=unified) and have all the files in the right places:
+Let's double-check that we made the [correct changes](https://github.com/thunderbird/webext-examples/commit/65df906647525b85fa0d2367bd20dc8c3599558d?diff=unified) and have all the files in the right places:
 
 ```
 hello-world/

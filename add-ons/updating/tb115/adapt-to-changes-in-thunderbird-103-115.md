@@ -57,24 +57,22 @@ This [topicbox post](https://thunderbird.topicbox.com/groups/addons/Te5f62259df8
 
 It is recommended to leverage WebExtension APIs as much a possible. Instead of adjusting to core changes, the following WebExtension APIs can be helpful:
 
-* Use the [browserAction API](https://webextension-api.thunderbird.net/en/stable/browserAction.html) to add buttons to Thunderbird's unified toolbar
-* Use the [menus API](https://webextension-api.thunderbird.net/en/latest/menus.html) to add entries to Thunderbird's context menu (for example in the folder pane or in the thread pane)
-* Use the [commands API](https://webextension-api.thunderbird.net/en/latest/commands.html) to register keyboard shortcuts. Additional benefit: all WebExtension shortcuts can be adjusted by the user in the Add-on Manager according to their needs.
-* Use the [mailTabs API](https://webextension-api.thunderbird.net/en/latest/mailTabs.html) to interact with the mail tab.
+* Use the [browserAction API](https://webextension-api.thunderbird.net/en/115/browserAction.html) to add buttons to Thunderbird's unified toolbar
+* Use the [menus API](https://webextension-api.thunderbird.net/en/115/menus.html) to add entries to Thunderbird's context menu (for example in the folder pane or in the thread pane)
+* Use the [commands API](https://webextension-api.thunderbird.net/en/115/commands.html) to register keyboard shortcuts. Additional benefit: all WebExtension shortcuts can be adjusted by the user in the Add-on Manager according to their needs.
+* Use the [mailTabs API](https://webextension-api.thunderbird.net/en/115/mailTabs.html) to interact with the mail tab.
 
 #### Using shared Experiments
 
 There may already be a shared Experiment, which could help with add-on updates (or which could give helpful hints):
 
-* [LegacyCSS API](https://github.com/thunderbird/addon-developer-support/tree/master/auxiliary-apis/LegacyCSS): Inject into `about:3pane` or `about:message`, to style the `folderpane` (see [Hide Local Folders](https://addons.thunderbird.net/addon/hide-local-folders-for-tb78/versions/?page=1#version-3.0.1) Add-on), the `threadpane` or the message display area.
-* [WindowListener API](https://github.com/thunderbird/addon-developer-support/tree/master/wrapper-apis/WindowListener): Inject into `about:3pane` or `about:message`, to manipulate the `folderpane` (see [Phoenity Icons](https://addons.thunderbird.net/addon/phoenity-icons/versions/?page=1#version-3.9) Add-On), the `threadpane` or the message display area.
-* [UnifiedFolders API](https://github.com/thunderbird/addon-developer-support/tree/master/auxiliary-apis/UnifiedFolders): Interact with the "smart" folder display mode.
-
-More interesting Experiments are available at the [addon-developer-support](https://github.com/thunderbird/addon-developer-support/tree/master/auxiliary-apis) repository and on [DTN](https://developer.thunderbird.net/add-ons/mailextensions#sharing-experiment-apis).
+* community Experiments listed on [DTN](https://developer.thunderbird.net/add-ons/mailextensions#sharing-experiment-apis)
+* Experiments from the [webext-support](https://github.com/thunderbird/webext-support/tree/master/experiments) repository
+* Experiments from the [webext-experiments](https://github.com/thunderbird/webext-experiments) repository (scheduled to be shipped with Thunderbird soon)
 
 ### Unified Toolbar
 
-The mail toolbar has been replaced by the unified toolbar. Adding your own buttons will become difficult, because the unified toolbar tends to remove unknown objects. Instead, use the [browserAction API](https://webextension-api.thunderbird.net/en/latest/browserAction.html) to add buttons.
+The mail toolbar has been replaced by the unified toolbar. Adding your own buttons will become difficult, because the unified toolbar tends to remove unknown objects. Instead, use the [browserAction API](https://webextension-api.thunderbird.net/en/115/browserAction.html) to add buttons.
 
 ### XUL Tree replacement
 
@@ -90,7 +88,7 @@ Known attributes which have to be replaced:
 * `width`: replace with [CSS width property](https://developer.mozilla.org/en-US/docs/Web/CSS/width)
 * `flex`: replace with [CSS flex](https://developer.mozilla.org/en-US/docs/Web/CSS/flex) (a very helpful tutorial is available at [css-tricks.com](https://css-tricks.com/snippets/css/a-guide-to-flexbox/))
 
-**Important:** If add-ons still create old-fashioned XUL dialogues and load \*`.xhtml` files, it is not recommended to invest time into fixing them. It is more efficient to re-create them as pure `*.html` files. They can be opened using the [tabs API](https://webextension-api.thunderbird.net/en/latest/tabs.html) or the [windows API](https://webextension-api.thunderbird.net/en/latest/windows.html).
+**Important:** If add-ons still create old-fashioned XUL dialogues and load \*`.xhtml` files, it is not recommended to invest time into fixing them. It is more efficient to re-create them as pure `*.html` files. They can be opened using the [tabs API](https://webextension-api.thunderbird.net/en/115/tabs.html) or the [windows API](https://webextension-api.thunderbird.net/en/115/windows.html).
 
 ## Removed JSM files
 

@@ -125,8 +125,7 @@ The listener is using a helper function to be able to loop over the received mes
 
 {% code title="messageTools.mjs" %}
 ```javascript
-// A wrapper function returning an async iterator for a MessageList. Derived from
-// https://webextension-api.thunderbird.net/en/91/how-to/messageLists.html
+// A wrapper function returning an async iterator for a MessageList.
 export async function* iterateMessagePages(page) {
     for (let message of page.messages) {
         yield message;
@@ -207,7 +206,7 @@ Using the `menus` API requires the <mark style="color:red;">`menus`</mark> permi
 
 #### messenger.menus.onClicked()
 
-In order to do something when our menu is clicked, we add a listener for the [onClicked](https://webextension-api.thunderbird.net/en/91/menus.html#onclicked) event. We check the `id` of the clicked menu to see which of our menus was clicked (we only added one, but checking here anyhow).
+In order to do something when our menu is clicked, we add a listener for the [onClicked](https://webextension-api.thunderbird.net/en/beta-mv2/menus.html#onclicked) event. We check the `id` of the clicked menu to see which of our menus was clicked (we only added one, but checking here anyhow).
 
 #### messenger.notifications.create()
 
@@ -219,7 +218,7 @@ Using the `notifications` API requires the <mark style="color:red;">`notificatio
 
 ## Testing the Extension
 
-Let's double-check that we made the [correct changes](https://github.com/thunderbird/sample-extensions/commit/bb719ee48994101c52a3d8849d7c07ac6a46db01?diff=unified) and have all the files in the right places:
+Let's double-check that we made the [correct changes](https://github.com/thunderbird/webext-examples/commit/bb719ee48994101c52a3d8849d7c07ac6a46db01?diff=unified) and have all the files in the right places:
 
 ```
 hello-world/

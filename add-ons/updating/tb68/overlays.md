@@ -78,9 +78,9 @@ This example is only in English. You probably want to use translated strings in 
 
 A lot of effort has been done to create the new overlay loader, but still things might not work as before. We are tracking this in bug [1476259](https://bugzilla.mozilla.org/show_bug.cgi?id=1476259).
 
-Overlays in Thunderbird itself \(except the calendar extensions\) have been removed, so extensions can not overlay the removed Thunderbird overlays any more. For example, if your add-on overlaid`mailWindowOverlay.xul`, that needs to be changed; in this example you most likely need to overlay `messenger.xul` now.
+Overlays in Thunderbird itself \(except the calendar extensions\) have been removed, so extensions can not overlay the removed Thunderbird overlays any more. For example, if your add-on overlaid `mailWindowOverlay.xul`, that needs to be changed; in this example you most likely need to overlay `messenger.xul` now.
 
-Furthermore, the new overlay loader does not properly support dependencies between overlays in different add-ons. As a result, you should only reference elements from the original document you're overlaying, or other overlays in the same extension. Most notably, you need to switch to non-overlay methods when altering the calendar user interface in the main window, or your add-on will not load relieably.
+Furthermore, the new overlay loader does not properly support dependencies between overlays in different add-ons. As a result, you should only reference elements from the original document you're overlaying, or other overlays in the same extension. Most notably, you need to switch to non-overlay methods when altering the calendar user interface in the main window, or your add-on will not load reliably.
 
 ## Notes about Chrome manifest
 

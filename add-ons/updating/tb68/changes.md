@@ -1,12 +1,12 @@
 # Adapt to Changes in Thunderbird 61-68
 
-This document tries to cover all the changes that may by needed to make add-ons compatible with Thunderbird 68. If you find stuff that is no longer working but is not yet on this list, ask for help and advice in the mozilla.dev.apps.thunderbird newsgroup or check our [communication channels](https://wiki.mozilla.org/Thunderbird/CommunicationChannels#If_you.27re_a_developer).
+This document tries to cover all the changes that may by needed to make add-ons compatible with Thunderbird 68. If you find stuff that is no longer working but is not yet on this list, check our [communication channels](https://developer.thunderbird.net/add-ons/community).
 
 The changes are grouped by category and are listed in the order we became aware of them.
 
 ## Removed global Variables
 
-A bunch of global variables available in some window scopes were removed. If you have used any of these, there are still available as the same names underneath`Components.interfaces.`
+A bunch of global variables available in some window scopes were removed. If you have used any of these, there are still available as the same names underneath `Components.interfaces.`
 
 ### main window
 
@@ -26,7 +26,7 @@ A bunch of global variables available in some window scopes were removed. If you
 
 ## Removed XBL bindings
 
-XBL is on death row. Many XBL bindings have been replaced or simply no longer exist. The remainder are being removed. This may result in slight behaviour changes for some UI components.
+XBL is on death row. Many XBL bindings have been replaced or simply no longer exist. The remainder are being removed. This may result in slight behavior changes for some UI components.
 
 With [this query](https://bugzilla.mozilla.org/buglist.cgi?o1=equals\&v1=1484976\&f1=blocked), you can see all the bugs related to de-XBL-ing Thunderbird, and see how the removal of each binding is handled.
 
@@ -79,7 +79,7 @@ Removed. Use
 
 ### \<listbox>, \<listitem>, \<listcell> and \<listcols>
 
-All `<listbox>` related elements have been removed. Use[`<richlistbox>`](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XUL/richlistbox) instead. A `<richlistbox>` does not support cells or columns, just one `<richlistitem>` per row (which can contain multiple other elements like `hbox`, `vbox`, `label`or `image` elements)
+All `<listbox>` related elements have been removed. Use[`<richlistbox>`](https://udn.realityripple.com/docs/Archive/Mozilla/XUL/richlistbox) instead. A `<richlistbox>` does not support cells or columns, just one `<richlistitem>` per row (which can contain multiple other elements like `hbox`, `vbox`, `label`or `image` elements)
 
 Furthermore, a few dedicated `listbox/richtlistbox`methods have been removed and can be replaced as follows:
 
@@ -202,9 +202,9 @@ it must be replaced by a `dialog` as follows:
 {% endtab %}
 {% endtabs %}
 
-Note that the `DOCTYPE` changed and the `preference` attribute now contains the full ID of the preference. If you used more than one `prefpane` you need to rework the UI into [tabs](https://developer.mozilla.org/de/docs/Mozilla/Tech/XUL/tabbox).
+Note that the `DOCTYPE` changed and the `preference` attribute now contains the full ID of the preference. If you used more than one `prefpane` you need to rework the UI into [tabs](https://udn.realityripple.com/docs/Archive/Mozilla/XUL/tabbox).
 
-Furthermore, note the included JavaScript file [`preferencesBindings.js`](https://searchfox.org/mozilla-central/source/toolkit/content/preferencesBindings.js) at the bottom, which is mandatory to recreate the functionality of the `preference` attribute. It is also mandatory, that you include a custom JavaScript file (as`preferences.js` in the above example) afterwards, which defines the types of the used preferences (which was formerly done inside the `preferences` tag). The file can be as short as this:
+Furthermore, note the included JavaScript file [`preferencesBindings.js`](https://searchfox.org/mozilla-central/rev/6e6265bd607cbe4c96e714f86d3d9e36620f63d6/toolkit/content/preferencesBindings.js) at the bottom, which is mandatory to recreate the functionality of the `preference` attribute. It is also mandatory, that you include a custom JavaScript file (as`preferences.js` in the above example) afterwards, which defines the types of the used preferences (which was formerly done inside the `preferences` tag). The file can be as short as this:
 
 {% tabs %}
 {% tab title="preferences.js" %}
@@ -233,7 +233,7 @@ Per default, all preferences will be saved instantly after they have been change
 {% endtabs %}
 
 {% hint style="info" %}
-If you are doing or plan to do any advanced stuff with the preferences in JavaScript, like validating user entered values and such, it is recommended to abandon the usage of the `preference` attribute (and `preferencesBindings.js`) and directly use the [preferences service](https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XPCOM/Reference/Interface/nsIPrefService) instead. Check out [options.xul](https://github.com/darktrojan/shrunked/blob/master/content/options.xul) and [options.js](https://github.com/darktrojan/shrunked/blob/master/content/options.js) of the Shrunked Image Resizer.
+If you are doing or plan to do any advanced stuff with the preferences in JavaScript, like validating user entered values and such, it is recommended to abandon the usage of the `preference` attribute (and `preferencesBindings.js`) and directly use the [preferences service](https://udn.realityripple.com/docs/Mozilla/Tech/XPCOM/Reference/Interface/nsIPrefService) instead.
 {% endhint %}
 
 ### \<stringbundleset> and \<stringbundle>
@@ -544,11 +544,11 @@ Removed, use:
 Services.xulStore.persist(node, attribute);
 ```
 
-Note: document.persist() used the ID attribute whereas xulStore.persist() uses the actual DOM node. More details in bug [1476678](https://bugzilla.mozilla.org/show_bug.cgi?id=1476678).
+Note: `document.persist()` used the ID attribute whereas `xulStore.persist()` uses the actual DOM node. More details in bug [1476678](https://bugzilla.mozilla.org/show_bug.cgi?id=1476678).
 
 ### AddonManager
 
-All methods of the [AddonManager](https://developer.mozilla.org/en-US/docs/Mozilla/JavaScript_code_modules/Add-on_Manager/AddonManager#Method_Overview) API now return a Promise instead of executing a callback. Instead of calling it as
+All methods of the [AddonManager](https://udn.realityripple.com/docs/Mozilla/JavaScript_code_modules/Add-on_Manager/AddonManager#Method_Overview) API now return a Promise instead of executing a callback. Instead of calling it as
 
 ```javascript
 AddonManager.getAddonByID(addon_id, callback_function)

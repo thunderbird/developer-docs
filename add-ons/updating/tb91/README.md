@@ -10,17 +10,17 @@ Support for legacy extensions was removed from Thunderbird Beta version 74, rele
 
 Our WebExtension APIs are meant to be stable, but we are adding new features and since this is a very young technology this might also require backward incompatible changes. All WebExtension API changes are listed in our API documentation:
 
-* [Thunderbird 81](https://webextension-api.thunderbird.net/en/latest/changes/beta81.html)
-* [Thunderbird 82](https://webextension-api.thunderbird.net/en/latest/changes/beta82.html)
-* [Thunderbird 83](https://webextension-api.thunderbird.net/en/latest/changes/beta83.html)
-* [Thunderbird 84](https://webextension-api.thunderbird.net/en/latest/changes/beta84.html)
-* [Thunderbird 85](https://webextension-api.thunderbird.net/en/latest/changes/beta85.html)
-* [Thunderbird 86](https://webextension-api.thunderbird.net/en/latest/changes/beta86.html)
-* [Thunderbird 87](https://webextension-api.thunderbird.net/en/latest/changes/beta87.html)
-* [Thunderbird 88](https://webextension-api.thunderbird.net/en/latest/changes/beta88.html)
-* [Thunderbird 89](https://webextension-api.thunderbird.net/en/latest/changes/beta89.html)
-* [Thunderbird 90](https://webextension-api.thunderbird.net/en/latest/changes/beta90.html)
-* [Thunderbird 91](https://webextension-api.thunderbird.net/en/latest/changes/beta91.html)
+* [Thunderbird 81](https://webextension-api.thunderbird.net/en/91/changes/91.html#thunderbird-81-beta)
+* [Thunderbird 82](https://webextension-api.thunderbird.net/en/91/changes/91.html#thunderbird-82-beta)
+* [Thunderbird 83](https://webextension-api.thunderbird.net/en/91/changes/91.html#thunderbird-83-beta)
+* [Thunderbird 84](https://webextension-api.thunderbird.net/en/91/changes/91.html#thunderbird-84-beta)
+* [Thunderbird 85](https://webextension-api.thunderbird.net/en/91/changes/91.html#thunderbird-85-beta)
+* [Thunderbird 86](https://webextension-api.thunderbird.net/en/91/changes/91.html#thunderbird-86-beta)
+* [Thunderbird 87](https://webextension-api.thunderbird.net/en/91/changes/91.html#thunderbird-87-beta)
+* [Thunderbird 88](https://webextension-api.thunderbird.net/en/91/changes/91.html#thunderbird-88-beta)
+* [Thunderbird 89](https://webextension-api.thunderbird.net/en/91/changes/91.html#thunderbird-89-beta)
+* [Thunderbird 90](https://webextension-api.thunderbird.net/en/91/changes/91.html#thunderbird-90-beta)
+* [Thunderbird 91](https://webextension-api.thunderbird.net/en/91/changes/91.html#thunderbird-91-0-esr)
 
 ## Changes in Thunderbird Core
 
@@ -35,5 +35,3 @@ If you have encountered a change which is not yet listed there, please [contact 
 If you are using any of the shared Experiments, you probably do not have to update them on your own. Check if an updated version is already available:
 
 * [Shared Experiments on DTN](../../mailextensions/#sharing-experiment-apis)
-* [Wrapper Experiments available in the ADS repository](https://github.com/thunderbird/addon-developer-support/tree/master/wrapper-apis)
-

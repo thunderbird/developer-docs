@@ -10,11 +10,11 @@ This section covers the required update steps for add-ons which are already comp
 
 Our WebExtension APIs are meant to be stable, but we are adding new features and since this is a very young technology this might also require backward incompatible changes. All WebExtension API changes are listed in our WebExtension API documentation:
 
-* [Thunderbird 106](https://webextension-api.thunderbird.net/en/latest/changes/beta106.html)
-* [Thunderbird 107](https://webextension-api.thunderbird.net/en/latest/changes/beta107.html)
-* [Thunderbird 111](https://webextension-api.thunderbird.net/en/latest/changes/beta111.html)
-* [Thunderbird 113 Manifest v2](https://webextension-api.thunderbird.net/en/latest/changes/beta113.html) and [Thunderbird 113 Manifest v3](https://webextension-api.thunderbird.net/en/latest-mv3/changes/beta113.html)
-* [Thunderbird 115 Manifest v2](https://webextension-api.thunderbird.net/en/latest/changes/beta115.html) and [Thunderbird 115 Manifest v3](https://webextension-api.thunderbird.net/en/latest-mv3/changes/beta115.html)
+* [Thunderbird 106](https://webextension-api.thunderbird.net/en/115/changes/115.html#thunderbird-106-beta)
+* [Thunderbird 107](https://webextension-api.thunderbird.net/en/115/changes/115.html#thunderbird-107-beta)
+* [Thunderbird 111](https://webextension-api.thunderbird.net/en/115/changes/115.html#thunderbird-111-beta)
+* [Thunderbird 113](https://webextension-api.thunderbird.net/en/115/changes/115.html#thunderbird-113-beta)
+* [Thunderbird 115](https://webextension-api.thunderbird.net/en/115/changes/115.html#thunderbird-115-0-esr)
 
 ## Changes in Thunderbird Core
 
@@ -29,4 +29,3 @@ If you have encountered a change which is not yet listed there, please [contact 
 If you are using any of the shared Experiments, you probably do not have to update them on your own. Check if an updated version is already available:
 
 * [Shared Experiments on DTN](../../mailextensions/#sharing-experiment-apis)
-* [Wrapper Experiments available in the ADS repository](https://github.com/thunderbird/addon-developer-support/tree/master/wrapper-apis)

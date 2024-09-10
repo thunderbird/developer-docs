@@ -203,7 +203,7 @@ A list of all WebExtension APIs supported by Thunderbird can be found in the fol
 
 ### Content Scripts
 
-Content scripts (including [compose scripts](https://webextension-api.thunderbird.net/en/latest/composeScripts.html) and [message display scripts](https://webextension-api.thunderbird.net/en/latest/messageDisplayScripts.html)) can only use the following WebExtension APIs:
+Content scripts (including [compose scripts](https://webextension-api.thunderbird.net/en/beta-mv2/composeScripts.html) and [message display scripts](https://webextension-api.thunderbird.net/en/beta-mv2/messageDisplayScripts.html)) can only use the following WebExtension APIs:
 
 * [runtime.connect()](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/connect)
 * [runtime.getManifest()](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/getManifest)
@@ -218,13 +218,13 @@ Content scripts (including [compose scripts](https://webextension-api.thunderbir
 * [menus.getTargetElement](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/menus/getTargetElement)
 * [storage](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage).\*
 
-Content scripts can [communicate with background scripts](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Content\_scripts#Communicating\_with\_background\_scripts) using runtime messaging, and thereby can indirectly access the WebExtension APIs. See our [messageDisplayScript example extension](https://github.com/thunderbird/sample-extensions/tree/master/manifest\_v3/messageDisplayScript.pdfPreview).
+Content scripts can [communicate with background scripts](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Content\_scripts#Communicating\_with\_background\_scripts) using runtime messaging, and thereby can indirectly access the WebExtension APIs. See our [messageDisplayScript example extension](https://github.com/thunderbird/webext-examples/tree/master/manifest\_v2/messageDisplayScript).
 
 ### CloudFile Management Scripts
 
-A script loaded from a CloudFile[ `management_url`](https://webextension-api.thunderbird.net/en/latest/cloudFile.html#manifest-file-properties) can only use the following WebExtension APIs:
+A script loaded from a CloudFile[ `management_url`](https://webextension-api.thunderbird.net/en/beta-mv2/cloudFile.html#manifest-file-properties) can only use the following WebExtension APIs:
 
-* [cloudFile](https://webextension-api.thunderbird.net/en/stable/cloudFile.html).\*
+* [cloudFile](https://webextension-api.thunderbird.net/en/beta-mv2/cloudFile.html).\*
 * [extension](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/extension).\*
 * [i18n](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/i18n).\*
 * [runtime](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime).\*

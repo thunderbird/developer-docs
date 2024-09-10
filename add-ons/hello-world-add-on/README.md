@@ -44,13 +44,13 @@ Extensions require a `manifest.json` file that tells Thunderbird a few basic inf
 ```
 {% endcode %}
 
-You can grab the icons we use for this example from the [example repository](https://github.com/thunderbird/sample-extensions/tree/master/hello-world/images). Make sure to create an `images` directory in the `hello-world` project folder for them.
+You can grab the icons we use for this example from the [example repository](https://github.com/thunderbird/webext-examples/tree/master/hello-world/images). Make sure to create an `images` directory in the `hello-world` project folder for them.
 
 ## Using a `browser_action`
 
 The above manifest includes the definition for a `browser_action`. That is the button we want to add to Thunderbird's main toolbar. The reference to a _browser_ in its name is inherited from the Firefox Browser.
 
-The allowed keys for the `browser_action` button are described in our [API documentation](https://webextension-api.thunderbird.net/en/stable/). We define a popup HTML page, which should be loaded if the button is clicked, a title and an icon.
+The allowed keys for the `browser_action` button are described in our [API documentation](https://webextension-api.thunderbird.net/en/beta-mv2/browserAction.html). We define a popup HTML page, which should be loaded if the button is clicked, a title and an icon.
 
 ### popup.html
 
@@ -119,7 +119,7 @@ Now we want to create the CSS file referenced in our HTML file. We'll call it `p
 
 ## Testing the Extension
 
-First, let's double-check that we created [the correct files](https://github.com/thunderbird/sample-extensions/commit/230eba3fd9f5c633cb30c0a83d5500e532c283c4?diff=unified) and have them in the right places:
+First, let's double-check that we created [the correct files](https://github.com/thunderbird/webext-examples/commit/230eba3fd9f5c633cb30c0a83d5500e532c283c4?diff=unified?diff=unified) and have them in the right places:
 
 ```
 hello-world/

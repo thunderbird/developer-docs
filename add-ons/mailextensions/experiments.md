@@ -76,7 +76,12 @@ Check out the [Experiment Generator](https://darktrojan.github.io/generator/gene
 {% endhint %}
 
 {% hint style="info" %}
-Check out the [Example Experiment API](https://github.com/thunderbird/webext-examples/tree/master/manifest_v2/experiment) in our sample-extensions repository.
+Check out the Example Experiments:
+
+* [Activity Manager Experiment](https://github.com/thunderbird/webext-examples/tree/master/manifest\_v2/experiment.activityManager)
+* [Open SearchDialog Experiment](https://github.com/thunderbird/webext-examples/tree/master/manifest\_v2/experiment.openSearchDialog)
+* [Remove Attachments If Junk Experiment](https://github.com/thunderbird/webext-examples/tree/master/manifest\_v2/experiment.removeAttachmentsIfJunk)
+* [Restart Experiment](https://github.com/thunderbird/webext-examples/tree/master/manifest\_v2/experiment.restart)
 {% endhint %}
 
 {% hint style="warning" %}
@@ -132,17 +137,26 @@ var { ExtensionUtils } = ChromeUtils.importESModule(
 );
 var { ExtensionError } = ExtensionUtils;
 
-var resourceUrl = {
+class ResourceUrl {
+  constructor() {
+    this.customNamespaces = [];
+  }
+  
   register(customNamespace, extension, folder) {
     const resProto = Cc[
       "@mozilla.org/network/protocol;1?name=resource"
     ].getService(Ci.nsISubstitutingProtocolHandler);
 
+    if (customNamespace != customNamespace.toLowerCase()) {
+      throw new ExtensionError(`The namespace is invalid, it must be written entirely in lowercase letters: "${customNamespace}"`);
+    };
+
+    customNamespace != customNamespace.toLowerCase()
+
     if (resProto.hasSubstitution(customNamespace)) {
-      throw new ExtensionError(
-        `There is already a resource:// url for the namespace "${customNamespace}"`
-      );
+      throw new ExtensionError(`There is already a resource:// url for the namespace "${customNamespace}"`);
     }
+    this.customNamespaces.push(customNamespace);
 
     let uri = Services.io.newURI(
       folder || ".",
@@ -154,29 +168,19 @@ var resourceUrl = {
       uri,
       resProto.ALLOW_CONTENT_ACCESS
     );
-  },
+  }
 
-  unloadAllModules(customNamespace) {
-    for (let module of Cu.loadedModules) {
-      let [schema, , namespace] = module.split("/");
-      if (
-        schema == "resource:" && 
-        customNamespace.toLowerCase() == namespace.toLowerCase()
-      ) {
-        console.log("Unloading module", module);
-        Cu.unload(module);
-      }
-    }
-  },
-  
-  unregister(customNamespace) {
+  unregister() {
     const resProto = Cc[
       "@mozilla.org/network/protocol;1?name=resource"
     ].getService(Ci.nsISubstitutingProtocolHandler);
-    console.log("Unloading namespace", customNamespace);
-    resProto.setSubstitution(customNamespace, null);
-  },
+    for (let customNamespace of this.customNamespaces) {
+      console.log("Unloading namespace", customNamespace);
+      resProto.setSubstitution(customNamespace, null);
+    }
+  }
 }
+const resourceUrl = new ResourceUrl();
 ```
 
 In this example, we are registering a custom `resource://` url with the namespace `example123`:
@@ -190,16 +194,16 @@ resourceUrl.register("example123", extension, "modules/");
 ```
 
 The file `TestModules.sys.mjs` in the `modules` folder will then be accessible via\
-`resource://example123/TestModule.sys.mjs`, and can be loaded:
+`resource://example123/TestModule.sys.mjs`. Since system modules cannot be unloaded, we have to append a unique identifier, to make sure cached files are not re-used:
 
 ```javascript
-// Load TestModule.sys.mjs. 
+// Load TestModule.sys.mjs.
 var { TestModule } = ChromeUtils.importESModule(
-  "resource://example123/TestModule.sys.mjs"
+  "resource://example123/TestModule.sys.mjs?" + Date.now()
 )
 ```
 
-The Experiment **must** unregister the custom `resource://` url and also **must** unload any loaded module in its `onShutdown()` method:
+The Experiment **must** unregister the custom `resource://` url in its `onShutdown()` method:
 
 ```javascript
 onShutdown(isAppShutdown) {
@@ -210,9 +214,6 @@ onShutdown(isAppShutdown) {
     return;
   }
   
-  // Unload all modules which have been loaded with our resource:// url.
-  resourceUrl.unloadAllModules("example123");
-
   // Unregister our resource:// url.
   resourceUrl.unregister("example123");
 
@@ -223,7 +224,7 @@ onShutdown(isAppShutdown) {
 }
 ```
 
-The [Experiment example](https://github.com/thunderbird/webext-examples/tree/master/manifest_v2/experiment) in our sample repository is using this method.
+The [Activity Manager Experiment Example](https://github.com/thunderbird/webext-examples/tree/master/manifest\_v2/experiment.activityManager) is using this method.
 
 ## Accessing WebExtensions directly from an Experiment
 

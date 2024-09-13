@@ -52,13 +52,53 @@ From that document, all WebExtension APIs can be accessed in the same way as for
 
 In this step the old XUL options page has to be re-created as an HTML page, using only HTML elements, JavaScript and CSS. It is no longer possible to use XUL elements. Some custom elements and 3rd party libraries to simplify this step can be found in the [webext-support](https://github.com/thunderbird/webext-support/tree/master/ui) repository.
 
-Most legacy extensions stored their preferences in an `nsIPrefBranch`. Modern WebExtension should eventually use the WebExtension [`storage`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage); however, to minimize code changes, it may be easier to keep accessing the legacy preferences for now. This can be achieved by including the [LegacyPrefs](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyPrefs) Experiment. The converted WebExtension options page is then able to access the existing `extensions.addon123.color` preference entry as follows:
+### Localisation
+
+There is no automatic replacement of locale placeholder entities like `&myLocaleIdentifier;` in WebExtension HTML files any more. Instead, you can use placeholders like `__MSG_myLocaleIdentifier__` in your markup and include the [`i18n.js`](https://github.com/thunderbird/webext-support/tree/master/scripts/i18n) script provided by the [webext-support](https://github.com/thunderbird/webext-support/tree/master/scripts/i18n) repository and automatically replace all `__MSG_*__` locale placeholders on page load. The script is using the `i18n` API to read the modern JSON locale files created in the previous step.
+
+### Accessing preferences
+
+Most legacy extensions stored their preferences in an `nsIPrefBranch`. Modern WebExtension should eventually use the WebExtension [`storage`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage); however, to minimize code changes, it may be easier to keep accessing the legacy preferences for now. This can be achieved by including the [LegacyPrefs](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyPrefs) Experiment. The converted WebExtension options page is then able to access the existing `extensions.myaddon.enableDebug` preference entry as follows:
 
 ```javascript
-let color = await browser.LegacyPrefs.getPref("extensions.addon123.color");
+let enableDebug = await browser.LegacyPrefs.getPref("extensions.myaddon.enableDebug");
 ```
 
-There is no automatic replacement of locale placeholder entities like `&myLocaleIdentifier;` in WebExtension HTML files any more. Instead, you can use placeholders like `__MSG_myLocaleIdentifier__` in your markup and include the [`i18n.js`](https://github.com/thunderbird/webext-support/tree/master/scripts/i18n) script provided by the [webext-support](https://github.com/thunderbird/webext-support/tree/master/scripts/i18n) repository and replace all `__MSG_*__` locale placeholders on page load. The script is using the `i18n` API to read the modern JSON locale files created in step #1.
+### Alternative for `preferencesBindings.js`
+
+The legacy XUL options page used a framework to automatically load and save preference values, controled by the `preferencesBindings.js` script. That automatism does not exist for HTML option pages. But it is possible to implement a similar mechanism using a `data-preference` attribute:
+
+```html
+<div>
+  <input type="checkbox" id="debug" data-preference="enableDebug"/>
+  <label for="debug">__MSG_debug.label__</label>
+</div>
+```
+
+In JavaScript we can loop over all elements which have such an attribute, and load their value from storage. Additionally we can attach an event listener to store the value after the input field has been changed by the user:
+
+```javascript
+let prefElements = document.querySelectorAll('[data-preference]');
+for (let prefElement of prefElements) {
+    let value = await browser.LegacyPrefs.getPref(
+        `extensions.myaddon.${prefElement.dataset.preference}`
+    );
+    
+    // handle checkboxes
+    if (prefElement.tagName == "INPUT" && prefElement.type == "checkbox") {
+        if (value == true) {
+            prefElement.setAttribute("checked", "true");
+        }
+        // enable auto save
+        prefElement.addEventListener("change", () => {
+            browser.LegacyPrefs.setPref(
+                `extensions.myaddon.${prefElement.dataset.preference}`,
+                prefElement.checked
+            );
+        })
+    }
+}
+```
 
 ## Step 4: Find matching WebExtension entry points and WebExtension APIs
 

@@ -1,13 +1,11 @@
 ---
-description: >-
-  Required steps to convert legacy bootstrap extension and legacy overlay
-  extensions to legacy WebExtensions.
+description: Required steps to update add-ons for Thunderbird 68.
 ---
 
 # Update for Thunderbird 68
 
 {% hint style="info" %}
-Technically, legacy bootstrap extensions and legacy overlay extensions need to be converted to WebExtensions, but by activating the **legacy mode**, their general structure does not need to be changed. Such extensions are called legacy WebExtensions.
+Technically, legacy bootstrap extensions and legacy overlay extensions need to be converted to modern WebExtensions, but by activating the **legacy mode**, their general structure does not need to be changed. Such extensions are called legacy WebExtensions.
 {% endhint %}
 
 ## Required Changes
@@ -16,12 +14,12 @@ There are two types of changes which are required to make your legacy extensions
 
 * The legacy extension must be converted to a legacy WebExtension by replacing the old `install.rdf` by a `manifest.json`.
 
-{% content-ref url="overlays.md" %}
-[overlays.md](overlays.md)
+{% content-ref url="../historical-overview/overlays.md" %}
+[overlays.md](../historical-overview/overlays.md)
 {% endcontent-ref %}
 
-{% content-ref url="bootstrapped.md" %}
-[bootstrapped.md](bootstrapped.md)
+{% content-ref url="../historical-overview/bootstrapped.md" %}
+[bootstrapped.md](../historical-overview/bootstrapped.md)
 {% endcontent-ref %}
 
 * All legacy extensions need to be updated to reflect changes in Thunderbird core, like renamed/replaced API calls, removed support for some XUL elements (need to use HTML elements now) and much more.

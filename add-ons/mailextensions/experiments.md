@@ -129,7 +129,7 @@ Common pitfall: `async` functions return a `Promise` in the scope of the functio
 
 ## Structuring Experiment code
 
-If your Experiment API is so complex that it does not reasonably fit into a single source file, you can use system modules with some additional boilerplate. In order to load system modules, your Experiment needs to define a `resource://` url. The required code is as follows:
+If your Experiment API is so complex that it does not reasonably fit into a single source file, you can use system modules with some additional boilerplate. In order to load system modules, your Experiment needs to define a `resource://` URL. The required code is as follows:
 
 ```javascript
 var { ExtensionUtils } = ChromeUtils.importESModule(
@@ -183,7 +183,7 @@ class ResourceUrl {
 const resourceUrl = new ResourceUrl();
 ```
 
-In this example, we are registering a custom `resource://` url with the namespace `example123`:
+In this example, we are registering a custom `resource://` URL with the namespace `example123`:
 
 ```javascript
 // Register a resource:// url with a custom namespace, which points to a
@@ -203,7 +203,7 @@ var { TestModule } = ChromeUtils.importESModule(
 )
 ```
 
-The Experiment can unregister the custom `resource://` url in its `onShutdown()` method:
+The Experiment can unregister the custom `resource://` URL in its `onShutdown()` method:
 
 ```javascript
 onShutdown(isAppShutdown) {
@@ -224,7 +224,7 @@ onShutdown(isAppShutdown) {
 }
 ```
 
-The [Activity Manager Experiment Example](https://github.com/thunderbird/webext-examples/tree/master/manifest\_v2/experiment.activityManager) is registering a `resource://` url through the [LegacyHelper API](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyHelper).
+The [Activity Manager Experiment Example](https://github.com/thunderbird/webext-examples/tree/master/manifest\_v2/experiment.activityManager) is registering a `resource://` URL through the [LegacyHelper API](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyHelper).
 
 ## Accessing WebExtensions directly from an Experiment
 

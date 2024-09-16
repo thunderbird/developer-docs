@@ -104,7 +104,7 @@ This should only be a temporary step. After the initial conversion from a `style
 
 #### **overlay**
 
-This entry type is no longer supported. Replacing it will be the main conversion work and is described in [step 7](legacy-to-modern.md#step-7-creating-missing-ui-entry-points-and-apis-as-experiments) and later.
+This entry type is no longer supported. Replacing it will be the main conversion work, which is described in [step 7](legacy-to-modern.md#step-7-creating-missing-ui-entry-points-and-apis-as-experiments) and later.
 
 #### interfaces, component, contract, category
 

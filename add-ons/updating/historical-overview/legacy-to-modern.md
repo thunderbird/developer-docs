@@ -27,12 +27,12 @@ Your add-on should now install in current versions of Thunderbird without issues
 The most common entries in the `chrome.manifest` file are listed below:
 
 ```
-content    myaddon                 /content/
-resource   myaddon                 /modules/
-locale     myaddon   en-US         /locale/en-US/
-locale     myaddon   de-DE         /locale/de-DE/
+content    myaddon                 chrome/content/
+resource   myaddon                 chrome/
+locale     myaddon   en-US         chrome/locale/en-US/
+locale     myaddon   de-DE         chrome/locale/de-DE/
 
-skin       myaddon   classic/1.0   /skin/classic/
+skin       myaddon   classic/1.0   chrome/skin/classic/
 
 style      chrome://messenger/content/activity.xul   chrome://myaddon/skin/myaddon.css
 overlay    chrome://messenger/content/messenger.xul  chrome://myaddon/content/messenger.xul
@@ -44,10 +44,10 @@ These entries registered global URLs used by the extension to access its assets.
 
 ```javascript
 await browser.LegacyHelper.registerGlobalUrls([
-  ["content",  "myaddon", "content/"],
-  ["resource", "myaddon", "modules/"],
-  ["locale",   "myaddon", "en-US", "locale/en-US/"],
-  ["locale",   "myaddon", "de-DE", "locale/de-DE/"],  
+  ["content",  "myaddon", "chrome/content/"],
+  ["resource", "myaddon", "chrome/"],
+  ["locale",   "myaddon", "en-US", "chrome/locale/en-US/"],
+  ["locale",   "myaddon", "de-DE", "chrome/locale/de-DE/"],  
 ]);
 ```
 
@@ -55,7 +55,23 @@ There are no direct equivalents to manifest flags, so add-ons now need to provid
 
 #### **skin**
 
-This entry type is no longer supported, it has to be replaced by a `resource` entry.
+This entry type is no longer supported, it has to be replaced by a `resource` entry. In the above example we had the following `skin` definition:
+
+```
+skin       myaddon   classic/1.0   /chrome/skin/classic/
+```
+
+The `skin` folder is a subfolder of `/chrome/`, which is already available as a `resource://` URL. We can therefore replace all usages of
+
+```
+chrome://subjects_prefix_switch/skin/*
+```
+
+by
+
+```
+resource://subjects_prefix_switch/skin/classic/*
+```
 
 #### style
 
@@ -84,7 +100,7 @@ This should only be a temporary step. After the initial conversion from a `style
 
 #### **overlay**
 
-This entry type is no longer supported. Replacing it will be the main conversion work and is described below ([step 7](legacy-to-modern.md#step-7-creating-missing-ui-entry-points-and-apis-as-experiments) and later).
+This entry type is no longer supported. Replacing it will be the main conversion work and is described in [step 7](legacy-to-modern.md#step-7-creating-missing-ui-entry-points-and-apis-as-experiments) and later.
 
 #### interfaces, component, contract, category
 

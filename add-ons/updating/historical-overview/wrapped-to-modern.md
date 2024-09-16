@@ -1,8 +1,8 @@
 # Convert wrapped WebExtensions to modern WebExtensions
 
-After legacy WebExtensions had been deprecated in Thunderbird 78, the Thunderbird team provided two so called wrapper Experiments (the `WindowListener` Experiment and the `BootstrapLoader` Experiment), which re-implemented the loading framework of legacy extensions and required only little changes for add-ons to be usable in Thunderbird 78. This mechanism was intended as a temporary step, after 4 years the Thunderbird team is no longer able to maintain the two mentioned Experiments.&#x20;
+After legacy WebExtensions had been deprecated in Thunderbird 78, the Thunderbird team provided two so-called wrapper Experiments (the `WindowListener` Experiment and the `BootstrapLoader` Experiment), which re-implemented the loading framework of legacy extensions and required only little changes for add-ons to be usable in Thunderbird 78. This mechanism was intended as an intermediate solution. After 4 years, the Thunderbird team is no longer able to maintain the two mentioned Experiments.&#x20;
 
-This document describes how to remove the wrapper Experiments and how to properly convert legacy extensions to modern WebExtensions.
+This document describes how to remove the wrapper Experiment and how to properly convert a legacy extension to a modern WebExtension.
 
 If you need any help, get in touch with the add-on developer community:
 
@@ -44,7 +44,7 @@ Modern WebExtension should eventually use the WebExtension [`storage`](https://d
 
 ## Step 2: Replace `registerChromeUrl()`
 
-We will keep registering global legacy `chrome://` or `resource://` URLs, but we will use the [LegacyHelper](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyHelper) Experiment instead. Replace the call to `registerChromeUrl()` of the wrapper API by the `registerGlobalUrls()` function of the LegacyHelper Experiment. For example:
+We will keep registering global legacy `chrome://` or `resource://` URLs, but we will use the [LegacyHelper](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyHelper) Experiment. Use the `registerGlobalUrls()` function of the `LegacyHelper` Experiment instead of the `registerChromeUrl()` function of the wrapper Experiment. For example:
 
 ```javascript
 browser.LegacyHelper.registerGlobalUrls([
@@ -57,9 +57,9 @@ browser.LegacyHelper.registerGlobalUrls([
 
 ## Step 3: Replace `registerOptionsPage()`
 
-Modern WebExtensions show their options in an HTML page in a tab or in a frame inside the Add-on Manger. The wrapper APIs instead allowed to register a legacy XUL dialog to be opened when the wrench icon in the add-on card of the Add-on Manger was clicked. This has to be removed to allow that wrench icon to show the standard WebExtension HTML option page.
+Modern WebExtensions show their options in an HTML page in a tab or in a frame inside the Add-on Manger. The wrapper APIs instead allowed to register a legacy XUL dialog to be opened when the wrench icon in the add-on card of the Add-on Manger was clicked. This has to be removed to allow that wrench icon to show the standard WebExtension HTML options page.
 
-In this step we will create a menu entry on the `tools` menu to open the XUL option dialog via the LegacyHelper Experiment:
+In this step, we will create a menu entry on the `tools` menu to open the XUL options dialog via the `LegacyHelper` Experiment:
 
 ```javascript
 browser.menus.create({
@@ -73,10 +73,10 @@ browser.menus.create({
 })
 ```
 
-This will be removed after the XUL options dialog has been converted to a standard WebExtension HTML option page.
+This will be removed after the XUL options dialog has been converted to a standard WebExtension HTML options page.
 
 ## Step 4: Remove the wrapper API
 
-This step will interrupt the main functionality of your add-on. Remove the registration for the wrapper API from `manifest.json`, remove its implementation and schema files and any usage from your background script. The only remaining working part of your add-on should now be your XUL options dialog.
+This step will interrupt the main functionality of your add-on. Remove the registration for the wrapper Experiment from `manifest.json`, remove its implementation and schema files and any usage from your background script. The only remaining working part of your add-on should now be your XUL options dialog.
 
 **Please continue at** [**step 5**](legacy-to-modern.md#step-5-converting-locale-files) **of the standard conversion from legacy WebExtensions to modern WebExtensions.**

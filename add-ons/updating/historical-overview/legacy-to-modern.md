@@ -10,7 +10,7 @@ If you need any help, get in touch with the add-on developer community:
 [community.md](../../community.md)
 {% endcontent-ref %}
 
-Converting a legacy WebExtension into a modern WebExtension will be a complex task: almost all interactions with Thunderbird will need to be re-written to use the new APIs. If these APIs are not yet sufficient for your add-on, you may even need to implement additional Experiment APIs yourself. Don't worry though: you can find information on all aspects of the migration process below, including links to many advanced topics.
+Converting a legacy WebExtension into a modern WebExtension will be a complex task: almost all interactions with Thunderbird will need to be re-written to use the new WebExtension APIs. If these APIs are not yet sufficient for your add-on, you may even need to implement additional Experiment APIs yourself. Don't worry though: you can find information on all aspects of the migration process below, including links to many advanced topics.
 
 {% hint style="warning" %}
 Before working on an update, it is adviced to read some information about the WebExtension technology first. Our [Extension guide](../../mailextensions/) and our ["Hello World" Extension Tutorial](../../hello-world-add-on/) are good starting points.
@@ -55,7 +55,7 @@ There are no direct equivalents to manifest flags, so add-ons now need to provid
 
 #### **skin**
 
-This entry type is no longer supported, it has to be replaced by a `resource` entry. In the above example we had the following `skin` definition:
+This entry type is no longer supported, it has to be replaced by a `resource://` URL. In the above example we had the following `skin` definition:
 
 ```
 skin       myaddon   classic/1.0   /chrome/skin/classic/
@@ -96,7 +96,7 @@ messenger.LegacyCSS.onWindowOpened.addListener((url) => {
 });
 ```
 
-This should only be a temporary step. After the initial conversion from a `style` entry to using the LegacyCSS Experiment, the required styles should be applied by using [standard WebExtension theming support](../../web-extension-themes.md).
+This should only be a temporary step. After the initial conversion from a `style` entry to using the `LegacyCSS` Experiment, the required styles should be applied by using [standard WebExtension theming support](../../web-extension-themes.md).
 
 #### **overlay**
 
@@ -148,11 +148,11 @@ browser.menus.create({
 })
 ```
 
-This will be removed after the XUL options dialog has been converted to a standard WebExtension HTML option page.
+This will be removed after the XUL options dialog has been converted to a standard WebExtension HTML options page.
 
 ## Step 5: Converting locale files
 
-Even though the LegacyHelper Experiment allows to register legacy locales, the technology itself is deprecated: WebExtension HTML pages cannot acces DTD or property files. Instead, they use the [i18n API](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/i18n) to access locales stored in simple JSON files.&#x20;
+Even though the `LegacyHelper` Experiment allows to register legacy locales, the technology itself is deprecated: WebExtension HTML pages cannot acces DTD or property files. Instead, they use the [i18n API](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/i18n) to access locales stored in simple JSON files.&#x20;
 
 The [`localeConverter.py` python script from the webext-support repository](https://github.com/thunderbird/webext-support/tree/master/tools/locale-converter) will do most of the work to convert your locale files (DTD and property files) into the new JSON format.
 
@@ -176,7 +176,7 @@ Javascript loaded by that `options.html` document can access all WebExtension AP
 
 In this step the old XUL options dialog has to be re-created as an HTML page, using only HTML elements, JavaScript and CSS. It is no longer possible to use XUL elements. Some custom elements and 3rd party libraries to simplify this step can be found in the [webext-support](https://github.com/thunderbird/webext-support/tree/master/ui) repository.
 
-It may help duringh development, that the old XUL options page can still be opend through the tools menu.
+It may help during development, that the old XUL options page can still be opend through the `tools` menu.
 
 ### Localisation
 
@@ -441,7 +441,7 @@ In order to add custom UI entry points, the add-on has to manipulate the native 
 
 #### Detect open windows/tabs through WebExtension APIs
 
-This is the preferred method, since the add-on can leverage existing APIs and reduces the amount of code which has to be maintained by the add-on developer.  For example, to manipulate all message display tabs, the following code can be used in the WebExtension background script:
+This is the preferred method, since the add-on can leverage existing WebExtension APIs and reduces the amount of code which has to be maintained by the add-on developer.  For example, to manipulate all message display tabs, the following code can be used in the WebExtension background script:
 
 ```javascript
 // Handle all already open/displayed messages.
@@ -525,7 +525,7 @@ The following example is based on the [Activity Manager Experiment Example](http
 await browser.ActivityManager.registerWindowListener();
 ```
 
-The implementation of the Experiment could be is as follows:
+The implementation of the Experiment could be:
 
 ```javascript
 class ActivityManager extends ExtensionCommon.ExtensionAPI {
@@ -583,7 +583,7 @@ class ActivityManager extends ExtensionCommon.ExtensionAPI {
 
 ### Custom WebExtension events
 
-So far we have only discussed Experiments which perform a direct action _inside_ the Experiment implementation. To move as much code out of the Experiment implementation, we can send a standard WebExtension event and let any follow-up action be handled by the WebExtension.
+So far we have only discussed Experiments which perform a direct action _inside_ the Experiment implementation. To move as much code out of the Experiment implementation, we can trigger a standard WebExtension event and let any follow-up action be handled by the WebExtension.
 
 A common use case is a custom button added to Thunderbird's UI through an Experiment. The action which is triggered by clicking on the button should not be handled in the Experiment, but by the WebExtension background script, which has registered a listener for that button being pressed. For this to work we need to define an `EventEmitter` in the Experiment:
 

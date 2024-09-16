@@ -16,9 +16,7 @@ If you are currently maintaining a legacy extension, please identify the type of
 {% tab title="Wrapped WebExtension" %}
 Status: **Unsupported in Thunderbird 128.**
 
-Wrapped WebExtension are modern WebExtensions, but they use a large Wrapper Experiment (a.k.a. _WindowListener API_ or _BootstrapLoader API_), which re-implemented the framework available to legacy WebExtensions (unsupported since Thunderbird 78).
-
-These Wrapper Experiments had been provided as an intermediate solution to make legacy WebExtensions compatible with Thunderbird 78. These APIs have become unmaintainable and developers should no longer use them.
+Wrapped WebExtension are modern WebExtensions, which use a so-called wrapper Experiment (the `WindowListener` Experiment or the `BootstrapLoader` Experiment). These Experiments were provided as an intermediate solution after legacy WebExtensions had been deprecated in Thunderbird 78. The Thunderbird team also provided a detailed update guide to properly convert legacy WebExtensions to modern WebExtensions. After 4 years, the Thunderbird team is no longer able to maintain the two mentioned wrapper Experiments and developers should no longer use them.
 
 Wrapped WebExtensions have a background script similar to the following:
 

@@ -22,17 +22,131 @@ The technical conversion from a legacy WebExtension to a modern WebExtension is 
 
 Your add-on should now install in current versions of Thunderbird without issues, but it will not yet do anything. The file `chrome.manifest` will no longer be read.
 
-## Step 2: Converting locale files
+## Step 2: Replace the `chrome.manifest` file
 
-One of the first steps should be to convert your locale files (DTD and property files) into the new JSON format used by WebExtensions. Our [`localeConverter.py`](https://github.com/thunderbird/addon-developer-support/tree/master/tools/locale-converter) python script will do the heavy lifting, it will merge the new entries into potentially existing `messages.json` files.
+The most common entries in the `chrome.manifest` file are listed below:
 
-The new locale data can be accessed through the [i18n](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/i18n) WebExtension API:
+```
+content    myaddon                 /content/
+resource   myaddon                 /modules/
+locale     myaddon   en-US         /locale/en-US/
+locale     myaddon   de-DE         /locale/de-DE/
+
+skin       myaddon   classic/1.0   /skin/classic/
+
+style      chrome://messenger/content/activity.xul   chrome://myaddon/skin/myaddon.css
+overlay    chrome://messenger/content/messenger.xul  chrome://myaddon/content/messenger.xul
+```
+
+#### **content, resource and locale**
+
+These entries registered global URLs used by the extension to access its assets. Use the [LegacyHelper](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyHelper) Experiment to register `content`, `resource` and `locale` entries. To replicate the entries shown in the previous example, add the following to your background script:
+
+```javascript
+await browser.LegacyHelper.registerGlobalUrls([
+  ["content",  "myaddon", "content/"],
+  ["resource", "myaddon", "modules/"],
+  ["locale",   "myaddon", "en-US", "locale/en-US/"],
+  ["locale",   "myaddon", "de-DE", "locale/de-DE/"],  
+]);
+```
+
+There are no direct equivalents to manifest flags, so add-ons now need to provide their own mechanisms to switch code or resources depending on the runtime environment. Relevant information is accessible through the [`runtime` API](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/).
+
+#### **skin**
+
+This entry type is no longer supported, it has to be replaced by a `resource` entry.
+
+#### style
+
+This entry is no longer supported, it has to be replaced by the [LegacyCSS](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyCSS) Experiment. To replicate the `style` entry shown in the previous example, add the following to your background script (note that most `*.xul` files have been renamed to `*.xhtml` files in recent versions of Thunderbird):
+
+```javascript
+// Define all CSS files for core windows.
+let files = {
+   "chrome://messenger/content/activity.xhtml": "style.css"
+}
+
+// Inject CSS into all open windows during add-on start (if any).
+for (let [url, file] of Object.entries(files) ) {
+    messenger.LegacyCSS.inject(url, file);
+}
+
+// Listen for opened windows and inject CSS.
+messenger.LegacyCSS.onWindowOpened.addListener((url) => {
+    if (files.hasOwnProperty(url)) {
+        messenger.LegacyCSS.inject(url, files[url]);
+    }
+});
+```
+
+This should only be a temporary step. After the initial conversion from a `style` entry to using the LegacyCSS Experiment, the required styles should be applied by using [standard WebExtension theming support](../../web-extension-themes.md).
+
+#### **overlay**
+
+This entry type is no longer supported. Replacing it will be the main conversion work and is described below ([step 7](legacy-to-modern.md#step-7-creating-missing-ui-entry-points-and-apis-as-experiments) and later).
+
+#### interfaces, component, contract, category
+
+These entries are no longer supported.
+
+## Step 3: Replace the `/defaults/preferences/` folder
+
+Most legacy extensions stored their preferences in an `nsIPrefBranch`, and the `/defaults/preferences/` folder contained JavaScript files with default preference values. An example default preference file could look like this:
+
+```javascript
+pref("extensions.myaddon.enableDebug", false);
+pref("extensions.myaddon.retries", 5);
+pref("extensions.myaddon.greeting", "Hello");
+```
+
+This file can be removed, and the default values must be set in the background script by using the [LegacyPrefs](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyPrefs) Experiment:
+
+```javascript
+await browser.LegacyPrefs.setDefaultPref("extensions.myaddon.enableDebug", false);
+await browser.LegacyPrefs.setDefaultPref("extensions.myaddon.retries", 5);
+await browser.LegacyPrefs.setDefaultPref("extensions.myaddon.greeting", "Hello");
+```
+
+We can now use the [LegacyPrefs](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyPrefs) Experiment to access existing preferences, for example the preference entry at `extensions.myaddon.enableDebug` can be read from any WebExtension script via:
+
+```javascript
+let enableDebug = await browser.LegacyPrefs.getPref("extensions.myaddon.enableDebug");
+```
+
+Modern WebExtension should eventually use the WebExtension [`storage`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage) for their preferences, but to simplify the conversion process, we will keep using the `nsIPrefBranch` for now. The very last conversion step will migrate the preferences.
+
+## Step 4: The XUL options dialog
+
+The XUL options dialog is no longer registered, after the `legacy` key has been removed from `manifest.json`. We will use the [LegacyHelper ](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyHelper)Experiment to open the XUL options dialog via a menu entry in the `tools` menu. Add the following to your background script:
+
+```javascript
+browser.menus.create({
+    id: "oldOptions",
+    contexts: ["tools_menu"],
+    title: "Old XUL options dialog",
+    onclick: () => browser.LegacyHelper.openDialog(
+        "XulAddonOptions",
+        "chrome://myaddon/content/options.xhtml"
+    )
+})
+```
+
+This will be removed after the XUL options dialog has been converted to a standard WebExtension HTML option page.
+
+## Step 5: Converting locale files
+
+Even though the LegacyHelper Experiment allows to register legacy locales, the technology itself is deprecated: WebExtension HTML pages cannot acces DTD or property files. Instead, they use the [i18n API](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/i18n) to access locales stored in simple JSON files.&#x20;
+
+The [`localeConverter.py` python script from the webext-support repository](https://github.com/thunderbird/webext-support/tree/master/tools/locale-converter) will do most of the work to convert your locale files (DTD and property files) into the new JSON format.
+
+The new locale data can be accessed from any WebExtension script:
 
 ```javascript
 browser.i18n.getMessage("a-locale-string");
 ```
 
-## Step 3: Converting the XUL options page
+## Step 6: Converting the XUL options page
 
 Instead of a XUL dialog, WebExtensions use an HTML page for their options page, which will be accessible to the user through the add-on manager. The page is registered in `manifest.json`:
 
@@ -42,21 +156,15 @@ Instead of a XUL dialog, WebExtensions use an HTML page for their options page, 
 }
 ```
 
-From that document, all WebExtension APIs can be accessed in the same way as for example from the background script.
+Javascript loaded by that `options.html` document can access all WebExtension APIs in the same way as for example the background script.
 
-In this step the old XUL options page has to be re-created as an HTML page, using only HTML elements, JavaScript and CSS. It is no longer possible to use XUL elements. Some custom elements and 3rd party libraries to simplify this step can be found in the [webext-support](https://github.com/thunderbird/webext-support/tree/master/ui) repository.
+In this step the old XUL options dialog has to be re-created as an HTML page, using only HTML elements, JavaScript and CSS. It is no longer possible to use XUL elements. Some custom elements and 3rd party libraries to simplify this step can be found in the [webext-support](https://github.com/thunderbird/webext-support/tree/master/ui) repository.
+
+It may help duringh development, that the old XUL options page can still be opend through the tools menu.
 
 ### Localisation
 
 There is no automatic replacement of locale placeholder entities like `&myLocaleIdentifier;` in WebExtension HTML files any more. Instead, you can use placeholders like `__MSG_myLocaleIdentifier__` in your markup and include the [`i18n.js`](https://github.com/thunderbird/webext-support/tree/master/scripts/i18n) script provided by the [webext-support](https://github.com/thunderbird/webext-support/tree/master/scripts/i18n) repository and automatically replace all `__MSG_*__` locale placeholders on page load. The script is using the `i18n` API to read the modern JSON locale files created in the previous step.
-
-### Accessing preferences
-
-Most legacy extensions stored their preferences in an `nsIPrefBranch`. Modern WebExtension should eventually use the WebExtension [`storage`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage); however, to minimize code changes, it may be easier to keep accessing the legacy preferences for now. This can be achieved by including the [LegacyPrefs](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyPrefs) Experiment. The converted WebExtension options page is then able to access the existing `extensions.myaddon.enableDebug` preference entry as follows:
-
-```javascript
-let enableDebug = await browser.LegacyPrefs.getPref("extensions.myaddon.enableDebug");
-```
 
 ### Alternative for `preferencesBindings.js`
 
@@ -69,7 +177,7 @@ The legacy XUL options page used a framework to automatically load and save pref
 </div>
 ```
 
-In JavaScript we can loop over all elements which have such an attribute, and load their value from storage. Additionally we can attach an event listener to store the value after the input field has been changed by the user:
+We can loop over all elements which have such an attribute, and load their value from storage. Additionally we can attach an event listener to store the value after the input field has been changed by the user:
 
 ```javascript
 let prefElements = document.querySelectorAll('[data-preference]');
@@ -94,7 +202,7 @@ for (let prefElement of prefElements) {
 }
 ```
 
-## Step 4: Find matching WebExtension entry points and WebExtension APIs
+## Step 7: Find matching WebExtension entry points and WebExtension APIs
 
 Now it's time to find out how your add-on can leverage the existing WebExtension entry points. What UI elements did you use? Do any of the [supported WebExtension UI elements](../../mailextensions/supported-ui-elements.md) fit?
 
@@ -125,7 +233,7 @@ The goal of this step is to re-create as much of the functionality of your add-o
 
 Do not hesitate to ask in [our community channels](../../community.md) for help.
 
-## Step 5: Creating missing UI entry points and APIs as Experiments
+## Step 8: Creating missing UI entry points and APIs as Experiments
 
 If certain crucial features of your add-on cannot be implemented using the available WebExtension APIs or Web APIs, you can create your own Experiment APIs.
 
@@ -344,7 +452,7 @@ async function removeAttachmentsIfJunk(tab, message) {
 }
 ```
 
-The Experiment implementation could be as follows:
+The following API implementation is based on the [Remove Attachments If Junk Experiment Example](https://github.com/thunderbird/webext-examples/tree/master/manifest\_v2/experiment.removeAttachmentsIfJunk):
 
 ```javascript
 var MessageDisplayAttachment = class extends ExtensionCommon.ExtensionAPI {
@@ -389,66 +497,79 @@ var MessageDisplayAttachment = class extends ExtensionCommon.ExtensionAPI {
 };
 ```
 
-The shown code is taken from the [Remove Attachments If Junk Experiment Example](https://github.com/thunderbird/webext-examples/tree/master/manifest\_v2/experiment.removeAttachmentsIfJunk). An example which manipulates the main window using the same strategy is the [Restart Experiment Example](https://github.com/thunderbird/webext-examples/tree/master/manifest\_v2/experiment.restart).
+An example which manipulates the main window using the same strategy is the [Restart Experiment Example](https://github.com/thunderbird/webext-examples/tree/master/manifest\_v2/experiment.restart).
 
 #### Detect open windows/tabs through the Experiment
 
-If the window of interest is not supported by WebExtension APIs, it is not detectable through WebExtension APIs. The detection code has to live inside an Experiment. This can be achieved through a global window listener, which reacts only on the window of interest (`activity.xhtml` in this case). The global window listener is registered in the Experiment's `onStartup` function, and is removed in its `onShutdown` function:
+If the window of interest is not supported by WebExtension APIs, it is not detectable through WebExtension APIs. The detection code has to live inside an Experiment.
+
+The following example is based on the [Activity Manager Experiment Example](https://github.com/thunderbird/webext-examples/tree/master/manifest\_v2/experiment.activityManager). Its background script triggeres the Experiment to register a global window listener, which manipulates the window of interest:
 
 ```javascript
-onStartup() {
-  const { extension } = this;
-
-  // Register a listener for newly opened activity windows.
-  ExtensionSupport.registerWindowListener(extension.id, {
-    chromeURLs: [
-      "chrome://messenger/content/activity.xhtml",
-    ],
-    onLoadWindow(window) {
-      // Add our event listener.
-      window._exampleAddOnClickHandler = (e) => {
-        console.log("The button was clicked, let's do something!")
-      }
-      window.document.getElementById("clearListButton").addEventListener(
-        "click",
-        window._exampleAddOnClickHandler
-      );
-    },
-  });
-}
-
-onShutdown(isAppShutdown) {
-  if (isAppShutdown) {
-    return;
-  }
-
-  // Remove our event listener.
-  const { extension } = this;
-  for (let window of ExtensionSupport.openWindows) {
-    if ([
-      "chrome://messenger/content/activity.xhtml",
-    ].includes(window.location.href)) {
-      // Remove our event listener.
-      window.document.getElementById("clearListButton").removeEventListener(
-        "click",
-        window._exampleAddOnClickHandler
-      );
-      delete window._exampleAddOnClickHandler;
-    }
-  }
-
-  // Unregister our listener for newly opened windows.
-  ExtensionSupport.unregisterWindowListener(extension.id);  
-}
+await browser.ActivityManager.registerWindowListener();
 ```
 
-This code is based on the [Activity Manager Experiment Example](https://github.com/thunderbird/webext-examples/tree/master/manifest\_v2/experiment.activityManager).
+The implementation of the Experiment could be is as follows:
+
+```javascript
+class ActivityManager extends ExtensionCommon.ExtensionAPI {
+  getAPI(context) {
+    return {
+      // This key must match the class name.
+      ActivityManager: {
+        registerWindowListener() {
+          // Register a listener for newly opened activity windows.
+          ExtensionSupport.registerWindowListener(context.extension.id, {
+            chromeURLs: [
+              "chrome://messenger/content/activity.xhtml",
+            ],
+            onLoadWindow(window) {
+              // Add our event listener.
+              window._exampleAddOnClickHandler = (e) => {
+                console.log("The button was clicked, let's do something!")
+              }
+              window.document.getElementById("clearListButton").addEventListener(
+                "click",
+                window._exampleAddOnClickHandler
+              );
+            },
+          });
+        },
+      },
+    };
+  }
+
+  onShutdown(isAppShutdown) {
+    if (isAppShutdown) {
+      return;
+    }
+
+    // Remove our event listener.
+    const { extension } = this;
+    for (let window of ExtensionSupport.openWindows) {
+      if ([
+        "chrome://messenger/content/activity.xhtml",
+      ].includes(window.location.href)) {
+        // Remove our event listener.
+        window.document.getElementById("clearListButton").removeEventListener(
+          "click",
+          window._exampleAddOnClickHandler
+        );
+        delete window._exampleAddOnClickHandler;
+      }
+    }
+
+    // Unregister our listener for newly opened windows.
+    ExtensionSupport.unregisterWindowListener(extension.id);
+  }
+}
+```
 
 ### Custom WebExtension events
 
 So far we have only discussed Experiments which perform a direct action _inside_ the Experiment implementation. To move as much code out of the Experiment implementation, we can send a standard WebExtension event and let any follow-up action be handled by the WebExtension.
 
-A common use case is a custom button added to Thunderbird's UI through an Experiment. The action which is triggered by clicking on the button should not be handled in the Experiment, but by the WebExtension background script, which has registered a listener for that button being pressed. For this to work we need to define an EventEmitter in the Experiment:
+A common use case is a custom button added to Thunderbird's UI through an Experiment. The action which is triggered by clicking on the button should not be handled in the Experiment, but by the WebExtension background script, which has registered a listener for that button being pressed. For this to work we need to define an `EventEmitter` in the Experiment:
 
 ```javascript
 // An EventEmitter has the following basic functions:
@@ -461,12 +582,20 @@ A common use case is a custom button added to Thunderbird's UI through an Experi
 const emitter = new ExtensionCommon.EventEmitter();
 ```
 
-The boilerplate to declare a WebExtension event is as follows:
+The boilerplate, which  connects the internals of a WebExtension event to the defined `EventEmitter`, is the added `EventManger` in lines 5-21 of the following example. The glue part to actually trigger the event is&#x20;
 
+```javascript
+emitter.emit("activity-manager-command", e.clientX, e.clientY);
+```
+
+in line 31:
+
+{% code lineNumbers="true" %}
 ```javascript
 getAPI(context) {
   return {
     ActivityManager: {
+      
       onCommand: new ExtensionCommon.EventManager({
         context,
         name: "ActivityManager.onCommand",
@@ -482,12 +611,34 @@ getAPI(context) {
           };
         },
       }).api(),
+
+      registerWindowListener() {
+        // Register a listener for newly opened activity windows.
+        ExtensionSupport.registerWindowListener(context.extension.id, {
+          chromeURLs: [
+            "chrome://messenger/content/activity.xhtml",
+          ],
+          onLoadWindow(window) {
+            // Add our event listener.
+            window._exampleAddOnClickHandler = (e) => {
+              console.log("The button was clicked, let's do something!")
+              emitter.emit("activity-manager-command", e.clientX, e.clientY);
+            }
+            window.document.getElementById("clearListButton").addEventListener(
+              "click",
+              window._exampleAddOnClickHandler
+            );
+          },
+        });
+      },
+
     },
   };
 }
 ```
+{% endcode %}
 
-This connects the internals of the WebExtension event to the defined `EventEmitter`. The defined callback function has the `x` and `y` parameters, which are passed through to `fire.async()`, transmitting them to the WebExtension:
+The callback of the `EventEmitter` (line 9) has the `x` and `y` parameters, which are passed through to `fire.async()`, transmitting them to the WebExtension:
 
 ```javascript
 browser.ActivityManager.onCommand.addListener((x, y) => {
@@ -495,29 +646,4 @@ browser.ActivityManager.onCommand.addListener((x, y) => {
 });
 ```
 
-The remaining missing part is to actually trigger the EventEmitter and force its callback to be executed:
-
-```javascript
-onStartup() {
-  const { extension } = this;
-
-  // Register a listener for newly opened activity windows.
-  ExtensionSupport.registerWindowListener(extension.id, {
-    chromeURLs: [
-      "chrome://messenger/content/activity.xhtml",
-    ],
-    onLoadWindow(window) {
-      // Add our event listener.
-      window._exampleAddOnClickHandler = (e) => {
-        emitter.emit("activity-manager-command", e.clientX, e.clientY);
-      }
-      window.document.getElementById("clearListButton").addEventListener(
-        "click",
-        window._exampleAddOnClickHandler
-      );
-    },
-  });
-}
-```
-
-This is the example from the previous section, but this time we emit the `activity-manager-command` event instead of just logging a message. The [Activity Manager Experiment Example](https://github.com/thunderbird/webext-examples/tree/master/manifest\_v2/experiment.activityManager) will provide the full overview.
+A working implementation of this example can be found in the [Activity Manager Experiment Example](https://github.com/thunderbird/webext-examples/tree/master/manifest\_v2/experiment.activityManager).

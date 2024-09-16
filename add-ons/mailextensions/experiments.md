@@ -203,7 +203,7 @@ var { TestModule } = ChromeUtils.importESModule(
 )
 ```
 
-The Experiment **must** unregister the custom `resource://` url in its `onShutdown()` method:
+The Experiment can unregister the custom `resource://` url in its `onShutdown()` method:
 
 ```javascript
 onShutdown(isAppShutdown) {
@@ -224,7 +224,7 @@ onShutdown(isAppShutdown) {
 }
 ```
 
-The [Activity Manager Experiment Example](https://github.com/thunderbird/webext-examples/tree/master/manifest\_v2/experiment.activityManager) is using this method.
+The [Activity Manager Experiment Example](https://github.com/thunderbird/webext-examples/tree/master/manifest\_v2/experiment.activityManager) is registering a `resource://` url through the [LegacyHelper API](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyHelper).
 
 ## Accessing WebExtensions directly from an Experiment
 

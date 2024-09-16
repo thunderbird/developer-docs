@@ -2,7 +2,7 @@
 
 After legacy WebExtensions had been deprecated in Thunderbird 78, the Thunderbird team provided two so called wrapper Experiments (the `WindowListener` Experiment and the `BootstrapLoader` Experiment), which re-implemented the loading framework of legacy extensions and required only little changes for add-ons to be usable in Thunderbird 78. This mechanism was intended as a temporary step, after 4 years the Thunderbird team is no longer able to maintain the two mentioned Experiments.&#x20;
 
-This document describes how to remove the wrapper Experiments and how to properly convert extensions to modern WebExtensions.
+This document describes how to remove the wrapper Experiments and how to properly convert legacy extensions to modern WebExtensions.
 
 If you need any help, get in touch with the add-on developer community:
 
@@ -44,7 +44,7 @@ Modern WebExtension should eventually use the WebExtension [`storage`](https://d
 
 ## Step 2: Replace `registerChromeUrl()`
 
-We will keep registering global legacy `chrome://` or `resource://` urls, but we will use the [LegacyHelper](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyHelper) Experiment instead. Replace the call to `registerChromeUrl()` of the wrapper API by the `registerGlobalUrls()` function of the LegacyHelper Experiment. For example:
+We will keep registering global legacy `chrome://` or `resource://` URLs, but we will use the [LegacyHelper](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyHelper) Experiment instead. Replace the call to `registerChromeUrl()` of the wrapper API by the `registerGlobalUrls()` function of the LegacyHelper Experiment. For example:
 
 ```javascript
 browser.LegacyHelper.registerGlobalUrls([
@@ -79,8 +79,4 @@ This will be removed after the XUL options dialog has been converted to a standa
 
 This step will interrupt the main functionality of your add-on. Remove the registration for the wrapper API from `manifest.json`, remove its implementation and schema files and any usage from your background script. The only remaining working part of your add-on should now be your XUL options dialog.
 
-**Please continue the conversion at step 5 of the guide, which describes the standard conversion from legacy WebExtensions to modern WebExtensions.**
-
-{% content-ref url="legacy-to-modern.md" %}
-[legacy-to-modern.md](legacy-to-modern.md)
-{% endcontent-ref %}
+**Please continue at** [**step 5**](legacy-to-modern.md#step-5-converting-locale-files) **of the standard conversion from legacy WebExtensions to modern WebExtensions.**

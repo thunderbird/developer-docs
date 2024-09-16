@@ -203,7 +203,7 @@ var { TestModule } = ChromeUtils.importESModule(
 )
 ```
 
-The Experiment can unregister the custom `resource://` URL in its `onShutdown()` method:
+The Experiment **must** unregister the custom `resource://` URL in its `onShutdown()` method:
 
 ```javascript
 onShutdown(isAppShutdown) {

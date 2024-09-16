@@ -1,7 +1,3 @@
----
-description: A historical overview.
----
-
 # How to convert legacy extensions?
 
 The architecture of Thunderbird extensions has changed over the years. The following table describes the different legacy extension types, and how they can be converted to modern WebExtensions.
@@ -21,26 +17,23 @@ Wrapped WebExtension are modern WebExtensions, which use a so-called wrapper Exp
 Wrapped WebExtensions have a background script similar to the following:
 
 ```javascript
-async function main() {
-    await messenger.WindowListener.registerDefaultPrefs(
-        "defaults/preferences/prefs.js"
-    );
-    await messenger.WindowListener.registerChromeUrl([
-        ["content",  "prefix_switch",          "chrome/content/"],
-        ["resource", "prefix_switch",          "chrome/skin/classic/"],
-        ["locale",   "prefix_switch", "en-US", "chrome/locale/en-US/"],
-        ["locale",   "prefix_switch", "de-DE", "chrome/locale/de-DE/"],
-    ]);
-    await messenger.WindowListener.registerOptionsPage(
-        "chrome://prefix_switch/content/options.xhtml"
-    );
-    await messenger.WindowListener.registerWindow(
-        "chrome://messenger/content/messengercompose/messengercompose.xhtml",
-        "chrome://prefix_switch/content/messengercompose.js"
-    );
-    await messenger.WindowListener.startListening();
-}
-main();
+await messenger.WindowListener.registerDefaultPrefs(
+    "defaults/preferences/prefs.js"
+);
+await messenger.WindowListener.registerChromeUrl([
+    ["content",  "myaddon",          "chrome/content/"],
+    ["resource", "myaddon",          "chrome/"],
+    ["locale",   "myaddon", "en-US", "chrome/locale/en-US/"],
+    ["locale",   "myaddon", "de-DE", "chrome/locale/de-DE/"],
+]);
+await messenger.WindowListener.registerOptionsPage(
+    "chrome://myaddon/content/options.xhtml"
+);
+await messenger.WindowListener.registerWindow(
+    "chrome://messenger/content/messengercompose/messengercompose.xhtml",
+    "chrome://myaddon/content/messengercompose.js"
+);
+await messenger.WindowListener.startListening();
 ```
 
 #### Update Strategy

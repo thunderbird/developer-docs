@@ -16,6 +16,28 @@ Converting a wrapped WebExtension into a modern WebExtension will be a complex t
 Before working on an update, it is adviced to read some information about the WebExtension technology first. Our [Extension guide](../../mailextensions/) and our ["Hello World" Extension Tutorial](../../hello-world-add-on/) are good starting points.
 {% endhint %}
 
+Wrapped WebExtensions have a background script similar to the following:
+
+```javascript
+await messenger.WindowListener.registerDefaultPrefs(
+    "defaults/preferences/prefs.js"
+);
+await messenger.WindowListener.registerChromeUrl([
+    ["content",  "myaddon",          "chrome/content/"],
+    ["resource", "myaddon",          "chrome/"],
+    ["locale",   "myaddon", "en-US", "chrome/locale/en-US/"],
+    ["locale",   "myaddon", "de-DE", "chrome/locale/de-DE/"],
+]);
+await messenger.WindowListener.registerOptionsPage(
+    "chrome://myaddon/content/options.xhtml"
+);
+await messenger.WindowListener.registerWindow(
+    "chrome://messenger/content/messengercompose/messengercompose.xhtml",
+    "chrome://myaddon/content/messengercompose.js"
+);
+await messenger.WindowListener.startListening();
+```
+
 ## Step 1: Replace `registerDefaultPrefs()`
 
 Most legacy extensions stored their preferences in an `nsIPrefBranch`, and the `registerDefaultPrefs()` function loaded a JavaScript file with default preference values. An example default preference file could look like this:
@@ -26,7 +48,7 @@ pref("extensions.myaddon.retries", 5);
 pref("extensions.myaddon.greeting", "Hello");
 ```
 
-This file and the associated call to `registerDefaultPrefs()` can be removed, and the default values must be set in the background script by using the [LegacyPrefs](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyPrefs) Experiment:
+This file and the associated call to `registerDefaultPrefs()` can be removed, and the default values must be set in the background script through the [LegacyPrefs](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyPrefs) Experiment:
 
 ```javascript
 await browser.LegacyPrefs.setDefaultPref("extensions.myaddon.enableDebug", false);
@@ -48,10 +70,10 @@ We will keep registering global legacy `chrome://` or `resource://` URLs, but we
 
 ```javascript
 browser.LegacyHelper.registerGlobalUrls([
-    ["content",  "myaddon",  "content/"],
-    ["resource", "myaddon",  "assets/"],
-    ["locale",   "myaddon", "en-US", "locale/en-US/"],
-    ["locale",   "myaddon", "de-DE", "locale/de-DE/"],
+    ["content",  "myaddon",          "chrome/content/"],
+    ["resource", "myaddon",          "chrome/"],
+    ["locale",   "myaddon", "en-US", "chrome/locale/en-US/"],
+    ["locale",   "myaddon", "de-DE", "chrome/locale/de-DE/"],
 ]);
 ```
 
@@ -79,4 +101,4 @@ This will be removed after the XUL options dialog has been converted to a standa
 
 This step will interrupt the main functionality of your add-on. Remove the registration for the wrapper Experiment from `manifest.json`, remove its implementation and schema files and any usage from your background script. The only remaining working part of your add-on should now be your XUL options dialog.
 
-**Please continue at** [**step 5**](legacy-to-modern.md#step-5-converting-locale-files) **of the standard conversion from legacy WebExtensions to modern WebExtensions.**
+**Please continue at** [**step 5**](legacy-to-modern.md#step-5-converting-locale-files) **of the conversion from legacy WebExtensions to modern WebExtensions.**

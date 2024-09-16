@@ -20,7 +20,7 @@ Before working on an update, it is adviced to read some information about the We
 
 The technical conversion from a legacy WebExtension to a modern WebExtension is simple: drop the `legacy` key from the `manifest.json` file.
 
-Your add-on should now install in current versions of Thunderbird without issues, but it will not yet do anything. The file `chrome.manifest` will no longer be read.
+Your add-on should now install in current versions of Thunderbird without issues, but it will not yet do anything, because the `chrome.manifest` file is no longer read.
 
 ## Step 2: Replace the `chrome.manifest` file
 
@@ -64,18 +64,22 @@ skin       myaddon   classic/1.0   /chrome/skin/classic/
 The `skin` folder is a subfolder of `/chrome/`, which is already available as a `resource://` URL. We can therefore replace all usages of
 
 ```
-chrome://subjects_prefix_switch/skin/*
+chrome://myaddon/skin/*
 ```
 
 by
 
 ```
-resource://subjects_prefix_switch/skin/classic/*
+resource://myaddon/skin/classic/*
 ```
 
 #### style
 
-This entry is no longer supported, it has to be replaced by the [LegacyCSS](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyCSS) Experiment. To replicate the `style` entry shown in the previous example, add the following to your background script (note that most `*.xul` files have been renamed to `*.xhtml` files in recent versions of Thunderbird):
+This entry is no longer supported, it has to be replaced by the [LegacyCSS](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyCSS) Experiment. To replicate the `style` entry shown in the previous example, add the following to your background script:
+
+{% hint style="warning" %}
+All `*.xul` files have been renamed to `*.xhtml`files in recent versions of Thunderbird! Still using `*.xul` files is unsupported and will cause issues.
+{% endhint %}
 
 ```javascript
 // Define all CSS files for core windows.
@@ -116,7 +120,7 @@ pref("extensions.myaddon.retries", 5);
 pref("extensions.myaddon.greeting", "Hello");
 ```
 
-This file can be removed, and the default values must be set in the background script by using the [LegacyPrefs](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyPrefs) Experiment:
+This file can be removed, and the default values must be set in the background script through the [LegacyPrefs](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyPrefs) Experiment:
 
 ```javascript
 await browser.LegacyPrefs.setDefaultPref("extensions.myaddon.enableDebug", false);
@@ -517,7 +521,7 @@ An example which manipulates the main window using the same strategy is the [Res
 
 #### Detect open windows/tabs through the Experiment
 
-If the window of interest is not supported by WebExtension APIs, it is not detectable through WebExtension APIs. The detection code has to live inside an Experiment.
+If the window of interest is not supported by WebExtension APIs, it is not detectable through WebExtension APIs and the detection code has to live inside an Experiment.
 
 The following example is based on the [Activity Manager Experiment Example](https://github.com/thunderbird/webext-examples/tree/master/manifest\_v2/experiment.activityManager). Its background script triggeres the Experiment to register a global window listener, which manipulates the window of interest:
 
@@ -663,3 +667,7 @@ browser.ActivityManager.onCommand.addListener((x, y) => {
 ```
 
 A working implementation of this example can be found in the [Activity Manager Experiment Example](https://github.com/thunderbird/webext-examples/tree/master/manifest\_v2/experiment.activityManager).
+
+## Step 9: Migrate Preferences
+
+_Coming soon._

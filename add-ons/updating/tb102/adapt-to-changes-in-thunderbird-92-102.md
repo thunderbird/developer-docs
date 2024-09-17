@@ -294,7 +294,7 @@ The interface itself has not changed much, but contact details are handled diffe
 * `supportsVCard` a boolean value indicating support for vCard (or lack thereof).
 * `vCardProperties` is a `VCardProperties` object if the card supports vCard, or null
 
-All former standard contact properties (now referred to as [banished properties](https://searchfox.org/comm-central/rev/04aca864bfedc60a0318ea5b3f546186a69246d6/mailnews/addrbook/modules/VCardUtils.jsm#293-335)) are migrated into the vCard string and can no longer be updated directly via `card.setProperty()`. A limited set of banished properties can still be read from: `DisplayName`, `FirstName`, `LastName`, `PrimaryEmail`, `SecondEmail`, and `NickName`.
+All former standard contact properties (now referred to as [banished properties](https://searchfox.org/comm-esr102/source/mailnews/addrbook/modules/VCardUtils.jsm#306-348)) are migrated into the vCard string and can no longer be updated directly via `card.setProperty()`. A limited set of banished properties can still be read from: `DisplayName`, `FirstName`, `LastName`, `PrimaryEmail`, `SecondEmail`, and `NickName`.
 
 #### Creating a new card
 
@@ -363,7 +363,7 @@ This effectivly means that all changes to the `_vCard` string property after its
 
 #### Convert between key/value pairs and vCard
 
-[VCardUtils.jsm](https://searchfox.org/comm-central/source/mailnews/addrbook/modules/VCardUtils.jsm) contains a number of utility functions for converting between the storage types:
+[VCardUtils.jsm](https://searchfox.org/comm-esr102/source/mailnews/addrbook/modules/VCardUtils.jsm) contains a number of utility functions for converting between the storage types:
 
 ```javascript
 // Convert a vCard string into a key/value property Map. Not all details stored

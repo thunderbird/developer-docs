@@ -101,7 +101,7 @@ LDAP and OS-specific address books will continue to use keys/values.
 * `supportsVCard` a boolean value indicating support for vCard (or lack thereof). Only `AddrBookCard` objects currently support vCard.
 * `vCardProperties` is a `VCardProperties` object if the card supports vCard, or null.
 
-The `VCardProperties` class contains methods for parsing, manipulating, and serialising vCards. Each piece of information in a card is represented by a `VCardPropertyEntry` object. See [VCardUtils.jsm](https://searchfox.org/comm-central/source/mailnews/addrbook/modules/VCardUtils.jsm) for more information.
+The `VCardProperties` class contains methods for parsing, manipulating, and serialising vCards. Each piece of information in a card is represented by a `VCardPropertyEntry` object. See [VCardUtils.sys.mjs](https://searchfox.org/comm-central/source/mailnews/addrbook/modules/VCardUtils.sys.mjs) for more information.
 
 ### Storage changes
 
@@ -129,7 +129,7 @@ Cards are only migrated when they are saved.
 
 ### Data conversion between keys/values and vCard
 
-[VCardUtils.jsm](https://searchfox.org/comm-central/source/mailnews/addrbook/modules/VCardUtils.jsm) contains a number of utility functions for converting between the storage types:
+[VCardUtils.sys.mjs](https://searchfox.org/comm-central/source/mailnews/addrbook/modules/VCardUtils.sys.mjs) contains a number of utility functions for converting between the storage types:
 
 * `VCardUtils.abCardToVCard` converts an `nsIAbCard` (any implementation) into a vCard string.
 * `VCardUtils.propertyMapToVCard` converts a `Map` of keys and values to a vCard string.
@@ -143,4 +143,4 @@ Cards are only migrated when they are saved.
 Conversion from a key/value dictionary to vCard should not result in any data loss. In the other direction data loss is possible.
 {% endhint %}
 
-To see exactly what fields are converted and what they are converted to, see `typeMap` in VCardUtils.jsm.
+To see exactly what fields are converted and what they are converted to, see `typeMap` in VCardUtils.sys.mjs.

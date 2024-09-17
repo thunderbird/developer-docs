@@ -731,7 +731,7 @@ fancyExperimentFunction: async function (debug) {
 }
 ```
 
-In WebExtension scripts we continue (for now) to use the [LegacyPrefs](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyPrefs) Experiment to retrieve the value for the `enableDebug` preference:
+In the WebExtension script calling that method, we continue (for now) to use the [LegacyPrefs](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyPrefs) Experiment to retrieve the value for the `enableDebug` preference before passing it to the Experiment:
 
 ```javascript
 let debug = await browser.LegacyPrefs.getPref("extensions.myaddon.enableDebug");
@@ -766,19 +766,19 @@ Cached preferences can be accessed everywhere inside the Experiment implementati
               cachedPreferences.set(prefName, currentValue);
             } else {
               cachedPreferences.delete(prefName);
-            }                       
+            }
             if (defaultValue !== null) {
               cachedDefaults.set(prefName, defaultValue);
             }
           },
 
           fancyFunction: async function () {
-            // Be verbose during development if indicated by the cachePreferences.
+            // Be verbose during development if indicated by the cached preference.
             if (getPref("enableDebug")) {
               console.log(`This is a fancy Experiment function`);
             }
             // Do something ...
-          }          
+          }
         },
       };
     }
@@ -826,7 +826,7 @@ import * as prefs from "preferences.mjs";
 // Migrate preferences from extensions.myaddon.* to local storage.
 let migrated = await prefs.getPref("_migrated");
 if (!migrated) {
-    for (let prefName of Object.keys(prefs.DEFAULTS)) {
+    for (let [prefName] of prefs.getDefaults()) {
         let prefValue = await browser.LegacyPrefs.getUserPref(
             `extensions.myaddon.${prefName}`
         );

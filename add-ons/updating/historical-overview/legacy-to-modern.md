@@ -13,7 +13,7 @@ If you need any help, get in touch with the add-on developer community:
 Converting a legacy WebExtension into a modern WebExtension will be a complex task: almost all interactions with Thunderbird will need to be re-written to use the new WebExtension APIs. If these APIs are not yet sufficient for your add-on, you may even need to implement additional Experiment APIs yourself. Don't worry though: you can find information on all aspects of the migration process below, including links to many advanced topics.
 
 {% hint style="warning" %}
-Before working on an update, it is adviced to read some information about the WebExtension technology first. Our [Extension guide](../../mailextensions/) and our ["Hello World" Extension Tutorial](../../hello-world-add-on/) are good starting points.
+Before working on an update, it is advised to read some information about the WebExtension technology first. Our [Extension guide](../../mailextensions/) and our ["Hello World" Extension Tutorial](../../hello-world-add-on/) are good starting points.
 {% endhint %}
 
 {% hint style="warning" %}
@@ -82,7 +82,7 @@ resource://myaddon/skin/classic/*
 This entry is no longer supported, it has to be replaced by the [LegacyCSS](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyCSS) Experiment. To replicate the `style` entry shown in the previous example, add the following to your background script:
 
 {% hint style="warning" %}
-All `*.xul` files have been renamed to `*.xhtml`files in recent versions of Thunderbird! Still using `*.xul` files is unsupported and will cause issues.
+All `*.xul` files have been renamed to `*.xhtml` files in recent versions of Thunderbird! Still using `*.xul` files is unsupported and will cause issues.
 {% endhint %}
 
 ```javascript
@@ -168,7 +168,7 @@ This will be removed after the XUL options dialog has been converted to a standa
 
 ## Step 5: Converting locale files
 
-Even though the [LegacyHelper](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyHelper) Experiment allows to register legacy locales, the technology itself is deprecated: WebExtension HTML pages cannot acces DTD or property files. Instead, they use the [i18n API](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/i18n) to access locales stored in simple JSON files.
+Even though the [LegacyHelper](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyHelper) Experiment allows to register legacy locales, the technology itself is deprecated: WebExtension HTML pages cannot access DTD or property files. Instead, they use the [i18n API](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/i18n) to access locales stored in simple JSON files.
 
 The [localeConverter.py](https://github.com/thunderbird/webext-support/tree/master/tools/locale-converter) python script will do most of the work to convert your locale files (DTD and property files) into the new JSON format.
 
@@ -192,7 +192,7 @@ JavaScript loaded by that `options.html` document can access all WebExtension AP
 
 In this step the old XUL options dialog has to be re-created as an HTML page, using only HTML elements, JavaScript and CSS. It is no longer possible to use XUL elements. Some custom elements and 3rd party libraries to simplify this step can be found in the [webext-support](https://github.com/thunderbird/webext-support/tree/master/ui) repository.
 
-It may help during development, that the old XUL options page can still be opend through the `tools` menu.
+It may help during development, that the old XUL options page can still be opened through the `tools` menu.
 
 ### Localisation
 
@@ -210,7 +210,7 @@ The script is using the `i18n` API to read the modern JSON locale files created 
 
 ### Alternative for `preferencesBindings.js`
 
-The legacy XUL options page used a framework to automatically load and save preference values, controled by the [preferencesBindings.js](https://searchfox.org/mozilla-central/rev/6e6265bd607cbe4c96e714f86d3d9e36620f63d6/toolkit/content/preferencesBindings.js) script. That automatism does not exist for HTML option pages. But it is possible to implement a similar mechanism using a `data-preference` attribute:
+The legacy XUL options page used a framework to automatically load and save preference values, controlled by the [preferencesBindings.js](https://searchfox.org/mozilla-central/rev/6e6265bd607cbe4c96e714f86d3d9e36620f63d6/toolkit/content/preferencesBindings.js) script. That automatism does not exist for HTML option pages. But it is possible to implement a similar mechanism using a `data-preference` attribute:
 
 ```html
 <div>
@@ -545,7 +545,7 @@ An example which manipulates the main window using the same strategy is the [Res
 
 If the window of interest is not supported by WebExtension APIs, it is not detectable through WebExtension APIs and the detection code has to live inside an Experiment.
 
-The following example is based on the [Activity Manager Experiment Example](https://github.com/thunderbird/webext-examples/tree/master/manifest\_v2/experiment.activityManager). Its background script triggeres the Experiment to register a global window listener, which manipulates the window of interest:
+The following example is based on the [Activity Manager Experiment Example](https://github.com/thunderbird/webext-examples/tree/master/manifest\_v2/experiment.activityManager). Its background script triggers the Experiment to register a global window listener, which manipulates the window of interest:
 
 ```javascript
 await browser.ActivityManager.registerWindowListener();
@@ -784,7 +784,7 @@ Cached preferences can be accessed everywhere inside the Experiment implementati
     }
   };
 
-  // Export the api by assigning it to the exports parameter of the anonymous
+  // Export the API by assigning it to the exports parameter of the anonymous
   // closure function, which is the global this.
   exports.ExperimentWithPreferenceCache = ExperimentWithPreferenceCache;
 
@@ -872,4 +872,4 @@ browser.storage.local.onChanged.addListener(async (changes) => {
 });
 ```
 
-Wait about 6-12 month after the migration code has been shipped to your users, before removing the migration code and the [LegacyPrefs](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyPrefs) Experiment.
+Wait about 6-12 months after the migration code has been shipped to your users, before removing the migration code and the [LegacyPrefs](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyPrefs) Experiment.

@@ -73,7 +73,7 @@ Alternatively, you may use an UUID enclosed in curly braces, for example:\
 
 ### Additional theme properties
 
-Although the above theme will work as-is, there are other properties which can be added. All currently supported properties are listed in the [`ThemeType`](https://webextension-api.thunderbird.net/en/beta-mv2/theme.html#theme-themetype) definition in our WebExtension API documentation.
+Although the above theme will work as-is, there are other properties which can be added. All currently supported properties are listed in the [ThemeType](https://webextension-api.thunderbird.net/en/beta-mv2/theme.html#theme-themetype) definition in our WebExtension API documentation.
 
 ### Icons
 
@@ -145,7 +145,7 @@ Here is a `manifest.json` from a theme that uses all the above features, thanks 
 
 ## Dynamic Themes
 
-Dynamic themes are actually normal extensions, that use the [`update()`](https://webextension-api.thunderbird.net/en/beta-mv2/theme.html#update-windowid-details) method of the [`theme`](https://webextension-api.thunderbird.net/en/beta-mv2/theme.html#theme) API instead of a static [`theme`](https://webextension-api.thunderbird.net/en/beta-mv2/theme.html) manifest key. They can set the same theme properties like static themes, but they can change them dynamically. For instance the [Night and Day theme](https://addons.thunderbird.net/addon/night-and-day-dynamic/) is a dynamic theme that changes the theme colors based on the time of day.
+Dynamic themes are actually normal extensions, that use the [update()](https://webextension-api.thunderbird.net/en/beta-mv2/theme.html#update-windowid-details) method of the [theme](https://webextension-api.thunderbird.net/en/beta-mv2/theme.html#theme) API instead of a static [theme](https://webextension-api.thunderbird.net/en/beta-mv2/theme.html) manifest key. They can set the same theme properties like static themes, but they can change them dynamically. For instance the [Night and Day theme](https://addons.thunderbird.net/addon/night-and-day-dynamic/) is a dynamic theme that changes the theme colors based on the time of day.
 
 {% content-ref url="mailextensions/" %}
 [mailextensions](mailextensions/)
@@ -168,9 +168,9 @@ messenger.composeScripts.register({
 
 ## Theme Experiments
 
-A theme experiment allows modifying the user interface of Thunderbird beyond what is currently possible using the built-in color, image and property keys of the [`theme`](https://webextension-api.thunderbird.net/en/beta-mv2/theme.html) API. These experiments are a precursor to proposing new theme features for inclusion in Thunderbird.&#x20;
+A theme experiment allows modifying the user interface of Thunderbird beyond what is currently possible using the built-in color, image and property keys of the [theme](https://webextension-api.thunderbird.net/en/beta-mv2/theme.html) API. These experiments are a precursor to proposing new theme features for inclusion in Thunderbird.&#x20;
 
-Experimentation is done by exposing already existing internal CSS variables (e.g. `--arrowpanel-dimmed`) to the [`theme`](https://webextension-api.thunderbird.net/en/beta-mv2/theme.html) API and by loading additional stylesheets to define new CSS variables, extending the theme-able areas of Thunderbird.
+Experimentation is done by exposing already existing internal CSS variables (e.g. `--arrowpanel-dimmed`) to the [theme](https://webextension-api.thunderbird.net/en/beta-mv2/theme.html) API and by loading additional stylesheets to define new CSS variables, extending the theme-able areas of Thunderbird.
 
 Use the [browser toolbox](https://developer.mozilla.org/en-US/docs/Tools/Browser\_Toolbox) to discover CSS selectors for Thunderbird UI elements or internal Thunderbird CSS variables.
 

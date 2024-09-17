@@ -19,7 +19,7 @@ In addition to [standard content scripts](https://developer.mozilla.org/en-US/do
 * compose scripts loaded into the editor of the message composer
 * message display scripts loaded into rendered messages when displayed to the user
 
-We will be using a message display script in this example. In order to register one, we use the [`messageDisplayScripts`](https://webextension-api.thunderbird.net/en/beta-mv2/messageDisplayScripts.html) API and add the following code to our background script:
+We will be using a message display script in this example. In order to register one, we use the [messageDisplayScripts](https://webextension-api.thunderbird.net/en/beta-mv2/messageDisplayScripts.html) API and add the following code to our background script:
 
 ```javascript
 // Register the message display script for all newly opened message tabs.
@@ -117,7 +117,7 @@ What is special however is how the displayed information is retrieved. In the se
 
 #### Sending a runtime message
 
-The [`sendMessage()`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/sendMessage) method of the [`runtime`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime) API will send a message to each active page, including the background page, the options page, popup pages and other HTML pages of our extension loaded using [`windows.create()`](using-content-scripts.md#using-a-message-display-script) or [`tabs.create()`](using-content-scripts.md#using-a-message-display-script). The message itself can be a string, an integer, a boolean, an array or an object. It must abide to the [structured clone algorithm](using-content-scripts.md#testing-the-extension).
+The [sendMessage()](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/sendMessage) method of the [runtime](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime) API will send a message to each active page, including the background page, the options page, popup pages and other HTML pages of our extension loaded using [windows.create()](using-content-scripts.md#using-a-message-display-script) or [tabs.create()](using-content-scripts.md#using-a-message-display-script). The message itself can be a string, an integer, a boolean, an array or an object. It must abide to the [structured clone algorithm](using-content-scripts.md#testing-the-extension).
 
 In line `2` of `message-content-script.js`, we send the message object `{command: "getBannerDetails"}`, to request the display details from the background page. In line `24` we send the message object `{command: "markUnread"}`, to request the background page to mark the currently viewed message as unread.
 
@@ -181,7 +181,7 @@ async function commandHandler(message, sender) {
 The `messages.update()` function requires the <mark style="color:red;">`messagesUpdate`</mark> permission, which needs to be added to the `permissions` key in our `manifest.json` file.
 {% endhint %}
 
-The `message` passed to the `onMessage` listener will be whatever has been sent using `sendMessage().` The `sender` is of type [`MessageSender`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/MessageSender) and will include the sending tab.
+The `message` passed to the `onMessage` listener will be whatever has been sent using `sendMessage().` The `sender` is of type [MessageSender](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/MessageSender) and will include the sending tab.
 
 In this example, we check if the runtime message includes our command and based on its value either return the banner details or mark the viewed message as unread.
 

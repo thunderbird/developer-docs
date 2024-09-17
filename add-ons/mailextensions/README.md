@@ -222,7 +222,7 @@ Content scripts can [communicate with background scripts](https://developer.mozi
 
 ### CloudFile Management Scripts
 
-A script loaded from a CloudFile[ `management_url`](https://webextension-api.thunderbird.net/en/beta-mv2/cloudFile.html#manifest-file-properties) can only use the following WebExtension APIs:
+A script loaded from a CloudFile [management_url](https://webextension-api.thunderbird.net/en/beta-mv2/cloudFile.html#manifest-file-properties) can only use the following WebExtension APIs:
 
 * [cloudFile](https://webextension-api.thunderbird.net/en/beta-mv2/cloudFile.html).\*
 * [extension](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/extension).\*

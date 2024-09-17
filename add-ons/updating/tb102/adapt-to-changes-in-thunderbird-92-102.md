@@ -55,11 +55,11 @@ if ("restartApplication" in MailUtils)
 
 ### composer
 
-The id of the editor element in the composer has been renamed from [`content-frame`](https://searchfox.org/comm-esr91/source/mail/components/compose/content/messengercompose.xhtml#2478) to [`messageEditor`](https://searchfox.org/comm-central/rev/36c713a3d0bf0d0ca2208fdf74f8a133d4ed7edd/mail/components/compose/content/messengercompose.xhtml#2460).
+The id of the editor element in the composer has been renamed from [content-frame](https://searchfox.org/comm-esr91/source/mail/components/compose/content/messengercompose.xhtml#2478) to [messageEditor](https://searchfox.org/comm-central/rev/36c713a3d0bf0d0ca2208fdf74f8a133d4ed7edd/mail/components/compose/content/messengercompose.xhtml#2460).
 
 ### message window
 
-The id of the additional header area in the message display window has been renamed from [`expandedHeaders2`](https://searchfox.org/comm-esr91/source/mail/base/content/msgHdrView.inc.xhtml#268) to [`extraHeadersArea`](https://searchfox.org/comm-central/rev/7e775d6f5ba8334b968619bed2082cd967615a75/mail/base/content/msgHdrView.inc.xhtml#408). The element has also been converted from a `table` to a `div`.
+The id of the additional header area in the message display window has been renamed from [expandedHeaders2](https://searchfox.org/comm-esr91/source/mail/base/content/msgHdrView.inc.xhtml#268) to [extraHeadersArea](https://searchfox.org/comm-central/rev/7e775d6f5ba8334b968619bed2082cd967615a75/mail/base/content/msgHdrView.inc.xhtml#408). The element has also been converted from a `table` to a `div`.
 
 The class `headerName` used for the styling header entries has been renamed to `message-header-label`. The class`message-header-row` has been added, styling the entire row.
 
@@ -106,7 +106,7 @@ let item = await calendar.getItem(itemId);
 
 The `calIOperationListener` and `calIOperation` interfaces are still used in various places but the general direction is to remove them eventually after 102 in favor of Promises and ReadableStreams. If you have code that uses them internally, please update where feasible.
 
-If your code is synchronous, you will have to rework it to make use of asynchronous functions. Feel free to reach out for further help on this through our[ community channels](../../community.md).
+If your code is synchronous, you will have to rework it to make use of asynchronous functions. Feel free to reach out for further help on this through our [community channels](../../community.md).
 
 #### Provider changes in calICalendar.addItem/adoptItem/modifyItem
 
@@ -441,7 +441,7 @@ The parameters of this listener have been changed in Thunderbird 102. The header
 nsIMsgSendListener.onGetDraftFolderURI(aMsgId, aFolderURI)
 ```
 
-The new parameter has been added at the first position to[ match all the other listeners](https://searchfox.org/comm-central/rev/7923bcceab6029d38d0be76a021424b300997dbe/mailnews/compose/public/nsIMsgSendListener.idl), which already return the messageId.
+The new parameter has been added at the first position to [match all the other listeners](https://searchfox.org/comm-central/rev/7923bcceab6029d38d0be76a021424b300997dbe/mailnews/compose/public/nsIMsgSendListener.idl), which already return the messageId.
 
 ### nsIPrintSettings.\*
 
@@ -453,7 +453,7 @@ A few members and methods have been removed without replacement:
 * `showPrintProgress`
 * `SetupSilentPrinting()`
 
-Instead of `printToFile`, use [`outputDestination`](https://searchfox.org/mozilla-central/rev/3419858c997f422e3e70020a46baae7f0ec6dacc/widget/nsIPrintSettings.idl#291) with a value from [`OutputDestinationType`](https://searchfox.org/mozilla-central/rev/3419858c997f422e3e70020a46baae7f0ec6dacc/widget/nsIPrintSettings.idl#93).
+Instead of `printToFile`, use [outputDestination](https://searchfox.org/mozilla-central/rev/3419858c997f422e3e70020a46baae7f0ec6dacc/widget/nsIPrintSettings.idl#291) with a value from [OutputDestinationType](https://searchfox.org/mozilla-central/rev/3419858c997f422e3e70020a46baae7f0ec6dacc/widget/nsIPrintSettings.idl#93).
 
 ### nsIPrintingPromptService.\*
 

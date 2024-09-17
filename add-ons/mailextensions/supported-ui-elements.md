@@ -22,7 +22,7 @@ It is controlled by the `browser_action` manifest key in the extension's `manife
 },
 ```
 
-If a `default_popup` is defined, a popup will be opened and the defined html page will be loaded, when the button is clicked. Additionally, you can use the [`browserAction`](https://webextension-api.thunderbird.net/en/beta-mv2/browserAction.html) API in your background script to interact with the button to modify _badge text_, _icon_, _title_ or its _enabled state_.
+If a `default_popup` is defined, a popup will be opened and the defined html page will be loaded, when the button is clicked. Additionally, you can use the [browserAction](https://webextension-api.thunderbird.net/en/beta-mv2/browserAction.html) API in your background script to interact with the button to modify _badge text_, _icon_, _title_ or its _enabled state_.
 
 If the action button is defined as a [menu typed action button](https://github.com/thunderbird/webext-examples/tree/master/manifest_v2/menuActionButton), it will open a drop-down menu when clicked.&#x20;
 
@@ -44,7 +44,7 @@ It is controlled by `compose_action` manifest key in the extension's `manifest.j
 },
 ```
 
-If a `default_popup` is defined, a popup will be opened and the defined html page will be loaded, when the button is clicked. Additionally, you can use the [`composeAction`](https://webextension-api.thunderbird.net/en/beta-mv2/composeAction.html) API in your background script to interact with the button to modify _badge text_, _icon_, _title_ or its _enabled state_.
+If a `default_popup` is defined, a popup will be opened and the defined html page will be loaded, when the button is clicked. Additionally, you can use the [composeAction](https://webextension-api.thunderbird.net/en/beta-mv2/composeAction.html) API in your background script to interact with the button to modify _badge text_, _icon_, _title_ or its _enabled state_.
 
 If the action button is defined as a [menu typed action button](https://github.com/thunderbird/webext-examples/tree/master/manifest_v2/menuActionButton), it will open a drop-down menu when clicked.
 
@@ -64,19 +64,19 @@ It is controlled by the `message_display_action` manifest key in the extension's
     },
 ```
 
-If a `default_popup` is defined, a popup will be opened and the defined html page will be loaded, when the button is clicked. Additionally, you can use the [`messageDisplayAction`](https://webextension-api.thunderbird.net/en/beta-mv2/messageDisplayAction.html) API in your background script to interact with the button to modify _badge text_, _icon_, _title_ or its _enabled state_.
+If a `default_popup` is defined, a popup will be opened and the defined html page will be loaded, when the button is clicked. Additionally, you can use the [messageDisplayAction](https://webextension-api.thunderbird.net/en/beta-mv2/messageDisplayAction.html) API in your background script to interact with the button to modify _badge text_, _icon_, _title_ or its _enabled state_.
 
 If the action button is defined as a [menu typed action button](https://github.com/thunderbird/webext-examples/tree/master/manifest_v2/menuActionButton), it will open a drop-down menu when clicked.
 
 ## CloudFile Provider Configuration
 
-Thunderbird supports cloud providers to upload large attachments to a server, instead of attaching them directly to the email. Extensions can register such cloud providers using the [`CloudFile`](https://webextension-api.thunderbird.net/en/beta-mv2/cloudFile.html) API. These providers can be managed in Thunderbird's Composition options:
+Thunderbird supports cloud providers to upload large attachments to a server, instead of attaching them directly to the email. Extensions can register such cloud providers using the [CloudFile](https://webextension-api.thunderbird.net/en/beta-mv2/cloudFile.html) API. These providers can be managed in Thunderbird's Composition options:
 
 ![](../../.gitbook/assets/cloud.PNG)
 
 ## Menu Items
 
-The [`menus`](https://webextension-api.thunderbird.net/en/beta-mv2/menus.html) API allows modifying Thunderbird's menus by adding or overriding menu items. The menu items can be added to different menus based on the provided `context` type. Examples can be found in our [example repository](https://github.com/thunderbird/webext-examples/tree/master/manifest_v2/menu).
+The [menus](https://webextension-api.thunderbird.net/en/beta-mv2/menus.html) API allows modifying Thunderbird's menus by adding or overriding menu items. The menu items can be added to different menus based on the provided `context` type. Examples can be found in our [example repository](https://github.com/thunderbird/webext-examples/tree/master/manifest_v2/menu).
 
 Thunderbird menus are accessible through the following context types:
 

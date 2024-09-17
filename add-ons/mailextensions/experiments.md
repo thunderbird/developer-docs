@@ -7,7 +7,7 @@ Since Experiments directly interact with Thunderbird's core functions, it is nec
 {% endhint %}
 
 {% hint style="info" %}
-Thunderbird does contain a few useful features related to Experiments [whose documentation is no longer generated](https://bugzilla.mozilla.org/show\_bug.cgi?id=1556460#c23). Especially if you're writing an Experiment with complex interactions between the WebExtension and your Experiment, it may be helpful to read the documentation blocks within [`ExtensionCommon.sys.mjs`](https://searchfox.org/mozilla-central/source/toolkit/components/extensions/ExtensionCommon.sys.mjs) and possibly other modules in the same source code folder.
+Thunderbird does contain a few useful features related to Experiments [whose documentation is no longer generated](https://bugzilla.mozilla.org/show\_bug.cgi?id=1556460#c23). Especially if you're writing an Experiment with complex interactions between the WebExtension and your Experiment, it may be helpful to read the documentation blocks within [ExtensionCommon.sys.mjs](https://searchfox.org/mozilla-central/source/toolkit/components/extensions/ExtensionCommon.sys.mjs) and possibly other modules in the same source code folder.
 {% endhint %}
 
 {% hint style="info" %}
@@ -119,7 +119,7 @@ If you want to pass more complex data structures, especially functions or instan
 
     There are two options to work around that: either the Experiment clones the object into the unprivileged scope of the WebExtension or it directly constructs an unprivileged object.
 
-    The first option usually boils down to invoking [`Components.utils.cloneInto()`](http://www.devdoc.net/web/developer.mozilla.org/en-US/docs/Components.utils.cloneInto.html) or a related function with `context.cloneScope` as target scope. A notable exception is returning data from async API functions or wrapping Promises via [`context.wrapPromise()`](https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/reference.html#BaseContext.wrapPromise), which causes automatic cloning of the result (unless the result is wrapped into a `ExtensionCommon.NoCloneSpreadArgs`).
+    The first option usually boils down to invoking [Components.utils.cloneInto()](http://www.devdoc.net/web/developer.mozilla.org/en-US/docs/Components.utils.cloneInto.html) or a related function with `context.cloneScope` as target scope. A notable exception is returning data from async API functions or wrapping Promises via [context.wrapPromise()](https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/reference.html#BaseContext.wrapPromise), which causes automatic cloning of the result (unless the result is wrapped into a `ExtensionCommon.NoCloneSpreadArgs`).
 
     The second option is using the constructors in `context.cloneScope` directly from the Experiment. Their results can be used from the WebExtension without further cloning.
 

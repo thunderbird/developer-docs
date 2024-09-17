@@ -120,7 +120,7 @@ Has been renamed to `nsIMsgCopyService.notifyCompletion`.
 
 ### nsIMsgFolder.deleteSubFolders
 
-Has been replaced by [`nsIMsgFolder.deleteSelf`](https://hg.mozilla.org/comm-central/diff/d4333da4784fc707a56a5bdda13392a94765c05b/mail/base/content/folderPane.js#l1.14).
+Has been replaced by [nsIMsgFolder.deleteSelf](https://hg.mozilla.org/comm-central/diff/d4333da4784fc707a56a5bdda13392a94765c05b/mail/base/content/folderPane.js#l1.14).
 
 ## Removed API
 
@@ -164,11 +164,11 @@ Interface has been dropped in favor of an observer based approach. See&#x20;
 
 ### nsIMsgFolder.listFoldersWithFlags
 
-Use [`nsIMsgFolder.getFoldersWithFlags`](https://searchfox.org/comm-central/rev/03c30c3cab0afd0fb2b5d53c7dd5a021366a8810/mailnews/base/public/nsIMsgFolder.idl#442)instead.
+Use [nsIMsgFolder.getFoldersWithFlags](https://searchfox.org/comm-central/rev/03c30c3cab0afd0fb2b5d53c7dd5a021366a8810/mailnews/base/public/nsIMsgFolder.idl#442)instead.
 
 ### nsIMsgFolderNotificationService.notifyItemElement()
 
-Use the dedicated function [`MailServices.mfn.notifyMsgsJunkStatusChanged`](https://searchfox.org/comm-esr91/rev/4732e5ce696f2c33f616e7105ce253c2e89057ae/mailnews/base/public/nsIMsgFolderNotificationService.idl#83) or [`MailServices.mfn.notifyFolderReindexTriggered`](https://searchfox.org/comm-esr91/rev/4732e5ce696f2c33f616e7105ce253c2e89057ae/mailnews/base/public/nsIMsgFolderNotificationService.idl#118) instead.
+Use the dedicated function [MailServices.mfn.notifyMsgsJunkStatusChanged](https://searchfox.org/comm-esr91/rev/4732e5ce696f2c33f616e7105ce253c2e89057ae/mailnews/base/public/nsIMsgFolderNotificationService.idl#83) or [MailServices.mfn.notifyFolderReindexTriggered](https://searchfox.org/comm-esr91/rev/4732e5ce696f2c33f616e7105ce253c2e89057ae/mailnews/base/public/nsIMsgFolderNotificationService.idl#118) instead.
 
 ## Broken/Removed XUL Elements
 

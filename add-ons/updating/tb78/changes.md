@@ -210,7 +210,7 @@ The [removal of `nsIEditorStyleSheets`](https://bugzilla.mozilla.org/show\_bug.c
 
 ### getAnonymousElementByAttribute() and getAnonymousNodes() have been removed
 
-These two methods are leftovers from de-XBL effort and have not been working since TB68. In TB72 they have been removed completely and using them will now throw an error. They have to be replaced by [`document.getElementById()`](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById), [`document.querySelectorAll()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelectorAll) or similar methods.
+These two methods are leftovers from de-XBL effort and have not been working since TB68. In TB72 they have been removed completely and using them will now throw an error. They have to be replaced by [document.getElementById()](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById), [document.querySelectorAll()](https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelectorAll) or similar methods.
 
 The documents these methods have been used with have probably changed dramatically. Check out [searchfox.org](https://searchfox.org) to learn about the current layouts.
 
@@ -270,9 +270,9 @@ With TB70, these two attributes have been removed from XUL elements like `textbo
     onsyncfrompreference="return onFromPref();"/>
 ```
 
-Most of the XUL based preferences system has been long removed and had to be replaced by either using the [`preferencesBindings.js`](https://developer.thunderbird.net/add-ons/updates/tb68#less-than-prefwindow-greater-than-less-than-prefpane-greater-than-less-than-preferences-greater-than-and-less-than-preference-greater-than) [wrapper](https://developer.thunderbird.net/add-ons/updates/tb68#less-than-prefwindow-greater-than-less-than-prefpane-greater-than-less-than-preferences-greater-than-and-less-than-preference-greater-than) or by manually reimplementing that functionality using the`nsIPrefService`.
+Most of the XUL based preferences system has been long removed and had to be replaced by either using the [preferencesBindings.js](https://developer.thunderbird.net/add-ons/updates/tb68#less-than-prefwindow-greater-than-less-than-prefpane-greater-than-less-than-preferences-greater-than-and-less-than-preference-greater-than) [wrapper](https://developer.thunderbird.net/add-ons/updates/tb68#less-than-prefwindow-greater-than-less-than-prefpane-greater-than-less-than-preferences-greater-than-and-less-than-preference-greater-than) or by manually reimplementing that functionality using the`nsIPrefService`.
 
-The second approach is not affected by this change, as it has full control over the load and save process for all its preferences. The[`preferencesBindings.js`](https://developer.thunderbird.net/add-ons/updates/tb68#less-than-prefwindow-greater-than-less-than-prefpane-greater-than-less-than-preferences-greater-than-and-less-than-preference-greater-than) [wrapper](https://developer.thunderbird.net/add-ons/updates/tb68#less-than-prefwindow-greater-than-less-than-prefpane-greater-than-less-than-preferences-greater-than-and-less-than-preference-greater-than) has been updated and now supports:
+The second approach is not affected by this change, as it has full control over the load and save process for all its preferences. The [preferencesBindings.js](https://developer.thunderbird.net/add-ons/updates/tb68#less-than-prefwindow-greater-than-less-than-prefpane-greater-than-less-than-preferences-greater-than-and-less-than-preference-greater-than) [wrapper](https://developer.thunderbird.net/add-ons/updates/tb68#less-than-prefwindow-greater-than-less-than-prefpane-greater-than-less-than-preferences-greater-than-and-less-than-preference-greater-than) has been updated and now supports:
 
 ```javascript
 Preferences.addSyncFromPrefListener(
@@ -285,5 +285,5 @@ Preferences.addSyncToPrefListener(
 ```
 
 {% hint style="danger" %}
-The `nsIPrefService`is not available via WebExtension APIs. It is therefore advised to move away from storing addon preferences in a preference branch and instead use the local storage via the [`storage`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage) API. More information can be found in the [update guide](https://developer.thunderbird.net/add-ons/updating/tb78#replacing-options).
+The `nsIPrefService`is not available via WebExtension APIs. It is therefore advised to move away from storing addon preferences in a preference branch and instead use the local storage via the [storage](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage) API. More information can be found in the [update guide](https://developer.thunderbird.net/add-ons/updating/tb78#replacing-options).
 {% endhint %}

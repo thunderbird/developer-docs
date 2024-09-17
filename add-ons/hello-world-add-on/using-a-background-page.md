@@ -47,7 +47,7 @@ Let's also create an empty `background.js` script file in the `hello-world` proj
 
 ### Listening for New Messages
 
-In order to listen for new messages, we have to add a listener for the [`onNewMessageReceived`](https://webextension-api.thunderbird.net/en/beta-mv2/messages.html#onnewmailreceived) event to our background script:
+In order to listen for new messages, we have to add a listener for the [onNewMessageReceived](https://webextension-api.thunderbird.net/en/beta-mv2/messages.html#onnewmailreceived) event to our background script:
 
 {% code title="background.js" lineNumbers="true" %}
 ```javascript
@@ -82,7 +82,7 @@ The above code is using an inline arrow function to define the callback function
 `);`
 {% endhint %}
 
-The callback function of the `onNewMailReceived` event receives two parameters: `folder` being a [`MailFolder`](https://webextension-api.thunderbird.net/en/beta-mv2/folders.html#mailfolder) and `messages` being a [`MessageList`](https://webextension-api.thunderbird.net/en/beta-mv2/messages.html#messagelist). The defined event listener stores the folder and the message information of the new received mail in the extensions storage.
+The callback function of the `onNewMailReceived` event receives two parameters: `folder` being a [MailFolder](https://webextension-api.thunderbird.net/en/beta-mv2/folders.html#mailfolder) and `messages` being a [MessageList](https://webextension-api.thunderbird.net/en/beta-mv2/messages.html#messagelist). The defined event listener stores the folder and the message information of the new received mail in the extensions storage.
 
 {% hint style="warning" %}
 The `onNewMessageReceived` event requires the <mark style="color:red;">`accountsRead`</mark> permission, which needs to be added to the `permissions` key in our `manifest.json` file.
@@ -143,7 +143,7 @@ export async function* iterateMessagePages(page) {
 
 To identify the script file as an ES6 module, which does not include file scope code, but only defines functions, we use the `*.mjs` file extension.
 
-Since Thunderbird's WebExtension API potentially has to handle a lot of messages, the [`MessageList`](https://webextension-api.thunderbird.net/en/beta-mv2/messages.html#messagelist) data type is paginated. Please check the [Working with Message Lists](https://webextension-api.thunderbird.net/en/beta-mv2/examples/messageLists.html) tutorial for more information.
+Since Thunderbird's WebExtension API potentially has to handle a lot of messages, the [MessageList](https://webextension-api.thunderbird.net/en/beta-mv2/messages.html#messagelist) data type is paginated. Please check the [Working with Message Lists](https://webextension-api.thunderbird.net/en/beta-mv2/examples/messageLists.html) tutorial for more information.
 
 The provided `iterateMessagePages()` wrapper function is doing most of the heavy lifting and allows to asynchronously loop over the returned messages in line `7` of the shown background script. For each received message, we subsequently push a new entry into the `messageLog` Array.
 

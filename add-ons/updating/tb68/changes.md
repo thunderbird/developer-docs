@@ -31,7 +31,7 @@ XBL is on death row. Many XBL bindings have been replaced or simply no longer ex
 With [this query](https://bugzilla.mozilla.org/buglist.cgi?o1=equals\&v1=1484976\&f1=blocked), you can see all the bugs related to de-XBL-ing Thunderbird, and see how the removal of each binding is handled.
 
 {% hint style="info" %}
-If you have your own XBL bindings, you can convert them to [custom elements](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Custom_Elements). Here are some notes on the process of[ converting an XBL binding into a custom element](https://wiki.mozilla.org/Thunderbird/de-xbl).
+If you have your own XBL bindings, you can convert them to [custom elements](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Custom_Elements). Here are some notes on the process of [converting an XBL binding into a custom element](https://wiki.mozilla.org/Thunderbird/de-xbl).
 {% endhint %}
 
 {% hint style="info" %}
@@ -40,7 +40,7 @@ As part of the de-XBL effort, the usage of the [nsIDOMDocumentXBL](https://udn.r
 * getAnonymousElementByAttribute()
 * getAnonymousNodes()
 
-They have to be replaced by [`document.getElementById()`](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById), [`document.querySelectorAll()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelectorAll) or similar methods. The documents these methods have been used with have probably changed dramatically. Check out [searchfox.org](https://searchfox.org) to learn about the current layouts.
+They have to be replaced by [document.getElementById()](https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById), [document.querySelectorAll()](https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelectorAll) or similar methods. The documents these methods have been used with have probably changed dramatically. Check out [searchfox.org](https://searchfox.org) to learn about the current layouts.
 {% endhint %}
 
 ## Removed XUL elements
@@ -79,7 +79,7 @@ Removed. Use
 
 ### \<listbox>, \<listitem>, \<listcell> and \<listcols>
 
-All `<listbox>` related elements have been removed. Use[`<richlistbox>`](https://udn.realityripple.com/docs/Archive/Mozilla/XUL/richlistbox) instead. A `<richlistbox>` does not support cells or columns, just one `<richlistitem>` per row (which can contain multiple other elements like `hbox`, `vbox`, `label`or `image` elements)
+All `<listbox>` related elements have been removed. Use [<richlistbox>](https://udn.realityripple.com/docs/Archive/Mozilla/XUL/richlistbox) instead. A `<richlistbox>` does not support cells or columns, just one `<richlistitem>` per row (which can contain multiple other elements like `hbox`, `vbox`, `label`or `image` elements)
 
 Furthermore, a few dedicated `listbox/richtlistbox`methods have been removed and can be replaced as follows:
 
@@ -204,7 +204,7 @@ it must be replaced by a `dialog` as follows:
 
 Note that the `DOCTYPE` changed and the `preference` attribute now contains the full ID of the preference. If you used more than one `prefpane` you need to rework the UI into [tabs](https://udn.realityripple.com/docs/Archive/Mozilla/XUL/tabbox).
 
-Furthermore, note the included JavaScript file [`preferencesBindings.js`](https://searchfox.org/mozilla-central/rev/6e6265bd607cbe4c96e714f86d3d9e36620f63d6/toolkit/content/preferencesBindings.js) at the bottom, which is mandatory to recreate the functionality of the `preference` attribute. It is also mandatory, that you include a custom JavaScript file (as`preferences.js` in the above example) afterwards, which defines the types of the used preferences (which was formerly done inside the `preferences` tag). The file can be as short as this:
+Furthermore, note the included JavaScript file [preferencesBindings.js](https://searchfox.org/mozilla-central/rev/6e6265bd607cbe4c96e714f86d3d9e36620f63d6/toolkit/content/preferencesBindings.js) at the bottom, which is mandatory to recreate the functionality of the `preference` attribute. It is also mandatory, that you include a custom JavaScript file (as`preferences.js` in the above example) afterwards, which defines the types of the used preferences (which was formerly done inside the `preferences` tag). The file can be as short as this:
 
 {% tabs %}
 {% tab title="preferences.js" %}
@@ -665,7 +665,7 @@ Furthermore, `nsITreeColumn` has been replaced by the `TreeColumn` object. Even 
 
 Some noteworthy changes:
 
-* [`tree.getCellAt()`](https://dxr.mozilla.org/mozilla-central/source/dom/chrome-webidl/XULTreeElement.webidl#132) now returns a [`TreeCellInfo`](https://dxr.mozilla.org/mozilla-central/source/dom/chrome-webidl/XULTreeElement.webidl#10).
+* [tree.getCellAt()](https://dxr.mozilla.org/mozilla-central/source/dom/chrome-webidl/XULTreeElement.webidl#132) now returns a [TreeCellInfo](https://dxr.mozilla.org/mozilla-central/source/dom/chrome-webidl/XULTreeElement.webidl#10).
 * If a method requires a `TreeColumn` parameter,  a simple `{ id: columnName }` object no longer works. Get a proper `TreeColumn` object via `tree.columns.getNamedColumn(columnName)`.
 * Trees no longer support selecting individual cells. The `TreeColumn` object no longer has a `selectable` attribute and `nsITreeView` has lost its `isSelectable()` method.
 

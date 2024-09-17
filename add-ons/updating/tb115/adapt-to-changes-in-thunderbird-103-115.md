@@ -113,8 +113,8 @@ Removed in Thunderbird 115. Can be replaced as follows:
 * `OS.Constants.Sys.Name` -> `Services.appinfo.OS`
 * `OS.Constants.Path.profileDir` -> `PathUtils.profileDir`
 * `OS.Constants.Path.tmpDir`-> `PathUtils.tempDir`
-* `OS.File.*` -> [`IOUtils.*`](https://searchfox.org/comm-central/source/mozilla/dom/chrome-webidl/IOUtils.webidl)
-* `OS.Path.*` -> [`PathUtils.*`](https://searchfox.org/comm-central/source/mozilla/dom/chrome-webidl/PathUtils.webidl)
+* `OS.File.*` -> [IOUtils.*](https://searchfox.org/comm-central/source/mozilla/dom/chrome-webidl/IOUtils.webidl)
+* `OS.Path.*` -> [PathUtils.*](https://searchfox.org/comm-central/source/mozilla/dom/chrome-webidl/PathUtils.webidl)
 
 ## Changed API
 

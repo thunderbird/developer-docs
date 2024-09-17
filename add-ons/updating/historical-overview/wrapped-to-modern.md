@@ -52,7 +52,7 @@ pref("extensions.myaddon.retries", 5);
 pref("extensions.myaddon.greeting", "Hello");
 ```
 
-This file and the associated call to `registerDefaultPrefs()` can be removed, and the default values must be set in the background script through the [`LegacyPrefs`](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyPrefs) Experiment:
+This file and the associated call to `registerDefaultPrefs()` can be removed, and the default values must be set in the background script through the [LegacyPrefs](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyPrefs) Experiment:
 
 ```javascript
 const DEFAULTS = {
@@ -68,17 +68,17 @@ for (let [prefName, defaultValue] of Object.entries(DEFAULTS)) {
 }
 ```
 
-We can now use the [`LegacyPrefs`](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyPrefs) Experiment to access existing preferences, for example the preference entry at `extensions.myaddon.enableDebug` can be read from any WebExtension script via:
+We can now use the [LegacyPrefs](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyPrefs) Experiment to access existing preferences, for example the preference entry at `extensions.myaddon.enableDebug` can be read from any WebExtension script via:
 
 ```javascript
 let enableDebug = await browser.LegacyPrefs.getPref("extensions.myaddon.enableDebug");
 ```
 
-Modern WebExtension should eventually use [`browser.storage.local.*`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage/local) for their preferences, but to simplify the conversion process, we will keep using the `nsIPrefBranch` for now. The very last conversion step will migrate the preferences.
+Modern WebExtension should eventually use [browser.storage.local.*](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage/local) for their preferences, but to simplify the conversion process, we will keep using the `nsIPrefBranch` for now. The very last conversion step will migrate the preferences.
 
 ## Step 2: Replace `registerChromeUrl()`
 
-We will keep registering global legacy `chrome://` or `resource://` URLs, but we will use the [`LegacyHelper`](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyHelper) Experiment. Use the `registerGlobalUrls()` function of the [`LegacyHelper`](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyHelper) Experiment instead of the `registerChromeUrl()` function of the wrapper Experiment. For example:
+We will keep registering global legacy `chrome://` or `resource://` URLs, but we will use the [LegacyHelper](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyHelper) Experiment. Use the `registerGlobalUrls()` function of the [LegacyHelper](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyHelper) Experiment instead of the `registerChromeUrl()` function of the wrapper Experiment. For example:
 
 ```javascript
 browser.LegacyHelper.registerGlobalUrls([
@@ -93,7 +93,7 @@ browser.LegacyHelper.registerGlobalUrls([
 
 Modern WebExtensions show their options in an HTML page in a tab or in a frame inside the Add-on Manger. The wrapper APIs instead allowed to register a legacy XUL dialog to be opened when the wrench icon in the add-on card of the Add-on Manger was clicked. This has to be removed to allow that wrench icon to show the standard WebExtension HTML options page.
 
-In this step, we will create a menu entry on the `tools` menu to open the XUL options dialog via the [`LegacyHelper`](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyHelper) Experiment:
+In this step, we will create a menu entry on the `tools` menu to open the XUL options dialog via the [LegacyHelper](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyHelper) Experiment:
 
 ```javascript
 browser.menus.create({

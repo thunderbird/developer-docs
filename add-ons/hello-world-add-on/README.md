@@ -79,7 +79,7 @@ The location of the HTML file loaded by the popup of our `browser_action` is def
 {% endcode %}
 
 {% hint style="info" %}
-The default [**content security policy**](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content\_Security\_Policy#Inline\_JavaScript) disallows JavaScript placed directly in `<script>` tags and inline event handlers like `onclick`. Place all Javascript code into a separate file (like popup.js in this example) and use [addEventListener()](https://developer.mozilla.org/de/docs/Web/API/EventTarget/addEventListener) instead of inline event handlers.
+The default [**content security policy**](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content\_Security\_Policy#Inline\_JavaScript) disallows JavaScript placed directly in `<script>` tags and inline event handlers like `onclick`. Place all JavaScript code into a separate file (like popup.js in this example) and use [addEventListener()](https://developer.mozilla.org/de/docs/Web/API/EventTarget/addEventListener) instead of inline event handlers.
 {% endhint %}
 
 {% hint style="warning" %}

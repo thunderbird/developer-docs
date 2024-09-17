@@ -448,7 +448,7 @@ The section about `<dialog>` events also applies to all `onwizard…` events on 
 
 ## Changes to Geko JavaScript Engine
 
-As JavaScript itself evolves, browser engines will change accordingly. The following changes represent changes that affect Javascript extension developers.
+As JavaScript itself evolves, browser engines will change accordingly. The following changes represent changes that affect JavaScript extension developers.
 
 ### String Generic Methods Deprecated
 
@@ -484,7 +484,7 @@ The following String methods are affected by the change:
 
 ### Renamed JavaScript modules
 
-A number of Javascript modules have been renamed with the `.jsm` extension. Most notably:
+A number of JavaScript modules have been renamed with the `.jsm` extension. Most notably:
 
 * `mailServices.js` has been renamed to `MailServices.jsm`. This change was originally backwards-compatible with a deprecation warning, but the changes to module importing (see [below](changes.md#changed-javascript-module-import)) made that pointless and the old file has now been removed completely.
 * `MailUtils.js` is now `MailUtils.jsm`.

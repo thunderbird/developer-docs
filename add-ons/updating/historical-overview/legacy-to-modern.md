@@ -188,7 +188,7 @@ Instead of a XUL dialog, WebExtensions use an HTML page for their options page, 
 }
 ```
 
-Javascript loaded by that `options.html` document can access all WebExtension APIs in the same way as for example the background script.
+JavaScript loaded by that `options.html` document can access all WebExtension APIs in the same way as for example the background script.
 
 In this step the old XUL options dialog has to be re-created as an HTML page, using only HTML elements, JavaScript and CSS. It is no longer possible to use XUL elements. Some custom elements and 3rd party libraries to simplify this step can be found in the [webext-support](https://github.com/thunderbird/webext-support/tree/master/ui) repository.
 

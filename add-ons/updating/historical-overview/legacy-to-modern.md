@@ -168,7 +168,7 @@ This will be removed after the XUL options dialog has been converted to a standa
 
 ## Step 5: Converting locale files
 
-Even though the `LegacyHelper` Experiment allows to register legacy locales, the technology itself is deprecated: WebExtension HTML pages cannot acces DTD or property files. Instead, they use the [i18n API](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/i18n) to access locales stored in simple JSON files.&#x20;
+Even though the `LegacyHelper` Experiment allows to register legacy locales, the technology itself is deprecated: WebExtension HTML pages cannot acces DTD or property files. Instead, they use the [i18n API](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/i18n) to access locales stored in simple JSON files.
 
 The [`localeConverter.py` python script from the webext-support repository](https://github.com/thunderbird/webext-support/tree/master/tools/locale-converter) will do most of the work to convert your locale files (DTD and property files) into the new JSON format.
 
@@ -206,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
 }, { once: true });
 ```
 
-&#x20;The script is using the `i18n` API to read the modern JSON locale files created in the previous step.
+The script is using the `i18n` API to read the modern JSON locale files created in the previous step.
 
 ### Alternative for `preferencesBindings.js`
 
@@ -467,7 +467,7 @@ In order to add custom UI entry points, the add-on has to manipulate the native 
 
 #### Detect open windows/tabs through WebExtension APIs
 
-This is the preferred method, since the add-on can leverage existing WebExtension APIs and reduces the amount of code which has to be maintained by the add-on developer.  For example, to manipulate all message display tabs, the following code can be used in the WebExtension background script:
+This is the preferred method, since the add-on can leverage existing WebExtension APIs and reduces the amount of code which has to be maintained by the add-on developer. For example, to manipulate all message display tabs, the following code can be used in the WebExtension background script:
 
 ```javascript
 // Handle all already open/displayed messages.
@@ -624,7 +624,7 @@ A common use case is a custom button added to Thunderbird's UI through an Experi
 const emitter = new ExtensionCommon.EventEmitter();
 ```
 
-The boilerplate, which  connects the internals of a WebExtension event to the defined `EventEmitter`, is the added `EventManger` in lines 5-21 of the following example. The glue part to actually trigger the event is&#x20;
+The boilerplate, which connects the internals of a WebExtension event to the defined `EventEmitter`, is the added `EventManger` in lines 5-21 of the following example. The glue part to actually trigger the event is
 
 ```javascript
 emitter.emit("activity-manager-command", e.clientX, e.clientY);
@@ -694,7 +694,7 @@ A working implementation of this example can be found in the [Activity Manager E
 
 So far we stored our preferences in an `nsIPrefBranch`, which could be accessed from WebExtension scripts through the `LegacyPrefs` Experiment, and from other Experiments directly through the `nsIPrefBranch`.
 
-WebExtensions should eventually store their preferences in [`browser.storage.local.*`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage/local), which removes the data when the add-on is uninstalled. The user should be able to start fresh by uninstalling and reinstalling an extension, if a specific configuration causes the add-on to malfunction. This is a common pattern, which however does not work for preferences stored in an `nsIPrefBranch,` as they are not cleared on add-on uninstall.&#x20;
+WebExtensions should eventually store their preferences in [`browser.storage.local.*`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage/local), which removes the data when the add-on is uninstalled. The user should be able to start fresh by uninstalling and reinstalling an extension, if a specific configuration causes the add-on to malfunction. This is a common pattern, which however does not work for preferences stored in an `nsIPrefBranch,` as they are not cleared on add-on uninstall.
 
 {% hint style="danger" %}
 The user actually expects that all his data associated with a certain add-on is removed from the Thunderbird profile, when the add-on is removed. An add-on can of course offer import and export functions.
@@ -702,7 +702,7 @@ The user actually expects that all his data associated with a certain add-on is 
 
 ### Accessing preferences in custom Experiments
 
-In order to migrate preferences, your custom Experiments may no longer access the `nsIPrefBranch` directly, as they later cannot access the migrated values in `browser.local.storage.*`. All your custom Experiments must be independent of the used storage. The two most common strategies are outlined below.&#x20;
+In order to migrate preferences, your custom Experiments may no longer access the `nsIPrefBranch` directly, as they later cannot access the migrated values in `browser.local.storage.*`. All your custom Experiments must be independent of the used storage. The two most common strategies are outlined below.
 
 #### Passing preferences as function parameters
 
@@ -821,23 +821,29 @@ The last step is to move all preferences into `browser.local.storage.*` and upda
 ```javascript
 import * as prefs from "preferences.mjs";
 
-// Migration.
+// Migrate preferences from extensions.myaddon.* to local storage.
 let migrated = await prefs.getPref("_migrated");
 if (!migrated) {
     for (let prefName of Object.keys(prefs.DEFAULTS)) {
-        let prefValue = await browser.LegacyPrefs.getUserPref(prefName);
-        if (prefValue !== null) {
-            await prefs.setPref(prefName, prefValue);
-            await browser.LegacyPrefs.clearUserPref(prefName);
+        let prefValue = await browser.LegacyPrefs.getUserPref(
+            `extensions.myaddon.${prefName}`
+        );
+        if (prefValue === null) {
+            continue;
         }
+        console.log(`Migrating extensions.myaddon.${prefName}: ${prefValue}`)
+        await prefs.setPref(prefName, prefValue);
+        await browser.LegacyPrefs.clearUserPref(
+            `extensions.myaddon.${prefName}`
+        );
     }
     await prefs.setPref("_migrated", true);
 }
 ```
 
-Move the definition of the `DEFAULTS` object into your copy of the `preferences.mjs` module.&#x20;
+Move the definition of the `DEFAULTS` object into your copy of the `preferences.mjs` module.
 
-Remove all code which used `browser.LegacyPrefs.setDefaultPref()` and update all other calls to access your preferences through the `LegacyPrefs` Experiment by the matching method of the `preferences.mjs` module.&#x20;
+Remove all code which used `browser.LegacyPrefs.setDefaultPref()` and update all other calls to access your preferences through the `LegacyPrefs` Experiment by the matching method of the `preferences.mjs` module.
 
 The preference caching mechanism for Experiments can be updated as follows:
 

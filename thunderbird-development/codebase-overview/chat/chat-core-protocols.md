@@ -40,7 +40,7 @@ This lists the protocol plugins that the core service knows about. You can copy 
 ```javascript
 var { IMServices } = ChromeUtils.importESModule("resource:///modules/IMServices.sys.mjs");
 let protocols = IMServices.core.getProtocols();
-let = "";
+let result = "";
 for (let p of protocols) {
   let proto = p.QueryInterface(Components.interfaces.prplIProtocol);
   result += proto.name + "\t\t" + proto.id + "\n";

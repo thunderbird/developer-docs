@@ -16,6 +16,10 @@ Converting a wrapped WebExtension into a modern WebExtension will be a complex t
 Before working on an update, it is adviced to read some information about the WebExtension technology first. Our [Extension guide](../../mailextensions/) and our ["Hello World" Extension Tutorial](../../hello-world-add-on/) are good starting points.
 {% endhint %}
 
+{% hint style="warning" %}
+The guide assumes that the background script is loaded [as a module](../../mailextensions/#background-page).
+{% endhint %}
+
 Wrapped WebExtensions have a background script similar to the following:
 
 ```javascript
@@ -51,9 +55,17 @@ pref("extensions.myaddon.greeting", "Hello");
 This file and the associated call to `registerDefaultPrefs()` can be removed, and the default values must be set in the background script through the [LegacyPrefs](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyPrefs) Experiment:
 
 ```javascript
-await browser.LegacyPrefs.setDefaultPref("extensions.myaddon.enableDebug", false);
-await browser.LegacyPrefs.setDefaultPref("extensions.myaddon.retries", 5);
-await browser.LegacyPrefs.setDefaultPref("extensions.myaddon.greeting", "Hello");
+const DEFAULTS = {
+    enableDebug: false,
+    retries: 5,
+    greeting: "Hello",
+}
+for (let [prefName, defaultValue] of Object.entries(DEFAULTS)) {
+    await browser.LegacyPrefs.setDefaultPref(
+        `extensions.myaddon.${prefName}`,
+        defaultValue
+    );
+}
 ```
 
 We can now use the [LegacyPrefs](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyPrefs) Experiment to access existing preferences, for example the preference entry at `extensions.myaddon.enableDebug` can be read from any WebExtension script via:

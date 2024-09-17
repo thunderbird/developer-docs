@@ -16,6 +16,10 @@ Converting a legacy WebExtension into a modern WebExtension will be a complex ta
 Before working on an update, it is adviced to read some information about the WebExtension technology first. Our [Extension guide](../../mailextensions/) and our ["Hello World" Extension Tutorial](../../hello-world-add-on/) are good starting points.
 {% endhint %}
 
+{% hint style="warning" %}
+Please add a background script to your extensions, which will be needed during the update process. The guide assumes that the background script is loaded [as a module](../../mailextensions/#background-page).
+{% endhint %}
+
 ## Step 1: Dropping the legacy key
 
 The technical conversion from a legacy WebExtension to a modern WebExtension is simple: drop the `legacy` key from the `manifest.json` file.
@@ -123,9 +127,17 @@ pref("extensions.myaddon.greeting", "Hello");
 This file can be removed, and the default values must be set in the background script through the [LegacyPrefs](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyPrefs) Experiment:
 
 ```javascript
-await browser.LegacyPrefs.setDefaultPref("extensions.myaddon.enableDebug", false);
-await browser.LegacyPrefs.setDefaultPref("extensions.myaddon.retries", 5);
-await browser.LegacyPrefs.setDefaultPref("extensions.myaddon.greeting", "Hello");
+const DEFAULTS = {
+    enableDebug: false,
+    retries: 5,
+    greeting: "Hello",
+}
+for (let [prefName, defaultValue] of Object.entries(DEFAULTS)) {
+    await browser.LegacyPrefs.setDefaultPref(
+        `extensions.myaddon.${prefName}`,
+        defaultValue
+    );
+}
 ```
 
 We can now use the [LegacyPrefs](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyPrefs) Experiment to access existing preferences, for example the preference entry at `extensions.myaddon.enableDebug` can be read from any WebExtension script via:
@@ -184,7 +196,17 @@ It may help during development, that the old XUL options page can still be opend
 
 ### Localisation
 
-There is no automatic replacement of locale placeholder entities like `&myLocaleIdentifier;` in WebExtension HTML files any more. Instead, you can use placeholders like `__MSG_myLocaleIdentifier__` in your markup and include the [`i18n.js`](https://github.com/thunderbird/webext-support/tree/master/scripts/i18n) script provided by the [webext-support](https://github.com/thunderbird/webext-support/tree/master/scripts/i18n) repository and automatically replace all `__MSG_*__` locale placeholders on page load. The script is using the `i18n` API to read the modern JSON locale files created in the previous step.
+There is no automatic replacement of locale placeholder entities like `&myLocaleIdentifier;` in WebExtension HTML files any more. Instead, you can use placeholders like `__MSG_myLocaleIdentifier__` in your markup and include [the `i18n.mjs` module provided by the webext-support repository](https://github.com/thunderbird/webext-support/tree/master/modules/i18n) and automatically replace all `__MSG_*__` locale placeholders on page load.
+
+```javascript
+import * as i18n from "i18n.mjs"
+
+document.addEventListener('DOMContentLoaded', () => {
+  i18n.localizeDocument();
+}, { once: true });
+```
+
+&#x20;The script is using the `i18n` API to read the modern JSON locale files created in the previous step.
 
 ### Alternative for `preferencesBindings.js`
 
@@ -499,7 +521,7 @@ var MessageDisplayAttachment = class extends ExtensionCommon.ExtensionAPI {
             return;
           }
 
-          // The following code depends in internal Thunderbird methods and may
+          // The following code depends on internal Thunderbird methods and may
           // change, which will break the add-on.
           for (let index = window.currentAttachments.length; index > 0; index--) {
             let idx = index - 1;
@@ -670,4 +692,176 @@ A working implementation of this example can be found in the [Activity Manager E
 
 ## Step 9: Migrate Preferences
 
-_Coming soon._
+So far we stored our preferences in an `nsIPrefBranch`, which could be accessed from WebExtension scripts through the `LegacyPrefs` Experiment, and from other Experiments directly through the `nsIPrefBranch`.
+
+WebExtensions should eventually store their preferences in [`browser.storage.local.*`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage/local), which removes the data when the add-on is uninstalled. The user should be able to start fresh by uninstalling and reinstalling an extension, if a specific configuration causes the add-on to malfunction. This is a common pattern, which however does not work for preferences stored in an `nsIPrefBranch,` as they are not cleared on add-on uninstall.&#x20;
+
+{% hint style="danger" %}
+The user actually expects that all his data associated with a certain add-on is removed from the Thunderbird profile, when the add-on is removed. An add-on can of course offer import and export functions.
+{% endhint %}
+
+### Accessing preferences in custom Experiments
+
+In order to migrate preferences, your custom Experiments may no longer access the `nsIPrefBranch` directly, as they later cannot access the migrated values in `browser.local.storage.*`. All your custom Experiments must be independent of the used storage. The two most common strategies are outlined below.&#x20;
+
+#### Passing preferences as function parameters
+
+Consider a simple debug log in an Experiment function, which used to query the `extensions.myaddon.enableDebug` preference directly:
+
+```javascript
+fancyExperimentFunction: async function () {
+  // Be verbose during development.
+  let debug = Services.prefs.getBoolPref("extensions.myaddon.enableDebug");
+  if (debug) {
+    console.log(`This is a fancy Experiment function`);
+  }
+  // Do something ...
+}
+```
+
+The function can receive the debug flag as a parameter:
+
+```javascript
+fancyExperimentFunction: async function (debug) {
+  // Be verbose during development.
+  if (debug) {
+    console.log(`This is a fancy Experiment function`);
+  }
+  // Do something ...
+}
+```
+
+In WebExtension scripts we continue (for now) to use the `LegacyPrefs` Experiment to retrieve the value for the `enableDebug` preference:
+
+```javascript
+let debug = await browser.LegacyPrefs.getPref("extensions.myaddon.enableDebug");
+await browser.fancyExperiment.fancyExperimentFunction(debug);
+```
+
+#### Keeping a local preference cache in the Experiement
+
+Cached preferences can be accessed everywhere inside the Experiment implementation. A simple implementation could be:
+
+```javascript
+"use strict";
+
+// Using a closure to not leak anything but the API to the outside world.
+(function (exports) {
+
+  const cachedPreferences = new Map();
+  const cachedDefaults = new Map();
+  
+  function getPref(prefName) {
+    return cachedPreferences.get(prefName) ?? cachedDefaults.get(prefName)
+  }
+
+  class ExperimentWithPreferenceCache extends ExtensionCommon.ExtensionAPI {
+    getAPI(context) {
+      return {
+        ExperimentWithPreferenceCache: {
+          updatePreference(prefName, currentValue, defaultValue) {
+            // Update the local preference cache, which can be accessed from
+            // everywhere inside this Experiment implementation.
+            if (currentValue !== null) {
+              cachedPreferences.set(prefName, currentValue);
+            } else {
+              cachedPreferences.delete(prefName);
+            }                       
+            if (defaultValue !== null) {
+              cachedDefaults.set(prefName, defaultValue);
+            }
+          },
+
+          fancyFunction: async function () {
+            // Be verbose during development if indicated by the cachePreferences.
+            if (getPref("enableDebug")) {
+              console.log(`This is a fancy Experiment function`);
+            }
+            // Do something ...
+          }          
+        },
+      };
+    }
+  };
+
+  // Export the api by assigning it to the exports parameter of the anonymous
+  // closure function, which is the global this.
+  exports.ExperimentWithPreferenceCache = ExperimentWithPreferenceCache;
+
+})(this)
+```
+
+In the background script we have to monitor the `extensions.myaddon.*` preference branch and update the cache if needed. The `LegacyPrefs` Experiment provides an `onChanged` event for that purpose:
+
+```javascript
+// Cache initial values.
+for (let [prefName, defaultValue] of Object.entries(DEFAULTS)) {
+  let currentValue = await browser.LegacyPrefs.getUserPref(prefName);
+  await browser.ExperimentWithPreferenceCache.updatePreference(
+    prefName,
+    currentValue,
+    defaultValue,
+  );
+}
+
+// Update cache if user value changed.
+browser.LegacyPrefs.onChanged.addListener(async (prefName, newValue) => {
+  await browser.ExperimentWithPreferenceCache.updatePreference(
+    prefName,
+    newValue,
+    null, // default value is not modified
+  );
+}, "extensions.myaddon.");
+```
+
+### Migration strategy
+
+The last step is to move all preferences into `browser.local.storage.*` and update all WebExtension scripts to no longer use the `LegacyPrefs` Experiment. The [webext-support repository provides the `preference.mjs` module](https://github.com/thunderbird/webext-support/tree/master/modules/preferences), which can be used as a drop-in replacement for the `LegacyPrefs` Experiment. Add the following to the top of your background script:
+
+```javascript
+import * as prefs from "preferences.mjs";
+
+// Migration.
+let migrated = await prefs.getPref("_migrated");
+if (!migrated) {
+    for (let prefName of Object.keys(prefs.DEFAULTS)) {
+        let prefValue = await browser.LegacyPrefs.getUserPref(prefName);
+        if (prefValue !== null) {
+            await prefs.setPref(prefName, prefValue);
+            await browser.LegacyPrefs.clearUserPref(prefName);
+        }
+    }
+    await prefs.setPref("_migrated", true);
+}
+```
+
+Move the definition of the `DEFAULTS` object into your copy of the `preferences.mjs` module.&#x20;
+
+Remove all code which used `browser.LegacyPrefs.setDefaultPref()` and update all other calls to access your preferences through the `LegacyPrefs` Experiment by the matching method of the `preferences.mjs` module.&#x20;
+
+The preference caching mechanism for Experiments can be updated as follows:
+
+```javascript
+// Cache initial values.
+for (let [prefName, defaultValue] of Object.entries(prefs.DEFAULTS)) {
+  let currentValue = await prefs.getUserPref(prefName);
+  await browser.ExperimentWithPreferenceCache.updatePreference(
+    prefName,
+    currentValue,
+    defaultValue,
+  );
+}
+
+// Update cache if user value changed.
+browser.storage.local.onChanged.addListener(async (changes) => {
+  for (const prefName of Object.keys(changes)) {
+    await browser.ExperimentWithPreferenceCache.updatePreference(
+      prefName,
+      changes[prefName].newValue,
+      null, // default value is not modified
+    );    
+  }
+});
+```
+
+Wait about 6-12 month after the migration code has been shipped to your users, before removing the migration code and the `LegacyPrefs` Experiment.

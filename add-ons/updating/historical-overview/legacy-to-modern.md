@@ -826,7 +826,7 @@ import * as prefs from "preferences.mjs";
 // Migrate preferences from extensions.myaddon.* to local storage.
 let migrated = await prefs.getPref("_migrated");
 if (!migrated) {
-    for (let [prefName] of prefs.getDefaults()) {
+    for (let { prefName } of prefs.getDefaults()) {
         let prefValue = await browser.LegacyPrefs.getUserPref(
             `extensions.myaddon.${prefName}`
         );
@@ -851,7 +851,7 @@ The preference caching mechanism for Experiments can be updated as follows:
 
 ```javascript
 // Cache initial values.
-for (let [prefName, defaultValue] of prefs.getDefaults()) {
+for (let { prefName, defaultValue } of prefs.getDefaults()) {
   let currentValue = await prefs.getUserPref(prefName);
   await browser.ExperimentWithPreferenceCache.updatePreference(
     prefName,

@@ -851,7 +851,7 @@ The preference caching mechanism for Experiments can be updated as follows:
 
 ```javascript
 // Cache initial values.
-for (let [prefName, defaultValue] of Object.entries(prefs.DEFAULTS)) {
+for (let [prefName, defaultValue] of prefs.getDefaults()) {
   let currentValue = await prefs.getUserPref(prefName);
   await browser.ExperimentWithPreferenceCache.updatePreference(
     prefName,

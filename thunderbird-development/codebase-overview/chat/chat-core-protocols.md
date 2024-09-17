@@ -37,14 +37,14 @@ The code for the JavaScript protocols we ship by default is [here](https://searc
 
 This lists the protocol plugins that the core service knows about. You can copy the code \(as it is\), paste it in the error console \(linebreaks will automatically be ignored\) and press "Enter" to run it.
 
-```text
-Components.utils.import("resource:///modules/imServices.jsm");
-let protocols = Services.core.getProtocols();
-let result = "";
+```javascript
+var { IMServices } = ChromeUtils.importESModule("resource:///modules/IMServices.sys.mjs");
+let protocols = IMServices.core.getProtocols();
+let = "";
 for (let p of protocols) {
   let proto = p.QueryInterface(Components.interfaces.prplIProtocol);
   result += proto.name + "\t\t" + proto.id + "\n";
 }
-Services.console.logStringMessage(result);
+console.log(result);
 ```
 

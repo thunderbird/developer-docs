@@ -302,7 +302,7 @@ menuListElement.firstChild
 
 anymore. You may assign its own ID to the `menupop` element, or get it by
 
-```
+```javascript
 menuListElement.getElementsByTagName("menupopup")
 ```
 
@@ -355,7 +355,7 @@ To be able to use the `datetimepicker`, the following CSS files need to be inclu
 
 The following JavaScript files also need to be included:
 
-```
+```markup
 <script src="chrome://calendar/content/calendar-ui-utils.js"/>
 <script src="chrome://messenger/content/customElements.js"/>
 <script src="chrome://calendar/content/datetimepickers/datetimepickers.js"/>
@@ -395,7 +395,7 @@ You can still add notification boxes wherever you want, if you do not want to us
 
 Removed. Use:
 
-```
+```markup
 <textbox is="search-textbox" class="searchBox">
 ```
 
@@ -407,7 +407,7 @@ The element `mail-multi-emailHeaderField` has been renamed into `mail-multi-emai
 
 See e.g. [https://searchfox.org/comm-esr68/source/mail/base/content/msgHdrView.inc.xul#282](https://searchfox.org/comm-esr68/source/mail/base/content/msgHdrView.inc.xul#282)
 
-```
+```markup
 <mail-multi-emailheaderfield id="expandedfromBox" flex="1"/>
 ```
 
@@ -526,13 +526,13 @@ var scope = ChromeUtils.import("resource://foo/modules/Foo.jsm"); // scope.Fooâ€
 
 The function to retrieve passwords has lost its first parameter. Instead of
 
-```
+```javascript
 var logins = Services.logins.findLogins({}, origin, formOrigin, realm);
 ```
 
 call it as
 
-```
+```javascript
 var logins = Services.logins.findLogins(origin, formOrigin, realm);
 ```
 
@@ -540,7 +540,7 @@ var logins = Services.logins.findLogins(origin, formOrigin, realm);
 
 Removed, use:
 
-```
+```javascript
 Services.xulStore.persist(node, attribute);
 ```
 
@@ -679,7 +679,7 @@ In general, check [searchfox.com](https://searchfox.org) to see the current defi
 
 Removed. Use
 
-```
+```javascript
 ChromeUtils.generateQI()
 ```
 
@@ -687,7 +687,7 @@ ChromeUtils.generateQI()
 
 Renamed to
 
-```
+```javascript
 Services.io.newChannelFromURI()
 ```
 

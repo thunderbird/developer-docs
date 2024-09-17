@@ -47,7 +47,7 @@ Most usage of `nsIArray` and `nsIMutableArray` has been replaced by standard Jav
 
 The function `fixIterator()` is no longer needed by any core code and was subsequently removed together with `iteratorutils.jsm`. It was mostly used in the following way:
 
-```
+```javascript
 for (let account of fixIterator(MailServices.accounts.accounts)) {
   ...
 }
@@ -60,7 +60,7 @@ Since `MailServices.accounts.accounts` or `MailServices.accounts.allIdentities` 
 
 Renamed in Beta 80 to `SEC_ALLOW_CROSS_ORIGIN_SEC_CONTEXT_IS_NULL`. This is often used as the `aSecurityFlags` argument in calls to `Services.io.newChannelFromURI()`.&#x20;
 
-```
+```javascript
 nsIChannel newChannelFromURI(
    in nsIURI aURI,
    in Node aLoadingNode,
@@ -86,7 +86,7 @@ Renamed in Beta 86 to `nsIMsgCompose.sendMsg`. It also returns a Promise now. Mo
 
 Changed in Beta 87. Needs a fifth parameter to specify a `nsIDNSRecord` value, but can be `null` if not needed:
 
-```
+```javascript
 nsISocketTransport createTransport(in Array<ACString> aSocketTypes,
                                    in AUTF8String aHost,
                                    in long aPort,
@@ -137,13 +137,13 @@ The file `Log4moz.jsm` has been removed in Thunderbird 85. Instead, use `console
 
 These basic log functions accept multiple parameters, which are all dumped to the console. For example:
 
-```
+```javascript
 console.log("function XY executed", objectX, objectY);
 ```
 
 Alternatively,`console.createInstance()` allows to define a custom console logger, with a `prefix` and a `maxLogLevel`. The `maxLogLevel` can be used to disable/enable logging in debug or production builds or set the level based on users choice.
 
-```
+```javascript
 var gLog = console.createInstance({
     prefix: "My great Add-on",
     maxLogLevel: "Warn", // Error, Warn, Info, Trace, Log, Debug

@@ -69,7 +69,7 @@ The class `msgHeaderView-button` used to style toolbar buttons has been renamed 
 
 This `stringbundle` element has been removed from `messageWindow.xhtml` and `messenger.xhtml`. To access the strings, you have to load the bundle directly:
 
-```
+```javascript
 let bundle = Services.strings.createBundle(
     "chrome://messenger-smime/locale/msgSecurityInfo.properties"
 );
@@ -473,13 +473,13 @@ await Cc["@mozilla.org/widget/printdialog-service;1"]
 
 The parameters of this function have changed: It is now possible to specify, which msgHdr is to be displayed. To open the currently selected message, update your usage from
 
-```
+```javascript
 OpenMessageInNewTab(event);
 ```
 
 to
 
-```
+```javascript
 OpenMessageInNewTab(gFolderDisplay.selectedMessage, { event });
 ```
 
@@ -489,7 +489,7 @@ OpenMessageInNewTab(gFolderDisplay.selectedMessage, { event });
 
 Since Thunderbird 97, the JSM no longer exports a set of functions but a single object. The file has also been renamed from `folderUtils.jsm` to `FolderUtils.jsm`. Replace this former usage:
 
-```
+```javascript
 var { 
   getFolderProperties,
   allAccountsSorted,
@@ -500,7 +500,7 @@ var {
 
 by
 
-```
+```javascript
 var { FolderUtils } = ChromeUtils.import("resource:///modules/FolderUtils.jsm");
 var {
   getFolderProperties,

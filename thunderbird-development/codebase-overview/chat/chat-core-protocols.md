@@ -6,7 +6,7 @@ The [Chat Core](./) code used by Thunderbird has some abstractions to deal with 
 
 Protocols are implemented in chat core using JavaScript.
 
-Protocols must implement the proper interfaces and be registered with the category manager in order to be found. Protocols need to implement the [prplI\* interfaces](https://searchfox.org/comm-central/source/chat/components/public/) \(this can mostly be done using [jsProtoHelper](https://searchfox.org/comm-central/source/chat/modules/jsProtoHelper.jsm)\). The minimum set of interfaces to implement are:
+Protocols must implement the proper interfaces and be registered with the category manager in order to be found. Protocols need to implement the [prplI\* interfaces](https://searchfox.org/comm-central/source/chat/components/public/) \(this can mostly be done using [jsProtoHelper](https://searchfox.org/comm-central/source/chat/modules/jsProtoHelper.sys.mjs)\). The minimum set of interfaces to implement are:
 
 * [prplIProtocol](https://searchfox.org/comm-central/source/chat/components/public/prplIProtocol.idl)
 * [prplIAccount](https://searchfox.org/comm-central/source/chat/components/public/imIAccount.idl)
@@ -16,7 +16,7 @@ Protocols must implement the proper interfaces and be registered with the catego
 
 * [imXPCOMUtils](https://searchfox.org/comm-central/source/chat/modules/imXPCOMUtils.jsm): Additional XPCOM utilities.
 * [JavaScript socket](https://searchfox.org/comm-central/source/chat/modules/socket.jsm): Simplified socket code.
-* [jsProtoHelper](https://searchfox.org/comm-central/source/chat/modules/jsProtoHelper.jsm): Includes basic JavaScript implementations of the interfaces and some helper code.
+* [jsProtoHelper](https://searchfox.org/comm-central/source/chat/modules/jsProtoHelper.sys.mjs): Includes basic JavaScript implementations of the interfaces and some helper code.
 * [XML HTTP Request helper](https://searchfox.org/comm-central/source/mozilla/toolkit/modules/Http.jsm): Simplified HTTP request code
 
 #### Example Implementations <a id="example_implementations"></a>

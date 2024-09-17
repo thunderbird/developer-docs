@@ -1,6 +1,6 @@
 # Convert wrapped WebExtensions to modern WebExtensions
 
-After legacy WebExtensions had been deprecated in Thunderbird 78, the Thunderbird team provided two so-called wrapper Experiments (the `WindowListener` Experiment and the `BootstrapLoader` Experiment), which re-implemented the loading framework of legacy extensions and required only little changes for add-ons to be usable in Thunderbird 78. This mechanism was intended as an intermediate solution. After 4 years, the Thunderbird team is no longer able to maintain the two mentioned Experiments.&#x20;
+After legacy WebExtensions had been deprecated in Thunderbird 78, the Thunderbird team provided two so-called wrapper Experiments (the `WindowListener` Experiment and the `BootstrapLoader` Experiment), which re-implemented the loading framework of legacy extensions and required only little changes for add-ons to be usable in Thunderbird 78. This mechanism was intended as an intermediate solution.
 
 This document describes how to remove the wrapper Experiment and how to properly convert a legacy extension to a modern WebExtension.
 

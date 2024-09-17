@@ -738,7 +738,7 @@ let debug = await browser.LegacyPrefs.getPref("extensions.myaddon.enableDebug");
 await browser.fancyExperiment.fancyExperimentFunction(debug);
 ```
 
-#### Keeping a local preference cache in the Experiement
+#### Keeping a local preference cache in the Experiment
 
 Cached preferences can be accessed everywhere inside the Experiment implementation. A simple implementation could be:
 

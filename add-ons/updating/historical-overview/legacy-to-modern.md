@@ -210,7 +210,7 @@ The script is using the `i18n` API to read the modern JSON locale files created 
 
 ### Alternative for `preferencesBindings.js`
 
-The legacy XUL options page used a framework to automatically load and save preference values, controled by the `preferencesBindings.js` script. That automatism does not exist for HTML option pages. But it is possible to implement a similar mechanism using a `data-preference` attribute:
+The legacy XUL options page used a framework to automatically load and save preference values, controled by the [`preferencesBindings.js`](https://searchfox.org/mozilla-central/rev/6e6265bd607cbe4c96e714f86d3d9e36620f63d6/toolkit/content/preferencesBindings.js) script. That automatism does not exist for HTML option pages. But it is possible to implement a similar mechanism using a `data-preference` attribute:
 
 ```html
 <div>

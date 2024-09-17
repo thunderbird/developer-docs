@@ -17,7 +17,7 @@ Before working on an update, it is adviced to read some information about the We
 {% endhint %}
 
 {% hint style="warning" %}
-Please add a background script to your extensions, which will be needed during the update process. The guide assumes that the background script is loaded [as a module](../../mailextensions/#background-page).
+Please add a background script to your extension, which will be needed during the update process. The guide assumes that the background script is loaded [as a module](../../mailextensions/#background-page).
 {% endhint %}
 
 ## Step 1: Dropping the legacy key

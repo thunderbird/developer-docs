@@ -796,7 +796,9 @@ In the background script we have to monitor the `extensions.myaddon.*` preferenc
 ```javascript
 // Cache initial values.
 for (let [prefName, defaultValue] of Object.entries(DEFAULTS)) {
-  let currentValue = await browser.LegacyPrefs.getUserPref(prefName);
+  let currentValue = await browser.LegacyPrefs.getUserPref(
+    `extensions.myaddon.${prefName}`
+  );
   await browser.ExperimentWithPreferenceCache.updatePreference(
     prefName,
     currentValue,
@@ -841,7 +843,7 @@ if (!migrated) {
 }
 ```
 
-Move the definition of the `DEFAULTS` object into your copy of the `preferences.mjs` module.
+Move the definition of the `DEFAULTS` object from the top of your background script into your copy of the `preferences.mjs` module.
 
 Remove all code which used `browser.LegacyPrefs.setDefaultPref()` and update all other calls to access your preferences through the `LegacyPrefs` Experiment by the matching method of the `preferences.mjs` module.
 

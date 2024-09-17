@@ -15,7 +15,7 @@ Protocols must implement the proper interfaces and be registered with the catego
 #### Useful Code <a id="useful_code"></a>
 
 * [imXPCOMUtils](https://searchfox.org/comm-central/source/chat/modules/imXPCOMUtils.jsm): Additional XPCOM utilities.
-* [JavaScript socket](https://searchfox.org/comm-central/source/chat/modules/socket.jsm): Simplified socket code.
+* [JavaScript socket](https://searchfox.org/comm-central/source/chat/modules/socket.sys.mjs): Simplified socket code.
 * [jsProtoHelper](https://searchfox.org/comm-central/source/chat/modules/jsProtoHelper.sys.mjs): Includes basic JavaScript implementations of the interfaces and some helper code.
 * [XML HTTP Request helper](https://searchfox.org/comm-central/source/mozilla/toolkit/modules/Http.jsm): Simplified HTTP request code
 

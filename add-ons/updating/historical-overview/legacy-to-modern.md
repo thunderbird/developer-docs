@@ -44,7 +44,7 @@ overlay    chrome://messenger/content/messenger.xul  chrome://myaddon/content/me
 
 #### **content, resource and locale**
 
-These entries registered global URLs used by the extension to access its assets. Use the [LegacyHelper](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyHelper) Experiment to register `content`, `resource` and `locale` entries. To replicate the entries shown in the previous example, add the following to your background script:
+These entries registered global URLs used by the extension to access its assets. Use the [`LegacyHelper`](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyHelper) Experiment to register `content`, `resource` and `locale` entries. To replicate the entries shown in the previous example, add the following to your background script:
 
 ```javascript
 await browser.LegacyHelper.registerGlobalUrls([
@@ -79,7 +79,7 @@ resource://myaddon/skin/classic/*
 
 #### style
 
-This entry is no longer supported, it has to be replaced by the [LegacyCSS](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyCSS) Experiment. To replicate the `style` entry shown in the previous example, add the following to your background script:
+This entry is no longer supported, it has to be replaced by the [`LegacyCSS`](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyCSS) Experiment. To replicate the `style` entry shown in the previous example, add the following to your background script:
 
 {% hint style="warning" %}
 All `*.xul` files have been renamed to `*.xhtml`files in recent versions of Thunderbird! Still using `*.xul` files is unsupported and will cause issues.
@@ -104,7 +104,7 @@ messenger.LegacyCSS.onWindowOpened.addListener((url) => {
 });
 ```
 
-This should only be a temporary step. After the initial conversion from a `style` entry to using the `LegacyCSS` Experiment, the required styles should be applied by using [standard WebExtension theming support](../../web-extension-themes.md).
+This should only be a temporary step. After the initial conversion from a `style` entry to using the [`LegacyCSS`](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyCSS) Experiment, the required styles should be applied by using [standard WebExtension theming support](../../web-extension-themes.md).
 
 #### **overlay**
 
@@ -124,7 +124,7 @@ pref("extensions.myaddon.retries", 5);
 pref("extensions.myaddon.greeting", "Hello");
 ```
 
-This file can be removed, and the default values must be set in the background script through the [LegacyPrefs](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyPrefs) Experiment:
+This file can be removed, and the default values must be set in the background script through the [`LegacyPrefs`](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyPrefs) Experiment:
 
 ```javascript
 const DEFAULTS = {
@@ -140,13 +140,13 @@ for (let [prefName, defaultValue] of Object.entries(DEFAULTS)) {
 }
 ```
 
-We can now use the [LegacyPrefs](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyPrefs) Experiment to access existing preferences, for example the preference entry at `extensions.myaddon.enableDebug` can be read from any WebExtension script via:
+We can now use the [`LegacyPrefs`](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyPrefs) Experiment to access existing preferences, for example the preference entry at `extensions.myaddon.enableDebug` can be read from any WebExtension script via:
 
 ```javascript
 let enableDebug = await browser.LegacyPrefs.getPref("extensions.myaddon.enableDebug");
 ```
 
-Modern WebExtension should eventually use the WebExtension [`storage`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage) for their preferences, but to simplify the conversion process, we will keep using the `nsIPrefBranch` for now. The very last conversion step will migrate the preferences.
+Modern WebExtension should eventually use [`browser.storage.local.*`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage/local) for their preferences, but to simplify the conversion process, we will keep using the `nsIPrefBranch` for now. The very last conversion step will migrate the preferences.
 
 ## Step 4: The XUL options dialog
 
@@ -168,7 +168,7 @@ This will be removed after the XUL options dialog has been converted to a standa
 
 ## Step 5: Converting locale files
 
-Even though the `LegacyHelper` Experiment allows to register legacy locales, the technology itself is deprecated: WebExtension HTML pages cannot acces DTD or property files. Instead, they use the [i18n API](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/i18n) to access locales stored in simple JSON files.
+Even though the [`LegacyHelper`](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyHelper) Experiment allows to register legacy locales, the technology itself is deprecated: WebExtension HTML pages cannot acces DTD or property files. Instead, they use the [i18n API](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/i18n) to access locales stored in simple JSON files.
 
 The [`localeConverter.py` python script from the webext-support repository](https://github.com/thunderbird/webext-support/tree/master/tools/locale-converter) will do most of the work to convert your locale files (DTD and property files) into the new JSON format.
 
@@ -692,7 +692,7 @@ A working implementation of this example can be found in the [Activity Manager E
 
 ## Step 9: Migrate Preferences
 
-So far we stored our preferences in an `nsIPrefBranch`, which could be accessed from WebExtension scripts through the `LegacyPrefs` Experiment, and from other Experiments directly through the `nsIPrefBranch`.
+So far we stored our preferences in an `nsIPrefBranch`, which could be accessed from WebExtension scripts through the [`LegacyPrefs`](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyPrefs) Experiment, and from other Experiments directly through the `nsIPrefBranch`.
 
 WebExtensions should eventually store their preferences in [`browser.storage.local.*`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage/local), which removes the data when the add-on is uninstalled. The user should be able to start fresh by uninstalling and reinstalling an extension, if a specific configuration causes the add-on to malfunction. This is a common pattern, which however does not work for preferences stored in an `nsIPrefBranch,` as they are not cleared on add-on uninstall.
 
@@ -702,7 +702,7 @@ The user actually expects that all his data associated with a certain add-on is 
 
 ### Accessing preferences in custom Experiments
 
-In order to migrate preferences, your custom Experiments may no longer access the `nsIPrefBranch` directly, as they later cannot access the migrated values in `browser.local.storage.*`. All your custom Experiments must be independent of the used storage. The two most common strategies are outlined below.
+In order to migrate preferences, your custom Experiments may no longer access the `nsIPrefBranch` directly, as they later cannot access the migrated values in [`browser.storage.local.*`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage/local). All your custom Experiments must be independent of the used storage. The two most common strategies are outlined below.
 
 #### Passing preferences as function parameters
 
@@ -731,7 +731,7 @@ fancyExperimentFunction: async function (debug) {
 }
 ```
 
-In WebExtension scripts we continue (for now) to use the `LegacyPrefs` Experiment to retrieve the value for the `enableDebug` preference:
+In WebExtension scripts we continue (for now) to use the [`LegacyPrefs`](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyPrefs) Experiment to retrieve the value for the `enableDebug` preference:
 
 ```javascript
 let debug = await browser.LegacyPrefs.getPref("extensions.myaddon.enableDebug");
@@ -791,7 +791,7 @@ Cached preferences can be accessed everywhere inside the Experiment implementati
 })(this)
 ```
 
-In the background script we have to monitor the `extensions.myaddon.*` preference branch and update the cache if needed. The `LegacyPrefs` Experiment provides an `onChanged` event for that purpose:
+In the background script we have to monitor the `extensions.myaddon.*` preference branch and update the cache if needed. The [`LegacyPrefs`](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyPrefs) Experiment provides an `onChanged` event for that purpose:
 
 ```javascript
 // Cache initial values.
@@ -818,7 +818,7 @@ browser.LegacyPrefs.onChanged.addListener(async (prefName, newValue) => {
 
 ### Migration strategy
 
-The last step is to move all preferences into `browser.local.storage.*` and update all WebExtension scripts to no longer use the `LegacyPrefs` Experiment. The [webext-support repository provides the `preference.mjs` module](https://github.com/thunderbird/webext-support/tree/master/modules/preferences), which can be used as a drop-in replacement for the `LegacyPrefs` Experiment. Add the following to the top of your background script:
+The last step is to move all preferences into [`browser.storage.local.*`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage/local) and update all WebExtension scripts to no longer use the [`LegacyPrefs`](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyPrefs) Experiment. The [webext-support repository provides the `preference.mjs` module](https://github.com/thunderbird/webext-support/tree/master/modules/preferences), which can be used as a drop-in replacement for the [`LegacyPrefs`](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyPrefs) Experiment. Add the following to the top of your background script:
 
 ```javascript
 import * as prefs from "preferences.mjs";
@@ -845,7 +845,7 @@ if (!migrated) {
 
 Move the definition of the `DEFAULTS` object from the top of your background script into your copy of the `preferences.mjs` module.
 
-Remove all code which used `browser.LegacyPrefs.setDefaultPref()` and update all other calls to access your preferences through the `LegacyPrefs` Experiment by the matching method of the `preferences.mjs` module.
+Remove all code which used `browser.LegacyPrefs.setDefaultPref()` and update all other calls to access your preferences through the [`LegacyPrefs`](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyPrefs) Experiment by the matching method of the `preferences.mjs` module.
 
 The preference caching mechanism for Experiments can be updated as follows:
 
@@ -872,4 +872,4 @@ browser.storage.local.onChanged.addListener(async (changes) => {
 });
 ```
 
-Wait about 6-12 month after the migration code has been shipped to your users, before removing the migration code and the `LegacyPrefs` Experiment.
+Wait about 6-12 month after the migration code has been shipped to your users, before removing the migration code and the [`LegacyPrefs`](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyPrefs) Experiment.

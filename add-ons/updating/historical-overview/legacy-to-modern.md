@@ -55,7 +55,7 @@ await browser.LegacyHelper.registerGlobalUrls([
 ]);
 ```
 
-There are no direct equivalents to manifest flags, so add-ons now need to provide their own mechanisms to switch code or resources depending on the runtime environment. Relevant information is accessible through the [`runtime` API](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/).
+There are no direct equivalents to manifest flags, so add-ons now need to provide their own mechanisms to switch code or resources depending on the runtime environment. Relevant information is accessible through the [runtime API](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/).
 
 #### **skin**
 
@@ -170,7 +170,7 @@ This will be removed after the XUL options dialog has been converted to a standa
 
 Even though the [LegacyHelper](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyHelper) Experiment allows to register legacy locales, the technology itself is deprecated: WebExtension HTML pages cannot acces DTD or property files. Instead, they use the [i18n API](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/i18n) to access locales stored in simple JSON files.
 
-The [`localeConverter.py` python script from the webext-support repository](https://github.com/thunderbird/webext-support/tree/master/tools/locale-converter) will do most of the work to convert your locale files (DTD and property files) into the new JSON format.
+The [localeConverter.py](https://github.com/thunderbird/webext-support/tree/master/tools/locale-converter) python script will do most of the work to convert your locale files (DTD and property files) into the new JSON format.
 
 The new locale data can be accessed from any WebExtension script:
 
@@ -196,7 +196,7 @@ It may help during development, that the old XUL options page can still be opend
 
 ### Localisation
 
-There is no automatic replacement of locale placeholder entities like `&myLocaleIdentifier;` in WebExtension HTML files any more. Instead, you can use placeholders like `__MSG_myLocaleIdentifier__` in your markup and include [the `i18n.mjs` module provided by the webext-support repository](https://github.com/thunderbird/webext-support/tree/master/modules/i18n) and automatically replace all `__MSG_*__` locale placeholders on page load.
+There is no automatic replacement of locale placeholder entities like `&myLocaleIdentifier;` in WebExtension HTML files any more. Instead, you can use placeholders like `__MSG_myLocaleIdentifier__` in your markup and include the [i18n.mjs](https://github.com/thunderbird/webext-support/tree/master/modules/i18n) module and automatically replace all `__MSG_*__` locale placeholders on page load.
 
 ```javascript
 import * as i18n from "i18n.mjs"
@@ -818,7 +818,7 @@ browser.LegacyPrefs.onChanged.addListener(async (prefName, newValue) => {
 
 ### Migration strategy
 
-The last step is to move all preferences into [browser.storage.local.*](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage/local) and update all WebExtension scripts to no longer use the [LegacyPrefs](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyPrefs) Experiment. The [webext-support repository provides the `preference.mjs` module](https://github.com/thunderbird/webext-support/tree/master/modules/preferences), which can be used as a drop-in replacement for the [LegacyPrefs](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyPrefs) Experiment. Add the following to the top of your background script:
+The last step is to move all preferences into [browser.storage.local.*](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage/local) and update all WebExtension scripts to no longer use the [LegacyPrefs](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyPrefs) Experiment. The [preferences.mjs](https://github.com/thunderbird/webext-support/tree/master/modules/preferences) module can be used as a drop-in replacement for the [LegacyPrefs](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyPrefs) Experiment. Add the following to the top of your background script:
 
 ```javascript
 import * as prefs from "preferences.mjs";
@@ -843,9 +843,9 @@ if (!migrated) {
 }
 ```
 
-Move the definition of the `DEFAULTS` object from the top of your background script into your copy of the `preferences.mjs` module.
+Move the definition of the `DEFAULTS` object from the top of your background script into your copy of the [preferences.mjs](https://github.com/thunderbird/webext-support/tree/master/modules/preferences) module.
 
-Remove all code which used `browser.LegacyPrefs.setDefaultPref()` and update all other calls to access your preferences through the [LegacyPrefs](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyPrefs) Experiment by the matching method of the `preferences.mjs` module.
+Remove all code which used `browser.LegacyPrefs.setDefaultPref()` and update all other calls to access your preferences through the [LegacyPrefs](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyPrefs) Experiment by the matching method of the [preferences.mjs](https://github.com/thunderbird/webext-support/tree/master/modules/preferences) module.
 
 The preference caching mechanism for Experiments can be updated as follows:
 

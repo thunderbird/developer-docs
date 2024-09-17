@@ -41,7 +41,7 @@ Depending on your time constraints, experience, and the concrete feature you're 
 
 ## Building the Structure
 
-Once you have a draft for your API, you can start to build the Experiment. Experiments consist of three parts, [which are registered through `manifest.json`](https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/basics.html#webextensions-experiments):
+Once you have a draft for your API, you can start to build the Experiment. Experiments consist of three parts, which are registered through [manifest.json](https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/basics.html#webextensions-experiments):
 
 1. A [_schema_](https://firefox-source-docs.mozilla.org/toolkit/components/extensions/webextensions/schema.html) describes the API that can be accessed by the WebExtension part of the add-on.
 2. A _parent_ implementation implements the API in Thunderbird's main process. All features that were available to a bootstrapped legacy extension can be used here.

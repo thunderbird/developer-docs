@@ -8,7 +8,7 @@ description: >-
 
 In the first part of this tutorial, we will create a very simple extension, which adds a "_Hello World_" button to Thunderbird's main toolbar and a click on it will show a `Hello, World!` popup.
 
-![](../../.gitbook/assets/hello-word.png)
+![](../../.gitbook/assets/guide001.png)
 
 ## Creating a manifest.json
 
@@ -138,15 +138,15 @@ hello-world/
 
 To install the add-on we created, we are going to load it temporarily. Let's start by opening the Add-ons Manager:
 
-![](../../.gitbook/assets/screen1.png)
+![](../../.gitbook/assets/guide002.png)
 
 This will open up the Add-ons Manager, make sure "Extensions" is selected on the left-hand side and click the gear to select "Debug Add-ons".
 
-![](../../.gitbook/assets/screen2.png)
+![](../../.gitbook/assets/guide003.png)
 
 Click on the "Load Temporary Add-on..." button:
 
-![](../../.gitbook/assets/screen3.PNG)
+![](../../.gitbook/assets/guide004.png)
 
 Select the `manifest.json` file from within our `hello-world` project folder:
 
@@ -154,25 +154,25 @@ Select the `manifest.json` file from within our `hello-world` project folder:
 
 This should install the add-on for this session only:
 
-![](../../.gitbook/assets/screen5.png)
+![](../../.gitbook/assets/guide005.png)
 
 ### Opening the Error Console
 
-Our extension will print messages to the error console using `console.log()`, so we need to open the error console first, in order to see those log entries. Hit the "Inspect" button under the add-on's listing (pictured above), this will bring up the Developer Tools tab.
+Our extension will print messages to the error console using `console.log()`, so we need to open the error console first, in order to see those log entries. Hit the "Inspect" button under the add-on's listing (pictured above), this will open the Developer Tools window.
 
-Make sure the "Console" tab is selected in the Developer Tools. Click the "Persist Logs" checkbox in the top right-hand corner of the Developer Tools so that we can see the output from the add-on after we've interacted with it (otherwise it only shows output as it is happening).
+Make sure the "Console" tab is selected in the Developer Tools. Click the "Persist Logs" checkbox in the top right-hand corner of the Developer Tools window so that we can see the output from the add-on after we've interacted with it (otherwise, it only shows output as it is happening).
 
-![](../../.gitbook/assets/screen6.png)
+![](../../.gitbook/assets/guide006.png)
 
 ### Trying it Out
 
 Now we can give our new add-on a whirl. Head to the home tab and find the new "_Hello World_" button in the main toolbar in the top right-hand corner. Click on it to see a popup with the `Hello, World!` message.
 
-![](../../.gitbook/assets/screen7.png)
+![](../../.gitbook/assets/guide001.png)
 
-Now, if you look at the Developer Tools, you should see something like the following in the console:
+Now, if you look at the Developer Tools window, you should see something like the following in the console:
 
-![](../../.gitbook/assets/screen8.png)
+![](../../.gitbook/assets/guide007.png)
 
 ## Creating the add-on file
 

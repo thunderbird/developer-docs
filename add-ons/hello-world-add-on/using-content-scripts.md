@@ -8,7 +8,7 @@ In the fourth part of the Hello World Extension Tutorial, we will introduce the 
 
 We will add a banner to the top of the message display area, displaying some information about the currently viewed message. The banner will also include a button to mark the currently viewed message as unread.
 
-![](<../../.gitbook/assets/hello-world-4 (1).png>)
+![](../../.gitbook/assets/guide011.png)
 
 ## Using a Message Display Script
 

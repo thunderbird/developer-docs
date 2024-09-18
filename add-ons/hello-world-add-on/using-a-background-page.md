@@ -8,7 +8,7 @@ In the third part of the Hello World Extension Tutorial, we will introduce the c
 
 We will keep track of incoming mails, add a menu entry to the tools menu and also a context menu entry to our button in Thunderbird's main toolbar and a click on both will open notifications with the collected information from the last 24 hours.
 
-![](../../.gitbook/assets/hello-word-3.png)
+![](../../.gitbook/assets/guide009.png)
 
 ## Background Page and Background Scripts
 
@@ -347,4 +347,4 @@ As described in the [first part of the Hello World Extension Tutorial](./#instal
 
 After you have received one or more new messages, while the add-on has been active, open the context menu of our `browser_action` button in Thunderbird's main toolbar and click on "Show received emails". For each received message, you should see a notification.
 
-![](../../.gitbook/assets/hello-word-3-try.png)
+![](../../.gitbook/assets/guide010.png)

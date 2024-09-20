@@ -129,102 +129,36 @@ Common pitfall: `async` functions return a `Promise` in the scope of the functio
 
 ## Structuring Experiment code
 
-If your Experiment API is so complex that it does not reasonably fit into a single source file, you can use system modules with some additional boilerplate. In order to load system modules, your Experiment needs to define a `resource://` URL. The required code is as follows:
+If your Experiment API is so complex that it does not reasonably fit into a single source file, you can use system modules with some additional boilerplate. The [LegacyHelper](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyHelper) Experiment can be used to define custom global URLs. In this example, we are registering a custom `resource://` URL with the namespace `myaddon`:
 
 ```javascript
-var { ExtensionUtils } = ChromeUtils.importESModule(
-  "resource://gre/modules/ExtensionUtils.sys.mjs"
-);
-var { ExtensionError } = ExtensionUtils;
-
-class ResourceUrl {
-  constructor() {
-    this.customNamespaces = [];
-  }
-  
-  register(customNamespace, extension, folder) {
-    const resProto = Cc[
-      "@mozilla.org/network/protocol;1?name=resource"
-    ].getService(Ci.nsISubstitutingProtocolHandler);
-
-    if (customNamespace != customNamespace.toLowerCase()) {
-      throw new ExtensionError(`The namespace is invalid, it must be written entirely in lowercase letters: "${customNamespace}"`);
-    };
-
-    customNamespace != customNamespace.toLowerCase()
-
-    if (resProto.hasSubstitution(customNamespace)) {
-      throw new ExtensionError(`There is already a resource:// url for the namespace "${customNamespace}"`);
-    }
-    this.customNamespaces.push(customNamespace);
-
-    let uri = Services.io.newURI(
-      folder || ".",
-      null,
-      extension.rootURI
-    );
-    resProto.setSubstitutionWithFlags(
-      customNamespace,
-      uri,
-      resProto.ALLOW_CONTENT_ACCESS
-    );
-  }
-
-  unregister() {
-    const resProto = Cc[
-      "@mozilla.org/network/protocol;1?name=resource"
-    ].getService(Ci.nsISubstitutingProtocolHandler);
-    for (let customNamespace of this.customNamespaces) {
-      console.log("Unloading namespace", customNamespace);
-      resProto.setSubstitution(customNamespace, null);
-    }
-  }
-}
-const resourceUrl = new ResourceUrl();
-```
-
-In this example, we are registering a custom `resource://` URL with the namespace `example123`:
-
-```javascript
-// Register a resource:// url with a custom namespace, which points to a
+// Register a resource:// url with a custom namespace, which points to the
 // "modules" folder. The namespace should be unique to avoid conflicts with
 // other add-ons.
-resourceUrl.register("example123", extension, "modules/");
-
+await messenger.LegacyHelper.registerGlobalUrls([
+    ["resource", "myaddon", "modules/"],
+]);
 ```
 
-The file `TestModules.sys.mjs` in the `modules` folder will then be accessible via\
-`resource://example123/TestModule.sys.mjs`. Since system modules cannot be unloaded, we have to append a unique identifier, to make sure cached files are not re-used:
+The file `TestModule.sys.mjs` in the `modules` folder will then be accessible via\
+`resource://myaddon/TestModule.sys.mjs`.&#x20;
+
+Since system modules cannot be unloaded, we have to append a unique query, to make sure cached files are not re-used after an update. In the following example the `version` key from `manifest.json` is used. This allows us to use the same identifier throughout the entire add-on, but load the new version whenever the add-on has been updated:
 
 ```javascript
+const { ExtensionParent } = ChromeUtils.importESModule(
+    "resource://gre/modules/ExtensionParent.sys.mjs"
+);
+const extension = ExtensionParent.GlobalManager.getExtension(
+    "<id-of-your-extensions>"
+);
+const query = extension.manifest.version;
+
 // Load TestModule.sys.mjs.
 var { TestModule } = ChromeUtils.importESModule(
-  "resource://example123/TestModule.sys.mjs?" + Date.now()
+  "resource://myaddon/TestModule.sys.mjs?" + query
 )
 ```
-
-The Experiment **must** unregister the custom `resource://` URL in its `onShutdown()` method:
-
-```javascript
-onShutdown(isAppShutdown) {
-  // This function is called if the extension is disabled or removed, or
-  // Thunderbird closes. We usually do not have to do any cleanup, if
-  // Thunderbird is shutting down entirely.
-  if (isAppShutdown) {
-    return;
-  }
-  
-  // Unregister our resource:// url.
-  resourceUrl.unregister("example123");
-
-  // Flush all caches.
-  Services.obs.notifyObservers(null, "startupcache-invalidate");
-
-  console.log("Goodbye world!");
-}
-```
-
-The [Activity Manager Experiment Example](https://github.com/thunderbird/webext-examples/tree/master/manifest\_v2/experiment.activityManager) is registering a `resource://` URL through the [LegacyHelper API](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyHelper).
 
 ## Accessing WebExtensions directly from an Experiment
 

@@ -129,7 +129,7 @@ Common pitfall: `async` functions return a `Promise` in the scope of the functio
 
 ## Structuring Experiment code
 
-If your Experiment API is so complex that it does not reasonably fit into a single source file, you can use system modules with some additional boilerplate. The [LegacyHelper](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyHelper) Experiment can be used to define custom global URLs. In this example, we are registering a custom `resource://` URL with the namespace `myaddon`:
+If your Experiment API is so complex that it does not reasonably fit into a single source file, you can load your own system modules with some additional boilerplate: you need to define a custom global URL. The [LegacyHelper](https://github.com/thunderbird/webext-support/tree/master/experiments/LegacyHelper) Experiment can be used to define custom global URLs. In this example, we are registering a custom `resource://` URL with the namespace `myaddon`:
 
 ```javascript
 // Register a resource:// url with a custom namespace, which points to the

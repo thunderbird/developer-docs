@@ -125,6 +125,21 @@ To find the name of any particular task, click on existing instance in Treeherde
 
 If you commit with neither Try syntax nor a `try_task_config.json` file (or you want to add to an existing run), you can one or more tasks using Treeherder. Once the decision (D) task has completed, click the drop-down arrow to the right of it, and choose "Add new jobs".
 
+### Get an installable build from a Try run
+
+When the build at `https://treeherder.mozilla.org/jobs?repo=try-comm-central` is complete (normally takes 1-2 hours):
+
+* Click the green "B" (for binary) next to one of the following: "Windows 2012 x64 \[shippable] opt", "Linux x64 \[shippable] opt", "OS X Cross Compiled \[shippable] opt" (unless instructed to use a debug build).\
+  ![](<../../.gitbook/assets/trybuilds (3).jpeg>)\
+
+* In the black header below click "Artifacts and Debugging Tools".
+* In the Artifacts section, to download the install file click on `target.installer.exe` (Windows), `target.tar.bz2` (Linux), or `target.dmg` (Mac).\
+  \
+  ![](<../../.gitbook/assets/try-target (1).jpeg>)\
+  \
+
+* Install the downloaded file.
+
 ## Testing mozilla-central patches
 
 If you have changes that affect mozilla-central, you may wish to do a Try run to check Thunderbird isn't broken. Here's how:

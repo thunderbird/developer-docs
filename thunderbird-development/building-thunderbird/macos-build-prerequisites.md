@@ -134,7 +134,7 @@ export PATH=$HOME/.cargo/bin:$PATH
 
 ## You're all set
 
-Got back to the [Building Thunderbird](./#build-configuration) page and continue following the guide:
+Go back to the [Building Thunderbird](./#build-configuration) page and continue following the guide:
 
 {% content-ref url="./" %}
 [.](./)

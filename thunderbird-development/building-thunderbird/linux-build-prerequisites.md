@@ -26,6 +26,11 @@ The Thunderbird build can use 30-40GB of disk space to complete depending on you
 Note that while it's not technically required to have an internet connection to build, the default setup has `--enable-bootstrap` so that the toolchains download automatically.
 {% endhint %}
 
+{% hint style="warning" %}
+The `bootstrap.py` file will create files outside of the current directory. E.g. in `~/.mozbuild`. Ensure you have enough free space in your home directory as well.
+Alternatively to build within the current directory and avoid writing to the home directory run `HOME="$(pwd)" ./bootstrap.py` instead or use a chroot environment.
+{% endhint %}
+
 ## Build Environment
 
 ### Python

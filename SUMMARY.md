@@ -84,3 +84,11 @@
     * [Convert legacy WebExtensions to modern WebExtensions](add-ons/updating/historical-overview/legacy-to-modern.md)
     * [Convert legacy overlay extension to legacy WebExtension](add-ons/updating/historical-overview/overlays.md)
     * [Convert legacy bootstrapped extension to legacy WebExtension](add-ons/updating/historical-overview/bootstrapped.md)
+
+## Releases
+* [Thunderbird Channels](releases/channels.md)
+* [Release Cadence](releases/cadence.md)
+* [Uplifting Fixes](releases/uplifting-fixes.md)
+* [Feature Flags](releases/feature-flags.md)
+* [Tracking Fixes for Releases](releases/tracking-fixes.md)
+* [Contributing to Release Notes](releases/release-notes.md)

@@ -52,7 +52,7 @@ The general release cadence consists of 4-week cycles, with each branch correspo
   - It is deemed too risky.
   - It introduces new crashes or high-severity bugs.
   - It reduces the overall quality of Thunderbird.
-  - A follow-up fix cannot be provided in a reasonable timeframe.
+  - It introduces a bug and a follow-up fix cannot be provided in a reasonable timeframe.
 
 ---
 

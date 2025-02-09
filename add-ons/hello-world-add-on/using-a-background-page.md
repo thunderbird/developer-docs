@@ -113,7 +113,7 @@ The call to `storage.local.get()` returns a Promise for a single object with the
 }
 ```
 
-To access the content of the `messageLog` member, one would have to use `rv.messageLog`. That is sometimes not the desired behaviour, and instead we store the requested value directly in a variable. This is called _object destructering,_ and it maps the content of the `messageLog` member of the returned object to the `messageLog` variable. Any other non-matching returned member is ignored.
+To access the content of the `messageLog` member, one would have to use `rv.messageLog`. That is sometimes not the desired behaviour, and instead we store the requested value directly in a variable. This is called _object destructuring,_ and it maps the content of the `messageLog` member of the returned object to the `messageLog` variable. Any other non-matching returned member is ignored.
 
 {% hint style="warning" %}
 Access to the local storage requires the <mark style="color:red;">`storage`</mark> permission, which needs to be added to the `permissions` key in our `manifest.json` file.

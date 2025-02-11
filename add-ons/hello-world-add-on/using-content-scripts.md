@@ -34,13 +34,13 @@ let messageTabs = openTabs.filter(
     tab => ["mail", "messageDisplay"].includes(tab.type)
 );
 for (let messageTab of messageTabs) {
-    // Make sure the tab is displaying a message. The mail tab could also display
-    // a content page, which will cause an error.
+    // Make sure the tab is displaying a single message. The mail tab could also
+    // display a content page or multiple messages, which will cause an error.
     if (messageTab.type == "mail") {
         let messages = await browser.messageDisplay.getDisplayedMessages(
-           messageTab.id
+            messageTab.id
         );
-        if (messages.length == 0) {
+        if (messages.length != 1) {
             continue;
         }
     }

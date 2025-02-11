@@ -14,7 +14,7 @@ We will add a banner to the top of the message display area, displaying some inf
 
 Content Scripts are JavaScript files that are loaded and executed in content pages. This technology was mainly developed for browsers, where it is used to interact with the currently viewed web page.
 
-In addition to [standard content scripts](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content\_scripts), Thunderbird supports the following special types of content scripts:
+In addition to [standard content scripts](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content_scripts), Thunderbird supports the following special types of content scripts:
 
 * compose scripts loaded into the editor of the message composer
 * message display scripts loaded into rendered messages when displayed to the user
@@ -34,12 +34,22 @@ let messageTabs = openTabs.filter(
     tab => ["mail", "messageDisplay"].includes(tab.type)
 );
 for (let messageTab of messageTabs) {
+    // Make sure the tab is displaying a message. The mail tab could also display
+    // a content page, which will cause an error.
+    if (messageTab.type == "mail") {
+        let messages = await browser.messageDisplay.getDisplayedMessages(
+           messageTab.id
+        );
+        if (messages.length == 0) {
+            continue;
+        }
+    }
     browser.tabs.executeScript(messageTab.id, {
         file: "messageDisplay/message-content-script.js"
-    })
+    });
     browser.tabs.insertCSS(messageTab.id, {
         file: "messageDisplay/message-content-styles.css"
-    })
+    });
 }
 ```
 
@@ -113,7 +123,7 @@ Content scripts cannot yet be loaded as top level ES6 modules. They cannot load 
 
 The main purpose of the `message-content-script.js` file is to manipulate the rendered message and add a banner at its top. We use basic DOM manipulation techniques.
 
-What is special however is how the displayed information is retrieved. In the second part of this tutorial, we used the `tabs` API and the `messageDisplay` API from our background page, to learn which message is currently displayed and then used the `messages` API to get the required information. This does not work for content scripts, as [their access is limited](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content\_scripts#webextension\_apis). Instead, we have to request this information from the background script using runtime messaging.
+What is special however is how the displayed information is retrieved. In the second part of this tutorial, we used the `tabs` API and the `messageDisplay` API from our background page, to learn which message is currently displayed and then used the `messages` API to get the required information. This does not work for content scripts, as [their access is limited](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content_scripts#webextension_apis). Instead, we have to request this information from the background script using runtime messaging.
 
 #### Sending a runtime message
 

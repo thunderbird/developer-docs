@@ -59,6 +59,6 @@ If an account is selected in the folder pane instead of a folder, yet another `<
 
 ## about:message
 
-`about:message` is all of the UI that displays a single message, including the message headers and attachments. It is used as the message pane in `about:3pane` and by itself as a message tab or window. Like `about:3pane` it lives in the tree as [aboutMessage.xhtml](https://searchfox.org/comm-central/source/mail/base/content/aboutMessage.xhtml), [.js](https://searchfox.org/comm-central/source/mail/base/content/aboutMessage.js), [.css](https://searchfox.org/comm-central/source/mail/themes/shared/mail/aboutMessage.css) and [.ftl](https://searchfox.org/comm-central/source/mail/locales/en-US/messenger/about3Pane.ftl) files.
+`about:message` is all of the UI that displays a single message, including the message headers and attachments. It is used as the message pane in `about:3pane` and by itself as a message tab or window. Like `about:3pane` it lives in the tree as [aboutMessage.xhtml](https://searchfox.org/comm-central/source/mail/base/content/aboutMessage.xhtml), [aboutMessage.js](https://searchfox.org/comm-central/source/mail/base/content/aboutMessage.js), [messageHeader.css](https://searchfox.org/comm-central/source/mail/themes/shared/mail/messageHeader.css) and [about3Pane.ftl](https://searchfox.org/comm-central/source/mail/locales/en-US/messenger/about3Pane.ftl) files.
 
 Message contents themselves are displayed in a `<browser>` (if you're counting, we're now three deep) which can be accessed by the `content` property of an `about:message` `window`.

@@ -41,7 +41,7 @@ The general release cadence consists of 4-week cycles, with each branch correspo
 ### **Stabilization Milestones**
 
 #### **Daily Soft Code Freeze**
-- A 4-day soft code freeze occurs for comm-central prior to merging into comm-beta.
+- A 1-week soft code freeze occurs for comm-central prior to merging into comm-beta.
 - During this time:
   - Risky code should not land in comm-central.
   - Features controlled by a feature flag that were disabled in Daily should not be enabled.
@@ -61,8 +61,8 @@ The general release cadence consists of 4-week cycles, with each branch correspo
 | Milestone                                | Date         |
 |------------------------------------------|--------------|
 | Thunderbird 136.0a1 starts               | Jan 6        |
+| Thunderbird 136.0a1 soft code freeze     | Jan 27–Feb 3 |
 | Thunderbird 136.0a1 pre-merge review     | Jan 30       |
-| Thunderbird 136.0a1 soft code freeze     | Jan 30–Feb 3 |
 | Thunderbird merge 136.0a1 central → beta | Feb 3        |
 | Thunderbird 136.0b1                      | Feb 5        |
 | Thunderbird 136.0b2                      | Feb 12       |

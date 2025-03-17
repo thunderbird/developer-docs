@@ -47,25 +47,31 @@ Ensure uplift requests are submitted at least two working days prior to any sche
 
 ### **Uplift Request Form**
 
-**[User impact if declined]**
+**Please state case for uplift consideration and ensure bug severity is set**
+- Ensure the fix adheres to criteria specified in [Uplifts to Beta](uplifting-fixes#uplifts-to-beta) or [Uplifts to Release and ESR](uplifting-fixes#uplifts-to-release-and-esr).
+
+**User impact if declined**
 - Provide details on how an end user would be impacted with or without this change. In addition to the Steps to Reproduce (STR), explain the deeper implications for users.
 
-**[Is this code covered by automated tests?]**
-- Options: Yes / No / Unknown.
+**Is this code covered by automated tests?**
+- Options: Yes / No / Unknown
 
-**[Has the fix been verified in Daily? (or Beta for an ESR uplift?)]**
-- Indicate whether the fix has been verified in a Daily or Beta build, and by whom (e.g., the reporter or QA).
+**Has the fix been verified in Daily?**
+- Options: Yes / No / N/A
 
-**[Needs manual test from QA?]**
-- Options: Yes / No.
+**Has the fix been verified in Beta?**
+- Options: Yes / No / N/A
+
+**Needs manual test from QA?**
+- Options: Yes / No
 - If "Yes," include the steps to reproduce either by referencing an existing comment with STR or elaborating directly.
 
-**[List of other uplifts needed]**
+**List of other uplifts needed**
 - If this patch depends on other changes not present on the target branch, list those dependencies here.
 - Ensure approval is also requested for dependent patches.
 
-**[Risk to taking this patch]**
-- Options: Low / Medium / High.
+**Risk to taking this patch**
+- Options: Low / Medium / High
 - Provide a justification as to why the benefits of the uplift outweighs the associated risks.
 
 Examples:
@@ -73,9 +79,9 @@ Examples:
 - **Medium**: Due to code complexity and integration with other areas, there might be regressions in related functionality.
 - **High**: The patch involves complex changes with a high likelihood of fallout or regressions, which may require extensive manual testing or mitigation strategies.
 
-**[Why is the change risky/not risky? (and alternatives if risky)]**
+**Why is the change risky/not risky? (and alternatives if risky)**
 - If the change is risky, explain the potential impact. In other words, describe the potential negative impacts that could occur if the change leads to a regression. What mitigations were taken to reduce the risk? What alternative solutions were considered?
 
-**[String changes made/needed]**
+**String changes made/needed**
 - Answer "none" if no string changes were made.
 - If there are string changes, add details and justification to help with l10n review.

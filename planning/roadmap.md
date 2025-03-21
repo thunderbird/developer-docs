@@ -2,17 +2,15 @@
 description: Planned work for the 2025-2026 releases of Thunderbird.
 ---
 
-# Roadmap
-
 This is a list of all the primary objectives and efforts that we will be working on.
 
 {% hint style="warning" %}
 The delivery quarters provided are tentative and those timelines could change throughout the year.
 {% endhint %}
 
-## Front-end Priorities
+# Front-end Priorities
 
-### Conversation View
+## Conversation View
 
 Priority: <mark style="background-color:red;">P1</mark>\
 Delivery Quarter: Q3 2025\
@@ -23,7 +21,7 @@ High level objectives (non-exhaustive):
 * Thread tree visualization.
 * Reply inline (optional).
 
-### Calendar UI/UX
+## Calendar UI/UX
 
 Priority: <mark style="background-color:red;">P1</mark>\
 Delivery Quarter: Q2 2025\
@@ -37,7 +35,7 @@ High level objectives (non-exhaustive):
 * Customizable agenda and reminders.
 * Better handling of unprocessed invitations.
 
-### First Time User Experience
+## First Time User Experience
 
 Priority: <mark style="background-color:red;">P1</mark>\
 Delivery Quarter: Q2 2025\
@@ -49,7 +47,7 @@ High level objectives (non-exhaustive):
 * Early customization options to set the desired defaults.
 * Expose important entry points like encryption and other more hidden settings.
 
-### Unified Toolbar Completion
+## Unified Toolbar Completion
 
 Priority: <mark style="background-color:yellow;">P2</mark>\
 Delivery Quarter: Q3 2025\
@@ -63,7 +61,7 @@ High level objectives (non-exhaustive):
 * Rows.
 * Drop the App Menu!
 
-### Tabs
+## Tabs
 
 Priority: <mark style="background-color:yellow;">P2</mark>\
 Delivery Quarter: Q3 2025\
@@ -72,7 +70,7 @@ High level objectives (non-exhaustive):
 * Spaces and tabs rebuild, with each space handling their own tabs.
 * Standalone windows per space without the need of having the "mail" space.
 
-### OS System Tray
+## OS System Tray
 
 Priority: <mark style="background-color:yellow;">P2</mark>\
 Delivery Quarter: Q4 2025\
@@ -86,7 +84,7 @@ High level objectives (non-exhaustive):
 * Open settings.
 * Quit action.
 
-### Native OS Notifications
+## Native OS Notifications
 
 Priority: <mark style="background-color:yellow;">P2</mark>\
 Delivery Quarter: Q4 2025\
@@ -97,7 +95,7 @@ High level objectives (non-exhaustive):
 * Manage notifications per account.
 * Focus modes.
 
-### Compose Window
+## Compose Window
 
 Priority: <mark style="background-color:green;">P3</mark>\
 Delivery Quarter: Q1 2026\
@@ -111,7 +109,7 @@ High level objectives (non-exhaustive):
 * Native emojis support (unicode).
 * Mentions support.
 
-### Settings UI
+## Settings UI
 
 Priority: <mark style="background-color:green;">P3</mark>\
 Delivery Quarter: Q1 2026\
@@ -123,7 +121,7 @@ High level objectives (non-exhaustive):
 * Application settings and Account settings should be in the same place.
 * "Labs" section for listing experiments
 
-### Tasks
+## Tasks
 
 Priority: <mark style="background-color:green;">P3</mark>\
 Delivery Quarter: Q2 2026\
@@ -137,7 +135,7 @@ High level objectives (non-exhaustive):
 * Kanban board.
 * Integrate into emails, address books, and other areas.
 
-### Home Space
+## Home Space
 
 Priority: <mark style="background-color:green;">P3</mark>\
 Delivery Quarter: Q3 2026\
@@ -149,7 +147,7 @@ High level objectives (non-exhaustive):
 * Blog listing (feed).
 * Suggested actions.
 
-### Chat Design Kickoff
+## Chat Design Kickoff
 
 Priority: <mark style="background-color:green;">P3</mark>\
 Delivery Quarter: Q4 2026\
@@ -160,9 +158,9 @@ High level objectives (non-exhaustive):
 * Prioritize existing features
 * Prioritize new features
 
-## Back-end Priorities
+# Back-end Priorities
 
-### Exchange Email
+## Exchange Email
 
 Priority: <mark style="background-color:red;">P1</mark>\
 Delivery Quarter: Q1 2025\
@@ -171,7 +169,7 @@ High level objectives (non-exhaustive):
 * Full support of email operations.
 * Full support of account creation.
 
-### Global Database
+## Global Database
 
 Priority: <mark style="background-color:red;">P1</mark>\
 Delivery Quarter: Q2 2025\
@@ -183,7 +181,7 @@ High level objectives (non-exhaustive):
 * Rollbacks.
 * Build in parallel and populate it alongside the current database.
 
-### A New Email Encryption
+## A New Email Encryption
 
 Priority: <mark style="background-color:red;">P1</mark>\
 Delivery Quarter: Q1 2026\
@@ -192,7 +190,7 @@ High level objectives (non-exhaustive):
 * Thunderbird should be the champion of encryption and propose a new open path.
 * Making it easier for non-technical users to use a reliable encrypted solution.
 
-### Sentry
+## Sentry
 
 Priority: <mark style="background-color:yellow;">P2</mark>\
 Delivery Quarter: Q1 2025\
@@ -206,7 +204,7 @@ High level objectives (non-exhaustive):
 * Test
 * Document for future consumption in other components
 
-### Performance
+## Performance
 
 Priority: <mark style="background-color:yellow;">P2</mark>\
 Delivery Quarter: Q2 2025\
@@ -218,7 +216,7 @@ High level objectives (non-exhaustive):
 * Implement the "�start minimized" back-end.
 * Take ownership of the "primary password"� process
 
-### Exchange Calendar
+## Exchange Calendar
 
 Priority: <mark style="background-color:yellow;">P2</mark>\
 Delivery Quarter: Q3 2025\
@@ -228,7 +226,7 @@ High level objectives (non-exhaustive):
 * Use it as a way to rebuild/improve the current calendar protocol.
 * Support exchange-specific features.
 
-### Exchange Address Book
+## Exchange Address Book
 
 Priority: <mark style="background-color:yellow;">P2</mark>\
 Delivery Quarter: Q3 2025\
@@ -238,7 +236,7 @@ High level objectives (non-exhaustive):
 * Support exchange-specific features.
 * Fetch users' profile pictures.
 
-### Exchange Graph API
+## Exchange Graph API
 
 Priority: <mark style="background-color:green;">P3</mark>\
 Delivery Quarter: Q1 2026\
@@ -247,7 +245,7 @@ High level objectives (non-exhaustive):
 * Audit what can be supported via GraphAPI.
 * Build a parallel protocol to A/B test against EWS.
 
-### Notes
+## Notes
 
 Priority: <mark style="background-color:green;">P3</mark>\
 Delivery Quarter: Q2 2026\
@@ -260,9 +258,9 @@ High level objectives (non-exhaustive):
 * Potential Pro offering (cloud notes with shared access like Etherpad).
 * Potential syncing through IMAP.
 
-## Maintenance Priorities
+# Maintenance Priorities
 
-### Support URLs
+## Support URLs
 
 Priority: <mark style="background-color:red;">P1</mark>\
 Delivery Quarter: Q1 2025\
@@ -270,7 +268,7 @@ High level objectives (non-exhaustive):
 
 * Plan and implement an efficient and standard approach to links within the application
 
-### Better logging/diagnostics
+## Better logging/diagnostics
 
 Priority: <mark style="background-color:red;">P1</mark>\
 Delivery Quarter: Q1 2025\
@@ -279,7 +277,7 @@ High level objectives (non-exhaustive):
 * Implement Sentry and telemetry to capture data that will help us prioritize response to issues based on frequency.
 * Add or change logging tools to make it easier for the majority of users to provide logs.
 
-### Fluent Migration
+## Fluent Migration
 
 Priority: <mark style="background-color:yellow;">P2</mark>\
 Delivery Quarter: Q2 2025\
@@ -287,7 +285,7 @@ High level objectives (non-exhaustive):
 
 * Assign a small migration effort every 2 weeks to each developer.
 
-### Complete Glean testing and uplift
+## Complete Glean testing and uplift
 
 Priority: <mark style="background-color:yellow;">P2</mark>\
 Delivery Quarter: Q2 2025\
@@ -297,12 +295,12 @@ High level objectives (non-exhaustive):
 * Validation that data is being captured as expected.
 * Help services consume the data.
 
-### Hardening
+## Hardening
 
 Priority: <mark style="background-color:yellow;">P2</mark>\
 Delivery Quarter: Q3 2025
 
-### Fuzzing and Monkey testing
+## Fuzzing and Monkey testing
 
 Priority: <mark style="background-color:yellow;">P2</mark>\
 Delivery Quarter: Q3 2025\
@@ -310,7 +308,7 @@ High level objectives (non-exhaustive):
 
 * Work with Rob to create scripts, VMs, checking tools etc that we can have running regularly to catch edge cases much sooner without users having to experience then report.
 
-### Re-implement Movemail
+## Re-implement Movemail
 
 Priority: <mark style="background-color:green;">P3</mark>\
 Delivery Quarter: Q3 2025\
@@ -319,7 +317,7 @@ High level objectives (non-exhaustive):
 * Reimplement the ability to use Movemail in Thunderbird.
 * No account creation feature for now.
 
-### Removal of the \*Overlay.js files
+## Removal of the \*Overlay.js files
 
 Priority: <mark style="background-color:green;">P3</mark>\
 Delivery Quarter: Q4 2025\

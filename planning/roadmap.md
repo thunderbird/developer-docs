@@ -12,6 +12,10 @@ This is a list of all the primary objectives and efforts that we will be working
 
 > <mark style="color:purple;">\[!IMPORTANT]</mark>\ <mark style="color:purple;">The delivery quarters provided are tentative and those timelines could change throughout the year.</mark>
 
+{% hint style="info" %}
+The delivery quarters provided are tentative and those timelines could change throughout the year.
+{% endhint %}
+
 ### Front-end Priorities
 
 #### Conversation View

@@ -4,93 +4,350 @@ description: Planned work for the 2024 release of Thunderbird.
 
 # Roadmap
 
-Below are the large projects planned for the 2024 release of Thunderbird.
+Below are the large projects planned for the 2025-2026 releases of Thunderbird.
 
-## Primary Objectives
+This is a list of all the primary objectives and efforts that we will be working on. These are not currently tied to any particular and they will be available when ready.
 
-This is a list of all the primary objectives and efforts that we will try to complete for 2024. These are not currently tied to any particular beta release nor ESR release and they will be available when ready.
+## Front-end Priorities
 
-### Mozilla Account + Sync
+### Conversation View
 
-[Bug 1833177 - \[meta\] Account Sync implementation](https://bugzilla.mozilla.org/show\_bug.cgi?id=1833177)
+Priority: <span style="background-color: #FF8080">P1</span>
+Delivery Quarter: Q1 2025
+Why: An email client without a conversation view in 2025 is just unacceptable.
+High level objectives (non-exhaustive):
+* Full thread conversation in message pane.
+* Collapsible/Expandable messages.
+* Thread tree visualization.
+* Reply inline (optional).
 
-Implement Mozilla Account login and syncing server functionalities to synchronize accounts and settings across installations.
+### Calendar UI/UX
+Priority: <span style="background-color: #FF8080">P1</span>
+Delivery Quarter: Q2 2025
+Why: Calendar pairs with email naturally, it needs to be a seamless and pleasant experience, and offer the same features of our competitors, if not better. 
+High level objectives (non-exhaustive):
+* Modern event modals with flexible UI.
+* Video conferencing integration.
+* Maps searching integration (Google, Apple, OpenStreetMap).
+* Modern HTML, markdown, plaintext editor.
+* Customizable UI with sensible defaults.
+* Customizable agenda and reminders.
+* Better handling of unprocessed invitations.
 
-### **Exchange email support**
+### First Time User Experience
+Priority: <span style="background-color: #FF8080">P1</span>
+Delivery Quarter: Q2 2025
+Why: A bad first impression takes years to shake off.
+High level objectives (non-exhaustive):
+* Account Hub for email, calendar, address book, feeds, and newsgroups.
+* Thunderbird Sync as the first option.
+* Guided discoveries of features when first accessing (welcome wizard).
+* Early customization options to set the desired defaults.
+* Expose important entry points like encryption and other more hidden settings.
 
-[Bug 1847846 - \[meta\] Implement Microsoft Exchange](https://bugzilla.mozilla.org/show\_bug.cgi?id=1847846)
+### Unified Toolbar Completion
+Priority: <span style="background-color: #FFFF99">P2</span>
+Delivery Quarter: Q3 2025
+Why: Let the rest of the UI consume the new Unified Toolbar, offering a centralized place to customize all views. 
+High level objectives (non-exhaustive):
+* Remove old customizable UI toolbar.
+* Unifying controls for spaces, standalone dialogs, and windows.
+* Add overflow space.
+* Add more buttons and elements (spin buttons, separators, button groups, etc).
+* Menu position.
+* Rows.
+* Drop the App Menu!
 
-Implement full support for Microsoft Exchange (EWS) into core for account create and email usage.
+### Tabs
+Priority: <span style="background-color: #FFFF99">P2</span>
+Delivery Quarter: Q3 2025
+Why: Let's rethink how tabs are implemented in Thunderbird to provide better workflows and extensibility through add-ons. 
+High level objectives (non-exhaustive):
+* Spaces and tabs rebuild, with each space handling their own tabs.
+* Standalone windows per space without the need of having the "mail" space.
 
-### **Global Message Database**
+### OS System Tray
+Priority: <span style="background-color: #FFFF99">P2</span>
+Delivery Quarter: Q4 2025
+Why: Basic native integration that shows how behind we are compared to everyone else.
+High level objectives (non-exhaustive):
+* Same tray code for Linux, Windows, and macOS.
+* Unread indicator and counter.
+* Minimize to tray.
+* Start minimized.
+* Compose action per account.
+* Open settings.
+* Quit action.
 
-[Bug 1572000 - \[meta\] database backed global message index](https://bugzilla.mozilla.org/show\_bug.cgi?id=1572000)
+### Native OS Notifications
+Priority: <span style="background-color: #FFFF99">P2</span>
+Delivery Quarter: Q4 2025
+Why: Another basic native integration that shows how behind we are compared to everyone else. 
+High level objectives (non-exhaustive):
+* Quick actions to reply, delete, mark messages.
+* Pause notifications for # time.
+* Manage notifications per account.
+* Focus modes.
 
-Move away from the old Mork database and implement a real global message database, enabling **conversation view** and other modern paradigms.
+### Compose Window
+Priority: <span style="background-color: #B3FFB3">P3</span>
+Delivery Quarter: Q1 2026
+Why: Writing an email should be easy, intuitive, and pleasant. 
+High level objectives (non-exhaustive):
+* Drop the C++ editor code.
+* Implement a modern JS editor component that can be reused in calendar, tasks, and any other text area field that needs it (signature, address book notes, etc).
+* Link previews.
+* Rich text with advanced features.
+* Markdown support and preview.
+* Native emojis support (unicode).
+* Mentions support.
 
-### **Telemetry Heat Mapping**
+### Settings UI
+Priority: <span style="background-color: #B3FFB3">P3</span>
+Delivery Quarter: Q1 2026
+Why: Requiring a text field to search for settings is a UX failure.
+High level objectives (non-exhaustive):
+* Modal dialog, because a settings tab doesn't make sense.
+* More sections and tabs for an intuitive discovery path, drop the never ending single pages.
+* All "‚Appearanc" settings in one page, including native themes (follow system, light, dark)
+* Application settings and Account settings should be in the same place.
+* "‚Labs" section for listing experiments
 
-Automatic generation of a visual heatmaps from telemetry clicks.
+### Tasks
+Priority: <span style="background-color: #B3FFB3">P3</span>
+Delivery Quarter: Q2 2026
+Why: ToDo lists UX pairs naturally with email and calendar.
+High level objectives (non-exhaustive):
+* Easier onboarding! Store them in the profile and sync them if there are no supported calendars.
+* Use open specs to allow interoperability.
+* Be opinionated with what we do here.
+* Modern UI.
+* Show tasks in the calendar.
+* Kanban board.
+* Integrate into emails, address books, and other areas.
 
-### **Cards View UI completion**
+### Home Space
+Priority: <span style="background-color: #B3FFB3">P3</span>
+Delivery Quarter: Q3 2026
+Why: A better version of the account central for our start page and other useful sections.
+High level objectives (non-exhaustive):
+* Stats!
+* Quick links to common actions.
+* Summarization of accounts.
+* Blog listing (feed).
+* Suggested actions.
 
-[Bug 1819710 - \[meta\] Implement a complete and usable cards message list for Vertical View layout](https://bugzilla.mozilla.org/show\_bug.cgi?id=1819710)
+### Chat Design Kickoff
+Priority: <span style="background-color: #B3FFB3">P3</span>
+Delivery Quarter: Q4 2026
+Why: Chat will be a core component of our Enterprise offering. Ending 2025 with a solid action plan and direction for 2026 will help us allocate resources and predict what we can offer to potential enterprise users.
+High level objectives (non-exhaustive):
+* Create design plan
+* Identify areas with technical debt
+* Prioritize existing features
+* Prioritize new features
 
-Finalize the cards view interface to implement all missing features and flexibility required.
 
-### **Message list context menu**
+## Back-end Priorities
 
-[Bug 1875802 - Implement the new message context menu structure](https://bugzilla.mozilla.org/show\_bug.cgi?id=1875802)
+### Exchange Email
+Priority: <span style="background-color: #FF8080">P1</span>
+Delivery Quarter: Q1 2025
+Why: Microsoft has +100M users locked into Exchange and their software is not great.
+High level objectives (non-exhaustive):
+* Full support of email operations.
+* Full support of account creation.
 
-Improve the context menu of the message list to make it more usable and digestible.
+### Global Database
+Priority: <span style="background-color: #FF8080">P1</span>
+Delivery Quarter: Q2 2025
+Why: Our current back-end is just holding us back.
+High level objectives (non-exhaustive):
+* SQLite based.
+* Rust interfaces.
+* Migrations.
+* Rollbacks.
+* Build in parallel and populate it alongside the current database.
 
-### **Dark reader email content**
+### A New Email Encryption
+Priority: <span style="background-color: #FF8080">P1</span>
+Delivery Quarter: Q1 2026
+Why: Current email encryption solutions are cumbersome, requiring will and training time to use it. Thunderbird can be the driver and the champion of a new open implementation. 
+High level objectives (non-exhaustive):
+* Thunderbird should be the champion of encryption and propose a new open path.
+* Making it easier for non-technical users to use a reliable encrypted solution.
 
-[Bug 1715361 - Dark UI: automatically convert light message content to dark](https://bugzilla.mozilla.org/show\_bug.cgi?id=1715361)
+### Sentry
+Priority: <span style="background-color: #FFFF99">P2</span>
+Delivery Quarter: Q1 2025
+Why: Improving our awareness of errors across the application to more quickly react to issues that users might not see nor report.
+High level objectives (non-exhaustive):
+* Add Sentry SDK & Initialise with DSN
+* Add channel/environment
+* Leverage default error capturing mechanisms
+* Add Custom Breadcrumb for one component
+* Configure reporting
+* Test
+* Document for future consumption in other components
 
-Support full dark mode also for message content and properly handle images and graphics.
+### Performance
+Priority: <span style="background-color: #FFFF99">P2</span>
+Delivery Quarter: Q2 2025
+Why: Optimize and rebuild to offer faster performance. 
+High level objectives (non-exhaustive):
+* Audit current startup code.
+* Slowly rebuild it.
+* Create performance profiles to measure startup performance impacts.
+* Implement the "‚start minimized" back-end.
+* Take ownership of the "primary password"‚ process
 
-### **Folder Pane UI completion**
+### Exchange Calendar
+Priority: <span style="background-color: #FFFF99">P2</span>
+Delivery Quarter: Q3 2025
+Why: Fully supporting the Exchange protocol. 
+High level objectives (non-exhaustive):
+* Integrate the exchange calendar protocol.
+* Use it as a way to rebuild/improve the current calendar protocol.
+* Support exchange-specific features.
 
-[Bug 1811366 - \[meta\] Supernova Folder Pane improvements](https://bugzilla.mozilla.org/show\_bug.cgi?id=1811366)
+### Exchange Address Book
+Priority: <span style="background-color: #FFFF99">P2</span>
+Delivery Quarter: Q3 2025
+Why: Fully supporting the Exchange protocol.
+High level objectives (non-exhaustive):
+* Integrate the exchange address book protocol (maybe it uses carddav?)
+* Support exchange-specific features.
+* Fetch users' profile pictures.
 
-Complete the work of the new folder pane that was starting with the Supernova effort.
-
-### **Account Hub**
-
-[Bug 1789966 - \[meta\] Implement a new Account Hub in a dialog for all account creation workflows](https://bugzilla.mozilla.org/show\_bug.cgi?id=1789966)
-
-Implement a single entry point for all account setups and offer a better guided setup experience for first time users.
-
-### **Firefox Translate**
-
-Opt in feature allowing users to translate email content.
+### Exchange Graph API
+Priority: <span style="background-color: #B3FFB3">P3</span>
+Delivery Quarter: Q1 2026
+Why: Future proofing Exchange.
+High level objectives (non-exhaustive):
+* Audit what can be supported via GraphAPI.
+* Build a parallel protocol to A/B test against EWS.
 
 ### Notes
+Priority: <span style="background-color: #B3FFB3">P3</span>
+Delivery Quarter: Q2 2026
+Why: Increasing the productivity aspect of Thunderbird.
+High level objectives (non-exhaustive):
+* Store notes in the profile and in Sync.
+* HTML, markdown, plaintext editor.
+* Share notes via Send.
+* Copy the Google approach (create notes for this event).
+* Potential Pro offering (cloud notes with shared access like Etherpad).
+* Potential syncing through IMAP.
 
-Standalone Rust component experiment of a notes implementation in Thunderbird.
+## Maintenance Priorities
 
-## Maintenance Sprints
+### Support URLs
+Priority: <span style="background-color: #FF8080">P1</span>
+Delivery Quarter: Q1 2025
+Why: Let's be consistent and not lead users to broken links.
+High level objectives (non-exhaustive):
+* Plan and implement an efficient and standard approach to links within the application
 
-Alongside the primary objective for the year we will continue the effort of improving our codebase, keeping up with the changes upstream, as well as bug fixes and performance improvements.
+### Better logging/diagnostics
+Priority: <span style="background-color: #FF8080">P1</span>
+Delivery Quarter: Q1 2025
+Why: We often find it hard to capture helpful information from users when issues are reported. To save time and frustration on both sides, it would help if our logging and diagnostics were improved.
+High level objectives (non-exhaustive):
+* Implement Sentry and telemetry to capture data that will help us prioritize response to issues based on frequency.
+* Add or change logging tools to make it easier for the majority of users to provide logs.
 
-Some of the efforts of this maintenance cycle are:
+### Fluent Migration
+Priority: <span style="background-color: #FFFF99">P2</span>
+Delivery Quarter: Q2 2025
+Why: DTD and properties files will one day be removed.
+High level objectives (non-exhaustive):
+* Assign a small migration effort every 2 weeks to each developer.
 
-* **OpenPGP and S/MIME improvements and fixes**
-* **Add-ons API Improvements**
-* **Fluent Migration**
-* **ESMification**
+### Complete Glean testing and uplift
+Priority: <span style="background-color: #FFFF99">P2</span>
+Delivery Quarter: Q2 2025
+Why: Fully commit to our new telemetry SDK
+High level objectives (non-exhaustive):
+* Complete the project.
+* Validation that data is being captured as expected.
+* Help services consume the data.
 
-## Out of scope
+### Hardening
+Priority: <span style="background-color: #FFFF99">P2</span>
+Delivery Quarter: Q3 2025
 
-As we focus on these primary objectives with the goal of bringing them to full completion, as well as making sure we have enough resources to tackle bug reports and regressions, we won't be dedicating any major commitment to the following areas of the application during this year.
+### Fuzzing and Monkey testing
+Priority: <span style="background-color: #FFFF99">P2</span>
+Delivery Quarter: Q3 2025
+Why: Our current testing and QA process doesn'‚t catch all issues and our users suffer
+High level objectives (non-exhaustive):
+* Work with Rob to create scripts, VMs, checking tools etc that we can have running regularly to catch edge cases much sooner without users having to experience then report.
 
-* **Calendar**
-* **Chat**
-* **Tasks**
-* **Settings**
-* **Compose**
-* **Search**
-* **and everything else...**
+### Remove IMAP JS
+Priority: <span style="background-color: #B3FFB3">P3</span>
+Delivery Quarter: Q3 2025
+Why: Old approach of rewriting IMAP in JS. Discarded by the core developers as not a viable approach.
+High level objectives (non-exhaustive):
+* Remove unused code.
+* Remove preference.
+* Close all related open bugzilla bugs.
 
-We will always have dedicated resources allocated to tackle crashes or performance regressions caused by any of these components.
+### Re-implement Movemail
+Priority: <span style="background-color: #B3FFB3">P3</span>
+Delivery Quarter: Q3 2025
+Why: We had a few thousands sysadmins using it, now they all moved to Betterbird. That'‚s just a silly loss for a feature that had no maintenance cost.
+High level objectives (non-exhaustive):
+* Reimplement the ability to use Movemail in Thunderbird.
+* No account creation feature for now.
+
+### Removal of the \*Overlay.js files
+Priority: <span style="background-color: #B3FFB3">P3</span>
+Delivery Quarter: Q4 2025
+Why: Overlay files come from a time when modules weren'‚t a thing.
+High level objectives (non-exhaustive):
+* Replace overlay files with modules and system modules.
+* Defer non-DOM operations to system modules.
+* Lazy load modules when needed.
+
+# Out of scope
+
+As we focus on the P1s, we need to always account for the dozens of other features we currently ship in Thunderbird.
+
+These features always require **maintenance, regressions and security fixes, and upstream porting**.
+
+What we won'‚t do during this cycle is adding new features or rebuilding big chunks of code outside of the prioritized components and efforts listed in the front-end and back-end tables.
+
+These "outsiders"" listed here are a way to highlight low priority maintenance efforts that can happen during the year, but that on't (shouldn't) take us away from the top priorities.
+
+**Feeds**
+* Inheriting the email UI for now is acceptable.
+* It needs a complete UI and UX overhaul.
+
+**Newsgroups**
+* Low user adoption.
+* Inheriting the email UI for now is acceptable.
+
+**Add-ons page**
+* A very large effort that will happen in the future.
+* It'‚s tied to the website rebuild.
+
+**Address Book space**
+* More improvements are needed but the current state is superior to other areas.
+* A substantial rebuild happened 2 years ago.
+
+**OpenPGP and S/MIME  integration**
+* Currently in a usable and enough stable state.
+* Dedicating security fixes during this cycle.
+* The UI saw some improvements in the past few years.
+
+**Message Filters**
+* They will need to be rebuilt from scratch.
+* Tied to the new database implementation for easier message move/copy handling.
+
+**Import/Export**
+* Sync will make the need to import/export the whole profile hopefully uncommon.
+* After that we should disable exporting the entire profile because it fails when dealing with large sizes.
+
+**Account Settings**
+* They should be integrated into the Settings space.
+* It needs a lot of UI/UX rethinking.

@@ -9,14 +9,14 @@ Below are the large projects planned for the 2025-2026 releases of Thunderbird.
 This is a list of all the primary objectives and efforts that we will be working on.
 
 > [!IMPORTANT]
-> While we have provided our *targeted* delivery quarter at the time of writing (March 2025), this is no guarantee and each feature they will be available when ready.
+> The delivery quarters provided are tentative and those timelines could change throughout the year.
 
 ## Front-end Priorities
 
 ### Conversation View
 
 Priority: <span style="background-color: #FF8080">P1</span>
-Delivery Quarter: Q1 2025
+Delivery Quarter: Q3 2025
 High level objectives (non-exhaustive):
 * Full thread conversation in message pane.
 * Collapsible/Expandable messages.

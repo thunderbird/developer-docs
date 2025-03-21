@@ -121,7 +121,7 @@ High level objectives (non-exhaustive):
 * More sections and tabs for an intuitive discovery path, drop the never ending single pages.
 * All "Appearance" settings in one page, including native themes (follow system, light, dark)
 * Application settings and Account settings should be in the same place.
-* "�Labs" section for listing experiments
+* "Labs" section for listing experiments
 
 ### Tasks
 

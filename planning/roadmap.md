@@ -260,14 +260,6 @@ Delivery Quarter: Q3 2025
 High level objectives (non-exhaustive):
 * Work with Rob to create scripts, VMs, checking tools etc that we can have running regularly to catch edge cases much sooner without users having to experience then report.
 
-### Remove IMAP JS
-Priority: <span style="background-color: #B3FFB3">P3</span>
-Delivery Quarter: Q3 2025
-High level objectives (non-exhaustive):
-* Remove unused code.
-* Remove preference.
-* Close all related open bugzilla bugs.
-
 ### Re-implement Movemail
 Priority: <span style="background-color: #B3FFB3">P3</span>
 Delivery Quarter: Q3 2025

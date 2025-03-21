@@ -10,7 +10,7 @@ Below are the large projects planned for the 2025-2026 releases of Thunderbird.
 
 This is a list of all the primary objectives and efforts that we will be working on.
 
-{% hint style="info" %}
+{% hint style="warning" %}
 The delivery quarters provided are tentative and those timelines could change throughout the year.
 {% endhint %}
 

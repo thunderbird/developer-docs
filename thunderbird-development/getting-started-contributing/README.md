@@ -2,7 +2,7 @@
 description: New contributor guide on how to contribute in various ways to Thunderbird.
 ---
 
-# Getting started contributing
+# Getting Started Contributing
 
 There are many ways to get involved in Thunderbird. You don't need to be a highly experienced software developer to be part of our welcoming contributor community. There are ways that anyone can participate so find an area that works for you and dive right in!
 

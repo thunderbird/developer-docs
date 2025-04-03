@@ -75,9 +75,9 @@ This action will install all the remaining libraries and dependencies necessary 
 
 ### Building Thunderbird
 
-Now that you have the prerequisites for Windows, make sure you have the source code via the commands on the Getting Started page:
+Now that you have the prerequisites for Windows, make sure you have the source code via the commands on the "Setting up a build environment" page:
 
-{% page-ref page="../getting-started.md" %}
+{% page-ref page="../setting-up-a-build-environment.md" %}
 
 Then you can follow the instructions on the Building Thunderbird page:
 

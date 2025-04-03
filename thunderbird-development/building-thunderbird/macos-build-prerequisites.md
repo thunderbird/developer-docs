@@ -41,7 +41,7 @@ pipx ensurepath
 
 ### Mercurial
 
-As noted in the [Getting Started page](../getting-started.md#mercurial-version-control), both `mozilla-central` and `comm-central` are version controlled with Mercurial. This means you will need to install Mercurial. Here is a quick command to install it with mercurial but for a more complete list of instructions, please see [Mercurial's download page on their wiki](https://www.mercurial-scm.org/wiki/Download).
+As noted in the [Setting up a build environment page](../setting-up-a-build-environment.md#mercurial-version-control), both `mozilla-central` and `comm-central` are version controlled with Mercurial. This means you will need to install Mercurial. Here is a quick command to install it with mercurial but for a more complete list of instructions, please see [Mercurial's download page on their wiki](https://www.mercurial-scm.org/wiki/Download).
 
 ```
 brew install mercurial

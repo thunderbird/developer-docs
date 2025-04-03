@@ -43,7 +43,7 @@ You will also need `python3-distutils` and `python3-pip` installed from your dis
 
 ### Mercurial
 
-As noted in the [Getting Started page](../getting-started.md#mercurial-version-control), both `mozilla-central` and `comm-central` are repositories using the Mercurial version control system. This means you will need to install Mercurial. Here are the quick commands to use for common Linux based operating systems but for a more complete list of instructions (if neither of these works for your use case), please see [Mercurial's download page on their wiki](https://www.mercurial-scm.org/wiki/Download).
+As noted in the [Setting up a build environment page](../setting-up-a-build-environment.md#mercurial-version-control), both `mozilla-central` and `comm-central` are repositories using the Mercurial version control system. This means you will need to install Mercurial. Here are the quick commands to use for common Linux based operating systems but for a more complete list of instructions (if neither of these works for your use case), please see [Mercurial's download page on their wiki](https://www.mercurial-scm.org/wiki/Download).
 
 #### Ubuntu/Debian
 

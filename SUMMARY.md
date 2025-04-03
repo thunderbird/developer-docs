@@ -4,7 +4,7 @@
 
 ## Contributing to Thunderbird <a href="#thunderbird-development" id="thunderbird-development"></a>
 
-* [Getting Started](thunderbird-development/getting-started.md)
+* [Getting Started Contributing](thunderbird-development/getting-started.md)
   * [Setting up a build environment](setting-up-a-build-environment.md)
 * [Building Thunderbird](thunderbird-development/building-thunderbird/README.md)
   * [Windows Build Prerequisites](thunderbird-development/building-thunderbird/windows-build-prerequisites.md)

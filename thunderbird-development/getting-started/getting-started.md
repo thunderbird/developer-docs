@@ -4,7 +4,7 @@ description: >-
   set up and ready to hack on Thunderbird.
 ---
 
-# Getting Started
+# Setting up a build environment
 
 ## Build Prerequisites
 Before you can build Thunderbird, please follow your platform's build prerequisites page:

@@ -27,7 +27,7 @@ Note that while it's not technically required to have an internet connection to 
 {% endhint %}
 
 {% hint style="warning" %}
-The `bootstrap.py` file will create files outside of the current directory. E.g. in `~/.mozbuild`. Ensure you have enough free space in your home directory as well.
+The `bootstrap.py` file will create files outside of the current directory. E.g. in `~/.mozbuild`. Ensure you have enough free space in your home directory as well.\
 Alternatively to build within the current directory and avoid writing to the home directory run `HOME="$(pwd)" ./bootstrap.py` instead or use a chroot environment.
 {% endhint %}
 
@@ -43,7 +43,7 @@ You will also need `python3-distutils` and `python3-pip` installed from your dis
 
 ### Mercurial
 
-As noted in the [Setting up a build environment page](../setting-up-a-build-environment.md#mercurial-version-control), both `mozilla-central` and `comm-central` are repositories using the Mercurial version control system. This means you will need to install Mercurial. Here are the quick commands to use for common Linux based operating systems but for a more complete list of instructions (if neither of these works for your use case), please see [Mercurial's download page on their wiki](https://www.mercurial-scm.org/wiki/Download).
+As noted in the [Setting up a build environment page](../setting-up-a-build-environment.md), both `mozilla-central` and `comm-central` are repositories using the Mercurial version control system. This means you will need to install Mercurial. Here are the quick commands to use for common Linux based operating systems but for a more complete list of instructions (if neither of these works for your use case), please see [Mercurial's download page on their wiki](https://www.mercurial-scm.org/wiki/Download).
 
 #### Ubuntu/Debian
 

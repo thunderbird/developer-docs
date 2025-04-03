@@ -1,46 +1,49 @@
 ---
-description: >-
-  This page has all the information you need to get your development environment
-  set up and ready to hack on Thunderbird.
+description: New contributor guide on how to contribute in various ways to Thunderbird.
 ---
 
-# Setting up a build environment
+# Ways to Contribute
 
-## Build Prerequisites
-Before you can build Thunderbird, please follow your platform's build prerequisites page:
+There are many ways to get involved in Thunderbird. You don't need to be a highly experienced software developer to be part of our welcoming contributor community. There are ways that anyone can participate so find an area that works for you and dive right in!
 
-* [Windows Build Prerequisites](building-thunderbird/windows-build-prerequisites.md)
-* [Linux Build Prerequisites](building-thunderbird/linux-build-prerequisites.md)
-* [macOS Build Prerequisites](building-thunderbird/macos-build-prerequisites.md)
+## Improving documentation
+Perfect documentation doesn't exist and there is always room for improvement. If you read through any of our documentation and notice a typo, or something that is unclear, or some section you feel is missing.. feel free to add it or tell us about it.
 
-## General Information
+* **[Source docs](https://source-docs.thunderbird.net)** - Technical documentation on the Thunderbird source code, code architectures, etc. This set of documentation lives alongside the source code so in order to submit changes to it, you'll need a bugzilla account and patches are submitted to phabricator. [Read more about contributing to these docs here](https://source-docs.thunderbird.net/en/latest/documentation/index.html).
+* **[Developer docs](https://developer.thunderbird.net/)** - Developer documentation on non-code topics like how to build Thunderbird, the project's roadmap, add-ons, etc. This [developer documentation lives in GitHub](https://github.com/thunderbird/developer-docs/) so in order to submit changes to it, you'll need a GitHub account and submit a pull request ([learn how to submit a GitHub pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request).
+* **[User docs](https://support.mozilla.org/en-US/)** - User support documentation for all Mozilla products, including Thunderbird and Thunderbird for Android. This set of documentation is modified using Markup, directly in the website. [Read more about contributing to knowledge base articles](https://support.mozilla.org/en-US/kb/writing-guide-knowledge-base-articles?redirectslug=support-document-guide).
 
-### Mercurial Version Control
+## User support
+Users of all levels will consult the vast set of [Thunderbird knowledge base articles](https://support.mozilla.org/en-US/products/thunderbird). This user documentation location is a great place to learn, start discussions on the forum, or ask a question.
 
-Mozilla uses the [Mercurial version control](https://www.mercurial-scm.org/) software to propose, review, incorporate, and log changes to its code. In order to contribute to Thunderbird, you will need to be able to use this software.
+You can help by watching this space to answer questions. If you encounter a topic that is beyond your knowledge but you want to learn more, you can always [join us on Matrix](https://chat.mozilla.org/#/room/#maildev:mozilla.org) to access the Thunderbird staff to assist you.
 
-Information for how to install Mercurial is available [via the download page on their wiki](https://www.mercurial-scm.org/wiki/Download).
+## Beta testing
+We always need more beta testers to let us know if something is not working (by filing bugzilla issues) before we release a given version. This is a great place to start contributing if you're not sure where to jump in.
 
-### Mozilla Code Base
+Every month we have a new beta release and a new monthly release ([read more about the release cadence here](https://developer.thunderbird.net/releases/cadence)) so it is important to catch new issues quickly. 
 
-#### mozilla-central vs. comm-central
+Read more about [running Thunderbird beta on our knowledge base article](https://support.mozilla.org/en-US/kb/thunderbird-beta).
 
-The latest Mozilla source code comes from Mozilla's `mozilla-central` Mercurial code repository, often called `source/` but it can be named anything you like. The latest Thunderbird source code comes from Mozilla's `comm-central` Mercurial code repository and needs to be placed **inside** the Mozilla source code, in a directory that must be named `comm/`.
+## Filing bugs
+If you are using any version of Thunderbird and you encounter something you feel is not working properly, let us know in a bugzilla issue.
 
-Mozilla-central will build Firefox without the comm-central repo present and a few options set (detailed on the [Building Thunderbird](building-thunderbird/) page).
+1. [Search if your issue already exists](https://bugzilla.mozilla.org/query.cgi?format=specific) (select Thunderbird as the product). This helps us minimize the number of duplicate issues filed. If you find that your issue has already been filed by someone else, it is very helpful to us if you just take a quick look at the issue and add a comment that adds any additional information about your issue that might help us solve the problem.
+2. If your issue has not been reported yet, [file a new bugzilla issue](https://bugzilla.mozilla.org/enter_bug.cgi?product=Thunderbird).
 
-### Additional Documentation 
+## Triaging bugs
+When a new bug is filed, it's status is UNCONFIRMED. This means the issue has not been triaged (verified that the bug in fact does exist) by someone else other than the bug reporter. If an issue exists only for one person (i.e. the bug reporter), the problem is likely localized to that person's environment in some way and is not an actual Thunderbird code issue. That is why it is very helpful for another person (i.e. yourself) to see if the issue can be reproduced and make sure the issue has **reproducer steps** and **information about the environment** where it was reproduced (version of Thunderbird, operating system, etc.).
 
-Thunderbird is built on the Mozilla platform, the same base that Firefox is built from. As such the two projects share a lot of code and much of the documentation for one will apply, in many ways, to the other. If at any point you are looking for answers that you can't find here, here are some additional useful resources:
+[Here is a list of UNCONFIRMED bugs that need triaging](https://bugzilla.mozilla.org/buglist.cgi?product=Thunderbird&component=Untriaged&resolution=---&list_id=17499226).
+ 
+The number of people triaging new bugs is low and that makes it hard to keep up with the new incoming bugs every day. Your help would be greatly appreciated!
 
-* [Thunderbird Source Tree Documentation](https://source-docs.thunderbird.net)
-* [Firefox Source Tree Documentation](https://firefox-source-docs.mozilla.org/)
-* [Mozilla's Developer site called: **MDN**](https://developer.mozilla.org)
+## Code patches
+If you want to fix a bug or add a feature, the way to do it is through direct code contributions.
 
-## What's Next
+[Read more about fixing bugs here](https://developer.thunderbird.net/thunderbird-development/fixing-a-bug).
 
-If you have already gone through the relevant build prerequisite steps, then let's build the latest Thunderbird:
+Note that if you want to add a feature, it's best to first have a discussion about it with the Thunderbird developers to make sure that it fits with the project's direction. The best place for these discussions is [the developer mailing list on Topicbox](https://thunderbird.topicbox.com/groups/developers).
 
-{% content-ref url="building-thunderbird/" %}
-[building-thunderbird](building-thunderbird/)
-{% endcontent-ref %}
+# I'm stuck and need help!
+If you are trying to contribute in any way and find yourself stuck and not sure how to proceed, please [join us on Matrix](https://chat.mozilla.org/#/room/#maildev:mozilla.org) and tell us about it so we can help you.

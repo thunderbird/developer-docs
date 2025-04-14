@@ -26,11 +26,16 @@ To build Thunderbird, you need a file named `mozconfig` in the root directory of
 echo 'ac_add_options --enable-project=comm/mail' > mozconfig
 ```
 
-**If you omit this line, the build system will build Firefox instead**. Other build configuration options can be added to this file, although it's **strongly recommended** that you only use options that you fully understand. For example, to create a debug build instead of a release build, that file would also contain the line:
+**If you omit this line, the build system will build Firefox instead**.
 
-```
-echo 'ac_add_options --enable-debug' >> mozconfig
-```
+Other build configuration options can be added to this file, although it's recommended that you only use options that you fully understand. Here are come recommended options to use and why:
+
+* To create a debug build instead of a release build: `ac_add_options --enable-debug`
+* To speed up subsequent builds by caching compilation results for both C++ and Rust: `ac_add_options --with-ccache=sccache`
+* To enable some additional checks we have enabled in the CI: `ac_add_options --enable-clang-plugin`
+* To enable debug symbols: `ac_add_options --enable-debug-symbols`
+* To enable autoclobber: `mk_add_options AUTOCLOBBER=1`
+
 
 _Each of these ac\_add\_options entries needs to be on its own line._
 

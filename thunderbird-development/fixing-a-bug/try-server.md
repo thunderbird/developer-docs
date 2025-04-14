@@ -80,6 +80,7 @@ Here is the Try syntax try-comm-central understands:
 * `-u` Unit test suites.
   * `mochitest-thunderbird`
   * `xpcshell`
+  * `marionette
   * `all`
 * `--artifact` Artifact builds. See the [Artifact Builds page](../building-thunderbird/artifact-builds.md) for more information.
 

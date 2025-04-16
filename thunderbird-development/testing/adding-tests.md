@@ -23,43 +23,41 @@ Tests should be added to a directory near the code they are located. For example
 
 A new directory needs a test manifest:
 
-### XPCShell test manifest (xpcshell.ini)
+### XPCShell test manifest (xpcshell.toml)
 
 The default section isn't even necessary here, but you probably want to add a `head.js` file if you're going to have more than one test.
 
-{% code title="xpcshell.ini" %}
+{% code title="xpcshell.toml" %}
 ```
 [default]
-prefs =
-  calendar.timezone.local=UTC
+prefs = [
+  "calendar.timezone.local=UTC",
+]
 
-[test_firstTest.js]
+["test_firstTest.js"]
 ```
 {% endcode %}
 
 The calendar preferences in line 3 is unnecessary outside of the calendar tests. Calendar tests always run in UTC.
 
-### Mochitest manifest (browser.ini)
+### Mochitest manifest (browser.toml)
 
 Mochitest needs some prefs set, or automated testing will fail.
 
-{% code title="browser.ini" %}
+{% code title="browser.toml" %}
 ```
 [default]
-prefs =
-  calendar.timezone.local=UTC
-  calendar.week.start=0
-  ldap_2.servers.osx.description=
-  ldap_2.servers.osx.dirType=-1
-  ldap_2.servers.osx.uri=
-  mail.provider.suppress_dialog_on_startup=true
-  mail.spotlight.firstRunDone=true
-  mail.winsearch.firstRunDone=true
-  mailnews.start_page.override_url=about:blank
-  mailnews.start_page.url=about:blank
-subsuite = thunderbird
+prefs = [
+  "calendar.timezone.local=UTC",
+  "calendar.week.start=0",
+  "mail.spotlight.firstRunDone=true",
+  "mail.winsearch.firstRunDone=true",
+  "mailnews.start_page.override_url=about:blank",
+  "mailnews.start_page.url=about:blank",
+]
+subsuite = "thunderbird"
 
-[browser_firstTest.js]
+["browser_firstTest.js"]
 ```
 {% endcode %}
 
@@ -72,10 +70,10 @@ The next thing you need to do is tell mach about your new test manifest. In the 
 {% code title="moz.build" %}
 ```python
 BROWSER_CHROME_MANIFESTS += [
-    'test/browser/browser.ini',
+    'test/browser/browser.toml',
 ]
 XPCSHELL_TESTS_MANIFESTS += [
-    'test/xpcshell/xpcshell.ini',
+    'test/xpcshell/xpcshell.toml',
 ]
 ```
 {% endcode %}

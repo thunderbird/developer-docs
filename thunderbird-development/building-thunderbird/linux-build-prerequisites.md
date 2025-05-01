@@ -76,7 +76,17 @@ chmod +x bootstrap.py
 ./bootstrap.py
 ```
 
-This will create a `mozilla-unified` directory with both a `mozconfig` and a `comm/` folder inside. The `mozconfig` file is setup to build Thunderbird and you can verify this with `cat mozconfig`; the `--enable-project` parameter should be `comm/mail`:
+This will create a `mozilla-unified` directory with both a `mozconfig` and a `comm/` folder inside.
+
+The `mozilla-unified` repository has several bookmarks (akin to a git branch) and you will by default be on the `autoland` bookmark. You will need to be on the `central` bookmark and you can change by going into this directory and changing to that bookmark:
+
+```
+hg up central
+```
+
+The `mozilla-unified/comm` repository has several bookmarks and you will by default be on the `comm` bookmark. This is where you want to be, unless you are specifically working on a past ESR.
+
+The `mozconfig` file is setup to build Thunderbird and you can verify this with `cat mozconfig`; the `--enable-project` parameter should be `comm/mail`:
 
 ```
 ac_add_options --enable-project=comm/mail

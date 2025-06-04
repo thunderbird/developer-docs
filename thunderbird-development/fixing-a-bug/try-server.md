@@ -30,14 +30,21 @@ Try server has a separate repository based upon comm-central. You'll need to add
 ```
 [paths]
 default = https://hg.mozilla.org/comm-central
-try = ssh://hg.mozilla.org/try-comm-central
+try-cc = ssh://hg.mozilla.org/try-comm-central
 ```
 
 You can of course [access the repository via HTTP](https://hg.mozilla.org/try-comm-central/), but not push to it, hence the ssh:// address.
 
+{% hint style="info" %}
+The name of the comm-central try server must be different from `try`. There's
+an alias in the Mozilla Mercurial configuration that will override this
+configuration if the server is named `try`. The instructions below assume the
+name `try-cc`.
+{% endhint %}
+
 ## Pushing to Try
 
-Having gained level 1 access and configured Mercurial, you can push to Try. In general, it's just a matter of applying your patch(es) and running `hg push -r . try` if you're planning to manually trigger tasks from the **Taskcluster** web interface.
+Having gained level 1 access and configured Mercurial, you can push to Try. In general, it's just a matter of applying your patch(es) and running `hg push -r . try-cc` if you're planning to manually trigger tasks from the **Taskcluster** web interface.
 
 For pushes via the command line, we recommend using the `push-to-try` extensions in order to simplify the commands required to automatically trigger jobs and tasks on the try server.
 

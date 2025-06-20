@@ -21,7 +21,7 @@ Host hg.mozilla.org
   User nemo@thunderbird.net
 ```
 
-Your **User** should match the SSH username that has been grante [Level 1 Commit Access](http://www.mozilla.org/hacking/commit-access-policy/).
+Your **User** should match the SSH username that has been granted [Level 1 Commit Access](http://www.mozilla.org/hacking/commit-access-policy/).
 
 ## Adding Try to your Mercurial configuration
 

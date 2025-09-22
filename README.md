@@ -13,7 +13,7 @@ This page has some information on how to get plugged into the Community. If you 
 
 ### [Contributing to Thunderbird](thunderbird-development/getting-started.md)
 
-Get all the information you need to set up your development environment and get ready to hack on Thunderbird.
+Get all the information you need to set up your development environment and get ready to hack on Thunderbird. Note that all contributors are required to follow the [Community Participation Guidelines (CPG)](https://www.mozilla.org/en-US/about/governance/policies/participation/).
 
 ### [Add-on Development](add-ons/about-add-ons.md)
 

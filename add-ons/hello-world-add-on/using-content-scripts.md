@@ -19,7 +19,7 @@ In addition to [standard content scripts](https://developer.mozilla.org/en-US/do
 * compose scripts loaded into the editor of the message composer
 * message display scripts loaded into rendered messages when displayed to the user
 
-We will be using a message display script in this example. In order to register one, we use the [messageDisplayScripts](https://webextension-api.thunderbird.net/en/beta-mv2/messageDisplayScripts.html) API and add the following code to our background script:
+We will be using a message display script in this example. In order to register one, we use the [messageDisplayScripts](https://webextension-api.thunderbird.net/release-mv2/messageDisplayScripts.html) API and add the following code to our background script:
 
 ```javascript
 // Register the message display script for all newly opened message tabs.

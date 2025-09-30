@@ -122,7 +122,7 @@ In Thunderbird, all WebExtension API can be accessed through the `browser.*` nam
 
 #### messenger.tabs.query()
 
-The [tabs API](https://webextension-api.thunderbird.net/en/beta-mv2/tabs.html) provides access to Thunderbird's tabs. We need to get hold of the current active tab to learn which message is displayed there. We use the [query](using-webextension-apis.md#adding-a-message\_display\_action) method to find it in line `3`.
+The [tabs API](https://webextension-api.thunderbird.net/release-mv2/tabs.html) provides access to Thunderbird's tabs. We need to get hold of the current active tab to learn which message is displayed there. We use the [query](using-webextension-apis.md#adding-a-message\_display\_action) method to find it in line `3`.
 
 {% hint style="info" %}
 Using `messenger.tabs.getCurrent()` will not work, as that always returns the tab in which it is being called from. In our case, the call is executed from inside the popup of the `message_display_action` and not from inside the tab we are looking for.
@@ -130,12 +130,12 @@ Using `messenger.tabs.getCurrent()` will not work, as that always returns the ta
 
 #### messenger.messageDisplay.getDisplayedMessage()
 
-The [getDisplayedMessage](https://webextension-api.thunderbird.net/en/beta-mv2/messageDisplay.html#getdisplayedmessage-tabid) method of the [messageDisplay API](https://webextension-api.thunderbird.net/en/beta-mv2/messageDisplay.html) provides access to the currently viewed message in a given tab. It returns a Promise for a [MessageHeader](https://webextension-api.thunderbird.net/en/beta-mv2/messages.html#messageheader) object from the [messages API](https://webextension-api.thunderbird.net/en/beta-mv2/messages.html) with basic information about the message in line `9`.
+The [getDisplayedMessage](https://webextension-api.thunderbird.net/release-mv2/messageDisplay.html#getdisplayedmessage-tabid) method of the [messageDisplay API](https://webextension-api.thunderbird.net/release-mv2/messageDisplay.html) provides access to the currently viewed message in a given tab. It returns a Promise for a [MessageHeader](https://webextension-api.thunderbird.net/release-mv2/messages.html#messageheader) object from the [messages API](https://webextension-api.thunderbird.net/release-mv2/messages.html) with basic information about the message in line `9`.
 
 At this stage we are interested in the subject (line `12`) and the author (line `13`).
 
 {% hint style="warning" %}
-The [getDisplayMessage](https://webextension-api.thunderbird.net/en/beta-mv2/messageDisplay.html#getdisplayedmessage-tabid) method requires the <mark style="color:red;">`messagesRead`</mark> permission, which needs to be added to the `permissions` key of our `manifest.json` file.
+The [getDisplayMessage](https://webextension-api.thunderbird.net/release-mv2/messageDisplay.html#getdisplayedmessage-tabid) method requires the <mark style="color:red;">`messagesRead`</mark> permission, which needs to be added to the `permissions` key of our `manifest.json` file.
 {% endhint %}
 
 ```json
@@ -148,7 +148,7 @@ The [getDisplayMessage](https://webextension-api.thunderbird.net/en/beta-mv2/mes
 
 We also want to get the `received` header from the message. That information is not part of the general `MessageHeader` object, so we have to request the full message.
 
-The [getFull](https://webextension-api.thunderbird.net/en/beta-mv2/messages.html#getfull-messageid-options) method in line `16` returns a Promise for a [MessagePart](https://webextension-api.thunderbird.net/en/beta-mv2/messages.html#messagepart) object, which relates to messages containing multiple MIME parts. The `headers` member of the part returned by `getFull` includes the headers of the message (excluding headers which are part of nested MIME parts available through the `parts` member).
+The [getFull](https://webextension-api.thunderbird.net/release-mv2/messages.html#getfull-messageid-options) method in line `16` returns a Promise for a [MessagePart](https://webextension-api.thunderbird.net/release-mv2/messages.html#messagepart) object, which relates to messages containing multiple MIME parts. The `headers` member of the part returned by `getFull` includes the headers of the message (excluding headers which are part of nested MIME parts available through the `parts` member).
 
 ## Testing the Extension
 

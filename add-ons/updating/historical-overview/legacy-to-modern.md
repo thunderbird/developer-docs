@@ -268,7 +268,7 @@ Even if they are not a perfect match, try to replace as many of your legacy UI e
     ```
 * [native messaging](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Native\_messaging)
 
-The goal of this step is to re-create as much of the functionality of your add-on by using only WebExtension technology. Browse through the list of [supported WebExtension APIs](https://webextension-api.thunderbird.net/en/beta-mv2/) to see if any of them provide what is needed by your add-on. Check available [Web APIs](https://developer.mozilla.org/en-US/docs/Web/API), there is a high chance to find simple replacements for complicated XPCOM calls:
+The goal of this step is to re-create as much of the functionality of your add-on by using only WebExtension technology. Browse through the list of [supported WebExtension APIs](https://webextension-api.thunderbird.net/release-mv2/) to see if any of them provide what is needed by your add-on. Check available [Web APIs](https://developer.mozilla.org/en-US/docs/Web/API), there is a high chance to find simple replacements for complicated XPCOM calls:
 
 * [play sounds](https://developer.mozilla.org/en-US/docs/Web/API/Web\_Audio\_API)
 * [localize plural rules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/Intl/PluralRules)

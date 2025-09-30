@@ -203,7 +203,7 @@ A list of all WebExtension APIs supported by Thunderbird can be found in the fol
 
 ### Content Scripts
 
-Content scripts (including [compose scripts](https://webextension-api.thunderbird.net/en/beta-mv2/composeScripts.html) and [message display scripts](https://webextension-api.thunderbird.net/en/beta-mv2/messageDisplayScripts.html)) can only use the following WebExtension APIs:
+Content scripts (including [compose scripts](https://webextension-api.thunderbird.net/release-mv2/composeScripts.html) and [message display scripts](https://webextension-api.thunderbird.net/release-mv2/messageDisplayScripts.html)) can only use the following WebExtension APIs:
 
 * [runtime.connect()](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/connect)
 * [runtime.getManifest()](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/getManifest)
@@ -222,9 +222,9 @@ Content scripts can [communicate with background scripts](https://developer.mozi
 
 ### CloudFile Management Scripts
 
-A script loaded from a CloudFile [management_url](https://webextension-api.thunderbird.net/en/beta-mv2/cloudFile.html#manifest-file-properties) can only use the following WebExtension APIs:
+A script loaded from a CloudFile [management_url](https://webextension-api.thunderbird.net/release-mv2/cloudFile.html#manifest-file-properties) can only use the following WebExtension APIs:
 
-* [cloudFile](https://webextension-api.thunderbird.net/en/beta-mv2/cloudFile.html).\*
+* [cloudFile](https://webextension-api.thunderbird.net/release-mv2/cloudFile.html).\*
 * [extension](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/extension).\*
 * [i18n](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/i18n).\*
 * [runtime](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime).\*

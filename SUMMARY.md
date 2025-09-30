@@ -61,7 +61,7 @@
   * [Supported Manifest Keys](add-ons/mailextensions/supported-manifest-keys.md)
   * [Supported UI Elements](add-ons/mailextensions/supported-ui-elements.md)
   * [Supported WebExtension APIs](add-ons/mailextensions/supported-webextension-api.md)
-  * [Thunderbird's WebExtension API Documentation](https://webextension-api.thunderbird.net/en/stable/)
+  * [Thunderbird's WebExtension API Documentation](https://webextension-api.thunderbird.net/)
   * [Thunderbird WebExtension Examples](https://github.com/thunderbird/webext-examples)
   * [Introducing Experiments](add-ons/mailextensions/experiments.md)
 * [A Guide to Themes](add-ons/web-extension-themes.md)
@@ -87,6 +87,7 @@
     * [Convert legacy bootstrapped extension to legacy WebExtension](add-ons/updating/historical-overview/bootstrapped.md)
 
 ## Releases
+
 * [Thunderbird Channels](releases/channels.md)
 * [Release Cadence](releases/cadence.md)
 * [Uplifting Fixes](releases/uplifting-fixes.md)

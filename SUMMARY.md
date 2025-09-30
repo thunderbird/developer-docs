@@ -69,6 +69,7 @@
 * [Documentation & Resources](add-ons/resources/README.md)
   * [Tips and Tricks](add-ons/resources/tips-and-tricks.md)
 * [Add-on Update Guides](add-ons/updating/README.md)
+  * [Updates for Thunderbird 140](add-ons/updating/updates-for-thunderbird-140.md)
   * [Update for Thunderbird 128](add-ons/updating/tb128.md)
   * [Update for Thunderbird 115](add-ons/updating/tb115/README.md)
     * [Adapt to Changes in Thunderbird 103-115](add-ons/updating/tb115/adapt-to-changes-in-thunderbird-103-115.md)

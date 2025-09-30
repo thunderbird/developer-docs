@@ -1,20 +1,10 @@
 ---
-description: Required steps to update add-ons for Thunderbird Supernova 115.
+description: Required steps to update add-ons for Thunderbird 115.
 ---
 
 # Update for Thunderbird 115
 
 This section covers the required update steps for add-ons which are already compatible with Thunderbird 102 and need to be made compatible with Thunderbird 115.
-
-## Changes in WebExtension APIs
-
-Our WebExtension APIs are meant to be stable, but we are adding new features and since this is a very young technology this might also require backward incompatible changes. All WebExtension API changes are listed in our WebExtension API documentation:
-
-* [Thunderbird 106](https://webextension-api.thunderbird.net/en/115/changes/115.html#thunderbird-106-beta)
-* [Thunderbird 107](https://webextension-api.thunderbird.net/en/115/changes/115.html#thunderbird-107-beta)
-* [Thunderbird 111](https://webextension-api.thunderbird.net/en/115/changes/115.html#thunderbird-111-beta)
-* [Thunderbird 113](https://webextension-api.thunderbird.net/en/115/changes/115.html#thunderbird-113-beta)
-* [Thunderbird 115](https://webextension-api.thunderbird.net/en/115/changes/115.html#thunderbird-115-0-esr)
 
 ## Changes in Thunderbird Core
 

@@ -57,10 +57,10 @@ This [topicbox post](https://thunderbird.topicbox.com/groups/addons/Te5f62259df8
 
 It is recommended to leverage WebExtension APIs as much a possible. Instead of adjusting to core changes, the following WebExtension APIs can be helpful:
 
-* Use the [browserAction API](https://webextension-api.thunderbird.net/release-mv2/browserAction.html) to add buttons to Thunderbird's unified toolbar
-* Use the [menus API](https://webextension-api.thunderbird.net/release-mv2/menus.html) to add entries to Thunderbird's context menu (for example in the folder pane or in the thread pane)
-* Use the [commands API](https://webextension-api.thunderbird.net/release-mv2/commands.html) to register keyboard shortcuts. Additional benefit: all WebExtension shortcuts can be adjusted by the user in the Add-on Manager according to their needs.
-* Use the [mailTabs API](https://webextension-api.thunderbird.net/release-mv2/mailTabs.html) to interact with the mail tab.
+* Use the [browserAction API](https://webextension-api.thunderbird.net/en/mv2/browserAction.html) to add buttons to Thunderbird's unified toolbar
+* Use the [menus API](https://webextension-api.thunderbird.net/en/mv2/menus.html) to add entries to Thunderbird's context menu (for example in the folder pane or in the thread pane)
+* Use the [commands API](https://webextension-api.thunderbird.net/en/mv2/commands.html) to register keyboard shortcuts. Additional benefit: all WebExtension shortcuts can be adjusted by the user in the Add-on Manager according to their needs.
+* Use the [mailTabs API](https://webextension-api.thunderbird.net/en/mv2/mailTabs.html) to interact with the mail tab.
 
 #### Using shared Experiments
 
@@ -72,7 +72,7 @@ There may already be a shared Experiment, which could help with add-on updates (
 
 ### Unified Toolbar
 
-The mail toolbar has been replaced by the unified toolbar. Adding your own buttons will become difficult, because the unified toolbar tends to remove unknown objects. Instead, use the [browserAction API](https://webextension-api.thunderbird.net/release-mv2/browserAction.html) to add buttons.
+The mail toolbar has been replaced by the unified toolbar. Adding your own buttons will become difficult, because the unified toolbar tends to remove unknown objects. Instead, use the [browserAction API](https://webextension-api.thunderbird.net/en/mv2/browserAction.html) to add buttons.
 
 ### XUL Tree replacement
 
@@ -88,7 +88,7 @@ Known attributes which have to be replaced:
 * `width`: replace with [CSS width property](https://developer.mozilla.org/en-US/docs/Web/CSS/width)
 * `flex`: replace with [CSS flex](https://developer.mozilla.org/en-US/docs/Web/CSS/flex) (a very helpful tutorial is available at [css-tricks.com](https://css-tricks.com/snippets/css/a-guide-to-flexbox/))
 
-**Important:** If add-ons still create old-fashioned XUL dialogues and load \*`.xhtml` files, it is not recommended to invest time into fixing them. It is more efficient to re-create them as pure `*.html` files. They can be opened using the [tabs API](https://webextension-api.thunderbird.net/release-mv2/tabs.html) or the [windows API](https://webextension-api.thunderbird.net/release-mv2/windows.html).
+**Important:** If add-ons still create old-fashioned XUL dialogues and load \*`.xhtml` files, it is not recommended to invest time into fixing them. It is more efficient to re-create them as pure `*.html` files. They can be opened using the [tabs API](https://webextension-api.thunderbird.net/en/mv2/tabs.html) or the [windows API](https://webextension-api.thunderbird.net/en/mv2/windows.html).
 
 ## Removed JSM files
 

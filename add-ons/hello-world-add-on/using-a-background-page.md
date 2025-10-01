@@ -47,7 +47,7 @@ Let's also create an empty `background.js` script file in the `hello-world` proj
 
 ### Listening for New Messages
 
-In order to listen for new messages, we have to add a listener for the [onNewMessageReceived](https://webextension-api.thunderbird.net/release-mv2/messages.html#onnewmailreceived) event to our background script:
+In order to listen for new messages, we have to add a listener for the [onNewMessageReceived](https://webextension-api.thunderbird.net/en/mv2/messages.html#onnewmailreceived) event to our background script:
 
 {% code title="background.js" lineNumbers="true" %}
 ```javascript
@@ -82,7 +82,7 @@ The above code is using an inline arrow function to define the callback function
 `);`
 {% endhint %}
 
-The callback function of the `onNewMailReceived` event receives two parameters: `folder` being a [MailFolder](https://webextension-api.thunderbird.net/release-mv2/folders.html#mailfolder) and `messages` being a [MessageList](https://webextension-api.thunderbird.net/release-mv2/messages.html#messagelist). The defined event listener stores the folder and the message information of the new received mail in the extensions storage.
+The callback function of the `onNewMailReceived` event receives two parameters: `folder` being a [MailFolder](https://webextension-api.thunderbird.net/en/mv2/folders.html#mailfolder) and `messages` being a [MessageList](https://webextension-api.thunderbird.net/en/mv2/messages.html#messagelist). The defined event listener stores the folder and the message information of the new received mail in the extensions storage.
 
 {% hint style="warning" %}
 The `onNewMessageReceived` event requires the <mark style="color:red;">`accountsRead`</mark> permission, which needs to be added to the `permissions` key in our `manifest.json` file.
@@ -143,7 +143,7 @@ export async function* iterateMessagePages(page) {
 
 To identify the script file as an ES6 module, which does not include file scope code, but only defines functions, we use the `*.mjs` file extension.
 
-Since Thunderbird's WebExtension API potentially has to handle a lot of messages, the [MessageList](https://webextension-api.thunderbird.net/release-mv2/messages.html#messagelist) data type is paginated. Please check the [Working with Message Lists](https://webextension-api.thunderbird.net/release-mv2/examples/messageLists.html) tutorial for more information.
+Since Thunderbird's WebExtension API potentially has to handle a lot of messages, the [MessageList](https://webextension-api.thunderbird.net/en/mv2/messages.html#messagelist) data type is paginated. Please check the [Working with Message Lists](https://webextension-api.thunderbird.net/en/mv2/examples/messageLists.html) tutorial for more information.
 
 The provided `iterateMessagePages()` wrapper function is doing most of the heavy lifting and allows to asynchronously loop over the returned messages in line `7` of the shown background script. For each received message, we subsequently push a new entry into the `messageLog` Array.
 
@@ -198,7 +198,7 @@ messenger.menus.onClicked.addListener(async (info, tab) => {
 
 In line `2` we create a new menu entry. We use the title `Show received email` and we add it to the `browser_action` context and to the `tools_menu` context. A list of other available contexts can be found on the [Supported UI Elements](../mailextensions/supported-ui-elements.md#menu-items) page.
 
-The [menus.create()](https://webextension-api.thunderbird.net/release-mv2/menus.html#create-createproperties-callback) function returns the `id` of the new menu, which we can use to identify our menu, or - for example - add submenus by using the `id` as the `parentId` for other menu entries.
+The [menus.create()](https://webextension-api.thunderbird.net/en/mv2/menus.html#create-createproperties-callback) function returns the `id` of the new menu, which we can use to identify our menu, or - for example - add submenus by using the `id` as the `parentId` for other menu entries.
 
 {% hint style="warning" %}
 Using the `menus` API requires the <mark style="color:red;">`menus`</mark> permission, which needs to be added to the `permissions` key in our `manifest.json` file.
@@ -206,7 +206,7 @@ Using the `menus` API requires the <mark style="color:red;">`menus`</mark> permi
 
 #### messenger.menus.onClicked()
 
-In order to do something when our menu is clicked, we add a listener for the [onClicked](https://webextension-api.thunderbird.net/release-mv2/menus.html#onclicked) event. We check the `id` of the clicked menu to see which of our menus was clicked (we only added one, but checking here anyhow).
+In order to do something when our menu is clicked, we add a listener for the [onClicked](https://webextension-api.thunderbird.net/en/mv2/menus.html#onclicked) event. We check the `id` of the clicked menu to see which of our menus was clicked (we only added one, but checking here anyhow).
 
 #### messenger.notifications.create()
 

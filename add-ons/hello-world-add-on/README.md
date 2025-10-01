@@ -50,7 +50,7 @@ You can grab the icons we use for this example from the [example repository](htt
 
 The above manifest includes the definition for a `browser_action`. That is the button we want to add to Thunderbird's main toolbar. The reference to a _browser_ in its name is inherited from the Firefox Browser.
 
-The allowed keys for the `browser_action` button are described in our [API documentation](https://webextension-api.thunderbird.net/release-mv2/browserAction.html). We define a popup HTML page, which should be loaded if the button is clicked, a title and an icon.
+The allowed keys for the `browser_action` button are described in our [API documentation](https://webextension-api.thunderbird.net/en/mv2/browserAction.html). We define a popup HTML page, which should be loaded if the button is clicked, a title and an icon.
 
 ### popup.html
 

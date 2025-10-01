@@ -10,4 +10,4 @@ Mozilla introduced [Limited Event Pages](https://github.com/w3c/webextensions/is
 
 In addition to these fundamental operational changes, some APIs have been changed to remove inconsistencies. Also, all methods and properties marked as deprecated have been removed.
 
-The full list of required changes to convert a Manifest V2 extension to Manifest V3 can be found in our [WebExtension API documentation](https://webextension-api.thunderbird.net/en/beta-mv3/changes/128.html).
+A guide to convert extensions from Manifest V2 to Manifest V3 can be found in our [WebExtension API documentation](https://webextension-api.thunderbird.net/en/mv3/guides/manifestV3.html)

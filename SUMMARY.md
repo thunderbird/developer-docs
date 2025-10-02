@@ -46,6 +46,7 @@
 
 * [Roadmap](planning/roadmap.md)
 * [Android Roadmap](planning/android-roadmap.md)
+* [iOS Roadmap](planning/ios-roadmap.md)
 * [Supported Standards](planning/standards-status.md)
 
 ## Add-on Development <a href="#add-ons" id="add-ons"></a>

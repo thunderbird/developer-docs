@@ -4,8 +4,12 @@ description: Planned work for the Thunderbird for iOS
 
 # iOS Roadmap
 
-Thunderbird for iOS is being developed completely in GitHub.  
+Thunderbird for iOS is being developed completely in GitHub.
 
-The Thunderbird for iOS **repository** can be found here: https://github.com/thunderbird/thunderbird-ios
+### Repository
 
-The Thunderbird for iOS **roadmap** can be found here: https://github.com/orgs/thunderbird/projects/22/views/2
+{% embed url="https://github.com/thunderbird/thunderbird-ios" %}
+
+### Roadmap
+
+{% embed url="https://github.com/orgs/thunderbird/projects/22/views/2" %}

@@ -85,7 +85,7 @@ Update both comm-central _and_ mozilla-central trees using `hg update -r abcdef1
 
 * The build process logs a lot about what it's doing. This can help you understand exactly what's going on so read it the first few times you build.
 * You can in many cases do an even quicker rebuild (for example to remake pre-processed files) by running `./mach build faster` (or `../mach build -C . faster` if your current directory is comm-central). This skips a bunch of steps at the beginning and end of the build process that you might not need. When in doubt, don't build faster.
-* Calendar is built differently in an artifact build but this shouldn't affect most people.
+* Here's [the Firefox Source Docs page on artifact builds](https://firefox-source-docs.mozilla.org/contributing/build/artifact_builds.html) with even more information.
 
 ## Artifact builds on the Try server
 

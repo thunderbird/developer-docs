@@ -25,6 +25,8 @@ Your **User** should match the SSH username that has been granted [Level 1 Commi
 
 ## Adding Try to your Mercurial configuration
 
+This is only required if your pushing to try from Mercurial.
+
 Try server has a separate repository based upon comm-central. You'll need to add the address to your Mercurial configuration file at `path/to/comm-central/.hg/hgrc`:
 
 ```
@@ -44,7 +46,35 @@ name `try-cc`.
 
 ## Pushing to Try
 
-Having gained level 1 access and configured Mercurial, you can push to Try. In general, it's just a matter of applying your patch(es) and running `hg push -r . try-cc` if you're planning to manually trigger tasks from the **Taskcluster** web interface.
+Having gained level 1 access and configured Mercurial, you can push to Try. In general, it's just a matter of applying your patch(es), selecting which tasks to run, and pushing to try-comm-central.
+
+### Pushing to Try (New process for Git)
+
+Since moving Thunderbird source code to Git, we now support running `./mach try`, aligning Thunderbird’s try submission workflow with Firefox.
+
+One important difference is that `./mach try` must be run from the `comm` repository when submitting to Thunderbird try, whereas Firefox submissions are made from the `source` repository.
+
+For complete details on using `./mach try`, refer to the Firefox documentation for [Pushing to Try](https://firefox-source-docs.mozilla.org/tools/try/index.html).
+
+While reading the Firefox documentation, note the following Thunderbird-specific differences:
+
+- The GitHub repository for Thunderbird is `https://github.com/thunderbird/thunderbird-desktop`
+- The unified Mercurial repository for Thunderbird is `comm-unified`
+- The Thunderbird try repository is `https://hg-edge.mozilla.org/try-comm-central`
+
+#### Choosing what tasks to run
+
+You can (and should) control what testing tasks you want to run on your push. Several task selection methods are available, including:
+- `./mach try fuzzy` where an interactive interface opens that allows you to select what tasks to run ([see more details](https://firefox-source-docs.mozilla.org/tools/try/selectors/fuzzy.html#understanding-the-interface))
+- `./mach try fuzzy --query <query>` where the query selects the tasks rather than opening an interactive interface ([see more details](https://firefox-source-docs.mozilla.org/tools/try/selectors/fuzzy.html#writing-queries))
+  - `./mach try fuzzy --and -q "mochitest" -q "windows"` is an example of running all windows mochitest tasks
+- `./mach try chooser` is similar to `./mach try fuzzy` except you can choose tasks from a web interface ([see more details](https://firefox-source-docs.mozilla.org/tools/try/selectors/chooser.html))
+- `./mach try again` to re-push your last try push or a previous push - ([see more details](https://firefox-source-docs.mozilla.org/tools/try/selectors/again.html))
+- `./mach try empty` to push to try but not schedule any additional tasks - ([see more details](https://firefox-source-docs.mozilla.org/tools/try/selectors/empty.html))
+
+### Pushing to Try (Old process for Mercurial)
+
+In general, it's just a matter of applying your patch(es) and running `hg push -r . try-cc` if you're planning to manually trigger tasks from the **Taskcluster** web interface.
 
 For pushes via the command line, we recommend using the `push-to-try` extensions in order to simplify the commands required to automatically trigger jobs and tasks on the try server.
 
@@ -64,11 +94,11 @@ Pushing to try-comm-central will create builds using the **most recent** mozilla
 You can also work with a **specific** mozilla-central revision, see "Testing mozilla-central patches" below.
 {% endhint %}
 
-## Choosing what tasks to run
+#### Choosing what tasks to run
 
 You can (and should) control what testing tasks you want to run on your push. There are several methods to do so:
 
-### Try syntax
+##### Try syntax
 
 This is the easiest and most common way. A special code (known as Try syntax) is put in the commit message of the tip-most revision being pushed, for example `try: -b o -p linux64 -u all` creates only an "opt" build on 64-bit Linux, and runs all of the tests on that build.
 
@@ -89,7 +119,7 @@ Here is the Try syntax try-comm-central understands:
   * `all`
 * `--artifact` Artifact builds. See the [Artifact Builds page](../building-thunderbird/artifact-builds.md) for more information.
 
-### Try task configuration
+##### Try task configuration
 
 For more control, a special file named `try_task_config.json` and containing a list of the tasks to run is included in one of the pushed revisions.
 
@@ -127,11 +157,11 @@ Task configurations and names change over time. If you're not getting the tasks 
 
 To find the name of any particular task, click on existing instance in Treeherder, then look for the "job name" in the lower-left corner of the page.
 
-### Adding tasks to an empty Try run
+##### Adding tasks to an empty Try run
 
 If you commit with neither Try syntax nor a `try_task_config.json` file (or you want to add to an existing run), you can one or more tasks using Treeherder. Once the decision (D) task has completed, click the drop-down arrow to the right of it, and choose "Add new jobs".
 
-### Get an installable build from a Try run
+## Get an installable build from a Try run
 
 When the build at `https://treeherder.mozilla.org/jobs?repo=try-comm-central` is complete (normally takes 1-2 hours):
 
@@ -144,23 +174,23 @@ When the build at `https://treeherder.mozilla.org/jobs?repo=try-comm-central` is
   \\
 * Install the downloaded file.
 
-## Testing mozilla-central patches
+## Testing Firefox patches
 
-If you have changes that affect mozilla-central, you may wish to do a Try run to check Thunderbird isn't broken. Here's how:
+If you have changes that affect Firefox main, you may wish to do a Try run to check Thunderbird isn't broken. Here's how:
 
-1. In your mozilla-central directory, apply your patch. Then run `./mach try empty --push-to-vcs` to push to the mozilla-central Try repository. You'll need to know the revision number of your push, which will be in the message printed to the console.
-2. Move to your comm-central directory.
+1. In the root directory of your Firefox repository, apply your patch. Then run `./mach try empty` to push to the mozilla-central Try repository. You'll need to know the revision number of your push, which will be in the message printed to the console.
+2. Move to the root directory of your Thunderbird repository.
 3. Modify the file `.gecko_rev.yml` – change `GECKO_HEAD_REPOSITORY` to [`https://hg.mozilla.org/try`](https://hg.mozilla.org/try), and `GECKO_HEAD_REV` to point to the revision from step 1.
 4. Now push to try-comm-central as per usual.
 
 You can change `.gecko_rev.yml` to point to any revision on the mozilla-\* trees to test your comm-central patch against them.
 
 {% hint style="info" %}
-It's not required, but you _should_ base your comm-central patch on a known good revision of comm-central (probably the tip), and your mozilla-central patch on the matching mozilla-central revision (also probably the tip). Otherwise changes made to one tree but not the other (such as build configuration changes) can cause problems.
+It's not required, but you _should_ base your Thunderbird patch on a known good revision of Thunderbird main (probably the tip), and your Firefox patch on the corresponding Firefox revision (also probably the tip). Otherwise changes made to one tree but not the other (such as build configuration changes) can cause problems.
 
 To find the matching revision, open the log of the comm-central decision (D) task and search for "built from mozilla-central revision".
 {% endhint %}
 
-## Testing comm-beta and comm-esr patches
+## Testing Beta, Release, or ESR patches
 
-When doing a Try run for patches to `comm-beta` or `comm-esr##`, the steps are the same as when doing a Try run for `comm-central`. (For example, you do not need to change anything in your `hgrc` file.) The try server is smart enough to automatically detect which one to build and test. This works because of the `.gecko_rev.yml` file. Note that some things might not work the same way as on `comm-central` (e.g. the `--artifact` option only works on `comm-central`).
+When doing a Try run for patches to Beta, Release, or ESR, the steps are the same as above. (For example, you do not need to change anything in your `hgrc` file or git origin.) The try server is smart enough to automatically detect which one to build and test. This works because of the `.gecko_rev.yml` file. Note that some things might not work the same way as on `comm-central` (e.g. the `--artifact` option only works on `comm-central`).

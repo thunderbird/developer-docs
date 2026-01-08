@@ -20,9 +20,9 @@ add_task(async () => {
 
 Many essential functions live in these files.
 
-* [EventUtils](https://searchfox.org/mozilla-central/source/testing/mochitest/tests/SimpleTest/EventUtils.js)
-* [BrowserTestUtils](https://searchfox.org/mozilla-central/source/testing/mochitest/BrowserTestUtils/BrowserTestUtils.sys.mjs)
-* [MailTestUtils](https://searchfox.org/comm-central/source/mailnews/test/resources/MailTestUtils.sys.mjs)
+* EventUtils([git link](https://github.com/mozilla-firefox/firefox/blob/main/testing/mochitest/tests/SimpleTest/EventUtils.js), [searchfox link](https://searchfox.org/mozilla-central/source/testing/mochitest/tests/SimpleTest/EventUtils.js))
+* BrowserTestUtils([git link](https://github.com/mozilla-firefox/firefox/blob/main/testing/mochitest/BrowserTestUtils/BrowserTestUtils.sys.mjs), [searchfox link](https://searchfox.org/mozilla-central/source/testing/mochitest/BrowserTestUtils/BrowserTestUtils.sys.mjs))
+* MailTestUtils([git link](https://github.com/thunderbird/thunderbird-desktop/blob/main/mailnews/test/resources/MailTestUtils.sys.mjs), [searchfox link](https://searchfox.org/comm-central/source/mailnews/test/resources/MailTestUtils.sys.mjs))
 
 `EventUtils` and `BrowserTestUtils` do not need to be imported as they are already available in Mochitest files. `mailTestUtils` requires importing:
 

@@ -102,5 +102,5 @@ Spend some time playing around with the menu and even try experimenting with the
 If you get in trouble you can reset the repository via the commands below (in the `/comm` directory) - **these will remove all the changes you've made**:
 
 ```
-hg update --clean
+git reset --hard
 ```

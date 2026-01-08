@@ -81,7 +81,7 @@ The method to retrieve strings from the created bundle is slightly different, in
 
 ### calICalendar.\*
 
-Since Thunderbird 96, [many calendar functions return Promises](https://searchfox.org/comm-central/source/calendar/base/public/calICalendar.idl). This includes:
+Since Thunderbird 96, [many calendar functions return Promises](https://github.com/thunderbird/thunderbird-desktop/blob/main/calendar/base/public/calICalendar.idl). This includes:
 
 * `getItem()`
 * `addItem()`

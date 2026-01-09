@@ -8,7 +8,7 @@ In January 2023 the mail front-end was rebuilt from scratch, replacing what evol
 
 ## Mail tab types
 
-The mail front-end consists of two types of tabs (and a standalone window, more about that later) – the 3-pane tab `mail3PaneTab` and the message tab `mailMessageTab`. These are defined in [mailTabs.js](https://searchfox.org/comm-central/source/mail/base/content/mailTabs.js) and provide the `tabInfo` objects for tabmail to control. Most code from outside the tabs will go through here in some form, although knowing the specific details should be unnecessary.
+The mail front-end consists of two types of tabs (and a standalone window, more about that later) – the 3-pane tab `mail3PaneTab` and the message tab `mailMessageTab`. These are defined in [mailTabs.js](https://github.com/thunderbird/thunderbird-desktop/blob/main/mail/base/content/mailTabs.js) and provide the `tabInfo` objects for tabmail to control. Most code from outside the tabs will go through here in some form, although knowing the specific details should be unnecessary.
 
 Each mail tab `tabInfo` object has these read-only properties:
 
@@ -33,7 +33,7 @@ The standalone mail window also contains a XUL `<browser>` displaying `about:mes
 
 ## about:3pane
 
-`about:3pane` is the main UI that users see when Thunderbird starts: the folder pane, the thread pane, and the message pane. It lives in the tree as [about3Pane.xhtml](https://searchfox.org/comm-central/source/mail/base/content/about3Pane.xhtml) and similarly named [JS](https://searchfox.org/comm-central/source/mail/base/content/about3Pane.js), [CSS](https://searchfox.org/comm-central/source/mail/themes/shared/mail/about3Pane.css) and [Fluent](https://searchfox.org/comm-central/source/mail/locales/en-US/messenger/about3Pane.ftl) files.
+`about:3pane` is the main UI that users see when Thunderbird starts: the folder pane, the thread pane, and the message pane. It lives in the tree as [about3Pane.xhtml](https://github.com/thunderbird/thunderbird-desktop/blob/main/mail/base/content/about3Pane.xhtml) and similarly named [JS](https://github.com/thunderbird/thunderbird-desktop/blob/main/mail/base/content/about3Pane.js), [CSS](https://github.com/thunderbird/thunderbird-desktop/blob/main/mail/themes/shared/mail/about3Pane.css) and [Fluent](https://github.com/thunderbird/thunderbird-desktop/blob/main/mail/locales/en-US/messenger/about3Pane.ftl) files.
 
 ### Folder pane
 
@@ -59,6 +59,6 @@ If an account is selected in the folder pane instead of a folder, yet another `<
 
 ## about:message
 
-`about:message` is all of the UI that displays a single message, including the message headers and attachments. It is used as the message pane in `about:3pane` and by itself as a message tab or window. Like `about:3pane` it lives in the tree as [aboutMessage.xhtml](https://searchfox.org/comm-central/source/mail/base/content/aboutMessage.xhtml), [aboutMessage.js](https://searchfox.org/comm-central/source/mail/base/content/aboutMessage.js), [messageHeader.css](https://searchfox.org/comm-central/source/mail/themes/shared/mail/messageHeader.css) and [about3Pane.ftl](https://searchfox.org/comm-central/source/mail/locales/en-US/messenger/about3Pane.ftl) files.
+`about:message` is all of the UI that displays a single message, including the message headers and attachments. It is used as the message pane in `about:3pane` and by itself as a message tab or window. Like `about:3pane` it lives in the tree as [aboutMessage.xhtml](https://github.com/thunderbird/thunderbird-desktop/blob/main/mail/base/content/aboutMessage.xhtml), [aboutMessage.js](https://github.com/thunderbird/thunderbird-desktop/blob/main/mail/base/content/aboutMessage.js), [messageHeader.css](https://github.com/thunderbird/thunderbird-desktop/blob/main/mail/themes/shared/mail/messageHeader.css) and [about3Pane.ftl](https://github.com/thunderbird/thunderbird-desktop/blob/main/mail/locales/en-US/messenger/about3Pane.ftl) files.
 
 Message contents themselves are displayed in a `<browser>` (if you're counting, we're now three deep) which can be accessed by the `content` property of an `about:message` `window`.

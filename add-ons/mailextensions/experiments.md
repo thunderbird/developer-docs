@@ -7,12 +7,12 @@ Since Experiments directly interact with Thunderbird's core functions, it is nec
 {% endhint %}
 
 {% hint style="info" %}
-Thunderbird does contain a few useful features related to Experiments [whose documentation is no longer generated](https://bugzilla.mozilla.org/show\_bug.cgi?id=1556460#c23). Especially if you're writing an Experiment with complex interactions between the WebExtension and your Experiment, it may be helpful to read the documentation blocks within [ExtensionCommon.sys.mjs](https://searchfox.org/mozilla-central/source/toolkit/components/extensions/ExtensionCommon.sys.mjs) and possibly other modules in the same source code folder.
+Thunderbird does contain a few useful features related to Experiments [whose documentation is no longer generated](https://bugzilla.mozilla.org/show\_bug.cgi?id=1556460#c23). Especially if you're writing an Experiment with complex interactions between the WebExtension and your Experiment, it may be helpful to read the documentation blocks within [ExtensionCommon.sys.mjs](https://github.com/mozilla-firefox/firefox/blob/main/toolkit/components/extensions/ExtensionCommon.sys.mjs) and possibly other modules in the same source code folder.
 {% endhint %}
 
 {% hint style="info" %}
 For reference, the parent implementations of all built-in APIs can be found in\
-[/comm/mail/components/extensions/parent](https://searchfox.org/comm-central/source/mail/components/extensions/parent).
+[/comm/mail/components/extensions/parent](https://github.com/thunderbird/thunderbird-desktop/blob/main/mail/components/extensions/parent).
 {% endhint %}
 
 {% hint style="danger" %}

@@ -9,7 +9,7 @@ Chat Core is the code for instant messaging that is used by Thunderbird. It prov
 * Message logging
 * [Emoticon (smileys) handling](broken-reference)
 
-The Chat Core code lives in the chat/ directory of [comm-central](https://searchfox.org/comm-central/source/chat).
+The Chat Core code lives in the chat/ directory of the [Thunderbird](https://github.com/thunderbird/thunderbird-desktop) repository.
 
 #### [Chat Core Protocols](chat-core-protocols.md)
 
@@ -17,7 +17,7 @@ The Chat Core code used by Thunderbird has some abstractions to deal with the di
 
 #### [Contacts](contacts.md)
 
-Contacts are at the heart of instant messaging, and thus the Chat Core has a way to abstract to a "person" (represented by an [`imIContact`](https://searchfox.org/comm-central/source/chat/components/public/imIContactsService.idl) instance), which might connect to multiple networks, etc.
+Contacts are at the heart of instant messaging, and thus the Chat Core has a way to abstract to a "person" (represented by an [`imIContact`](https://github.com/thunderbird/thunderbird-desktop/blob/main/chat/components/public/imIContactsService.idl) instance), which might connect to multiple networks, etc.
 
 #### [Keyboard shortcuts](keyboard-shortcuts.md)
 

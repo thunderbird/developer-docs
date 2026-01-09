@@ -158,9 +158,9 @@ The levels `Info`, `Trace` and `Log` are actually identical.
 
 Interface has been dropped in favor of an observer based approach. See&#x20;
 
-* [https://searchfox.org/comm-central/source/mail/base/content/msgHdrView.js#379-429](https://searchfox.org/comm-central/source/mail/base/content/msgHdrView.js#379-429)
-* [https://searchfox.org/comm-central/source/mail/base/content/msgHdrView.js#277](https://searchfox.org/comm-central/source/mail/base/content/msgHdrView.js#277)
-* [https://searchfox.org/comm-central/source/mail/base/content/msgHdrView.js#335](https://searchfox.org/comm-central/source/mail/base/content/msgHdrView.js#335)
+* [https://github.com/thunderbird/thunderbird-desktop/blob/main/mail/base/content/msgHdrView.js#379-429](https://github.com/thunderbird/thunderbird-desktop/blob/main/mail/base/content/msgHdrView.js#379-429)
+* [https://github.com/thunderbird/thunderbird-desktop/blob/main/mail/base/content/msgHdrView.js#277](https://github.com/thunderbird/thunderbird-desktop/blob/main/mail/base/content/msgHdrView.js#277)
+* [https://github.com/thunderbird/thunderbird-desktop/blob/main/mail/base/content/msgHdrView.js#335](https://github.com/thunderbird/thunderbird-desktop/blob/main/mail/base/content/msgHdrView.js#335)
 
 ### nsIMsgFolder.listFoldersWithFlags
 
@@ -217,5 +217,5 @@ In Thunderbird 91, this is primarily affecting pages belonging to an Add-on, lik
 In practical terms, this means that you may need to update your experiments:
 
 * **If you create frames in Thunderbird's UI**, these frames now need the appropriate attributes to load content in the right process. You can find an example of required changes in [the E10S compatibility commit for the CustomUI experiment](https://github.com/rsjtdrjgfuzkfg/thunderbird-experiments/commit/11232201ff437e7bb293efdcb93ecc3963a8328d#diff-41cf834ce8c3fae411d5f4c18abf8c024630074e616cf98307e582cea5362be7).
-* **If you exchange raw objects between WebExtension scopes / "child" experiment code and Thunderbird / "parent" experiment code**, you need to migrate to an indirect approach, usually based on explicit message passing. Depending on the complexity of your task, this can either happen through notifyTools, a custom experiment API or through custom experiment code directly using cross-process APIs (likely either [message managers](https://searchfox.org/mozilla-central/source/dom/chrome-webidl/MessageManager.webidl) or [actors](https://firefox-source-docs.mozilla.org/dom/ipc/jsactors.html)).
+* **If you exchange raw objects between WebExtension scopes / "child" experiment code and Thunderbird / "parent" experiment code**, you need to migrate to an indirect approach, usually based on explicit message passing. Depending on the complexity of your task, this can either happen through notifyTools, a custom experiment API or through custom experiment code directly using cross-process APIs (likely either [message managers](https://github.com/mozilla-firefox/firefox/blob/main/dom/chrome-webidl/MessageManager.webidl) or [actors](https://firefox-source-docs.mozilla.org/dom/ipc/jsactors.html)).
 * As a consequence, **if you load JavaScript modules in "child" experiment code**, you will now get separate instances of the JSM: each process has its own instance, and there could be multiple child processes. If you keep using JSMs from "child" code, you may furthermore need to manually unload these separate instances on API shutdown (`ExtensionAPI.onShutdown`), even if you use a catch-all unloading solution like CachingFix or the WindowListener API.

@@ -2,7 +2,7 @@
 
 [Chat Core](./) uses a message style system based on HTML, JS and CSS that is very similar to the one created for [Adium](https://adium.im/). If you plan to create a message style, reading the Adium documentation on the topic may be helpful -- see this [tutorial](https://web.archive.org/web/20160408094746/https://trac.adium.im/wiki/CreatingMessageStyles/Tutorial) and this [reference sheet](https://web.archive.org/web/20160715205801/https://trac.adium.im/wiki/CreatingMessageStyles).
 
-On the other hand, you may prefer to jump right in, using the default message styles as examples: [https://searchfox.org/comm-central/source/mail/components/im/messages](https://searchfox.org/comm-central/source/mail/components/im/messages)
+On the other hand, you may prefer to jump right in, using the default message styles as examples: [https://github.com/thunderbird/thunderbird-desktop/blob/main/mail/components/im/messages](https://github.com/thunderbird/thunderbird-desktop/blob/main/mail/components/im/messages)
 
 The rest of this page includes a variety of information about the specifics for creating a message theme for Thunderbird.
 

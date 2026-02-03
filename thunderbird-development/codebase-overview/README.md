@@ -6,9 +6,9 @@ description: >-
 
 # Codebase Overview
 
-## Overview of Comm Central
+## Overview of Thunderbird Source Code
 
-The following directories are included in the comm-central repository:
+The following directories are included in the [Thunderbird](https://github.com/thunderbird/thunderbird-desktop) repository:
 
 **build**\
 Miscellaneous files used by the build process.

@@ -5,7 +5,7 @@
 Thunderbird follows a release train model to ensure timely and predictable releases. This approach allows for regular feature rollouts, stability improvements, and bug fixes.
 
 ### General Release Cadence
-The general release cadence consists of 4-week cycles, with each branch corresponding to a specific release channel. Each branch, starting from comm-central, is based on the previous branch.
+The general release cadence consists of 4-week cycles, with each branch corresponding to a specific release channel. Each branch, starting from main, is based on the previous branch.
 
 ![](../.gitbook/assets/tb-channels.png)
 
@@ -15,12 +15,12 @@ The general release cadence consists of 4-week cycles, with each branch correspo
 
 #### **Thunderbird Daily**
 - **Release Timeline**: A new major version of Thunderbird Daily begins every 4 weeks.
-- **Releases**: Thunderbird Daily is automatically released on a daily basis from comm-central.
+- **Releases**: Thunderbird Daily is automatically released on a daily basis from main.
 
 #### **Thunderbird Beta**
 - **Release Timeline**:
   - A new major version of Thunderbird Beta begins every 4 weeks.
-  - 4 weeks after Daily starts for a new version, comm-central is merged into comm-beta.
+  - 4 weeks after Daily starts for a new version, main is merged into beta.
 - **Releases**: Thunderbird Beta for this version is released weekly for the next 3 weeks.
   - **Beta 1**: Includes the merged code.
   - **Beta 2 and above**: Include any new uplifts.
@@ -28,12 +28,12 @@ The general release cadence consists of 4-week cycles, with each branch correspo
 #### **Thunderbird Release**
 - **Release Timeline**:
   - A new major version of Thunderbird Release begins every 4 weeks.
-  - 3 weeks after Beta starts for a new version, comm-beta is merged into comm-release.
+  - 3 weeks after Beta starts for a new version, beta is merged into release.
   - 1 week after this merge, the monthly Thunderbird Release is published.
 - **Releases**: Thunderbird Release is released every 4 weeks, with point releases as needed every 2 weeks.
 
 #### **Thunderbird ESR (Extended Support Release)**
-- **Release Timeline**: The code from comm-release is merged into comm-esr\<version\> once a year.
+- **Release Timeline**: The code from comm-release is merged into esr\<version\> once a year.
 - **Releases**: Thunderbird ESR is released every year, typically in July, with point releases as needed every 2 weeks.
 
 ---
@@ -41,9 +41,9 @@ The general release cadence consists of 4-week cycles, with each branch correspo
 ### **Stabilization Milestones**
 
 #### **Daily Soft Code Freeze**
-- A 1-week soft code freeze occurs for comm-central prior to merging into comm-beta.
+- A 1-week soft code freeze occurs for main prior to merging into beta.
 - During this time:
-  - Risky code should not land in comm-central.
+  - Risky code should not land in main.
   - Features controlled by a feature flag that were disabled in Daily should not be enabled.
 
 #### **Pre-Merge Reviews**
@@ -63,7 +63,7 @@ The general release cadence consists of 4-week cycles, with each branch correspo
 | Thunderbird 136.0a1 starts               | Jan 6        |
 | Thunderbird 136.0a1 soft code freeze     | Jan 27–Feb 3 |
 | Thunderbird 136.0a1 pre-merge review     | Jan 30       |
-| Thunderbird merge 136.0a1 central → beta | Feb 3        |
+| Thunderbird merge 136.0a1 main → beta    | Feb 3        |
 | Thunderbird 136.0b1                      | Feb 5        |
 | Thunderbird 136.0b2                      | Feb 12       |
 | Thunderbird 136.0b3                      | Feb 19       |

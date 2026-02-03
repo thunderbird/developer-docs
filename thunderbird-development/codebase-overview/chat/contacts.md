@@ -1,6 +1,6 @@
 # Contacts
 
-Contacts are at the heart of instant messaging, and thus the Chat Core has a way to abstract to a "person" \(represented by an [`imIContact`](https://searchfox.org/comm-central/source/chat/components/public/imIContactsService.idl) instance\), which might connect to multiple networks, etc.
+Contacts are at the heart of instant messaging, and thus the Chat Core has a way to abstract to a "person" \(represented by an [`imIContact`](https://github.com/thunderbird/thunderbird-desktop/blob/main/chat/components/public/imIContactsService.idl) instance\), which might connect to multiple networks, etc.
 
 {% hint style="warning" %}
 _Draft: This page is not complete._

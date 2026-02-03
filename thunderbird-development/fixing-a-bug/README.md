@@ -16,7 +16,7 @@ Use the [Advanced Search](https://bugzilla.mozilla.org/query.cgi?format=advanced
 
 ## Search for Code References
 
-Making sense of the **Thunderbird** source code, and knowing where to look, will take some time. The code base is pretty big and if you never worked with `XBL` or `Custom Elements` it can be overwhelming at first. We recommend using our code search engine, [SearchFox](https://searchfox.org/comm-central/source/), to inspect the source code and find snippets and references to help you out while investigating a bug.
+Making sense of the **Thunderbird** source code, and knowing where to look, will take some time. The code base is pretty big and if you never worked with `XBL` or `Custom Elements` it can be overwhelming at first. We recommend using our code search engine, [SearchFox](https://searchfox.org/comm-central/source/), or the [GitHub Source](https://github.com/thunderbird/thunderbird-desktop) to inspect the source code and find snippets and references to help you out while investigating a bug.
 
 ## Debugging Core Code
 
@@ -24,23 +24,54 @@ JavaScript code can be debugged using the built-in [developer tools toolbox](htt
 
 ## Creating Patches
 
-### Configuring Mercurial
+### Checkout the Source Code
 
-To ensure your work is correctly attributed to you, and to make the reviewer's task easier, these options should be set in your Mercurial configuration file (`Mecurial.ini` on Windows, `$HOME/.hgrc` elsewhere).
+If you don't need to build Thunderbird, you can just get the Thunderbird source:
 
 ```
-[ui]
-username = Your Name <your@email.address>
-
-[diff]
-git = 1
-showfunc = 1
-unified = 8
+git clone https://github.com/thunderbird/thunderbird-desktop
 ```
 
-### Mercurial Workflows
+If you plan to build with your changes, you'll first need to get the latest Firefox source code, and check it out into a local directory `source` (or however you want to call it). Then, get the latest Thunderbird source code. It needs to be placed **inside** the Mozilla source code, in a directory named `comm/`:
 
-Mercurial is pretty flexible in terms of allowing writing your own code and keeping it separate from the main code base. See [the page on using Mercurial bookmarks](using-mercurial-bookmarks.md) for more information.
+```
+git clone https://github.com/mozilla-firefox/firefox source/
+cd source/
+git clone https://github.com/thunderbird/thunderbird-desktop comm/
+```
+
+### Configuring Git
+
+To ensure your work is correctly attributed to you, and to make the reviewer's task easier, these options should be set in your Git configuration.
+
+```
+git config --global user.name "Your Full Name"
+git config --global user.email "you@example.com"
+```
+
+### Committing a Patch
+
+Make the changes you need in the codebase.
+
+{% hint style="note" %}
+If you are unsure of what changes you need to make, or need help from the mentor of the bug, please don’t hesitate to use the needinfo feature (“Request information from”) on Bugzilla to get the attention of your mentor.
+{% endhint %}
+
+After making your changes, visualize your changes to ensure you’re including all the necessary work:
+
+```
+# For files changed/added/removed
+$ git status
+
+# For detailed line changes
+$ git diff
+```
+
+Then commit your changes:
+
+```
+$ git commit
+```
 
 ## Commit messages
 
@@ -54,7 +85,6 @@ Bug xxxx - Short description of your change. r=reviewer
 Optionally, a longer description of the change.
 This can span multiple lines.
 ```
-
 
 For follow-up commits that fix a problem with a lint test or other failure, the suggested form is:
 
@@ -70,14 +100,30 @@ Bug NNNN - Port bug ZZZZ: Useful short description. r?reviewer
 
 Prefixing the first line of the commit message with "`WIP:`" marks the patch as a work-in-progress. `moz-phab` \(see below\) will pick that up and mark it as "Changes Planned".
 
-
 ## Picking reviewers
 
 All changes need to be reviewed before acceptance into the codebase. It can be pretty tricky to figure out who to ask for a review.
 
 Thunderbird code is divided into modules, each with an owner and peers. Generally, these are the best people to review your changes. Here's [the list of module owners and peers for Thunderbird](https://wiki.mozilla.org/Modules/Thunderbird). [Calendar](https://wiki.mozilla.org/Modules/Calendar) and [MailNews Core](https://wiki.mozilla.org/Modules/MailNews\_Core) modules have separate lists.
 
-Scanning through the recent commits in mercurial should also give you an idea of who is active in various areas of the code. Failing that you can always [ask around](https://developer.thunderbird.net/add-ons/community).
+You can also run git log <modified-file>` on the relevant files, and look who usually is reviewing the actual changes (ie. not reformat, renaming of variables, etc).
+
+## Reviewing before submitting
+
+To review your commit, run:
+
+```
+$ git log
+```
+
+To review your patch, run:
+```
+$ git show
+```
+
+## Working with a stack of patches
+
+[More information on how to work with stack of patches](https://firefox-source-docs.mozilla.org/contributing/stack_quickref.html#working-with-stack-of-patches-quick-reference)
 
 ## Submitting a Patch
 
@@ -87,13 +133,19 @@ There is a command line tool, `moz-phab`, which makes it easy to submit local ch
 
 See the [moz-phab setup and installation](https://moz-conduit.readthedocs.io/en/latest/phabricator-user.html#setting-up-mozphab) docs.
 
-With `moz-phab` you can submit local mercurial changeset(s) like this:
+Once you want to submit your patches (make sure you use the right commit message), run:
 
 ```
-$ moz-phab submit [start_changeset] [end_changeset]
+$ moz-phab
 ```
 
-The start/end changesets are optional. If omitted, `moz-phab` will guess which one(s) you mean.
+It will publish all the currently applied patches to Phabricator and inform the reviewer.
+
+If you wrote several patches on top of each other, run:
+
+```
+$ moz-phab submit <first_revision>::<last_revision>
+```
 
 It'll ask for confirmation before uploading, so don't worry too much about accidental submissions.
 
@@ -101,18 +153,49 @@ It'll ask for confirmation before uploading, so don't worry too much about accid
 
 You can find more details in the `moz-phab` [README](https://github.com/mozilla-conduit/review/blob/master/README.md#submitting-commits-to-phabricator).
 
-## Updating patches
+## Updating a submitted patch
 
-It's very common for patches to require some updates before being accepted. Locally, you can use `hg commit --amend` to update a changeset.
+It is rare that a reviewer will accept the first version of patch. Moreover, as the code review bot might suggest some improvements, changes to your patch may be required.
 
-Phabricator tracks uploaded patches by adding a line to the commit message:
+If your patch is not loaded in your working directory, you first need to re-apply it:
 
 ```
-Differential Revision: <url>
+$ moz-phab patch D<revision_id>
+
+# Or you can use the URL of the revision on Phabricator
+$ moz-phab patch https://phabricator.services.mozilla.com/D<revision_id>
 ```
 
-When you submit the patch again with `moz-phab`, it will see that line and realise that you're updating an existing revision rather than creating a brand new one.
+Make your changes in the working folder and run:
+
+```
+$ git commit --amend
+```
+
+After amending the patch, you will need to submit it using moz-phab again.
 
 {% hint style="warning" %}
-If you're juggling and merging local changesets with `hg histedit`, make sure you preserve the `Differential Revision:` line in the commit message for any patches you're planning to resubmit!
+Don’t use `git commit --amend -m`.
+
+Phabricator tracks revision by editing the commit message when a revision is created to add a special `Differential Revision: <url>` line.
+
+When `--amend -m` is used, that line will be lost, leading to the creation of a new revision when re-submitted, which isn’t the desired outcome.
 {% endhint %}
+
+If you wrote many changes, you can squash or edit commits with the command:
+
+```
+$ git rebase -i
+```
+
+The submission step is the same as for the initial patch.
+
+[More information on how to work with stack of patches](https://firefox-source-docs.mozilla.org/contributing/stack_quickref.html#working-with-stack-of-patches-quick-reference)
+
+## Update the working directory
+
+If you’re finished with a patch and would like to return to the tip to make a new patch:
+
+```
+$ git pull --rebase
+```

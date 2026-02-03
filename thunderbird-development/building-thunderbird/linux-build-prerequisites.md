@@ -41,29 +41,25 @@ You can check with `python3 --version` to see if you have it already. If not, yo
 
 You will also need `python3-distutils` and `python3-pip` installed from your distribution's package manager.
 
-### Mercurial
+### Git
 
-As noted in the [Setting up a build environment page](../setting-up-a-build-environment.md), both `mozilla-central` and `comm-central` are repositories using the Mercurial version control system. This means you will need to install Mercurial. Here are the quick commands to use for common Linux based operating systems but for a more complete list of instructions (if neither of these works for your use case), please see [Mercurial's download page on their wiki](https://www.mercurial-scm.org/wiki/Download).
+As noted in the [Setting up a build environment page](../setting-up-a-build-environment.md), both Firefox and Thunderbird source are stored in Git repositories. This means you will need to install Git if it is not already available. Here are some quick commands to install on common distributions:
 
 #### Ubuntu/Debian
 
 ```
-sudo apt install mercurial
+sudo apt install git
 ```
 
 #### Fedora
 
 ```
-sudo dnf install mercurial
+sudo dnf install git
 ```
 
 ## Getting the Code
 
-Once you have Mercurial installed, you are ready to grab the source code. There are a couple of different methods to do this.
-
-{% hint style="warning" %}
-Mozilla-central will build Firefox without the comm-central repo present and a few options set. Mozilla-central is the Firefox codebase and comm-central features the additions that turn Firefox into Thunderbird.
-{% endhint %}
+Once you have Git installed, you are ready to grab the source code. There are a couple of different methods to do this.
 
 ### Scripted
 
@@ -71,20 +67,16 @@ The [`bootstrap.py`](https://hg.mozilla.org/comm-central/raw-file/tip/python/roc
 
 ```
 mkdir tb-build && cd tb-build
-wget https://hg.mozilla.org/comm-central/raw-file/tip/python/rocboot/bin/bootstrap.py
+wget https://raw.githubusercontent.com/thunderbird/thunderbird-desktop/main/python/rocboot/bin/bootstrap.py
 chmod +x bootstrap.py
 ./bootstrap.py
 ```
 
-This will create a `mozilla-unified` directory with both a `mozconfig` and a `comm/` folder inside.
+This will create a `source/` directory with both a `mozconfig` and a `comm/` folder inside.
 
-The `mozilla-unified` repository has several bookmarks (akin to a git branch) and you will by default be on the `autoland` bookmark. You will need to be on the `central` bookmark and you can change by going into this directory and changing to that bookmark:
+The `source/` repository contains the Firefox source and defaults to the `main` branch.
 
-```
-hg up central
-```
-
-The `mozilla-unified/comm` repository has several bookmarks and you will by default be on the `comm` bookmark. This is where you want to be, unless you are specifically working on a past ESR.
+The `source/comm` repository also defaults to the `main` branch.
 
 The `mozconfig` file is setup to build Thunderbird and you can verify this with `cat mozconfig`; the `--enable-project` parameter should be `comm/mail`:
 
@@ -98,12 +90,12 @@ If you would rather manually gather the source code, perform the bootstrap, and 
 
 #### Checkout the Source Code
 
-Get the latest Mozilla source code from Mozilla's `mozilla-central` Mercurial code repository, and check it out into a local directory `source` (or however you want to call it). Then, get the latest Thunderbird source code from Mozilla's `comm-central` Mercurial code repository. It needs to be placed **inside** the Mozilla source code, in a directory named `comm/`:
+Get the latest Firefox source code, and check it out into a local directory `source` (or however you want to call it). Then, get the latest Thunderbird source code. It needs to be placed **inside** the Mozilla source code, in a directory named `comm/`:
 
 ```
-hg clone https://hg.mozilla.org/mozilla-central source/
+git clone https://github.com/mozilla-firefox/firefox source/
 cd source/
-hg clone https://hg.mozilla.org/comm-central comm/
+git clone https://github.com/thunderbird/thunderbird-desktop comm/
 ```
 
 #### Create `mozconfig` file

@@ -14,7 +14,7 @@ To get to the account manager from JS, use `MailServices.accounts`. To get to it
 
 ## Accounts
 
-Accounts are simple containers for incoming servers and identities. The are defined by [`nsIMsgAccount`](https://searchfox.org/comm-central/source/mailnews/base/public/nsIMsgAccount.idl) and implemented by [`nsMsgAccount`](https://searchfox.org/comm-central/source/mailnews/base/src/nsMsgAccount.cpp). If you're looking to use something in a mail account, you'll probably first get a reference to an `nsIMsgAccount`.
+Accounts are simple containers for incoming servers and identities. They are defined by [`nsIMsgAccount`](https://searchfox.org/comm-central/source/mailnews/base/public/nsIMsgAccount.idl) and implemented by [`nsMsgAccount`](https://searchfox.org/comm-central/source/mailnews/base/src/nsMsgAccount.cpp). If you're looking to use something in a mail account, you'll probably first get a reference to an `nsIMsgAccount`.
 
 Accounts are identified by a `key` property, which is the word `account` and then a number. Preferences for an account have the prefix `mail.accounts.accountX` .
 

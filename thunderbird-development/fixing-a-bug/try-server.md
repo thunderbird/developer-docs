@@ -36,9 +36,9 @@ try-cc = ssh://hg.mozilla.org/try-comm-central
 You can of course [access the repository via HTTP](https://hg.mozilla.org/try-comm-central/), but not push to it, hence the ssh:// address.
 
 {% hint style="info" %}
-The name of the comm-central try server must be different from `try`. There's
-an alias in the Mozilla Mercurial configuration that will override this
-configuration if the server is named `try`. The instructions below assume the
+The name of the comm-central try server must be different from `try`. There's\
+an alias in the Mozilla Mercurial configuration that will override this\
+configuration if the server is named `try`. The instructions below assume the\
 name `try-cc`.
 {% endhint %}
 
@@ -63,8 +63,6 @@ Pushing to try-comm-central will create builds using the **most recent** mozilla
 \
 You can also work with a **specific** mozilla-central revision, see "Testing mozilla-central patches" below.
 {% endhint %}
-
-
 
 ## Choosing what tasks to run
 
@@ -121,7 +119,7 @@ The contents of the file look like this:
 
 `tasks` is a list of tasks to run. In this example it's all of the 64-bit Linux tests. A 64-bit Linux build will also run, because it is required by the tasks specified.
 
-A copy of the file with all available tests is maintained [here](https://github.com/darktrojan/mozconfigs/blob/master/try\_task\_config.json). A typical workflow would be to copy the file into your working directory, remove the tasks you don't want to run, and commit it. For efficiency you could export the commit as a patch and import it again when needed.
+A copy of the file with all available tests is maintained [here](https://github.com/darktrojan/mozconfigs/blob/master/try_task_config.json). A typical workflow would be to copy the file into your working directory, remove the tasks you don't want to run, and commit it. For efficiency you could export the commit as a patch and import it again when needed.
 
 {% hint style="info" %}
 Task configurations and names change over time. If you're not getting the tasks you requested, this may be why.
@@ -138,14 +136,12 @@ If you commit with neither Try syntax nor a `try_task_config.json` file (or you 
 When the build at `https://treeherder.mozilla.org/jobs?repo=try-comm-central` is complete (normally takes 1-2 hours):
 
 * Click the green "B" (for binary) next to one of the following: "Windows 2012 x64 \[shippable] opt", "Linux x64 \[shippable] opt", "OS X Cross Compiled \[shippable] opt" (unless instructed to use a debug build).\
-  ![](<../../.gitbook/assets/trybuilds (3).jpeg>)\
-
+  ![](<../../.gitbook/assets/trybuilds (2).jpeg>)\\
 * In the black header below click "Artifacts and Debugging Tools".
 * In the Artifacts section, to download the install file click on `target.installer.exe` (Windows), `target.tar.bz2` (Linux), or `target.dmg` (Mac).\
   \
   ![](<../../.gitbook/assets/try-target (1).jpeg>)\
-  \
-
+  \\
 * Install the downloaded file.
 
 ## Testing mozilla-central patches

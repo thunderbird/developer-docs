@@ -8,8 +8,7 @@ description: Tips and tricks for successful Thunderbird add-on development.
 
 Some general tips to speed up your development workflow:
 
-* To debug code running in the browser context (e.g.: your Experiment APIs) you must use the global browser console (Ctrl+Shift+J) or developer toolbox (Ctrl+Shift+I). \
-
+* To debug code running in the browser context (e.g.: your Experiment APIs) you must use the global browser console (Ctrl+Shift+J) or developer toolbox (Ctrl+Shift+I). <br>
 * To debug code running in a content page of your extension (e.g.: your background script), you need to select "debug add-ons" from the gear icon in the add-on tab and then inspect your add-on. \
   \
   **Hint:** Alternatively, you can enable content messages in the global browser console or in the developer toolbox as well. This will also show console output from popus (e.g. from browser\_action):
@@ -26,7 +25,7 @@ One of the stumbling blocks that legacy add-on developers frequently encounter i
 
 ### `-purgecaches` command-line option
 
-DMO [claims](https://developer.mozilla.org/en-US/docs/Mozilla/Command\_Line\_Options#-purgecaches) that specifying the `-purgecaches` command line option when launching Thunderbird will force it to purge the JavaScript cache.
+DMO [claims](https://developer.mozilla.org/en-US/docs/Mozilla/Command_Line_Options#-purgecaches) that specifying the `-purgecaches` command line option when launching Thunderbird will force it to purge the JavaScript cache.
 
 ### Invalidate caches programmatically
 

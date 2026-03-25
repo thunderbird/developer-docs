@@ -21,8 +21,12 @@ The main configuration file of an extension is called `manifest.json`, also refe
     "browser_specific_settings": {
         "gecko": {
             "id": "helloworld@yoursite.com",
-            "strict_min_version": "128.0"
-        }
+            "strict_min_version": "128.0",
+            "data_collection_permissions": {
+                "required": ["none"]
+            },
+        },
+
     },
     "icons": {
         "64": "images/icon-64px.png",

@@ -131,3 +131,9 @@ This is the tricky bit since you need to specify the directory that installs the
 ./mach build comm/calendar/lightning
 ```
 {% endhint %}
+
+You can also run a build that does everything except compile (C++/Rust/IDL/Glean) and link code (essentially the same as what an artifact build would do) with
+
+```
+./mach build faster
+```

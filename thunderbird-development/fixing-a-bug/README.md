@@ -8,7 +8,7 @@ All the issues, bugs, work in progress patches, or updates related to Thunderbir
 
 ## Create a Bugzilla Account
 
-Creating an account is necessary in order to submit patches, leave comments, and interact with any other aspect of Bugzilla. If you're currently using a username in one of our Matrix chat rooms (e.g. [#maildev](https://chat.mozilla.org/#/room/#maildev:mozilla.org)), we recommend saving your profile name with the current format `Firstname Lastname (:username)` in order to be easily searchable and allow the Thunderbird team to offer better support.
+Creating an account is necessary in order to submit patches, leave comments, and interact with any other aspect of Bugzilla. If you're currently using a username in one of our Matrix chat rooms (e.g. [#maildev:mozilla.org](https://matrix.to/#/#maildev:mozilla.org?web-instance%5Belement.io%5D=chat.mozilla.org)), we recommend saving your profile name with the current format `Firstname Lastname (:username)` in order to be easily searchable and allow the Thunderbird team to offer better support.
 
 ## Find a Bug
 
@@ -20,7 +20,7 @@ Making sense of the **Thunderbird** source code, and knowing where to look, will
 
 ## Debugging Core Code
 
-JavaScript code can be debugged using the built-in [developer tools toolbox](https://extensionworkshop.com/documentation/develop/debugging/). Debugging core C++ code requires [external tools](https://firefox-source-docs.mozilla.org/contributing/index.html).
+JavaScript code can be debugged using the built-in [developer tools toolbox](https://firefox-source-docs.mozilla.org/devtools-user/browser_toolbox/index.html). Debugging core C++ code requires [external tools](https://firefox-source-docs.mozilla.org/contributing/index.html).
 
 ## Creating Patches
 
@@ -75,7 +75,7 @@ Prefixing the first line of the commit message with "`WIP:`" marks the patch as 
 
 All changes need to be reviewed before acceptance into the codebase. It can be pretty tricky to figure out who to ask for a review.
 
-Thunderbird code is divided into modules, each with an owner and peers. Generally, these are the best people to review your changes. Here's [the list of module owners and peers for Thunderbird](https://wiki.mozilla.org/Modules/Thunderbird). [Calendar](https://wiki.mozilla.org/Modules/Calendar) and [MailNews Core](https://wiki.mozilla.org/Modules/MailNews\_Core) modules have separate lists.
+Thunderbird code is divided into modules, each with an owner and peers. Generally, these are the best people to review your changes. Here's [the list of module owners, peers, and review groups](https://source-docs.thunderbird.net/en/latest/mots/index.html).
 
 Scanning through the recent commits in mercurial should also give you an idea of who is active in various areas of the code. Failing that you can always [ask around](https://developer.thunderbird.net/add-ons/community).
 
@@ -99,7 +99,7 @@ It'll ask for confirmation before uploading, so don't worry too much about accid
 
 `moz-phab` will pick the bug number out of the commit message (`Bug xxxx`), and link back to the bugzilla bug. If there is a reviewer (`r=...`), it will automatically assign them and send them a notification. You can leave the reviewer out, but then one will have to be manually assigned via the phabricator web page. If the commit message starts with "`WIP:`", the patch will be marked "Changes Planned".
 
-You can find more details in the `moz-phab` [README](https://github.com/mozilla-conduit/review/blob/master/README.md#submitting-commits-to-phabricator).
+You can find more details in the `moz-phab` [README](https://github.com/mozilla-conduit/review/blob/main/README.md#submitting-commits-to-phabricator).
 
 ## Updating patches
 

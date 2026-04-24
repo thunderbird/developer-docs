@@ -148,10 +148,27 @@ When the build at `https://treeherder.mozilla.org/jobs?repo=try-comm-central` is
 
 If you have changes that affect mozilla-central, you may wish to do a Try run to check Thunderbird isn't broken. Here's how:
 
-1. In your mozilla-central directory, apply your patch. Then run `./mach try empty` to push to the mozilla-central Try repository. You'll need to know the revision number of your push, which will be in the message printed to the console.
-2. Move to your comm-central directory.
-3. Modify the file `.gecko_rev.yml` – change `GECKO_HEAD_REPOSITORY` to [`https://hg.mozilla.org/try`](https://hg.mozilla.org/try), and `GECKO_HEAD_REV` to point to the revision you previously pushed to M-C's try with `mach try empty`.
-4. Now push to try-comm-central as per usual.
+1. In your mozilla-central directory, apply your patch. 
+2. Create a file named try_task_config.json in the top of your mozilla-central tree with the following contents:
+```
+{
+    "parameters": {
+        "optimize_target_tasks": false,
+        "try_task_config": {
+            "env": {
+                "TRY_SELECTOR": "empty"
+            },
+            "tasks": []
+        }
+    },
+    "version": 2
+}
+```
+3. Run: `hg add try_task_config.json`
+4. Run: `hg push-to-try -s ssh://YOUR-EMAIL-HERE@hg.mozilla.org/try -m "testing fix for bug 99999999"` to push to the mozilla-central Try repository. You'll need to know the revision number of your push, which will be in the message printed to the console.
+5. Move to your comm-central directory.
+6. Modify the file `.gecko_rev.yml` – change `GECKO_HEAD_REPOSITORY` to [`https://hg.mozilla.org/try`](https://hg.mozilla.org/try), and `GECKO_HEAD_REV` to point to the revision you previously pushed to M-C's try with `mach try empty`.
+7. Now push to try-comm-central as per usual.
 
 You can change `.gecko_rev.yml` to point to any revision on the mozilla-\* trees to test your comm-central patch against them.
 

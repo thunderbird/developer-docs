@@ -167,7 +167,7 @@ If you have changes that affect mozilla-central, you may wish to do a Try run to
 3. Run: `hg add try_task_config.json`
 4. Run: `hg push-to-try -s ssh://YOUR-EMAIL-HERE@hg.mozilla.org/try -m "testing fix for bug 99999999"` to push to the mozilla-central Try repository. You'll need to know the revision number of your push, which will be in the message printed to the console.
 5. Move to your comm-central directory.
-6. Modify the file `.gecko_rev.yml` – change `GECKO_HEAD_REPOSITORY` to [`https://hg.mozilla.org/try`](https://hg.mozilla.org/try), and `GECKO_HEAD_REV` to point to the revision you previously pushed to M-C's try with `mach try empty`.
+6. Modify the file `.gecko_rev.yml` – change `GECKO_HEAD_REPOSITORY` to [`https://hg.mozilla.org/try`](https://hg.mozilla.org/try), and `GECKO_HEAD_REV` to point to the revision you previously pushed to M-C's try with the above steps.
 7. Now push to try-comm-central as per usual.
 
 You can change `.gecko_rev.yml` to point to any revision on the mozilla-\* trees to test your comm-central patch against them.

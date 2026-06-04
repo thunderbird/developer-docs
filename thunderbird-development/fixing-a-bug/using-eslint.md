@@ -18,19 +18,19 @@ After editing some JavaScript code, navigate to the `comm/` directory. \(The fol
 For a single file, run this command, which will attempt to automatically fix any linting or formatting problems:
 
 ```text
-$ ../mach lint path/to/a/file.js --fix
+$ ../mach commlint path/to/a/file.js --fix
 ```
 
 Or for all the files in a given directory:
 
 ```text
-$ ../mach lint path/to/a/directory/ --fix
+$ ../mach commlint path/to/a/directory/ --fix
 ```
 
 To simply report any problems but not attempt to automatically fix them, just omit the `--fix` flag:
 
 ```text
-$ ../mach lint path/to/a/file.js
+$ ../mach commlint path/to/a/file.js
 ```
 
 ## In a Code Editor

@@ -20,7 +20,7 @@ Depending on your Operating System you will need to carry out a different proces
 
 ## Build Configuration
 
-To build Thunderbird, you need a file named `mozconfig` in the root directory of the mozilla-central checkout that contains the option `comm/mail` enabled. If you do not already have this file, then you can create it with this line by doing this in the `source/` directory:
+To build Thunderbird, you need a file named `mozconfig` in the root directory of the firefox checkout that contains the option `comm/mail` enabled. If you do not already have this file, then you can create it with this line by doing this in the `source/` directory:
 
 ```
 echo 'ac_add_options --enable-project=comm/mail' > mozconfig
@@ -44,7 +44,7 @@ For more info on configuration options, see the page [Configuring build options]
 ## Building
 
 {% hint style="warning" %}
-Before you start, make sure that the version you checked out is not busted. For `hg` tip, you should see green Bs on [https://treeherder.mozilla.org/#/jobs?repo=comm-central](https://treeherder.mozilla.org/#/jobs?repo=comm-central)
+Before you start, make sure that the version you checked out is not busted. For `git` tip, you should see green Bs on [https://treeherder.mozilla.org/#/jobs?repo=comm-central](https://treeherder.mozilla.org/#/jobs?repo=comm-central)
 {% endhint %}
 
 After you have met the [build prerequisites](./#build-prerequisites) for your OS, the build is started in the `source` directory with:
@@ -71,9 +71,9 @@ To run your build, you can use:
 
 There are various command line parameters you can add, e.g. to specify a profile.
 
-Various temporary files, libraries, and the Thunderbird executable will be found in your object directory (under `comm-central/`), which is prefixed with `obj-`. The exact name depends on your system and OS. For example, a Mac user may get an object directory name of `obj-x86_64-apple-darwin10.7.3/`.
+Various temporary files, libraries, and the Thunderbird executable will be found in your object directory (under `comm/`), which is prefixed with `obj-`. The exact name depends on your system and OS. For example, a Mac user may get an object directory name of `obj-x86_64-apple-darwin10.7.3/`.
 
-The Thunderbird executable in particular, and its dependencies are located under the `dist/bin` folder under the object directory. To run the executable from your `comm-central` working directory:
+The Thunderbird executable in particular, and its dependencies are located under the `dist/bin` folder under the object directory. To run the executable from your `comm` working directory:
 
 * Windows: `obj-.../dist/bin/thunderbird.exe`
 * Linux: `obj-.../dist/bin/thunderbird`
@@ -81,19 +81,19 @@ The Thunderbird executable in particular, and its dependencies are located under
 
 ## Update and Build Again
 
-To pull down the latest changes, in the mozilla directory run the following commands:
+To pull down the latest changes, in the firefox directory run the following commands:
 
 ```
-hg pull -u
+git pull --rebase
 cd comm
-hg pull -u
+git pull --rebase
 cd ..
 ```
 
 or to do it via one command:
 
 ```
-hg pull -u; (cd comm; hg pull -u)
+git pull --rebase && git -C comm pull --rebase
 ```
 
 Then just run the `./mach build` command detailed in the [Building](./#building) instructions above. This will only recompile files that changed, but it may still take a long time.

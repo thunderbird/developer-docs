@@ -1,5 +1,6 @@
 ---
 description: How to build and run Thunderbird.
+hidden: true
 ---
 
 # Building Thunderbird
@@ -36,10 +37,9 @@ Other build configuration options can be added to this file, although it's recom
 * To enable debug symbols: `ac_add_options --enable-debug-symbols`
 * To enable autoclobber: `mk_add_options AUTOCLOBBER=1`
 
-
 _Each of these ac\_add\_options entries needs to be on its own line._
 
-For more info on configuration options, see the page [Configuring build options](https://firefox-source-docs.mozilla.org/setup/configuring\_build\_options.html#configuring-build-options). Note that if you use a MOZ\_OBJDIR it cannot be a sibling folder to your source directory. Use an absolute path to be sure!
+For more info on configuration options, see the page [Configuring build options](https://firefox-source-docs.mozilla.org/setup/configuring_build_options.html#configuring-build-options). Note that if you use a MOZ\_OBJDIR it cannot be a sibling folder to your source directory. Use an absolute path to be sure!
 
 ## Building
 
@@ -59,7 +59,7 @@ Building can take a significant amount of time, depending on your system, OS, an
 
 ### Make Your Build Faster
 
-Follow this guide to rely on [sccache](https://firefox-source-docs.mozilla.org/setup/configuring\_build\_options.html?highlight=sccache#sccache) and other [Tips for making builds faster](https://firefox-source-docs.mozilla.org/build/buildsystem/slow.html#why-the-build-system-is-slow).
+Follow this guide to rely on [sccache](https://firefox-source-docs.mozilla.org/setup/configuring_build_options.html?highlight=sccache#sccache) and other [Tips for making builds faster](https://firefox-source-docs.mozilla.org/build/buildsystem/slow.html#why-the-build-system-is-slow).
 
 ## Running Thunderbird
 

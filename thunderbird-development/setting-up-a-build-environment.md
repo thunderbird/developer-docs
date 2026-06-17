@@ -2,11 +2,13 @@
 description: >-
   This page has all the information you need to get your development environment
   set up and ready to hack on Thunderbird.
+hidden: true
 ---
 
 # Setting Up A Build Environment
 
 ## Build Prerequisites
+
 Before you can build Thunderbird, please follow your platform's build prerequisites page:
 
 * [Windows Build Prerequisites](building-thunderbird/windows-build-prerequisites.md)
@@ -29,7 +31,7 @@ The latest Mozilla source code comes from Mozilla's `mozilla-central` Mercurial 
 
 Mozilla-central will build Firefox without the comm-central repo present and a few options set (detailed on the [Building Thunderbird](building-thunderbird/) page).
 
-### Additional Documentation 
+### Additional Documentation
 
 Thunderbird is built on the Mozilla platform, the same base that Firefox is built from. As such the two projects share a lot of code and much of the documentation for one will apply, in many ways, to the other. If at any point you are looking for answers that you can't find here, here are some additional useful resources:
 

@@ -1,5 +1,6 @@
 ---
 description: Tutorial on how to fix a bug from beginning to end.
+hidden: true
 ---
 
 # Fixing a Bug
@@ -55,21 +56,19 @@ Optionally, a longer description of the change.
 This can span multiple lines.
 ```
 
-
 For follow-up commits that fix a problem with a lint test or other failure, the suggested form is:
 
-```text
+```
 Bug XXXX - Follow-up: Fixed lint failure. r?reviewer
 ```
 
 When fixing a bug caused by a change made to mozilla-central, often referred to as "porting" a fix to Thunderbird, mention the upstream bug in the commit message like below. Doing so helps identify bugs that need uplifting to beta or release when the ported mozilla-central bug is uplifted.
 
-```text
+```
 Bug NNNN - Port bug ZZZZ: Useful short description. r?reviewer
 ```
 
-Prefixing the first line of the commit message with "`WIP:`" marks the patch as a work-in-progress. `moz-phab` \(see below\) will pick that up and mark it as "Changes Planned".
-
+Prefixing the first line of the commit message with "`WIP:`" marks the patch as a work-in-progress. `moz-phab` (see below) will pick that up and mark it as "Changes Planned".
 
 ## Picking reviewers
 

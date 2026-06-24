@@ -9,8 +9,8 @@ Uplifts to Beta, Release, and ESR are limited to high-impact bug fixes. Features
 
 **Patches nominated for uplift should:**
 - Be limited to stability, security, or high-impact bugs.
-- **For Beta uplifts:** Already have landed, tested, and stabilized in comm-central.
-- **For Release/ESR uplifts:** Already have landed, tested, and stabilized in comm-beta.
+- **For Beta uplifts:** Already have landed, tested, and stabilized in main.
+- **For Release/ESR uplifts:** Already have landed, tested, and stabilized in beta.
 - Include tests or provide a strong justification for the absence of tests.
 - Not change any localizable strings.
 

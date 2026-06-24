@@ -39,12 +39,16 @@ Once this is done, creating a shortcut to `c:\mozilla-build\start-shell.bat` on 
 
 Once you have run start-shell.bat, you will need to grab the source code if you haven't already.
 
-Get the latest Mozilla source code from Mozilla's `mozilla-central` Mercurial code repository, and check it out into a local directory `source` \(or however you want to call it\). Then, get the latest Thunderbird source code from Mozilla's `comm-central` Mercurial code repository. It now needs to be placed **inside** the Mozilla source code, in a directory named `comm/` \(this is inverse from Thunderbird 59 and earlier\):
+The latest Firefox and Thunderbird source code is available from the main branches of the [firefox](https://github.com/mozilla-firefox/firefox) and [thunderbird-desktop](https://github.com/thunderbird/thunderbird-desktop) Git repositories, respectively.
+
+When building locally:
+* The root of the Firefox source is often renamed to `source/` but it can be named anything you like.
+* The root of the Thunderbird source needs to be placed **inside** the Firefox source code, in a directory that must be named `comm/`.
 
 ```bash
-hg clone https://hg.mozilla.org/mozilla-central source/
+git clone https://github.com/mozilla-firefox/firefox source/
 cd source/
-hg clone https://hg.mozilla.org/comm-central comm/
+git clone https://github.com/thunderbird/thunderbird-desktop comm/
 ```
 
 ### Mach Bootstrap

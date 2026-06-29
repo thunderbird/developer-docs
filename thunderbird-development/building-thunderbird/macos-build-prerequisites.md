@@ -90,6 +90,7 @@ Get the latest Firefox source code, and check it out into a local directory `sou
 git clone https://github.com/mozilla-firefox/firefox source/
 cd source/
 git clone https://github.com/thunderbird/thunderbird-desktop comm/
+```
 
 #### Create `mozconfig` file
 

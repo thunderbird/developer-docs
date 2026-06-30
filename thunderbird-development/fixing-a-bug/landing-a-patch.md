@@ -50,6 +50,8 @@ Be sure your commit message is clear and has been approved during review. The st
 Always check the reviewer in a commit message matches the person who actually reviewed the patch. A patch could be reviewed by someone other than the originally intended person, or it could have been sent to a group of reviewers.
 {% endhint %}
 
+As a new contributor, you probably don't need to land your own patches. Instead add the keyword `checkin-needed-tb` to the Bugzilla bug, and one of our friendly sheriffs will land it for you.
+
 After landing to the Thunderbird main branch, the code will sync to Mercurial where CI will run. You can take a look at [TreeHerder](https://treeherder.mozilla.org/#/jobs?repo=comm-central) to see the changes show up at the top of the list.
 
 {% hint style="warning" %}

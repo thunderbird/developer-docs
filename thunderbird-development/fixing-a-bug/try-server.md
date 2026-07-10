@@ -50,11 +50,11 @@ Having gained level 1 access and configured Mercurial, you can push to Try. In g
 
 ### Pushing to Try (New process for Git)
 
-Since moving Thunderbird source code to Git, we now support running `./mach try`, aligning Thunderbird’s try submission workflow with Firefox.
+Since moving Thunderbird source code to Git, we now support running `../mach try`, aligning Thunderbird’s try submission workflow with Firefox.
 
-One important difference is that `./mach try` must be run from the `comm` repository when submitting to Thunderbird try, whereas Firefox submissions are made from the `source` repository.
+One important difference is that `../mach try` must be run from the `comm` repository when submitting to Thunderbird try, whereas Firefox submissions are made from the `source` repository.
 
-For complete details on using `./mach try`, refer to the Firefox documentation for [Pushing to Try](https://firefox-source-docs.mozilla.org/tools/try/index.html).
+For complete details on using `../mach try`, refer to the Firefox documentation for [Pushing to Try](https://firefox-source-docs.mozilla.org/tools/try/index.html).
 
 While reading the Firefox documentation, note the following Thunderbird-specific differences:
 
@@ -65,12 +65,12 @@ While reading the Firefox documentation, note the following Thunderbird-specific
 #### Choosing what tasks to run
 
 You can (and should) control what testing tasks you want to run on your push. Several task selection methods are available, including:
-- `./mach try fuzzy` where an interactive interface opens that allows you to select what tasks to run ([see more details](https://firefox-source-docs.mozilla.org/tools/try/selectors/fuzzy.html#understanding-the-interface))
-- `./mach try fuzzy --query <query>` where the query selects the tasks rather than opening an interactive interface ([see more details](https://firefox-source-docs.mozilla.org/tools/try/selectors/fuzzy.html#writing-queries))
-  - `./mach try fuzzy --and -q "mochitest" -q "windows"` is an example of running all windows mochitest tasks
-- `./mach try chooser` is similar to `./mach try fuzzy` except you can choose tasks from a web interface ([see more details](https://firefox-source-docs.mozilla.org/tools/try/selectors/chooser.html))
-- `./mach try again` to re-push your last try push or a previous push - ([see more details](https://firefox-source-docs.mozilla.org/tools/try/selectors/again.html))
-- `./mach try empty` to push to try but not schedule any additional tasks - ([see more details](https://firefox-source-docs.mozilla.org/tools/try/selectors/empty.html))
+- `../mach try fuzzy` where an interactive interface opens that allows you to select what tasks to run ([see more details](https://firefox-source-docs.mozilla.org/tools/try/selectors/fuzzy.html#understanding-the-interface))
+- `../mach try fuzzy --query <query>` where the query selects the tasks rather than opening an interactive interface ([see more details](https://firefox-source-docs.mozilla.org/tools/try/selectors/fuzzy.html#writing-queries))
+  - `../mach try fuzzy --and -q "mochitest" -q "windows"` is an example of running all windows mochitest tasks
+- `../mach try chooser` is similar to `../mach try fuzzy` except you can choose tasks from a web interface ([see more details](https://firefox-source-docs.mozilla.org/tools/try/selectors/chooser.html))
+- `../mach try again` to re-push your last try push or a previous push - ([see more details](https://firefox-source-docs.mozilla.org/tools/try/selectors/again.html))
+- `../mach try empty` to push to try but not schedule any additional tasks - ([see more details](https://firefox-source-docs.mozilla.org/tools/try/selectors/empty.html))
 
 ### Pushing to Try (Old process for Mercurial)
 

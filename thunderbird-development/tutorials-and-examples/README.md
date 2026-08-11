@@ -14,5 +14,6 @@ Learn to do a simple Hello World example that will introduce you to the basics o
 
 ## Thunderbird Live Development Videos
 
+{% page-ref page="thunderbird-live-development-videos.md" %}
 
-
+Prefer watching videos? Check out recordings of live development sessions and learn how to navigate the Thunderbird codebase.

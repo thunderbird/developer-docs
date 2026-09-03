@@ -55,8 +55,6 @@ uname -m
 
 if this command returns `x86_64` you can proceed.
 
-### Build Environment
-
 #### Python
 
 You’ll need `Python 3.8` or later installed.
@@ -84,8 +82,6 @@ sudo dnf install git
 Once you have Git installed, you are ready to proceed to the next section to grab the source code.
 
 ## MacOS
-
-### Build Environment
 
 #### Python
 

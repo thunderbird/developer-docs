@@ -5,6 +5,14 @@
 ## Contributing to Thunderbird <a href="#thunderbird-development" id="thunderbird-development"></a>
 
 * [Getting Started Contributing](thunderbird-development/getting-started.md)
+* [Design](thunderbird-development/design.md)
+* [Desktop](thunderbird-development/desktop.md)
+* [Mobile](thunderbird-development/mobile.md)
+* [Support & Documentation](thunderbird-development/support-and-documentation.md)
+* [Beta Testing](thunderbird-development/beta-testing.md)
+* [Translations](thunderbird-development/translations/README.md)
+  * [Desktop (Pontoon)](thunderbird-development/translations/desktop-pontoon.md)
+  * [Mobile (Weblate)](thunderbird-development/translations/mobile-weblate.md)
 * [Setting Up A Build Environment](thunderbird-development/setting-up-a-build-environment.md)
 * [Building Thunderbird](thunderbird-development/building-thunderbird/README.md)
   * [Windows Build Prerequisites](thunderbird-development/building-thunderbird/windows-build-prerequisites.md)

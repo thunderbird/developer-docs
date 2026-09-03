@@ -2,11 +2,13 @@
 description: >-
   This page has all the information you need to get your development environment
   set up and ready to hack on Thunderbird.
+hidden: true
 ---
 
 # Setting Up A Build Environment
 
 ## Build Prerequisites
+
 Before you can build Thunderbird, please follow your platform's build prerequisites page:
 
 * [Windows Build Prerequisites](building-thunderbird/windows-build-prerequisites.md)

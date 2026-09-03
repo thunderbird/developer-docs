@@ -59,7 +59,7 @@ First, things can only be downloaded if they exist. So you need to make sure wha
 
 Example: if your platform is 64-bit Linux and your tree was up-to-date at this point, which build will you get?
 
-![](<../../.gitbook/assets/which artifact build.svg.png>)
+![](<../../../.gitbook/assets/which artifact build.svg.png>)
 
 {% hint style="info" %}
 This screenshot is from [https://treeherder.mozilla.org/#/jobs?repo=comm-central](https://treeherder.mozilla.org/#/jobs?repo=comm-central). Check what's going on there before updating your build.
@@ -77,7 +77,7 @@ In this example you have a choice:
 
 To find the revisions used for a successful build, click on the `B`, and go down to the bottom of the Job Details tab:
 
-![](<../../.gitbook/assets/build details.svg.png>)
+![](<../../../.gitbook/assets/build details.svg.png>)
 
 Update both comm-central _and_ mozilla-central trees using `hg update -r abcdef1234` before building. In general, when a new build begins on the build infrastructure, it uses the latest mozilla-central as well as the latest comm-central, but that may no longer be the case by the time you build.
 

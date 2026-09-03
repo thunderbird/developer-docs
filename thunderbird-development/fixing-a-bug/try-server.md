@@ -58,19 +58,20 @@ For complete details on using `../mach try`, refer to the Firefox documentation 
 
 While reading the Firefox documentation, note the following Thunderbird-specific differences:
 
-- The GitHub repository for Thunderbird is `https://github.com/thunderbird/thunderbird-desktop`
-- The unified Mercurial repository for Thunderbird is `comm-unified`
-- The Thunderbird try repository is `https://hg-edge.mozilla.org/try-comm-central`
+* The GitHub repository for Thunderbird is `https://github.com/thunderbird/thunderbird-desktop`
+* The unified Mercurial repository for Thunderbird is `comm-unified`
+* The Thunderbird try repository is `https://hg-edge.mozilla.org/try-comm-central`
 
 #### Choosing what tasks to run
 
 You can (and should) control what testing tasks you want to run on your push. Several task selection methods are available, including:
-- `../mach try fuzzy` where an interactive interface opens that allows you to select what tasks to run ([see more details](https://firefox-source-docs.mozilla.org/tools/try/selectors/fuzzy.html#understanding-the-interface))
-- `../mach try fuzzy --query <query>` where the query selects the tasks rather than opening an interactive interface ([see more details](https://firefox-source-docs.mozilla.org/tools/try/selectors/fuzzy.html#writing-queries))
-  - `../mach try fuzzy --and -q "mochitest" -q "windows"` is an example of running all windows mochitest tasks
-- `../mach try chooser` is similar to `../mach try fuzzy` except you can choose tasks from a web interface ([see more details](https://firefox-source-docs.mozilla.org/tools/try/selectors/chooser.html))
-- `../mach try again` to re-push your last try push or a previous push - ([see more details](https://firefox-source-docs.mozilla.org/tools/try/selectors/again.html))
-- `../mach try empty` to push to try but not schedule any additional tasks - ([see more details](https://firefox-source-docs.mozilla.org/tools/try/selectors/empty.html))
+
+* `../mach try fuzzy` where an interactive interface opens that allows you to select what tasks to run ([see more details](https://firefox-source-docs.mozilla.org/tools/try/selectors/fuzzy.html#understanding-the-interface))
+* `../mach try fuzzy --query <query>` where the query selects the tasks rather than opening an interactive interface ([see more details](https://firefox-source-docs.mozilla.org/tools/try/selectors/fuzzy.html#writing-queries))
+  * `../mach try fuzzy --and -q "mochitest" -q "windows"` is an example of running all windows mochitest tasks
+* `../mach try chooser` is similar to `../mach try fuzzy` except you can choose tasks from a web interface ([see more details](https://firefox-source-docs.mozilla.org/tools/try/selectors/chooser.html))
+* `../mach try again` to re-push your last try push or a previous push - ([see more details](https://firefox-source-docs.mozilla.org/tools/try/selectors/again.html))
+* `../mach try empty` to push to try but not schedule any additional tasks - ([see more details](https://firefox-source-docs.mozilla.org/tools/try/selectors/empty.html))
 
 ### Pushing to Try (Old process for Mercurial)
 
@@ -98,7 +99,7 @@ You can also work with a **specific** mozilla-central revision, see "Testing moz
 
 You can (and should) control what testing tasks you want to run on your push. There are several methods to do so:
 
-##### Try syntax
+**Try syntax**
 
 This is the easiest and most common way. A special code (known as Try syntax) is put in the commit message of the tip-most revision being pushed, for example `try: -b o -p linux64 -u all` creates only an "opt" build on 64-bit Linux, and runs all of the tests on that build.
 
@@ -117,9 +118,9 @@ Here is the Try syntax try-comm-central understands:
   * `xpcshell`
   * `marionette`
   * `all`
-* `--artifact` Artifact builds. See the [Artifact Builds page](../building-thunderbird/artifact-builds.md) for more information.
+* `--artifact` Artifact builds. See the [Artifact Builds page](../setting-up-a-build-environment/building-thunderbird/artifact-builds.md) for more information.
 
-##### Try task configuration
+**Try task configuration**
 
 For more control, a special file named `try_task_config.json` and containing a list of the tasks to run is included in one of the pushed revisions.
 
@@ -145,7 +146,7 @@ The contents of the file look like this:
 }
 ```
 
-`use-artifact-builds` tells the Try server to do an artifact build. Set to false or remove it for a full build. See the [Artifact Builds page](../building-thunderbird/artifact-builds.md) for more information.
+`use-artifact-builds` tells the Try server to do an artifact build. Set to false or remove it for a full build. See the [Artifact Builds page](../setting-up-a-build-environment/building-thunderbird/artifact-builds.md) for more information.
 
 `tasks` is a list of tasks to run. In this example it's all of the 64-bit Linux tests. A 64-bit Linux build will also run, because it is required by the tasks specified.
 
@@ -157,7 +158,7 @@ Task configurations and names change over time. If you're not getting the tasks 
 
 To find the name of any particular task, click on existing instance in Treeherder, then look for the "job name" in the lower-left corner of the page.
 
-##### Adding tasks to an empty Try run
+**Adding tasks to an empty Try run**
 
 If you commit with neither Try syntax nor a `try_task_config.json` file (or you want to add to an existing run), you can one or more tasks using Treeherder. Once the decision (D) task has completed, click the drop-down arrow to the right of it, and choose "Add new jobs".
 
@@ -166,12 +167,12 @@ If you commit with neither Try syntax nor a `try_task_config.json` file (or you 
 When the build at `https://treeherder.mozilla.org/jobs?repo=try-comm-central` is complete (normally takes 1-2 hours):
 
 * Click the green "B" (for build) or "Ba" (for artifact build) next to one of the following: "Windows opt", "Windows AArch64 opt" (for Windows ARM computers), "Linux opt", "macOS opt", "macOS AArch64 opt" (for non-Intel Macs only), or any variant with "opt" replaced with "Shippable" (or "debug" if instructed to use a debug build).\
-  ![](<../../.gitbook/assets/trybuilds (2).jpeg>)\
+  ![](<../../.gitbook/assets/trybuilds (1).jpeg>)\\
 * In the black header below click "Artifacts and Debugging Tools".
 * In the Artifacts section, to download the install file click on `target.installer.exe` (Windows), `target.tar.bz2` (Linux), or `target.dmg` (Mac).\
   \
   ![](<../../.gitbook/assets/try-target (1).jpeg>)\
-  \
+  \\
 * Install the downloaded file.
 
 ## Testing Firefox patches

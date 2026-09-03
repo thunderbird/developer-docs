@@ -13,11 +13,13 @@ hidden: true
 
 ## Build Prerequisites
 
-Depending on your Operating System you will need to carry out a different process to prepare your machine. So first complete the instructions for your OS and then continue following these build instructions.
+Depending on your Operating System you will need to carry out a different process to prepare your machine. So make sure you have first completed the steps for setting up a build environment for your OS.
 
-* [Windows Build Prerequisites](windows-build-prerequisites.md)
-* [Linux Build Prerequisites](linux-build-prerequisites.md)
-* [macOS Build Prerequisites](macos-build-prerequisites.md)
+{% content-ref url="../" %}
+[..](../)
+{% endcontent-ref %}
+
+Then come back and continue following these build instructions.
 
 ## Build Configuration
 

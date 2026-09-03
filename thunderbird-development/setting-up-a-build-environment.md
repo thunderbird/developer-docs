@@ -2,7 +2,6 @@
 description: >-
   This page has all the information you need to get your development environment
   set up and ready to hack on Thunderbird.
-hidden: true
 ---
 
 # Setting Up A Build Environment
@@ -30,6 +29,7 @@ Information for how to install Git is available [via the download page on their 
 The latest Firefox and Thunderbird source code is available from the main branches of the [firefox](https://github.com/mozilla-firefox/firefox) and [thunderbird-desktop](https://github.com/thunderbird/thunderbird-desktop) Git repositories, respectively.
 
 When building locally:
+
 * The root of the Firefox source is often renamed to `source/` but it can be named anything you like.
 * The root of the Thunderbird source needs to be placed **inside** the Firefox source code, in a directory that must be named `comm/`.
 
@@ -44,7 +44,7 @@ Prior to moving to Git, the source code for Firefox and Thunderbird used Mercuri
 The following table shows the mapping of git branches to mercurial repositories. Note that all of the git branches exist in the [firefox](https://github.com/mozilla-firefox/firefox) and [thunderbird-desktop](https://github.com/thunderbird/thunderbird-desktop) repositories.
 
 | Git Branch | Mercurial Repository |
-|------------|----------------------|
+| ---------- | -------------------- |
 | main       | mozilla-central      |
 | beta       | mozilla-beta         |
 | release    | mozilla-release      |

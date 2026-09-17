@@ -20,19 +20,11 @@ Note that these areas often overlap so don't worry about picking the "perfect" o
 
 #### Accessibility
 
-We need help testing things like screen readers and braille keyboards, to make sure the application behaves in an intuitive way to integrate with these devices.&#x20;
-
 Thunderbird is committed to digital accessibility and inclusion. Our goal is that people with diverse needs and abilities can use them with dignity, independence, and confidence.
 
 We need help testing things like screen readers and braille keyboards, to make sure the application behaves in an intuitive way to integrate with these devices.
 
 #### User Research
-
-We periodically do user surveys to gather information on what users want most.
-
-You can help us create targeted surveys to gather this data, and help shape our roadmap around what users actually want.
-
-There are always UI tweaks needed to improve the visual experience of Thunderbird.
 
 We conduct user research frequently to understand user needs. We always share opportunities to get involved on channels like [Topicbox UX](https://thunderbird.topicbox.com/groups/ux) and [Reddit](https://www.reddit.com/r/Thunderbird/).
 

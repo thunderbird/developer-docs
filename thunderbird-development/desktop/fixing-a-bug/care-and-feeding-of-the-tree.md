@@ -24,7 +24,7 @@ Some things fail occasionally (we call these intermittent failures) or most of t
 
 We file bugs about intermittent failures in the hope that one day we'll have time to investigate and fix them. Bugs with the `intermittent-failure` keyword are displayed in the Failure Summary section if they are a close match with the error message in the log:
 
-![](../../.gitbook/assets/failure-summary.png)
+![](../../../.gitbook/assets/failure-summary.png)
 
 If you're sure a bug description is the right one, click the pin icon next to it. This adds the current task to the pinboard and the bug number to the classification. If you're logged in you can click save to associate the bug with the task. The task gains a little star icon to mark that somebody's looked at it and understood it.
 
@@ -60,7 +60,7 @@ Check the Failure Summary of TreeHerder for the most basic details. Check the ta
 
 The most likely cause of an unexpected failure is a change to Firefox. Sometimes we are warned in advance of things we need to do, sometimes not. To figure out what has changed in Firefox main, get the revision from the last build of mozilla-central before the problem and the first build with the problem, by clicking on the decision task (D or Nd) and looking at the Artifacts tab:
 
-![](../../.gitbook/assets/bitmap.png)
+![](../../../.gitbook/assets/bitmap.png)
 
 You can then view the mozilla-central pushlog by copying the revisions into the URL:\
 https://hg.mozilla.org/mozilla-central/pushloghtml?fromchange=**\[good revision]**\&tochange=**\[bad revision]**

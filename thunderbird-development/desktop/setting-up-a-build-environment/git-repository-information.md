@@ -15,7 +15,7 @@ When building locally:
 * The root of the Firefox source is often renamed to `source/` but it can be named anything you like.
 * The root of the Thunderbird source needs to be placed **inside** the Firefox source code, in a directory that must be named `comm/`.
 
-More details can be found on the [Building Thunderbird](building-thunderbird/) page.
+More details can be found on the [Building Thunderbird](../building-thunderbird/) page.
 
 ### Git and Mercurial
 

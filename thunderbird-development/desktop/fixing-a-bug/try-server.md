@@ -118,7 +118,7 @@ Here is the Try syntax try-comm-central understands:
   * `xpcshell`
   * `marionette`
   * `all`
-* `--artifact` Artifact builds. See the [Artifact Builds page](../setting-up-a-build-environment/building-thunderbird/artifact-builds.md) for more information.
+* `--artifact` Artifact builds. See the [Artifact Builds page](../building-thunderbird/artifact-builds.md) for more information.
 
 **Try task configuration**
 
@@ -146,7 +146,7 @@ The contents of the file look like this:
 }
 ```
 
-`use-artifact-builds` tells the Try server to do an artifact build. Set to false or remove it for a full build. See the [Artifact Builds page](../setting-up-a-build-environment/building-thunderbird/artifact-builds.md) for more information.
+`use-artifact-builds` tells the Try server to do an artifact build. Set to false or remove it for a full build. See the [Artifact Builds page](../building-thunderbird/artifact-builds.md) for more information.
 
 `tasks` is a list of tasks to run. In this example it's all of the 64-bit Linux tests. A 64-bit Linux build will also run, because it is required by the tasks specified.
 
@@ -167,11 +167,11 @@ If you commit with neither Try syntax nor a `try_task_config.json` file (or you 
 When the build at `https://treeherder.mozilla.org/jobs?repo=try-comm-central` is complete (normally takes 1-2 hours):
 
 * Click the green "B" (for build) or "Ba" (for artifact build) next to one of the following: "Windows opt", "Windows AArch64 opt" (for Windows ARM computers), "Linux opt", "macOS opt", "macOS AArch64 opt" (for non-Intel Macs only), or any variant with "opt" replaced with "Shippable" (or "debug" if instructed to use a debug build).\
-  ![](<../../.gitbook/assets/trybuilds (1).jpeg>)\\
+  ![](<../../../.gitbook/assets/trybuilds (1).jpeg>)\\
 * In the black header below click "Artifacts and Debugging Tools".
 * In the Artifacts section, to download the install file click on `target.installer.exe` (Windows), `target.tar.bz2` (Linux), or `target.dmg` (Mac).\
   \
-  ![](<../../.gitbook/assets/try-target (1).jpeg>)\
+  ![](<../../../.gitbook/assets/try-target (1).jpeg>)\
   \\
 * Install the downloaded file.
 

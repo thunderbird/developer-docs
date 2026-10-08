@@ -380,8 +380,8 @@ let vCardStringUpdated = vCardProperties.toVCard();
 
 Read more about the address book implementation in Thunderbirds core documentation:
 
-{% content-ref url="../../../thunderbird-development/codebase-overview/address-book.md" %}
-[address-book.md](../../../thunderbird-development/codebase-overview/address-book.md)
+{% content-ref url="../../../thunderbird-development/desktop/codebase-overview/address-book.md" %}
+[address-book.md](../../../thunderbird-development/desktop/codebase-overview/address-book.md)
 {% endcontent-ref %}
 
 ### nsICollationFactory
@@ -414,11 +414,11 @@ The method `getURLSpecFromFile` has been replaced by `getURLSpecFromActualFile` 
 Its generic callback functions have been renamed from `onItem*()` to `onFolder*()` in Thunderbird 94. Where needed, dedicated `onMessage*()` callback functions have been added:
 
 * OnItemAdded(in nsIMsgFolder aParentItem, in nsISupports aItem)\
-  \-> _onFolderAdded(in nsIMsgFolder parent, in nsIMsgFolder child)_\
-  \-> _onMessageAdded(in nsIMsgFolder parent, in nsIMsgDBHdr msg)_
+  -> _onFolderAdded(in nsIMsgFolder parent, in nsIMsgFolder child)_\
+  -> _onMessageAdded(in nsIMsgFolder parent, in nsIMsgDBHdr msg)_
 * OnItemRemoved(in nsIMsgFolder aParentItem, in nsISupports aItem)\
-  \-> _onFolderRemoved(in nsIMsgFolder parent, in nsIMsgFolder child)_\
-  \-> _onMessageRemoved(in nsIMsgFolder parent, in nsIMsgDBHdr msg)_
+  -> _onFolderRemoved(in nsIMsgFolder parent, in nsIMsgFolder child)_\
+  -> _onMessageRemoved(in nsIMsgFolder parent, in nsIMsgDBHdr msg)_
 
 The following callback functions were renamed without changing their parameters:
 
@@ -457,7 +457,7 @@ Instead of `printToFile`, use [outputDestination](https://searchfox.org/mozilla-
 
 ### nsIPrintingPromptService.\*
 
-Has been replaced by `nsIPrintDialogService.*`.&#x20;
+Has been replaced by `nsIPrintDialogService.*`.
 
 The function `showPrintDialog()` has also been updated to accept a new parameter to indicate if the entire document or just the current selection should be printed (replacement for the removed `nsIPrintSettings.isPrintSelectionRBEnabled`).
 

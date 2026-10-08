@@ -1,10 +1,10 @@
 ---
 description: >-
   This page has all the information you need to get your development environment
-  set up and ready to hack on Thunderbird.
+  set up and ready to hack on Thunderbird desktop.
 ---
 
-# Setting Up A Build Environment
+# Setting Up a Build Environment
 
 Before you can build Thunderbird, please follow your platform's build prerequisites steps.
 
@@ -18,7 +18,7 @@ Note that the Thunderbird build can use 30-40GB of disk space to complete depend
 
 You will need to be running a 64-bit version of Windows in order to build Thunderbird. To check this in Windows 10, open the start menu and click on the gear icon on the left-hand side of the menu. This will open up the "settings" window. Click on the "System" option and then scroll down to "About". Click on the "About" option and on the new screen next to "System Type" you should see: "**64-bit operating system"**
 
-![How System type appears in the About Settings page.](../../.gitbook/assets/windows-version-screen.png)
+![How System type appears in the About Settings page.](../../../.gitbook/assets/windows-version-screen.png)
 
 #### **Visual Studio**
 
@@ -161,7 +161,7 @@ git clone https://github.com/thunderbird/thunderbird-desktop comm/
 
 #### Create `mozconfig` file
 
-This step will need to be performed if you manually checked out the code and performed the bootstrap, and it will covered in the next section you follow, [Building Thunderbird](building-thunderbird/#build-configuration).
+This step will need to be performed if you manually checked out the code and performed the bootstrap, and it will covered in the next section you follow, [Building Thunderbird](../building-thunderbird/#build-configuration).
 
 #### Mach Bootstrap
 
@@ -230,6 +230,6 @@ If you have already gone through the relevant build prerequisite steps and gotte
 [git-repository-information.md](git-repository-information.md)
 {% endcontent-ref %}
 
-{% content-ref url="building-thunderbird/" %}
-[building-thunderbird](building-thunderbird/)
+{% content-ref url="../building-thunderbird/" %}
+[building-thunderbird](../building-thunderbird/)
 {% endcontent-ref %}

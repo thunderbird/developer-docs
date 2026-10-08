@@ -1,6 +1,5 @@
 ---
 description: Tutorial on how to fix a bug from beginning to end.
-hidden: true
 ---
 
 # Fixing a Bug
@@ -54,7 +53,7 @@ git config --global user.email "you@example.com"
 
 Make the changes you need in the codebase.
 
-{% hint style="note" %}
+{% hint style="info" %}
 If you are unsure of what changes you need to make, or need help from the mentor of the bug, please don’t hesitate to use the needinfo feature (“Request information from”) on Bugzilla to get the attention of your mentor.
 {% endhint %}
 
@@ -99,7 +98,7 @@ When fixing a bug caused by a change made to mozilla-central, often referred to 
 Bug NNNN - Port bug ZZZZ: Useful short description. r?reviewer
 ```
 
-Prefixing the first line of the commit message with "`WIP:`" marks the patch as a work-in-progress. `moz-phab` \(see below\) will pick that up and mark it as "Changes Planned".
+Prefixing the first line of the commit message with "`WIP:`" marks the patch as a work-in-progress. `moz-phab` (see below) will pick that up and mark it as "Changes Planned".
 
 ## Picking reviewers
 
@@ -107,7 +106,7 @@ All changes need to be reviewed before acceptance into the codebase. It can be p
 
 Thunderbird code is divided into modules, each with an owner and peers. Generally, these are the best people to review your changes. Here's [the list of module owners, peers, and review groups](https://source-docs.thunderbird.net/en/latest/mots/index.html).
 
-You can also run git log <modified-file>` on the relevant files, and look who usually is reviewing the actual changes (ie. not reformat, renaming of variables, etc).
+You can also run git log \` on the relevant files, and look who usually is reviewing the actual changes (ie. not reformat, renaming of variables, etc).
 
 ## Reviewing before submitting
 
@@ -118,6 +117,7 @@ $ git log
 ```
 
 To review your patch, run:
+
 ```
 $ git show
 ```

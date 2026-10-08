@@ -1,9 +1,8 @@
 ---
-description: How to build and run Thunderbird.
-hidden: true
+description: How to build and run Thunderbird Desktop.
 ---
 
-# Building Thunderbird
+# Building Thunderbird Desktop
 
 ## Hardware Requirements
 
@@ -15,8 +14,8 @@ hidden: true
 
 Depending on your Operating System you will need to carry out a different process to prepare your machine. So make sure you have first completed the steps for setting up a build environment for your OS.
 
-{% content-ref url="../" %}
-[..](../)
+{% content-ref url="../setting-up-a-build-environment/" %}
+[setting-up-a-build-environment](../setting-up-a-build-environment/)
 {% endcontent-ref %}
 
 Then come back and continue following these build instructions.

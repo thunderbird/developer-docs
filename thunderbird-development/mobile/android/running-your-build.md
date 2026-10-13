@@ -66,30 +66,54 @@ Make sure `ANDROID_HOME` is set (see [this step in the Setting Up a Build Enviro
 echo 'export PATH=$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools:$ANDROID_HOME/cmdline-tools/latest/bin' >> ~/.zshrc
 ```
 
-If you are unsure that your `PATH` environment variable has all the right pieces, you can open `~/.zshrc` with your favorite editor and add the above export line
+Source this file so that it takes effect:
+
+```
+source ~/.zshrc
+```
+
+Install "Android SDK Command-line Tools (latest)" from Android Studio’s Settings > Languages & Frameworks > Android SDK > SDK Tools.
 
 Install the emulator and a system image (use `x86_64` instead of `arm64-v8a` on Intel):
 
-bash
-
-```bash
+```
 sdkmanager "emulator" "platform-tools" "system-images;android-35;google_apis;arm64-v8a"
 ```
 
 Create the AVD:
 
-bash
-
-```bash
-avdmanager create avd -n tb_test -k "system-images;android-35;google_apis;arm64-v8a" -d pixel_8
+```
+avdmanager create avd -n tb_test -k "system-images;android-35;google_apis;arm64-v8a" -d pixel_10
 ```
 
 Start it:
 
-bash
-
-```bash
+```
 emulator -avd tb_test
 ```
 
-If `avdmanager` or `sdkmanager` isn’t found, install **Android SDK Command-line Tools (latest)** from Android Studio’s **Settings > Languages & Frameworks > Android SDK > SDK Tools**.
+{% columns %}
+{% column %}
+<figure><img src="../../../.gitbook/assets/Screenshot 2026-10-13 at 2.08.32 PM.png" alt=""><figcaption></figcaption></figure>
+{% endcolumn %}
+
+{% column %}
+Once your emulator is running, you can tell from the port which adb device this is.
+{% endcolumn %}
+{% endcolumns %}
+
+Install your debug build in the emulator with:
+
+```
+adb -s emulator-5556 install app-thunderbird/build/outputs/apk/foss/debug/app-thunderbird-foss-debug.apk
+```
+
+{% columns %}
+{% column %}
+<figure><img src="../../../.gitbook/assets/Screenshot 2026-10-13 at 2.16.00 PM.png" alt=""><figcaption></figcaption></figure>
+{% endcolumn %}
+
+{% column %}
+Now you see the debug build of Thunderbird for Android daily has replaced the GMail application.
+{% endcolumn %}
+{% endcolumns %}

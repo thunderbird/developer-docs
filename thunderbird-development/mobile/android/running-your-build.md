@@ -56,7 +56,35 @@ Since you already have the Android studio SDK, you only need an emulator package
 
 #### Android Studio
 
-lala
+Open the Device Manager by clicking the Device Manager icon (<img src="../../../.gitbook/assets/Screenshot 2026-10-13 at 2.23.25 PM (1).png" alt="" data-size="line">). This will open a third panel on the right side of Android Studio.
+
+Click the "+" icon to "Create Virtual Device" and pick a phone profile (e.g. Pixel 10).
+
+<figure><img src="../../../.gitbook/assets/Screenshot 2026-10-13 at 2.33.09 PM.png" alt=""><figcaption></figcaption></figure>
+
+After you click Next, you can choose a system image. Note that the "Services" defaults to "Google Play Store" but you may want to change this to "Google APIs" if you want root/adb flexibility. Google Play images work too but are more locked down.
+
+<figure><img src="../../../.gitbook/assets/Screenshot 2026-10-13 at 2.35.39 PM.png" alt=""><figcaption></figcaption></figure>
+
+Click "Finish" and confirm the download. When the image finished downloading, you can click the play button next to the new device (the above example shows the new device is named "Pixel 10") to run it within Android Studio.
+
+<figure><img src="../../../.gitbook/assets/Screenshot 2026-10-13 at 2.44.24 PM.png" alt=""><figcaption></figcaption></figure>
+
+To install your debug build in the emulator running in Android Studio, you will need to go to the terminal to find which emulator device this is:
+
+```
+adb devices
+```
+
+In this example, the only one listed is `emulator-5554` and we will install our debug apk to this emulator with the following command (run from the root project of the git repository):
+
+```
+adb -s emulator-5554 install app-thunderbird/build/outputs/apk/foss/debug/app-thunderbird-foss-debug.apk
+```
+
+Now you see the debug build of Thunderbird for Android daily has replaced the GMail application.
+
+<figure><img src="../../../.gitbook/assets/Screenshot 2026-10-13 at 2.50.45 PM.png" alt=""><figcaption></figcaption></figure>
 
 #### Command Line
 

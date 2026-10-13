@@ -36,6 +36,7 @@
   * [Android](thunderbird-development/mobile/android/README.md)
     * [Setting Up a Build Environment](thunderbird-development/mobile/android/setting-up-a-build-environment.md)
     * [Building Thunderbird for Android](thunderbird-development/mobile/android/building-thunderbird-for-android.md)
+    * [Running your build](thunderbird-development/mobile/android/running-your-build.md)
   * [iOS](thunderbird-development/mobile/ios.md)
 * [Support & Documentation](thunderbird-development/support-and-documentation.md)
 * [Beta Testing](thunderbird-development/beta-testing.md)

@@ -315,7 +315,7 @@ await messenger.menus.onClicked.addListener(async (info, tab) => {
         let { messageLog } = await messenger.storage.local.get({ messageLog: [] });
 
         let now = Date.now();
-        let last24h = messageLog.filter(e => (now - e.time) < 24 * 60 * 1000);
+        let last24h = messageLog.filter(e => (now - e.time) < 24 * 60 * 60 * 1000);
 
         for (let entry of last24h) {
             messenger.notifications.create({

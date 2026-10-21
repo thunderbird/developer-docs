@@ -21,14 +21,14 @@ The general release cadence consists of 2-week cycles, with each branch correspo
 - **Release Timeline**:
   - A new major version of Thunderbird Beta begins every 2 weeks.
   - 2 weeks after Daily starts for a new version, main is merged into beta.
-- **Releases**: Thunderbird Beta for this version is released weekly for the next 1 week.
+- **Releases**: Thunderbird Beta for this version is released twice per week.
   - **Beta 1**: Includes the merged code.
   - **Beta 2 and above**: Include any new uplifts.
 
 #### **Thunderbird Release**
 - **Release Timeline**:
   - A new major version of Thunderbird Release begins every 2 weeks.
-  - 1 week after Beta starts for a new version, beta is merged into release.
+  - The following week after Beta starts for a new version, beta is merged into release.
 - **Releases**: Thunderbird Release is released every 2 weeks.
 
 #### **Thunderbird ESR (Extended Support Release)**

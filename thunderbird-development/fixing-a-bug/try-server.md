@@ -54,6 +54,8 @@ Since moving Thunderbird source code to Git, we now support running `../mach try
 
 One important difference is that `../mach try` must be run from the `comm` repository when submitting to Thunderbird try, whereas Firefox submissions are made from the `source` repository.
 
+Make sure you have a `mozconfig` file as described in the Thunderbird build instructions, or set the `MOZCONFIG` environment variable to your mozconfig file. The `mach` command needs it know that your try build should be sent to try-comm-central.
+
 For complete details on using `../mach try`, refer to the Firefox documentation for [Pushing to Try](https://firefox-source-docs.mozilla.org/tools/try/index.html).
 
 While reading the Firefox documentation, note the following Thunderbird-specific differences:

@@ -18,7 +18,7 @@ Then come back and continue following these build instructions.
 
 ### Building from Android Studio
 
-At the top of Android Studio, there should be a "Run/Debug Configurations" drop down menu that says  `app-k9mail` but you can choose to select `app-thunderbird` instead (see below).
+At the top of Android Studio, there should be a "Run/Debug Configurations" drop down menu that says `app-k9mail` but you can choose to select `app-thunderbird` instead (see below).
 
 <figure><img src="../../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
@@ -30,7 +30,14 @@ If you don't see it, you can add it to the panel in View > Tool Windows > Build 
 
 ### Building from command line
 
-A Gradle wrapper is included in the project, so you can build the project from the command line without installing Gradle globally. Run the following commands from the root of the project, where `./gradlew` is the Gradle wrapper script and the command `build` runs tests and other checks, while `assemble` only compiles the code and packages the APK.
+A Gradle wrapper is included in the project, so you can build the project from the command line without installing Gradle globally. Run the following commands from the root of the project, where `./gradlew` is the Gradle wrapper script:
+
+* `assemble` - only does the build. It compiles the code and generates the APK artifact.
+* `build` - does everything the `assemble` command does, but also runs tests and other checks.
+
+{% hint style="info" %}
+Note that the `build` command takes much longer than the `assemble` command. If the objective is to only build the artifact, `assemble` is recommended.
+{% endhint %}
 
 ```
 # Build all variants
@@ -40,6 +47,10 @@ A Gradle wrapper is included in the project, so you can build the project from t
 # Build debug or release variant
 ./gradlew assembleDebug
 ./gradlew assembleRelease
+
+#Build Foss or Full variants
+./gradlew assembleFossDebug
+./gradlew assembleFullDebug
 
 # Build a specific app module
 ./gradlew :app-thunderbird:assembleDebug
